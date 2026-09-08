@@ -251,6 +251,7 @@ export function createMetaTools({ registry, credentials, hooks = {} }: MetaTools
 
             return sanitizeToolPayload({
               toolName,
+              toolkitId: toolMetadata.toolkitId,
               success: true,
               result: sanitizeToolResult(result),
             });
@@ -281,6 +282,7 @@ export function createMetaTools({ registry, credentials, hooks = {} }: MetaTools
 
         return sanitizeToolPayload({
           toolName,
+          toolkitId: toolMetadata.toolkitId,
           success: true,
           result: sanitizeToolResult(result),
         });
