@@ -1,4 +1,4 @@
-const SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#6366f1"/><text x="12" y="17" text-anchor="middle" font-size="14" fill="white" font-family="system-ui">π</text></svg>`;
+const SVG = `<svg xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd" viewBox="0 0 512 494.37"><path fillRule="nonzero" d="m0 150.27 18.66 1.39C38 129.78 45.6 65.06 159.61 77.72 155.47 355.03 33.86 384.28 41.46 441.17c2.76 32.24 28.33 52.05 55.96 53.2 87.3-2.99 83.38-120.68 110.56-417.34H320.6c-5.98 104.57-22.34 209.13-24.18 311.63 1.38 68.17 42.84 104.56 97.43 105.02 89.82 3 118.15-101.8 118.15-146.48h-19.35c-1.84 36.85-19.57 63.34-57.35 64.95-102.95 1.38-46.29-181.03-45.6-333.74l122.3.7-.69-78.08C2.98-1.44 67.5-11.4 0 150.27z"/></svg>`;
 
 export const MATHEMATICS_ICON = {
   kind: 'svg' as const,
