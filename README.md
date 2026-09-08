@@ -1,6 +1,6 @@
 # @rnsk/toolkits
 
-Open-source toolkit registry for AI agents. Build private connectors as npm packages, test them locally, and plug them into [Runstack](https://runstack.ai) with a version bump.
+Open-source toolkit registry for AI agents. Build private connectors as npm packages, test them locally, and plug them into [Runstack](https://runstack.engineer) live. Runstack also helps you deploy and test your private connectors and toolkits — and host them for free.
 
 [![npm version](https://img.shields.io/npm/v/@rnsk/toolkits.svg)](https://www.npmjs.com/package/@rnsk/toolkits)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -9,7 +9,7 @@ Open-source toolkit registry for AI agents. Build private connectors as npm pack
 
 ## Why this exists
 
-Runstack agents call tools through a shared registry. Instead of hardcoding connectors inside the app, this package ships:
+Runstack agents call tools through a shared registry. Instead of hardcoding connectors inside the app, this package ships the definitions — and Runstack gives you a free place to deploy, test, and host private connectors and toolkits you do not want in the public registry.
 
 - **Declarative manifests** — metadata, auth, icons, and tool definitions in one place
 - **Runtime helpers** — registry, meta-tools (`searchTool`, `executeTool`, …), credential resolution
@@ -30,7 +30,7 @@ Runstack agents call tools through a shared registry. Instead of hardcoding conn
 | mathematics | 9 | none |
 | linear | 3 | OAuth2 |
 | gmail | 3 | OAuth2 |
-| web-search (Firecrawl) | 2 | service env (`FIRECRAWL_API_KEY`) |
+| web-search (Firecrawl) | 2 | service env |
 | github | 173 | OAuth2 |
 | notion | 8 | OAuth2 |
 | google-calendar | 2 | OAuth2 |
@@ -75,7 +75,7 @@ registerAllTools(myRegistry);
 const meta = createMetaTools({ registry: myRegistry, credentials: myResolver });
 ```
 
-Runstack consumes this package server-side. Your private fork or scoped npm publish works the same way — host connectors you do not want in the public registry, then point Runstack at your package version.
+Runstack consumes this package server-side. Publish a private fork or scoped npm package, point Runstack at your version, and deploy — Runstack handles hosting and gives you a sandbox to test connectors before they go live, at no cost.
 
 ## Project layout
 
