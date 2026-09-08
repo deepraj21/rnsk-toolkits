@@ -38,3 +38,5 @@ Thumbs.db
 
 # Turbo / other monorepo caches
 .turbo/
+
+temp/

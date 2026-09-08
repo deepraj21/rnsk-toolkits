@@ -1,0 +1,44 @@
+name: Toolkit request
+description: Propose a new integration / connector
+title: "[toolkit]: "
+labels: ["toolkit-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the service and use cases. Check existing toolkits first.
+  - type: input
+    id: service
+    attributes:
+      label: Service name
+      placeholder: e.g. Slack
+    validations:
+      required: true
+  - type: textarea
+    id: use_cases
+    attributes:
+      label: Primary use cases for agents
+    validations:
+      required: true
+  - type: dropdown
+    id: auth
+    attributes:
+      label: Likely auth mode
+      options:
+        - OAuth2
+        - API key (service env)
+        - API key (per user)
+        - None
+    validations:
+      required: true
+  - type: input
+    id: docs
+    attributes:
+      label: API documentation URL
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to implement this toolkit
+        - label: I only need this tracked for prioritization

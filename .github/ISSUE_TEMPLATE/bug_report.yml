@@ -1,0 +1,49 @@
+name: Bug report
+description: Something broken in an existing toolkit or the runtime
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Include toolkit ID, tool name, and expected vs actual behavior.
+  - type: input
+    id: toolkit
+    attributes:
+      label: Toolkit ID
+      placeholder: e.g. notion
+    validations:
+      required: true
+  - type: input
+    id: tool
+    attributes:
+      label: Tool name (if applicable)
+      placeholder: e.g. search
+  - type: dropdown
+    id: version
+    attributes:
+      label: Package version
+      options:
+        - 0.0.2
+        - 0.0.1
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true

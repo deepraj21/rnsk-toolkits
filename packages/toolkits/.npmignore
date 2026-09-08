@@ -1,0 +1,40 @@
+# Primary publish whitelist is package.json "files" (dist/**/*.js, dist/**/*.d.ts).
+# This file excludes everything else if "files" is ever removed or broadened.
+src/
+scripts/
+tsconfig.json
+*.tsbuildinfo
+
+# Docs and repo metadata
+CONTRIBUTING.md
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+.github/
+.gitignore
+
+# Tests and dev config
+test/
+tests/
+**/__tests__/
+**/__mocks__/
+**/*.test.ts
+**/*.test.js
+**/*.spec.ts
+**/*.spec.js
+coverage/
+.nyc_output/
+vitest.config.*
+jest.config.*
+
+# Environment and local files
+.env
+.env.*
+!.env*.example
+.DS_Store
+
+# Source maps (not needed by consumers; halves unpacked size)
+**/*.map
+
+# Stray markdown bundled into dist (e.g. toolkit READMEs)
+**/*.md

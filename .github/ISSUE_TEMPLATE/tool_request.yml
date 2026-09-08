@@ -1,0 +1,27 @@
+name: Tool request
+description: Request additional tools in an existing toolkit
+title: "[tool]: "
+labels: ["tool-request"]
+body:
+  - type: input
+    id: toolkit
+    attributes:
+      label: Toolkit ID
+      placeholder: e.g. github
+    validations:
+      required: true
+  - type: textarea
+    id: tools
+    attributes:
+      label: Requested tools (one per line)
+      placeholder: |
+        listIssues
+        createComment
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Why do agents need these?
+    validations:
+      required: true
