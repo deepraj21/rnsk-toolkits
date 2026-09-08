@@ -5,6 +5,15 @@ export {
   validateManifests,
   getAuthType,
 } from './validate.js';
+export {
+  TOOL_OUTPUT_JSON_SCHEMA,
+  getToolInputZodSchema,
+  resolveZodObjectShape,
+  toolInputToJsonSchema,
+  extractParameterInfo,
+  coerceArguments,
+  type ParameterInfo,
+} from './schema-helpers.js';
 export type {
   ToolkitManifest,
   ToolDefinition,

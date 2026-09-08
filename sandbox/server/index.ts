@@ -3,12 +3,9 @@ import cors from 'cors';
 import express from 'express';
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { streamText, stepCountIs } from 'ai';
-import {
-  toolkits,
-  createToolRegistry,
-  registerAllToolsFromManifests,
-  createMetaTools,
-} from '@rnsk/toolkits';
+import { toolkits, registerAllTools } from '@rnsk/toolkits';
+import { createToolRegistry } from './registry.js';
+import { createSandboxMetaTools } from './meta-tools.js';
 
 const PORT = Number(process.env.PORT ?? 3100);
 
@@ -16,7 +13,7 @@ const sessionTokens = new Map<string, string>();
 const sessionEnv = new Map<string, string>();
 
 const registry = createToolRegistry();
-registerAllToolsFromManifests(registry, toolkits);
+registerAllTools(registry);
 
 function isToolkitConfigured(id: string): boolean {
   const manifest = toolkits.find((t) => t.id === id);
@@ -33,9 +30,9 @@ function isToolkitConfigured(id: string): boolean {
   return true;
 }
 
-const metaTools = createMetaTools({
+const metaTools = createSandboxMetaTools(
   registry,
-  credentials: {
+  {
     async getToken(tokenField) {
       return sessionTokens.get(tokenField) ?? null;
     },
@@ -43,7 +40,7 @@ const metaTools = createMetaTools({
       return sessionEnv.get(name) ?? process.env[name];
     },
   },
-  hooks: {
+  {
     getAppUrl: () => `http://localhost:${PORT}`,
     getProviderSlugs: () =>
       toolkits
@@ -54,7 +51,7 @@ const metaTools = createMetaTools({
       reason: isToolkitConfigured(toolkitId) ? undefined : 'not_configured',
     }),
   },
-});
+);
 
 const app = express();
 app.use(cors());

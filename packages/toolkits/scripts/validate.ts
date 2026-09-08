@@ -1,6 +1,6 @@
 import { toolkits } from '../src/index.js';
 import { validateManifests } from '../src/core/validate.js';
-import { getToolInputZodSchema, toolInputToJsonSchema, resolveZodObjectShape } from '../src/runtime/schema-helpers.js';
+import { getToolInputZodSchema, toolInputToJsonSchema, resolveZodObjectShape } from '../src/core/schema-helpers.js';
 
 const errors = validateManifests(toolkits);
 

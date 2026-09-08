@@ -1,6 +1,6 @@
 {
   "name": "@rnsk/toolkits",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Runstack toolkit registry — manifest-driven tool definitions for AI agents",
   "type": "module",
   "main": "./dist/index.js",
@@ -13,10 +13,6 @@
     "./core": {
       "types": "./dist/core/index.d.ts",
       "import": "./dist/core/index.js"
-    },
-    "./runtime": {
-      "types": "./dist/runtime/index.d.ts",
-      "import": "./dist/runtime/index.js"
     }
   },
   "files": [

@@ -77,7 +77,7 @@ Prefer `service_env` or user-supplied keys when possible — OAuth toolkits need
 
 ## CODEOWNERS
 
-Toolkit directories can list contributors in `manifest.meta.contributors`. Maintainers own `core/`, `runtime/`, `scripts/`, and `.github/`.
+Toolkit directories can list contributors in `manifest.meta.contributors`. Maintainers own `core/`, `scripts/`, and `.github/`. The published package does not include agent meta-tools.
 
 ## Questions
 

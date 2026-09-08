@@ -9,11 +9,11 @@ Open-source toolkit registry for AI agents. Build private connectors as npm pack
 
 ## Why this exists
 
-Runstack agents call tools through a shared registry. Instead of hardcoding connectors inside the app, this package ships the definitions — and Runstack gives you a free place to deploy, test, and host private connectors and toolkits you do not want in the public registry.
+Runstack agents call tools through a shared registry. This package ships **toolkit definitions only** — manifests, tool implementations, OAuth specs, and icons. Agent meta-tools (`searchTool`, `executeTool`, etc.) are implemented in Runstack itself, not in this package.
 
 - **Declarative manifests** — metadata, auth, icons, and tool definitions in one place
-- **Runtime helpers** — registry, meta-tools (`searchTool`, `executeTool`, …), credential resolution
-- **A local sandbox** — run and chat against your toolkits before publishing
+- **Schema helpers** — Zod introspection for validation and API serialization
+- **A local sandbox** — run and chat against your toolkits before publishing (sandbox includes a dev-only meta-tool shim, not published to npm)
 
 **Typical flow**
 
@@ -23,7 +23,7 @@ Runstack agents call tools through a shared registry. Instead of hardcoding conn
 4. Publish `@rnsk/toolkits` (maintainers)
 5. Bump the dependency in your Runstack deployment — new connectors appear without app code changes
 
-## Included toolkits (v0.0.2)
+## Included toolkits (v0.0.3)
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -66,29 +66,24 @@ npm install @rnsk/toolkits
 
 ```ts
 import { toolkits, registerAllTools } from '@rnsk/toolkits';
-import { createMetaTools } from '@rnsk/toolkits/runtime';
 
-// Register every tool into your registry
 registerAllTools(myRegistry);
-
-// Meta-tools for agent loops
-const meta = createMetaTools({ registry: myRegistry, credentials: myResolver });
 ```
 
-Runstack consumes this package server-side. Publish a private fork or scoped npm package, point Runstack at your version, and deploy — Runstack handles hosting and gives you a sandbox to test connectors before they go live, at no cost.
+Runstack consumes this package server-side and wires tools into its own closed-source meta-tool layer. Publish a private fork or scoped npm package, point Runstack at your version, and deploy.
 
 ## Project layout
 
 ```
-packages/toolkits/     Published npm package (@rnsk/toolkits)
-sandbox/               Local dev server to test toolkits
+packages/toolkits/     Published npm package (@rnsk/toolkits) — manifests + tools only
+sandbox/               Local dev server (includes sandbox-only meta-tool shim for testing)
 .github/               CI, issue/PR templates, CODEOWNERS
 CONTRIBUTING.md        How to add a toolkit
 ```
 
 ## Versioning
 
-Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (`"0.0.2"`, not `^0.0.2` — npm caret does not widen `0.0.x`).
+Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (`"0.0.3"`).
 
 ## Contributing
 
