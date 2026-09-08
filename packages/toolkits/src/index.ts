@@ -2,11 +2,33 @@ import mathematics from './toolkits/mathematics/manifest.js';
 import linear from './toolkits/linear/manifest.js';
 import gmail from './toolkits/gmail/manifest.js';
 import webSearch from './toolkits/web-search/manifest.js';
+import github from './toolkits/github/manifest.js';
+import notion from './toolkits/notion/manifest.js';
+import googleCalendar from './toolkits/google-calendar/manifest.js';
+import googleSheets from './toolkits/google-sheets/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
-export const toolkits: ToolkitManifest[] = [mathematics, linear, gmail, webSearch];
+export const toolkits: ToolkitManifest[] = [
+  mathematics,
+  linear,
+  gmail,
+  webSearch,
+  github,
+  notion,
+  googleCalendar,
+  googleSheets,
+];
 
-export { mathematics, linear, gmail, webSearch };
+export {
+  mathematics,
+  linear,
+  gmail,
+  webSearch,
+  github,
+  notion,
+  googleCalendar,
+  googleSheets,
+};
 export * from './core/index.js';
 export * from './runtime/index.js';
 

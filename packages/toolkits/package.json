@@ -1,6 +1,6 @@
 {
   "name": "@rnsk/toolkits",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Runstack toolkit registry — manifest-driven tool definitions for AI agents",
   "type": "module",
   "main": "./dist/index.js",
@@ -20,7 +20,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
   "scripts": {
     "gen": "tsx scripts/gen-index.ts",
@@ -34,6 +35,7 @@
   },
   "dependencies": {
     "firecrawl": "^4.38.0",
+    "octokit": "^5.0.5",
     "zod-to-json-schema": "^3.25.2"
   },
   "devDependencies": {
