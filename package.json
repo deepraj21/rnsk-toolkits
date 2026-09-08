@@ -1,0 +1,13 @@
+{
+  "name": "rnsk-toolkits-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/toolkits",
+    "sandbox"
+  ],
+  "scripts": {
+    "build": "npm run build -w @rnsk/toolkits",
+    "validate": "npm run validate -w @rnsk/toolkits",
+    "sandbox": "npm run dev -w sandbox"
+  }
+}
