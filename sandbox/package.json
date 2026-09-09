@@ -8,12 +8,9 @@
   },
   "dependencies": {
     "@rnsk/toolkits": "*",
-    "@openrouter/ai-sdk-provider": "^2.0.2",
-    "ai": "^6.0.62",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "zod": "^3.24.2"
+    "express": "^4.21.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

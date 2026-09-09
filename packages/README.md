@@ -1,14 +1,7 @@
-## @rnsk/toolkits - v0.0.3
+# Packages
 
-**223 tools** across **8 toolkits**.
+| Package | Description |
+|---------|-------------|
+| [`@rnsk/toolkits`](./toolkits) | Published npm package — toolkit manifests and tools |
 
-| Toolkit | Tools | Auth |
-|---------|------:|------|
-| mathematics | 9 | none |
-| linear | 3 | OAuth2 |
-| gmail | 15 | OAuth2 |
-| web-search (Firecrawl) | 2 | service env |
-| github | 173 | OAuth2 |
-| notion | 8 | OAuth2 |
-| google-calendar | 6 | OAuth2 |
-| google-sheets | 7 | OAuth2 |
+See [toolkits/README.md](./toolkits/README.md) for install instructions, API surface, and seed toolkit list.

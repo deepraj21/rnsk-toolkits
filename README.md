@@ -1,27 +1,26 @@
-# @rnsk/toolkits
+# rnsk-toolkits
 
-Open-source toolkit registry for AI agents. Build private connectors as npm packages, test them locally, and plug them into [Runstack](https://runstack.engineer) live. Runstack also helps you deploy and test your private connectors and toolkits — and host them for free.
+Monorepo for [`@rnsk/toolkits`](https://www.npmjs.com/package/@rnsk/toolkits) — an open-source registry of AI agent connectors consumed by [Runstack](https://runstack.engineer).
 
 [![npm version](https://img.shields.io/npm/v/@rnsk/toolkits.svg)](https://www.npmjs.com/package/@rnsk/toolkits)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-> **Not** [`@rnsk/tools`](https://www.npmjs.com/package/@rnsk/tools) — that package is the MCP client SDK. `@rnsk/toolkits` is the **registry of connector implementations** (tools, OAuth specs, icons, validation).
+## What this repo is
 
-## Why this exists
+A place to **build, test, and publish toolkit definitions** — manifests, tool implementations, OAuth specs, and icons. Runstack imports the published npm package and registers tools into its own agent runtime.
 
-Runstack agents call tools through a shared registry. This package ships **toolkit definitions only** — manifests, tool implementations, OAuth specs, and icons. Agent meta-tools (`searchTool`, `executeTool`, etc.) are implemented in Runstack itself, not in this package.
+> **Not** [`@rnsk/tools`](https://www.npmjs.com/package/@rnsk/tools) — that is the MCP client SDK.
 
-- **Declarative manifests** — metadata, auth, icons, and tool definitions in one place
-- **Schema helpers** — Zod introspection for validation and API serialization
-- **A local sandbox** — run and chat against your toolkits before publishing (sandbox includes a dev-only meta-tool shim, not published to npm)
+## Repository layout
 
-**Typical flow**
+```
+packages/toolkits/   Published npm package (@rnsk/toolkits)
+sandbox/             Local HTTP server to invoke tools at runtime
+.github/             CI, issue/PR templates, CODEOWNERS
+CONTRIBUTING.md      Contributor guide
+```
 
-1. Fork or clone this repo and add a toolkit under `packages/toolkits/src/toolkits/`
-2. Run the sandbox to exercise tools with dev tokens
-3. Open a PR; maintainers review security and merge
-4. Publish `@rnsk/toolkits` (maintainers)
-5. Bump the dependency in your Runstack deployment — new connectors appear without app code changes
+Package documentation: [packages/toolkits/README.md](packages/toolkits/README.md)
 
 ## Quick start
 
@@ -29,55 +28,58 @@ Runstack agents call tools through a shared registry. This package ships **toolk
 git clone https://github.com/deepraj21/rnsk-toolkits.git
 cd rnsk-toolkits
 npm install
-cd packages/toolkits && npm run build
+cd packages/toolkits && npm run validate && npm run build
 cd ../../sandbox && cp .env.local.example .env.local
-# Add OPENROUTER_API_KEY (and optional toolkit env vars)
 npm run dev
 ```
 
-Sandbox endpoints:
+## Sandbox
 
-| Endpoint | Purpose |
-|----------|---------|
-| `GET /api/toolkits` | List toolkits and tools |
-| `POST /api/dev-token` | Paste OAuth tokens or service env for the session |
-| `POST /api/chat` | Stream chat with meta-tools |
+The sandbox is a **runtime test harness** for toolkit authors. It registers tools from `@rnsk/toolkits` and lets you invoke them directly — the same `execute` path Runstack uses after registration, without replicating Runstack's agent loop.
 
-## Use in your own app
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/api/health` | GET | Server status and tool count |
+| `/api/toolkits` | GET | List toolkits and tools |
+| `/api/tools` | GET | Flat list of registered tools |
+| `/api/tools/:toolName` | GET | Tool metadata and input JSON schema |
+| `/api/tools/execute` | POST | Run a tool (`{ "toolName": "...", "args": {} }`) |
+| `/api/dev-token` | POST | Set session OAuth token or env var for testing |
+
+### Example: run a tool
 
 ```bash
-npm install @rnsk/toolkits
+# Optional: provide credentials for OAuth tools
+curl -X POST http://localhost:3100/api/dev-token \
+  -H 'Content-Type: application/json' \
+  -d '{"tokenField":"linearToken","token":"lin_api_..."}'
+
+# Execute
+curl -X POST http://localhost:3100/api/tools/execute \
+  -H 'Content-Type: application/json' \
+  -d '{"toolName":"calculateSum","args":{"a":2,"b":3}}'
 ```
 
-```ts
-import { toolkits, registerAllTools } from '@rnsk/toolkits';
+## Typical contributor flow
 
-registerAllTools(myRegistry);
-```
-
-Runstack consumes this package server-side and wires tools into its own closed-source meta-tool layer. Publish a private fork or scoped npm package, point Runstack at your version, and deploy.
-
-## Project layout
-
-```
-packages/toolkits/     Published npm package (@rnsk/toolkits) — manifests + tools only
-sandbox/               Local dev server (includes sandbox-only meta-tool shim for testing)
-.github/               CI, issue/PR templates, CODEOWNERS
-CONTRIBUTING.md        How to add a toolkit
-```
+1. Add a toolkit under `packages/toolkits/src/toolkits/<id>/`
+2. Register the manifest in `packages/toolkits/src/index.ts`
+3. `npm run validate && npm run build` in `packages/toolkits`
+4. Test with the sandbox (`POST /api/tools/execute`)
+5. Open a PR
 
 ## Versioning
 
-Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (`"0.0.3"`).
+Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (e.g. `"0.0.3"`).
 
 ## Contributing
 
-We welcome toolkit PRs. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the checklist, review expectations, and sandbox workflow.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Security
 
-Report vulnerabilities privately — see [SECURITY.md](SECURITY.md). Toolkit `execute` functions run server-side with user OAuth tokens; every PR is reviewed for token handling and outbound hosts.
+[SECURITY.md](SECURITY.md)
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT

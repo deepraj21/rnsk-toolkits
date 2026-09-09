@@ -40,7 +40,24 @@ cp .env.local.example .env.local
 npm run dev
 ```
 
-Use the sandbox to call tools with `POST /api/dev-token` before opening a PR.
+Use the sandbox to invoke tools at runtime before opening a PR:
+
+```bash
+# Start sandbox (from repo root)
+cd sandbox && npm run dev
+
+# Set credentials for OAuth tools
+curl -X POST http://localhost:3100/api/dev-token \
+  -H 'Content-Type: application/json' \
+  -d '{"tokenField":"notionToken","token":"secret_..."}'
+
+# Execute a tool
+curl -X POST http://localhost:3100/api/tools/execute \
+  -H 'Content-Type: application/json' \
+  -d '{"toolName":"calculateSum","args":{"a":1,"b":2}}'
+```
+
+The sandbox calls each tool's `execute` with credential injection — the same contract Runstack relies on after `registerAllTools()`. It does not replicate Runstack's agent meta-tools.
 
 ## Adding a toolkit
 
