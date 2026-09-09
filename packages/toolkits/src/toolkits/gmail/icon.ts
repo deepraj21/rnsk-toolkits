@@ -4,22 +4,22 @@ const SVG = `<svg width="800" height="636.36322" fill="none" viewBox="0 0 800 63
   <path fill="url(#b)" d="M 141.93685,20.255746 C 105.42331,-10.435083 50.946177,-5.7169131 20.255349,30.796627 -10.435479,67.305622 -5.7173098,121.78275 30.79623,152.47813 l 345.80818,290.6765 a 36.36354,36.36354 0 0 0 46.79533,0 L 769.20792,152.47358 C 805.71691,121.78275 810.43508,67.305622 779.74426,30.792081 749.05343,-5.7169131 694.5763,-10.435083 658.0673,20.255746 L 399.9998,237.18245 Z" id="path3" style="fill:url(#b);stroke-width:4.54544"/>
   <defs id="defs16">
     <linearGradient id="a" x1="165" x2="165" y1="44" y2="166" gradientUnits="userSpaceOnUse" gradientTransform="matrix(4.5454426,0,0,4.5454426,-36.362684,-118.18025)">
-      <stop stopColor="#60d673" id="stop3"/>
-      <stop offset=".17" stopColor="#42c868" id="stop4"/>
-      <stop offset=".39" stopColor="#0ebc5f" id="stop5"/>
-      <stop offset=".62" stopColor="#00a9bb" id="stop6"/>
-      <stop offset=".86" stopColor="#3c90ff" id="stop7"/>
-      <stop offset="1" stopColor="#3186ff" id="stop8"/>
+      <stop stop-color="#60d673" id="stop3"/>
+      <stop offset=".17" stop-color="#42c868" id="stop4"/>
+      <stop offset=".39" stop-color="#0ebc5f" id="stop5"/>
+      <stop offset=".62" stop-color="#00a9bb" id="stop6"/>
+      <stop offset=".86" stop-color="#3c90ff" id="stop7"/>
+      <stop offset="1" stop-color="#3186ff" id="stop8"/>
     </linearGradient>
     <linearGradient id="b" x1="8" x2="184" y1="46.130001" y2="46.130001" gradientUnits="userSpaceOnUse" gradientTransform="matrix(4.5454426,0,0,4.5454426,-36.362684,-118.18025)">
-      <stop offset=".08" stopColor="#ff63a0" id="stop9"/>
-      <stop offset=".3" stopColor="#fc413d" id="stop10"/>
-      <stop offset=".5" stopColor="#fc413d" id="stop11"/>
-      <stop offset=".65" stopColor="#fc413d" id="stop12"/>
-      <stop offset=".72" stopColor="#fc5c30" id="stop13"/>
-      <stop offset=".86" stopColor="#feb10c" id="stop14"/>
-      <stop offset=".91" stopColor="#fec700" id="stop15"/>
-      <stop offset=".96" stopColor="#ffdb0f" id="stop16"/>
+      <stop offset=".08" stop-color="#ff63a0" id="stop9"/>
+      <stop offset=".3" stop-color="#fc413d" id="stop10"/>
+      <stop offset=".5" stop-color="#fc413d" id="stop11"/>
+      <stop offset=".65" stop-color="#fc413d" id="stop12"/>
+      <stop offset=".72" stop-color="#fc5c30" id="stop13"/>
+      <stop offset=".86" stop-color="#feb10c" id="stop14"/>
+      <stop offset=".91" stop-color="#fec700" id="stop15"/>
+      <stop offset=".96" stop-color="#ffdb0f" id="stop16"/>
     </linearGradient>
   </defs>
 </svg>`;

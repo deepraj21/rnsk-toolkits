@@ -1,13 +1,27 @@
 import { defineToolkit, defineTool } from '../../core/define.js';
 import { GMAIL_ICON } from './icon.js';
-import { listMessages } from './tools/list-messages.js';
-import { getMessage } from './tools/get-message.js';
-import { sendMessage } from './tools/send-message.js';
+import {
+  listMessages,
+  getMessage,
+  sendMessage,
+  createDraft,
+  listDrafts,
+  getDraft,
+  sendDraft,
+  deleteDraft,
+  listThreads,
+  getThread,
+  replyToThread,
+  listLabels,
+  modifyMessageLabels,
+  trashMessage,
+  untrashMessage,
+} from './tools/index.js';
 
 export default defineToolkit({
   id: 'gmail',
   displayName: 'Gmail',
-  shortDescription: 'List, read, and send emails.',
+  shortDescription: 'Read, search, draft, send, and organize emails and threads.',
   category: 'Collaboration & Communication',
   icon: GMAIL_ICON,
   auth: {
@@ -21,11 +35,14 @@ export default defineToolkit({
       scopes: [
         'https://www.googleapis.com/auth/gmail.readonly',
         'https://www.googleapis.com/auth/gmail.send',
+        'https://www.googleapis.com/auth/gmail.compose',
+        'https://www.googleapis.com/auth/gmail.modify',
+        'https://www.googleapis.com/auth/gmail.labels',
       ],
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
       connectDescription:
-        'Connect Gmail to read, draft, and send emails with AI-driven summarization.',
+        'Connect Gmail to read, draft, send, search, and organize emails and conversation threads.',
       callbackPath: '/api/auth/gmail/callback',
       stateCookie: 'google_oauth_state',
     },
@@ -50,6 +67,79 @@ export default defineToolkit({
       requiredAuth: 'gmailToken',
       scope: 'write',
     }),
+    defineTool({
+      name: 'gmailCreateDraft',
+      tool: createDraft,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'gmailListDrafts',
+      tool: listDrafts,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'gmailGetDraft',
+      tool: getDraft,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'gmailSendDraft',
+      tool: sendDraft,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'gmailDeleteDraft',
+      tool: deleteDraft,
+      requiredAuth: 'gmailToken',
+      scope: 'delete',
+    }),
+    defineTool({
+      name: 'gmailListThreads',
+      tool: listThreads,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'gmailGetThread',
+      tool: getThread,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'gmailReplyToThread',
+      tool: replyToThread,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'gmailListLabels',
+      tool: listLabels,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'gmailModifyMessageLabels',
+      tool: modifyMessageLabels,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'gmailTrashMessage',
+      tool: trashMessage,
+      requiredAuth: 'gmailToken',
+      scope: 'delete',
+    }),
+    defineTool({
+      name: 'gmailUntrashMessage',
+      tool: untrashMessage,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
   ],
   meta: { since: '0.0.1' },
 });
+
