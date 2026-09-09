@@ -14,14 +14,14 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | `@rnsk/toolkits` | All toolkit manifests, `registerAllTools()`, `getAllTools()` |
 | `@rnsk/toolkits/core` | Types, `defineToolkit`, validation, schema helpers |
 
-## Seed toolkits (v0.0.3)
+## Seed toolkits (v0.0.4)
 
-**223 tools** across **8 toolkits**.
+**228 tools** across **8 toolkits**.
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
 | mathematics | 9 | none |
-| linear | 3 | OAuth2 |
+| linear | 8 | OAuth2 |
 | gmail | 15 | OAuth2 |
 | web-search (Firecrawl) | 2 | service env |
 | github | 173 | OAuth2 |
@@ -89,7 +89,7 @@ Use `POST /api/tools/execute` to invoke a tool directly with the same credential
 
 ## Versioning
 
-Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (e.g. `"0.0.3"`).
+Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (`"0.0.4"`).
 
 ## Contributing
 

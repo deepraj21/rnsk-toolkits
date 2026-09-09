@@ -1,6 +1,6 @@
 {
   "name": "@rnsk/toolkits",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Runstack toolkit registry — manifest-driven tool definitions for AI agents",
   "type": "module",
   "main": "./dist/index.js",
@@ -22,8 +22,9 @@
   ],
   "scripts": {
     "gen": "tsx scripts/gen-index.ts",
-    "validate": "tsx scripts/validate.ts",
-    "build": "npm run gen && tsc",
+    "validate": "tsx scripts/validate.ts && tsx scripts/validate-esm.ts --source",
+    "validate:dist": "tsx scripts/validate-esm.ts --dist",
+    "build": "npm run gen && tsc && npm run validate:dist",
     "prepublishOnly": "npm run validate && npm run build"
   },
   "peerDependencies": {

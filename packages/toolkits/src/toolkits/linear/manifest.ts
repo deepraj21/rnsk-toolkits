@@ -3,6 +3,11 @@ import { LINEAR_ICON } from './icon.js';
 import { linearSearchIssues } from './tools/search-issues.js';
 import { linearCreateIssue } from './tools/create-issue.js';
 import { linearListTeams } from './tools/list-teams.js';
+import { linearGetIssue } from './tools/get-issue.js';
+import { linearUpdateIssue } from './tools/update-issue.js';
+import { linearListProjects } from './tools/list-projects.js';
+import { linearListWorkflowStates } from './tools/list-workflow-states.js';
+import { linearAddComment } from './tools/add-comment.js';
 
 export default defineToolkit({
   id: 'linear',
@@ -46,6 +51,36 @@ export default defineToolkit({
       tool: linearListTeams,
       requiredAuth: 'linearToken',
       scope: 'read',
+    }),
+    defineTool({
+      name: 'linearGetIssue',
+      tool: linearGetIssue,
+      requiredAuth: 'linearToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'linearUpdateIssue',
+      tool: linearUpdateIssue,
+      requiredAuth: 'linearToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'linearListProjects',
+      tool: linearListProjects,
+      requiredAuth: 'linearToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'linearListWorkflowStates',
+      tool: linearListWorkflowStates,
+      requiredAuth: 'linearToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'linearAddComment',
+      tool: linearAddComment,
+      requiredAuth: 'linearToken',
+      scope: 'write',
     }),
   ],
   meta: { since: '0.0.1' },

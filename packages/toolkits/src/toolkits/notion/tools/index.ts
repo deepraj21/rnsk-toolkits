@@ -1,12 +1,12 @@
 // @ts-nocheck
-import { notionSearch } from './search';
-import { notionListDatabases } from './list-databases';
-import { notionQueryDatabase } from './query-database';
-import { notionGetPage } from './get-page';
-import { notionCreatePage } from './create-page';
-import { notionUpdatePage } from './update-page';
-import { notionAppendBlockChildren } from './append-block-children';
-import { notionGetDatabase } from './get-database';
+import { notionSearch } from './search.js';
+import { notionListDatabases } from './list-databases.js';
+import { notionQueryDatabase } from './query-database.js';
+import { notionGetPage } from './get-page.js';
+import { notionCreatePage } from './create-page.js';
+import { notionUpdatePage } from './update-page.js';
+import { notionAppendBlockChildren } from './append-block-children.js';
+import { notionGetDatabase } from './get-database.js';
 
 export {
     notionSearch,

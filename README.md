@@ -70,7 +70,7 @@ curl -X POST http://localhost:3100/api/tools/execute \
 
 ## Versioning
 
-Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (e.g. `"0.0.3"`).
+Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (e.g. `"0.0.4"`).
 
 ## Contributing
 

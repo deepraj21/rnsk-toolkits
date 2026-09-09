@@ -1,448 +1,448 @@
 // @ts-nocheck
-export { listRepos } from './Repos/list-repos';
-export { createRepo } from './Repos/create-repo';
-export { getGitHubUser } from './Users/get-github-user';
-export { listRepoIssues } from './Issues/list-repo-issues';
-export { createIssue } from './Issues/create-issue';
-export { getRepo } from './Repos/get-repo';
-export { forkRepo } from './Repos/fork-repo';
-export { starRepo } from './Repos/star-repo';
-export { watchRepo } from './Repos/watch-repo';
-export { getRepoContributors } from './Repos/get-repo-contributors';
-export { getRepoLanguages } from './Repos/get-repo-languages';
-export { searchRepos } from './Search/search-repos';
-export { getFileContent } from './Files/get-file-content';
-export { createOrUpdateFile } from './Files/create-or-update-file';
-export { deleteFile } from './Files/delete-file';
-export { listCommits } from './Commits/list-commits';
-export { listBranchesForHeadCommit } from './Commits/list-branches-for-head-commit';
-export { listPullRequestsAssociatedWithCommit } from './Commits/list-pull-requests-associated-with-commit';
-export { getCommit } from './Commits/get-commit';
-export { compareCommits } from './Commits/compare-commits';
-export { listBranches } from './Repos/list-branches';
-export { updateIssue } from './Issues/update-issue';
-export { addIssueComment } from './Issues/add-issue-comment';
-export { listIssueComments } from './Issues/list-issue-comments';
-export { addIssueLabels } from './Issues/add-issue-labels';
-export { removeIssueLabel } from './Issues/remove-issue-label';
-export { addIssueAssignees } from './Issues/add-issue-assignees';
-export { lockIssue } from './Issues/lock-issue';
-export { searchIssues } from './Search/search-issues';
-export { listPullRequests } from './PRs/list-pull-requests';
-export { getPullRequest } from './PRs/get-pull-request';
-export { createPullRequest } from './PRs/create-pull-request';
-export { mergePullRequest } from './PRs/merge-pull-request';
-export { listPullRequestFiles } from './PRs/list-pull-request-files';
-export { createPullRequestReview } from './PRs/create-pull-request-review';
-export { updatePullRequest } from './PRs/update-pull-request';
-export { listPullRequestCommits } from './PRs/list-pull-request-commits';
-export { checkPullRequestMerged } from './PRs/check-pull-request-merged';
-export { updatePullRequestBranch } from './PRs/update-pull-request-branch';
-export { listWorkflows } from './Workflows/list-workflows';
-export { triggerWorkflow } from './Workflows/trigger-workflow';
-export { listWorkflowRuns } from './Workflows/list-workflow-runs';
-export { getWorkflowRun } from './Workflows/get-workflow-run';
-export { listGists } from './Gists/list-gists';
-export { createGist } from './Gists/create-gist';
-export { getGist } from './Gists/get-gist';
-export { searchUsers } from './Search/search-users';
-export { followUser } from './Users/follow-user';
+export { listRepos } from './Repos/list-repos.js';
+export { createRepo } from './Repos/create-repo.js';
+export { getGitHubUser } from './Users/get-github-user.js';
+export { listRepoIssues } from './Issues/list-repo-issues.js';
+export { createIssue } from './Issues/create-issue.js';
+export { getRepo } from './Repos/get-repo.js';
+export { forkRepo } from './Repos/fork-repo.js';
+export { starRepo } from './Repos/star-repo.js';
+export { watchRepo } from './Repos/watch-repo.js';
+export { getRepoContributors } from './Repos/get-repo-contributors.js';
+export { getRepoLanguages } from './Repos/get-repo-languages.js';
+export { searchRepos } from './Search/search-repos.js';
+export { getFileContent } from './Files/get-file-content.js';
+export { createOrUpdateFile } from './Files/create-or-update-file.js';
+export { deleteFile } from './Files/delete-file.js';
+export { listCommits } from './Commits/list-commits.js';
+export { listBranchesForHeadCommit } from './Commits/list-branches-for-head-commit.js';
+export { listPullRequestsAssociatedWithCommit } from './Commits/list-pull-requests-associated-with-commit.js';
+export { getCommit } from './Commits/get-commit.js';
+export { compareCommits } from './Commits/compare-commits.js';
+export { listBranches } from './Repos/list-branches.js';
+export { updateIssue } from './Issues/update-issue.js';
+export { addIssueComment } from './Issues/add-issue-comment.js';
+export { listIssueComments } from './Issues/list-issue-comments.js';
+export { addIssueLabels } from './Issues/add-issue-labels.js';
+export { removeIssueLabel } from './Issues/remove-issue-label.js';
+export { addIssueAssignees } from './Issues/add-issue-assignees.js';
+export { lockIssue } from './Issues/lock-issue.js';
+export { searchIssues } from './Search/search-issues.js';
+export { listPullRequests } from './PRs/list-pull-requests.js';
+export { getPullRequest } from './PRs/get-pull-request.js';
+export { createPullRequest } from './PRs/create-pull-request.js';
+export { mergePullRequest } from './PRs/merge-pull-request.js';
+export { listPullRequestFiles } from './PRs/list-pull-request-files.js';
+export { createPullRequestReview } from './PRs/create-pull-request-review.js';
+export { updatePullRequest } from './PRs/update-pull-request.js';
+export { listPullRequestCommits } from './PRs/list-pull-request-commits.js';
+export { checkPullRequestMerged } from './PRs/check-pull-request-merged.js';
+export { updatePullRequestBranch } from './PRs/update-pull-request-branch.js';
+export { listWorkflows } from './Workflows/list-workflows.js';
+export { triggerWorkflow } from './Workflows/trigger-workflow.js';
+export { listWorkflowRuns } from './Workflows/list-workflow-runs.js';
+export { getWorkflowRun } from './Workflows/get-workflow-run.js';
+export { listGists } from './Gists/list-gists.js';
+export { createGist } from './Gists/create-gist.js';
+export { getGist } from './Gists/get-gist.js';
+export { searchUsers } from './Search/search-users.js';
+export { followUser } from './Users/follow-user.js';
 // New User imports
-export { updateAuthenticatedUser } from './Users/update-authenticated-user';
-export { getUserById } from './Users/get-user-by-id';
-export { listUsers } from './Users/list-users';
-export { getUser } from './Users/get-user';
-export { getUserContext } from './Users/get-user-context';
+export { updateAuthenticatedUser } from './Users/update-authenticated-user.js';
+export { getUserById } from './Users/get-user-by-id.js';
+export { listUsers } from './Users/list-users.js';
+export { getUser } from './Users/get-user.js';
+export { getUserContext } from './Users/get-user-context.js';
 // New Issues imports
-export { getIssue } from './Issues/get-issue';
-export { listAuthenticatedUserIssues } from './Issues/list-authenticated-user-issues';
-export { listOrgIssues } from './Issues/list-org-issues';
-export { listUserAccountIssues } from './Issues/list-user-account-issues';
-export { unlockIssue } from './Issues/unlock-issue';
+export { getIssue } from './Issues/get-issue.js';
+export { listAuthenticatedUserIssues } from './Issues/list-authenticated-user-issues.js';
+export { listOrgIssues } from './Issues/list-org-issues.js';
+export { listUserAccountIssues } from './Issues/list-user-account-issues.js';
+export { unlockIssue } from './Issues/unlock-issue.js';
 
 // Actions
-export { listArtifacts } from './Actions/list-artifacts';
-export { getArtifact } from './Actions/get-artifact';
-export { deleteArtifact } from './Actions/delete-artifact';
-export { listWorkflowRunArtifacts } from './Actions/list-workflow-run-artifacts';
-export { listWorkflowJobs } from './Actions/list-workflow-jobs';
-export { getWorkflowJob } from './Actions/get-workflow-job';
+export { listArtifacts } from './Actions/list-artifacts.js';
+export { getArtifact } from './Actions/get-artifact.js';
+export { deleteArtifact } from './Actions/delete-artifact.js';
+export { listWorkflowRunArtifacts } from './Actions/list-workflow-run-artifacts.js';
+export { listWorkflowJobs } from './Actions/list-workflow-jobs.js';
+export { getWorkflowJob } from './Actions/get-workflow-job.js';
 
 // Activity
-export { listPublicEvents } from './Activity/list-public-events';
-export { listRepoEvents } from './Activity/list-repo-events';
-export { listUserEvents } from './Activity/list-user-events';
-export { listNotifications } from './Activity/list-notifications';
-export { markNotificationsRead } from './Activity/mark-notifications-read';
+export { listPublicEvents } from './Activity/list-public-events.js';
+export { listRepoEvents } from './Activity/list-repo-events.js';
+export { listUserEvents } from './Activity/list-user-events.js';
+export { listNotifications } from './Activity/list-notifications.js';
+export { markNotificationsRead } from './Activity/mark-notifications-read.js';
 
 // Apps
-export { getAuthenticatedApp } from './Apps/get-authenticated-app';
-export { listInstallations } from './Apps/list-installations';
-export { getInstallation } from './Apps/get-installation';
+export { getAuthenticatedApp } from './Apps/get-authenticated-app.js';
+export { listInstallations } from './Apps/list-installations.js';
+export { getInstallation } from './Apps/get-installation.js';
 
 // Checks
-export { createCheckRun } from './Checks/create-check-run';
-export { getCheckRun } from './Checks/get-check-run';
-export { updateCheckRun } from './Checks/update-check-run';
-export { listCheckRuns } from './Checks/list-check-runs';
-export { createCheckSuite } from './Checks/create-check-suite';
-export { getCheckSuite } from './Checks/get-check-suite';
+export { createCheckRun } from './Checks/create-check-run.js';
+export { getCheckRun } from './Checks/get-check-run.js';
+export { updateCheckRun } from './Checks/update-check-run.js';
+export { listCheckRuns } from './Checks/list-check-runs.js';
+export { createCheckSuite } from './Checks/create-check-suite.js';
+export { getCheckSuite } from './Checks/get-check-suite.js';
 
 // Code Scanning
-export { listCodeScanningAlerts } from './CodeScanning/list-alerts';
-export { getCodeScanningAlert } from './CodeScanning/get-alert';
-export { updateCodeScanningAlert } from './CodeScanning/update-alert';
+export { listCodeScanningAlerts } from './CodeScanning/list-alerts.js';
+export { getCodeScanningAlert } from './CodeScanning/get-alert.js';
+export { updateCodeScanningAlert } from './CodeScanning/update-alert.js';
 
 // Collaborators
-export { listCollaborators } from './Collaborators/list-collaborators';
-export { checkCollaborator } from './Collaborators/check-collaborator';
-export { addCollaborator } from './Collaborators/add-collaborator';
-export { removeCollaborator } from './Collaborators/remove-collaborator';
+export { listCollaborators } from './Collaborators/list-collaborators.js';
+export { checkCollaborator } from './Collaborators/check-collaborator.js';
+export { addCollaborator } from './Collaborators/add-collaborator.js';
+export { removeCollaborator } from './Collaborators/remove-collaborator.js';
 
 // Dependabot
-export { listDependabotAlerts } from './Dependabot/list-alerts';
-export { getDependabotAlert } from './Dependabot/get-alert';
-export { updateDependabotAlert } from './Dependabot/update-alert';
+export { listDependabotAlerts } from './Dependabot/list-alerts.js';
+export { getDependabotAlert } from './Dependabot/get-alert.js';
+export { updateDependabotAlert } from './Dependabot/update-alert.js';
 
 // Deploy Keys
-export { listDeployKeys } from './DeployKeys/list-deploy-keys';
-export { createDeployKey } from './DeployKeys/create-deploy-key';
-export { getDeployKey } from './DeployKeys/get-deploy-key';
-export { deleteDeployKey } from './DeployKeys/delete-deploy-key';
+export { listDeployKeys } from './DeployKeys/list-deploy-keys.js';
+export { createDeployKey } from './DeployKeys/create-deploy-key.js';
+export { getDeployKey } from './DeployKeys/get-deploy-key.js';
+export { deleteDeployKey } from './DeployKeys/delete-deploy-key.js';
 
 // Deployments
-export { listDeployments } from './Deployments/list-deployments';
-export { createDeployment } from './Deployments/create-deployment';
-export { getDeployment } from './Deployments/get-deployment';
-export { deleteDeployment } from './Deployments/delete-deployment';
+export { listDeployments } from './Deployments/list-deployments.js';
+export { createDeployment } from './Deployments/create-deployment.js';
+export { getDeployment } from './Deployments/get-deployment.js';
+export { deleteDeployment } from './Deployments/delete-deployment.js';
 
 // Environments
-export { listEnvironments } from './Environments/list-environments';
-export { getEnvironment } from './Environments/get-environment';
-export { createOrUpdateEnvironment } from './Environments/create-or-update-environment';
-export { deleteEnvironment } from './Environments/delete-environment';
+export { listEnvironments } from './Environments/list-environments.js';
+export { getEnvironment } from './Environments/get-environment.js';
+export { createOrUpdateEnvironment } from './Environments/create-or-update-environment.js';
+export { deleteEnvironment } from './Environments/delete-environment.js';
 
 // Git
-export { getBlob } from './Git/get-blob';
-export { createBlob } from './Git/create-blob';
-export { getGitCommit } from './Git/get-git-commit';
-export { createGitCommit } from './Git/create-git-commit';
-export { getRef } from './Git/get-ref';
-export { createRef } from './Git/create-ref';
-export { updateRef } from './Git/update-ref';
-export { deleteRef } from './Git/delete-ref';
-export { getTree } from './Git/get-tree';
-export { createTree } from './Git/create-tree';
+export { getBlob } from './Git/get-blob.js';
+export { createBlob } from './Git/create-blob.js';
+export { getGitCommit } from './Git/get-git-commit.js';
+export { createGitCommit } from './Git/create-git-commit.js';
+export { getRef } from './Git/get-ref.js';
+export { createRef } from './Git/create-ref.js';
+export { updateRef } from './Git/update-ref.js';
+export { deleteRef } from './Git/delete-ref.js';
+export { getTree } from './Git/get-tree.js';
+export { createTree } from './Git/create-tree.js';
 
 // Licenses
-export { listLicenses } from './Licenses/list-licenses';
-export { getLicense } from './Licenses/get-license';
-export { getRepoLicense } from './Licenses/get-repo-license';
+export { listLicenses } from './Licenses/list-licenses.js';
+export { getLicense } from './Licenses/get-license.js';
+export { getRepoLicense } from './Licenses/get-repo-license.js';
 
 // Markdown
-export { renderMarkdown } from './Markdown/render-markdown';
+export { renderMarkdown } from './Markdown/render-markdown.js';
 
 // Organizations
-export { getOrganization } from './Organizations/get-organization';
-export { listUserOrganizations } from './Organizations/list-user-organizations';
-export { listOrgRepositories } from './Organizations/list-org-repositories';
-export { listOrgMembers } from './Organizations/list-org-members';
-export { getOrgMembership } from './Organizations/get-org-membership';
-export { listOrganizations } from './Organizations/list-organizations';
-export { updateOrganization } from './Organizations/update-organization';
+export { getOrganization } from './Organizations/get-organization.js';
+export { listUserOrganizations } from './Organizations/list-user-organizations.js';
+export { listOrgRepositories } from './Organizations/list-org-repositories.js';
+export { listOrgMembers } from './Organizations/list-org-members.js';
+export { getOrgMembership } from './Organizations/get-org-membership.js';
+export { listOrganizations } from './Organizations/list-organizations.js';
+export { updateOrganization } from './Organizations/update-organization.js';
 
 // Projects
-export { listRepoProjects } from './Projects/list-repo-projects';
-export { listOrgProjects } from './Projects/list-org-projects';
-export { createOrgProject } from './Projects/create-org-project';
-export { getProject } from './Projects/get-project';
-export { updateProject } from './Projects/update-project';
-export { deleteProject } from './Projects/delete-project';
-export { listProjectColumns } from './Projects/list-project-columns';
+export { listRepoProjects } from './Projects/list-repo-projects.js';
+export { listOrgProjects } from './Projects/list-org-projects.js';
+export { createOrgProject } from './Projects/create-org-project.js';
+export { getProject } from './Projects/get-project.js';
+export { updateProject } from './Projects/update-project.js';
+export { deleteProject } from './Projects/delete-project.js';
+export { listProjectColumns } from './Projects/list-project-columns.js';
 
 // Rate Limit
-export { getRateLimit } from './RateLimit/get-rate-limit';
+export { getRateLimit } from './RateLimit/get-rate-limit.js';
 
 // Reactions
-export { listIssueReactions } from './Reactions/list-issue-reactions';
-export { createIssueReaction } from './Reactions/create-issue-reaction';
-export { listPRCommentReactions } from './Reactions/list-pr-comment-reactions';
-export { listCommitCommentReactions } from './Reactions/list-commit-comment-reactions';
-export { createCommitCommentReaction } from './Reactions/create-commit-comment-reaction';
-export { deleteReaction } from './Reactions/delete-reaction';
+export { listIssueReactions } from './Reactions/list-issue-reactions.js';
+export { createIssueReaction } from './Reactions/create-issue-reaction.js';
+export { listPRCommentReactions } from './Reactions/list-pr-comment-reactions.js';
+export { listCommitCommentReactions } from './Reactions/list-commit-comment-reactions.js';
+export { createCommitCommentReaction } from './Reactions/create-commit-comment-reaction.js';
+export { deleteReaction } from './Reactions/delete-reaction.js';
 
 // Releases
-export { listReleases } from './Releases/list-releases';
-export { createRelease } from './Releases/create-release';
-export { getRelease } from './Releases/get-release';
-export { updateRelease } from './Releases/update-release';
-export { deleteRelease } from './Releases/delete-release';
-export { getLatestRelease } from './Releases/get-latest-release';
-export { generateReleaseNotes } from './Releases/generate-release-notes';
+export { listReleases } from './Releases/list-releases.js';
+export { createRelease } from './Releases/create-release.js';
+export { getRelease } from './Releases/get-release.js';
+export { updateRelease } from './Releases/update-release.js';
+export { deleteRelease } from './Releases/delete-release.js';
+export { getLatestRelease } from './Releases/get-latest-release.js';
+export { generateReleaseNotes } from './Releases/generate-release-notes.js';
 
 // Secret Scanning
-export { listSecretScanningAlerts } from './SecretScanning/list-alerts';
-export { getSecretScanningAlert } from './SecretScanning/get-alert';
-export { updateSecretScanningAlert } from './SecretScanning/update-alert';
+export { listSecretScanningAlerts } from './SecretScanning/list-alerts.js';
+export { getSecretScanningAlert } from './SecretScanning/get-alert.js';
+export { updateSecretScanningAlert } from './SecretScanning/update-alert.js';
 
 // Security Advisories
-export { listRepositoryAdvisories } from './SecurityAdvisories/list-repository-advisories';
-export { getRepositoryAdvisory } from './SecurityAdvisories/get-repository-advisory';
-export { createRepositoryAdvisory } from './SecurityAdvisories/create-repository-advisory';
-export { listGlobalAdvisories } from './SecurityAdvisories/list-global-advisories';
+export { listRepositoryAdvisories } from './SecurityAdvisories/list-repository-advisories.js';
+export { getRepositoryAdvisory } from './SecurityAdvisories/get-repository-advisory.js';
+export { createRepositoryAdvisory } from './SecurityAdvisories/create-repository-advisory.js';
+export { listGlobalAdvisories } from './SecurityAdvisories/list-global-advisories.js';
 
 // Stars
-export { listStarredRepos } from './Stars/list-starred-repos';
-export { checkRepoStarred } from './Stars/check-repo-starred';
-export { listStargazers } from './Stars/list-stargazers';
+export { listStarredRepos } from './Stars/list-starred-repos.js';
+export { checkRepoStarred } from './Stars/check-repo-starred.js';
+export { listStargazers } from './Stars/list-stargazers.js';
 
 // Statuses
-export { createCommitStatus } from './Statuses/create-commit-status';
-export { listCommitStatuses } from './Statuses/list-commit-statuses';
-export { getCombinedStatus } from './Statuses/get-combined-status';
+export { createCommitStatus } from './Statuses/create-commit-status.js';
+export { listCommitStatuses } from './Statuses/list-commit-statuses.js';
+export { getCombinedStatus } from './Statuses/get-combined-status.js';
 
 // Teams
-export { listTeams } from './Teams/list-teams';
-export { createTeam } from './Teams/create-team';
-export { getTeam } from './Teams/get-team';
-export { updateTeam } from './Teams/update-team';
-export { deleteTeam } from './Teams/delete-team';
-export { listTeamMembers } from './Teams/list-team-members';
-export { listTeamRepos } from './Teams/list-team-repos';
-export { addTeamRepo } from './Teams/add-team-repo';
-export { removeTeamRepo } from './Teams/remove-team-repo';
+export { listTeams } from './Teams/list-teams.js';
+export { createTeam } from './Teams/create-team.js';
+export { getTeam } from './Teams/get-team.js';
+export { updateTeam } from './Teams/update-team.js';
+export { deleteTeam } from './Teams/delete-team.js';
+export { listTeamMembers } from './Teams/list-team-members.js';
+export { listTeamRepos } from './Teams/list-team-repos.js';
+export { addTeamRepo } from './Teams/add-team-repo.js';
+export { removeTeamRepo } from './Teams/remove-team-repo.js';
 
 // Webhooks
-export { listRepoWebhooks } from './Webhooks/list-repo-webhooks';
-export { createRepoWebhook } from './Webhooks/create-repo-webhook';
-export { getRepoWebhook } from './Webhooks/get-repo-webhook';
-export { updateRepoWebhook } from './Webhooks/update-repo-webhook';
-export { deleteRepoWebhook } from './Webhooks/delete-repo-webhook';
+export { listRepoWebhooks } from './Webhooks/list-repo-webhooks.js';
+export { createRepoWebhook } from './Webhooks/create-repo-webhook.js';
+export { getRepoWebhook } from './Webhooks/get-repo-webhook.js';
+export { updateRepoWebhook } from './Webhooks/update-repo-webhook.js';
+export { deleteRepoWebhook } from './Webhooks/delete-repo-webhook.js';
 
-import { listRepos } from './Repos/list-repos';
-import { createRepo } from './Repos/create-repo';
-import { getGitHubUser } from './Users/get-github-user';
-import { listRepoIssues } from './Issues/list-repo-issues';
-import { createIssue } from './Issues/create-issue';
-import { getRepo } from './Repos/get-repo';
-import { forkRepo } from './Repos/fork-repo';
-import { starRepo } from './Repos/star-repo';
-import { watchRepo } from './Repos/watch-repo';
-import { getRepoContributors } from './Repos/get-repo-contributors';
-import { getRepoLanguages } from './Repos/get-repo-languages';
-import { searchRepos } from './Search/search-repos';
-import { getFileContent } from './Files/get-file-content';
-import { createOrUpdateFile } from './Files/create-or-update-file';
-import { deleteFile } from './Files/delete-file';
-import { listCommits } from './Commits/list-commits';
-import { listBranchesForHeadCommit } from './Commits/list-branches-for-head-commit';
-import { listPullRequestsAssociatedWithCommit } from './Commits/list-pull-requests-associated-with-commit';
-import { getCommit } from './Commits/get-commit';
-import { compareCommits } from './Commits/compare-commits';
-import { listBranches } from './Repos/list-branches';
-import { updateIssue } from './Issues/update-issue';
-import { addIssueComment } from './Issues/add-issue-comment';
-import { listIssueComments } from './Issues/list-issue-comments';
-import { addIssueLabels } from './Issues/add-issue-labels';
-import { removeIssueLabel } from './Issues/remove-issue-label';
-import { addIssueAssignees } from './Issues/add-issue-assignees';
-import { lockIssue } from './Issues/lock-issue';
-import { searchIssues } from './Search/search-issues';
-import { listPullRequests } from './PRs/list-pull-requests';
-import { getPullRequest } from './PRs/get-pull-request';
-import { createPullRequest } from './PRs/create-pull-request';
-import { mergePullRequest } from './PRs/merge-pull-request';
-import { listPullRequestFiles } from './PRs/list-pull-request-files';
-import { createPullRequestReview } from './PRs/create-pull-request-review';
-import { updatePullRequest } from './PRs/update-pull-request';
-import { listPullRequestCommits } from './PRs/list-pull-request-commits';
-import { checkPullRequestMerged } from './PRs/check-pull-request-merged';
-import { updatePullRequestBranch } from './PRs/update-pull-request-branch';
-import { listWorkflows } from './Workflows/list-workflows';
-import { triggerWorkflow } from './Workflows/trigger-workflow';
-import { listWorkflowRuns } from './Workflows/list-workflow-runs';
-import { getWorkflowRun } from './Workflows/get-workflow-run';
-import { listGists } from './Gists/list-gists';
-import { createGist } from './Gists/create-gist';
-import { getGist } from './Gists/get-gist';
-import { searchUsers } from './Search/search-users';
-import { followUser } from './Users/follow-user';
+import { listRepos } from './Repos/list-repos.js';
+import { createRepo } from './Repos/create-repo.js';
+import { getGitHubUser } from './Users/get-github-user.js';
+import { listRepoIssues } from './Issues/list-repo-issues.js';
+import { createIssue } from './Issues/create-issue.js';
+import { getRepo } from './Repos/get-repo.js';
+import { forkRepo } from './Repos/fork-repo.js';
+import { starRepo } from './Repos/star-repo.js';
+import { watchRepo } from './Repos/watch-repo.js';
+import { getRepoContributors } from './Repos/get-repo-contributors.js';
+import { getRepoLanguages } from './Repos/get-repo-languages.js';
+import { searchRepos } from './Search/search-repos.js';
+import { getFileContent } from './Files/get-file-content.js';
+import { createOrUpdateFile } from './Files/create-or-update-file.js';
+import { deleteFile } from './Files/delete-file.js';
+import { listCommits } from './Commits/list-commits.js';
+import { listBranchesForHeadCommit } from './Commits/list-branches-for-head-commit.js';
+import { listPullRequestsAssociatedWithCommit } from './Commits/list-pull-requests-associated-with-commit.js';
+import { getCommit } from './Commits/get-commit.js';
+import { compareCommits } from './Commits/compare-commits.js';
+import { listBranches } from './Repos/list-branches.js';
+import { updateIssue } from './Issues/update-issue.js';
+import { addIssueComment } from './Issues/add-issue-comment.js';
+import { listIssueComments } from './Issues/list-issue-comments.js';
+import { addIssueLabels } from './Issues/add-issue-labels.js';
+import { removeIssueLabel } from './Issues/remove-issue-label.js';
+import { addIssueAssignees } from './Issues/add-issue-assignees.js';
+import { lockIssue } from './Issues/lock-issue.js';
+import { searchIssues } from './Search/search-issues.js';
+import { listPullRequests } from './PRs/list-pull-requests.js';
+import { getPullRequest } from './PRs/get-pull-request.js';
+import { createPullRequest } from './PRs/create-pull-request.js';
+import { mergePullRequest } from './PRs/merge-pull-request.js';
+import { listPullRequestFiles } from './PRs/list-pull-request-files.js';
+import { createPullRequestReview } from './PRs/create-pull-request-review.js';
+import { updatePullRequest } from './PRs/update-pull-request.js';
+import { listPullRequestCommits } from './PRs/list-pull-request-commits.js';
+import { checkPullRequestMerged } from './PRs/check-pull-request-merged.js';
+import { updatePullRequestBranch } from './PRs/update-pull-request-branch.js';
+import { listWorkflows } from './Workflows/list-workflows.js';
+import { triggerWorkflow } from './Workflows/trigger-workflow.js';
+import { listWorkflowRuns } from './Workflows/list-workflow-runs.js';
+import { getWorkflowRun } from './Workflows/get-workflow-run.js';
+import { listGists } from './Gists/list-gists.js';
+import { createGist } from './Gists/create-gist.js';
+import { getGist } from './Gists/get-gist.js';
+import { searchUsers } from './Search/search-users.js';
+import { followUser } from './Users/follow-user.js';
 // New User imports
-import { updateAuthenticatedUser } from './Users/update-authenticated-user';
-import { getUserById } from './Users/get-user-by-id';
-import { listUsers } from './Users/list-users';
-import { getUser } from './Users/get-user';
-import { getUserContext } from './Users/get-user-context';
+import { updateAuthenticatedUser } from './Users/update-authenticated-user.js';
+import { getUserById } from './Users/get-user-by-id.js';
+import { listUsers } from './Users/list-users.js';
+import { getUser } from './Users/get-user.js';
+import { getUserContext } from './Users/get-user-context.js';
 // New Search imports
-import { searchCode } from './Search/search-code';
-import { searchCommits } from './Search/search-commits';
-import { searchLabels } from './Search/search-labels';
-import { searchTopics } from './Search/search-topics';
+import { searchCode } from './Search/search-code.js';
+import { searchCommits } from './Search/search-commits.js';
+import { searchLabels } from './Search/search-labels.js';
+import { searchTopics } from './Search/search-topics.js';
 // New Issues imports
-import { getIssue } from './Issues/get-issue';
-import { listAuthenticatedUserIssues } from './Issues/list-authenticated-user-issues';
-import { listOrgIssues } from './Issues/list-org-issues';
-import { listUserAccountIssues } from './Issues/list-user-account-issues';
-import { unlockIssue } from './Issues/unlock-issue';
+import { getIssue } from './Issues/get-issue.js';
+import { listAuthenticatedUserIssues } from './Issues/list-authenticated-user-issues.js';
+import { listOrgIssues } from './Issues/list-org-issues.js';
+import { listUserAccountIssues } from './Issues/list-user-account-issues.js';
+import { unlockIssue } from './Issues/unlock-issue.js';
 
 // Actions
-import { listArtifacts } from './Actions/list-artifacts';
-import { getArtifact } from './Actions/get-artifact';
-import { deleteArtifact } from './Actions/delete-artifact';
-import { listWorkflowRunArtifacts } from './Actions/list-workflow-run-artifacts';
-import { listWorkflowJobs } from './Actions/list-workflow-jobs';
-import { getWorkflowJob } from './Actions/get-workflow-job';
+import { listArtifacts } from './Actions/list-artifacts.js';
+import { getArtifact } from './Actions/get-artifact.js';
+import { deleteArtifact } from './Actions/delete-artifact.js';
+import { listWorkflowRunArtifacts } from './Actions/list-workflow-run-artifacts.js';
+import { listWorkflowJobs } from './Actions/list-workflow-jobs.js';
+import { getWorkflowJob } from './Actions/get-workflow-job.js';
 
 // Activity
-import { listPublicEvents } from './Activity/list-public-events';
-import { listRepoEvents } from './Activity/list-repo-events';
-import { listUserEvents } from './Activity/list-user-events';
-import { listNotifications } from './Activity/list-notifications';
-import { markNotificationsRead } from './Activity/mark-notifications-read';
+import { listPublicEvents } from './Activity/list-public-events.js';
+import { listRepoEvents } from './Activity/list-repo-events.js';
+import { listUserEvents } from './Activity/list-user-events.js';
+import { listNotifications } from './Activity/list-notifications.js';
+import { markNotificationsRead } from './Activity/mark-notifications-read.js';
 
 // Apps
-import { getAuthenticatedApp } from './Apps/get-authenticated-app';
-import { listInstallations } from './Apps/list-installations';
-import { getInstallation } from './Apps/get-installation';
+import { getAuthenticatedApp } from './Apps/get-authenticated-app.js';
+import { listInstallations } from './Apps/list-installations.js';
+import { getInstallation } from './Apps/get-installation.js';
 
 // Checks
-import { createCheckRun } from './Checks/create-check-run';
-import { getCheckRun } from './Checks/get-check-run';
-import { updateCheckRun } from './Checks/update-check-run';
-import { listCheckRuns } from './Checks/list-check-runs';
-import { createCheckSuite } from './Checks/create-check-suite';
-import { getCheckSuite } from './Checks/get-check-suite';
+import { createCheckRun } from './Checks/create-check-run.js';
+import { getCheckRun } from './Checks/get-check-run.js';
+import { updateCheckRun } from './Checks/update-check-run.js';
+import { listCheckRuns } from './Checks/list-check-runs.js';
+import { createCheckSuite } from './Checks/create-check-suite.js';
+import { getCheckSuite } from './Checks/get-check-suite.js';
 
 // Code Scanning
-import { listCodeScanningAlerts } from './CodeScanning/list-alerts';
-import { getCodeScanningAlert } from './CodeScanning/get-alert';
-import { updateCodeScanningAlert } from './CodeScanning/update-alert';
+import { listCodeScanningAlerts } from './CodeScanning/list-alerts.js';
+import { getCodeScanningAlert } from './CodeScanning/get-alert.js';
+import { updateCodeScanningAlert } from './CodeScanning/update-alert.js';
 
 // Collaborators
-import { listCollaborators } from './Collaborators/list-collaborators';
-import { checkCollaborator } from './Collaborators/check-collaborator';
-import { addCollaborator } from './Collaborators/add-collaborator';
-import { removeCollaborator } from './Collaborators/remove-collaborator';
+import { listCollaborators } from './Collaborators/list-collaborators.js';
+import { checkCollaborator } from './Collaborators/check-collaborator.js';
+import { addCollaborator } from './Collaborators/add-collaborator.js';
+import { removeCollaborator } from './Collaborators/remove-collaborator.js';
 
 // Dependabot
-import { listDependabotAlerts } from './Dependabot/list-alerts';
-import { getDependabotAlert } from './Dependabot/get-alert';
-import { updateDependabotAlert } from './Dependabot/update-alert';
+import { listDependabotAlerts } from './Dependabot/list-alerts.js';
+import { getDependabotAlert } from './Dependabot/get-alert.js';
+import { updateDependabotAlert } from './Dependabot/update-alert.js';
 
 // Deploy Keys
-import { listDeployKeys } from './DeployKeys/list-deploy-keys';
-import { createDeployKey } from './DeployKeys/create-deploy-key';
-import { getDeployKey } from './DeployKeys/get-deploy-key';
-import { deleteDeployKey } from './DeployKeys/delete-deploy-key';
+import { listDeployKeys } from './DeployKeys/list-deploy-keys.js';
+import { createDeployKey } from './DeployKeys/create-deploy-key.js';
+import { getDeployKey } from './DeployKeys/get-deploy-key.js';
+import { deleteDeployKey } from './DeployKeys/delete-deploy-key.js';
 
 // Deployments
-import { listDeployments } from './Deployments/list-deployments';
-import { createDeployment } from './Deployments/create-deployment';
-import { getDeployment } from './Deployments/get-deployment';
-import { deleteDeployment } from './Deployments/delete-deployment';
+import { listDeployments } from './Deployments/list-deployments.js';
+import { createDeployment } from './Deployments/create-deployment.js';
+import { getDeployment } from './Deployments/get-deployment.js';
+import { deleteDeployment } from './Deployments/delete-deployment.js';
 
 // Environments
-import { listEnvironments } from './Environments/list-environments';
-import { getEnvironment } from './Environments/get-environment';
-import { createOrUpdateEnvironment } from './Environments/create-or-update-environment';
-import { deleteEnvironment } from './Environments/delete-environment';
+import { listEnvironments } from './Environments/list-environments.js';
+import { getEnvironment } from './Environments/get-environment.js';
+import { createOrUpdateEnvironment } from './Environments/create-or-update-environment.js';
+import { deleteEnvironment } from './Environments/delete-environment.js';
 
 // Git
-import { getBlob } from './Git/get-blob';
-import { createBlob } from './Git/create-blob';
-import { getGitCommit } from './Git/get-git-commit';
-import { createGitCommit } from './Git/create-git-commit';
-import { getRef } from './Git/get-ref';
-import { createRef } from './Git/create-ref';
-import { updateRef } from './Git/update-ref';
-import { deleteRef } from './Git/delete-ref';
-import { getTree } from './Git/get-tree';
-import { createTree } from './Git/create-tree';
+import { getBlob } from './Git/get-blob.js';
+import { createBlob } from './Git/create-blob.js';
+import { getGitCommit } from './Git/get-git-commit.js';
+import { createGitCommit } from './Git/create-git-commit.js';
+import { getRef } from './Git/get-ref.js';
+import { createRef } from './Git/create-ref.js';
+import { updateRef } from './Git/update-ref.js';
+import { deleteRef } from './Git/delete-ref.js';
+import { getTree } from './Git/get-tree.js';
+import { createTree } from './Git/create-tree.js';
 
 // Licenses
-import { listLicenses } from './Licenses/list-licenses';
-import { getLicense } from './Licenses/get-license';
-import { getRepoLicense } from './Licenses/get-repo-license';
+import { listLicenses } from './Licenses/list-licenses.js';
+import { getLicense } from './Licenses/get-license.js';
+import { getRepoLicense } from './Licenses/get-repo-license.js';
 
 // Markdown
-import { renderMarkdown } from './Markdown/render-markdown';
+import { renderMarkdown } from './Markdown/render-markdown.js';
 
 // Organizations
-import { getOrganization } from './Organizations/get-organization';
-import { listUserOrganizations } from './Organizations/list-user-organizations';
-import { listOrgRepositories } from './Organizations/list-org-repositories';
-import { listOrgMembers } from './Organizations/list-org-members';
-import { getOrgMembership } from './Organizations/get-org-membership';
-import { listOrganizations } from './Organizations/list-organizations';
-import { updateOrganization } from './Organizations/update-organization';
+import { getOrganization } from './Organizations/get-organization.js';
+import { listUserOrganizations } from './Organizations/list-user-organizations.js';
+import { listOrgRepositories } from './Organizations/list-org-repositories.js';
+import { listOrgMembers } from './Organizations/list-org-members.js';
+import { getOrgMembership } from './Organizations/get-org-membership.js';
+import { listOrganizations } from './Organizations/list-organizations.js';
+import { updateOrganization } from './Organizations/update-organization.js';
 
 // Projects
-import { listRepoProjects } from './Projects/list-repo-projects';
-import { listOrgProjects } from './Projects/list-org-projects';
-import { createOrgProject } from './Projects/create-org-project';
-import { getProject } from './Projects/get-project';
-import { updateProject } from './Projects/update-project';
-import { deleteProject } from './Projects/delete-project';
-import { listProjectColumns } from './Projects/list-project-columns';
+import { listRepoProjects } from './Projects/list-repo-projects.js';
+import { listOrgProjects } from './Projects/list-org-projects.js';
+import { createOrgProject } from './Projects/create-org-project.js';
+import { getProject } from './Projects/get-project.js';
+import { updateProject } from './Projects/update-project.js';
+import { deleteProject } from './Projects/delete-project.js';
+import { listProjectColumns } from './Projects/list-project-columns.js';
 
 // Rate Limit
-import { getRateLimit } from './RateLimit/get-rate-limit';
+import { getRateLimit } from './RateLimit/get-rate-limit.js';
 
 // Reactions
-import { listIssueReactions } from './Reactions/list-issue-reactions';
-import { createIssueReaction } from './Reactions/create-issue-reaction';
-import { listPRCommentReactions } from './Reactions/list-pr-comment-reactions';
-import { listCommitCommentReactions } from './Reactions/list-commit-comment-reactions';
-import { createCommitCommentReaction } from './Reactions/create-commit-comment-reaction';
-import { deleteReaction } from './Reactions/delete-reaction';
+import { listIssueReactions } from './Reactions/list-issue-reactions.js';
+import { createIssueReaction } from './Reactions/create-issue-reaction.js';
+import { listPRCommentReactions } from './Reactions/list-pr-comment-reactions.js';
+import { listCommitCommentReactions } from './Reactions/list-commit-comment-reactions.js';
+import { createCommitCommentReaction } from './Reactions/create-commit-comment-reaction.js';
+import { deleteReaction } from './Reactions/delete-reaction.js';
 
 // Releases
-import { listReleases } from './Releases/list-releases';
-import { createRelease } from './Releases/create-release';
-import { getRelease } from './Releases/get-release';
-import { updateRelease } from './Releases/update-release';
-import { deleteRelease } from './Releases/delete-release';
-import { getLatestRelease } from './Releases/get-latest-release';
-import { generateReleaseNotes } from './Releases/generate-release-notes';
+import { listReleases } from './Releases/list-releases.js';
+import { createRelease } from './Releases/create-release.js';
+import { getRelease } from './Releases/get-release.js';
+import { updateRelease } from './Releases/update-release.js';
+import { deleteRelease } from './Releases/delete-release.js';
+import { getLatestRelease } from './Releases/get-latest-release.js';
+import { generateReleaseNotes } from './Releases/generate-release-notes.js';
 
 // Secret Scanning
-import { listSecretScanningAlerts } from './SecretScanning/list-alerts';
-import { getSecretScanningAlert } from './SecretScanning/get-alert';
-import { updateSecretScanningAlert } from './SecretScanning/update-alert';
+import { listSecretScanningAlerts } from './SecretScanning/list-alerts.js';
+import { getSecretScanningAlert } from './SecretScanning/get-alert.js';
+import { updateSecretScanningAlert } from './SecretScanning/update-alert.js';
 
 // Security Advisories
-import { listRepositoryAdvisories } from './SecurityAdvisories/list-repository-advisories';
-import { getRepositoryAdvisory } from './SecurityAdvisories/get-repository-advisory';
-import { createRepositoryAdvisory } from './SecurityAdvisories/create-repository-advisory';
-import { listGlobalAdvisories } from './SecurityAdvisories/list-global-advisories';
+import { listRepositoryAdvisories } from './SecurityAdvisories/list-repository-advisories.js';
+import { getRepositoryAdvisory } from './SecurityAdvisories/get-repository-advisory.js';
+import { createRepositoryAdvisory } from './SecurityAdvisories/create-repository-advisory.js';
+import { listGlobalAdvisories } from './SecurityAdvisories/list-global-advisories.js';
 
 // Stars
-import { listStarredRepos } from './Stars/list-starred-repos';
-import { checkRepoStarred } from './Stars/check-repo-starred';
-import { listStargazers } from './Stars/list-stargazers';
+import { listStarredRepos } from './Stars/list-starred-repos.js';
+import { checkRepoStarred } from './Stars/check-repo-starred.js';
+import { listStargazers } from './Stars/list-stargazers.js';
 
 // Statuses
-import { createCommitStatus } from './Statuses/create-commit-status';
-import { listCommitStatuses } from './Statuses/list-commit-statuses';
-import { getCombinedStatus } from './Statuses/get-combined-status';
+import { createCommitStatus } from './Statuses/create-commit-status.js';
+import { listCommitStatuses } from './Statuses/list-commit-statuses.js';
+import { getCombinedStatus } from './Statuses/get-combined-status.js';
 
 // Teams
-import { listTeams } from './Teams/list-teams';
-import { createTeam } from './Teams/create-team';
-import { getTeam } from './Teams/get-team';
-import { updateTeam } from './Teams/update-team';
-import { deleteTeam } from './Teams/delete-team';
-import { listTeamMembers } from './Teams/list-team-members';
-import { listTeamRepos } from './Teams/list-team-repos';
-import { addTeamRepo } from './Teams/add-team-repo';
-import { removeTeamRepo } from './Teams/remove-team-repo';
+import { listTeams } from './Teams/list-teams.js';
+import { createTeam } from './Teams/create-team.js';
+import { getTeam } from './Teams/get-team.js';
+import { updateTeam } from './Teams/update-team.js';
+import { deleteTeam } from './Teams/delete-team.js';
+import { listTeamMembers } from './Teams/list-team-members.js';
+import { listTeamRepos } from './Teams/list-team-repos.js';
+import { addTeamRepo } from './Teams/add-team-repo.js';
+import { removeTeamRepo } from './Teams/remove-team-repo.js';
 
 // Webhooks
-import { listRepoWebhooks } from './Webhooks/list-repo-webhooks';
-import { createRepoWebhook } from './Webhooks/create-repo-webhook';
-import { getRepoWebhook } from './Webhooks/get-repo-webhook';
-import { updateRepoWebhook } from './Webhooks/update-repo-webhook';
-import { deleteRepoWebhook } from './Webhooks/delete-repo-webhook';
+import { listRepoWebhooks } from './Webhooks/list-repo-webhooks.js';
+import { createRepoWebhook } from './Webhooks/create-repo-webhook.js';
+import { getRepoWebhook } from './Webhooks/get-repo-webhook.js';
+import { updateRepoWebhook } from './Webhooks/update-repo-webhook.js';
+import { deleteRepoWebhook } from './Webhooks/delete-repo-webhook.js';
 
 export const githubTools = [
   {
