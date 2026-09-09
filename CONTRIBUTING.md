@@ -18,6 +18,16 @@ Merging a toolkit does **not** guarantee it is enabled in production Runstack im
 2. Search [open issues](https://github.com/deepraj21/rnsk-toolkits/issues) for duplicate work
 3. For large toolkits, open an issue first to align on scope and auth approach
 
+## Naming conventions
+
+Follow these naming patterns throughout the codebase:
+
+- **File/directory names**: `kebab-case` (e.g., `web-search/`, `create-draft.ts`, `google-calendar/`)
+- **Variables/identifiers**: `camelCase` (e.g., `webSearch`, `googleCalendar`, `createDraft`)
+- **Types/interfaces**: `PascalCase` (e.g., `ToolkitManifest`, `OAuthProviderSpec`)
+
+This allows toolkit directory names like `web-search` to be imported as camelCase variables (`webSearch`) since JavaScript doesn't allow hyphens in identifier names.
+
 ## Development setup
 
 ```bash

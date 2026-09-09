@@ -6,7 +6,7 @@ import { googleSheetsTools } from './tools/index.js';
 export default defineToolkit({
   id: 'google-sheets',
   displayName: 'Google Sheets',
-  shortDescription: 'Spreadsheets, ranges, and values.',
+  shortDescription: 'Read, write, append, and manage Google Sheets spreadsheets and cell values.',
   category: 'Document & File Management',
   icon: GSHEETS_ICON,
   auth: {
@@ -40,7 +40,7 @@ export default defineToolkit({
       description: entry.description,
       tool: entry.tool,
       requiredAuth: entry.requiredAuth,
-      scope: inferToolScope(entry.name),
+      scope: (entry as any).scope ?? inferToolScope(entry.name),
     }),
   ),
   meta: { since: '0.0.2' },

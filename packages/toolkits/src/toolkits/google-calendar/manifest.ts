@@ -6,7 +6,7 @@ import { googleCalendarTools } from './tools/index.js';
 export default defineToolkit({
   id: 'google-calendar',
   displayName: 'Google Calendar',
-  shortDescription: 'List and create calendar events.',
+  shortDescription: 'List, search, create, update, and delete calendar events.',
   category: 'Scheduling & Booking',
   icon: GCAL_ICON,
   auth: {
