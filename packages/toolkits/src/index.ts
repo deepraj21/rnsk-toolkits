@@ -6,6 +6,8 @@ import github from './toolkits/github/manifest.js';
 import notion from './toolkits/notion/manifest.js';
 import googleCalendar from './toolkits/google-calendar/manifest.js';
 import googleSheets from './toolkits/google-sheets/manifest.js';
+import googleDrive from './toolkits/google-drive/manifest.js';
+import googleDocs from './toolkits/google-docs/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -17,6 +19,8 @@ export const toolkits: ToolkitManifest[] = [
   notion,
   googleCalendar,
   googleSheets,
+  googleDrive,
+  googleDocs,
 ];
 
 export {
@@ -28,6 +32,8 @@ export {
   notion,
   googleCalendar,
   googleSheets,
+  googleDrive,
+  googleDocs,
 };
 export * from './core/index.js';
 

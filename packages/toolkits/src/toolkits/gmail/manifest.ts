@@ -29,7 +29,7 @@ export default defineToolkit({
     tokenField: 'gmailToken',
     provider: {
       slug: 'gmail',
-      env: { clientId: 'GMAIL_CLIENT_ID', clientSecret: 'GMAIL_CLIENT_SECRET' },
+      env: { clientId: 'GOOGLE_GMAIL_CLIENT_ID', clientSecret: 'GOOGLE_GMAIL_CLIENT_SECRET' },
       authorizeUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
       tokenUrl: 'https://oauth2.googleapis.com/token',
       scopes: [

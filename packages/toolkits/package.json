@@ -1,6 +1,6 @@
 {
   "name": "@rnsk/toolkits",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Runstack toolkit registry — manifest-driven tool definitions for AI agents",
   "type": "module",
   "main": "./dist/index.js",
@@ -42,5 +42,20 @@
     "tsx": "^4.19.3",
     "typescript": "^5",
     "zod": "^3.24.2"
-  }
+  },
+  "author": "Deepraj Bera",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deepraj21/rnsk-toolkits"
+  },
+  "homepage": "https://runstack.engineer",
+  "keywords": [
+    "runstack",
+    "ai-sdk",
+    "vercel-ai-sdk",
+    "mcp",
+    "tools",
+    "agents",
+    "llm"
+  ]
 }
