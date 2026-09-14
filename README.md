@@ -15,7 +15,7 @@ A place to **build, test, and publish toolkit definitions** — manifests, tool 
 
 ```
 packages/toolkits/   Published npm package (@rnsk/toolkits)
-sandbox/             Local HTTP server to invoke tools at runtime
+sandbox/             Local UI + server to test toolkits through @rnsk/bot (not published)
 .github/             CI, issue/PR templates, CODEOWNERS
 CONTRIBUTING.md      Contributor guide
 ```
@@ -28,44 +28,26 @@ Package documentation: [packages/toolkits/README.md](packages/toolkits/README.md
 git clone https://github.com/deepraj21/rnsk-toolkits.git
 cd rnsk-toolkits
 npm install
-cd packages/toolkits && npm run validate && npm run build
-cd ../../sandbox && cp .env.local.example .env.local
-npm run dev
+npm run sandbox        # → http://localhost:5173
 ```
 
 ## Sandbox
 
-The sandbox is a **runtime test harness** for toolkit authors. It registers tools from `@rnsk/toolkits` and lets you invoke them directly — the same `execute` path Runstack uses after registration, without replicating Runstack's agent loop.
+The sandbox lets toolkit authors test **local, unbuilt** toolkit changes in two ways:
 
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/api/health` | GET | Server status and tool count |
-| `/api/toolkits` | GET | List toolkits and tools |
-| `/api/tools` | GET | Flat list of registered tools |
-| `/api/tools/:toolName` | GET | Tool metadata and input JSON schema |
-| `/api/tools/execute` | POST | Run a tool (`{ "toolName": "...", "args": {} }`) |
-| `/api/dev-token` | POST | Set session OAuth token or env var for testing |
+- **Chat:** the real `@rnsk/bot` widget, running the same `searchTool → executeTool` flow as Runstack, with a free Gemini or OpenRouter model.
+- **Tool runner:** runs one tool directly, with no LLM.
 
-### Example: run a tool
+You can scope both to a single toolkit from the UI. `npm run sandbox:npm` runs the published package instead, for comparison.
 
-```bash
-# Optional: provide credentials for OAuth tools
-curl -X POST http://localhost:3100/api/dev-token \
-  -H 'Content-Type: application/json' \
-  -d '{"tokenField":"linearToken","token":"lin_api_..."}'
-
-# Execute
-curl -X POST http://localhost:3100/api/tools/execute \
-  -H 'Content-Type: application/json' \
-  -d '{"toolName":"calculateSum","args":{"a":2,"b":3}}'
-```
+See [sandbox/README.md](sandbox/README.md) for setup (all optional), credentials, and the HTTP API.
 
 ## Typical contributor flow
 
 1. Add a toolkit under `packages/toolkits/src/toolkits/<id>/`
 2. Register the manifest in `packages/toolkits/src/index.ts`
-3. `npm run validate && npm run build` in `packages/toolkits`
-4. Test with the sandbox (`POST /api/tools/execute`)
+3. `npm run sandbox`, then pick your toolkit with **only** in the sidebar and test it in the Tool runner and Chat
+4. `npm run validate && npm run build` in `packages/toolkits`
 5. Open a PR
 
 ## Versioning

@@ -77,15 +77,14 @@ After adding a toolkit, register it in `src/index.ts`, then run `npm run validat
 
 ## Local testing
 
-The repo includes a **sandbox** (not published to npm) for exercising tools at runtime:
+The repo includes a **sandbox** (not published to npm). It runs this package's source directly, so you don't need to build first. Test it through the real `@rnsk/bot` chat or a direct Tool runner, scoped to one toolkit:
 
 ```bash
-cd ../../sandbox
-cp .env.local.example .env.local
-npm run dev
+# from the repo root
+npm run sandbox       # → http://localhost:5173
 ```
 
-Use `POST /api/tools/execute` to invoke a tool directly with the same credential-injection pattern Runstack uses. See the [repository README](../../README.md) for sandbox endpoints.
+See [sandbox/README.md](../../sandbox/README.md).
 
 ## Versioning
 

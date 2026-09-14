@@ -32,32 +32,26 @@ This allows toolkit directory names like `web-search` to be imported as camelCas
 
 ```bash
 npm install
+npm run sandbox    # → http://localhost:5173, runs your local toolkit source (no build needed)
+```
+
+### Test your toolkit in the sandbox
+
+1. Click **only** next to your toolkit in the sidebar to scope everything to it.
+2. **Tool runner** tab: run each tool with JSON args. Nothing else is involved, so this is the quickest way to debug.
+3. **Chat** tab: talk to the real `@rnsk/bot` (bottom-right). It uses Runstack's meta-tool flow (`searchTool → checkAuthentication → executeTool`). This needs one free key in `sandbox/.env.local`: `GEMINI_API_KEY` or `OPENROUTER_API_KEY`.
+4. OAuth toolkits: paste an access token in the **Credentials** panel. Service env toolkits: set the env var in `sandbox/.env.local` or paste it.
+5. Optional: `npm run sandbox:npm` to compare against the published `@rnsk/toolkits`.
+
+Saving a file under `packages/toolkits/src` restarts the sandbox automatically. Details are in [sandbox/README.md](sandbox/README.md).
+
+Before opening a PR:
+
+```bash
 cd packages/toolkits
 npm run validate   # manifest + tool shape checks
 npm run build
-cd ../../sandbox
-cp .env.local.example .env.local
-npm run dev
 ```
-
-Use the sandbox to invoke tools at runtime before opening a PR:
-
-```bash
-# Start sandbox (from repo root)
-cd sandbox && npm run dev
-
-# Set credentials for OAuth tools
-curl -X POST http://localhost:3100/api/dev-token \
-  -H 'Content-Type: application/json' \
-  -d '{"tokenField":"notionToken","token":"secret_..."}'
-
-# Execute a tool
-curl -X POST http://localhost:3100/api/tools/execute \
-  -H 'Content-Type: application/json' \
-  -d '{"toolName":"calculateSum","args":{"a":1,"b":2}}'
-```
-
-The sandbox calls each tool's `execute` with credential injection — the same contract Runstack relies on after `registerAllTools()`. It does not replicate Runstack's agent meta-tools.
 
 ## Adding a toolkit
 
@@ -67,8 +61,9 @@ The sandbox calls each tool's `execute` with credential injection — the same c
    - `tools/*.ts` — one file per tool
    - `tools/index.ts` — export array
 2. Register the manifest in `packages/toolkits/src/index.ts`
-3. Run `npm run validate && npm run build` in `packages/toolkits`
-4. Add a short note in your PR describing auth and required env vars
+3. Test it with `npm run sandbox` (scope to your toolkit, then use the Tool runner and Chat)
+4. Run `npm run validate && npm run build` in `packages/toolkits`
+5. Add a short note in your PR describing auth and required env vars
 
 Copy the nearest existing toolkit (e.g. `notion/` for OAuth, `mathematics/` for no auth) as a template.
 

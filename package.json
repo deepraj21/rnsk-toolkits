@@ -8,6 +8,8 @@
   "scripts": {
     "build": "npm run build -w @rnsk/toolkits",
     "validate": "npm run validate -w @rnsk/toolkits",
-    "sandbox": "npm run dev -w sandbox"
+    "sandbox": "npm run dev -w sandbox",
+    "sandbox:npm": "npm run dev:npm -w sandbox",
+    "sandbox:test": "npm test -w sandbox"
   }
 }
