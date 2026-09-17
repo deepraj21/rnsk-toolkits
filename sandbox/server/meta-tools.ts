@@ -30,13 +30,24 @@ export function createMetaTools(ctx: MetaToolContext) {
 
   const findToolkitForProvider = (provider: string) => {
     const slug = provider.trim().toLowerCase();
-    return runtime.api.toolkits.find(
-      (toolkit) =>
-        toolkit.id === slug ||
-        (toolkit.auth.type === 'oauth2' &&
-          (toolkit.auth.provider.slug.toLowerCase() === slug ||
-            toolkit.auth.tokenField.toLowerCase() === slug)),
-    );
+    return runtime.api.toolkits.find((toolkit) => {
+      if (toolkit.id === slug) return true;
+      if (toolkit.auth.type === 'oauth2') {
+        return (
+          toolkit.auth.provider.slug.toLowerCase() === slug ||
+          toolkit.auth.tokenField.toLowerCase() === slug
+        );
+      }
+      if (
+        toolkit.auth.type === 'api_key' ||
+        toolkit.auth.type === 'basic_auth' ||
+        toolkit.auth.type === 'bearer_token' ||
+        toolkit.auth.type === 'service_account'
+      ) {
+        return toolkit.auth.tokenField.toLowerCase() === slug;
+      }
+      return false;
+    });
   };
 
   const searchTool = tool({

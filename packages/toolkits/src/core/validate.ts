@@ -23,10 +23,16 @@ export function validateManifests(manifests: ToolkitManifest[]): string[] {
     const camelId = toolkitCamelId(manifest.id);
     const prefix = `${camelId[0].toUpperCase()}${camelId.slice(1)}`;
 
-    if (manifest.auth.type === 'oauth2') {
+    if (
+      manifest.auth.type === 'oauth2' ||
+      manifest.auth.type === 'api_key' ||
+      manifest.auth.type === 'basic_auth' ||
+      manifest.auth.type === 'bearer_token' ||
+      manifest.auth.type === 'service_account'
+    ) {
       const authedTools = manifest.tools.filter((t) => t.requiredAuth);
       if (authedTools.length === 0) {
-        errors.push(`OAuth toolkit "${manifest.id}" has no tools with requiredAuth`);
+        errors.push(`${manifest.auth.type} toolkit "${manifest.id}" has no tools with requiredAuth`);
       }
       for (const tool of manifest.tools) {
         if (tool.requiredAuth && tool.requiredAuth !== manifest.auth.tokenField) {
@@ -59,12 +65,22 @@ export function validateManifests(manifests: ToolkitManifest[]): string[] {
   return errors;
 }
 
-export function getAuthType(manifest: ToolkitManifest): 'OAUTH2' | 'None' | 'SERVICE_ENV' {
+export function getAuthType(
+  manifest: ToolkitManifest,
+): 'OAUTH2' | 'None' | 'SERVICE_ENV' | 'API_KEY' | 'BASIC_AUTH' | 'BEARER_TOKEN' | 'SERVICE_ACCOUNT' {
   switch (manifest.auth.type) {
     case 'oauth2':
       return 'OAUTH2';
     case 'service_env':
       return 'SERVICE_ENV';
+    case 'api_key':
+      return 'API_KEY';
+    case 'basic_auth':
+      return 'BASIC_AUTH';
+    case 'bearer_token':
+      return 'BEARER_TOKEN';
+    case 'service_account':
+      return 'SERVICE_ACCOUNT';
     default:
       return 'None';
   }

@@ -22,6 +22,10 @@ export type {
   ToolkitAuthType,
   ToolScope,
   OAuthProviderSpec,
+  ApiKeyProviderSpec,
+  BasicAuthProviderSpec,
+  BearerTokenProviderSpec,
+  ServiceAccountProviderSpec,
   EnvVarSpec,
   ToolkitAvailability,
 } from './types.js';

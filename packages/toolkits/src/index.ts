@@ -8,6 +8,8 @@ import googleCalendar from './toolkits/google-calendar/manifest.js';
 import googleSheets from './toolkits/google-sheets/manifest.js';
 import googleDrive from './toolkits/google-drive/manifest.js';
 import googleDocs from './toolkits/google-docs/manifest.js';
+import aws from './toolkits/aws/manifest.js';
+import gcp from './toolkits/gcp/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -21,6 +23,8 @@ export const toolkits: ToolkitManifest[] = [
   googleSheets,
   googleDrive,
   googleDocs,
+  aws,
+  gcp,
 ];
 
 export {
@@ -34,6 +38,8 @@ export {
   googleSheets,
   googleDrive,
   googleDocs,
+  aws,
+  gcp,
 };
 export * from './core/index.js';
 

@@ -33,12 +33,50 @@ export interface OAuthProviderSpec {
   tokenResponsePath?: string;
 }
 
+export interface ApiKeyProviderSpec {
+  /** Where the key is sent on outgoing requests; tool code attaches it itself. */
+  in: 'header' | 'query';
+  /** Header or query param name, e.g. 'X-API-Key' or 'api_key'. */
+  name: string;
+  /** Value prefix, e.g. 'Bearer' or 'Token'. Omit for a bare key. */
+  prefix?: string;
+  connectDescription: string;
+}
+
+export interface BasicAuthProviderSpec {
+  connectDescription: string;
+}
+
+export interface BearerTokenProviderSpec {
+  connectDescription: string;
+}
+
+export interface ServiceAccountProviderSpec {
+  /** Field names the connecting user must supply, e.g. ['accessKeyId', 'secretAccessKey']. */
+  fields: string[];
+  connectDescription: string;
+}
+
 export type ToolkitAuthSpec =
   | { type: 'none' }
   | { type: 'service_env'; env: EnvVarSpec[] }
-  | { type: 'oauth2'; tokenField: string; provider: OAuthProviderSpec };
+  | { type: 'oauth2'; tokenField: string; provider: OAuthProviderSpec }
+  | { type: 'api_key'; tokenField: string; provider: ApiKeyProviderSpec }
+  /** Credential stored under tokenField as a raw 'username:password' string. */
+  | { type: 'basic_auth'; tokenField: string; provider: BasicAuthProviderSpec }
+  /** Always sent as 'Authorization: Bearer <token>'; tool code attaches it. */
+  | { type: 'bearer_token'; tokenField: string; provider: BearerTokenProviderSpec }
+  /** Credential stored under tokenField as a JSON object keyed by provider.fields. */
+  | { type: 'service_account'; tokenField: string; provider: ServiceAccountProviderSpec };
 
-export type ToolkitAuthType = 'none' | 'oauth2' | 'service_env';
+export type ToolkitAuthType =
+  | 'none'
+  | 'oauth2'
+  | 'service_env'
+  | 'api_key'
+  | 'basic_auth'
+  | 'bearer_token'
+  | 'service_account';
 
 export interface ToolDefinition {
   name: string;

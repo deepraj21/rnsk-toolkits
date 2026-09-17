@@ -93,6 +93,46 @@ export function getCredentialFields(
       source: store.sourceOf('token', name),
     }));
   }
+  if (auth.type === 'api_key') {
+    return [
+      {
+        kind: 'token',
+        name: auth.tokenField,
+        description: auth.provider.connectDescription,
+        source: store.sourceOf('token', auth.tokenField),
+      },
+    ];
+  }
+  if (auth.type === 'basic_auth') {
+    return [
+      {
+        kind: 'token',
+        name: auth.tokenField,
+        description: `${auth.provider.connectDescription} Format: username:password.`,
+        source: store.sourceOf('token', auth.tokenField),
+      },
+    ];
+  }
+  if (auth.type === 'bearer_token') {
+    return [
+      {
+        kind: 'token',
+        name: auth.tokenField,
+        description: auth.provider.connectDescription,
+        source: store.sourceOf('token', auth.tokenField),
+      },
+    ];
+  }
+  if (auth.type === 'service_account') {
+    return [
+      {
+        kind: 'token',
+        name: auth.tokenField,
+        description: `${auth.provider.connectDescription} Format: JSON object with keys: ${auth.provider.fields.join(', ')}.`,
+        source: store.sourceOf('token', auth.tokenField),
+      },
+    ];
+  }
   return [];
 }
 
