@@ -14,9 +14,9 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | `@rnsk/toolkits` | All toolkit manifests, `registerAllTools()`, `getAllTools()` |
 | `@rnsk/toolkits/core` | Types, `defineToolkit`, validation, schema helpers |
 
-## Seed toolkits (v0.0.4)
+## Seed toolkits (v0.0.6)
 
-**228 tools** across **8 toolkits**.
+**262 tools** across **12 toolkits**.
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -28,6 +28,10 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | notion | 8 | OAuth2 |
 | google-calendar | 6 | OAuth2 |
 | google-sheets | 7 | OAuth2 |
+| google-drive | 10 | OAuth2 |
+| google-docs | 10 | OAuth2 |
+| aws | 8 | service account |
+| gcp | 6 | service account |
 
 ## Install
 
@@ -71,6 +75,8 @@ Each toolkit lives under `src/toolkits/<id>/`:
   tools/
     *.ts         # one tool per file (AI SDK tool() + execute)
     index.ts     # exports array
+    client.ts    # optional: shared credential/SDK client helper (e.g. aws, gcp)
+    <group>/*.ts # optional: tools grouped into subfolders by service (e.g. github, aws, gcp)
 ```
 
 After adding a toolkit, register it in `src/index.ts`, then run `npm run validate && npm run build`.
@@ -88,7 +94,7 @@ See [sandbox/README.md](../../sandbox/README.md).
 
 ## Versioning
 
-Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (`"0.0.4"`).
+Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (`"0.0.6"`).
 
 ## Contributing
 
