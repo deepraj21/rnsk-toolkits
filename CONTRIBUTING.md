@@ -53,6 +53,16 @@ npm run validate   # manifest + tool shape checks
 npm run build
 ```
 
+## Agent skill
+
+For AI-assisted contributions, install the repo skill from [skills.sh](https://skills.sh):
+
+```bash
+npx skills add deepraj21/rnsk-toolkits --skill add-rnsk-toolkit -a cursor -y
+```
+
+See [skills/README.md](skills/README.md) for details.
+
 ## Adding a toolkit
 
 1. Create `packages/toolkits/src/toolkits/<id>/` with:

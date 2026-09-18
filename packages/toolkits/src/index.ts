@@ -11,6 +11,7 @@ import googleDocs from './toolkits/google-docs/manifest.js';
 import googleForms from './toolkits/google-forms/manifest.js';
 import aws from './toolkits/aws/manifest.js';
 import gcp from './toolkits/gcp/manifest.js';
+import grafana from './toolkits/grafana/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -27,6 +28,7 @@ export const toolkits: ToolkitManifest[] = [
   googleForms,
   aws,
   gcp,
+  grafana,
 ];
 
 export {
@@ -43,6 +45,7 @@ export {
   googleForms,
   aws,
   gcp,
+  grafana,
 };
 export * from './core/index.js';
 

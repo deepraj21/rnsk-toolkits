@@ -42,9 +42,19 @@ You can scope both to a single toolkit from the UI. `npm run sandbox:npm` runs t
 
 See [sandbox/README.md](sandbox/README.md) for setup (all optional), credentials, and the HTTP API.
 
+## Agent skill (skills.sh)
+
+Agents can install the **add-rnsk-toolkit** skill for step-by-step guidance when adding toolkits or tools:
+
+```bash
+npx skills add deepraj21/rnsk-toolkits --skill add-rnsk-toolkit -a cursor -y
+```
+
+Browse [skills.sh](https://skills.sh) or see [skills/README.md](skills/README.md).
+
 ## Typical contributor flow
 
-1. Add a toolkit under `packages/toolkits/src/toolkits/<id>/`
+1. Add a toolkit under `packages/toolkits/src/toolkits/<id>/` (or use the agent skill above)
 2. Register the manifest in `packages/toolkits/src/index.ts`
 3. `npm run sandbox`, then pick your toolkit with **only** in the sidebar and test it in the Tool runner and Chat
 4. `npm run validate && npm run build` in `packages/toolkits`
