@@ -14,6 +14,8 @@ import gcp from './toolkits/gcp/manifest.js';
 import grafana from './toolkits/grafana/manifest.js';
 import dockerHub from './toolkits/docker-hub/manifest.js';
 import googleMeet from './toolkits/google-meet/manifest.js';
+import googleSlides from './toolkits/google-slides/manifest.js';
+import googleSearchConsole from './toolkits/google-search-console/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -29,6 +31,8 @@ export const toolkits: ToolkitManifest[] = [
   googleDocs,
   googleForms,
   googleMeet,
+  googleSlides,
+  googleSearchConsole,
   aws,
   gcp,
   grafana,
@@ -48,6 +52,8 @@ export {
   googleDocs,
   googleForms,
   googleMeet,
+  googleSlides,
+  googleSearchConsole,
   aws,
   gcp,
   grafana,
