@@ -12,6 +12,8 @@ import googleForms from './toolkits/google-forms/manifest.js';
 import aws from './toolkits/aws/manifest.js';
 import gcp from './toolkits/gcp/manifest.js';
 import grafana from './toolkits/grafana/manifest.js';
+import dockerHub from './toolkits/docker-hub/manifest.js';
+import googleMeet from './toolkits/google-meet/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -26,9 +28,11 @@ export const toolkits: ToolkitManifest[] = [
   googleDrive,
   googleDocs,
   googleForms,
+  googleMeet,
   aws,
   gcp,
   grafana,
+  dockerHub,
 ];
 
 export {
@@ -43,9 +47,11 @@ export {
   googleDrive,
   googleDocs,
   googleForms,
+  googleMeet,
   aws,
   gcp,
   grafana,
+  dockerHub,
 };
 export * from './core/index.js';
 

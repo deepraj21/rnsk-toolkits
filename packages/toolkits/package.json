@@ -53,6 +53,7 @@
     "type": "git",
     "url": "https://github.com/deepraj21/rnsk-toolkits"
   },
+  "license": "MIT",
   "homepage": "https://runstack.engineer",
   "keywords": [
     "runstack",

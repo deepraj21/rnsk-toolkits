@@ -14,15 +14,15 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | `@rnsk/toolkits` | All toolkit manifests, `registerAllTools()`, `getAllTools()` |
 | `@rnsk/toolkits/core` | Types, `defineToolkit`, validation, schema helpers |
 
-## Seed toolkits (v0.0.6)
+## Toolkits
 
-**262 tools** across **12 toolkits**.
+**331 tools** across **16 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
 | mathematics | 9 | none |
 | linear | 8 | OAuth2 |
-| gmail | 15 | OAuth2 |
+| gmail | 28 | OAuth2 |
 | web-search (Firecrawl) | 2 | service env |
 | github | 173 | OAuth2 |
 | notion | 8 | OAuth2 |
@@ -30,8 +30,12 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | google-sheets | 7 | OAuth2 |
 | google-drive | 10 | OAuth2 |
 | google-docs | 10 | OAuth2 |
+| google-forms | 10 | OAuth2 |
+| google-meet | 15 | OAuth2 |
 | aws | 8 | service account |
 | gcp | 6 | service account |
+| grafana | 11 | service account |
+| docker-hub | 20 | service account |
 
 ## Install
 
@@ -106,4 +110,4 @@ Report vulnerabilities privately — [SECURITY.md](../../SECURITY.md). Toolkit `
 
 ## License
 
-MIT
+[MIT](https://github.com/deepraj21/rnsk-toolkits/blob/main/LICENSE)
