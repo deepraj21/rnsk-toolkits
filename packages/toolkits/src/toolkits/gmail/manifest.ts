@@ -16,6 +16,19 @@ import {
   modifyMessageLabels,
   trashMessage,
   untrashMessage,
+  batchDeleteMessages,
+  batchModifyMessages,
+  createFilter,
+  createLabel,
+  deleteFilter,
+  deleteLabel,
+  deleteMessage,
+  deleteThread,
+  forwardMessage,
+  getAttachment,
+  getAutoForwarding,
+  getContacts,
+  getFilter,
 } from './tools/index.js';
 
 export default defineToolkit({
@@ -38,6 +51,8 @@ export default defineToolkit({
         'https://www.googleapis.com/auth/gmail.compose',
         'https://www.googleapis.com/auth/gmail.modify',
         'https://www.googleapis.com/auth/gmail.labels',
+        'https://www.googleapis.com/auth/gmail.settings.basic',
+        'https://www.googleapis.com/auth/contacts.readonly',
       ],
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
@@ -47,7 +62,7 @@ export default defineToolkit({
       stateCookie: 'google_oauth_state',
     },
   },
-  allowedHosts: ['gmail.googleapis.com', 'www.googleapis.com'],
+  allowedHosts: ['gmail.googleapis.com', 'www.googleapis.com', 'people.googleapis.com'],
   tools: [
     defineTool({
       name: 'gmailListMessages',
@@ -139,7 +154,84 @@ export default defineToolkit({
       requiredAuth: 'gmailToken',
       scope: 'write',
     }),
+    defineTool({
+      name: 'gmailBatchDeleteMessages',
+      tool: batchDeleteMessages,
+      requiredAuth: 'gmailToken',
+      scope: 'delete',
+    }),
+    defineTool({
+      name: 'gmailBatchModifyMessages',
+      tool: batchModifyMessages,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'gmailCreateFilter',
+      tool: createFilter,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'gmailCreateLabel',
+      tool: createLabel,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'gmailDeleteFilter',
+      tool: deleteFilter,
+      requiredAuth: 'gmailToken',
+      scope: 'delete',
+    }),
+    defineTool({
+      name: 'gmailDeleteLabel',
+      tool: deleteLabel,
+      requiredAuth: 'gmailToken',
+      scope: 'delete',
+    }),
+    defineTool({
+      name: 'gmailDeleteMessage',
+      tool: deleteMessage,
+      requiredAuth: 'gmailToken',
+      scope: 'delete',
+    }),
+    defineTool({
+      name: 'gmailDeleteThread',
+      tool: deleteThread,
+      requiredAuth: 'gmailToken',
+      scope: 'delete',
+    }),
+    defineTool({
+      name: 'gmailForwardMessage',
+      tool: forwardMessage,
+      requiredAuth: 'gmailToken',
+      scope: 'write',
+    }),
+    defineTool({
+      name: 'gmailGetAttachment',
+      tool: getAttachment,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'gmailGetAutoForwarding',
+      tool: getAutoForwarding,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'gmailGetContacts',
+      tool: getContacts,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
+    defineTool({
+      name: 'gmailGetFilter',
+      tool: getFilter,
+      requiredAuth: 'gmailToken',
+      scope: 'read',
+    }),
   ],
   meta: { since: '0.0.1' },
 });
-

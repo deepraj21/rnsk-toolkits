@@ -109,3 +109,80 @@ export function extractMessageDetails(data: any, maxBodyLength = 4000) {
     body,
   };
 }
+
+export function encodeBase64Mime(data: string): string {
+  return data.replace(/-/g, '+').replace(/_/g, '/').replace(/\s/g, '');
+}
+
+export function chunkBase64(data: string): string {
+  return data.match(/.{1,76}/g)?.join('\r\n') || data;
+}
+
+export function getHeaderValue(headers: Array<{ name?: string; value?: string }> | undefined, name: string): string | undefined {
+  return headers?.find((header) => header.name?.toLowerCase() === name.toLowerCase())?.value;
+}
+
+export function collectAttachments(payload: any): Array<{ attachmentId: string; filename: string; mimeType: string }> {
+  const attachments: Array<{ attachmentId: string; filename: string; mimeType: string }> = [];
+
+  const walk = (part: any) => {
+    const attachmentId = part?.body?.attachmentId;
+    const filename = part?.filename;
+    if (attachmentId && filename) {
+      attachments.push({
+        attachmentId,
+        filename,
+        mimeType: part.mimeType || 'application/octet-stream',
+      });
+    }
+
+    for (const child of part?.parts || []) {
+      walk(child);
+    }
+  };
+
+  walk(payload);
+  return attachments;
+}
+
+export function encodeMultipartMessage(params: {
+  to: string;
+  subject: string;
+  body: string;
+  cc?: string;
+  bcc?: string;
+  attachments?: Array<{ filename: string; mimeType: string; data: string }>;
+}): string {
+  const boundary = `rnsk-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  const headers = [
+    `To: ${params.to}`,
+    params.cc ? `Cc: ${params.cc}` : '',
+    params.bcc ? `Bcc: ${params.bcc}` : '',
+    `Subject: ${params.subject}`,
+    'MIME-Version: 1.0',
+    `Content-Type: multipart/mixed; boundary="${boundary}"`,
+  ].filter(Boolean);
+
+  const parts = [
+    `--${boundary}`,
+    'Content-Type: text/plain; charset="UTF-8"',
+    'Content-Transfer-Encoding: 7bit',
+    '',
+    params.body,
+  ];
+
+  for (const attachment of params.attachments || []) {
+    parts.push(
+      `--${boundary}`,
+      `Content-Type: ${attachment.mimeType}; name="${attachment.filename}"`,
+      'Content-Transfer-Encoding: base64',
+      `Content-Disposition: attachment; filename="${attachment.filename}"`,
+      '',
+      chunkBase64(encodeBase64Mime(attachment.data)),
+    );
+  }
+
+  parts.push(`--${boundary}--`);
+
+  return encodeBase64Url([...headers, '', ...parts].join('\r\n'));
+}
