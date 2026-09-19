@@ -26,6 +26,8 @@ import groww from './toolkits/groww/manifest.js';
 import cloudflare from './toolkits/cloudflare/manifest.js';
 import slack from './toolkits/slack/manifest.js';
 import discord from './toolkits/discord/manifest.js';
+import bitbucket from './toolkits/bitbucket/manifest.js';
+import gitlab from './toolkits/gitlab/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -57,6 +59,8 @@ export const toolkits: ToolkitManifest[] = [
   cloudflare,
   slack,
   discord,
+  gitlab,
+  bitbucket,
 ];
 export {
   mathematics,
@@ -87,6 +91,8 @@ export {
   cloudflare,
   slack,
   discord,
+  gitlab,
+  bitbucket,
 };
 export * from './core/index.js';
 
