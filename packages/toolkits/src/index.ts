@@ -33,6 +33,7 @@ import discord from './toolkits/discord/manifest.js';
 import bitbucket from './toolkits/bitbucket/manifest.js';
 import gitlab from './toolkits/gitlab/manifest.js';
 import huggingFace from './toolkits/hugging-face/manifest.js';
+import hostinger from './toolkits/hostinger/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -71,6 +72,7 @@ export const toolkits: ToolkitManifest[] = [
   gitlab,
   bitbucket,
   huggingFace,
+  hostinger,
 ];
 export {
   mathematics,
@@ -108,6 +110,7 @@ export {
   gitlab,
   bitbucket,
   huggingFace,
+  hostinger,
 };
 export * from './core/index.js';
 
