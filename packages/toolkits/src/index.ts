@@ -8,6 +8,9 @@ import googleCalendar from './toolkits/google-calendar/manifest.js';
 import googleSheets from './toolkits/google-sheets/manifest.js';
 import googleDrive from './toolkits/google-drive/manifest.js';
 import googleDocs from './toolkits/google-docs/manifest.js';
+import googleMaps from './toolkits/google-maps/manifest.js';
+import googlePhotos from './toolkits/google-photos/manifest.js';
+import googleContacts from './toolkits/google-contacts/manifest.js';
 import googleForms from './toolkits/google-forms/manifest.js';
 import aws from './toolkits/aws/manifest.js';
 import gcp from './toolkits/gcp/manifest.js';
@@ -18,6 +21,7 @@ import googleSlides from './toolkits/google-slides/manifest.js';
 import googleClassroom from './toolkits/google-classroom/manifest.js';
 import googleTasks from './toolkits/google-tasks/manifest.js';
 import googleSearchConsole from './toolkits/google-search-console/manifest.js';
+import googleAnalytics from './toolkits/google-analytics/manifest.js';
 import googleAds from './toolkits/google-ads/manifest.js';
 import youtube from './toolkits/youtube/manifest.js';
 import figma from './toolkits/figma/manifest.js';
@@ -41,12 +45,16 @@ export const toolkits: ToolkitManifest[] = [
   googleSheets,
   googleDrive,
   googleDocs,
+  googleMaps,
+  googlePhotos,
+  googleContacts,
   googleForms,
   googleMeet,
   googleSlides,
   googleClassroom,
   googleTasks,
   googleSearchConsole,
+  googleAnalytics,
   googleAds,
   youtube,
   figma,
@@ -73,12 +81,16 @@ export {
   googleSheets,
   googleDrive,
   googleDocs,
+  googleMaps,
+  googlePhotos,
+  googleContacts,
   googleForms,
   googleMeet,
   googleSlides,
   googleClassroom,
   googleTasks,
   googleSearchConsole,
+  googleAnalytics,
   googleAds,
   youtube,
   figma,

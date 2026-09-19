@@ -1,0 +1,86 @@
+// @ts-nocheck
+import {
+    batchCreateContacts,
+    batchDeleteContacts,
+    batchGetPeople,
+    batchUpdateContacts,
+    copyOtherContactToMyContacts,
+    createContact,
+    deleteContact,
+    getPerson,
+    listConnections,
+    searchContacts,
+    updateContact,
+} from './contacts.js';
+import {
+    batchGetContactGroups,
+    createContactGroup,
+    deleteContactGroup,
+    getContactGroup,
+    listContactGroups,
+    modifyContactGroupMembers,
+    updateContactGroup,
+} from './groups.js';
+import { deleteContactPhoto, updateContactPhoto } from './photos.js';
+import {
+    listDirectoryPeople,
+    listOtherContacts,
+    searchDirectoryPeople,
+    searchOtherContacts,
+} from './directory.js';
+
+export {
+    batchCreateContacts,
+    batchDeleteContacts,
+    batchGetPeople,
+    copyOtherContactToMyContacts,
+    createContact,
+    deleteContact,
+    getPerson,
+    listConnections,
+    searchContacts,
+    updateContact,
+    batchUpdateContacts,
+    batchGetContactGroups,
+    createContactGroup,
+    deleteContactGroup,
+    getContactGroup,
+    listContactGroups,
+    modifyContactGroupMembers,
+    updateContactGroup,
+    deleteContactPhoto,
+    updateContactPhoto,
+    listDirectoryPeople,
+    listOtherContacts,
+    searchDirectoryPeople,
+    searchOtherContacts,
+};
+
+const auth = 'googleContactsToken' as const;
+
+export const googleContactsTools = [
+    { name: 'googleContactsCreateContact', description: 'Creates one contact with names, emails, phones, and more.', tool: createContact, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsBatchCreateContacts', description: 'Creates up to 200 contacts in one call.', tool: batchCreateContacts, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsUpdateContact', description: 'Updates a contact via updatePersonFields with etag concurrency.', tool: updateContact, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsBatchUpdateContacts', description: 'Updates up to 200 contacts at once via resource-name map.', tool: batchUpdateContacts, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsDeleteContact', description: 'Permanently deletes a contact. Irreversible.', tool: deleteContact, requiredAuth: auth, scope: 'delete' as const },
+    { name: 'googleContactsBatchDeleteContacts', description: 'Deletes up to 500 contacts in one call. Irreversible.', tool: batchDeleteContacts, requiredAuth: auth, scope: 'delete' as const },
+    { name: 'googleContactsGetPerson', description: 'Gets a person by resource name (people/me for yourself).', tool: getPerson, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsBatchGetPeople', description: 'Fetches up to 200 people in one call.', tool: batchGetPeople, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsListConnections', description: 'Lists your contacts with sorting and incremental sync.', tool: listConnections, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsSearchContacts', description: 'Searches your contacts by name, email, phone, or organization.', tool: searchContacts, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsCopyOtherContactToMyContacts', description: 'Copies an auto-created Other contact into myContacts.', tool: copyOtherContactToMyContacts, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsCreateContactGroup', description: 'Creates a contact group with a unique name.', tool: createContactGroup, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsGetContactGroup', description: 'Gets a contact group by resource name.', tool: getContactGroup, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsBatchGetContactGroups', description: 'Gets up to 200 contact groups in one call.', tool: batchGetContactGroups, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsListContactGroups', description: 'Lists all your contact groups.', tool: listContactGroups, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsUpdateContactGroup', description: 'Renames a contact group or updates its client data.', tool: updateContactGroup, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsDeleteContactGroup', description: 'Deletes a contact group. Irreversible.', tool: deleteContactGroup, requiredAuth: auth, scope: 'delete' as const },
+    { name: 'googleContactsModifyContactGroupMembers', description: 'Adds or removes group members (max 1000 combined).', tool: modifyContactGroupMembers, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsUpdateContactPhoto', description: 'Sets a contact photo from base64 bytes.', tool: updateContactPhoto, requiredAuth: auth, scope: 'write' as const },
+    { name: 'googleContactsDeleteContactPhoto', description: 'Removes a contact photo. Irreversible.', tool: deleteContactPhoto, requiredAuth: auth, scope: 'delete' as const },
+    { name: 'googleContactsListDirectoryPeople', description: 'Lists Workspace domain profiles and contacts.', tool: listDirectoryPeople, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsSearchDirectoryPeople', description: 'Searches the Workspace domain directory.', tool: searchDirectoryPeople, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsListOtherContacts', description: 'Lists auto-created Other contacts outside your groups.', tool: listOtherContacts, requiredAuth: auth, scope: 'read' as const },
+    { name: 'googleContactsSearchOtherContacts', description: 'Prefix-searches Other contacts.', tool: searchOtherContacts, requiredAuth: auth, scope: 'read' as const },
+];
