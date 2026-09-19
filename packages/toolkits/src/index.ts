@@ -24,6 +24,8 @@ import figma from './toolkits/figma/manifest.js';
 import reddit from './toolkits/reddit/manifest.js';
 import groww from './toolkits/groww/manifest.js';
 import cloudflare from './toolkits/cloudflare/manifest.js';
+import slack from './toolkits/slack/manifest.js';
+import discord from './toolkits/discord/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -53,6 +55,8 @@ export const toolkits: ToolkitManifest[] = [
   reddit,
   groww,
   cloudflare,
+  slack,
+  discord,
 ];
 export {
   mathematics,
@@ -81,6 +85,8 @@ export {
   reddit,
   groww,
   cloudflare,
+  slack,
+  discord,
 };
 export * from './core/index.js';
 
