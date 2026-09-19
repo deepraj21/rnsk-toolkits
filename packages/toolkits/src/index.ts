@@ -18,6 +18,7 @@ import googleSlides from './toolkits/google-slides/manifest.js';
 import googleTasks from './toolkits/google-tasks/manifest.js';
 import googleSearchConsole from './toolkits/google-search-console/manifest.js';
 import googleAds from './toolkits/google-ads/manifest.js';
+import youtube from './toolkits/youtube/manifest.js';
 import reddit from './toolkits/reddit/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
@@ -38,6 +39,7 @@ export const toolkits: ToolkitManifest[] = [
   googleTasks,
   googleSearchConsole,
   googleAds,
+  youtube,
   aws,
   gcp,
   grafana,
@@ -62,6 +64,7 @@ export {
   googleTasks,
   googleSearchConsole,
   googleAds,
+  youtube,
   aws,
   gcp,
   grafana,

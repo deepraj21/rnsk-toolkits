@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**348 tools** across **18 toolkits** (run `npm run validate` for live counts).
+**461 tools** across **22 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -34,10 +34,14 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | google-meet | 15 | OAuth2 |
 | google-slides | 8 | OAuth2 |
 | google-search-console | 9 | OAuth2 |
+| google-ads | 28 | OAuth2 |
+| youtube | 49 | OAuth2 |
+| google-tasks | 15 | OAuth2 |
 | aws | 8 | service account |
 | gcp | 6 | service account |
 | grafana | 11 | service account |
 | docker-hub | 20 | service account |
+| reddit | 21 | OAuth2 |
 
 ## Install
 
