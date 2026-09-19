@@ -22,6 +22,7 @@ import youtube from './toolkits/youtube/manifest.js';
 import figma from './toolkits/figma/manifest.js';
 import reddit from './toolkits/reddit/manifest.js';
 import groww from './toolkits/groww/manifest.js';
+import cloudflare from './toolkits/cloudflare/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -49,8 +50,8 @@ export const toolkits: ToolkitManifest[] = [
   dockerHub,
   reddit,
   groww,
+  cloudflare,
 ];
-
 export {
   mathematics,
   linear,
@@ -76,6 +77,7 @@ export {
   dockerHub,
   reddit,
   groww,
+  cloudflare,
 };
 export * from './core/index.js';
 

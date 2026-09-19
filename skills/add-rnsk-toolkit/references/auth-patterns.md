@@ -83,20 +83,30 @@ Public tools in the same toolkit simply omit `requiredAuth`
 
 ## api_key (per-user key)
 
-No toolkit uses this yet — follow the `groww/` bearer pattern, but declare
-where the key goes:
+Used by: Cloudflare.
 
 ```typescript
 auth: {
   type: 'api_key',
-  tokenField: 'myServiceApiKey',
+  tokenField: 'cloudflareApiKey',
   provider: {
     in: 'header',          // 'header' | 'query'
-    name: 'X-API-Key',     // header or query param name
+    name: 'Authorization', // header or query param name
     prefix: 'Bearer',      // optional value prefix; omit for a bare key
-    connectDescription: '...',
+    connectDescription:
+      'Connect Cloudflare with an API token. Create one from My Profile > API Tokens.',
   },
 },
+allowedHosts: ['api.cloudflare.com'],
+```
+
+Tool code attaches the key itself via a shared helper (see `cloudflare/tools/client.ts`).
+Guard a missing injected key with a connect hint instead of calling the API:
+
+```typescript
+if (!cloudflareApiKey) {
+  return { error: 'Cloudflare API key is required. Connect Cloudflare first.' };
+}
 ```
 
 ## basic_auth (username:password)

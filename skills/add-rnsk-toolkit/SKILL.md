@@ -52,6 +52,7 @@ Copy the nearest existing toolkit:
 | Auth | Copy from |
 |------|-----------|
 | OAuth2 | `google-docs/`, `notion/`, `linear/` |
+| api_key | `cloudflare/` |
 | bearer_token | `groww/` |
 | service_account | `aws/`, `gcp/`, `grafana/` |
 | service_env | `web-search/` |
@@ -134,6 +135,7 @@ export const myAction = tool({
 5. **Minimize scope** — only implement requested tools; match surrounding style
 6. Use `z.record(z.any())` or `z.array(z.record(z.any()))` for complex API payloads
 7. Put shared fetch logic in `tools/utils.ts` or `tools/client.ts`
+8. **Guard missing token** in token-auth toolkits (`api_key` / `bearer_token` / `basic_auth`): return `{ error: '<Service> API key is required. Connect <Service> first.' }` when the injected field is absent (see `cloudflare/tools/list-zones.ts`)
 
 ## manifest.ts pattern
 
@@ -185,7 +187,7 @@ export default defineToolkit({
 |------|------------------|----------------|
 | `oauth2` | e.g. `googleFormsToken` | `provider.env`, scopes, callbackPath (see manifest pattern above) |
 | `bearer_token` | e.g. `growwAccessToken` | `{ connectDescription }` only — tool code attaches `Authorization: Bearer <token>` itself (see `groww/`) |
-| `api_key` | e.g. `myServiceApiKey` | `{ in: 'header' \| 'query', name: 'X-API-Key', prefix?: 'Bearer', connectDescription }` — tool code attaches the key itself |
+| `api_key` | e.g. `cloudflareApiKey` | `{ in: 'header' \| 'query', name, prefix?, connectDescription }` — tool code attaches the key itself (see `cloudflare/`) |
 | `basic_auth` | e.g. `myServiceCredentials` | `{ connectDescription }` only — tokenField holds raw `'username:password'` string |
 | `service_account` | e.g. `grafanaCredentials` | `{ fields: ['baseUrl','apiToken'], connectDescription }` — JSON keys user supplies |
 | `service_env` | N/A | `env: [{ name: 'FIRECRAWL_API_KEY' }]` |
@@ -205,17 +207,23 @@ allowedHosts: ['api.groww.in'],
 ```
 
 ```typescript
-// api_key (per-user key sent as a named header or query param)
+// api_key (per-user key sent as a named header or query param) — see cloudflare/manifest.ts
 auth: {
   type: 'api_key',
-  tokenField: 'myServiceApiKey',
+  tokenField: 'cloudflareApiKey',
   provider: {
     in: 'header',
-    name: 'X-API-Key',
-    connectDescription: 'Paste your API key from My Service > Settings > API.',
+    name: 'Authorization',
+    prefix: 'Bearer',
+    connectDescription:
+      'Connect Cloudflare with an API token. Create one from My Profile > API Tokens using a template such as Edit zone DNS.',
   },
 },
 ```
+
+`in`/`name`/`prefix` describe where the key goes (here: `Authorization: Bearer <token>`);
+tool code still attaches it itself, typically via a shared `client.ts` helper
+(see `cloudflare/tools/client.ts` `cfRequest`).
 
 Tools in a `bearer_token` / `api_key` / `basic_auth` toolkit declare the injected
 field as **optional** (`z.string().optional()`); the host injects it at runtime.
@@ -237,6 +245,8 @@ export const myServiceTools = [
     {
         name: 'myServiceMyAction',
         description: 'Same description as tool() or expanded.',
+        // Alternative (used by cloudflare/): reuse the tool's own description
+        // description: myAction.description!,
         tool: myAction,
         requiredAuth: 'myServiceToken' as const,
         scope: 'read' as const,
