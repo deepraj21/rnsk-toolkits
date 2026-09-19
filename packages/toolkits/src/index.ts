@@ -35,6 +35,9 @@ import gitlab from './toolkits/gitlab/manifest.js';
 import huggingFace from './toolkits/hugging-face/manifest.js';
 import hostinger from './toolkits/hostinger/manifest.js';
 import hackerNews from './toolkits/hacker-news/manifest.js';
+import jira from './toolkits/jira/manifest.js';
+import neo4j from './toolkits/neo4j/manifest.js';
+import neon from './toolkits/neon/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -75,6 +78,9 @@ export const toolkits: ToolkitManifest[] = [
   huggingFace,
   hostinger,
   hackerNews,
+  jira,
+  neo4j,
+  neon,
 ];
 export {
   mathematics,
@@ -114,6 +120,9 @@ export {
   huggingFace,
   hostinger,
   hackerNews,
+  jira,
+  neo4j,
+  neon,
 };
 export * from './core/index.js';
 
