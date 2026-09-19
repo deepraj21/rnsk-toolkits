@@ -32,6 +32,7 @@ import slack from './toolkits/slack/manifest.js';
 import discord from './toolkits/discord/manifest.js';
 import bitbucket from './toolkits/bitbucket/manifest.js';
 import gitlab from './toolkits/gitlab/manifest.js';
+import huggingFace from './toolkits/hugging-face/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -69,6 +70,7 @@ export const toolkits: ToolkitManifest[] = [
   discord,
   gitlab,
   bitbucket,
+  huggingFace,
 ];
 export {
   mathematics,
@@ -105,6 +107,7 @@ export {
   discord,
   gitlab,
   bitbucket,
+  huggingFace,
 };
 export * from './core/index.js';
 

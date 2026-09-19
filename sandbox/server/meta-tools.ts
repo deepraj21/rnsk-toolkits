@@ -135,7 +135,7 @@ export function createMetaTools(ctx: MetaToolContext) {
 
   const initiateConnection = tool({
     description:
-      'Get a link for the user to connect an external provider. Use when checkAuthentication returns not authenticated.',
+      'Start connecting an external provider. The chat UI renders a Connect button automatically — do not paste the URL in your text response. Use when checkAuthentication returns not authenticated.',
     inputSchema: z.object({
       provider: z.string().describe('Provider to connect: e.g. "github" for githubToken'),
     }),
