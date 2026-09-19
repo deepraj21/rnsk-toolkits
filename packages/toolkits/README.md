@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**1199 tools** across **35 toolkits** (run `npm run validate` for live counts).
+**1237 tools** across **37 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -55,6 +55,8 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | gitlab | 25 | OAuth2 |
 | bitbucket | 108 | OAuth2 |
 | hugging-face | 135 | OAuth2 |
+| hostinger | 24 | API key |
+| hacker-news | 14 | none |
 
 ## Install
 
