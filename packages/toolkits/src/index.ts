@@ -21,6 +21,7 @@ import googleAds from './toolkits/google-ads/manifest.js';
 import youtube from './toolkits/youtube/manifest.js';
 import figma from './toolkits/figma/manifest.js';
 import reddit from './toolkits/reddit/manifest.js';
+import groww from './toolkits/groww/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -47,6 +48,7 @@ export const toolkits: ToolkitManifest[] = [
   grafana,
   dockerHub,
   reddit,
+  groww,
 ];
 
 export {
@@ -73,6 +75,7 @@ export {
   grafana,
   dockerHub,
   reddit,
+  groww,
 };
 export * from './core/index.js';
 

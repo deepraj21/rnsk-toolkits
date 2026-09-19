@@ -52,6 +52,7 @@ Copy the nearest existing toolkit:
 | Auth | Copy from |
 |------|-----------|
 | OAuth2 | `google-docs/`, `notion/`, `linear/` |
+| bearer_token | `groww/` |
 | service_account | `aws/`, `gcp/`, `grafana/` |
 | service_env | `web-search/` |
 | none | `mathematics/` |
@@ -62,7 +63,7 @@ Copy the nearest existing toolkit:
 - [ ] Create packages/toolkits/src/toolkits/<id>/
 - [ ] manifest.ts — defineToolkit({ id, displayName, shortDescription, category, icon, auth, tools, meta })
 - [ ] icon.ts — SVG base64 data URI (GFORMS_ICON pattern)
-- [ ] tools/*.ts — one AI SDK tool per file
+- [ ] tools/*.ts — one AI SDK tool per file (or group related tools by domain, e.g. `orders.ts` in `groww/`)
 - [ ] tools/index.ts — export array with name, description, tool, requiredAuth, scope
 - [ ] Register import + export + toolkits[] in src/index.ts
 - [ ] npm run validate && npm run build (in packages/toolkits)
@@ -93,7 +94,7 @@ import { z } from 'zod';
 export const myAction = tool({
     description: 'Clear LLM-facing description of when to use this tool.',
     inputSchema: z.object({
-        myServiceToken: z.string().describe('Injected auth token — match manifest tokenField'),
+        myServiceToken: z.string().optional().describe('Injected auth token — match manifest tokenField'),
         id: z.string().describe('Resource identifier'),
         payload: z.record(z.any()).optional().describe('Complex nested API body'),
     }),
@@ -180,13 +181,47 @@ export default defineToolkit({
 
 ### Auth types
 
-| type | tokenField value | provider.fields (service_account) |
-|------|------------------|-----------------------------------|
-| `oauth2` | e.g. `googleFormsToken` | N/A — use `provider.env`, scopes, callbackPath |
-| `service_account` | e.g. `grafanaCredentials` | JSON keys user supplies, e.g. `['baseUrl','apiToken']` |
+| type | tokenField value | provider shape |
+|------|------------------|----------------|
+| `oauth2` | e.g. `googleFormsToken` | `provider.env`, scopes, callbackPath (see manifest pattern above) |
+| `bearer_token` | e.g. `growwAccessToken` | `{ connectDescription }` only — tool code attaches `Authorization: Bearer <token>` itself (see `groww/`) |
+| `api_key` | e.g. `myServiceApiKey` | `{ in: 'header' \| 'query', name: 'X-API-Key', prefix?: 'Bearer', connectDescription }` — tool code attaches the key itself |
+| `basic_auth` | e.g. `myServiceCredentials` | `{ connectDescription }` only — tokenField holds raw `'username:password'` string |
+| `service_account` | e.g. `grafanaCredentials` | `{ fields: ['baseUrl','apiToken'], connectDescription }` — JSON keys user supplies |
 | `service_env` | N/A | `env: [{ name: 'FIRECRAWL_API_KEY' }]` |
-| `api_key` / `bearer_token` / `basic_auth` | token string | see `src/core/types.ts` |
 | `none` | omit requiredAuth | pure computation |
+
+```typescript
+// bearer_token (per-user token pasted at connect time) — see groww/manifest.ts
+auth: {
+  type: 'bearer_token',
+  tokenField: 'growwAccessToken',
+  provider: {
+    connectDescription:
+      'Connect Groww with a Trading API access token. Generate one from Groww Profile > Settings > Trading APIs (expires daily at 6:00 AM). All trading calls send it as Authorization: Bearer <token> with X-API-VERSION: 1.0.',
+  },
+},
+allowedHosts: ['api.groww.in'],
+```
+
+```typescript
+// api_key (per-user key sent as a named header or query param)
+auth: {
+  type: 'api_key',
+  tokenField: 'myServiceApiKey',
+  provider: {
+    in: 'header',
+    name: 'X-API-Key',
+    connectDescription: 'Paste your API key from My Service > Settings > API.',
+  },
+},
+```
+
+Tools in a `bearer_token` / `api_key` / `basic_auth` toolkit declare the injected
+field as **optional** (`z.string().optional()`); the host injects it at runtime.
+A toolkit may mix authed and public tools — omit `requiredAuth` on the public ones
+(e.g. `growwSearchInstruments` has no `requiredAuth` while every other Groww tool
+sets `requiredAuth: 'growwAccessToken'`).
 
 For `service_account`, tools receive a **JSON string**; parse in `client.ts` (see `aws/tools/client.ts`).
 

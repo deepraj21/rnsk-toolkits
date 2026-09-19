@@ -51,6 +51,66 @@ export function parseGrafanaCredentials(raw: string) {
 }
 ```
 
+## bearer_token (per-user token)
+
+Used by: Groww.
+
+```typescript
+auth: {
+  type: 'bearer_token',
+  tokenField: 'growwAccessToken',
+  provider: {
+    connectDescription: 'Paste your Trading API access token (expires daily at 6:00 AM).',
+  },
+},
+allowedHosts: ['api.groww.in'],
+```
+
+Tool code attaches the header itself (plus any service headers, e.g. `X-API-VERSION`):
+
+```typescript
+headers: {
+  Accept: 'application/json',
+  Authorization: `Bearer ${growwAccessToken}`,
+  'X-API-VERSION': '1.0',
+},
+```
+
+Every authed tool sets `requiredAuth: 'growwAccessToken'` matching `tokenField`.
+Tools declare the injected field as optional: `z.string().optional()`.
+Public tools in the same toolkit simply omit `requiredAuth`
+(e.g. Groww's instrument CSV search needs no token).
+
+## api_key (per-user key)
+
+No toolkit uses this yet — follow the `groww/` bearer pattern, but declare
+where the key goes:
+
+```typescript
+auth: {
+  type: 'api_key',
+  tokenField: 'myServiceApiKey',
+  provider: {
+    in: 'header',          // 'header' | 'query'
+    name: 'X-API-Key',     // header or query param name
+    prefix: 'Bearer',      // optional value prefix; omit for a bare key
+    connectDescription: '...',
+  },
+},
+```
+
+## basic_auth (username:password)
+
+No toolkit uses this yet. `tokenField` holds a raw `'username:password'` string:
+
+```typescript
+auth: {
+  type: 'basic_auth',
+  tokenField: 'myServiceCredentials',
+  provider: { connectDescription: '...' },
+},
+```
+
 ## service_env (server-side key)
 
 Used by: web-search (Firecrawl).
@@ -76,7 +136,7 @@ auth: { type: 'none' },
 
 ## allowedHosts
 
-Required for OAuth toolkits. List every hostname tools call (no user-controlled hosts). Prevents SSRF in hosted Runstack.
+Required for OAuth and token (`bearer_token` / `api_key`) toolkits. List every hostname tools call (no user-controlled hosts). Prevents SSRF in hosted Runstack.
 
 Skip for self-hosted service_account toolkits where base URL is user-supplied (AWS/GCP/Grafana pattern).
 
