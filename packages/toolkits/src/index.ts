@@ -18,6 +18,7 @@ import googleSlides from './toolkits/google-slides/manifest.js';
 import googleTasks from './toolkits/google-tasks/manifest.js';
 import googleSearchConsole from './toolkits/google-search-console/manifest.js';
 import googleAds from './toolkits/google-ads/manifest.js';
+import reddit from './toolkits/reddit/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -41,6 +42,7 @@ export const toolkits: ToolkitManifest[] = [
   gcp,
   grafana,
   dockerHub,
+  reddit,
 ];
 
 export {
@@ -64,6 +66,7 @@ export {
   gcp,
   grafana,
   dockerHub,
+  reddit,
 };
 export * from './core/index.js';
 
