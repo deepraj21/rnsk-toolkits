@@ -15,6 +15,10 @@ import googleForms from './toolkits/google-forms/manifest.js';
 import aws from './toolkits/aws/manifest.js';
 import gcp from './toolkits/gcp/manifest.js';
 import grafana from './toolkits/grafana/manifest.js';
+import newRelic from './toolkits/new-relic/manifest.js';
+import npm from './toolkits/npm/manifest.js';
+import telegram from './toolkits/telegram/manifest.js';
+import snowflake from './toolkits/snowflake/manifest.js';
 import dockerHub from './toolkits/docker-hub/manifest.js';
 import googleMeet from './toolkits/google-meet/manifest.js';
 import googleSlides from './toolkits/google-slides/manifest.js';
@@ -30,6 +34,8 @@ import groww from './toolkits/groww/manifest.js';
 import cloudflare from './toolkits/cloudflare/manifest.js';
 import slack from './toolkits/slack/manifest.js';
 import discord from './toolkits/discord/manifest.js';
+import convex from './toolkits/convex/manifest.js';
+import datadog from './toolkits/datadog/manifest.js';
 import bitbucket from './toolkits/bitbucket/manifest.js';
 import gitlab from './toolkits/gitlab/manifest.js';
 import huggingFace from './toolkits/hugging-face/manifest.js';
@@ -38,6 +44,10 @@ import hackerNews from './toolkits/hacker-news/manifest.js';
 import jira from './toolkits/jira/manifest.js';
 import neo4j from './toolkits/neo4j/manifest.js';
 import neon from './toolkits/neon/manifest.js';
+import kaggle from './toolkits/kaggle/manifest.js';
+import devTo from './toolkits/dev-to/manifest.js';
+import nasa from './toolkits/nasa/manifest.js';
+import notebookLm from './toolkits/notebook-lm/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -67,12 +77,18 @@ export const toolkits: ToolkitManifest[] = [
   aws,
   gcp,
   grafana,
+  newRelic,
+  npm,
+  telegram,
+  snowflake,
   dockerHub,
   reddit,
   groww,
   cloudflare,
   slack,
   discord,
+  convex,
+  datadog,
   gitlab,
   bitbucket,
   huggingFace,
@@ -81,6 +97,10 @@ export const toolkits: ToolkitManifest[] = [
   jira,
   neo4j,
   neon,
+  kaggle,
+  devTo,
+  notebookLm,
+  nasa,
 ];
 export {
   mathematics,
@@ -109,12 +129,18 @@ export {
   aws,
   gcp,
   grafana,
+  newRelic,
+  npm,
+  telegram,
+  snowflake,
   dockerHub,
   reddit,
   groww,
   cloudflare,
   slack,
   discord,
+  convex,
+  datadog,
   gitlab,
   bitbucket,
   huggingFace,
@@ -123,6 +149,10 @@ export {
   jira,
   neo4j,
   neon,
+  kaggle,
+  devTo,
+  notebookLm,
+  nasa,
 };
 export * from './core/index.js';
 
