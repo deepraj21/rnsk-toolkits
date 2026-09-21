@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**1471 tools** across **40 toolkits** (run `npm run validate` for live counts).
+**1965 tools** across **50 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -37,21 +37,27 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | google-meet | 15 | OAuth2 |
 | google-slides | 8 | OAuth2 |
 | google-classroom | 62 | OAuth2 |
+| google-tasks | 15 | OAuth2 |
 | google-search-console | 9 | OAuth2 |
 | google-analytics | 67 | OAuth2 |
 | google-ads | 28 | OAuth2 |
 | youtube | 49 | OAuth2 |
-| google-tasks | 15 | OAuth2 |
 | figma | 52 | OAuth2 |
 | aws | 8 | service account |
 | gcp | 6 | service account |
 | grafana | 11 | service account |
+| new-relic | 158 | API key |
+| npm | 12 | API key |
+| telegram | 18 | API key |
+| snowflake | 16 | service account |
 | docker-hub | 20 | service account |
 | reddit | 21 | OAuth2 |
 | groww | 30 | bearer token |
 | cloudflare | 20 | API key |
 | slack | 159 | OAuth2 |
 | discord | 23 | OAuth2 |
+| convex | 19 | bearer token |
+| datadog | 61 | service account |
 | gitlab | 25 | OAuth2 |
 | bitbucket | 108 | OAuth2 |
 | hugging-face | 135 | OAuth2 |
@@ -60,6 +66,10 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | jira | 103 | OAuth2 |
 | neo4j | 21 | basic auth |
 | neon | 110 | API key |
+| kaggle | 35 | basic auth |
+| dev-to | 28 | API key |
+| notebook-lm | 11 | OAuth2 |
+| nasa | 136 | API key |
 
 ## Install
 
