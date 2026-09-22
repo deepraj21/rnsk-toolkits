@@ -17,6 +17,7 @@ import gcp from './toolkits/gcp/manifest.js';
 import grafana from './toolkits/grafana/manifest.js';
 import newRelic from './toolkits/new-relic/manifest.js';
 import npm from './toolkits/npm/manifest.js';
+import accuweather from './toolkits/accuweather/manifest.js';
 import telegram from './toolkits/telegram/manifest.js';
 import snowflake from './toolkits/snowflake/manifest.js';
 import dockerHub from './toolkits/docker-hub/manifest.js';
@@ -80,6 +81,7 @@ export const toolkits: ToolkitManifest[] = [
   grafana,
   newRelic,
   npm,
+  accuweather,
   telegram,
   snowflake,
   dockerHub,
@@ -133,6 +135,7 @@ export {
   grafana,
   newRelic,
   npm,
+  accuweather,
   telegram,
   snowflake,
   dockerHub,
