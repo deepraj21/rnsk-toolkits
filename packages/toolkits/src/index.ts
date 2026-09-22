@@ -57,6 +57,7 @@ import zoho from './toolkits/zoho/manifest.js';
 import wordpress from './toolkits/wordpress/manifest.js';
 import wise from './toolkits/wise/manifest.js';
 import servicenow from './toolkits/servicenow/manifest.js';
+import postman from './toolkits/postman/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -119,6 +120,7 @@ export const toolkits: ToolkitManifest[] = [
   wordpress,
   wise,
   servicenow,
+  postman,
 ];
 export {
   mathematics,
@@ -180,6 +182,7 @@ export {
   wordpress,
   wise,
   servicenow,
+  postman,
 };
 export * from './core/index.js';
 
