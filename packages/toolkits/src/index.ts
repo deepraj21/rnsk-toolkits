@@ -51,6 +51,7 @@ import nasa from './toolkits/nasa/manifest.js';
 import notebookLm from './toolkits/notebook-lm/manifest.js';
 import vercel from './toolkits/vercel/manifest.js';
 import zoho from './toolkits/zoho/manifest.js';
+import wordpress from './toolkits/wordpress/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -107,6 +108,7 @@ export const toolkits: ToolkitManifest[] = [
   nasa,
   vercel,
   zoho,
+  wordpress,
 ];
 export {
   mathematics,
@@ -162,6 +164,7 @@ export {
   nasa,
   vercel,
   zoho,
+  wordpress,
 };
 export * from './core/index.js';
 
