@@ -48,6 +48,7 @@ import kaggle from './toolkits/kaggle/manifest.js';
 import devTo from './toolkits/dev-to/manifest.js';
 import nasa from './toolkits/nasa/manifest.js';
 import notebookLm from './toolkits/notebook-lm/manifest.js';
+import vercel from './toolkits/vercel/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -101,6 +102,7 @@ export const toolkits: ToolkitManifest[] = [
   devTo,
   notebookLm,
   nasa,
+  vercel,
 ];
 export {
   mathematics,
@@ -153,6 +155,7 @@ export {
   devTo,
   notebookLm,
   nasa,
+  vercel,
 };
 export * from './core/index.js';
 
