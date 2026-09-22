@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**1965 tools** across **50 toolkits** (run `npm run validate` for live counts).
+**2236 tools** across **56 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -48,8 +48,10 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | grafana | 11 | service account |
 | new-relic | 158 | API key |
 | npm | 12 | API key |
+| accuweather | 41 | API key |
 | telegram | 18 | API key |
 | snowflake | 16 | service account |
+| gumroad | 7 | OAuth2 |
 | docker-hub | 20 | service account |
 | reddit | 21 | OAuth2 |
 | groww | 30 | bearer token |
@@ -70,6 +72,10 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | dev-to | 28 | API key |
 | notebook-lm | 11 | OAuth2 |
 | nasa | 136 | API key |
+| vercel | 147 | OAuth2 |
+| zoho | 57 | OAuth2 |
+| wordpress | 10 | OAuth2 |
+| wise | 9 | API key |
 
 ## Install
 

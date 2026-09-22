@@ -20,6 +20,7 @@ import npm from './toolkits/npm/manifest.js';
 import accuweather from './toolkits/accuweather/manifest.js';
 import telegram from './toolkits/telegram/manifest.js';
 import snowflake from './toolkits/snowflake/manifest.js';
+import gumroad from './toolkits/gumroad/manifest.js';
 import dockerHub from './toolkits/docker-hub/manifest.js';
 import googleMeet from './toolkits/google-meet/manifest.js';
 import googleSlides from './toolkits/google-slides/manifest.js';
@@ -52,6 +53,7 @@ import notebookLm from './toolkits/notebook-lm/manifest.js';
 import vercel from './toolkits/vercel/manifest.js';
 import zoho from './toolkits/zoho/manifest.js';
 import wordpress from './toolkits/wordpress/manifest.js';
+import wise from './toolkits/wise/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -86,6 +88,7 @@ export const toolkits: ToolkitManifest[] = [
   accuweather,
   telegram,
   snowflake,
+  gumroad,
   dockerHub,
   reddit,
   groww,
@@ -109,6 +112,7 @@ export const toolkits: ToolkitManifest[] = [
   vercel,
   zoho,
   wordpress,
+  wise,
 ];
 export {
   mathematics,
@@ -142,6 +146,7 @@ export {
   accuweather,
   telegram,
   snowflake,
+  gumroad,
   dockerHub,
   reddit,
   groww,
@@ -165,6 +170,7 @@ export {
   vercel,
   zoho,
   wordpress,
+  wise,
 };
 export * from './core/index.js';
 
