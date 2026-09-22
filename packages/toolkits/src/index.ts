@@ -21,6 +21,7 @@ import accuweather from './toolkits/accuweather/manifest.js';
 import telegram from './toolkits/telegram/manifest.js';
 import snowflake from './toolkits/snowflake/manifest.js';
 import gumroad from './toolkits/gumroad/manifest.js';
+import razorpay from './toolkits/razorpay/manifest.js';
 import dockerHub from './toolkits/docker-hub/manifest.js';
 import googleMeet from './toolkits/google-meet/manifest.js';
 import googleSlides from './toolkits/google-slides/manifest.js';
@@ -89,6 +90,7 @@ export const toolkits: ToolkitManifest[] = [
   telegram,
   snowflake,
   gumroad,
+  razorpay,
   dockerHub,
   reddit,
   groww,
@@ -147,6 +149,7 @@ export {
   telegram,
   snowflake,
   gumroad,
+  razorpay,
   dockerHub,
   reddit,
   groww,
