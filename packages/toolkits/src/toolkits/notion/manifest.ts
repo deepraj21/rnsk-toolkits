@@ -32,7 +32,7 @@ export default defineToolkit({
       description: entry.description,
       tool: entry.tool,
       requiredAuth: entry.requiredAuth,
-      scope: inferToolScope(entry.name),
+      scope: (entry as any).scope ?? inferToolScope(entry.name),
     }),
   ),
   meta: { since: '0.0.2' },
