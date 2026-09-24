@@ -47,6 +47,7 @@ import huggingFace from './toolkits/hugging-face/manifest.js';
 import hostinger from './toolkits/hostinger/manifest.js';
 import hackerNews from './toolkits/hacker-news/manifest.js';
 import jira from './toolkits/jira/manifest.js';
+import jenkins from './toolkits/jenkins/manifest.js';
 import neo4j from './toolkits/neo4j/manifest.js';
 import neon from './toolkits/neon/manifest.js';
 import kaggle from './toolkits/kaggle/manifest.js';
@@ -113,6 +114,7 @@ export const toolkits: ToolkitManifest[] = [
   hostinger,
   hackerNews,
   jira,
+  jenkins,
   neo4j,
   neon,
   kaggle,
@@ -178,6 +180,7 @@ export {
   hostinger,
   hackerNews,
   jira,
+  jenkins,
   neo4j,
   neon,
   kaggle,
