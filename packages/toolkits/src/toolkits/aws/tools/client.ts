@@ -27,6 +27,10 @@ import { CodePipelineClient } from '@aws-sdk/client-codepipeline';
 import { CodeartifactClient } from '@aws-sdk/client-codeartifact';
 import { CloudTrailClient } from '@aws-sdk/client-cloudtrail';
 import { XRayClient } from '@aws-sdk/client-xray';
+import { CostExplorerClient } from '@aws-sdk/client-cost-explorer';
+import { BudgetsClient } from '@aws-sdk/client-budgets';
+import { BillingClient } from '@aws-sdk/client-billing';
+import { CostAndUsageReportServiceClient } from '@aws-sdk/client-cost-and-usage-report-service';
 
 export interface AwsCredentials {
   accessKeyId: string;
@@ -203,6 +207,37 @@ export function createCloudTrailClient(awsCredentials: string, region?: string):
 
 export function createXRayClient(awsCredentials: string, region?: string): XRayClient {
   return new XRayClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCostExplorerClient(awsCredentials: string, region?: string): CostExplorerClient {
+  return new CostExplorerClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createBudgetsClient(awsCredentials: string, region?: string): BudgetsClient {
+  return new BudgetsClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createBillingClient(awsCredentials: string, region?: string): BillingClient {
+  return new BillingClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCostAndUsageReportServiceClient(
+  awsCredentials: string,
+  region?: string,
+): CostAndUsageReportServiceClient {
+  return new CostAndUsageReportServiceClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
   });

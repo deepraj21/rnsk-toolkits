@@ -1041,6 +1041,69 @@ import { awsGetInsight } from './xray/get-insight.js';
 import { awsGetInsightSummaries } from './xray/get-insight-summaries.js';
 import { awsGetInsightEvents } from './xray/get-insight-events.js';
 import { awsGetInsightImpactGraph } from './xray/get-insight-impact-graph.js';
+import { awsGetCostAndUsage } from './cost-explorer/get-cost-and-usage.js';
+import { awsGetCostAndUsageWithResources } from './cost-explorer/get-cost-and-usage-with-resources.js';
+import { awsGetReservationCoverage } from './cost-explorer/get-reservation-coverage.js';
+import { awsGetReservationPurchaseRecommendation } from './cost-explorer/get-reservation-purchase-recommendation.js';
+import { awsGetReservationUtilization } from './cost-explorer/get-reservation-utilization.js';
+import { awsGetRightsizingRecommendation } from './cost-explorer/get-rightsizing-recommendation.js';
+import { awsGetSavingsPlansCoverage } from './cost-explorer/get-savings-plans-coverage.js';
+import { awsGetSavingsPlansPurchaseRecommendation } from './cost-explorer/get-savings-plans-purchase-recommendation.js';
+import { awsGetSavingsPlansUtilization } from './cost-explorer/get-savings-plans-utilization.js';
+import { awsGetSavingsPlansUtilizationDetails } from './cost-explorer/get-savings-plans-utilization-details.js';
+import { awsListCostCategoryDefinitions } from './cost-explorer/list-cost-category-definitions.js';
+import { awsGetCostCategories } from './cost-explorer/get-cost-categories.js';
+import { awsCreateCostCategoryDefinition } from './cost-explorer/create-cost-category-definition.js';
+import { awsUpdateCostCategoryDefinition } from './cost-explorer/update-cost-category-definition.js';
+import { awsDeleteCostCategoryDefinition } from './cost-explorer/delete-cost-category-definition.js';
+import { awsDescribeCostCategoryDefinition } from './cost-explorer/describe-cost-category-definition.js';
+import { awsGetDimensionValues } from './cost-explorer/get-dimension-values.js';
+import { awsGetTags } from './cost-explorer/get-tags.js';
+import { awsGetAnomalies } from './cost-explorer/get-anomalies.js';
+import { awsGetAnomalyMonitors } from './cost-explorer/get-anomaly-monitors.js';
+import { awsGetAnomalySubscriptions } from './cost-explorer/get-anomaly-subscriptions.js';
+import { awsCreateAnomalyMonitor } from './cost-explorer/create-anomaly-monitor.js';
+import { awsUpdateAnomalyMonitor } from './cost-explorer/update-anomaly-monitor.js';
+import { awsDeleteAnomalyMonitor } from './cost-explorer/delete-anomaly-monitor.js';
+import { awsCreateAnomalySubscription } from './cost-explorer/create-anomaly-subscription.js';
+import { awsUpdateAnomalySubscription } from './cost-explorer/update-anomaly-subscription.js';
+import { awsDeleteAnomalySubscription } from './cost-explorer/delete-anomaly-subscription.js';
+import { awsListBudgets } from './budgets/list-budgets.js';
+import { awsDescribeBudget } from './budgets/describe-budget.js';
+import { awsCreateBudget } from './budgets/create-budget.js';
+import { awsUpdateBudget } from './budgets/update-budget.js';
+import { awsDeleteBudget } from './budgets/delete-budget.js';
+import { awsDescribeBudgetPerformanceHistory } from './budgets/describe-budget-performance-history.js';
+import { awsCreateBudgetAction } from './budgets/create-budget-action.js';
+import { awsUpdateBudgetAction } from './budgets/update-budget-action.js';
+import { awsDeleteBudgetAction } from './budgets/delete-budget-action.js';
+import { awsDescribeBudgetAction } from './budgets/describe-budget-action.js';
+import { awsListBudgetActionsForBudget } from './budgets/list-budget-actions-for-budget.js';
+import { awsListBudgetActionsForAccount } from './budgets/list-budget-actions-for-account.js';
+import { awsExecuteBudgetAction } from './budgets/execute-budget-action.js';
+import { awsCreateBudgetNotification } from './budgets/create-budget-notification.js';
+import { awsUpdateBudgetNotification } from './budgets/update-budget-notification.js';
+import { awsDeleteBudgetNotification } from './budgets/delete-budget-notification.js';
+import { awsListBudgetNotificationsForBudget } from './budgets/list-budget-notifications-for-budget.js';
+import { awsListBudgetNotificationsForAccount } from './budgets/list-budget-notifications-for-account.js';
+import { awsCreateBudgetSubscriber } from './budgets/create-budget-subscriber.js';
+import { awsUpdateBudgetSubscriber } from './budgets/update-budget-subscriber.js';
+import { awsDeleteBudgetSubscriber } from './budgets/delete-budget-subscriber.js';
+import { awsListSubscribersForNotification } from './budgets/list-subscribers-for-notification.js';
+import { awsListBillingViews } from './billing/list-billing-views.js';
+import { awsGetBillingView } from './billing/get-billing-view.js';
+import { awsCreateBillingView } from './billing/create-billing-view.js';
+import { awsUpdateBillingView } from './billing/update-billing-view.js';
+import { awsDeleteBillingView } from './billing/delete-billing-view.js';
+import { awsGetBillingViewResourcePolicy } from './billing/get-billing-view-resource-policy.js';
+import { awsListSourceViewsForBillingView } from './billing/list-source-views-for-billing-view.js';
+import { awsListBillingViewTags } from './billing/list-billing-view-tags.js';
+import { awsTagBillingView } from './billing/tag-billing-view.js';
+import { awsUntagBillingView } from './billing/untag-billing-view.js';
+import { awsDescribeReportDefinitions } from './cost-and-usage-report-service/describe-report-definitions.js';
+import { awsPutReportDefinition } from './cost-and-usage-report-service/put-report-definition.js';
+import { awsModifyReportDefinition } from './cost-and-usage-report-service/modify-report-definition.js';
+import { awsDeleteReportDefinition } from './cost-and-usage-report-service/delete-report-definition.js';
 
 export {
   awsListEc2Instances,
@@ -2083,6 +2146,69 @@ export {
   awsGetInsightSummaries,
   awsGetInsightEvents,
   awsGetInsightImpactGraph,
+  awsGetCostAndUsage,
+  awsGetCostAndUsageWithResources,
+  awsGetReservationCoverage,
+  awsGetReservationPurchaseRecommendation,
+  awsGetReservationUtilization,
+  awsGetRightsizingRecommendation,
+  awsGetSavingsPlansCoverage,
+  awsGetSavingsPlansPurchaseRecommendation,
+  awsGetSavingsPlansUtilization,
+  awsGetSavingsPlansUtilizationDetails,
+  awsListCostCategoryDefinitions,
+  awsGetCostCategories,
+  awsCreateCostCategoryDefinition,
+  awsUpdateCostCategoryDefinition,
+  awsDeleteCostCategoryDefinition,
+  awsDescribeCostCategoryDefinition,
+  awsGetDimensionValues,
+  awsGetTags,
+  awsGetAnomalies,
+  awsGetAnomalyMonitors,
+  awsGetAnomalySubscriptions,
+  awsCreateAnomalyMonitor,
+  awsUpdateAnomalyMonitor,
+  awsDeleteAnomalyMonitor,
+  awsCreateAnomalySubscription,
+  awsUpdateAnomalySubscription,
+  awsDeleteAnomalySubscription,
+  awsListBudgets,
+  awsDescribeBudget,
+  awsCreateBudget,
+  awsUpdateBudget,
+  awsDeleteBudget,
+  awsDescribeBudgetPerformanceHistory,
+  awsCreateBudgetAction,
+  awsUpdateBudgetAction,
+  awsDeleteBudgetAction,
+  awsDescribeBudgetAction,
+  awsListBudgetActionsForBudget,
+  awsListBudgetActionsForAccount,
+  awsExecuteBudgetAction,
+  awsCreateBudgetNotification,
+  awsUpdateBudgetNotification,
+  awsDeleteBudgetNotification,
+  awsListBudgetNotificationsForBudget,
+  awsListBudgetNotificationsForAccount,
+  awsCreateBudgetSubscriber,
+  awsUpdateBudgetSubscriber,
+  awsDeleteBudgetSubscriber,
+  awsListSubscribersForNotification,
+  awsListBillingViews,
+  awsGetBillingView,
+  awsCreateBillingView,
+  awsUpdateBillingView,
+  awsDeleteBillingView,
+  awsGetBillingViewResourcePolicy,
+  awsListSourceViewsForBillingView,
+  awsListBillingViewTags,
+  awsTagBillingView,
+  awsUntagBillingView,
+  awsDescribeReportDefinitions,
+  awsPutReportDefinition,
+  awsModifyReportDefinition,
+  awsDeleteReportDefinition,
 };
 
 export const awsTools: ToolDefinition[] = [
@@ -9372,5 +9498,446 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetInsightImpactGraph as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCostAndUsage',
+    description: 'Retrieves cost and usage metrics for your account Use it to inspect current state before making changes.',
+    tool: awsGetCostAndUsage as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCostAndUsageWithResources',
+    description: 'Retrieves cost and usage metrics with resources Use it to inspect current state before making changes.',
+    tool: awsGetCostAndUsageWithResources as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetReservationCoverage',
+    description: 'Retrieves the reservation coverage for your account Use it to inspect current state before making changes.',
+    tool: awsGetReservationCoverage as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetReservationPurchaseRecommendation',
+    description: 'Gets recommendations for which reservations to purchase Use it to inspect current state before making changes.',
+    tool: awsGetReservationPurchaseRecommendation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetReservationUtilization',
+    description: 'Retrieves the reservation utilization for your account Use it to inspect current state before making changes.',
+    tool: awsGetReservationUtilization as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetRightsizingRecommendation',
+    description: 'Creates recommendations that help you reduce cost and improve efficiency Use it to inspect current state before making changes.',
+    tool: awsGetRightsizingRecommendation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSavingsPlansCoverage',
+    description: 'Retrieves the Savings Plans coverage for your account Use it to inspect current state before making changes.',
+    tool: awsGetSavingsPlansCoverage as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSavingsPlansPurchaseRecommendation',
+    description: 'Gets recommendations for which Savings Plans to purchase Use it to inspect current state before making changes.',
+    tool: awsGetSavingsPlansPurchaseRecommendation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSavingsPlansUtilization',
+    description: 'Retrieves the Savings Plans utilization for your account Use it to inspect current state before making changes.',
+    tool: awsGetSavingsPlansUtilization as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSavingsPlansUtilizationDetails',
+    description: 'Retrieves attribute data about Savings Plans utilization Use it to inspect current state before making changes.',
+    tool: awsGetSavingsPlansUtilizationDetails as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCostCategoryDefinitions',
+    description: 'Returns the name, ARN, effective date, and number of rules for all Cost Categories defined in the account Use it to inspect current state before making changes.',
+    tool: awsListCostCategoryDefinitions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCostCategories',
+    description: 'Retrieves cost category values for a specific time period Use it to inspect current state before making changes.',
+    tool: awsGetCostCategories as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateCostCategoryDefinition',
+    description: 'Creates a new Cost Category with the requested name and rules Use it to provision a new resource.',
+    tool: awsCreateCostCategoryDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateCostCategoryDefinition',
+    description: 'Updates an existing Cost Category Use it to change an existing resource.',
+    tool: awsUpdateCostCategoryDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCostCategoryDefinition',
+    description: 'Deletes a Cost Category Use it to permanently remove the resource.',
+    tool: awsDeleteCostCategoryDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeCostCategoryDefinition',
+    description: 'Returns the name, ARN, rules, definition, and effective dates of a Cost Category Use it to inspect current state before making changes.',
+    tool: awsDescribeCostCategoryDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetDimensionValues',
+    description: 'Retrieves all available filter values for a specific filter over a period of time Use it to inspect current state before making changes.',
+    tool: awsGetDimensionValues as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetTags',
+    description: 'Queries for available tag keys and tag values for a specified period Use it to inspect current state before making changes.',
+    tool: awsGetTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAnomalies',
+    description: 'Retrieves all of the cost anomalies detected on your account Use it to inspect current state before making changes.',
+    tool: awsGetAnomalies as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAnomalyMonitors',
+    description: 'Retrieves the cost anomaly monitor objects for your account Use it to inspect current state before making changes.',
+    tool: awsGetAnomalyMonitors as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAnomalySubscriptions',
+    description: 'Retrieves the cost anomaly subscription objects for your account Use it to inspect current state before making changes.',
+    tool: awsGetAnomalySubscriptions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateAnomalyMonitor',
+    description: 'Creates a new cost anomaly detection monitor Use it to provision a new resource.',
+    tool: awsCreateAnomalyMonitor as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateAnomalyMonitor',
+    description: 'Updates an existing cost anomaly monitor Use it to change an existing resource.',
+    tool: awsUpdateAnomalyMonitor as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteAnomalyMonitor',
+    description: 'Deletes a cost anomaly monitor Use it to permanently remove the resource.',
+    tool: awsDeleteAnomalyMonitor as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateAnomalySubscription',
+    description: 'Creates a new cost anomaly subscription Use it to provision a new resource.',
+    tool: awsCreateAnomalySubscription as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateAnomalySubscription',
+    description: 'Updates an existing cost anomaly subscription Use it to change an existing resource.',
+    tool: awsUpdateAnomalySubscription as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteAnomalySubscription',
+    description: 'Deletes a cost anomaly subscription Use it to permanently remove the resource.',
+    tool: awsDeleteAnomalySubscription as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListBudgets',
+    description: 'List all budgets in your AWS account Use it to inspect current state before making changes.',
+    tool: awsListBudgets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeBudget',
+    description: 'Get details about a specific budget Use it to inspect current state before making changes.',
+    tool: awsDescribeBudget as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateBudget',
+    description: 'Create a new budget Use it to provision a new resource.',
+    tool: awsCreateBudget as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateBudget',
+    description: 'Update an existing budget Use it to change an existing resource.',
+    tool: awsUpdateBudget as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBudget',
+    description: 'Delete a budget Use it to permanently remove the resource.',
+    tool: awsDeleteBudget as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeBudgetPerformanceHistory',
+    description: 'Get the performance history of a budget Use it to inspect current state before making changes.',
+    tool: awsDescribeBudgetPerformanceHistory as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateBudgetAction',
+    description: 'Create a budget action Use it to provision a new resource.',
+    tool: awsCreateBudgetAction as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateBudgetAction',
+    description: 'Update a budget action Use it to change an existing resource.',
+    tool: awsUpdateBudgetAction as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBudgetAction',
+    description: 'Delete a budget action Use it to permanently remove the resource.',
+    tool: awsDeleteBudgetAction as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeBudgetAction',
+    description: 'Get details about a specific budget action Use it to inspect current state before making changes.',
+    tool: awsDescribeBudgetAction as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBudgetActionsForBudget',
+    description: 'List all budget actions for a specific budget Use it to inspect current state before making changes.',
+    tool: awsListBudgetActionsForBudget as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBudgetActionsForAccount',
+    description: 'List all budget actions for an account Use it to inspect current state before making changes.',
+    tool: awsListBudgetActionsForAccount as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsExecuteBudgetAction',
+    description: 'Execute a budget action Use it to run an operation.',
+    tool: awsExecuteBudgetAction as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateBudgetNotification',
+    description: 'Create a budget notification Use it to provision a new resource.',
+    tool: awsCreateBudgetNotification as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateBudgetNotification',
+    description: 'Update a budget notification Use it to change an existing resource.',
+    tool: awsUpdateBudgetNotification as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBudgetNotification',
+    description: 'Delete a budget notification Use it to permanently remove the resource.',
+    tool: awsDeleteBudgetNotification as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListBudgetNotificationsForBudget',
+    description: 'List all notifications for a specific budget Use it to inspect current state before making changes.',
+    tool: awsListBudgetNotificationsForBudget as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBudgetNotificationsForAccount',
+    description: 'List all notifications for an account Use it to inspect current state before making changes.',
+    tool: awsListBudgetNotificationsForAccount as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateBudgetSubscriber',
+    description: 'Create a budget subscriber Use it to provision a new resource.',
+    tool: awsCreateBudgetSubscriber as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateBudgetSubscriber',
+    description: 'Update a budget subscriber Use it to change an existing resource.',
+    tool: awsUpdateBudgetSubscriber as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBudgetSubscriber',
+    description: 'Delete a budget subscriber Use it to permanently remove the resource.',
+    tool: awsDeleteBudgetSubscriber as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListSubscribersForNotification',
+    description: 'List all subscribers for a specific notification Use it to inspect current state before making changes.',
+    tool: awsListSubscribersForNotification as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBillingViews',
+    description: 'List all billing views in your AWS account Use it to inspect current state before making changes.',
+    tool: awsListBillingViews as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetBillingView',
+    description: 'Get details about a specific billing view Use it to inspect current state before making changes.',
+    tool: awsGetBillingView as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateBillingView',
+    description: 'Create a new billing view Use it to provision a new resource.',
+    tool: awsCreateBillingView as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateBillingView',
+    description: 'Update an existing billing view Use it to change an existing resource.',
+    tool: awsUpdateBillingView as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBillingView',
+    description: 'Delete a billing view Use it to permanently remove the resource.',
+    tool: awsDeleteBillingView as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetBillingViewResourcePolicy',
+    description: 'Get the resource-based policy attached to a billing view Use it to inspect current state before making changes.',
+    tool: awsGetBillingViewResourcePolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListSourceViewsForBillingView',
+    description: 'List source views associated with a billing view Use it to inspect current state before making changes.',
+    tool: awsListSourceViewsForBillingView as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBillingViewTags',
+    description: 'List tags associated with a billing view Use it to inspect current state before making changes.',
+    tool: awsListBillingViewTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagBillingView',
+    description: 'Add tags to a billing view Use it to label the resource.',
+    tool: awsTagBillingView as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagBillingView',
+    description: 'Remove tags from a billing view Use it to remove tags from the resource.',
+    tool: awsUntagBillingView as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeReportDefinitions',
+    description: 'Lists the AWS Cost and Usage reports available to the account Use it to inspect current state before making changes.',
+    tool: awsDescribeReportDefinitions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutReportDefinition',
+    description: 'Creates a new report using the description that you provide Use it to write data or configuration.',
+    tool: awsPutReportDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsModifyReportDefinition',
+    description: 'Allows you to programmatically update your report preferences Use it to change an existing resource.',
+    tool: awsModifyReportDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteReportDefinition',
+    description: 'Deletes the specified report Use it to permanently remove the resource.',
+    tool: awsDeleteReportDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
   },
 ];

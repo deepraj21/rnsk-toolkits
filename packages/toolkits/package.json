@@ -33,6 +33,8 @@
   "dependencies": {
     "@aws-sdk/client-api-gateway": "^3.1139.0",
     "@aws-sdk/client-auto-scaling": "^3.1139.0",
+    "@aws-sdk/client-billing": "^3.1139.0",
+    "@aws-sdk/client-budgets": "^3.1139.0",
     "@aws-sdk/client-cloudformation": "^3.1139.0",
     "@aws-sdk/client-cloudfront": "^3.1139.0",
     "@aws-sdk/client-cloudtrail": "^3.1139.0",
@@ -42,6 +44,8 @@
     "@aws-sdk/client-codebuild": "^3.1139.0",
     "@aws-sdk/client-codedeploy": "^3.1139.0",
     "@aws-sdk/client-codepipeline": "^3.1139.0",
+    "@aws-sdk/client-cost-and-usage-report-service": "^3.1139.0",
+    "@aws-sdk/client-cost-explorer": "^3.1139.0",
     "@aws-sdk/client-dynamodb": "^3.1139.0",
     "@aws-sdk/client-ebs": "^3.1139.0",
     "@aws-sdk/client-ec2": "^3.1134.0",
