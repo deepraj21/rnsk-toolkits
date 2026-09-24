@@ -13,6 +13,7 @@ import googlePhotos from './toolkits/google-photos/manifest.js';
 import googleContacts from './toolkits/google-contacts/manifest.js';
 import googleForms from './toolkits/google-forms/manifest.js';
 import aws from './toolkits/aws/manifest.js';
+import azure from './toolkits/azure/manifest.js';
 import gcp from './toolkits/gcp/manifest.js';
 import grafana from './toolkits/grafana/manifest.js';
 import newRelic from './toolkits/new-relic/manifest.js';
@@ -85,6 +86,7 @@ export const toolkits: ToolkitManifest[] = [
   youtube,
   figma,
   aws,
+  azure,
   gcp,
   grafana,
   newRelic,
@@ -147,6 +149,7 @@ export {
   youtube,
   figma,
   aws,
+  azure,
   gcp,
   grafana,
   newRelic,
