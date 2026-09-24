@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**2619 tools** across **60 toolkits** (run `npm run validate` for live counts).
+**3639 tools** across **63 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -25,7 +25,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | gmail | 61 | OAuth2 |
 | web-search (Firecrawl) | 2 | service env |
 | github | 173 | OAuth2 |
-| notion | 8 | OAuth2 |
+| notion | 57 | OAuth2 |
 | google-calendar | 6 | OAuth2 |
 | google-sheets | 7 | OAuth2 |
 | google-drive | 10 | OAuth2 |
@@ -43,7 +43,8 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | google-ads | 28 | OAuth2 |
 | youtube | 49 | OAuth2 |
 | figma | 52 | OAuth2 |
-| aws | 8 | service account |
+| aws | 855 | service account |
+| azure | 52 | service account |
 | gcp | 6 | service account |
 | grafana | 11 | service account |
 | new-relic | 158 | API key |
@@ -71,6 +72,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | neo4j | 21 | basic auth |
 | neon | 110 | API key |
 | kaggle | 35 | basic auth |
+| kubernetes | 43 | service account |
 | dev-to | 28 | API key |
 | notebook-lm | 11 | OAuth2 |
 | nasa | 136 | API key |
@@ -80,6 +82,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | wise | 9 | API key |
 | servicenow | 145 | service account |
 | postman | 126 | API key |
+| splunk | 29 | service account |
 
 ## Install
 

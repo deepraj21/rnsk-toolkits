@@ -855,6 +855,192 @@ import { awsDeleteVpcLatticeResourcePolicy } from './vpc-lattice/delete-resource
 import { awsListVpcLatticeTags } from './vpc-lattice/list-tags.js';
 import { awsTagVpcLatticeResource } from './vpc-lattice/tag-resource.js';
 import { awsUntagVpcLatticeResource } from './vpc-lattice/untag-resource.js';
+import { awsCreateCloudformationStack } from './cloudformation/create-stack.js';
+import { awsUpdateCloudformationStack } from './cloudformation/update-stack.js';
+import { awsDeleteCloudformationStack } from './cloudformation/delete-stack.js';
+import { awsDescribeCloudformationStacks } from './cloudformation/describe-stacks.js';
+import { awsListCloudformationStacks } from './cloudformation/list-stacks.js';
+import { awsDescribeCloudformationStackEvents } from './cloudformation/describe-stack-events.js';
+import { awsDescribeCloudformationStackResource } from './cloudformation/describe-stack-resource.js';
+import { awsDescribeCloudformationStackResources } from './cloudformation/describe-stack-resources.js';
+import { awsListCloudformationStackResources } from './cloudformation/list-stack-resources.js';
+import { awsCreateCloudformationChangeset } from './cloudformation/create-changeset.js';
+import { awsDescribeCloudformationChangeset } from './cloudformation/describe-changeset.js';
+import { awsExecuteCloudformationChangeset } from './cloudformation/execute-changeset.js';
+import { awsDeleteCloudformationChangeset } from './cloudformation/delete-changeset.js';
+import { awsListCloudformationChangesets } from './cloudformation/list-changesets.js';
+import { awsGetCloudformationTemplate } from './cloudformation/get-template.js';
+import { awsGetCloudformationTemplateSummary } from './cloudformation/get-template-summary.js';
+import { awsValidateCloudformationTemplate } from './cloudformation/validate-template.js';
+import { awsCreateCloudformationStackSet } from './cloudformation/create-stack-set.js';
+import { awsUpdateCloudformationStackSet } from './cloudformation/update-stack-set.js';
+import { awsDeleteCloudformationStackSet } from './cloudformation/delete-stack-set.js';
+import { awsDescribeCloudformationStackSet } from './cloudformation/describe-stack-set.js';
+import { awsListCloudformationStackSets } from './cloudformation/list-stack-sets.js';
+import { awsCreateCloudformationStackInstances } from './cloudformation/create-stack-instances.js';
+import { awsDeleteCloudformationStackInstances } from './cloudformation/delete-stack-instances.js';
+import { awsDescribeCloudformationStackInstance } from './cloudformation/describe-stack-instance.js';
+import { awsListCloudformationStackInstances } from './cloudformation/list-stack-instances.js';
+import { awsDetectCloudformationStackDrift } from './cloudformation/detect-stack-drift.js';
+import { awsDetectCloudformationStackResourceDrift } from './cloudformation/detect-stack-resource-drift.js';
+import { awsDescribeCloudformationStackResourceDrifts } from './cloudformation/describe-stack-resource-drifts.js';
+import { awsListCloudformationExports } from './cloudformation/list-exports.js';
+import { awsListCloudformationImports } from './cloudformation/list-imports.js';
+import { awsDescribeCloudformationAccountLimits } from './cloudformation/describe-account-limits.js';
+import { awsCreateCodebuildProject } from './codebuild/create-project.js';
+import { awsGetCodebuildProject } from './codebuild/get-project.js';
+import { awsListCodebuildProjects } from './codebuild/list-projects.js';
+import { awsUpdateCodebuildProject } from './codebuild/update-project.js';
+import { awsDeleteCodebuildProject } from './codebuild/delete-project.js';
+import { awsBatchGetCodebuildProjects } from './codebuild/batch-get-projects.js';
+import { awsStartCodebuildBuild } from './codebuild/start-build.js';
+import { awsStopCodebuildBuild } from './codebuild/stop-build.js';
+import { awsListCodebuildBuilds } from './codebuild/list-builds.js';
+import { awsListCodebuildBuildsForProject } from './codebuild/list-builds-for-project.js';
+import { awsBatchGetCodebuildBuilds } from './codebuild/batch-get-builds.js';
+import { awsRetryCodebuildBuild } from './codebuild/retry-build.js';
+import { awsStartCodebuildBuildBatch } from './codebuild/start-build-batch.js';
+import { awsStopCodebuildBuildBatch } from './codebuild/stop-build-batch.js';
+import { awsListCodebuildBuildBatches } from './codebuild/list-build-batches.js';
+import { awsListCodebuildBuildBatchesForProject } from './codebuild/list-build-batches-for-project.js';
+import { awsBatchGetCodebuildBuildBatches } from './codebuild/batch-get-build-batches.js';
+import { awsRetryCodebuildBuildBatch } from './codebuild/retry-build-batch.js';
+import { awsListCodebuildReports } from './codebuild/list-reports.js';
+import { awsListCodebuildReportsForReportGroup } from './codebuild/list-reports-for-report-group.js';
+import { awsGetCodebuildReport } from './codebuild/get-report.js';
+import { awsBatchGetCodebuildReports } from './codebuild/batch-get-reports.js';
+import { awsDeleteCodebuildReport } from './codebuild/delete-report.js';
+import { awsCreateCodebuildReportGroup } from './codebuild/create-report-group.js';
+import { awsGetCodebuildReportGroup } from './codebuild/get-report-group.js';
+import { awsUpdateCodebuildReportGroup } from './codebuild/update-report-group.js';
+import { awsDeleteCodebuildReportGroup } from './codebuild/delete-report-group.js';
+import { awsListCodebuildReportGroups } from './codebuild/list-report-groups.js';
+import { awsBatchGetCodebuildReportGroups } from './codebuild/batch-get-report-groups.js';
+import { awsCreateCodedeployApplication } from './codedeploy/create-application.js';
+import { awsGetCodedeployApplication } from './codedeploy/get-application.js';
+import { awsListCodedeployApplications } from './codedeploy/list-applications.js';
+import { awsUpdateCodedeployApplication } from './codedeploy/update-application.js';
+import { awsDeleteCodedeployApplication } from './codedeploy/delete-application.js';
+import { awsBatchGetCodedeployApplications } from './codedeploy/batch-get-applications.js';
+import { awsCreateCodedeployDeploymentGroup } from './codedeploy/create-deployment-group.js';
+import { awsGetCodedeployDeploymentGroup } from './codedeploy/get-deployment-group.js';
+import { awsListCodedeployDeploymentGroups } from './codedeploy/list-deployment-groups.js';
+import { awsUpdateCodedeployDeploymentGroup } from './codedeploy/update-deployment-group.js';
+import { awsDeleteCodedeployDeploymentGroup } from './codedeploy/delete-deployment-group.js';
+import { awsBatchGetCodedeployDeploymentGroups } from './codedeploy/batch-get-deployment-groups.js';
+import { awsCreateCodedeployDeployment } from './codedeploy/create-deployment.js';
+import { awsGetCodedeployDeployment } from './codedeploy/get-deployment.js';
+import { awsListCodedeployDeployments } from './codedeploy/list-deployments.js';
+import { awsStopCodedeployDeployment } from './codedeploy/stop-deployment.js';
+import { awsContinueCodedeployDeployment } from './codedeploy/continue-deployment.js';
+import { awsBatchGetCodedeployDeployments } from './codedeploy/batch-get-deployments.js';
+import { awsListCodedeployApplicationRevisions } from './codedeploy/list-application-revisions.js';
+import { awsGetCodedeployApplicationRevision } from './codedeploy/get-application-revision.js';
+import { awsRegisterCodedeployApplicationRevision } from './codedeploy/register-application-revision.js';
+import { awsListCodedeployOnPremisesInstances } from './codedeploy/list-on-premises-instances.js';
+import { awsBatchGetCodedeployOnPremisesInstances } from './codedeploy/batch-get-on-premises-instances.js';
+import { awsAddTagsToCodedeployOnPremisesInstances } from './codedeploy/add-tags-to-on-premises-instances.js';
+import { awsRemoveTagsFromCodedeployOnPremisesInstances } from './codedeploy/remove-tags-from-on-premises-instances.js';
+import { awsListCodedeployTags } from './codedeploy/list-tags.js';
+import { awsTagCodedeployResource } from './codedeploy/tag-resource.js';
+import { awsUntagCodedeployResource } from './codedeploy/untag-resource.js';
+import { awsCreateCodepipelinePipeline } from './codepipeline/create-pipeline.js';
+import { awsGetCodepipelinePipeline } from './codepipeline/get-pipeline.js';
+import { awsListCodepipelinePipelines } from './codepipeline/list-pipelines.js';
+import { awsUpdateCodepipelinePipeline } from './codepipeline/update-pipeline.js';
+import { awsDeleteCodepipelinePipeline } from './codepipeline/delete-pipeline.js';
+import { awsGetCodepipelinePipelineState } from './codepipeline/get-pipeline-state.js';
+import { awsStartCodepipelineExecution } from './codepipeline/start-execution.js';
+import { awsGetCodepipelineExecution } from './codepipeline/get-execution.js';
+import { awsListCodepipelineExecutions } from './codepipeline/list-executions.js';
+import { awsStopCodepipelineExecution } from './codepipeline/stop-execution.js';
+import { awsListCodepipelineActionExecutions } from './codepipeline/list-action-executions.js';
+import { awsListCodepipelineActionTypes } from './codepipeline/list-action-types.js';
+import { awsGetCodepipelineActionType } from './codepipeline/get-action-type.js';
+import { awsCreateCodepipelineWebhook } from './codepipeline/create-webhook.js';
+import { awsListCodepipelineWebhooks } from './codepipeline/list-webhooks.js';
+import { awsDeleteCodepipelineWebhook } from './codepipeline/delete-webhook.js';
+import { awsDeregisterCodepipelineWebhookWithThirdParty } from './codepipeline/deregister-webhook-with-third-party.js';
+import { awsRegisterCodepipelineWebhookWithThirdParty } from './codepipeline/register-webhook-with-third-party.js';
+import { awsPutCodepipelineApprovalResult } from './codepipeline/put-approval-result.js';
+import { awsPutCodepipelineJobSuccessResult } from './codepipeline/put-job-success-result.js';
+import { awsPutCodepipelineJobFailureResult } from './codepipeline/put-job-failure-result.js';
+import { awsPutCodepipelineThirdPartyJobSuccessResult } from './codepipeline/put-third-party-job-success-result.js';
+import { awsPutCodepipelineThirdPartyJobFailureResult } from './codepipeline/put-third-party-job-failure-result.js';
+import { awsListCodepipelineTags } from './codepipeline/list-tags.js';
+import { awsTagCodepipelineResource } from './codepipeline/tag-resource.js';
+import { awsUntagCodepipelineResource } from './codepipeline/untag-resource.js';
+import { awsCreateCodeartifactDomain } from './codeartifact/create-domain.js';
+import { awsDescribeCodeartifactDomain } from './codeartifact/describe-domain.js';
+import { awsListCodeartifactDomains } from './codeartifact/list-domains.js';
+import { awsDeleteCodeartifactDomain } from './codeartifact/delete-domain.js';
+import { awsCreateCodeartifactRepository } from './codeartifact/create-repository.js';
+import { awsDescribeCodeartifactRepository } from './codeartifact/describe-repository.js';
+import { awsListCodeartifactRepositories } from './codeartifact/list-repositories.js';
+import { awsUpdateCodeartifactRepository } from './codeartifact/update-repository.js';
+import { awsDeleteCodeartifactRepository } from './codeartifact/delete-repository.js';
+import { awsListCodeartifactPackages } from './codeartifact/list-packages.js';
+import { awsDescribeCodeartifactPackage } from './codeartifact/describe-package.js';
+import { awsDeleteCodeartifactPackage } from './codeartifact/delete-package.js';
+import { awsListCodeartifactPackageVersions } from './codeartifact/list-package-versions.js';
+import { awsDescribeCodeartifactPackageVersion } from './codeartifact/describe-package-version.js';
+import { awsDeleteCodeartifactPackageVersions } from './codeartifact/delete-package-versions.js';
+import { awsGetCodeartifactAuthorizationToken } from './codeartifact/get-authorization-token.js';
+import { awsGetCodeartifactRepositoryEndpoint } from './codeartifact/get-repository-endpoint.js';
+import { awsCreateCodeartifactPackageGroup } from './codeartifact/create-package-group.js';
+import { awsDescribeCodeartifactPackageGroup } from './codeartifact/describe-package-group.js';
+import { awsListCodeartifactPackageGroups } from './codeartifact/list-package-groups.js';
+import { awsUpdateCodeartifactPackageGroup } from './codeartifact/update-package-group.js';
+import { awsDeleteCodeartifactPackageGroup } from './codeartifact/delete-package-group.js';
+import { awsAssociateCodeartifactExternalConnection } from './codeartifact/associate-external-connection.js';
+import { awsDisassociateCodeartifactExternalConnection } from './codeartifact/disassociate-external-connection.js';
+import { awsListCodeartifactTags } from './codeartifact/list-tags.js';
+import { awsTagCodeartifactResource } from './codeartifact/tag-resource.js';
+import { awsUntagCodeartifactResource } from './codeartifact/untag-resource.js';
+import { awsListTrails } from './cloudtrail/list-trails.js';
+import { awsGetTrail } from './cloudtrail/get-trail.js';
+import { awsCreateTrail } from './cloudtrail/create-trail.js';
+import { awsUpdateTrail } from './cloudtrail/update-trail.js';
+import { awsDeleteTrail } from './cloudtrail/delete-trail.js';
+import { awsDescribeTrails } from './cloudtrail/describe-trails.js';
+import { awsGetTrailStatus } from './cloudtrail/get-trail-status.js';
+import { awsStartLogging } from './cloudtrail/start-logging.js';
+import { awsStopLogging } from './cloudtrail/stop-logging.js';
+import { awsLookupEvents } from './cloudtrail/lookup-events.js';
+import { awsCreateEventDataStore } from './cloudtrail/create-event-data-store.js';
+import { awsDeleteEventDataStore } from './cloudtrail/delete-event-data-store.js';
+import { awsUpdateEventDataStore } from './cloudtrail/update-event-data-store.js';
+import { awsGetEventDataStore } from './cloudtrail/get-event-data-store.js';
+import { awsListEventDataStores } from './cloudtrail/list-event-data-stores.js';
+import { awsRestoreEventDataStore } from './cloudtrail/restore-event-data-store.js';
+import { awsCreateChannel } from './cloudtrail/create-channel.js';
+import { awsDeleteChannel } from './cloudtrail/delete-channel.js';
+import { awsUpdateChannel } from './cloudtrail/update-channel.js';
+import { awsGetChannel } from './cloudtrail/get-channel.js';
+import { awsListChannels } from './cloudtrail/list-channels.js';
+import { awsPutResourcePolicy } from './cloudtrail/put-resource-policy.js';
+import { awsGetResourcePolicy } from './cloudtrail/get-resource-policy.js';
+import { awsDeleteResourcePolicy } from './cloudtrail/delete-resource-policy.js';
+import { awsAddTags } from './cloudtrail/add-tags.js';
+import { awsRemoveTags } from './cloudtrail/remove-tags.js';
+import { awsListTags } from './cloudtrail/list-tags.js';
+import { awsBatchGetTraces } from './xray/batch-get-traces.js';
+import { awsGetTraceSummaries } from './xray/get-trace-summaries.js';
+import { awsGetServiceGraph } from './xray/get-service-graph.js';
+import { awsPutTraceSegments } from './xray/put-trace-segments.js';
+import { awsGetTraceGraph } from './xray/get-trace-graph.js';
+import { awsGetGroups } from './xray/get-groups.js';
+import { awsCreateGroup } from './xray/create-group.js';
+import { awsUpdateGroup } from './xray/update-group.js';
+import { awsDeleteGroup } from './xray/delete-group.js';
+import { awsGetGroup } from './xray/get-group.js';
+import { awsGetSamplingRules } from './xray/get-sampling-rules.js';
+import { awsGetSamplingTargets } from './xray/get-sampling-targets.js';
+import { awsPutTelemetryRecords } from './xray/put-telemetry-records.js';
+import { awsGetInsight } from './xray/get-insight.js';
+import { awsGetInsightSummaries } from './xray/get-insight-summaries.js';
+import { awsGetInsightEvents } from './xray/get-insight-events.js';
+import { awsGetInsightImpactGraph } from './xray/get-insight-impact-graph.js';
 
 export {
   awsListEc2Instances,
@@ -1711,6 +1897,192 @@ export {
   awsListVpcLatticeTags,
   awsTagVpcLatticeResource,
   awsUntagVpcLatticeResource,
+  awsCreateCloudformationStack,
+  awsUpdateCloudformationStack,
+  awsDeleteCloudformationStack,
+  awsDescribeCloudformationStacks,
+  awsListCloudformationStacks,
+  awsDescribeCloudformationStackEvents,
+  awsDescribeCloudformationStackResource,
+  awsDescribeCloudformationStackResources,
+  awsListCloudformationStackResources,
+  awsCreateCloudformationChangeset,
+  awsDescribeCloudformationChangeset,
+  awsExecuteCloudformationChangeset,
+  awsDeleteCloudformationChangeset,
+  awsListCloudformationChangesets,
+  awsGetCloudformationTemplate,
+  awsGetCloudformationTemplateSummary,
+  awsValidateCloudformationTemplate,
+  awsCreateCloudformationStackSet,
+  awsUpdateCloudformationStackSet,
+  awsDeleteCloudformationStackSet,
+  awsDescribeCloudformationStackSet,
+  awsListCloudformationStackSets,
+  awsCreateCloudformationStackInstances,
+  awsDeleteCloudformationStackInstances,
+  awsDescribeCloudformationStackInstance,
+  awsListCloudformationStackInstances,
+  awsDetectCloudformationStackDrift,
+  awsDetectCloudformationStackResourceDrift,
+  awsDescribeCloudformationStackResourceDrifts,
+  awsListCloudformationExports,
+  awsListCloudformationImports,
+  awsDescribeCloudformationAccountLimits,
+  awsCreateCodebuildProject,
+  awsGetCodebuildProject,
+  awsListCodebuildProjects,
+  awsUpdateCodebuildProject,
+  awsDeleteCodebuildProject,
+  awsBatchGetCodebuildProjects,
+  awsStartCodebuildBuild,
+  awsStopCodebuildBuild,
+  awsListCodebuildBuilds,
+  awsListCodebuildBuildsForProject,
+  awsBatchGetCodebuildBuilds,
+  awsRetryCodebuildBuild,
+  awsStartCodebuildBuildBatch,
+  awsStopCodebuildBuildBatch,
+  awsListCodebuildBuildBatches,
+  awsListCodebuildBuildBatchesForProject,
+  awsBatchGetCodebuildBuildBatches,
+  awsRetryCodebuildBuildBatch,
+  awsListCodebuildReports,
+  awsListCodebuildReportsForReportGroup,
+  awsGetCodebuildReport,
+  awsBatchGetCodebuildReports,
+  awsDeleteCodebuildReport,
+  awsCreateCodebuildReportGroup,
+  awsGetCodebuildReportGroup,
+  awsUpdateCodebuildReportGroup,
+  awsDeleteCodebuildReportGroup,
+  awsListCodebuildReportGroups,
+  awsBatchGetCodebuildReportGroups,
+  awsCreateCodedeployApplication,
+  awsGetCodedeployApplication,
+  awsListCodedeployApplications,
+  awsUpdateCodedeployApplication,
+  awsDeleteCodedeployApplication,
+  awsBatchGetCodedeployApplications,
+  awsCreateCodedeployDeploymentGroup,
+  awsGetCodedeployDeploymentGroup,
+  awsListCodedeployDeploymentGroups,
+  awsUpdateCodedeployDeploymentGroup,
+  awsDeleteCodedeployDeploymentGroup,
+  awsBatchGetCodedeployDeploymentGroups,
+  awsCreateCodedeployDeployment,
+  awsGetCodedeployDeployment,
+  awsListCodedeployDeployments,
+  awsStopCodedeployDeployment,
+  awsContinueCodedeployDeployment,
+  awsBatchGetCodedeployDeployments,
+  awsListCodedeployApplicationRevisions,
+  awsGetCodedeployApplicationRevision,
+  awsRegisterCodedeployApplicationRevision,
+  awsListCodedeployOnPremisesInstances,
+  awsBatchGetCodedeployOnPremisesInstances,
+  awsAddTagsToCodedeployOnPremisesInstances,
+  awsRemoveTagsFromCodedeployOnPremisesInstances,
+  awsListCodedeployTags,
+  awsTagCodedeployResource,
+  awsUntagCodedeployResource,
+  awsCreateCodepipelinePipeline,
+  awsGetCodepipelinePipeline,
+  awsListCodepipelinePipelines,
+  awsUpdateCodepipelinePipeline,
+  awsDeleteCodepipelinePipeline,
+  awsGetCodepipelinePipelineState,
+  awsStartCodepipelineExecution,
+  awsGetCodepipelineExecution,
+  awsListCodepipelineExecutions,
+  awsStopCodepipelineExecution,
+  awsListCodepipelineActionExecutions,
+  awsListCodepipelineActionTypes,
+  awsGetCodepipelineActionType,
+  awsCreateCodepipelineWebhook,
+  awsListCodepipelineWebhooks,
+  awsDeleteCodepipelineWebhook,
+  awsDeregisterCodepipelineWebhookWithThirdParty,
+  awsRegisterCodepipelineWebhookWithThirdParty,
+  awsPutCodepipelineApprovalResult,
+  awsPutCodepipelineJobSuccessResult,
+  awsPutCodepipelineJobFailureResult,
+  awsPutCodepipelineThirdPartyJobSuccessResult,
+  awsPutCodepipelineThirdPartyJobFailureResult,
+  awsListCodepipelineTags,
+  awsTagCodepipelineResource,
+  awsUntagCodepipelineResource,
+  awsCreateCodeartifactDomain,
+  awsDescribeCodeartifactDomain,
+  awsListCodeartifactDomains,
+  awsDeleteCodeartifactDomain,
+  awsCreateCodeartifactRepository,
+  awsDescribeCodeartifactRepository,
+  awsListCodeartifactRepositories,
+  awsUpdateCodeartifactRepository,
+  awsDeleteCodeartifactRepository,
+  awsListCodeartifactPackages,
+  awsDescribeCodeartifactPackage,
+  awsDeleteCodeartifactPackage,
+  awsListCodeartifactPackageVersions,
+  awsDescribeCodeartifactPackageVersion,
+  awsDeleteCodeartifactPackageVersions,
+  awsGetCodeartifactAuthorizationToken,
+  awsGetCodeartifactRepositoryEndpoint,
+  awsCreateCodeartifactPackageGroup,
+  awsDescribeCodeartifactPackageGroup,
+  awsListCodeartifactPackageGroups,
+  awsUpdateCodeartifactPackageGroup,
+  awsDeleteCodeartifactPackageGroup,
+  awsAssociateCodeartifactExternalConnection,
+  awsDisassociateCodeartifactExternalConnection,
+  awsListCodeartifactTags,
+  awsTagCodeartifactResource,
+  awsUntagCodeartifactResource,
+  awsListTrails,
+  awsGetTrail,
+  awsCreateTrail,
+  awsUpdateTrail,
+  awsDeleteTrail,
+  awsDescribeTrails,
+  awsGetTrailStatus,
+  awsStartLogging,
+  awsStopLogging,
+  awsLookupEvents,
+  awsCreateEventDataStore,
+  awsDeleteEventDataStore,
+  awsUpdateEventDataStore,
+  awsGetEventDataStore,
+  awsListEventDataStores,
+  awsRestoreEventDataStore,
+  awsCreateChannel,
+  awsDeleteChannel,
+  awsUpdateChannel,
+  awsGetChannel,
+  awsListChannels,
+  awsPutResourcePolicy,
+  awsGetResourcePolicy,
+  awsDeleteResourcePolicy,
+  awsAddTags,
+  awsRemoveTags,
+  awsListTags,
+  awsBatchGetTraces,
+  awsGetTraceSummaries,
+  awsGetServiceGraph,
+  awsPutTraceSegments,
+  awsGetTraceGraph,
+  awsGetGroups,
+  awsCreateGroup,
+  awsUpdateGroup,
+  awsDeleteGroup,
+  awsGetGroup,
+  awsGetSamplingRules,
+  awsGetSamplingTargets,
+  awsPutTelemetryRecords,
+  awsGetInsight,
+  awsGetInsightSummaries,
+  awsGetInsightEvents,
+  awsGetInsightImpactGraph,
 };
 
 export const awsTools: ToolDefinition[] = [
@@ -7698,5 +8070,1307 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagVpcLatticeResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateCloudformationStack',
+    description: 'Create a new CloudFormation stack Use it to provision a new resource.',
+    tool: awsCreateCloudformationStack as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateCloudformationStack',
+    description: 'Update an existing CloudFormation stack Use it to change an existing resource.',
+    tool: awsUpdateCloudformationStack as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCloudformationStack',
+    description: 'Delete a CloudFormation stack Use it to permanently remove the resource.',
+    tool: awsDeleteCloudformationStack as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationStacks',
+    description: 'Describe CloudFormation stacks Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationStacks as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCloudformationStacks',
+    description: 'List all CloudFormation stacks Use it to inspect current state before making changes.',
+    tool: awsListCloudformationStacks as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationStackEvents',
+    description: 'Describe events for a CloudFormation stack Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationStackEvents as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationStackResource',
+    description: 'Describe a specific resource in a CloudFormation stack Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationStackResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationStackResources',
+    description: 'Describe all resources in a CloudFormation stack Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationStackResources as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCloudformationStackResources',
+    description: 'List all resources in a CloudFormation stack Use it to inspect current state before making changes.',
+    tool: awsListCloudformationStackResources as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateCloudformationChangeset',
+    description: 'Create a CloudFormation change set Use it to provision a new resource.',
+    tool: awsCreateCloudformationChangeset as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationChangeset',
+    description: 'Describe a CloudFormation change set Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationChangeset as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsExecuteCloudformationChangeset',
+    description: 'Execute a CloudFormation change set Use it to run an operation.',
+    tool: awsExecuteCloudformationChangeset as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCloudformationChangeset',
+    description: 'Delete a CloudFormation change set Use it to permanently remove the resource.',
+    tool: awsDeleteCloudformationChangeset as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCloudformationChangesets',
+    description: 'List change sets for a CloudFormation stack Use it to inspect current state before making changes.',
+    tool: awsListCloudformationChangesets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCloudformationTemplate',
+    description: 'Get the template for a CloudFormation stack Use it to inspect current state before making changes.',
+    tool: awsGetCloudformationTemplate as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCloudformationTemplateSummary',
+    description: 'Get a summary of a CloudFormation template Use it to inspect current state before making changes.',
+    tool: awsGetCloudformationTemplateSummary as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsValidateCloudformationTemplate',
+    description: 'Validate a CloudFormation template Use it to validate a template or configuration.',
+    tool: awsValidateCloudformationTemplate as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateCloudformationStackSet',
+    description: 'Create a CloudFormation stack set Use it to provision a new resource.',
+    tool: awsCreateCloudformationStackSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateCloudformationStackSet',
+    description: 'Update a CloudFormation stack set Use it to change an existing resource.',
+    tool: awsUpdateCloudformationStackSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCloudformationStackSet',
+    description: 'Delete a CloudFormation stack set Use it to permanently remove the resource.',
+    tool: awsDeleteCloudformationStackSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationStackSet',
+    description: 'Describe a CloudFormation stack set Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationStackSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCloudformationStackSets',
+    description: 'List all CloudFormation stack sets Use it to inspect current state before making changes.',
+    tool: awsListCloudformationStackSets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateCloudformationStackInstances',
+    description: 'Create stack instances in a stack set Use it to provision a new resource.',
+    tool: awsCreateCloudformationStackInstances as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCloudformationStackInstances',
+    description: 'Delete stack instances from a stack set Use it to permanently remove the resource.',
+    tool: awsDeleteCloudformationStackInstances as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationStackInstance',
+    description: 'Describe a stack instance in a stack set Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationStackInstance as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCloudformationStackInstances',
+    description: 'List stack instances in a stack set Use it to inspect current state before making changes.',
+    tool: awsListCloudformationStackInstances as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDetectCloudformationStackDrift',
+    description: 'Detect drift on a CloudFormation stack Use it to inspect current state before making changes.',
+    tool: awsDetectCloudformationStackDrift as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDetectCloudformationStackResourceDrift',
+    description: 'Detect drift on a specific resource in a stack Use it to inspect current state before making changes.',
+    tool: awsDetectCloudformationStackResourceDrift as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationStackResourceDrifts',
+    description: 'Describe resource drifts in a CloudFormation stack Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationStackResourceDrifts as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCloudformationExports',
+    description: 'List CloudFormation exports Use it to inspect current state before making changes.',
+    tool: awsListCloudformationExports as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCloudformationImports',
+    description: 'List CloudFormation imports for an export Use it to inspect current state before making changes.',
+    tool: awsListCloudformationImports as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeCloudformationAccountLimits',
+    description: 'Describe CloudFormation account limits Use it to inspect current state before making changes.',
+    tool: awsDescribeCloudformationAccountLimits as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateCodebuildProject',
+    description: 'Create a new CodeBuild project Use it to provision a new resource.',
+    tool: awsCreateCodebuildProject as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetCodebuildProject',
+    description: 'Get information about a CodeBuild build project Use it to inspect current state before making changes.',
+    tool: awsGetCodebuildProject as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodebuildProjects',
+    description: 'List all CodeBuild build projects Use it to inspect current state before making changes.',
+    tool: awsListCodebuildProjects as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateCodebuildProject',
+    description: 'Update a CodeBuild build project Use it to change an existing resource.',
+    tool: awsUpdateCodebuildProject as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCodebuildProject',
+    description: 'Delete a CodeBuild build project Use it to permanently remove the resource.',
+    tool: awsDeleteCodebuildProject as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsBatchGetCodebuildProjects',
+    description: 'Get information about one or more build projects Use it to operate on multiple resources.',
+    tool: awsBatchGetCodebuildProjects as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsStartCodebuildBuild',
+    description: 'Start running a build Use it to start a stopped resource.',
+    tool: awsStartCodebuildBuild as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsStopCodebuildBuild',
+    description: 'Stop a running build Use it to stop a running resource (billable config may remain).',
+    tool: awsStopCodebuildBuild as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCodebuildBuilds',
+    description: 'List build IDs Use it to inspect current state before making changes.',
+    tool: awsListCodebuildBuilds as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodebuildBuildsForProject',
+    description: 'List build IDs for a project Use it to inspect current state before making changes.',
+    tool: awsListCodebuildBuildsForProject as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsBatchGetCodebuildBuilds',
+    description: 'Get information about one or more builds Use it to operate on multiple resources.',
+    tool: awsBatchGetCodebuildBuilds as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRetryCodebuildBuild',
+    description: 'Restart a build Use it to retry a failed operation.',
+    tool: awsRetryCodebuildBuild as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsStartCodebuildBuildBatch',
+    description: 'Starts a batch build for a project Use it to start a stopped resource.',
+    tool: awsStartCodebuildBuildBatch as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsStopCodebuildBuildBatch',
+    description: 'Stops a running batch build Use it to stop a running resource (billable config may remain).',
+    tool: awsStopCodebuildBuildBatch as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCodebuildBuildBatches',
+    description: 'Retrieves the identifiers of your build batches Use it to inspect current state before making changes.',
+    tool: awsListCodebuildBuildBatches as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodebuildBuildBatchesForProject',
+    description: 'Retrieves the identifiers of the build batches for a specific project Use it to inspect current state before making changes.',
+    tool: awsListCodebuildBuildBatchesForProject as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsBatchGetCodebuildBuildBatches',
+    description: 'Retrieves information about one or more batch builds Use it to operate on multiple resources.',
+    tool: awsBatchGetCodebuildBuildBatches as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRetryCodebuildBuildBatch',
+    description: 'Restarts a failed batch build Use it to retry a failed operation.',
+    tool: awsRetryCodebuildBuildBatch as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListCodebuildReports',
+    description: 'Returns a list of ARNs for the reports Use it to inspect current state before making changes.',
+    tool: awsListCodebuildReports as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodebuildReportsForReportGroup',
+    description: 'Returns a list of ARNs for the reports that belong to a ReportGroup Use it to inspect current state before making changes.',
+    tool: awsListCodebuildReportsForReportGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCodebuildReport',
+    description: 'Returns a list of ARNs for the reports in the current account Use it to inspect current state before making changes.',
+    tool: awsGetCodebuildReport as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsBatchGetCodebuildReports',
+    description: 'Returns an array of reports Use it to operate on multiple resources.',
+    tool: awsBatchGetCodebuildReports as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCodebuildReport',
+    description: 'Deletes a report Use it to permanently remove the resource.',
+    tool: awsDeleteCodebuildReport as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateCodebuildReportGroup',
+    description: 'Creates a report group Use it to provision a new resource.',
+    tool: awsCreateCodebuildReportGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetCodebuildReportGroup',
+    description: 'Returns a report group Use it to inspect current state before making changes.',
+    tool: awsGetCodebuildReportGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateCodebuildReportGroup',
+    description: 'Updates a report group Use it to change an existing resource.',
+    tool: awsUpdateCodebuildReportGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCodebuildReportGroup',
+    description: 'Deletes a report group Use it to permanently remove the resource.',
+    tool: awsDeleteCodebuildReportGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCodebuildReportGroups',
+    description: 'Returns a list of report groups Use it to inspect current state before making changes.',
+    tool: awsListCodebuildReportGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsBatchGetCodebuildReportGroups',
+    description: 'Returns an array of report groups Use it to operate on multiple resources.',
+    tool: awsBatchGetCodebuildReportGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateCodedeployApplication',
+    description: 'Create a new CodeDeploy application Use it to provision a new resource.',
+    tool: awsCreateCodedeployApplication as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetCodedeployApplication',
+    description: 'Get details about a CodeDeploy application Use it to inspect current state before making changes.',
+    tool: awsGetCodedeployApplication as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodedeployApplications',
+    description: 'List all CodeDeploy applications Use it to inspect current state before making changes.',
+    tool: awsListCodedeployApplications as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateCodedeployApplication',
+    description: 'Update a CodeDeploy application Use it to change an existing resource.',
+    tool: awsUpdateCodedeployApplication as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCodedeployApplication',
+    description: 'Delete a CodeDeploy application Use it to permanently remove the resource.',
+    tool: awsDeleteCodedeployApplication as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsBatchGetCodedeployApplications',
+    description: 'Get information about one or more applications Use it to operate on multiple resources.',
+    tool: awsBatchGetCodedeployApplications as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateCodedeployDeploymentGroup',
+    description: 'Create a new deployment group Use it to provision a new resource.',
+    tool: awsCreateCodedeployDeploymentGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetCodedeployDeploymentGroup',
+    description: 'Get details about a deployment group Use it to inspect current state before making changes.',
+    tool: awsGetCodedeployDeploymentGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodedeployDeploymentGroups',
+    description: 'List deployment groups for an application Use it to inspect current state before making changes.',
+    tool: awsListCodedeployDeploymentGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateCodedeployDeploymentGroup',
+    description: 'Update a deployment group Use it to change an existing resource.',
+    tool: awsUpdateCodedeployDeploymentGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCodedeployDeploymentGroup',
+    description: 'Delete a deployment group Use it to permanently remove the resource.',
+    tool: awsDeleteCodedeployDeploymentGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsBatchGetCodedeployDeploymentGroups',
+    description: 'Get information about one or more deployment groups Use it to operate on multiple resources.',
+    tool: awsBatchGetCodedeployDeploymentGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateCodedeployDeployment',
+    description: 'Create a new deployment Use it to provision a new resource.',
+    tool: awsCreateCodedeployDeployment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetCodedeployDeployment',
+    description: 'Get details about a deployment Use it to inspect current state before making changes.',
+    tool: awsGetCodedeployDeployment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodedeployDeployments',
+    description: 'List deployments Use it to inspect current state before making changes.',
+    tool: awsListCodedeployDeployments as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStopCodedeployDeployment',
+    description: 'Stop a deployment Use it to stop a running resource (billable config may remain).',
+    tool: awsStopCodedeployDeployment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsContinueCodedeployDeployment',
+    description: 'Continue a stopped deployment Use it to resume a deployment.',
+    tool: awsContinueCodedeployDeployment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsBatchGetCodedeployDeployments',
+    description: 'Get information about one or more deployments Use it to operate on multiple resources.',
+    tool: awsBatchGetCodedeployDeployments as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListCodedeployApplicationRevisions',
+    description: 'List application revisions Use it to inspect current state before making changes.',
+    tool: awsListCodedeployApplicationRevisions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCodedeployApplicationRevision',
+    description: 'Get details about an application revision Use it to inspect current state before making changes.',
+    tool: awsGetCodedeployApplicationRevision as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsRegisterCodedeployApplicationRevision',
+    description: 'Register a new application revision Use it to provision a new resource.',
+    tool: awsRegisterCodedeployApplicationRevision as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListCodedeployOnPremisesInstances',
+    description: 'List on-premises instances Use it to inspect current state before making changes.',
+    tool: awsListCodedeployOnPremisesInstances as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsBatchGetCodedeployOnPremisesInstances',
+    description: 'Get information about one or more on-premises instances Use it to operate on multiple resources.',
+    tool: awsBatchGetCodedeployOnPremisesInstances as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsAddTagsToCodedeployOnPremisesInstances',
+    description: 'Add tags to on-premises instances Use it to grant access or attach configuration.',
+    tool: awsAddTagsToCodedeployOnPremisesInstances as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRemoveTagsFromCodedeployOnPremisesInstances',
+    description: 'Remove tags from on-premises instances Use it to remove access or configuration.',
+    tool: awsRemoveTagsFromCodedeployOnPremisesInstances as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCodedeployTags',
+    description: 'List tags for a CodeDeploy resource Use it to inspect current state before making changes.',
+    tool: awsListCodedeployTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagCodedeployResource',
+    description: 'Add tags to a CodeDeploy resource Use it to label the resource.',
+    tool: awsTagCodedeployResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagCodedeployResource',
+    description: 'Remove tags from a CodeDeploy resource Use it to remove tags from the resource.',
+    tool: awsUntagCodedeployResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateCodepipelinePipeline',
+    description: 'Create a new CodePipeline pipeline Use it to provision a new resource.',
+    tool: awsCreateCodepipelinePipeline as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetCodepipelinePipeline',
+    description: 'Get details about a CodePipeline pipeline Use it to inspect current state before making changes.',
+    tool: awsGetCodepipelinePipeline as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodepipelinePipelines',
+    description: 'List all CodePipeline pipelines Use it to inspect current state before making changes.',
+    tool: awsListCodepipelinePipelines as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateCodepipelinePipeline',
+    description: 'Update a CodePipeline pipeline Use it to change an existing resource.',
+    tool: awsUpdateCodepipelinePipeline as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCodepipelinePipeline',
+    description: 'Delete a CodePipeline pipeline Use it to permanently remove the resource.',
+    tool: awsDeleteCodepipelinePipeline as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetCodepipelinePipelineState',
+    description: 'Get the current state of a CodePipeline pipeline Use it to inspect current state before making changes.',
+    tool: awsGetCodepipelinePipelineState as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStartCodepipelineExecution',
+    description: 'Start a new pipeline execution Use it to start a stopped resource.',
+    tool: awsStartCodepipelineExecution as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetCodepipelineExecution',
+    description: 'Get details about a pipeline execution Use it to inspect current state before making changes.',
+    tool: awsGetCodepipelineExecution as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodepipelineExecutions',
+    description: 'List pipeline executions Use it to inspect current state before making changes.',
+    tool: awsListCodepipelineExecutions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStopCodepipelineExecution',
+    description: 'Stop a pipeline execution Use it to stop a running resource (billable config may remain).',
+    tool: awsStopCodepipelineExecution as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCodepipelineActionExecutions',
+    description: 'List action executions for a pipeline execution Use it to inspect current state before making changes.',
+    tool: awsListCodepipelineActionExecutions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodepipelineActionTypes',
+    description: 'List available action types Use it to inspect current state before making changes.',
+    tool: awsListCodepipelineActionTypes as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCodepipelineActionType',
+    description: 'Get details about an action type Use it to inspect current state before making changes.',
+    tool: awsGetCodepipelineActionType as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateCodepipelineWebhook',
+    description: 'Create a webhook for a CodePipeline pipeline Use it to provision a new resource.',
+    tool: awsCreateCodepipelineWebhook as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListCodepipelineWebhooks',
+    description: 'List webhooks for pipelines Use it to inspect current state before making changes.',
+    tool: awsListCodepipelineWebhooks as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteCodepipelineWebhook',
+    description: 'Delete a webhook Use it to permanently remove the resource.',
+    tool: awsDeleteCodepipelineWebhook as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDeregisterCodepipelineWebhookWithThirdParty',
+    description: 'Deregister a webhook with a third party Use it to permanently remove the resource.',
+    tool: awsDeregisterCodepipelineWebhookWithThirdParty as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsRegisterCodepipelineWebhookWithThirdParty',
+    description: 'Register a webhook with a third party Use it to provision a new resource.',
+    tool: awsRegisterCodepipelineWebhookWithThirdParty as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutCodepipelineApprovalResult',
+    description: 'Put approval result for an approval action Use it to write data or configuration.',
+    tool: awsPutCodepipelineApprovalResult as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutCodepipelineJobSuccessResult',
+    description: 'Put success result for a job Use it to write data or configuration.',
+    tool: awsPutCodepipelineJobSuccessResult as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutCodepipelineJobFailureResult',
+    description: 'Put failure result for a job Use it to write data or configuration.',
+    tool: awsPutCodepipelineJobFailureResult as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutCodepipelineThirdPartyJobSuccessResult',
+    description: 'Put success result for a third-party job Use it to write data or configuration.',
+    tool: awsPutCodepipelineThirdPartyJobSuccessResult as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutCodepipelineThirdPartyJobFailureResult',
+    description: 'Put failure result for a third-party job Use it to write data or configuration.',
+    tool: awsPutCodepipelineThirdPartyJobFailureResult as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListCodepipelineTags',
+    description: 'List tags for a CodePipeline resource Use it to inspect current state before making changes.',
+    tool: awsListCodepipelineTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagCodepipelineResource',
+    description: 'Add tags to a CodePipeline resource Use it to label the resource.',
+    tool: awsTagCodepipelineResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagCodepipelineResource',
+    description: 'Remove tags from a CodePipeline resource Use it to remove tags from the resource.',
+    tool: awsUntagCodepipelineResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateCodeartifactDomain',
+    description: 'Create a new CodeArtifact domain Use it to provision a new resource.',
+    tool: awsCreateCodeartifactDomain as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeCodeartifactDomain',
+    description: 'Get details about a CodeArtifact domain Use it to inspect current state before making changes.',
+    tool: awsDescribeCodeartifactDomain as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodeartifactDomains',
+    description: 'List all CodeArtifact domains Use it to inspect current state before making changes.',
+    tool: awsListCodeartifactDomains as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteCodeartifactDomain',
+    description: 'Delete a CodeArtifact domain Use it to permanently remove the resource.',
+    tool: awsDeleteCodeartifactDomain as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateCodeartifactRepository',
+    description: 'Create a new CodeArtifact repository Use it to provision a new resource.',
+    tool: awsCreateCodeartifactRepository as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeCodeartifactRepository',
+    description: 'Get details about a CodeArtifact repository Use it to inspect current state before making changes.',
+    tool: awsDescribeCodeartifactRepository as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodeartifactRepositories',
+    description: 'List CodeArtifact repositories Use it to inspect current state before making changes.',
+    tool: awsListCodeartifactRepositories as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateCodeartifactRepository',
+    description: 'Update a CodeArtifact repository Use it to change an existing resource.',
+    tool: awsUpdateCodeartifactRepository as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCodeartifactRepository',
+    description: 'Delete a CodeArtifact repository Use it to permanently remove the resource.',
+    tool: awsDeleteCodeartifactRepository as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCodeartifactPackages',
+    description: 'List packages in a CodeArtifact repository Use it to inspect current state before making changes.',
+    tool: awsListCodeartifactPackages as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeCodeartifactPackage',
+    description: 'Get details about a CodeArtifact package Use it to inspect current state before making changes.',
+    tool: awsDescribeCodeartifactPackage as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteCodeartifactPackage',
+    description: 'Delete a CodeArtifact package Use it to permanently remove the resource.',
+    tool: awsDeleteCodeartifactPackage as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCodeartifactPackageVersions',
+    description: 'List versions of a CodeArtifact package Use it to inspect current state before making changes.',
+    tool: awsListCodeartifactPackageVersions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeCodeartifactPackageVersion',
+    description: 'Get details about a CodeArtifact package version Use it to inspect current state before making changes.',
+    tool: awsDescribeCodeartifactPackageVersion as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteCodeartifactPackageVersions',
+    description: 'Delete one or more CodeArtifact package versions Use it to permanently remove the resource.',
+    tool: awsDeleteCodeartifactPackageVersions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetCodeartifactAuthorizationToken',
+    description: 'Get an authorization token for CodeArtifact Use it to inspect current state before making changes.',
+    tool: awsGetCodeartifactAuthorizationToken as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCodeartifactRepositoryEndpoint',
+    description: 'Get the repository endpoint for CodeArtifact Use it to inspect current state before making changes.',
+    tool: awsGetCodeartifactRepositoryEndpoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateCodeartifactPackageGroup',
+    description: 'Create a new CodeArtifact package group Use it to provision a new resource.',
+    tool: awsCreateCodeartifactPackageGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeCodeartifactPackageGroup',
+    description: 'Get details about a CodeArtifact package group Use it to inspect current state before making changes.',
+    tool: awsDescribeCodeartifactPackageGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCodeartifactPackageGroups',
+    description: 'List CodeArtifact package groups Use it to inspect current state before making changes.',
+    tool: awsListCodeartifactPackageGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateCodeartifactPackageGroup',
+    description: 'Update a CodeArtifact package group Use it to change an existing resource.',
+    tool: awsUpdateCodeartifactPackageGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCodeartifactPackageGroup',
+    description: 'Delete a CodeArtifact package group Use it to permanently remove the resource.',
+    tool: awsDeleteCodeartifactPackageGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsAssociateCodeartifactExternalConnection',
+    description: 'Associate an external connection with a repository Use it to connect resources.',
+    tool: awsAssociateCodeartifactExternalConnection as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDisassociateCodeartifactExternalConnection',
+    description: 'Disassociate an external connection from a repository Use it to disconnect resources.',
+    tool: awsDisassociateCodeartifactExternalConnection as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListCodeartifactTags',
+    description: 'List tags for a CodeArtifact resource Use it to inspect current state before making changes.',
+    tool: awsListCodeartifactTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagCodeartifactResource',
+    description: 'Add tags to a CodeArtifact resource Use it to label the resource.',
+    tool: awsTagCodeartifactResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagCodeartifactResource',
+    description: 'Remove tags from a CodeArtifact resource Use it to remove tags from the resource.',
+    tool: awsUntagCodeartifactResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListTrails',
+    description: 'Lists trails that are in the current account, or all trails in the current region Use it to inspect current state before making changes.',
+    tool: awsListTrails as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetTrail',
+    description: 'Returns settings information for a specified trail Use it to inspect current state before making changes.',
+    tool: awsGetTrail as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateTrail',
+    description: 'Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket Use it to provision a new resource.',
+    tool: awsCreateTrail as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateTrail',
+    description: 'Updates trail settings that control what events you are logging, and how to handle log files Use it to change an existing resource.',
+    tool: awsUpdateTrail as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteTrail',
+    description: 'Deletes a trail Use it to permanently remove the resource.',
+    tool: awsDeleteTrail as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeTrails',
+    description: 'Retrieves settings for one or more trails Use it to inspect current state before making changes.',
+    tool: awsDescribeTrails as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetTrailStatus',
+    description: 'Returns a JSON-formatted list of information about the specified trail Use it to inspect current state before making changes.',
+    tool: awsGetTrailStatus as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStartLogging',
+    description: 'Starts the recording of AWS API calls and log file delivery for a trail Use it to start a stopped resource.',
+    tool: awsStartLogging as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsStopLogging',
+    description: 'Suspends the recording of AWS API calls and log file delivery for the specified trail Use it to stop a running resource (billable config may remain).',
+    tool: awsStopLogging as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsLookupEvents',
+    description: 'Looks up management events or CloudTrail Insights events that are captured by CloudTrail Use it to inspect current state before making changes.',
+    tool: awsLookupEvents as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateEventDataStore',
+    description: 'Creates a new event data store Use it to provision a new resource.',
+    tool: awsCreateEventDataStore as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteEventDataStore',
+    description: 'Disables the event data store specified by EventDataStore Use it to permanently remove the resource.',
+    tool: awsDeleteEventDataStore as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsUpdateEventDataStore',
+    description: 'Updates an event data store Use it to change an existing resource.',
+    tool: awsUpdateEventDataStore as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetEventDataStore',
+    description: 'Returns information about an event data store Use it to inspect current state before making changes.',
+    tool: awsGetEventDataStore as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListEventDataStores',
+    description: 'Returns information about all event data stores in the account, in the current region Use it to inspect current state before making changes.',
+    tool: awsListEventDataStores as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsRestoreEventDataStore',
+    description: 'Restores a deleted event data store Use it to restore from a backup.',
+    tool: awsRestoreEventDataStore as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateChannel',
+    description: 'Creates a channel for CloudTrail to deliver events to a partner or external destination Use it to provision a new resource.',
+    tool: awsCreateChannel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteChannel',
+    description: 'Deletes a channel Use it to permanently remove the resource.',
+    tool: awsDeleteChannel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsUpdateChannel',
+    description: 'Updates a channel Use it to change an existing resource.',
+    tool: awsUpdateChannel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetChannel',
+    description: 'Returns information about a channel Use it to inspect current state before making changes.',
+    tool: awsGetChannel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListChannels',
+    description: 'Returns information about all channels Use it to inspect current state before making changes.',
+    tool: awsListChannels as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutResourcePolicy',
+    description: 'Attaches a resource-based permission policy to a CloudTrail channel, event data store, or lake Use it to write data or configuration.',
+    tool: awsPutResourcePolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetResourcePolicy',
+    description: 'Retrieves the JSON-formatted resource-based policy document attached to the CloudTrail channel Use it to inspect current state before making changes.',
+    tool: awsGetResourcePolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteResourcePolicy',
+    description: 'Deletes the resource-based policy attached to the CloudTrail channel, event data store, or lake Use it to permanently remove the resource.',
+    tool: awsDeleteResourcePolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsAddTags',
+    description: 'Adds one or more tags to a trail, event data store, or channel Use it to grant access or attach configuration.',
+    tool: awsAddTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRemoveTags',
+    description: 'Removes one or more tags from a trail, event data store, or channel Use it to remove access or configuration.',
+    tool: awsRemoveTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListTags',
+    description: 'Lists the tags for the trail, event data store, or channel in the current region Use it to inspect current state before making changes.',
+    tool: awsListTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsBatchGetTraces',
+    description: 'Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request Use it to operate on multiple resources.',
+    tool: awsBatchGetTraces as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetTraceSummaries',
+    description: 'Retrieves IDs and annotations for traces available for a specified time frame using an optional filter Use it to inspect current state before making changes.',
+    tool: awsGetTraceSummaries as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetServiceGraph',
+    description: 'Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result Use it to inspect current state before making changes.',
+    tool: awsGetServiceGraph as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutTraceSegments',
+    description: 'Uploads segment documents to AWS X-Ray Use it to write data or configuration.',
+    tool: awsPutTraceSegments as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetTraceGraph',
+    description: 'Retrieves a service graph for one or more specific trace IDs Use it to inspect current state before making changes.',
+    tool: awsGetTraceGraph as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetGroups',
+    description: 'Retrieves all active group details Use it to inspect current state before making changes.',
+    tool: awsGetGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateGroup',
+    description: 'Creates a group resource with a name and a filter expression Use it to provision a new resource.',
+    tool: awsCreateGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateGroup',
+    description: 'Updates a group resource Use it to change an existing resource.',
+    tool: awsUpdateGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteGroup',
+    description: 'Deletes a group resource Use it to permanently remove the resource.',
+    tool: awsDeleteGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetGroup',
+    description: 'Retrieves the group details with the provided ARN Use it to inspect current state before making changes.',
+    tool: awsGetGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSamplingRules',
+    description: 'Retrieves all sampling rules Use it to inspect current state before making changes.',
+    tool: awsGetSamplingRules as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSamplingTargets',
+    description: 'Retrieves a document that describes the current sampling targets for the sampling rules Use it to inspect current state before making changes.',
+    tool: awsGetSamplingTargets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutTelemetryRecords',
+    description: 'Used by the AWS X-Ray daemon to upload telemetry Use it to write data or configuration.',
+    tool: awsPutTelemetryRecords as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetInsight',
+    description: 'Retrieves the summary information of an insight Use it to inspect current state before making changes.',
+    tool: awsGetInsight as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetInsightSummaries',
+    description: 'Retrieves the summaries of all insights in the specified group matching the provided filter values Use it to inspect current state before making changes.',
+    tool: awsGetInsightSummaries as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetInsightEvents',
+    description: 'X-Ray reevaluates insights periodically until they are resolved, and records each intermediate state in an event Use it to inspect current state before making changes.',
+    tool: awsGetInsightEvents as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetInsightImpactGraph',
+    description: 'Retrieves a service graph structure filtered by the insight Use it to inspect current state before making changes.',
+    tool: awsGetInsightImpactGraph as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
   },
 ];

@@ -20,6 +20,13 @@ import { APIGatewayClient } from '@aws-sdk/client-api-gateway';
 import { AutoScalingClient } from '@aws-sdk/client-auto-scaling';
 import { EventBridgeClient } from '@aws-sdk/client-eventbridge';
 import { VPCLatticeClient } from '@aws-sdk/client-vpc-lattice';
+import { CloudFormationClient } from '@aws-sdk/client-cloudformation';
+import { CodeBuildClient } from '@aws-sdk/client-codebuild';
+import { CodeDeployClient } from '@aws-sdk/client-codedeploy';
+import { CodePipelineClient } from '@aws-sdk/client-codepipeline';
+import { CodeartifactClient } from '@aws-sdk/client-codeartifact';
+import { CloudTrailClient } from '@aws-sdk/client-cloudtrail';
+import { XRayClient } from '@aws-sdk/client-xray';
 
 export interface AwsCredentials {
   accessKeyId: string;
@@ -147,6 +154,55 @@ export function createEventBridgeClient(awsCredentials: string, region?: string)
 
 export function createVpcLatticeClient(awsCredentials: string, region?: string): VPCLatticeClient {
   return new VPCLatticeClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCloudFormationClient(awsCredentials: string, region?: string): CloudFormationClient {
+  return new CloudFormationClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCodeBuildClient(awsCredentials: string, region?: string): CodeBuildClient {
+  return new CodeBuildClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCodeDeployClient(awsCredentials: string, region?: string): CodeDeployClient {
+  return new CodeDeployClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCodePipelineClient(awsCredentials: string, region?: string): CodePipelineClient {
+  return new CodePipelineClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCodeArtifactClient(awsCredentials: string, region?: string): CodeartifactClient {
+  return new CodeartifactClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCloudTrailClient(awsCredentials: string, region?: string): CloudTrailClient {
+  return new CloudTrailClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createXRayClient(awsCredentials: string, region?: string): XRayClient {
+  return new XRayClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
   });
