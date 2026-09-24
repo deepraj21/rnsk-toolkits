@@ -4,7 +4,7 @@ import { DeleteBucketPolicyCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsDeleteS3BucketPolicy = tool({
-  description: 'Delete the bucket policy for an S3 bucket. Use it to permanently remove the resource.',
+  description: 'Delete the bucket policy for an S3 bucket.. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

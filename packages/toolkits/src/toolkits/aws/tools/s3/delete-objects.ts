@@ -4,7 +4,7 @@ import { DeleteObjectsCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsDeleteS3Objects = tool({
-  description: 'Delete multiple objects from S3 in a single request. Use it to permanently remove the resource.',
+  description: 'Delete multiple objects from S3 in a single request.. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

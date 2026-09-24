@@ -4,7 +4,7 @@ import { ListPolicyVersionsCommand } from '@aws-sdk/client-iam';
 import { createIamClient } from '../client.js';
 
 export const awsListPolicyVersions = tool({
-  description: 'List all versions of a policy. Use it to inspect current state before making changes.',
+  description: 'List all versions of a policy.. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

@@ -5,7 +5,7 @@ import { awsTools } from './tools/index.js';
 export default defineToolkit({
   id: 'aws',
   displayName: 'AWS',
-  shortDescription: 'Manage EC2, VPC, S3, Lambda, DynamoDB, SQS/SNS, IAM; monitor CloudWatch metrics, alarms, and logs.',
+  shortDescription: 'Manage EC2, VPC, S3, Lambda, DynamoDB, SQS/SNS, IAM, ECS/EKS/ECR, RDS, ElastiCache, EBS, Route53, CloudFront, API Gateway, Auto Scaling, EventBridge, VPC Lattice; monitor CloudWatch.',
   category: 'Developer Tools & DevOps',
   icon: AWS_ICON,
   auth: {

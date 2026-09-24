@@ -4,7 +4,7 @@ import { ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsListS3Objects = tool({
-  description: 'List objects in an S3 bucket.. Use it to inspect current state before making changes.',
+  description: 'List objects in an S3 bucket... Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

@@ -8,6 +8,18 @@ import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import { SQSClient } from '@aws-sdk/client-sqs';
 import { SNSClient } from '@aws-sdk/client-sns';
 import { IAMClient } from '@aws-sdk/client-iam';
+import { ECSClient } from '@aws-sdk/client-ecs';
+import { EKSClient } from '@aws-sdk/client-eks';
+import { ECRClient } from '@aws-sdk/client-ecr';
+import { RDSClient } from '@aws-sdk/client-rds';
+import { ElastiCacheClient } from '@aws-sdk/client-elasticache';
+import { EBSClient } from '@aws-sdk/client-ebs';
+import { Route53Client } from '@aws-sdk/client-route-53';
+import { CloudFrontClient } from '@aws-sdk/client-cloudfront';
+import { APIGatewayClient } from '@aws-sdk/client-api-gateway';
+import { AutoScalingClient } from '@aws-sdk/client-auto-scaling';
+import { EventBridgeClient } from '@aws-sdk/client-eventbridge';
+import { VPCLatticeClient } from '@aws-sdk/client-vpc-lattice';
 
 export interface AwsCredentials {
   accessKeyId: string;
@@ -69,4 +81,73 @@ export function createSnsClient(awsCredentials: string, region?: string): SNSCli
 
 export function createIamClient(awsCredentials: string, region?: string): IAMClient {
   return new IAMClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+}
+
+export function createEcsClient(awsCredentials: string, region?: string): ECSClient {
+  return new ECSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+}
+
+export function createEksClient(awsCredentials: string, region?: string): EKSClient {
+  return new EKSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+}
+
+export function createEcrClient(awsCredentials: string, region?: string): ECRClient {
+  return new ECRClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+}
+
+export function createRdsClient(awsCredentials: string, region?: string): RDSClient {
+  return new RDSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+}
+
+export function createElastiCacheClient(awsCredentials: string, region?: string): ElastiCacheClient {
+  return new ElastiCacheClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createEbsClient(awsCredentials: string, region?: string): EBSClient {
+  return new EBSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+}
+
+export function createRoute53Client(awsCredentials: string, region?: string): Route53Client {
+  return new Route53Client({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createCloudFrontClient(awsCredentials: string, region?: string): CloudFrontClient {
+  return new CloudFrontClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createApiGatewayClient(awsCredentials: string, region?: string): APIGatewayClient {
+  return new APIGatewayClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createAutoScalingClient(awsCredentials: string, region?: string): AutoScalingClient {
+  return new AutoScalingClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createEventBridgeClient(awsCredentials: string, region?: string): EventBridgeClient {
+  return new EventBridgeClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createVpcLatticeClient(awsCredentials: string, region?: string): VPCLatticeClient {
+  return new VPCLatticeClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }

@@ -1,0 +1,35 @@
+import { tool } from 'ai';
+import { z } from 'zod';
+import { DeleteMethodCommand } from '@aws-sdk/client-api-gateway';
+import { createApiGatewayClient } from '../client.js';
+
+export const awsDeleteMethod = tool({
+  description: 'Deletes an existing Method resource. Use it to permanently remove the resource.',
+  inputSchema: z.object({
+    awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
+    region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
+    restApiId: z.string().describe('The string identifier of the associated RestApi'),
+    resourceId: z.string().describe('The Resource identifier for the Method resource'),
+    httpMethod: z.string().describe('The HTTP verb of the Method resource'),
+  }),
+  execute: async ({ awsCredentials, region, restApiId, resourceId, httpMethod }) => {
+    if (!awsCredentials) {
+      return { error: 'AWS credentials are required. Connect AWS first.' };
+    }
+    try {
+      const client = createApiGatewayClient(awsCredentials, region);
+
+      const command = new DeleteMethodCommand({
+          restApiId: restApiId,
+          resourceId: resourceId,
+          httpMethod: httpMethod,
+      });
+      await client.send(command);
+      return {
+                  success: true,
+              };
+    } catch (err) {
+      return { error: 'Failed to deletes an existing Method resource', message: err instanceof Error ? err.message : 'Unknown error' };
+    }
+  },
+});

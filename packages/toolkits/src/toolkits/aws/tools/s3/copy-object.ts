@@ -4,7 +4,7 @@ import { CopyObjectCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsCopyS3Object = tool({
-  description: 'Copy an object from one S3 location to another.. Use it to duplicate data.',
+  description: 'Copy an object from one S3 location to another... Use it to duplicate data.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

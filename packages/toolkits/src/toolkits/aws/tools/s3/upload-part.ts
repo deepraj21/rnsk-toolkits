@@ -4,7 +4,7 @@ import { UploadPartCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsUploadS3Part = tool({
-  description: 'Upload a part in a multipart upload. Use it to store data.',
+  description: 'Upload a part in a multipart upload.. Use it to store data.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

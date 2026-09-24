@@ -4,7 +4,7 @@ import { GetRoleCommand } from '@aws-sdk/client-iam';
 import { createIamClient } from '../client.js';
 
 export const awsGetIamRole = tool({
-  description: 'Get detailed information about a specific IAM role. Use it to inspect current state before making changes.',
+  description: 'Get detailed information about a specific IAM role.. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

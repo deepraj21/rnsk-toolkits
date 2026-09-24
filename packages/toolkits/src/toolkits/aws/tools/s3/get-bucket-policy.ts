@@ -4,7 +4,7 @@ import { GetBucketPolicyCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsGetS3BucketPolicy = tool({
-  description: 'Get the bucket policy for an S3 bucket. Use it to inspect current state before making changes.',
+  description: 'Get the bucket policy for an S3 bucket.. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

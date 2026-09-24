@@ -4,7 +4,7 @@ import { ListRolesCommand } from '@aws-sdk/client-iam';
 import { createIamClient } from '../client.js';
 
 export const awsListIamRoles = tool({
-  description: 'List all IAM roles in the AWS account. Use it to inspect current state before making changes.',
+  description: 'List all IAM roles in the AWS account.. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),

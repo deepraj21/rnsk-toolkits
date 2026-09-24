@@ -4,7 +4,7 @@ import { CreateBucketCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsCreateS3Bucket = tool({
-  description: 'Create a new S3 bucket.. Use it to provision a new resource.',
+  description: 'Create a new S3 bucket... Use it to provision a new resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
