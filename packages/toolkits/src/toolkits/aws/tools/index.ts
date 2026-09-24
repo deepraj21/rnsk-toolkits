@@ -6,6 +6,26 @@ import { awsGetCloudwatchMetricData } from './cloudwatch/get-metric-data.js';
 import { awsListCloudwatchAlarms } from './cloudwatch/list-alarms.js';
 import { awsListCloudwatchLogGroups } from './cloudwatch/list-log-groups.js';
 import { awsFilterCloudwatchLogEvents } from './cloudwatch/filter-log-events.js';
+import { awsGetCloudwatchMetrics } from './cloudwatch/get-metrics.js';
+import { awsGetMetricMetadata } from './cloudwatch/get-metric-metadata.js';
+import { awsPutMetricData } from './cloudwatch/put-metric-data.js';
+import { awsGetRecommendedMetricAlarms } from './cloudwatch/get-recommended-metric-alarms.js';
+import { awsAnalyzeMetric } from './cloudwatch/analyze-metric.js';
+import { awsGetAlarmHistory } from './cloudwatch/get-alarm-history.js';
+import { awsPutMetricAlarm } from './cloudwatch/put-metric-alarm.js';
+import { awsDeleteCloudwatchAlarms } from './cloudwatch/delete-alarms.js';
+import { awsSetAlarmState } from './cloudwatch/set-alarm-state.js';
+import { awsCreateLogGroup } from './cloudwatch/create-log-group.js';
+import { awsDeleteLogGroup } from './cloudwatch/delete-log-group.js';
+import { awsDescribeLogStreams } from './cloudwatch/describe-log-streams.js';
+import { awsCreateLogStream } from './cloudwatch/create-log-stream.js';
+import { awsGetLogEvents } from './cloudwatch/get-log-events.js';
+import { awsPutLogEvents } from './cloudwatch/put-log-events.js';
+import { awsPutRetentionPolicy } from './cloudwatch/put-retention-policy.js';
+import { awsAnalyzeLogGroup } from './cloudwatch/analyze-log-group.js';
+import { awsExecuteLogInsightsQuery } from './cloudwatch/execute-log-insights-query.js';
+import { awsGetLogsInsightQueryResults } from './cloudwatch/get-logs-insight-query-results.js';
+import { awsCancelLogsInsightQuery } from './cloudwatch/cancel-logs-insight-query.js';
 import { awsCreateEc2Instance } from './ec2/create-instance.js';
 import { awsTerminateEc2Instance } from './ec2/terminate-instance.js';
 import { awsRebootEc2Instance } from './ec2/reboot-instance.js';
@@ -176,6 +196,26 @@ export {
   awsCreateEc2LaunchTemplate,
   awsDeleteEc2LaunchTemplate,
   awsDescribeEc2LaunchTemplateVersions,
+  awsGetCloudwatchMetrics,
+  awsGetMetricMetadata,
+  awsPutMetricData,
+  awsGetRecommendedMetricAlarms,
+  awsAnalyzeMetric,
+  awsGetAlarmHistory,
+  awsPutMetricAlarm,
+  awsDeleteCloudwatchAlarms,
+  awsSetAlarmState,
+  awsCreateLogGroup,
+  awsDeleteLogGroup,
+  awsDescribeLogStreams,
+  awsCreateLogStream,
+  awsGetLogEvents,
+  awsPutLogEvents,
+  awsPutRetentionPolicy,
+  awsAnalyzeLogGroup,
+  awsExecuteLogInsightsQuery,
+  awsGetLogsInsightQueryResults,
+  awsCancelLogsInsightQuery,
 };
 
 export const awsTools = [
@@ -794,5 +834,145 @@ export const awsTools = [
     tool: awsDescribeEc2LaunchTemplateVersions,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCloudwatchMetrics',
+    description: 'Retrieve CloudWatch metrics Use it to inspect current state before making changes.',
+    tool: awsGetCloudwatchMetrics,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetMetricMetadata',
+    description: 'Retrieves comprehensive metadata about a specific CloudWatch metric Use it to inspect current state before making changes.',
+    tool: awsGetMetricMetadata,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutMetricData',
+    description: 'Publish custom metric data points to CloudWatch Use it to publish data or configure the resource.',
+    tool: awsPutMetricData,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetRecommendedMetricAlarms',
+    description: 'Gets recommended alarms for a CloudWatch metric based on best practice, and trend, seasonality and statistical analysis Use it to inspect current state before making changes.',
+    tool: awsGetRecommendedMetricAlarms,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsAnalyzeMetric',
+    description: 'Analyzes CloudWatch metric data to determine trend, seasonality, and statistical properties Use it to analyze trends, patterns, and anomalies.',
+    tool: awsAnalyzeMetric,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetAlarmHistory',
+    description: 'Retrieves historical state changes and patterns for a given CloudWatch alarm Use it to inspect current state before making changes.',
+    tool: awsGetAlarmHistory,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutMetricAlarm',
+    description: 'Create or update a CloudWatch metric alarm Use it to publish data or configure the resource.',
+    tool: awsPutMetricAlarm,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteCloudwatchAlarms',
+    description: 'Delete one or more CloudWatch alarms Use it to permanently remove the resource.',
+    tool: awsDeleteCloudwatchAlarms,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsSetAlarmState',
+    description: 'Temporarily set the state of a CloudWatch alarm Use it to change the state or configuration of the resource.',
+    tool: awsSetAlarmState,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateLogGroup',
+    description: 'Create a new CloudWatch log group Use it to provision a new resource.',
+    tool: awsCreateLogGroup,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteLogGroup',
+    description: 'Delete a CloudWatch log group Use it to permanently remove the resource.',
+    tool: awsDeleteLogGroup,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeLogStreams',
+    description: 'List log streams in a log group Use it to inspect current state before making changes.',
+    tool: awsDescribeLogStreams,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateLogStream',
+    description: 'Create a new log stream in a log group Use it to provision a new resource.',
+    tool: awsCreateLogStream,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetLogEvents',
+    description: 'Retrieve log events from a log stream Use it to inspect current state before making changes.',
+    tool: awsGetLogEvents,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutLogEvents',
+    description: 'Upload log events to a log stream Use it to publish data or configure the resource.',
+    tool: awsPutLogEvents,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutRetentionPolicy',
+    description: 'Set retention policy for a log group Use it to publish data or configure the resource.',
+    tool: awsPutRetentionPolicy,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsAnalyzeLogGroup',
+    description: 'Analyzes CloudWatch logs for anomalies, message patterns, and error patterns Use it to analyze trends, patterns, and anomalies.',
+    tool: awsAnalyzeLogGroup,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsExecuteLogInsightsQuery',
+    description: 'Executes CloudWatch Logs insights query on CloudWatch log group(s) with specified time range and query syntax, returns a unique ID used to retrieve results Use it to start a query, then poll for results with the query ID.',
+    tool: awsExecuteLogInsightsQuery,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetLogsInsightQueryResults',
+    description: 'Retrieves the results of an executed CloudWatch insights query using the query ID. It is used after execute_log_insights_query has been called Use it to inspect current state before making changes.',
+    tool: awsGetLogsInsightQueryResults,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCancelLogsInsightQuery',
+    description: 'Cancels in progress CloudWatch logs insights query Use it to stop a running query.',
+    tool: awsCancelLogsInsightQuery,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
   },
 ];
