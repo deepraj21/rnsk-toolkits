@@ -26,6 +26,65 @@ import { awsAnalyzeLogGroup } from './cloudwatch/analyze-log-group.js';
 import { awsExecuteLogInsightsQuery } from './cloudwatch/execute-log-insights-query.js';
 import { awsGetLogsInsightQueryResults } from './cloudwatch/get-logs-insight-query-results.js';
 import { awsCancelLogsInsightQuery } from './cloudwatch/cancel-logs-insight-query.js';
+import { awsListS3Buckets } from './s3/list-buckets.js';
+import { awsCreateS3Bucket } from './s3/create-bucket.js';
+import { awsDeleteS3Bucket } from './s3/delete-bucket.js';
+import { awsCheckS3BucketExists } from './s3/check-bucket-exists.js';
+import { awsListS3Objects } from './s3/list-objects.js';
+import { awsGetS3Object } from './s3/get-object.js';
+import { awsUploadS3Object } from './s3/upload-object.js';
+import { awsDeleteS3Object } from './s3/delete-object.js';
+import { awsCopyS3Object } from './s3/copy-object.js';
+import { awsHeadS3Object } from './s3/head-object.js';
+import { awsListLambdaFunctions } from './lambda/list-functions.js';
+import { awsGetLambdaFunction } from './lambda/get-function.js';
+import { awsInvokeLambdaFunction } from './lambda/invoke-function.js';
+import { awsCreateLambdaFunction } from './lambda/create-function.js';
+import { awsUpdateLambdaFunctionCode } from './lambda/update-function-code.js';
+import { awsUpdateLambdaFunctionConfiguration } from './lambda/update-function-configuration.js';
+import { awsDeleteLambdaFunction } from './lambda/delete-function.js';
+import { awsListLambdaFunctionVersions } from './lambda/list-function-versions.js';
+import { awsListDynamodbTables } from './dynamodb/list-tables.js';
+import { awsDescribeDynamodbTable } from './dynamodb/describe-table.js';
+import { awsCreateDynamodbTable } from './dynamodb/create-table.js';
+import { awsUpdateDynamodbTable } from './dynamodb/update-table.js';
+import { awsDeleteDynamodbTable } from './dynamodb/delete-table.js';
+import { awsDynamodbGetItem } from './dynamodb/get-item.js';
+import { awsDynamodbPutItem } from './dynamodb/put-item.js';
+import { awsDynamodbUpdateItem } from './dynamodb/update-item.js';
+import { awsDynamodbDeleteItem } from './dynamodb/delete-item.js';
+import { awsDynamodbQuery } from './dynamodb/query.js';
+import { awsDynamodbScan } from './dynamodb/scan.js';
+import { awsDynamodbBatchGetItem } from './dynamodb/batch-get-item.js';
+import { awsDynamodbBatchWriteItem } from './dynamodb/batch-write-item.js';
+import { awsCreateSqsQueue } from './sqs/create-queue.js';
+import { awsListSqsQueues } from './sqs/list-queues.js';
+import { awsGetSqsQueueUrl } from './sqs/get-queue-url.js';
+import { awsGetSqsQueueAttributes } from './sqs/get-queue-attributes.js';
+import { awsSetSqsQueueAttributes } from './sqs/set-queue-attributes.js';
+import { awsDeleteSqsQueue } from './sqs/delete-queue.js';
+import { awsPurgeSqsQueue } from './sqs/purge-queue.js';
+import { awsSendSqsMessage } from './sqs/send-message.js';
+import { awsSendSqsMessageBatch } from './sqs/send-message-batch.js';
+import { awsReceiveSqsMessages } from './sqs/receive-messages.js';
+import { awsDeleteSqsMessage } from './sqs/delete-message.js';
+import { awsDeleteSqsMessageBatch } from './sqs/delete-message-batch.js';
+import { awsChangeSqsMessageVisibility } from './sqs/change-message-visibility.js';
+import { awsChangeSqsMessageVisibilityBatch } from './sqs/change-message-visibility-batch.js';
+import { awsAddSqsPermission } from './sqs/add-permission.js';
+import { awsRemoveSqsPermission } from './sqs/remove-permission.js';
+import { awsListSqsQueueTags } from './sqs/list-queue-tags.js';
+import { awsTagSqsQueue } from './sqs/tag-queue.js';
+import { awsUntagSqsQueue } from './sqs/untag-queue.js';
+import { awsCreateSnsTopic } from './sns/create-topic.js';
+import { awsListSnsTopics } from './sns/list-topics.js';
+import { awsGetSnsTopicAttributes } from './sns/get-topic-attributes.js';
+import { awsDeleteSnsTopic } from './sns/delete-topic.js';
+import { awsSubscribeSnsTopic } from './sns/subscribe-topic.js';
+import { awsUnsubscribeSnsTopic } from './sns/unsubscribe-topic.js';
+import { awsPublishSnsMessage } from './sns/publish-message.js';
+import { awsListSnsSubscriptions } from './sns/list-subscriptions.js';
+import { awsListSnsSubscriptionsByTopic } from './sns/list-subscriptions-by-topic.js';
 import { awsCreateEc2Instance } from './ec2/create-instance.js';
 import { awsTerminateEc2Instance } from './ec2/terminate-instance.js';
 import { awsRebootEc2Instance } from './ec2/reboot-instance.js';
@@ -106,6 +165,135 @@ import { awsDescribeEc2LaunchTemplates } from './ec2/describe-launch-templates.j
 import { awsCreateEc2LaunchTemplate } from './ec2/create-launch-template.js';
 import { awsDeleteEc2LaunchTemplate } from './ec2/delete-launch-template.js';
 import { awsDescribeEc2LaunchTemplateVersions } from './ec2/describe-launch-template-versions.js';
+import { awsGetS3BucketVersioning } from './s3/get-bucket-versioning.js';
+import { awsPutS3BucketVersioning } from './s3/put-bucket-versioning.js';
+import { awsGetS3BucketPolicy } from './s3/get-bucket-policy.js';
+import { awsPutS3BucketPolicy } from './s3/put-bucket-policy.js';
+import { awsDeleteS3BucketPolicy } from './s3/delete-bucket-policy.js';
+import { awsGetS3BucketTagging } from './s3/get-bucket-tagging.js';
+import { awsPutS3BucketTagging } from './s3/put-bucket-tagging.js';
+import { awsDeleteS3BucketTagging } from './s3/delete-bucket-tagging.js';
+import { awsGetS3BucketCors } from './s3/get-bucket-cors.js';
+import { awsPutS3BucketCors } from './s3/put-bucket-cors.js';
+import { awsDeleteS3BucketCors } from './s3/delete-bucket-cors.js';
+import { awsGetS3BucketEncryption } from './s3/get-bucket-encryption.js';
+import { awsPutS3BucketEncryption } from './s3/put-bucket-encryption.js';
+import { awsDeleteS3BucketEncryption } from './s3/delete-bucket-encryption.js';
+import { awsGetS3BucketLifecycle } from './s3/get-bucket-lifecycle.js';
+import { awsPutS3BucketLifecycle } from './s3/put-bucket-lifecycle.js';
+import { awsDeleteS3BucketLifecycle } from './s3/delete-bucket-lifecycle.js';
+import { awsGetS3BucketWebsite } from './s3/get-bucket-website.js';
+import { awsPutS3BucketWebsite } from './s3/put-bucket-website.js';
+import { awsDeleteS3BucketWebsite } from './s3/delete-bucket-website.js';
+import { awsGetS3BucketLogging } from './s3/get-bucket-logging.js';
+import { awsPutS3BucketLogging } from './s3/put-bucket-logging.js';
+import { awsGetS3BucketNotification } from './s3/get-bucket-notification.js';
+import { awsPutS3BucketNotification } from './s3/put-bucket-notification.js';
+import { awsGetS3BucketReplication } from './s3/get-bucket-replication.js';
+import { awsPutS3BucketReplication } from './s3/put-bucket-replication.js';
+import { awsDeleteS3BucketReplication } from './s3/delete-bucket-replication.js';
+import { awsListS3ObjectVersions } from './s3/list-object-versions.js';
+import { awsDeleteS3Objects } from './s3/delete-objects.js';
+import { awsCreateS3MultipartUpload } from './s3/create-multipart-upload.js';
+import { awsUploadS3Part } from './s3/upload-part.js';
+import { awsCompleteS3MultipartUpload } from './s3/complete-multipart-upload.js';
+import { awsAbortS3MultipartUpload } from './s3/abort-multipart-upload.js';
+import { awsListS3MultipartUploads } from './s3/list-multipart-uploads.js';
+import { awsListS3Parts } from './s3/list-parts.js';
+import { awsGetS3ObjectTagging } from './s3/get-object-tagging.js';
+import { awsPutS3ObjectTagging } from './s3/put-object-tagging.js';
+import { awsDeleteS3ObjectTagging } from './s3/delete-object-tagging.js';
+import { awsGetS3ObjectAcl } from './s3/get-object-acl.js';
+import { awsPutS3ObjectAcl } from './s3/put-object-acl.js';
+import { awsGetS3BucketAcl } from './s3/get-bucket-acl.js';
+import { awsPutS3BucketAcl } from './s3/put-bucket-acl.js';
+import { awsGetS3PublicAccessBlock } from './s3/get-public-access-block.js';
+import { awsPutS3PublicAccessBlock } from './s3/put-public-access-block.js';
+import { awsDeleteS3PublicAccessBlock } from './s3/delete-public-access-block.js';
+import { awsGetLambdaFunctionConfiguration } from './lambda/get-function-configuration.js';
+import { awsPublishLambdaFunctionVersion } from './lambda/publish-function-version.js';
+import { awsListLambdaFunctionAliases } from './lambda/list-function-aliases.js';
+import { awsGetLambdaFunctionAlias } from './lambda/get-function-alias.js';
+import { awsCreateLambdaFunctionAlias } from './lambda/create-function-alias.js';
+import { awsUpdateLambdaFunctionAlias } from './lambda/update-function-alias.js';
+import { awsDeleteLambdaFunctionAlias } from './lambda/delete-function-alias.js';
+import { awsGetLambdaFunctionPolicy } from './lambda/get-function-policy.js';
+import { awsAddLambdaFunctionPermission } from './lambda/add-function-permission.js';
+import { awsRemoveLambdaFunctionPermission } from './lambda/remove-function-permission.js';
+import { awsListLambdaEventSourceMappings } from './lambda/list-event-source-mappings.js';
+import { awsCreateLambdaEventSourceMapping } from './lambda/create-event-source-mapping.js';
+import { awsUpdateLambdaEventSourceMapping } from './lambda/update-event-source-mapping.js';
+import { awsDeleteLambdaEventSourceMapping } from './lambda/delete-event-source-mapping.js';
+import { awsListLambdaFunctionEventInvokeConfigs } from './lambda/list-function-event-invoke-configs.js';
+import { awsGetLambdaFunctionEventInvokeConfig } from './lambda/get-function-event-invoke-config.js';
+import { awsPutLambdaFunctionEventInvokeConfig } from './lambda/put-function-event-invoke-config.js';
+import { awsDeleteLambdaFunctionEventInvokeConfig } from './lambda/delete-function-event-invoke-config.js';
+import { awsListLambdaLayers } from './lambda/list-layers.js';
+import { awsListLambdaLayerVersions } from './lambda/list-layer-versions.js';
+import { awsGetLambdaLayerVersion } from './lambda/get-layer-version.js';
+import { awsListLambdaProvisionedConcurrencyConfigs } from './lambda/list-provisioned-concurrency-configs.js';
+import { awsGetLambdaProvisionedConcurrencyConfig } from './lambda/get-provisioned-concurrency-config.js';
+import { awsPutLambdaProvisionedConcurrencyConfig } from './lambda/put-provisioned-concurrency-config.js';
+import { awsDeleteLambdaProvisionedConcurrencyConfig } from './lambda/delete-provisioned-concurrency-config.js';
+import { awsListLambdaFunctionTags } from './lambda/list-function-tags.js';
+import { awsTagLambdaFunction } from './lambda/tag-function.js';
+import { awsUntagLambdaFunction } from './lambda/untag-function.js';
+import { awsGetLambdaFunctionUrlConfig } from './lambda/get-function-url-config.js';
+import { awsCreateLambdaFunctionUrlConfig } from './lambda/create-function-url-config.js';
+import { awsUpdateLambdaFunctionUrlConfig } from './lambda/update-function-url-config.js';
+import { awsDeleteLambdaFunctionUrlConfig } from './lambda/delete-function-url-config.js';
+import { awsListDynamodbBackups } from './dynamodb/list-backups.js';
+import { awsDescribeDynamodbBackup } from './dynamodb/describe-backup.js';
+import { awsCreateDynamodbBackup } from './dynamodb/create-backup.js';
+import { awsDeleteDynamodbBackup } from './dynamodb/delete-backup.js';
+import { awsRestoreDynamodbTableFromBackup } from './dynamodb/restore-dynamodb-table-from-backup.js';
+import { awsDescribeContinuousBackups } from './dynamodb/describe-continuous-backups.js';
+import { awsUpdateContinuousBackups } from './dynamodb/update-continuous-backups.js';
+import { awsDescribeGlobalTable } from './dynamodb/describe-global-table.js';
+import { awsCreateGlobalTable } from './dynamodb/create-global-table.js';
+import { awsUpdateGlobalTable } from './dynamodb/update-global-table.js';
+import { awsDescribeTimeToLive } from './dynamodb/describe-time-to-live.js';
+import { awsUpdateTimeToLive } from './dynamodb/update-time-to-live.js';
+import { awsListDynamodbTags } from './dynamodb/list-dynamodb-tags.js';
+import { awsTagDynamodbResource } from './dynamodb/tag-dynamodb-resource.js';
+import { awsUntagDynamodbResource } from './dynamodb/untag-dynamodb-resource.js';
+import { awsSetSnsTopicAttributes } from './sns/set-topic-attributes.js';
+import { awsGetSnsSubscriptionAttributes } from './sns/get-subscription-attributes.js';
+import { awsSetSnsSubscriptionAttributes } from './sns/set-subscription-attributes.js';
+import { awsConfirmSnsSubscription } from './sns/confirm-subscription.js';
+import { awsPublishSnsBatch } from './sns/publish-batch.js';
+import { awsCreateSnsPlatformApplication } from './sns/create-platform-application.js';
+import { awsListSnsPlatformApplications } from './sns/list-platform-applications.js';
+import { awsGetSnsPlatformApplicationAttributes } from './sns/get-platform-application-attributes.js';
+import { awsSetSnsPlatformApplicationAttributes } from './sns/set-platform-application-attributes.js';
+import { awsDeleteSnsPlatformApplication } from './sns/delete-platform-application.js';
+import { awsCreateSnsPlatformEndpoint } from './sns/create-platform-endpoint.js';
+import { awsListSnsEndpointsByPlatformApplication } from './sns/list-endpoints-by-platform-application.js';
+import { awsGetSnsEndpointAttributes } from './sns/get-endpoint-attributes.js';
+import { awsSetSnsEndpointAttributes } from './sns/set-endpoint-attributes.js';
+import { awsDeleteSnsEndpoint } from './sns/delete-endpoint.js';
+import { awsCheckSnsPhoneOptedOut } from './sns/check-phone-opted-out.js';
+import { awsListSnsOptedOutPhoneNumbers } from './sns/list-opted-out-phone-numbers.js';
+import { awsOptInSnsPhoneNumber } from './sns/opt-in-phone-number.js';
+import { awsGetSnsSmsAttributes } from './sns/get-sms-attributes.js';
+import { awsSetSnsSmsAttributes } from './sns/set-sms-attributes.js';
+import { awsAddSnsPermission } from './sns/add-permission.js';
+import { awsRemoveSnsPermission } from './sns/remove-permission.js';
+import { awsListSnsTags } from './sns/list-tags.js';
+import { awsTagSnsResource } from './sns/tag-resource.js';
+import { awsUntagSnsResource } from './sns/untag-resource.js';
+import { awsListIamUsers } from './iam/list-users.js';
+import { awsGetIamUser } from './iam/get-user.js';
+import { awsListIamRoles } from './iam/list-roles.js';
+import { awsGetIamRole } from './iam/get-role.js';
+import { awsListIamPolicies } from './iam/list-policies.js';
+import { awsGetIamPolicy } from './iam/get-policy.js';
+import { awsGetPolicyVersion } from './iam/get-policy-version.js';
+import { awsListPolicyVersions } from './iam/list-policy-versions.js';
+import { awsListIamGroups } from './iam/list-groups.js';
+import { awsGetIamGroup } from './iam/get-group.js';
+import { awsListAttachedRolePolicies } from './iam/list-attached-role-policies.js';
+import { awsGetAccountPasswordPolicy } from './iam/get-account-password-policy.js';
 
 export {
   awsListEc2Instances,
@@ -215,7 +403,194 @@ export {
   awsAnalyzeLogGroup,
   awsExecuteLogInsightsQuery,
   awsGetLogsInsightQueryResults,
-  awsCancelLogsInsightQuery,
+  awsCancelLogsInsightQuery,  awsListS3Buckets,
+  awsCreateS3Bucket,
+  awsDeleteS3Bucket,
+  awsCheckS3BucketExists,
+  awsListS3Objects,
+  awsGetS3Object,
+  awsUploadS3Object,
+  awsDeleteS3Object,
+  awsCopyS3Object,
+  awsHeadS3Object,
+  awsListLambdaFunctions,
+  awsGetLambdaFunction,
+  awsInvokeLambdaFunction,
+  awsCreateLambdaFunction,
+  awsUpdateLambdaFunctionCode,
+  awsUpdateLambdaFunctionConfiguration,
+  awsDeleteLambdaFunction,
+  awsListLambdaFunctionVersions,
+  awsListDynamodbTables,
+  awsDescribeDynamodbTable,
+  awsCreateDynamodbTable,
+  awsUpdateDynamodbTable,
+  awsDeleteDynamodbTable,
+  awsDynamodbGetItem,
+  awsDynamodbPutItem,
+  awsDynamodbUpdateItem,
+  awsDynamodbDeleteItem,
+  awsDynamodbQuery,
+  awsDynamodbScan,
+  awsDynamodbBatchGetItem,
+  awsDynamodbBatchWriteItem,
+  awsCreateSqsQueue,
+  awsListSqsQueues,
+  awsGetSqsQueueUrl,
+  awsGetSqsQueueAttributes,
+  awsSetSqsQueueAttributes,
+  awsDeleteSqsQueue,
+  awsPurgeSqsQueue,
+  awsSendSqsMessage,
+  awsSendSqsMessageBatch,
+  awsReceiveSqsMessages,
+  awsDeleteSqsMessage,
+  awsDeleteSqsMessageBatch,
+  awsChangeSqsMessageVisibility,
+  awsChangeSqsMessageVisibilityBatch,
+  awsAddSqsPermission,
+  awsRemoveSqsPermission,
+  awsListSqsQueueTags,
+  awsTagSqsQueue,
+  awsUntagSqsQueue,
+  awsCreateSnsTopic,
+  awsListSnsTopics,
+  awsGetSnsTopicAttributes,
+  awsDeleteSnsTopic,
+  awsSubscribeSnsTopic,
+  awsUnsubscribeSnsTopic,
+  awsPublishSnsMessage,
+  awsListSnsSubscriptions,
+  awsListSnsSubscriptionsByTopic,
+  awsGetS3BucketVersioning,
+  awsPutS3BucketVersioning,
+  awsGetS3BucketPolicy,
+  awsPutS3BucketPolicy,
+  awsDeleteS3BucketPolicy,
+  awsGetS3BucketTagging,
+  awsPutS3BucketTagging,
+  awsDeleteS3BucketTagging,
+  awsGetS3BucketCors,
+  awsPutS3BucketCors,
+  awsDeleteS3BucketCors,
+  awsGetS3BucketEncryption,
+  awsPutS3BucketEncryption,
+  awsDeleteS3BucketEncryption,
+  awsGetS3BucketLifecycle,
+  awsPutS3BucketLifecycle,
+  awsDeleteS3BucketLifecycle,
+  awsGetS3BucketWebsite,
+  awsPutS3BucketWebsite,
+  awsDeleteS3BucketWebsite,
+  awsGetS3BucketLogging,
+  awsPutS3BucketLogging,
+  awsGetS3BucketNotification,
+  awsPutS3BucketNotification,
+  awsGetS3BucketReplication,
+  awsPutS3BucketReplication,
+  awsDeleteS3BucketReplication,
+  awsListS3ObjectVersions,
+  awsDeleteS3Objects,
+  awsCreateS3MultipartUpload,
+  awsUploadS3Part,
+  awsCompleteS3MultipartUpload,
+  awsAbortS3MultipartUpload,
+  awsListS3MultipartUploads,
+  awsListS3Parts,
+  awsGetS3ObjectTagging,
+  awsPutS3ObjectTagging,
+  awsDeleteS3ObjectTagging,
+  awsGetS3ObjectAcl,
+  awsPutS3ObjectAcl,
+  awsGetS3BucketAcl,
+  awsPutS3BucketAcl,
+  awsGetS3PublicAccessBlock,
+  awsPutS3PublicAccessBlock,
+  awsDeleteS3PublicAccessBlock,
+  awsGetLambdaFunctionConfiguration,
+  awsPublishLambdaFunctionVersion,
+  awsListLambdaFunctionAliases,
+  awsGetLambdaFunctionAlias,
+  awsCreateLambdaFunctionAlias,
+  awsUpdateLambdaFunctionAlias,
+  awsDeleteLambdaFunctionAlias,
+  awsGetLambdaFunctionPolicy,
+  awsAddLambdaFunctionPermission,
+  awsRemoveLambdaFunctionPermission,
+  awsListLambdaEventSourceMappings,
+  awsCreateLambdaEventSourceMapping,
+  awsUpdateLambdaEventSourceMapping,
+  awsDeleteLambdaEventSourceMapping,
+  awsListLambdaFunctionEventInvokeConfigs,
+  awsGetLambdaFunctionEventInvokeConfig,
+  awsPutLambdaFunctionEventInvokeConfig,
+  awsDeleteLambdaFunctionEventInvokeConfig,
+  awsListLambdaLayers,
+  awsListLambdaLayerVersions,
+  awsGetLambdaLayerVersion,
+  awsListLambdaProvisionedConcurrencyConfigs,
+  awsGetLambdaProvisionedConcurrencyConfig,
+  awsPutLambdaProvisionedConcurrencyConfig,
+  awsDeleteLambdaProvisionedConcurrencyConfig,
+  awsListLambdaFunctionTags,
+  awsTagLambdaFunction,
+  awsUntagLambdaFunction,
+  awsGetLambdaFunctionUrlConfig,
+  awsCreateLambdaFunctionUrlConfig,
+  awsUpdateLambdaFunctionUrlConfig,
+  awsDeleteLambdaFunctionUrlConfig,
+  awsListDynamodbBackups,
+  awsDescribeDynamodbBackup,
+  awsCreateDynamodbBackup,
+  awsDeleteDynamodbBackup,
+  awsRestoreDynamodbTableFromBackup,
+  awsDescribeContinuousBackups,
+  awsUpdateContinuousBackups,
+  awsDescribeGlobalTable,
+  awsCreateGlobalTable,
+  awsUpdateGlobalTable,
+  awsDescribeTimeToLive,
+  awsUpdateTimeToLive,
+  awsListDynamodbTags,
+  awsTagDynamodbResource,
+  awsUntagDynamodbResource,
+  awsSetSnsTopicAttributes,
+  awsGetSnsSubscriptionAttributes,
+  awsSetSnsSubscriptionAttributes,
+  awsConfirmSnsSubscription,
+  awsPublishSnsBatch,
+  awsCreateSnsPlatformApplication,
+  awsListSnsPlatformApplications,
+  awsGetSnsPlatformApplicationAttributes,
+  awsSetSnsPlatformApplicationAttributes,
+  awsDeleteSnsPlatformApplication,
+  awsCreateSnsPlatformEndpoint,
+  awsListSnsEndpointsByPlatformApplication,
+  awsGetSnsEndpointAttributes,
+  awsSetSnsEndpointAttributes,
+  awsDeleteSnsEndpoint,
+  awsCheckSnsPhoneOptedOut,
+  awsListSnsOptedOutPhoneNumbers,
+  awsOptInSnsPhoneNumber,
+  awsGetSnsSmsAttributes,
+  awsSetSnsSmsAttributes,
+  awsAddSnsPermission,
+  awsRemoveSnsPermission,
+  awsListSnsTags,
+  awsTagSnsResource,
+  awsUntagSnsResource,
+  awsListIamUsers,
+  awsGetIamUser,
+  awsListIamRoles,
+  awsGetIamRole,
+  awsListIamPolicies,
+  awsGetIamPolicy,
+  awsGetPolicyVersion,
+  awsListPolicyVersions,
+  awsListIamGroups,
+  awsGetIamGroup,
+  awsListAttachedRolePolicies,
+  awsGetAccountPasswordPolicy,
 };
 
 export const awsTools = [
@@ -974,5 +1349,1321 @@ export const awsTools = [
     tool: awsCancelLogsInsightQuery,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+  },
+  {
+    name: 'awsListS3Buckets',
+    description: 'List all S3 buckets in your AWS account Use it to inspect current state before making changes.',
+    tool: awsListS3Buckets,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateS3Bucket',
+    description: 'Create a new S3 bucket Use it to provision a new resource.',
+    tool: awsCreateS3Bucket,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3Bucket',
+    description: 'Delete an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3Bucket,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCheckS3BucketExists',
+    description: 'Check if an S3 bucket exists Use it to inspect current state before making changes.',
+    tool: awsCheckS3BucketExists,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListS3Objects',
+    description: 'List objects in an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsListS3Objects,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetS3Object',
+    description: 'Retrieve an object from S3 Use it to inspect current state before making changes.',
+    tool: awsGetS3Object,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUploadS3Object',
+    description: 'Upload an object to S3 Use it to store data.',
+    tool: awsUploadS3Object,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3Object',
+    description: 'Delete an object from S3 Use it to permanently remove the resource.',
+    tool: awsDeleteS3Object,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCopyS3Object',
+    description: 'Copy an object from one S3 location to another Use it to duplicate data.',
+    tool: awsCopyS3Object,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsHeadS3Object',
+    description: 'Retrieve metadata about an S3 object without returning the object itself',
+    tool: awsHeadS3Object,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListLambdaFunctions',
+    description: 'List all Lambda functions in your AWS account Use it to inspect current state before making changes.',
+    tool: awsListLambdaFunctions,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetLambdaFunction',
+    description: 'Get details about a Lambda function including code location Use it to inspect current state before making changes.',
+    tool: awsGetLambdaFunction,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsInvokeLambdaFunction',
+    description: 'Invoke a Lambda function synchronously or asynchronously Use it to execute the function.',
+    tool: awsInvokeLambdaFunction,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateLambdaFunction',
+    description: 'Create a new Lambda function Use it to provision a new resource.',
+    tool: awsCreateLambdaFunction,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateLambdaFunctionCode',
+    description: 'Update the code of a Lambda function Use it to change an existing resource.',
+    tool: awsUpdateLambdaFunctionCode,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateLambdaFunctionConfiguration',
+    description: 'Update configuration settings of a Lambda function Use it to change an existing resource.',
+    tool: awsUpdateLambdaFunctionConfiguration,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteLambdaFunction',
+    description: 'Delete a Lambda function Use it to permanently remove the resource.',
+    tool: awsDeleteLambdaFunction,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListLambdaFunctionVersions',
+    description: 'List all versions of a Lambda function Use it to inspect current state before making changes.',
+    tool: awsListLambdaFunctionVersions,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListDynamodbTables',
+    description: 'List all DynamoDB tables in the region Use it to inspect current state before making changes.',
+    tool: awsListDynamodbTables,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeDynamodbTable',
+    description: 'Get detailed information about a DynamoDB table including schema, status, and metrics Use it to inspect current state before making changes.',
+    tool: awsDescribeDynamodbTable,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateDynamodbTable',
+    description: 'Create a new DynamoDB table with attributes and keys Use it to provision a new resource.',
+    tool: awsCreateDynamodbTable,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateDynamodbTable',
+    description: 'Modify DynamoDB table settings (capacity, TTL, streams, PITR) Use it to change an existing resource.',
+    tool: awsUpdateDynamodbTable,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteDynamodbTable',
+    description: 'Delete a DynamoDB table Use it to permanently remove the resource.',
+    tool: awsDeleteDynamodbTable,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDynamodbGetItem',
+    description: 'Retrieve a single item from DynamoDB table by primary key. Use it to inspect current state before making changes.',
+    tool: awsDynamodbGetItem,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDynamodbPutItem',
+    description: 'Create or replace an item in DynamoDB table. Use it to write data.',
+    tool: awsDynamodbPutItem,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDynamodbUpdateItem',
+    description: 'Update specific attributes of an item in DynamoDB. Use it to change an existing resource.',
+    tool: awsDynamodbUpdateItem,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDynamodbDeleteItem',
+    description: 'Delete an item from DynamoDB table. Use it to permanently remove the resource.',
+    tool: awsDynamodbDeleteItem,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDynamodbQuery',
+    description: 'Query DynamoDB table by partition key with optional sort key conditions. Use it to inspect current state before making changes.',
+    tool: awsDynamodbQuery,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDynamodbScan',
+    description: 'Scan entire DynamoDB table (use with caution on large tables). Use it to inspect current state before making changes.',
+    tool: awsDynamodbScan,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDynamodbBatchGetItem',
+    description: 'Retrieve up to 100 items from one or more DynamoDB tables. Use it to inspect current state before making changes.',
+    tool: awsDynamodbBatchGetItem,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDynamodbBatchWriteItem',
+    description: 'Write or delete up to 25 items across one or more DynamoDB tables. Use it to write data.',
+    tool: awsDynamodbBatchWriteItem,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateSqsQueue',
+    description: 'Create a new SQS queue Use it to provision a new resource.',
+    tool: awsCreateSqsQueue,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSqsQueues',
+    description: 'List all SQS queues Use it to inspect current state before making changes.',
+    tool: awsListSqsQueues,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSqsQueueUrl',
+    description: 'Get the URL of an SQS queue Use it to inspect current state before making changes.',
+    tool: awsGetSqsQueueUrl,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSqsQueueAttributes',
+    description: 'Get attributes of an SQS queue Use it to inspect current state before making changes.',
+    tool: awsGetSqsQueueAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsSetSqsQueueAttributes',
+    description: 'Set attributes of an SQS queue Use it to change the configuration of the resource.',
+    tool: awsSetSqsQueueAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteSqsQueue',
+    description: 'Delete an SQS queue Use it to permanently remove the resource.',
+    tool: awsDeleteSqsQueue,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsPurgeSqsQueue',
+    description: 'Delete all messages in an SQS queue Use it to permanently remove all messages (cannot be undone).',
+    tool: awsPurgeSqsQueue,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsSendSqsMessage',
+    description: 'Send a message to an SQS queue Use it to send a message.',
+    tool: awsSendSqsMessage,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsSendSqsMessageBatch',
+    description: 'Send multiple messages to an SQS queue in a batch Use it to send a message.',
+    tool: awsSendSqsMessageBatch,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsReceiveSqsMessages',
+    description: 'Receive messages from an SQS queue Use it to poll for new messages.',
+    tool: awsReceiveSqsMessages,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteSqsMessage',
+    description: 'Delete a message from an SQS queue Use it to permanently remove the resource.',
+    tool: awsDeleteSqsMessage,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDeleteSqsMessageBatch',
+    description: 'Delete multiple messages from an SQS queue in a batch Use it to permanently remove the resource.',
+    tool: awsDeleteSqsMessageBatch,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsChangeSqsMessageVisibility',
+    description: 'Change the visibility timeout of a message Use it to change the configuration of the resource.',
+    tool: awsChangeSqsMessageVisibility,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsChangeSqsMessageVisibilityBatch',
+    description: 'Change the visibility timeout of multiple messages in a batch Use it to change the configuration of the resource.',
+    tool: awsChangeSqsMessageVisibilityBatch,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsAddSqsPermission',
+    description: 'Add a permission to an SQS queue Use it to grant access or attach configuration.',
+    tool: awsAddSqsPermission,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRemoveSqsPermission',
+    description: 'Remove a permission from an SQS queue',
+    tool: awsRemoveSqsPermission,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListSqsQueueTags',
+    description: 'List tags for an SQS queue Use it to inspect current state before making changes.',
+    tool: awsListSqsQueueTags,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagSqsQueue',
+    description: 'Add tags to an SQS queue Use it to label the resource.',
+    tool: awsTagSqsQueue,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagSqsQueue',
+    description: 'Remove tags from an SQS queue',
+    tool: awsUntagSqsQueue,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSnsTopic',
+    description: 'Create a new SNS topic Use it to provision a new resource.',
+    tool: awsCreateSnsTopic,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSnsTopics',
+    description: 'List all SNS topics Use it to inspect current state before making changes.',
+    tool: awsListSnsTopics,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSnsTopicAttributes',
+    description: 'Get attributes of an SNS topic Use it to inspect current state before making changes.',
+    tool: awsGetSnsTopicAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteSnsTopic',
+    description: 'Delete an SNS topic Use it to permanently remove the resource.',
+    tool: awsDeleteSnsTopic,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsSubscribeSnsTopic',
+    description: 'Subscribe to an SNS topic Use it to subscribe an endpoint.',
+    tool: awsSubscribeSnsTopic,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUnsubscribeSnsTopic',
+    description: 'Unsubscribe from an SNS topic Use it to remove a subscription.',
+    tool: awsUnsubscribeSnsTopic,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsPublishSnsMessage',
+    description: 'Publish a message to an SNS topic Use it to publish a message.',
+    tool: awsPublishSnsMessage,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSnsSubscriptions',
+    description: 'List all SNS subscriptions Use it to inspect current state before making changes.',
+    tool: awsListSnsSubscriptions,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListSnsSubscriptionsByTopic',
+    description: 'List subscriptions for a specific topic Use it to inspect current state before making changes.',
+    tool: awsListSnsSubscriptionsByTopic,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetS3BucketVersioning',
+    description: 'Get the versioning configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketVersioning,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketVersioning',
+    description: 'Set the versioning configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketVersioning,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetS3BucketPolicy',
+    description: 'Get the bucket policy for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketPolicy,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketPolicy',
+    description: 'Set the bucket policy for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketPolicy,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3BucketPolicy',
+    description: 'Delete the bucket policy for an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3BucketPolicy,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetS3BucketTagging',
+    description: 'Get tags for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketTagging,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketTagging',
+    description: 'Set tags for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketTagging,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3BucketTagging',
+    description: 'Delete tags from an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3BucketTagging,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetS3BucketCors',
+    description: 'Get the CORS configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketCors,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketCors',
+    description: 'Set the CORS configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketCors,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3BucketCors',
+    description: 'Delete the CORS configuration for an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3BucketCors,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetS3BucketEncryption',
+    description: 'Get the encryption configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketEncryption,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketEncryption',
+    description: 'Set the encryption configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketEncryption,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3BucketEncryption',
+    description: 'Delete the encryption configuration for an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3BucketEncryption,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetS3BucketLifecycle',
+    description: 'Get the lifecycle configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketLifecycle,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketLifecycle',
+    description: 'Set the lifecycle configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketLifecycle,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3BucketLifecycle',
+    description: 'Delete the lifecycle configuration for an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3BucketLifecycle,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetS3BucketWebsite',
+    description: 'Get the website configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketWebsite,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketWebsite',
+    description: 'Set the website configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketWebsite,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3BucketWebsite',
+    description: 'Delete the website configuration for an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3BucketWebsite,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetS3BucketLogging',
+    description: 'Get the logging configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketLogging,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketLogging',
+    description: 'Set the logging configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketLogging,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetS3BucketNotification',
+    description: 'Get the notification configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketNotification,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketNotification',
+    description: 'Set the notification configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketNotification,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetS3BucketReplication',
+    description: 'Get the replication configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketReplication,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketReplication',
+    description: 'Set the replication configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketReplication,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3BucketReplication',
+    description: 'Delete the replication configuration for an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3BucketReplication,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListS3ObjectVersions',
+    description: 'List all versions of objects in an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsListS3ObjectVersions,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteS3Objects',
+    description: 'Delete multiple objects from S3 in a single request Use it to permanently remove the resource.',
+    tool: awsDeleteS3Objects,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateS3MultipartUpload',
+    description: 'Initiate a multipart upload to S3 Use it to provision a new resource.',
+    tool: awsCreateS3MultipartUpload,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUploadS3Part',
+    description: 'Upload a part in a multipart upload Use it to store data.',
+    tool: awsUploadS3Part,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCompleteS3MultipartUpload',
+    description: 'Complete a multipart upload',
+    tool: awsCompleteS3MultipartUpload,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsAbortS3MultipartUpload',
+    description: 'Abort a multipart upload',
+    tool: awsAbortS3MultipartUpload,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListS3MultipartUploads',
+    description: 'List in-progress multipart uploads Use it to inspect current state before making changes.',
+    tool: awsListS3MultipartUploads,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListS3Parts',
+    description: 'List parts that have been uploaded for a multipart upload Use it to inspect current state before making changes.',
+    tool: awsListS3Parts,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetS3ObjectTagging',
+    description: 'Get tags for an S3 object Use it to inspect current state before making changes.',
+    tool: awsGetS3ObjectTagging,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3ObjectTagging',
+    description: 'Set tags for an S3 object Use it to write data or configuration.',
+    tool: awsPutS3ObjectTagging,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3ObjectTagging',
+    description: 'Delete tags from an S3 object Use it to permanently remove the resource.',
+    tool: awsDeleteS3ObjectTagging,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetS3ObjectAcl',
+    description: 'Get the ACL (Access Control List) for an S3 object Use it to inspect current state before making changes.',
+    tool: awsGetS3ObjectAcl,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3ObjectAcl',
+    description: 'Set the ACL (Access Control List) for an S3 object Use it to write data or configuration.',
+    tool: awsPutS3ObjectAcl,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetS3BucketAcl',
+    description: 'Get the ACL (Access Control List) for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3BucketAcl,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3BucketAcl',
+    description: 'Set the ACL (Access Control List) for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3BucketAcl,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetS3PublicAccessBlock',
+    description: 'Get public access block configuration for an S3 bucket Use it to inspect current state before making changes.',
+    tool: awsGetS3PublicAccessBlock,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutS3PublicAccessBlock',
+    description: 'Set public access block configuration for an S3 bucket Use it to write data or configuration.',
+    tool: awsPutS3PublicAccessBlock,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteS3PublicAccessBlock',
+    description: 'Delete public access block configuration for an S3 bucket Use it to permanently remove the resource.',
+    tool: awsDeleteS3PublicAccessBlock,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetLambdaFunctionConfiguration',
+    description: 'Get configuration details of a Lambda function Use it to inspect current state before making changes.',
+    tool: awsGetLambdaFunctionConfiguration,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPublishLambdaFunctionVersion',
+    description: 'Publish a new version of a Lambda function Use it to publish or release.',
+    tool: awsPublishLambdaFunctionVersion,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListLambdaFunctionAliases',
+    description: 'List all aliases for a Lambda function Use it to inspect current state before making changes.',
+    tool: awsListLambdaFunctionAliases,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetLambdaFunctionAlias',
+    description: 'Get details about a Lambda function alias Use it to inspect current state before making changes.',
+    tool: awsGetLambdaFunctionAlias,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateLambdaFunctionAlias',
+    description: 'Create an alias for a Lambda function Use it to provision a new resource.',
+    tool: awsCreateLambdaFunctionAlias,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateLambdaFunctionAlias',
+    description: 'Update a Lambda function alias Use it to change an existing resource.',
+    tool: awsUpdateLambdaFunctionAlias,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteLambdaFunctionAlias',
+    description: 'Delete a Lambda function alias Use it to permanently remove the resource.',
+    tool: awsDeleteLambdaFunctionAlias,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetLambdaFunctionPolicy',
+    description: 'Get the resource-based policy for a Lambda function Use it to inspect current state before making changes.',
+    tool: awsGetLambdaFunctionPolicy,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsAddLambdaFunctionPermission',
+    description: 'Add a permission to a Lambda function resource-based policy Use it to grant access or attach configuration.',
+    tool: awsAddLambdaFunctionPermission,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRemoveLambdaFunctionPermission',
+    description: 'Remove a permission from a Lambda function resource-based policy Use it to remove access or configuration.',
+    tool: awsRemoveLambdaFunctionPermission,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListLambdaEventSourceMappings',
+    description: 'List event source mappings for a Lambda function Use it to inspect current state before making changes.',
+    tool: awsListLambdaEventSourceMappings,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateLambdaEventSourceMapping',
+    description: 'Create an event source mapping for a Lambda function Use it to provision a new resource.',
+    tool: awsCreateLambdaEventSourceMapping,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateLambdaEventSourceMapping',
+    description: 'Update an event source mapping configuration Use it to change an existing resource.',
+    tool: awsUpdateLambdaEventSourceMapping,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteLambdaEventSourceMapping',
+    description: 'Delete an event source mapping Use it to permanently remove the resource.',
+    tool: awsDeleteLambdaEventSourceMapping,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListLambdaFunctionEventInvokeConfigs',
+    description: 'List async invocation configurations for a Lambda function Use it to inspect current state before making changes.',
+    tool: awsListLambdaFunctionEventInvokeConfigs,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetLambdaFunctionEventInvokeConfig',
+    description: 'Get async invocation configuration for a Lambda function Use it to inspect current state before making changes.',
+    tool: awsGetLambdaFunctionEventInvokeConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutLambdaFunctionEventInvokeConfig',
+    description: 'Configure async invocation settings for a Lambda function Use it to write data or configuration.',
+    tool: awsPutLambdaFunctionEventInvokeConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteLambdaFunctionEventInvokeConfig',
+    description: 'Delete async invocation configuration for a Lambda function Use it to permanently remove the resource.',
+    tool: awsDeleteLambdaFunctionEventInvokeConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListLambdaLayers',
+    description: 'List Lambda layers Use it to inspect current state before making changes.',
+    tool: awsListLambdaLayers,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListLambdaLayerVersions',
+    description: 'List versions of a Lambda layer Use it to inspect current state before making changes.',
+    tool: awsListLambdaLayerVersions,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetLambdaLayerVersion',
+    description: 'Get details about a specific Lambda layer version Use it to inspect current state before making changes.',
+    tool: awsGetLambdaLayerVersion,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListLambdaProvisionedConcurrencyConfigs',
+    description: 'List provisioned concurrency configurations for a function Use it to inspect current state before making changes.',
+    tool: awsListLambdaProvisionedConcurrencyConfigs,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetLambdaProvisionedConcurrencyConfig',
+    description: 'Get provisioned concurrency configuration for a function version Use it to inspect current state before making changes.',
+    tool: awsGetLambdaProvisionedConcurrencyConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutLambdaProvisionedConcurrencyConfig',
+    description: 'Configure provisioned concurrency for a function version Use it to write data or configuration.',
+    tool: awsPutLambdaProvisionedConcurrencyConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteLambdaProvisionedConcurrencyConfig',
+    description: 'Delete provisioned concurrency configuration Use it to permanently remove the resource.',
+    tool: awsDeleteLambdaProvisionedConcurrencyConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListLambdaFunctionTags',
+    description: 'List tags for a Lambda function Use it to inspect current state before making changes.',
+    tool: awsListLambdaFunctionTags,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagLambdaFunction',
+    description: 'Add tags to a Lambda function Use it to label the resource.',
+    tool: awsTagLambdaFunction,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagLambdaFunction',
+    description: 'Remove tags from a Lambda function Use it to remove tags from the resource.',
+    tool: awsUntagLambdaFunction,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetLambdaFunctionUrlConfig',
+    description: 'Get function URL configuration for a Lambda function Use it to inspect current state before making changes.',
+    tool: awsGetLambdaFunctionUrlConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateLambdaFunctionUrlConfig',
+    description: 'Create a function URL for a Lambda function Use it to provision a new resource.',
+    tool: awsCreateLambdaFunctionUrlConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateLambdaFunctionUrlConfig',
+    description: 'Update function URL configuration Use it to change an existing resource.',
+    tool: awsUpdateLambdaFunctionUrlConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteLambdaFunctionUrlConfig',
+    description: 'Delete function URL configuration Use it to permanently remove the resource.',
+    tool: awsDeleteLambdaFunctionUrlConfig,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListDynamodbBackups',
+    description: 'List on-demand backups for DynamoDB tables Use it to inspect current state before making changes.',
+    tool: awsListDynamodbBackups,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeDynamodbBackup',
+    description: 'Get details about a specific DynamoDB backup Use it to inspect current state before making changes.',
+    tool: awsDescribeDynamodbBackup,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateDynamodbBackup',
+    description: 'Create an on-demand backup of a DynamoDB table Use it to provision a new resource.',
+    tool: awsCreateDynamodbBackup,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteDynamodbBackup',
+    description: 'Delete an on-demand DynamoDB backup Use it to permanently remove the resource.',
+    tool: awsDeleteDynamodbBackup,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsRestoreDynamodbTableFromBackup',
+    description: 'Restore a DynamoDB table from a backup Use it to restore from a backup.',
+    tool: awsRestoreDynamodbTableFromBackup,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeContinuousBackups',
+    description: 'Check Point-in-Time Recovery (PITR) status for a DynamoDB table Use it to inspect current state before making changes.',
+    tool: awsDescribeContinuousBackups,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateContinuousBackups',
+    description: 'Enable or disable Point-in-Time Recovery (PITR) for a DynamoDB table Use it to change an existing resource.',
+    tool: awsUpdateContinuousBackups,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeGlobalTable',
+    description: 'Get details about a DynamoDB Global Table Use it to inspect current state before making changes.',
+    tool: awsDescribeGlobalTable,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateGlobalTable',
+    description: 'Create a multi-region DynamoDB Global Table Use it to provision a new resource.',
+    tool: awsCreateGlobalTable,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateGlobalTable',
+    description: 'Add or remove regions from a DynamoDB Global Table Use it to change an existing resource.',
+    tool: awsUpdateGlobalTable,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeTimeToLive',
+    description: 'Get Time To Live (TTL) configuration for a DynamoDB table Use it to inspect current state before making changes.',
+    tool: awsDescribeTimeToLive,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateTimeToLive',
+    description: 'Enable or disable Time To Live (TTL) for a DynamoDB table Use it to change an existing resource.',
+    tool: awsUpdateTimeToLive,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListDynamodbTags',
+    description: 'List tags for a DynamoDB table Use it to inspect current state before making changes.',
+    tool: awsListDynamodbTags,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagDynamodbResource',
+    description: 'Add tags to a DynamoDB table Use it to label the resource.',
+    tool: awsTagDynamodbResource,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagDynamodbResource',
+    description: 'Remove tags from a DynamoDB table Use it to remove tags from the resource.',
+    tool: awsUntagDynamodbResource,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsSetSnsTopicAttributes',
+    description: 'Set attributes of an SNS topic Use it to change the configuration of the resource.',
+    tool: awsSetSnsTopicAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetSnsSubscriptionAttributes',
+    description: 'Get attributes of an SNS subscription Use it to inspect current state before making changes.',
+    tool: awsGetSnsSubscriptionAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsSetSnsSubscriptionAttributes',
+    description: 'Set attributes of an SNS subscription Use it to change the configuration of the resource.',
+    tool: awsSetSnsSubscriptionAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsConfirmSnsSubscription',
+    description: 'Confirm an SNS subscription (for HTTP/HTTPS) Use it to confirm a pending subscription.',
+    tool: awsConfirmSnsSubscription,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPublishSnsBatch',
+    description: 'Publish multiple messages to an SNS topic in a batch Use it to publish or release.',
+    tool: awsPublishSnsBatch,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateSnsPlatformApplication',
+    description: 'Create a platform application for push notifications Use it to provision a new resource.',
+    tool: awsCreateSnsPlatformApplication,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSnsPlatformApplications',
+    description: 'List all platform applications Use it to inspect current state before making changes.',
+    tool: awsListSnsPlatformApplications,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSnsPlatformApplicationAttributes',
+    description: 'Get attributes of a platform application Use it to inspect current state before making changes.',
+    tool: awsGetSnsPlatformApplicationAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsSetSnsPlatformApplicationAttributes',
+    description: 'Set attributes of a platform application Use it to change the configuration of the resource.',
+    tool: awsSetSnsPlatformApplicationAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteSnsPlatformApplication',
+    description: 'Delete a platform application Use it to permanently remove the resource.',
+    tool: awsDeleteSnsPlatformApplication,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSnsPlatformEndpoint',
+    description: 'Create a platform endpoint for push notifications Use it to provision a new resource.',
+    tool: awsCreateSnsPlatformEndpoint,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSnsEndpointsByPlatformApplication',
+    description: 'List endpoints for a platform application Use it to inspect current state before making changes.',
+    tool: awsListSnsEndpointsByPlatformApplication,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSnsEndpointAttributes',
+    description: 'Get attributes of a platform endpoint Use it to inspect current state before making changes.',
+    tool: awsGetSnsEndpointAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsSetSnsEndpointAttributes',
+    description: 'Set attributes of a platform endpoint Use it to change the configuration of the resource.',
+    tool: awsSetSnsEndpointAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteSnsEndpoint',
+    description: 'Delete a platform endpoint Use it to permanently remove the resource.',
+    tool: awsDeleteSnsEndpoint,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCheckSnsPhoneOptedOut',
+    description: 'Check if a phone number is opted out of SMS Use it to inspect current state before making changes.',
+    tool: awsCheckSnsPhoneOptedOut,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListSnsOptedOutPhoneNumbers',
+    description: 'List phone numbers opted out of SMS Use it to inspect current state before making changes.',
+    tool: awsListSnsOptedOutPhoneNumbers,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsOptInSnsPhoneNumber',
+    description: 'Opt in a phone number to receive SMS Use it to manage SMS opt-in status.',
+    tool: awsOptInSnsPhoneNumber,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetSnsSmsAttributes',
+    description: 'Get SMS attributes for the account Use it to inspect current state before making changes.',
+    tool: awsGetSnsSmsAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsSetSnsSmsAttributes',
+    description: 'Set SMS attributes for the account Use it to change the configuration of the resource.',
+    tool: awsSetSnsSmsAttributes,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsAddSnsPermission',
+    description: 'Add a permission to an SNS topic Use it to grant access or attach configuration.',
+    tool: awsAddSnsPermission,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRemoveSnsPermission',
+    description: 'Remove a permission from an SNS topic Use it to remove access or configuration.',
+    tool: awsRemoveSnsPermission,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListSnsTags',
+    description: 'List tags for an SNS resource Use it to inspect current state before making changes.',
+    tool: awsListSnsTags,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagSnsResource',
+    description: 'Add tags to an SNS resource Use it to label the resource.',
+    tool: awsTagSnsResource,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagSnsResource',
+    description: 'Remove tags from an SNS resource Use it to remove tags from the resource.',
+    tool: awsUntagSnsResource,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListIamUsers',
+    description: 'List all IAM users in the AWS account Use it to inspect current state before making changes.',
+    tool: awsListIamUsers,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetIamUser',
+    description: 'Get detailed information about a specific IAM user Use it to inspect current state before making changes.',
+    tool: awsGetIamUser,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListIamRoles',
+    description: 'List all IAM roles in the AWS account Use it to inspect current state before making changes.',
+    tool: awsListIamRoles,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetIamRole',
+    description: 'Get detailed information about a specific IAM role Use it to inspect current state before making changes.',
+    tool: awsGetIamRole,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListIamPolicies',
+    description: 'List all customer managed and AWS managed policies Use it to inspect current state before making changes.',
+    tool: awsListIamPolicies,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetIamPolicy',
+    description: 'Get metadata about a managed policy Use it to inspect current state before making changes.',
+    tool: awsGetIamPolicy,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetPolicyVersion',
+    description: 'Get the content of a specific policy version Use it to inspect current state before making changes.',
+    tool: awsGetPolicyVersion,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListPolicyVersions',
+    description: 'List all versions of a policy Use it to inspect current state before making changes.',
+    tool: awsListPolicyVersions,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListIamGroups',
+    description: 'List all IAM groups in the AWS account Use it to inspect current state before making changes.',
+    tool: awsListIamGroups,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetIamGroup',
+    description: 'Get detailed information about a specific IAM group Use it to inspect current state before making changes.',
+    tool: awsGetIamGroup,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListAttachedRolePolicies',
+    description: 'List all managed policies attached to an IAM role Use it to inspect current state before making changes.',
+    tool: awsListAttachedRolePolicies,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAccountPasswordPolicy',
+    description: 'Get the password policy for the AWS account Use it to inspect current state before making changes.',
+    tool: awsGetAccountPasswordPolicy,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
   },
 ];
