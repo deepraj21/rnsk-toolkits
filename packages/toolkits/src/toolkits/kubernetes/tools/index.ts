@@ -1,0 +1,151 @@
+// @ts-nocheck
+import {
+  kubernetesListNamespaces,
+  kubernetesGetNamespace,
+  kubernetesCreateNamespace,
+  kubernetesDeleteNamespace,
+} from './namespaces.js';
+import { kubernetesListPods, kubernetesGetPod, kubernetesGetPodLogs, kubernetesDeletePod } from './pods.js';
+import {
+  kubernetesListDeployments,
+  kubernetesGetDeployment,
+  kubernetesCreateDeployment,
+  kubernetesScaleDeployment,
+  kubernetesRestartDeployment,
+  kubernetesDeleteDeployment,
+} from './deployments.js';
+import {
+  kubernetesListStatefulSets,
+  kubernetesListDaemonSets,
+  kubernetesListReplicaSets,
+} from './workloads.js';
+import {
+  kubernetesListServices,
+  kubernetesGetService,
+  kubernetesCreateService,
+  kubernetesDeleteService,
+  kubernetesListIngresses,
+  kubernetesGetIngress,
+} from './services.js';
+import {
+  kubernetesListConfigMaps,
+  kubernetesGetConfigMap,
+  kubernetesCreateConfigMap,
+  kubernetesListSecrets,
+} from './config.js';
+import {
+  kubernetesListPersistentVolumeClaims,
+  kubernetesGetPersistentVolumeClaim,
+  kubernetesListPersistentVolumes,
+} from './storage.js';
+import {
+  kubernetesListNodes,
+  kubernetesGetNode,
+  kubernetesCordonNode,
+  kubernetesUncordonNode,
+} from './nodes.js';
+import {
+  kubernetesListJobs,
+  kubernetesListCronJobs,
+  kubernetesCreateJob,
+  kubernetesDeleteJob,
+} from './jobs.js';
+import {
+  kubernetesListHorizontalPodAutoscalers,
+  kubernetesGetHorizontalPodAutoscaler,
+} from './autoscaling.js';
+import { kubernetesGetClusterVersion, kubernetesListApiGroups, kubernetesListEvents } from './cluster.js';
+
+export {
+  kubernetesListNamespaces,
+  kubernetesGetNamespace,
+  kubernetesCreateNamespace,
+  kubernetesDeleteNamespace,
+  kubernetesListPods,
+  kubernetesGetPod,
+  kubernetesGetPodLogs,
+  kubernetesDeletePod,
+  kubernetesListDeployments,
+  kubernetesGetDeployment,
+  kubernetesCreateDeployment,
+  kubernetesScaleDeployment,
+  kubernetesRestartDeployment,
+  kubernetesDeleteDeployment,
+  kubernetesListStatefulSets,
+  kubernetesListDaemonSets,
+  kubernetesListReplicaSets,
+  kubernetesListServices,
+  kubernetesGetService,
+  kubernetesCreateService,
+  kubernetesDeleteService,
+  kubernetesListIngresses,
+  kubernetesGetIngress,
+  kubernetesListConfigMaps,
+  kubernetesGetConfigMap,
+  kubernetesCreateConfigMap,
+  kubernetesListSecrets,
+  kubernetesListPersistentVolumeClaims,
+  kubernetesGetPersistentVolumeClaim,
+  kubernetesListPersistentVolumes,
+  kubernetesListNodes,
+  kubernetesGetNode,
+  kubernetesCordonNode,
+  kubernetesUncordonNode,
+  kubernetesListJobs,
+  kubernetesListCronJobs,
+  kubernetesCreateJob,
+  kubernetesDeleteJob,
+  kubernetesListHorizontalPodAutoscalers,
+  kubernetesGetHorizontalPodAutoscaler,
+  kubernetesGetClusterVersion,
+  kubernetesListApiGroups,
+  kubernetesListEvents,
+};
+
+const auth = 'kubernetesCredentials' as const;
+
+export const kubernetesTools = [
+  { name: 'kubernetesListNamespaces', description: 'List Kubernetes namespaces. Use to discover where workloads are deployed before other calls.', tool: kubernetesListNamespaces, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetNamespace', description: 'Get details of a namespace including labels, annotations and phase.', tool: kubernetesGetNamespace, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesCreateNamespace', description: 'Create a new namespace, optionally with labels. Use to isolate a new application or environment.', tool: kubernetesCreateNamespace, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesDeleteNamespace', description: 'Delete a namespace and everything in it. Irreversible — confirm with the user first.', tool: kubernetesDeleteNamespace, requiredAuth: auth, scope: 'delete' as const },
+  { name: 'kubernetesListPods', description: 'List pods in a namespace or across all namespaces. Returns phase, IP, node, restart counts and images. Use to check workload health.', tool: kubernetesListPods, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetPod', description: 'Get full details of a pod including spec, container statuses, events-ready conditions and IPs.', tool: kubernetesGetPod, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetPodLogs', description: 'Fetch container logs for a pod. Use to debug crashes, CrashLoopBackOff and application errors.', tool: kubernetesGetPodLogs, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesDeletePod', description: 'Delete a pod to force a restart (the controller recreates it). Use to recover stuck pods or pick up new config.', tool: kubernetesDeletePod, requiredAuth: auth, scope: 'delete' as const },
+  { name: 'kubernetesListDeployments', description: 'List deployments in a namespace or across all namespaces. Returns desired vs available replica counts for rollout health.', tool: kubernetesListDeployments, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetDeployment', description: 'Get full details of a deployment including strategy, selector, pod template and rollout status.', tool: kubernetesGetDeployment, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesCreateDeployment', description: 'Create a deployment from a container image with replicas, port and env vars. Use to deploy a new stateless workload.', tool: kubernetesCreateDeployment, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesScaleDeployment', description: 'Scale a deployment to a replica count. Use to handle traffic spikes or scale down idle workloads.', tool: kubernetesScaleDeployment, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesRestartDeployment', description: 'Rolling-restart a deployment (kubectl rollout restart equivalent). Use to pick up new images with the same tag or fresh config.', tool: kubernetesRestartDeployment, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesDeleteDeployment', description: 'Delete a deployment and its pods. Services, config and PVCs are left untouched — confirm with the user first.', tool: kubernetesDeleteDeployment, requiredAuth: auth, scope: 'delete' as const },
+  { name: 'kubernetesListStatefulSets', description: 'List StatefulSets for stateful workloads like databases and queues. Returns desired vs ready replicas.', tool: kubernetesListStatefulSets, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListDaemonSets', description: 'List DaemonSets running node-level agents like log collectors and CNI plugins. Returns scheduling status.', tool: kubernetesListDaemonSets, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListReplicaSets', description: 'List ReplicaSets backing deployments. Use to inspect rollout history and old revisions during a stuck rollout.', tool: kubernetesListReplicaSets, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListServices', description: 'List services in a namespace or across all namespaces. Returns type, cluster IP and ports for service discovery.', tool: kubernetesListServices, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetService', description: 'Get full details of a service including selector, ports, endpoints-ready status and load balancer ingress.', tool: kubernetesGetService, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesCreateService', description: 'Create a ClusterIP, NodePort or LoadBalancer service for a set of pods. Use to expose a deployment inside or outside the cluster.', tool: kubernetesCreateService, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesDeleteService', description: 'Delete a service. Pods keep running but lose the stable endpoint — confirm with the user first.', tool: kubernetesDeleteService, requiredAuth: auth, scope: 'delete' as const },
+  { name: 'kubernetesListIngresses', description: 'List ingresses with hosts, paths and backend services. Use to audit external HTTP routing into the cluster.', tool: kubernetesListIngresses, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetIngress', description: 'Get full ingress details including TLS config, rules, paths and load balancer status.', tool: kubernetesGetIngress, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListConfigMaps', description: 'List ConfigMaps. Returns names and data keys only (never values) for config auditing.', tool: kubernetesListConfigMaps, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetConfigMap', description: 'Get a ConfigMap including its data. Use to inspect application configuration mounted into pods.', tool: kubernetesGetConfigMap, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesCreateConfigMap', description: 'Create a ConfigMap from key/value pairs. Use to add non-sensitive configuration for pods to consume.', tool: kubernetesCreateConfigMap, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesListSecrets', description: 'List secrets returning metadata and data keys only — values are never exposed. Use to audit secret presence and types.', tool: kubernetesListSecrets, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListPersistentVolumeClaims', description: 'List PersistentVolumeClaims with bound volumes, storage class, capacity and phase. Use to debug Pending pods waiting on storage.', tool: kubernetesListPersistentVolumeClaims, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetPersistentVolumeClaim', description: 'Get a PersistentVolumeClaim including access modes, resources, selectors and bound volume details.', tool: kubernetesGetPersistentVolumeClaim, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListPersistentVolumes', description: 'List cluster PersistentVolumes with capacity, reclaim policy, storage class and claim binding. Use for storage capacity planning.', tool: kubernetesListPersistentVolumes, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListNodes', description: 'List cluster nodes with Ready status, capacity, allocatable resources and versions. Use for capacity and upgrade planning.', tool: kubernetesListNodes, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetNode', description: 'Get full node details including addresses, taints, images, volumes and system info.', tool: kubernetesGetNode, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesCordonNode', description: 'Mark a node unschedulable (kubectl cordon equivalent). Use before draining or maintaining a node.', tool: kubernetesCordonNode, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesUncordonNode', description: 'Mark a node schedulable again (kubectl uncordon equivalent). Use after maintenance completes.', tool: kubernetesUncordonNode, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesListJobs', description: 'List batch jobs with active/succeeded/failed counts. Use to check one-off task and migration outcomes.', tool: kubernetesListJobs, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListCronJobs', description: 'List CronJobs with schedules, suspend state and last schedule time. Use to audit recurring workloads.', tool: kubernetesListCronJobs, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesCreateJob', description: 'Create a one-off batch job from a container image and command. Use for migrations, scripts and manual triggers of cron work.', tool: kubernetesCreateJob, requiredAuth: auth, scope: 'write' as const },
+  { name: 'kubernetesDeleteJob', description: 'Delete a batch job and its pods. Use to clean up finished or stuck jobs.', tool: kubernetesDeleteJob, requiredAuth: auth, scope: 'delete' as const },
+  { name: 'kubernetesListHorizontalPodAutoscalers', description: 'List HorizontalPodAutoscalers with current vs desired replicas, targets and scaling status.', tool: kubernetesListHorizontalPodAutoscalers, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetHorizontalPodAutoscaler', description: 'Get an HPA including scale target, metrics (CPU/memory/custom) and recent scaling conditions.', tool: kubernetesGetHorizontalPodAutoscaler, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesGetClusterVersion', description: 'Get the Kubernetes server version, git commit and platform. Use to check upgrade status and API compatibility.', tool: kubernetesGetClusterVersion, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListApiGroups', description: 'Discover available API groups and versions (apps/v1, batch/v1, networking.k8s.io/v1...). Use to check feature support before other calls.', tool: kubernetesListApiGroups, requiredAuth: auth, scope: 'read' as const },
+  { name: 'kubernetesListEvents', description: 'List cluster events (warnings, scheduling failures, image pulls). Use first when debugging unhealthy resources.', tool: kubernetesListEvents, requiredAuth: auth, scope: 'read' as const },
+];

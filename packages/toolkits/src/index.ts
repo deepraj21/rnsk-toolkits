@@ -50,6 +50,7 @@ import jira from './toolkits/jira/manifest.js';
 import neo4j from './toolkits/neo4j/manifest.js';
 import neon from './toolkits/neon/manifest.js';
 import kaggle from './toolkits/kaggle/manifest.js';
+import kubernetes from './toolkits/kubernetes/manifest.js';
 import devTo from './toolkits/dev-to/manifest.js';
 import nasa from './toolkits/nasa/manifest.js';
 import notebookLm from './toolkits/notebook-lm/manifest.js';
@@ -114,6 +115,7 @@ export const toolkits: ToolkitManifest[] = [
   neo4j,
   neon,
   kaggle,
+  kubernetes,
   devTo,
   notebookLm,
   nasa,
@@ -177,6 +179,7 @@ export {
   neo4j,
   neon,
   kaggle,
+  kubernetes,
   devTo,
   notebookLm,
   nasa,
