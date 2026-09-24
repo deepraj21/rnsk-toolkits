@@ -5,7 +5,7 @@ import { awsTools } from './tools/index.js';
 export default defineToolkit({
   id: 'aws',
   displayName: 'AWS',
-  shortDescription: 'Manage EC2 instances and monitor CloudWatch metrics, alarms, and logs.',
+  shortDescription: 'Manage EC2 compute, VPC networking, volumes, AMIs, and launch templates; monitor CloudWatch metrics, alarms, and logs.',
   category: 'Developer Tools & DevOps',
   icon: AWS_ICON,
   auth: {

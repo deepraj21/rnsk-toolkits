@@ -1,0 +1,33 @@
+import { tool } from 'ai';
+import { z } from 'zod';
+import { CreateVpcCommand } from '@aws-sdk/client-ec2';
+import { createEc2Client } from '../client.js';
+
+export const awsCreateEc2Vpc = tool({
+  description: 'Create a new VPC. Use it to provision a new resource.',
+  inputSchema: z.object({
+    awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
+    region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
+    cidrBlock: z.string().describe('CIDR block for the VPC'),
+    ipv6CidrBlock: z.string().optional().describe('IPv6 CIDR block'),
+    tagSpecifications: z.array(z.any()).optional().describe('Tags to apply'),
+  }),
+  execute: async ({ awsCredentials, region, cidrBlock, ipv6CidrBlock, tagSpecifications }) => {
+    if (!awsCredentials) {
+      return { error: 'AWS credentials are required. Connect AWS first.' };
+    }
+    try {
+      const client = createEc2Client(awsCredentials, region);
+
+      const command = new CreateVpcCommand({
+          CidrBlock: cidrBlock,
+          Ipv6CidrBlock: ipv6CidrBlock,
+          TagSpecifications: tagSpecifications,
+      });
+      const response = await client.send(command);
+      return { vpc: response.Vpc };
+    } catch (err) {
+      return { error: 'Failed to create a new VPC', message: err instanceof Error ? err.message : 'Unknown error' };
+    }
+  },
+});
