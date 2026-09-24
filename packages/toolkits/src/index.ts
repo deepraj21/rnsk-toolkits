@@ -60,6 +60,7 @@ import wordpress from './toolkits/wordpress/manifest.js';
 import wise from './toolkits/wise/manifest.js';
 import servicenow from './toolkits/servicenow/manifest.js';
 import postman from './toolkits/postman/manifest.js';
+import splunk from './toolkits/splunk/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -125,6 +126,7 @@ export const toolkits: ToolkitManifest[] = [
   wise,
   servicenow,
   postman,
+  splunk,
 ];
 export {
   mathematics,
@@ -189,6 +191,7 @@ export {
   wise,
   servicenow,
   postman,
+  splunk,
 };
 export * from './core/index.js';
 

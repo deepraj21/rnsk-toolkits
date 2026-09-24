@@ -1,0 +1,95 @@
+// @ts-nocheck
+import {
+  splunkCreateSearchJob,
+  splunkGetSearchJobStatus,
+  splunkGetSearchJobResults,
+  splunkGetSearchJobEvents,
+  splunkRunOneShotSearch,
+  splunkExportSearch,
+  splunkListSearchJobs,
+  splunkCancelSearchJob,
+  splunkControlSearchJob,
+} from './search.js';
+import {
+  splunkListSavedSearches,
+  splunkGetSavedSearch,
+  splunkCreateSavedSearch,
+  splunkUpdateSavedSearch,
+  splunkDeleteSavedSearch,
+  splunkDispatchSavedSearch,
+} from './savedsearches.js';
+import { splunkListIndexes, splunkGetIndex, splunkCreateIndex, splunkDeleteIndex } from './indexes.js';
+import {
+  splunkListDataInputs,
+  splunkListHecTokens,
+  splunkCreateHecToken,
+  splunkSendHecEvent,
+} from './inputs.js';
+import { splunkListUsers, splunkListRoles, splunkListFiredAlerts, splunkGetServerInfo } from './access.js';
+import { splunkListKvStoreCollections, splunkQueryKvStoreCollection } from './kvstore.js';
+
+export {
+  splunkCreateSearchJob,
+  splunkGetSearchJobStatus,
+  splunkGetSearchJobResults,
+  splunkGetSearchJobEvents,
+  splunkRunOneShotSearch,
+  splunkExportSearch,
+  splunkListSearchJobs,
+  splunkCancelSearchJob,
+  splunkControlSearchJob,
+  splunkListSavedSearches,
+  splunkGetSavedSearch,
+  splunkCreateSavedSearch,
+  splunkUpdateSavedSearch,
+  splunkDeleteSavedSearch,
+  splunkDispatchSavedSearch,
+  splunkListIndexes,
+  splunkGetIndex,
+  splunkCreateIndex,
+  splunkDeleteIndex,
+  splunkListDataInputs,
+  splunkListHecTokens,
+  splunkCreateHecToken,
+  splunkSendHecEvent,
+  splunkListUsers,
+  splunkListRoles,
+  splunkListFiredAlerts,
+  splunkGetServerInfo,
+  splunkListKvStoreCollections,
+  splunkQueryKvStoreCollection,
+};
+
+const auth = 'splunkCredentials' as const;
+
+export const splunkTools = [
+  { name: 'splunkCreateSearchJob', description: 'Run an SPL search as an async job. Returns a sid — poll status, then fetch results. Defaults to the last 24 hours.', tool: splunkCreateSearchJob, requiredAuth: auth, scope: 'write' as const },
+  { name: 'splunkGetSearchJobStatus', description: 'Check an SPL search job state and progress. Use to poll until dispatchState is DONE before fetching results.', tool: splunkGetSearchJobStatus, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkGetSearchJobResults', description: 'Fetch transformed results of a completed search job with pagination. Use after status shows DONE.', tool: splunkGetSearchJobResults, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkGetSearchJobEvents', description: 'Fetch raw untransformed events of a search job (available while it still runs). Use for raw log inspection.', tool: splunkGetSearchJobEvents, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkRunOneShotSearch', description: 'Run a short SPL search synchronously and get results directly. Use for quick lookups; prefer async jobs for long searches.', tool: splunkRunOneShotSearch, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkExportSearch', description: 'Stream SPL search results as they become available (no sid). Use for large result sets and long-running searches.', tool: splunkExportSearch, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkListSearchJobs', description: 'List recent search jobs for the connected user with state and progress. Use to find lost sids or audit search activity.', tool: splunkListSearchJobs, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkCancelSearchJob', description: 'Cancel and delete a search job, freeing its resources. Use to stop runaway or unwanted searches.', tool: splunkCancelSearchJob, requiredAuth: auth, scope: 'delete' as const },
+  { name: 'splunkControlSearchJob', description: 'Pause, unpause or finalize a running search job to manage long-running search load.', tool: splunkControlSearchJob, requiredAuth: auth, scope: 'write' as const },
+  { name: 'splunkListSavedSearches', description: 'List saved searches (reports and alerts) with SPL, schedule and disabled state. Use to discover reusable searches.', tool: splunkListSavedSearches, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkGetSavedSearch', description: 'Get a saved search including full SPL, schedule, alert condition and configured alert actions.', tool: splunkGetSavedSearch, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkCreateSavedSearch', description: 'Create a saved search (report or scheduled alert) with SPL, cron schedule and optional email alerting.', tool: splunkCreateSavedSearch, requiredAuth: auth, scope: 'write' as const },
+  { name: 'splunkUpdateSavedSearch', description: 'Update a saved search SPL, schedule, description or enabled state.', tool: splunkUpdateSavedSearch, requiredAuth: auth, scope: 'write' as const },
+  { name: 'splunkDeleteSavedSearch', description: 'Delete a saved search. Scheduled runs stop — confirm with the user first.', tool: splunkDeleteSavedSearch, requiredAuth: auth, scope: 'delete' as const },
+  { name: 'splunkDispatchSavedSearch', description: 'Run a saved search now and get its sid. Use to trigger reports or test alerts on demand.', tool: splunkDispatchSavedSearch, requiredAuth: auth, scope: 'write' as const },
+  { name: 'splunkListIndexes', description: 'List indexes with event counts, sizes and disabled state. Use to discover searchable data and storage usage.', tool: splunkListIndexes, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkGetIndex', description: 'Get index details including paths, retention, frozen/cold behavior and size limits.', tool: splunkGetIndex, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkCreateIndex', description: 'Create a new event index with optional storage paths and size cap. Use before onboarding a new data source.', tool: splunkCreateIndex, requiredAuth: auth, scope: 'write' as const },
+  { name: 'splunkDeleteIndex', description: 'Delete an index and all its data. Irreversible — confirm with the user first.', tool: splunkDeleteIndex, requiredAuth: auth, scope: 'delete' as const },
+  { name: 'splunkListDataInputs', description: 'List data inputs (monitor, TCP, UDP, script, HTTP) with their collection settings. Use to audit data onboarding.', tool: splunkListDataInputs, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkListHecTokens', description: 'List HTTP Event Collector tokens with their allowed indexes. Tokens are ingest credentials — handle as sensitive.', tool: splunkListHecTokens, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkCreateHecToken', description: 'Create an HTTP Event Collector token for a new log source. Returns the token value — store it for the sender.', tool: splunkCreateHecToken, requiredAuth: auth, scope: 'write' as const },
+  { name: 'splunkSendHecEvent', description: 'Send a JSON event to Splunk via HTTP Event Collector. Use to ingest application or test events.', tool: splunkSendHecEvent, requiredAuth: auth, scope: 'write' as const },
+  { name: 'splunkListUsers', description: 'List Splunk users with roles, email and real name. Use to audit access and find search owners.', tool: splunkListUsers, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkListRoles', description: 'List Splunk roles with capabilities, default app and inherited roles. Use to audit permissions.', tool: splunkListRoles, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkListFiredAlerts', description: 'List fired alert instances with severity and trigger time. Use to triage recent alert firings.', tool: splunkListFiredAlerts, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkGetServerInfo', description: 'Get server info: version, build, GUID, roles and license state. Use to check deployment health and version.', tool: splunkGetServerInfo, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkListKvStoreCollections', description: 'List KV Store collections (app lookups/state tables) with their fields. Use to discover lookup data available to searches.', tool: splunkListKvStoreCollections, requiredAuth: auth, scope: 'read' as const },
+  { name: 'splunkQueryKvStoreCollection', description: 'Query records in a KV Store collection with an optional Mongo-style filter. Use to read lookup/state data.', tool: splunkQueryKvStoreCollection, requiredAuth: auth, scope: 'read' as const },
+];
