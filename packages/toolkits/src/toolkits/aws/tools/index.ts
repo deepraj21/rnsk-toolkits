@@ -1104,6 +1104,123 @@ import { awsDescribeReportDefinitions } from './cost-and-usage-report-service/de
 import { awsPutReportDefinition } from './cost-and-usage-report-service/put-report-definition.js';
 import { awsModifyReportDefinition } from './cost-and-usage-report-service/modify-report-definition.js';
 import { awsDeleteReportDefinition } from './cost-and-usage-report-service/delete-report-definition.js';
+import { awsListKmsKeys } from './kms/list-keys.js';
+import { awsDescribeKmsKey } from './kms/describe-key.js';
+import { awsCreateKmsKey } from './kms/create-key.js';
+import { awsScheduleKeyDeletion } from './kms/schedule-key-deletion.js';
+import { awsCancelKeyDeletion } from './kms/cancel-key-deletion.js';
+import { awsEnableKmsKey } from './kms/enable-key.js';
+import { awsDisableKmsKey } from './kms/disable-key.js';
+import { awsUpdateKeyDescription } from './kms/update-key-description.js';
+import { awsKmsEncrypt } from './kms/kms-encrypt.js';
+import { awsKmsDecrypt } from './kms/kms-decrypt.js';
+import { awsKmsReEncrypt } from './kms/kms-re-encrypt.js';
+import { awsGenerateDataKey } from './kms/generate-data-key.js';
+import { awsGenerateDataKeyWithoutPlaintext } from './kms/generate-data-key-without-plaintext.js';
+import { awsGetKeyPolicy } from './kms/get-key-policy.js';
+import { awsPutKeyPolicy } from './kms/put-key-policy.js';
+import { awsListKeyPolicies } from './kms/list-key-policies.js';
+import { awsCreateGrant } from './kms/create-grant.js';
+import { awsListGrants } from './kms/list-grants.js';
+import { awsRevokeGrant } from './kms/revoke-grant.js';
+import { awsRetireGrant } from './kms/retire-grant.js';
+import { awsListKmsAliases } from './kms/list-aliases.js';
+import { awsCreateKmsAlias } from './kms/create-alias.js';
+import { awsDeleteKmsAlias } from './kms/delete-alias.js';
+import { awsUpdateKmsAlias } from './kms/update-alias.js';
+import { awsListKmsResourceTags } from './kms/list-resource-tags.js';
+import { awsTagKmsResource } from './kms/tag-resource.js';
+import { awsUntagKmsResource } from './kms/untag-resource.js';
+import { awsCreateGuarddutyDetector } from './guardduty/create-detector.js';
+import { awsListGuarddutyDetectors } from './guardduty/list-detectors.js';
+import { awsGetGuarddutyDetector } from './guardduty/get-detector.js';
+import { awsUpdateGuarddutyDetector } from './guardduty/update-detector.js';
+import { awsDeleteGuarddutyDetector } from './guardduty/delete-detector.js';
+import { awsListGuarddutyFindings } from './guardduty/list-findings.js';
+import { awsGetGuarddutyFindings } from './guardduty/get-findings.js';
+import { awsUpdateGuarddutyFindingsFeedback } from './guardduty/update-findings-feedback.js';
+import { awsArchiveGuarddutyFindings } from './guardduty/archive-findings.js';
+import { awsUnarchiveGuarddutyFindings } from './guardduty/unarchive-findings.js';
+import { awsCreateGuarddutyIpSet } from './guardduty/create-guardduty-ip-set.js';
+import { awsListGuarddutyIpSets } from './guardduty/list-guardduty-ip-sets.js';
+import { awsGetGuarddutyIpSet } from './guardduty/get-guardduty-ip-set.js';
+import { awsUpdateGuarddutyIpSet } from './guardduty/update-guardduty-ip-set.js';
+import { awsDeleteGuarddutyIpSet } from './guardduty/delete-guardduty-ip-set.js';
+import { awsCreateThreatIntelSet } from './guardduty/create-threat-intel-set.js';
+import { awsListThreatIntelSets } from './guardduty/list-threat-intel-sets.js';
+import { awsGetThreatIntelSet } from './guardduty/get-threat-intel-set.js';
+import { awsUpdateThreatIntelSet } from './guardduty/update-threat-intel-set.js';
+import { awsDeleteThreatIntelSet } from './guardduty/delete-threat-intel-set.js';
+import { awsEnableSecurityHub } from './securityhub/enable-security-hub.js';
+import { awsDisableSecurityHub } from './securityhub/disable-security-hub.js';
+import { awsDescribeHub } from './securityhub/describe-hub.js';
+import { awsUpdateSecurityHubConfiguration } from './securityhub/update-security-hub-configuration.js';
+import { awsGetSecurityHubFindings } from './securityhub/get-security-hub-findings.js';
+import { awsUpdateSecurityHubFindings } from './securityhub/update-security-hub-findings.js';
+import { awsBatchImportFindings } from './securityhub/batch-import-findings.js';
+import { awsBatchUpdateFindings } from './securityhub/batch-update-findings.js';
+import { awsGetSecurityHubInsights } from './securityhub/get-security-hub-insights.js';
+import { awsCreateInsight } from './securityhub/create-insight.js';
+import { awsUpdateInsight } from './securityhub/update-insight.js';
+import { awsDeleteInsight } from './securityhub/delete-insight.js';
+import { awsGetInsightResults } from './securityhub/get-insight-results.js';
+import { awsDescribeStandards } from './securityhub/describe-standards.js';
+import { awsGetEnabledStandards } from './securityhub/get-enabled-standards.js';
+import { awsBatchEnableStandards } from './securityhub/batch-enable-standards.js';
+import { awsBatchDisableStandards } from './securityhub/batch-disable-standards.js';
+import { awsDescribeProducts } from './securityhub/describe-products.js';
+import { awsListEnabledProductsForImport } from './securityhub/list-enabled-products-for-import.js';
+import { awsEnableImportFindingsForProduct } from './securityhub/enable-import-findings-for-product.js';
+import { awsDisableImportFindingsForProduct } from './securityhub/disable-import-findings-for-product.js';
+import { awsCreateMembers } from './securityhub/create-members.js';
+import { awsListMembers } from './securityhub/list-members.js';
+import { awsGetMembers } from './securityhub/get-members.js';
+import { awsDeleteMembers } from './securityhub/delete-members.js';
+import { awsListWebAcls } from './waf/list-web-acls.js';
+import { awsGetWebAcl } from './waf/get-web-acl.js';
+import { awsCreateWebAcl } from './waf/create-web-acl.js';
+import { awsUpdateWebAcl } from './waf/update-web-acl.js';
+import { awsDeleteWebAcl } from './waf/delete-web-acl.js';
+import { awsAssociateWebAcl } from './waf/associate-web-acl.js';
+import { awsDisassociateWebAcl } from './waf/disassociate-web-acl.js';
+import { awsListResourcesForWebAcl } from './waf/list-resources-for-web-acl.js';
+import { awsListWafIpSets } from './waf/list-waf-ip-sets.js';
+import { awsGetWafIpSet } from './waf/get-waf-ip-set.js';
+import { awsCreateWafIpSet } from './waf/create-waf-ip-set.js';
+import { awsUpdateWafIpSet } from './waf/update-waf-ip-set.js';
+import { awsDeleteWafIpSet } from './waf/delete-waf-ip-set.js';
+import { awsListRegexPatternSets } from './waf/list-regex-pattern-sets.js';
+import { awsGetRegexPatternSet } from './waf/get-regex-pattern-set.js';
+import { awsCreateRegexPatternSet } from './waf/create-regex-pattern-set.js';
+import { awsUpdateRegexPatternSet } from './waf/update-regex-pattern-set.js';
+import { awsDeleteRegexPatternSet } from './waf/delete-regex-pattern-set.js';
+import { awsListRuleGroups } from './waf/list-rule-groups.js';
+import { awsGetRuleGroup } from './waf/get-rule-group.js';
+import { awsCreateRuleGroup } from './waf/create-rule-group.js';
+import { awsUpdateRuleGroup } from './waf/update-rule-group.js';
+import { awsDeleteRuleGroup } from './waf/delete-rule-group.js';
+import { awsGetLoggingConfiguration } from './waf/get-logging-configuration.js';
+import { awsPutLoggingConfiguration } from './waf/put-logging-configuration.js';
+import { awsDeleteLoggingConfiguration } from './waf/delete-logging-configuration.js';
+import { awsListLoggingConfigurations } from './waf/list-logging-configurations.js';
+import { awsDescribeManagedRuleGroup } from './waf/describe-managed-rule-group.js';
+import { awsListAvailableManagedRuleGroups } from './waf/list-available-managed-rule-groups.js';
+import { awsGetSampledRequests } from './waf/get-sampled-requests.js';
+import { awsDescribeSubscription } from './shield/describe-subscription.js';
+import { awsCreateSubscription } from './shield/create-subscription.js';
+import { awsDeleteSubscription } from './shield/delete-subscription.js';
+import { awsListProtections } from './shield/list-protections.js';
+import { awsDescribeProtection } from './shield/describe-protection.js';
+import { awsCreateProtection } from './shield/create-protection.js';
+import { awsDeleteProtection } from './shield/delete-protection.js';
+import { awsListAttacks } from './shield/list-attacks.js';
+import { awsDescribeAttack } from './shield/describe-attack.js';
+import { awsDescribeAttackStatistics } from './shield/describe-attack-statistics.js';
+import { awsDescribeEmergencyContactSettings } from './shield/describe-emergency-contact-settings.js';
+import { awsUpdateEmergencyContactSettings } from './shield/update-emergency-contact-settings.js';
+import { awsDescribeDrtAccess } from './shield/describe-drt-access.js';
+import { awsAssociateDrtRole } from './shield/associate-drt-role.js';
+import { awsDisassociateDrtRole } from './shield/disassociate-drt-role.js';
 
 export {
   awsListEc2Instances,
@@ -2209,6 +2326,123 @@ export {
   awsPutReportDefinition,
   awsModifyReportDefinition,
   awsDeleteReportDefinition,
+  awsListKmsKeys,
+  awsDescribeKmsKey,
+  awsCreateKmsKey,
+  awsScheduleKeyDeletion,
+  awsCancelKeyDeletion,
+  awsEnableKmsKey,
+  awsDisableKmsKey,
+  awsUpdateKeyDescription,
+  awsKmsEncrypt,
+  awsKmsDecrypt,
+  awsKmsReEncrypt,
+  awsGenerateDataKey,
+  awsGenerateDataKeyWithoutPlaintext,
+  awsGetKeyPolicy,
+  awsPutKeyPolicy,
+  awsListKeyPolicies,
+  awsCreateGrant,
+  awsListGrants,
+  awsRevokeGrant,
+  awsRetireGrant,
+  awsListKmsAliases,
+  awsCreateKmsAlias,
+  awsDeleteKmsAlias,
+  awsUpdateKmsAlias,
+  awsListKmsResourceTags,
+  awsTagKmsResource,
+  awsUntagKmsResource,
+  awsCreateGuarddutyDetector,
+  awsListGuarddutyDetectors,
+  awsGetGuarddutyDetector,
+  awsUpdateGuarddutyDetector,
+  awsDeleteGuarddutyDetector,
+  awsListGuarddutyFindings,
+  awsGetGuarddutyFindings,
+  awsUpdateGuarddutyFindingsFeedback,
+  awsArchiveGuarddutyFindings,
+  awsUnarchiveGuarddutyFindings,
+  awsCreateGuarddutyIpSet,
+  awsListGuarddutyIpSets,
+  awsGetGuarddutyIpSet,
+  awsUpdateGuarddutyIpSet,
+  awsDeleteGuarddutyIpSet,
+  awsCreateThreatIntelSet,
+  awsListThreatIntelSets,
+  awsGetThreatIntelSet,
+  awsUpdateThreatIntelSet,
+  awsDeleteThreatIntelSet,
+  awsEnableSecurityHub,
+  awsDisableSecurityHub,
+  awsDescribeHub,
+  awsUpdateSecurityHubConfiguration,
+  awsGetSecurityHubFindings,
+  awsUpdateSecurityHubFindings,
+  awsBatchImportFindings,
+  awsBatchUpdateFindings,
+  awsGetSecurityHubInsights,
+  awsCreateInsight,
+  awsUpdateInsight,
+  awsDeleteInsight,
+  awsGetInsightResults,
+  awsDescribeStandards,
+  awsGetEnabledStandards,
+  awsBatchEnableStandards,
+  awsBatchDisableStandards,
+  awsDescribeProducts,
+  awsListEnabledProductsForImport,
+  awsEnableImportFindingsForProduct,
+  awsDisableImportFindingsForProduct,
+  awsCreateMembers,
+  awsListMembers,
+  awsGetMembers,
+  awsDeleteMembers,
+  awsListWebAcls,
+  awsGetWebAcl,
+  awsCreateWebAcl,
+  awsUpdateWebAcl,
+  awsDeleteWebAcl,
+  awsAssociateWebAcl,
+  awsDisassociateWebAcl,
+  awsListResourcesForWebAcl,
+  awsListWafIpSets,
+  awsGetWafIpSet,
+  awsCreateWafIpSet,
+  awsUpdateWafIpSet,
+  awsDeleteWafIpSet,
+  awsListRegexPatternSets,
+  awsGetRegexPatternSet,
+  awsCreateRegexPatternSet,
+  awsUpdateRegexPatternSet,
+  awsDeleteRegexPatternSet,
+  awsListRuleGroups,
+  awsGetRuleGroup,
+  awsCreateRuleGroup,
+  awsUpdateRuleGroup,
+  awsDeleteRuleGroup,
+  awsGetLoggingConfiguration,
+  awsPutLoggingConfiguration,
+  awsDeleteLoggingConfiguration,
+  awsListLoggingConfigurations,
+  awsDescribeManagedRuleGroup,
+  awsListAvailableManagedRuleGroups,
+  awsGetSampledRequests,
+  awsDescribeSubscription,
+  awsCreateSubscription,
+  awsDeleteSubscription,
+  awsListProtections,
+  awsDescribeProtection,
+  awsCreateProtection,
+  awsDeleteProtection,
+  awsListAttacks,
+  awsDescribeAttack,
+  awsDescribeAttackStatistics,
+  awsDescribeEmergencyContactSettings,
+  awsUpdateEmergencyContactSettings,
+  awsDescribeDrtAccess,
+  awsAssociateDrtRole,
+  awsDisassociateDrtRole,
 };
 
 export const awsTools: ToolDefinition[] = [
@@ -9937,6 +10171,825 @@ export const awsTools: ToolDefinition[] = [
     name: 'awsDeleteReportDefinition',
     description: 'Deletes the specified report Use it to permanently remove the resource.',
     tool: awsDeleteReportDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListKmsKeys',
+    description: 'List all KMS keys in the AWS account Use it to inspect current state before making changes.',
+    tool: awsListKmsKeys as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeKmsKey',
+    description: 'Get detailed information about a KMS key Use it to inspect current state before making changes.',
+    tool: awsDescribeKmsKey as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateKmsKey',
+    description: 'Create a new KMS key Use it to provision a new resource.',
+    tool: awsCreateKmsKey as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsScheduleKeyDeletion',
+    description: 'Schedule a KMS key for deletion (7-30 days waiting period)',
+    tool: awsScheduleKeyDeletion as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCancelKeyDeletion',
+    description: 'Cancel a scheduled key deletion Use it to cancel a running operation.',
+    tool: awsCancelKeyDeletion as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsEnableKmsKey',
+    description: 'Enable a disabled KMS key Use it to enable a feature.',
+    tool: awsEnableKmsKey as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDisableKmsKey',
+    description: 'Disable a KMS key',
+    tool: awsDisableKmsKey as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateKeyDescription',
+    description: 'Update the description of a KMS key Use it to change an existing resource.',
+    tool: awsUpdateKeyDescription as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsKmsEncrypt',
+    description: 'Encrypt plaintext data using a KMS key',
+    tool: awsKmsEncrypt as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsKmsDecrypt',
+    description: 'Decrypt ciphertext that was encrypted with a KMS key',
+    tool: awsKmsDecrypt as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsKmsReEncrypt',
+    description: 'Re-encrypt data with a different KMS key without exposing plaintext',
+    tool: awsKmsReEncrypt as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGenerateDataKey',
+    description: 'Generate a data encryption key (DEK) for client-side encryption',
+    tool: awsGenerateDataKey as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGenerateDataKeyWithoutPlaintext',
+    description: 'Generate an encrypted data encryption key without returning plaintext',
+    tool: awsGenerateDataKeyWithoutPlaintext as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetKeyPolicy',
+    description: 'Get the key policy for a KMS key Use it to inspect current state before making changes.',
+    tool: awsGetKeyPolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutKeyPolicy',
+    description: 'Update the key policy for a KMS key Use it to write data or configuration.',
+    tool: awsPutKeyPolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListKeyPolicies',
+    description: 'List the names of key policies for a KMS key Use it to inspect current state before making changes.',
+    tool: awsListKeyPolicies as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateGrant',
+    description: 'Create a grant that allows a principal to use a KMS key Use it to provision a new resource.',
+    tool: awsCreateGrant as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListGrants',
+    description: 'List grants for a KMS key Use it to inspect current state before making changes.',
+    tool: awsListGrants as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsRevokeGrant',
+    description: 'Revoke a grant on a KMS key',
+    tool: awsRevokeGrant as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsRetireGrant',
+    description: 'Retire a grant (can only be called by retiring principal)',
+    tool: awsRetireGrant as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListKmsAliases',
+    description: 'List aliases for KMS keys Use it to inspect current state before making changes.',
+    tool: awsListKmsAliases as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateKmsAlias',
+    description: 'Create an alias for a KMS key Use it to provision a new resource.',
+    tool: awsCreateKmsAlias as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteKmsAlias',
+    description: 'Delete an alias for a KMS key Use it to permanently remove the resource.',
+    tool: awsDeleteKmsAlias as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsUpdateKmsAlias',
+    description: 'Associate an existing alias with a different KMS key Use it to change an existing resource.',
+    tool: awsUpdateKmsAlias as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListKmsResourceTags',
+    description: 'List tags for a KMS key Use it to inspect current state before making changes.',
+    tool: awsListKmsResourceTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagKmsResource',
+    description: 'Add or update tags for a KMS key Use it to label the resource.',
+    tool: awsTagKmsResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagKmsResource',
+    description: 'Remove tags from a KMS key Use it to remove tags from the resource.',
+    tool: awsUntagKmsResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateGuarddutyDetector',
+    description: 'Create a GuardDuty detector to enable threat detection Use it to provision a new resource.',
+    tool: awsCreateGuarddutyDetector as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListGuarddutyDetectors',
+    description: 'List all GuardDuty detectors in the current region Use it to inspect current state before making changes.',
+    tool: awsListGuarddutyDetectors as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetGuarddutyDetector',
+    description: 'Get detailed information about a GuardDuty detector Use it to inspect current state before making changes.',
+    tool: awsGetGuarddutyDetector as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateGuarddutyDetector',
+    description: 'Update GuardDuty detector settings Use it to change an existing resource.',
+    tool: awsUpdateGuarddutyDetector as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteGuarddutyDetector',
+    description: 'Delete a GuardDuty detector and disable threat detection Use it to permanently remove the resource.',
+    tool: awsDeleteGuarddutyDetector as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListGuarddutyFindings',
+    description: 'List GuardDuty findings with optional filtering Use it to inspect current state before making changes.',
+    tool: awsListGuarddutyFindings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetGuarddutyFindings',
+    description: 'Get detailed information about specific findings Use it to inspect current state before making changes.',
+    tool: awsGetGuarddutyFindings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateGuarddutyFindingsFeedback',
+    description: 'Mark findings as useful or not useful for machine learning Use it to change an existing resource.',
+    tool: awsUpdateGuarddutyFindingsFeedback as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsArchiveGuarddutyFindings',
+    description: 'Archive findings to suppress future notifications',
+    tool: awsArchiveGuarddutyFindings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUnarchiveGuarddutyFindings',
+    description: 'Unarchive findings to resume notifications',
+    tool: awsUnarchiveGuarddutyFindings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateGuarddutyIpSet',
+    description: 'Create an IP set of trusted or threat IP addresses Use it to provision a new resource.',
+    tool: awsCreateGuarddutyIpSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListGuarddutyIpSets',
+    description: 'List all IP sets for a detector Use it to inspect current state before making changes.',
+    tool: awsListGuarddutyIpSets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetGuarddutyIpSet',
+    description: 'Get details about a specific IP set Use it to inspect current state before making changes.',
+    tool: awsGetGuarddutyIpSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateGuarddutyIpSet',
+    description: 'Update an IP set Use it to change an existing resource.',
+    tool: awsUpdateGuarddutyIpSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteGuarddutyIpSet',
+    description: 'Delete an IP set Use it to permanently remove the resource.',
+    tool: awsDeleteGuarddutyIpSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateThreatIntelSet',
+    description: 'Create a threat intelligence set from external sources Use it to provision a new resource.',
+    tool: awsCreateThreatIntelSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListThreatIntelSets',
+    description: 'List all threat intelligence sets for a detector Use it to inspect current state before making changes.',
+    tool: awsListThreatIntelSets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetThreatIntelSet',
+    description: 'Get details about a specific threat intelligence set Use it to inspect current state before making changes.',
+    tool: awsGetThreatIntelSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateThreatIntelSet',
+    description: 'Update a threat intelligence set Use it to change an existing resource.',
+    tool: awsUpdateThreatIntelSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteThreatIntelSet',
+    description: 'Delete a threat intelligence set Use it to permanently remove the resource.',
+    tool: awsDeleteThreatIntelSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsEnableSecurityHub',
+    description: 'Enable AWS Security Hub in the current region Use it to enable a feature.',
+    tool: awsEnableSecurityHub as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDisableSecurityHub',
+    description: 'Disable AWS Security Hub in the current region',
+    tool: awsDisableSecurityHub as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeHub',
+    description: 'Get information about the Security Hub hub resource Use it to inspect current state before making changes.',
+    tool: awsDescribeHub as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateSecurityHubConfiguration',
+    description: 'Update Security Hub configuration settings Use it to change an existing resource.',
+    tool: awsUpdateSecurityHubConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetSecurityHubFindings',
+    description: 'Retrieve security findings with optional filters Use it to inspect current state before making changes.',
+    tool: awsGetSecurityHubFindings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateSecurityHubFindings',
+    description: 'Update the status, severity, or other attributes of findings Use it to change an existing resource.',
+    tool: awsUpdateSecurityHubFindings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsBatchImportFindings',
+    description: 'Import custom findings into Security Hub Use it to operate on multiple resources.',
+    tool: awsBatchImportFindings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsBatchUpdateFindings',
+    description: 'Update multiple findings in a single request Use it to operate on multiple resources.',
+    tool: awsBatchUpdateFindings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetSecurityHubInsights',
+    description: 'Get a list of custom insights Use it to inspect current state before making changes.',
+    tool: awsGetSecurityHubInsights as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateInsight',
+    description: 'Create a custom insight to group findings Use it to provision a new resource.',
+    tool: awsCreateInsight as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateInsight',
+    description: 'Update an existing custom insight Use it to change an existing resource.',
+    tool: awsUpdateInsight as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteInsight',
+    description: 'Delete a custom insight Use it to permanently remove the resource.',
+    tool: awsDeleteInsight as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetInsightResults',
+    description: 'Get the results for a specific insight Use it to inspect current state before making changes.',
+    tool: awsGetInsightResults as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeStandards',
+    description: 'List available security standards (CIS, PCI-DSS, AWS Foundational) Use it to inspect current state before making changes.',
+    tool: awsDescribeStandards as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetEnabledStandards',
+    description: 'Get a list of enabled security standards Use it to inspect current state before making changes.',
+    tool: awsGetEnabledStandards as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsBatchEnableStandards',
+    description: 'Enable one or more security standards Use it to operate on multiple resources.',
+    tool: awsBatchEnableStandards as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsBatchDisableStandards',
+    description: 'Disable one or more security standards Use it to operate on multiple resources.',
+    tool: awsBatchDisableStandards as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeProducts',
+    description: 'List available Security Hub product integrations Use it to inspect current state before making changes.',
+    tool: awsDescribeProducts as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListEnabledProductsForImport',
+    description: 'List enabled product integrations that can send findings Use it to inspect current state before making changes.',
+    tool: awsListEnabledProductsForImport as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsEnableImportFindingsForProduct',
+    description: 'Enable a product integration to send findings to Security Hub Use it to enable a feature.',
+    tool: awsEnableImportFindingsForProduct as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDisableImportFindingsForProduct',
+    description: 'Disable a product integration',
+    tool: awsDisableImportFindingsForProduct as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateMembers',
+    description: 'Invite AWS accounts to be member accounts in Security Hub Use it to provision a new resource.',
+    tool: awsCreateMembers as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListMembers',
+    description: 'List Security Hub member accounts Use it to inspect current state before making changes.',
+    tool: awsListMembers as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetMembers',
+    description: 'Get detailed information about specific member accounts Use it to inspect current state before making changes.',
+    tool: awsGetMembers as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteMembers',
+    description: 'Remove member accounts from Security Hub Use it to permanently remove the resource.',
+    tool: awsDeleteMembers as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListWebAcls',
+    description: 'List all Web ACLs in the region or CloudFront Use it to inspect current state before making changes.',
+    tool: awsListWebAcls as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetWebAcl',
+    description: 'Get detailed information about a Web ACL Use it to inspect current state before making changes.',
+    tool: awsGetWebAcl as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateWebAcl',
+    description: 'Create a new Web ACL Use it to provision a new resource.',
+    tool: awsCreateWebAcl as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateWebAcl',
+    description: 'Update an existing Web ACL Use it to change an existing resource.',
+    tool: awsUpdateWebAcl as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteWebAcl',
+    description: 'Delete a Web ACL Use it to permanently remove the resource.',
+    tool: awsDeleteWebAcl as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsAssociateWebAcl',
+    description: 'Associate a Web ACL with a resource (ALB, API Gateway, CloudFront) Use it to connect resources.',
+    tool: awsAssociateWebAcl as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDisassociateWebAcl',
+    description: 'Disassociate a Web ACL from a resource Use it to disconnect resources.',
+    tool: awsDisassociateWebAcl as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListResourcesForWebAcl',
+    description: 'List all resources associated with a Web ACL Use it to inspect current state before making changes.',
+    tool: awsListResourcesForWebAcl as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListWafIpSets',
+    description: 'List all IP sets Use it to inspect current state before making changes.',
+    tool: awsListWafIpSets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetWafIpSet',
+    description: 'Get details about an IP set Use it to inspect current state before making changes.',
+    tool: awsGetWafIpSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateWafIpSet',
+    description: 'Create an IP set with IPv4 or IPv6 addresses Use it to provision a new resource.',
+    tool: awsCreateWafIpSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateWafIpSet',
+    description: 'Update an IP set Use it to change an existing resource.',
+    tool: awsUpdateWafIpSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteWafIpSet',
+    description: 'Delete an IP set Use it to permanently remove the resource.',
+    tool: awsDeleteWafIpSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListRegexPatternSets',
+    description: 'List all regex pattern sets Use it to inspect current state before making changes.',
+    tool: awsListRegexPatternSets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetRegexPatternSet',
+    description: 'Get details about a regex pattern set Use it to inspect current state before making changes.',
+    tool: awsGetRegexPatternSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateRegexPatternSet',
+    description: 'Create a regex pattern set for matching strings Use it to provision a new resource.',
+    tool: awsCreateRegexPatternSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateRegexPatternSet',
+    description: 'Update a regex pattern set Use it to change an existing resource.',
+    tool: awsUpdateRegexPatternSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteRegexPatternSet',
+    description: 'Delete a regex pattern set Use it to permanently remove the resource.',
+    tool: awsDeleteRegexPatternSet as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListRuleGroups',
+    description: 'List all rule groups Use it to inspect current state before making changes.',
+    tool: awsListRuleGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetRuleGroup',
+    description: 'Get details about a rule group Use it to inspect current state before making changes.',
+    tool: awsGetRuleGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateRuleGroup',
+    description: 'Create a custom rule group Use it to provision a new resource.',
+    tool: awsCreateRuleGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateRuleGroup',
+    description: 'Update a custom rule group Use it to change an existing resource.',
+    tool: awsUpdateRuleGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteRuleGroup',
+    description: 'Delete a custom rule group Use it to permanently remove the resource.',
+    tool: awsDeleteRuleGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetLoggingConfiguration',
+    description: 'Get logging configuration for a Web ACL Use it to inspect current state before making changes.',
+    tool: awsGetLoggingConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutLoggingConfiguration',
+    description: 'Configure logging for a Web ACL Use it to write data or configuration.',
+    tool: awsPutLoggingConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteLoggingConfiguration',
+    description: 'Delete logging configuration for a Web ACL Use it to permanently remove the resource.',
+    tool: awsDeleteLoggingConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListLoggingConfigurations',
+    description: 'List all logging configurations Use it to inspect current state before making changes.',
+    tool: awsListLoggingConfigurations as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeManagedRuleGroup',
+    description: 'Get information about an AWS managed rule group Use it to inspect current state before making changes.',
+    tool: awsDescribeManagedRuleGroup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListAvailableManagedRuleGroups',
+    description: 'List AWS and Marketplace managed rule groups Use it to inspect current state before making changes.',
+    tool: awsListAvailableManagedRuleGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetSampledRequests',
+    description: 'Get sample requests that matched a rule Use it to inspect current state before making changes.',
+    tool: awsGetSampledRequests as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSubscription',
+    description: 'Get details about Shield Advanced subscription status Use it to inspect current state before making changes.',
+    tool: awsDescribeSubscription as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateSubscription',
+    description: 'Subscribe to AWS Shield Advanced (costs $3000/month) Use it to provision a new resource.',
+    tool: awsCreateSubscription as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteSubscription',
+    description: 'Cancel AWS Shield Advanced subscription Use it to permanently remove the resource.',
+    tool: awsDeleteSubscription as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListProtections',
+    description: 'List all protected resources Use it to inspect current state before making changes.',
+    tool: awsListProtections as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeProtection',
+    description: 'Get details about a specific protection Use it to inspect current state before making changes.',
+    tool: awsDescribeProtection as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateProtection',
+    description: 'Create protection for a resource (requires Shield Advanced) Use it to provision a new resource.',
+    tool: awsCreateProtection as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteProtection',
+    description: 'Remove protection from a resource Use it to permanently remove the resource.',
+    tool: awsDeleteProtection as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListAttacks',
+    description: 'List DDoS attacks detected on protected resources Use it to inspect current state before making changes.',
+    tool: awsListAttacks as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeAttack',
+    description: 'Get detailed information about a specific DDoS attack Use it to inspect current state before making changes.',
+    tool: awsDescribeAttack as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeAttackStatistics',
+    description: 'Get summary statistics about DDoS attacks Use it to inspect current state before making changes.',
+    tool: awsDescribeAttackStatistics as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeEmergencyContactSettings',
+    description: 'Get emergency contact information for DDoS Response Team (DRT) Use it to inspect current state before making changes.',
+    tool: awsDescribeEmergencyContactSettings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateEmergencyContactSettings',
+    description: 'Update emergency contact information for DRT notifications Use it to change an existing resource.',
+    tool: awsUpdateEmergencyContactSettings as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeDrtAccess',
+    description: 'Get DDoS Response Team (DRT) access status and role Use it to inspect current state before making changes.',
+    tool: awsDescribeDrtAccess as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsAssociateDrtRole',
+    description: 'Grant DRT access to your account during attacks Use it to connect resources.',
+    tool: awsAssociateDrtRole as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDisassociateDrtRole',
+    description: 'Revoke DRT access to your account Use it to disconnect resources.',
+    tool: awsDisassociateDrtRole as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },

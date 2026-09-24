@@ -1,0 +1,39 @@
+import { tool } from 'ai';
+import { z } from 'zod';
+import { UpdateRuleGroupCommand } from '@aws-sdk/client-wafv2';
+import { createWafClient } from '../client.js';
+
+export const awsUpdateRuleGroup = tool({
+  description: 'Update a custom rule group. Use it to change an existing resource.',
+  inputSchema: z.object({
+    awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
+    region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
+    name: z.string().describe('Name of the rule group'),
+    scope: z.enum(['REGIONAL', 'CLOUDFRONT']).describe('Scope'),
+    id: z.string().describe('Unique identifier'),
+    lockToken: z.string().describe('Lock token'),
+    rules: z.array(z.record(z.any())).optional().describe('Updated rules'),
+    visibilityConfig: z.record(z.any()).describe('Updated visibility config'),
+  }),
+  execute: async ({ awsCredentials, region, name, scope, id, lockToken, rules, visibilityConfig }) => {
+    if (!awsCredentials) {
+      return { error: 'AWS credentials are required. Connect AWS first.' };
+    }
+    try {
+      const client = createWafClient(awsCredentials, region);
+
+      const command = new UpdateRuleGroupCommand({
+          Name: name,
+          Scope: scope,
+          Id: id,
+          LockToken: lockToken,
+          Rules: rules,
+          VisibilityConfig: visibilityConfig,
+      } as any);
+      const response = await client.send(command);
+      return response;
+    } catch (err) {
+      return { error: 'Failed to update a custom rule group', message: err instanceof Error ? err.message : 'Unknown error' };
+    }
+  },
+});

@@ -31,6 +31,11 @@ import { CostExplorerClient } from '@aws-sdk/client-cost-explorer';
 import { BudgetsClient } from '@aws-sdk/client-budgets';
 import { BillingClient } from '@aws-sdk/client-billing';
 import { CostAndUsageReportServiceClient } from '@aws-sdk/client-cost-and-usage-report-service';
+import { KMSClient } from '@aws-sdk/client-kms';
+import { GuardDutyClient } from '@aws-sdk/client-guardduty';
+import { SecurityHubClient } from '@aws-sdk/client-securityhub';
+import { WAFV2Client } from '@aws-sdk/client-wafv2';
+import { ShieldClient } from '@aws-sdk/client-shield';
 
 export interface AwsCredentials {
   accessKeyId: string;
@@ -238,6 +243,41 @@ export function createCostAndUsageReportServiceClient(
   region?: string,
 ): CostAndUsageReportServiceClient {
   return new CostAndUsageReportServiceClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createKmsClient(awsCredentials: string, region?: string): KMSClient {
+  return new KMSClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createGuardDutyClient(awsCredentials: string, region?: string): GuardDutyClient {
+  return new GuardDutyClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createSecurityHubClient(awsCredentials: string, region?: string): SecurityHubClient {
+  return new SecurityHubClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createWafClient(awsCredentials: string, region?: string): WAFV2Client {
+  return new WAFV2Client({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createShieldClient(awsCredentials: string, region?: string): ShieldClient {
+  return new ShieldClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
   });
