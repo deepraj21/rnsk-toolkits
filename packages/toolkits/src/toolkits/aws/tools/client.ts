@@ -36,6 +36,15 @@ import { GuardDutyClient } from '@aws-sdk/client-guardduty';
 import { SecurityHubClient } from '@aws-sdk/client-securityhub';
 import { WAFV2Client } from '@aws-sdk/client-wafv2';
 import { ShieldClient } from '@aws-sdk/client-shield';
+import { ConfigServiceClient } from '@aws-sdk/client-config-service';
+import { HealthClient } from '@aws-sdk/client-health';
+import { AmplifyClient } from '@aws-sdk/client-amplify';
+import { BatchClient } from '@aws-sdk/client-batch';
+import { BackupClient } from '@aws-sdk/client-backup';
+import { EFSClient } from '@aws-sdk/client-efs';
+import { FSxClient } from '@aws-sdk/client-fsx';
+import { OpenSearchClient } from '@aws-sdk/client-opensearch';
+import { SageMakerClient } from '@aws-sdk/client-sagemaker';
 
 export interface AwsCredentials {
   accessKeyId: string;
@@ -278,6 +287,69 @@ export function createWafClient(awsCredentials: string, region?: string): WAFV2C
 
 export function createShieldClient(awsCredentials: string, region?: string): ShieldClient {
   return new ShieldClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createConfigServiceClient(awsCredentials: string, region?: string): ConfigServiceClient {
+  return new ConfigServiceClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createHealthClient(awsCredentials: string, region?: string): HealthClient {
+  return new HealthClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createAmplifyClient(awsCredentials: string, region?: string): AmplifyClient {
+  return new AmplifyClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createBatchClient(awsCredentials: string, region?: string): BatchClient {
+  return new BatchClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createBackupClient(awsCredentials: string, region?: string): BackupClient {
+  return new BackupClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createEfsClient(awsCredentials: string, region?: string): EFSClient {
+  return new EFSClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createFsxClient(awsCredentials: string, region?: string): FSxClient {
+  return new FSxClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createOpenSearchClient(awsCredentials: string, region?: string): OpenSearchClient {
+  return new OpenSearchClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
+}
+
+export function createSageMakerClient(awsCredentials: string, region?: string): SageMakerClient {
+  return new SageMakerClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
   });

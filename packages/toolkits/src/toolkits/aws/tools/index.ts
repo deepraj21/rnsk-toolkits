@@ -1221,6 +1221,272 @@ import { awsUpdateEmergencyContactSettings } from './shield/update-emergency-con
 import { awsDescribeDrtAccess } from './shield/describe-drt-access.js';
 import { awsAssociateDrtRole } from './shield/associate-drt-role.js';
 import { awsDisassociateDrtRole } from './shield/disassociate-drt-role.js';
+import { awsPutConfigRecorder } from './config-service/put-recorder.js';
+import { awsDescribeConfigRecorders } from './config-service/describe-recorders.js';
+import { awsStartConfigRecorder } from './config-service/start-recorder.js';
+import { awsStopConfigRecorder } from './config-service/stop-recorder.js';
+import { awsDeleteConfigRecorder } from './config-service/delete-recorder.js';
+import { awsDescribeConfigRecorderStatus } from './config-service/describe-recorder-status.js';
+import { awsPutDeliveryChannel } from './config-service/put-delivery-channel.js';
+import { awsDescribeDeliveryChannels } from './config-service/describe-delivery-channels.js';
+import { awsDeleteDeliveryChannel } from './config-service/delete-delivery-channel.js';
+import { awsDeliverConfigSnapshot } from './config-service/deliver-snapshot.js';
+import { awsDescribeComplianceByConfigRule } from './config-service/describe-compliance-by-rule.js';
+import { awsDescribeComplianceByResource } from './config-service/describe-compliance-by-resource.js';
+import { awsGetComplianceSummaryByConfigRule } from './config-service/get-compliance-summary-by-rule.js';
+import { awsGetComplianceSummaryByResourceType } from './config-service/get-compliance-summary-by-resource-type.js';
+import { awsGetResourceConfigHistory } from './config-service/get-resource-history.js';
+import { awsBatchGetResourceConfig } from './config-service/batch-get-resource-config.js';
+import { awsListDiscoveredResources } from './config-service/list-discovered-resources.js';
+import { awsSelectResourceConfig } from './config-service/select-resource-config.js';
+import { awsPutConfigRule } from './config-service/put-rule.js';
+import { awsDescribeConfigRules } from './config-service/describe-rules.js';
+import { awsDeleteConfigRule } from './config-service/delete-rule.js';
+import { awsDescribeConfigRuleEvaluationStatus } from './config-service/describe-rule-evaluation-status.js';
+import { awsStartConfigRulesEvaluation } from './config-service/start-rules-evaluation.js';
+import { awsPutEvaluations } from './config-service/put-evaluations.js';
+import { awsPutConfigurationAggregator } from './config-service/put-configuration-aggregator.js';
+import { awsDescribeConfigurationAggregators } from './config-service/describe-configuration-aggregators.js';
+import { awsDeleteConfigurationAggregator } from './config-service/delete-configuration-aggregator.js';
+import { awsDescribeConfigurationAggregatorSourcesStatus } from './config-service/describe-configuration-aggregator-sources-status.js';
+import { awsPutConformancePack } from './config-service/put-conformance-pack.js';
+import { awsDescribeConformancePacks } from './config-service/describe-conformance-packs.js';
+import { awsDeleteConformancePack } from './config-service/delete-conformance-pack.js';
+import { awsDescribeConformancePackCompliance } from './config-service/describe-conformance-pack-compliance.js';
+import { awsDescribeConformancePackStatus } from './config-service/describe-conformance-pack-status.js';
+import { awsDescribeOrganizationConfigRules } from './config-service/describe-organization-rules.js';
+import { awsDescribeOrganizationConformancePacks } from './config-service/describe-organization-conformance-packs.js';
+import { awsDescribePendingAggregationRequests } from './config-service/describe-pending-aggregation-requests.js';
+import { awsPutOrganizationConfigRule } from './config-service/put-organization-rule.js';
+import { awsPutOrganizationConformancePack } from './config-service/put-organization-conformance-pack.js';
+import { awsDeleteOrganizationConfigRule } from './config-service/delete-organization-rule.js';
+import { awsDeleteOrganizationConformancePack } from './config-service/delete-organization-conformance-pack.js';
+import { awsPutRemediationConfigurations } from './config-service/put-remediation-configurations.js';
+import { awsDescribeRemediationConfigurations } from './config-service/describe-remediation-configurations.js';
+import { awsDeleteRemediationConfiguration } from './config-service/delete-remediation-configuration.js';
+import { awsStartRemediationExecution } from './config-service/start-remediation-execution.js';
+import { awsDescribeRemediationExecutionStatus } from './config-service/describe-remediation-execution-status.js';
+import { awsPutRetentionConfiguration } from './config-service/put-retention-configuration.js';
+import { awsDescribeRetentionConfigurations } from './config-service/describe-retention-configurations.js';
+import { awsDeleteRetentionConfiguration } from './config-service/delete-retention-configuration.js';
+import { awsListConfigTags } from './config-service/list-tags.js';
+import { awsTagConfigResource } from './config-service/tag-resource.js';
+import { awsUntagConfigResource } from './config-service/untag-resource.js';
+import { awsDescribeHealthEvents } from './health/describe-events.js';
+import { awsDescribeHealthEventDetails } from './health/describe-event-details.js';
+import { awsDescribeHealthEventAggregates } from './health/describe-event-aggregates.js';
+import { awsDescribeHealthEventTypes } from './health/describe-event-types.js';
+import { awsDescribeHealthAffectedEntities } from './health/describe-affected-entities.js';
+import { awsDescribeHealthEntityAggregates } from './health/describe-entity-aggregates.js';
+import { awsDescribeHealthEventsForOrganization } from './health/describe-events-for-organization.js';
+import { awsDescribeHealthEventDetailsForOrganization } from './health/describe-event-details-for-organization.js';
+import { awsDescribeHealthAffectedAccountsForOrganization } from './health/describe-affected-accounts-for-organization.js';
+import { awsDescribeHealthServiceStatusForOrganization } from './health/describe-service-status-for-organization.js';
+import { awsEnableHealthServiceAccessForOrganization } from './health/enable-service-access-for-organization.js';
+import { awsDisableHealthServiceAccessForOrganization } from './health/disable-service-access-for-organization.js';
+import { awsListAmplifyApps } from './amplify/list-apps.js';
+import { awsGetAmplifyApp } from './amplify/get-app.js';
+import { awsCreateAmplifyApp } from './amplify/create-app.js';
+import { awsUpdateAmplifyApp } from './amplify/update-app.js';
+import { awsDeleteAmplifyApp } from './amplify/delete-app.js';
+import { awsListAmplifyBranches } from './amplify/list-branches.js';
+import { awsGetAmplifyBranch } from './amplify/get-branch.js';
+import { awsCreateAmplifyBranch } from './amplify/create-branch.js';
+import { awsUpdateAmplifyBranch } from './amplify/update-branch.js';
+import { awsDeleteAmplifyBranch } from './amplify/delete-branch.js';
+import { awsListAmplifyJobs } from './amplify/list-jobs.js';
+import { awsGetAmplifyJob } from './amplify/get-job.js';
+import { awsStartAmplifyJob } from './amplify/start-job.js';
+import { awsStopAmplifyJob } from './amplify/stop-job.js';
+import { awsListAmplifyDomainAssociations } from './amplify/list-domain-associations.js';
+import { awsGetAmplifyDomainAssociation } from './amplify/get-domain-association.js';
+import { awsCreateAmplifyDomainAssociation } from './amplify/create-domain-association.js';
+import { awsUpdateAmplifyDomainAssociation } from './amplify/update-domain-association.js';
+import { awsDeleteAmplifyDomainAssociation } from './amplify/delete-domain-association.js';
+import { awsListAmplifyBackendEnvironments } from './amplify/list-backend-environments.js';
+import { awsCreateAmplifyBackendEnvironment } from './amplify/create-backend-environment.js';
+import { awsDeleteAmplifyBackendEnvironment } from './amplify/delete-backend-environment.js';
+import { awsListAmplifyWebhooks } from './amplify/list-webhooks.js';
+import { awsGetAmplifyWebhook } from './amplify/get-webhook.js';
+import { awsCreateAmplifyWebhook } from './amplify/create-webhook.js';
+import { awsUpdateAmplifyWebhook } from './amplify/update-webhook.js';
+import { awsDeleteAmplifyWebhook } from './amplify/delete-webhook.js';
+import { awsListBatchComputeEnvironments } from './batch/list-compute-environments.js';
+import { awsDescribeBatchComputeEnvironments } from './batch/describe-compute-environments.js';
+import { awsCreateBatchComputeEnvironment } from './batch/create-compute-environment.js';
+import { awsUpdateBatchComputeEnvironment } from './batch/update-compute-environment.js';
+import { awsDeleteBatchComputeEnvironment } from './batch/delete-compute-environment.js';
+import { awsListBatchJobQueues } from './batch/list-job-queues.js';
+import { awsDescribeBatchJobQueues } from './batch/describe-job-queues.js';
+import { awsCreateBatchJobQueue } from './batch/create-job-queue.js';
+import { awsUpdateBatchJobQueue } from './batch/update-job-queue.js';
+import { awsDeleteBatchJobQueue } from './batch/delete-job-queue.js';
+import { awsListBatchJobDefinitions } from './batch/list-job-definitions.js';
+import { awsDescribeBatchJobDefinitions } from './batch/describe-job-definitions.js';
+import { awsRegisterBatchJobDefinition } from './batch/register-job-definition.js';
+import { awsDeregisterBatchJobDefinition } from './batch/deregister-job-definition.js';
+import { awsSubmitBatchJob } from './batch/submit-job.js';
+import { awsListBatchJobs } from './batch/list-jobs.js';
+import { awsDescribeBatchJobs } from './batch/describe-jobs.js';
+import { awsCancelBatchJob } from './batch/cancel-job.js';
+import { awsTerminateBatchJob } from './batch/terminate-job.js';
+import { awsListBatchTags } from './batch/list-tags.js';
+import { awsTagBatchResource } from './batch/tag-resource.js';
+import { awsUntagBatchResource } from './batch/untag-resource.js';
+import { awsCreateBackupVault } from './backup/create-vault.js';
+import { awsDescribeBackupVault } from './backup/describe-vault.js';
+import { awsListBackupVaults } from './backup/list-vaults.js';
+import { awsDeleteBackupVault } from './backup/delete-vault.js';
+import { awsCreateBackupPlan } from './backup/create-plan.js';
+import { awsGetBackupPlan } from './backup/get-plan.js';
+import { awsListBackupPlans } from './backup/list-plans.js';
+import { awsUpdateBackupPlan } from './backup/update-plan.js';
+import { awsDeleteBackupPlan } from './backup/delete-plan.js';
+import { awsGetBackupPlanFromTemplate } from './backup/get-plan-from-template.js';
+import { awsCreateBackupSelection } from './backup/create-selection.js';
+import { awsGetBackupSelection } from './backup/get-selection.js';
+import { awsListBackupSelections } from './backup/list-selections.js';
+import { awsDeleteBackupSelection } from './backup/delete-selection.js';
+import { awsStartBackupJob } from './backup/start-job.js';
+import { awsDescribeBackupJob } from './backup/describe-job.js';
+import { awsListBackupJobs } from './backup/list-jobs.js';
+import { awsStopBackupJob } from './backup/stop-job.js';
+import { awsListRecoveryPointsByBackupVault } from './backup/list-recovery-points-by-vault.js';
+import { awsListRecoveryPointsByResource } from './backup/list-recovery-points-by-resource.js';
+import { awsDescribeRecoveryPoint } from './backup/describe-recovery-point.js';
+import { awsDeleteRecoveryPoint } from './backup/delete-recovery-point.js';
+import { awsStartRestoreJob } from './backup/start-restore-job.js';
+import { awsDescribeRestoreJob } from './backup/describe-restore-job.js';
+import { awsListRestoreJobs } from './backup/list-restore-jobs.js';
+import { awsListProtectedResources } from './backup/list-protected-resources.js';
+import { awsGetBackupVaultAccessPolicy } from './backup/get-vault-access-policy.js';
+import { awsPutBackupVaultAccessPolicy } from './backup/put-vault-access-policy.js';
+import { awsDeleteBackupVaultAccessPolicy } from './backup/delete-vault-access-policy.js';
+import { awsGetBackupVaultNotifications } from './backup/get-vault-notifications.js';
+import { awsPutBackupVaultNotifications } from './backup/put-vault-notifications.js';
+import { awsDeleteBackupVaultNotifications } from './backup/delete-vault-notifications.js';
+import { awsStartCopyJob } from './backup/start-copy-job.js';
+import { awsDescribeCopyJob } from './backup/describe-copy-job.js';
+import { awsListCopyJobs } from './backup/list-copy-jobs.js';
+import { awsListBackupTags } from './backup/list-tags.js';
+import { awsTagBackupResource } from './backup/tag-resource.js';
+import { awsUntagBackupResource } from './backup/untag-resource.js';
+import { awsDescribeEfsFileSystems } from './efs/describe-file-systems.js';
+import { awsCreateEfsFileSystem } from './efs/create-file-system.js';
+import { awsUpdateEfsFileSystem } from './efs/update-file-system.js';
+import { awsDeleteEfsFileSystem } from './efs/delete-file-system.js';
+import { awsCreateEfsMountTarget } from './efs/create-mount-target.js';
+import { awsDescribeEfsMountTargets } from './efs/describe-mount-targets.js';
+import { awsDeleteEfsMountTarget } from './efs/delete-mount-target.js';
+import { awsDescribeEfsMountTargetSecurityGroups } from './efs/describe-mount-target-security-groups.js';
+import { awsModifyEfsMountTargetSecurityGroups } from './efs/modify-mount-target-security-groups.js';
+import { awsCreateEfsAccessPoint } from './efs/create-access-point.js';
+import { awsDescribeEfsAccessPoints } from './efs/describe-access-points.js';
+import { awsDeleteEfsAccessPoint } from './efs/delete-access-point.js';
+import { awsPutEfsLifecycleConfiguration } from './efs/put-lifecycle-configuration.js';
+import { awsDescribeEfsLifecycleConfiguration } from './efs/describe-lifecycle-configuration.js';
+import { awsDeleteEfsLifecycleConfiguration } from './efs/delete-lifecycle-configuration.js';
+import { awsCreateEfsReplicationConfiguration } from './efs/create-replication-configuration.js';
+import { awsDescribeEfsReplicationConfigurations } from './efs/describe-replication-configurations.js';
+import { awsDeleteEfsReplicationConfiguration } from './efs/delete-replication-configuration.js';
+import { awsListEfsTags } from './efs/list-tags.js';
+import { awsTagEfsResource } from './efs/tag-resource.js';
+import { awsUntagEfsResource } from './efs/untag-resource.js';
+import { awsDescribeFsxFileSystems } from './fsx/describe-file-systems.js';
+import { awsCreateFsxFileSystem } from './fsx/create-file-system.js';
+import { awsUpdateFsxFileSystem } from './fsx/update-file-system.js';
+import { awsDeleteFsxFileSystem } from './fsx/delete-file-system.js';
+import { awsCreateFsxBackup } from './fsx/create-backup.js';
+import { awsDescribeFsxBackups } from './fsx/describe-backups.js';
+import { awsDeleteFsxBackup } from './fsx/delete-backup.js';
+import { awsCopyFsxBackup } from './fsx/copy-backup.js';
+import { awsRestoreFsxVolumeFromBackup } from './fsx/restore-volume-from-backup.js';
+import { awsCreateFsxDataRepositoryAssociation } from './fsx/create-data-repository-association.js';
+import { awsDescribeFsxDataRepositoryAssociations } from './fsx/describe-data-repository-associations.js';
+import { awsUpdateFsxDataRepositoryAssociation } from './fsx/update-data-repository-association.js';
+import { awsDeleteFsxDataRepositoryAssociation } from './fsx/delete-data-repository-association.js';
+import { awsCreateFsxStorageVirtualMachine } from './fsx/create-storage-virtual-machine.js';
+import { awsDescribeFsxStorageVirtualMachines } from './fsx/describe-storage-virtual-machines.js';
+import { awsUpdateFsxStorageVirtualMachine } from './fsx/update-storage-virtual-machine.js';
+import { awsDeleteFsxStorageVirtualMachine } from './fsx/delete-storage-virtual-machine.js';
+import { awsCreateFsxVolume } from './fsx/create-volume.js';
+import { awsDescribeFsxVolumes } from './fsx/describe-volumes.js';
+import { awsUpdateFsxVolume } from './fsx/update-volume.js';
+import { awsDeleteFsxVolume } from './fsx/delete-volume.js';
+import { awsCreateFsxSnapshot } from './fsx/create-snapshot.js';
+import { awsDescribeFsxSnapshots } from './fsx/describe-snapshots.js';
+import { awsUpdateFsxSnapshot } from './fsx/update-snapshot.js';
+import { awsDeleteFsxSnapshot } from './fsx/delete-snapshot.js';
+import { awsListFsxTags } from './fsx/list-tags.js';
+import { awsTagFsxResource } from './fsx/tag-resource.js';
+import { awsUntagFsxResource } from './fsx/untag-resource.js';
+import { awsDescribeOpensearchDomain } from './opensearch/describe-domain.js';
+import { awsListDomainNames } from './opensearch/list-domain-names.js';
+import { awsCreateDomain } from './opensearch/create-domain.js';
+import { awsDeleteDomain } from './opensearch/delete-domain.js';
+import { awsUpdateDomainConfig } from './opensearch/update-domain-config.js';
+import { awsDescribeDomainConfig } from './opensearch/describe-domain-config.js';
+import { awsDescribeDomainChangeProgress } from './opensearch/describe-domain-change-progress.js';
+import { awsUpgradeDomain } from './opensearch/upgrade-domain.js';
+import { awsDescribePackages } from './opensearch/describe-packages.js';
+import { awsAssociatePackage } from './opensearch/associate-package.js';
+import { awsDissociatePackage } from './opensearch/dissociate-package.js';
+import { awsListOpensearchTags } from './opensearch/list-opensearch-tags.js';
+import { awsAddOpensearchTags } from './opensearch/add-opensearch-tags.js';
+import { awsRemoveOpensearchTags } from './opensearch/remove-opensearch-tags.js';
+import { awsListVersions } from './opensearch/list-versions.js';
+import { awsGetCompatibleVersions } from './opensearch/get-compatible-versions.js';
+import { awsCreateSagemakerNotebookInstance } from './sagemaker/create-notebook-instance.js';
+import { awsListSagemakerNotebookInstances } from './sagemaker/list-notebook-instances.js';
+import { awsDescribeSagemakerNotebookInstance } from './sagemaker/describe-notebook-instance.js';
+import { awsStartSagemakerNotebookInstance } from './sagemaker/start-notebook-instance.js';
+import { awsStopSagemakerNotebookInstance } from './sagemaker/stop-notebook-instance.js';
+import { awsUpdateSagemakerNotebookInstance } from './sagemaker/update-notebook-instance.js';
+import { awsDeleteSagemakerNotebookInstance } from './sagemaker/delete-notebook-instance.js';
+import { awsCreateSagemakerTrainingJob } from './sagemaker/create-training-job.js';
+import { awsListSagemakerTrainingJobs } from './sagemaker/list-training-jobs.js';
+import { awsDescribeSagemakerTrainingJob } from './sagemaker/describe-training-job.js';
+import { awsStopSagemakerTrainingJob } from './sagemaker/stop-training-job.js';
+import { awsCreateSagemakerModel } from './sagemaker/create-model.js';
+import { awsListSagemakerModels } from './sagemaker/list-models.js';
+import { awsDescribeSagemakerModel } from './sagemaker/describe-model.js';
+import { awsDeleteSagemakerModel } from './sagemaker/delete-model.js';
+import { awsCreateSagemakerEndpoint } from './sagemaker/create-endpoint.js';
+import { awsListSagemakerEndpoints } from './sagemaker/list-endpoints.js';
+import { awsDescribeSagemakerEndpoint } from './sagemaker/describe-endpoint.js';
+import { awsUpdateSagemakerEndpoint } from './sagemaker/update-endpoint.js';
+import { awsDeleteSagemakerEndpoint } from './sagemaker/delete-endpoint.js';
+import { awsCreateSagemakerEndpointConfig } from './sagemaker/create-endpoint-config.js';
+import { awsListSagemakerEndpointConfigs } from './sagemaker/list-endpoint-configs.js';
+import { awsDescribeSagemakerEndpointConfig } from './sagemaker/describe-endpoint-config.js';
+import { awsDeleteSagemakerEndpointConfig } from './sagemaker/delete-endpoint-config.js';
+import { awsCreateSagemakerTransformJob } from './sagemaker/create-transform-job.js';
+import { awsListSagemakerTransformJobs } from './sagemaker/list-transform-jobs.js';
+import { awsDescribeSagemakerTransformJob } from './sagemaker/describe-transform-job.js';
+import { awsStopSagemakerTransformJob } from './sagemaker/stop-transform-job.js';
+import { awsCreateSagemakerProcessingJob } from './sagemaker/create-processing-job.js';
+import { awsListSagemakerProcessingJobs } from './sagemaker/list-processing-jobs.js';
+import { awsDescribeSagemakerProcessingJob } from './sagemaker/describe-processing-job.js';
+import { awsStopSagemakerProcessingJob } from './sagemaker/stop-processing-job.js';
+import { awsCreateSagemakerHyperparameterTuningJob } from './sagemaker/create-hyperparameter-tuning-job.js';
+import { awsListSagemakerHyperparameterTuningJobs } from './sagemaker/list-hyperparameter-tuning-jobs.js';
+import { awsDescribeSagemakerHyperparameterTuningJob } from './sagemaker/describe-hyperparameter-tuning-job.js';
+import { awsStopSagemakerHyperparameterTuningJob } from './sagemaker/stop-hyperparameter-tuning-job.js';
+import { awsCreateSagemakerPipeline } from './sagemaker/create-pipeline.js';
+import { awsListSagemakerPipelines } from './sagemaker/list-pipelines.js';
+import { awsDescribeSagemakerPipeline } from './sagemaker/describe-pipeline.js';
+import { awsDeleteSagemakerPipeline } from './sagemaker/delete-pipeline.js';
+import { awsStartSagemakerPipelineExecution } from './sagemaker/start-pipeline-execution.js';
+import { awsListSagemakerPipelineExecutions } from './sagemaker/list-pipeline-executions.js';
+import { awsDescribeSagemakerPipelineExecution } from './sagemaker/describe-pipeline-execution.js';
+import { awsStopSagemakerPipelineExecution } from './sagemaker/stop-pipeline-execution.js';
+import { awsCreateSagemakerExperiment } from './sagemaker/create-experiment.js';
+import { awsListSagemakerExperiments } from './sagemaker/list-experiments.js';
+import { awsDescribeSagemakerExperiment } from './sagemaker/describe-experiment.js';
+import { awsDeleteSagemakerExperiment } from './sagemaker/delete-experiment.js';
+import { awsListSagemakerTags } from './sagemaker/list-tags.js';
+import { awsAddSagemakerTags } from './sagemaker/add-tags.js';
+import { awsDeleteSagemakerTags } from './sagemaker/delete-tags.js';
 
 export {
   awsListEc2Instances,
@@ -2443,6 +2709,272 @@ export {
   awsDescribeDrtAccess,
   awsAssociateDrtRole,
   awsDisassociateDrtRole,
+  awsPutConfigRecorder,
+  awsDescribeConfigRecorders,
+  awsStartConfigRecorder,
+  awsStopConfigRecorder,
+  awsDeleteConfigRecorder,
+  awsDescribeConfigRecorderStatus,
+  awsPutDeliveryChannel,
+  awsDescribeDeliveryChannels,
+  awsDeleteDeliveryChannel,
+  awsDeliverConfigSnapshot,
+  awsDescribeComplianceByConfigRule,
+  awsDescribeComplianceByResource,
+  awsGetComplianceSummaryByConfigRule,
+  awsGetComplianceSummaryByResourceType,
+  awsGetResourceConfigHistory,
+  awsBatchGetResourceConfig,
+  awsListDiscoveredResources,
+  awsSelectResourceConfig,
+  awsPutConfigRule,
+  awsDescribeConfigRules,
+  awsDeleteConfigRule,
+  awsDescribeConfigRuleEvaluationStatus,
+  awsStartConfigRulesEvaluation,
+  awsPutEvaluations,
+  awsPutConfigurationAggregator,
+  awsDescribeConfigurationAggregators,
+  awsDeleteConfigurationAggregator,
+  awsDescribeConfigurationAggregatorSourcesStatus,
+  awsPutConformancePack,
+  awsDescribeConformancePacks,
+  awsDeleteConformancePack,
+  awsDescribeConformancePackCompliance,
+  awsDescribeConformancePackStatus,
+  awsDescribeOrganizationConfigRules,
+  awsDescribeOrganizationConformancePacks,
+  awsDescribePendingAggregationRequests,
+  awsPutOrganizationConfigRule,
+  awsPutOrganizationConformancePack,
+  awsDeleteOrganizationConfigRule,
+  awsDeleteOrganizationConformancePack,
+  awsPutRemediationConfigurations,
+  awsDescribeRemediationConfigurations,
+  awsDeleteRemediationConfiguration,
+  awsStartRemediationExecution,
+  awsDescribeRemediationExecutionStatus,
+  awsPutRetentionConfiguration,
+  awsDescribeRetentionConfigurations,
+  awsDeleteRetentionConfiguration,
+  awsListConfigTags,
+  awsTagConfigResource,
+  awsUntagConfigResource,
+  awsDescribeHealthEvents,
+  awsDescribeHealthEventDetails,
+  awsDescribeHealthEventAggregates,
+  awsDescribeHealthEventTypes,
+  awsDescribeHealthAffectedEntities,
+  awsDescribeHealthEntityAggregates,
+  awsDescribeHealthEventsForOrganization,
+  awsDescribeHealthEventDetailsForOrganization,
+  awsDescribeHealthAffectedAccountsForOrganization,
+  awsDescribeHealthServiceStatusForOrganization,
+  awsEnableHealthServiceAccessForOrganization,
+  awsDisableHealthServiceAccessForOrganization,
+  awsListAmplifyApps,
+  awsGetAmplifyApp,
+  awsCreateAmplifyApp,
+  awsUpdateAmplifyApp,
+  awsDeleteAmplifyApp,
+  awsListAmplifyBranches,
+  awsGetAmplifyBranch,
+  awsCreateAmplifyBranch,
+  awsUpdateAmplifyBranch,
+  awsDeleteAmplifyBranch,
+  awsListAmplifyJobs,
+  awsGetAmplifyJob,
+  awsStartAmplifyJob,
+  awsStopAmplifyJob,
+  awsListAmplifyDomainAssociations,
+  awsGetAmplifyDomainAssociation,
+  awsCreateAmplifyDomainAssociation,
+  awsUpdateAmplifyDomainAssociation,
+  awsDeleteAmplifyDomainAssociation,
+  awsListAmplifyBackendEnvironments,
+  awsCreateAmplifyBackendEnvironment,
+  awsDeleteAmplifyBackendEnvironment,
+  awsListAmplifyWebhooks,
+  awsGetAmplifyWebhook,
+  awsCreateAmplifyWebhook,
+  awsUpdateAmplifyWebhook,
+  awsDeleteAmplifyWebhook,
+  awsListBatchComputeEnvironments,
+  awsDescribeBatchComputeEnvironments,
+  awsCreateBatchComputeEnvironment,
+  awsUpdateBatchComputeEnvironment,
+  awsDeleteBatchComputeEnvironment,
+  awsListBatchJobQueues,
+  awsDescribeBatchJobQueues,
+  awsCreateBatchJobQueue,
+  awsUpdateBatchJobQueue,
+  awsDeleteBatchJobQueue,
+  awsListBatchJobDefinitions,
+  awsDescribeBatchJobDefinitions,
+  awsRegisterBatchJobDefinition,
+  awsDeregisterBatchJobDefinition,
+  awsSubmitBatchJob,
+  awsListBatchJobs,
+  awsDescribeBatchJobs,
+  awsCancelBatchJob,
+  awsTerminateBatchJob,
+  awsListBatchTags,
+  awsTagBatchResource,
+  awsUntagBatchResource,
+  awsCreateBackupVault,
+  awsDescribeBackupVault,
+  awsListBackupVaults,
+  awsDeleteBackupVault,
+  awsCreateBackupPlan,
+  awsGetBackupPlan,
+  awsListBackupPlans,
+  awsUpdateBackupPlan,
+  awsDeleteBackupPlan,
+  awsGetBackupPlanFromTemplate,
+  awsCreateBackupSelection,
+  awsGetBackupSelection,
+  awsListBackupSelections,
+  awsDeleteBackupSelection,
+  awsStartBackupJob,
+  awsDescribeBackupJob,
+  awsListBackupJobs,
+  awsStopBackupJob,
+  awsListRecoveryPointsByBackupVault,
+  awsListRecoveryPointsByResource,
+  awsDescribeRecoveryPoint,
+  awsDeleteRecoveryPoint,
+  awsStartRestoreJob,
+  awsDescribeRestoreJob,
+  awsListRestoreJobs,
+  awsListProtectedResources,
+  awsGetBackupVaultAccessPolicy,
+  awsPutBackupVaultAccessPolicy,
+  awsDeleteBackupVaultAccessPolicy,
+  awsGetBackupVaultNotifications,
+  awsPutBackupVaultNotifications,
+  awsDeleteBackupVaultNotifications,
+  awsStartCopyJob,
+  awsDescribeCopyJob,
+  awsListCopyJobs,
+  awsListBackupTags,
+  awsTagBackupResource,
+  awsUntagBackupResource,
+  awsDescribeEfsFileSystems,
+  awsCreateEfsFileSystem,
+  awsUpdateEfsFileSystem,
+  awsDeleteEfsFileSystem,
+  awsCreateEfsMountTarget,
+  awsDescribeEfsMountTargets,
+  awsDeleteEfsMountTarget,
+  awsDescribeEfsMountTargetSecurityGroups,
+  awsModifyEfsMountTargetSecurityGroups,
+  awsCreateEfsAccessPoint,
+  awsDescribeEfsAccessPoints,
+  awsDeleteEfsAccessPoint,
+  awsPutEfsLifecycleConfiguration,
+  awsDescribeEfsLifecycleConfiguration,
+  awsDeleteEfsLifecycleConfiguration,
+  awsCreateEfsReplicationConfiguration,
+  awsDescribeEfsReplicationConfigurations,
+  awsDeleteEfsReplicationConfiguration,
+  awsListEfsTags,
+  awsTagEfsResource,
+  awsUntagEfsResource,
+  awsDescribeFsxFileSystems,
+  awsCreateFsxFileSystem,
+  awsUpdateFsxFileSystem,
+  awsDeleteFsxFileSystem,
+  awsCreateFsxBackup,
+  awsDescribeFsxBackups,
+  awsDeleteFsxBackup,
+  awsCopyFsxBackup,
+  awsRestoreFsxVolumeFromBackup,
+  awsCreateFsxDataRepositoryAssociation,
+  awsDescribeFsxDataRepositoryAssociations,
+  awsUpdateFsxDataRepositoryAssociation,
+  awsDeleteFsxDataRepositoryAssociation,
+  awsCreateFsxStorageVirtualMachine,
+  awsDescribeFsxStorageVirtualMachines,
+  awsUpdateFsxStorageVirtualMachine,
+  awsDeleteFsxStorageVirtualMachine,
+  awsCreateFsxVolume,
+  awsDescribeFsxVolumes,
+  awsUpdateFsxVolume,
+  awsDeleteFsxVolume,
+  awsCreateFsxSnapshot,
+  awsDescribeFsxSnapshots,
+  awsUpdateFsxSnapshot,
+  awsDeleteFsxSnapshot,
+  awsListFsxTags,
+  awsTagFsxResource,
+  awsUntagFsxResource,
+  awsDescribeOpensearchDomain,
+  awsListDomainNames,
+  awsCreateDomain,
+  awsDeleteDomain,
+  awsUpdateDomainConfig,
+  awsDescribeDomainConfig,
+  awsDescribeDomainChangeProgress,
+  awsUpgradeDomain,
+  awsDescribePackages,
+  awsAssociatePackage,
+  awsDissociatePackage,
+  awsListOpensearchTags,
+  awsAddOpensearchTags,
+  awsRemoveOpensearchTags,
+  awsListVersions,
+  awsGetCompatibleVersions,
+  awsCreateSagemakerNotebookInstance,
+  awsListSagemakerNotebookInstances,
+  awsDescribeSagemakerNotebookInstance,
+  awsStartSagemakerNotebookInstance,
+  awsStopSagemakerNotebookInstance,
+  awsUpdateSagemakerNotebookInstance,
+  awsDeleteSagemakerNotebookInstance,
+  awsCreateSagemakerTrainingJob,
+  awsListSagemakerTrainingJobs,
+  awsDescribeSagemakerTrainingJob,
+  awsStopSagemakerTrainingJob,
+  awsCreateSagemakerModel,
+  awsListSagemakerModels,
+  awsDescribeSagemakerModel,
+  awsDeleteSagemakerModel,
+  awsCreateSagemakerEndpoint,
+  awsListSagemakerEndpoints,
+  awsDescribeSagemakerEndpoint,
+  awsUpdateSagemakerEndpoint,
+  awsDeleteSagemakerEndpoint,
+  awsCreateSagemakerEndpointConfig,
+  awsListSagemakerEndpointConfigs,
+  awsDescribeSagemakerEndpointConfig,
+  awsDeleteSagemakerEndpointConfig,
+  awsCreateSagemakerTransformJob,
+  awsListSagemakerTransformJobs,
+  awsDescribeSagemakerTransformJob,
+  awsStopSagemakerTransformJob,
+  awsCreateSagemakerProcessingJob,
+  awsListSagemakerProcessingJobs,
+  awsDescribeSagemakerProcessingJob,
+  awsStopSagemakerProcessingJob,
+  awsCreateSagemakerHyperparameterTuningJob,
+  awsListSagemakerHyperparameterTuningJobs,
+  awsDescribeSagemakerHyperparameterTuningJob,
+  awsStopSagemakerHyperparameterTuningJob,
+  awsCreateSagemakerPipeline,
+  awsListSagemakerPipelines,
+  awsDescribeSagemakerPipeline,
+  awsDeleteSagemakerPipeline,
+  awsStartSagemakerPipelineExecution,
+  awsListSagemakerPipelineExecutions,
+  awsDescribeSagemakerPipelineExecution,
+  awsStopSagemakerPipelineExecution,
+  awsCreateSagemakerExperiment,
+  awsListSagemakerExperiments,
+  awsDescribeSagemakerExperiment,
+  awsDeleteSagemakerExperiment,
+  awsListSagemakerTags,
+  awsAddSagemakerTags,
+  awsDeleteSagemakerTags,
 };
 
 export const awsTools: ToolDefinition[] = [
@@ -10990,6 +11522,1868 @@ export const awsTools: ToolDefinition[] = [
     name: 'awsDisassociateDrtRole',
     description: 'Revoke DRT access to your account Use it to disconnect resources.',
     tool: awsDisassociateDrtRole as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsPutConfigRecorder',
+    description: 'Creates a new configuration recorder to record configuration changes Use it to write data or configuration.',
+    tool: awsPutConfigRecorder as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeConfigRecorders',
+    description: 'Returns details about one or more configuration recorders Use it to inspect current state before making changes.',
+    tool: awsDescribeConfigRecorders as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStartConfigRecorder',
+    description: 'Starts recording configurations of the AWS resources Use it to start a stopped resource.',
+    tool: awsStartConfigRecorder as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsStopConfigRecorder',
+    description: 'Stops recording configurations of the AWS resources Use it to stop a running resource (billable config may remain).',
+    tool: awsStopConfigRecorder as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDeleteConfigRecorder',
+    description: 'Deletes the configuration recorder Use it to permanently remove the resource.',
+    tool: awsDeleteConfigRecorder as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeConfigRecorderStatus',
+    description: 'Returns the current status of the configuration recorder Use it to inspect current state before making changes.',
+    tool: awsDescribeConfigRecorderStatus as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutDeliveryChannel',
+    description: 'Creates a delivery channel object to deliver configuration information Use it to write data or configuration.',
+    tool: awsPutDeliveryChannel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeDeliveryChannels',
+    description: 'Returns details about one or more delivery channels Use it to inspect current state before making changes.',
+    tool: awsDescribeDeliveryChannels as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteDeliveryChannel',
+    description: 'Deletes the delivery channel Use it to permanently remove the resource.',
+    tool: awsDeleteDeliveryChannel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDeliverConfigSnapshot',
+    description: 'Schedules delivery of a configuration snapshot',
+    tool: awsDeliverConfigSnapshot as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeComplianceByConfigRule',
+    description: 'Indicates whether the specified Config rules are compliant Use it to inspect current state before making changes.',
+    tool: awsDescribeComplianceByConfigRule as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeComplianceByResource',
+    description: 'Indicates whether the specified AWS resources are compliant Use it to inspect current state before making changes.',
+    tool: awsDescribeComplianceByResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetComplianceSummaryByConfigRule',
+    description: 'Returns compliance summary for the specified Config rule Use it to inspect current state before making changes.',
+    tool: awsGetComplianceSummaryByConfigRule as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetComplianceSummaryByResourceType',
+    description: 'Returns the number of compliant and noncompliant rules for one or more resource types Use it to inspect current state before making changes.',
+    tool: awsGetComplianceSummaryByResourceType as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetResourceConfigHistory',
+    description: 'Returns a list of configuration items for the specified resource Use it to inspect current state before making changes.',
+    tool: awsGetResourceConfigHistory as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsBatchGetResourceConfig',
+    description: 'Returns the current configuration for one or more requested resources Use it to operate on multiple resources.',
+    tool: awsBatchGetResourceConfig as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListDiscoveredResources',
+    description: 'Accepts a resource type and returns a list of resource identifiers Use it to inspect current state before making changes.',
+    tool: awsListDiscoveredResources as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsSelectResourceConfig',
+    description: 'Accepts a structured query language (SQL) SELECT command and returns resource configurations',
+    tool: awsSelectResourceConfig as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutConfigRule',
+    description: 'Adds or updates an Config rule to evaluate if your AWS resources comply with your desired configurations Use it to write data or configuration.',
+    tool: awsPutConfigRule as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeConfigRules',
+    description: 'Returns details about your Config rules Use it to inspect current state before making changes.',
+    tool: awsDescribeConfigRules as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteConfigRule',
+    description: 'Deletes the specified Config rule Use it to permanently remove the resource.',
+    tool: awsDeleteConfigRule as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeConfigRuleEvaluationStatus',
+    description: 'Returns status information for each of your Config managed rules Use it to inspect current state before making changes.',
+    tool: awsDescribeConfigRuleEvaluationStatus as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStartConfigRulesEvaluation',
+    description: 'Runs an evaluation for the specified Config rules Use it to start a stopped resource.',
+    tool: awsStartConfigRulesEvaluation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutEvaluations',
+    description: 'Used by an AWS Lambda function to deliver evaluation results to Config Use it to write data or configuration.',
+    tool: awsPutEvaluations as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutConfigurationAggregator',
+    description: 'Creates and updates the configuration aggregator Use it to write data or configuration.',
+    tool: awsPutConfigurationAggregator as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeConfigurationAggregators',
+    description: 'Returns the details of one or more configuration aggregators Use it to inspect current state before making changes.',
+    tool: awsDescribeConfigurationAggregators as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteConfigurationAggregator',
+    description: 'Deletes the specified configuration aggregator Use it to permanently remove the resource.',
+    tool: awsDeleteConfigurationAggregator as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeConfigurationAggregatorSourcesStatus',
+    description: 'Returns status information for sources within an aggregator Use it to inspect current state before making changes.',
+    tool: awsDescribeConfigurationAggregatorSourcesStatus as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutConformancePack',
+    description: 'Creates or updates a conformance pack Use it to write data or configuration.',
+    tool: awsPutConformancePack as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeConformancePacks',
+    description: 'Returns a list of one or more conformance packs Use it to inspect current state before making changes.',
+    tool: awsDescribeConformancePacks as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteConformancePack',
+    description: 'Deletes the specified conformance pack Use it to permanently remove the resource.',
+    tool: awsDeleteConformancePack as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeConformancePackCompliance',
+    description: 'Returns compliance details of a conformance pack Use it to inspect current state before making changes.',
+    tool: awsDescribeConformancePackCompliance as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeConformancePackStatus',
+    description: 'Provides one or more conformance packs deployment status Use it to inspect current state before making changes.',
+    tool: awsDescribeConformancePackStatus as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeOrganizationConfigRules',
+    description: 'Returns a list of organization Config rules Use it to inspect current state before making changes.',
+    tool: awsDescribeOrganizationConfigRules as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeOrganizationConformancePacks',
+    description: 'Returns a list of organization conformance packs Use it to inspect current state before making changes.',
+    tool: awsDescribeOrganizationConformancePacks as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribePendingAggregationRequests',
+    description: 'Returns a list of all pending aggregation requests Use it to inspect current state before making changes.',
+    tool: awsDescribePendingAggregationRequests as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutOrganizationConfigRule',
+    description: 'Adds or updates an organization Config rule Use it to write data or configuration.',
+    tool: awsPutOrganizationConfigRule as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsPutOrganizationConformancePack',
+    description: 'Deploys conformance packs across member accounts in an AWS Organization Use it to write data or configuration.',
+    tool: awsPutOrganizationConformancePack as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteOrganizationConfigRule',
+    description: 'Deletes the specified organization Config rule Use it to permanently remove the resource.',
+    tool: awsDeleteOrganizationConfigRule as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDeleteOrganizationConformancePack',
+    description: 'Deletes the specified organization conformance pack Use it to permanently remove the resource.',
+    tool: awsDeleteOrganizationConformancePack as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsPutRemediationConfigurations',
+    description: 'Adds or updates the remediation configuration with a specific Config rule Use it to write data or configuration.',
+    tool: awsPutRemediationConfigurations as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeRemediationConfigurations',
+    description: 'Returns the details of one or more remediation configurations Use it to inspect current state before making changes.',
+    tool: awsDescribeRemediationConfigurations as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteRemediationConfiguration',
+    description: 'Deletes the remediation configuration Use it to permanently remove the resource.',
+    tool: awsDeleteRemediationConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsStartRemediationExecution',
+    description: 'Runs an on-demand remediation for the specified Config rules Use it to start a stopped resource.',
+    tool: awsStartRemediationExecution as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeRemediationExecutionStatus',
+    description: 'Provides a detailed view of a Remediation Execution for a set of resources Use it to inspect current state before making changes.',
+    tool: awsDescribeRemediationExecutionStatus as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutRetentionConfiguration',
+    description: 'Creates and updates the retention configuration Use it to write data or configuration.',
+    tool: awsPutRetentionConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeRetentionConfigurations',
+    description: 'Returns the details of one or more retention configurations Use it to inspect current state before making changes.',
+    tool: awsDescribeRetentionConfigurations as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteRetentionConfiguration',
+    description: 'Deletes the retention configuration Use it to permanently remove the resource.',
+    tool: awsDeleteRetentionConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListConfigTags',
+    description: 'List tags for a Config resource Use it to inspect current state before making changes.',
+    tool: awsListConfigTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagConfigResource',
+    description: 'Add tags to a Config resource Use it to label the resource.',
+    tool: awsTagConfigResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagConfigResource',
+    description: 'Remove tags from a Config resource Use it to remove tags from the resource.',
+    tool: awsUntagConfigResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeHealthEvents',
+    description: 'Get information about events that affect your AWS resources Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthEvents as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthEventDetails',
+    description: 'Get detailed information about one or more events Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthEventDetails as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthEventAggregates',
+    description: 'Get aggregated counts of events Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthEventAggregates as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthEventTypes',
+    description: 'Get information about event types Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthEventTypes as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthAffectedEntities',
+    description: 'Get information about entities affected by events Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthAffectedEntities as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthEntityAggregates',
+    description: 'Get aggregated counts of entities affected by events Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthEntityAggregates as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthEventsForOrganization',
+    description: 'Get information about events that affect your organization Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthEventsForOrganization as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthEventDetailsForOrganization',
+    description: 'Get detailed information about events for your organization Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthEventDetailsForOrganization as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthAffectedAccountsForOrganization',
+    description: 'Get accounts affected by events in your organization Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthAffectedAccountsForOrganization as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeHealthServiceStatusForOrganization',
+    description: 'Get the status of the Health service for your organization Use it to inspect current state before making changes.',
+    tool: awsDescribeHealthServiceStatusForOrganization as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsEnableHealthServiceAccessForOrganization',
+    description: 'Enable Health service access for your organization Use it to enable a feature.',
+    tool: awsEnableHealthServiceAccessForOrganization as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDisableHealthServiceAccessForOrganization',
+    description: 'Disable Health service access for your organization',
+    tool: awsDisableHealthServiceAccessForOrganization as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListAmplifyApps',
+    description: 'Lists existing Amplify apps Use it to inspect current state before making changes.',
+    tool: awsListAmplifyApps as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAmplifyApp',
+    description: 'Retrieves an existing Amplify app Use it to inspect current state before making changes.',
+    tool: awsGetAmplifyApp as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateAmplifyApp',
+    description: 'Creates a new Amplify app Use it to provision a new resource.',
+    tool: awsCreateAmplifyApp as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateAmplifyApp',
+    description: 'Updates an existing Amplify app Use it to change an existing resource.',
+    tool: awsUpdateAmplifyApp as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteAmplifyApp',
+    description: 'Deletes an existing Amplify app Use it to permanently remove the resource.',
+    tool: awsDeleteAmplifyApp as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListAmplifyBranches',
+    description: 'Lists the branches of an Amplify app Use it to inspect current state before making changes.',
+    tool: awsListAmplifyBranches as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAmplifyBranch',
+    description: 'Retrieves a branch for an Amplify app Use it to inspect current state before making changes.',
+    tool: awsGetAmplifyBranch as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateAmplifyBranch',
+    description: 'Creates a new branch for an Amplify app Use it to provision a new resource.',
+    tool: awsCreateAmplifyBranch as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateAmplifyBranch',
+    description: 'Updates a branch for an Amplify app Use it to change an existing resource.',
+    tool: awsUpdateAmplifyBranch as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteAmplifyBranch',
+    description: 'Deletes a branch for an Amplify app Use it to permanently remove the resource.',
+    tool: awsDeleteAmplifyBranch as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListAmplifyJobs',
+    description: 'Lists the jobs for a branch of an Amplify app Use it to inspect current state before making changes.',
+    tool: awsListAmplifyJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAmplifyJob',
+    description: 'Returns a job for a branch of an Amplify app Use it to inspect current state before making changes.',
+    tool: awsGetAmplifyJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStartAmplifyJob',
+    description: 'Starts a new job for a branch of an Amplify app Use it to start a stopped resource.',
+    tool: awsStartAmplifyJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsStopAmplifyJob',
+    description: 'Stops a job that is in progress for a branch of an Amplify app Use it to stop a running resource (billable config may remain).',
+    tool: awsStopAmplifyJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListAmplifyDomainAssociations',
+    description: 'Returns the domain associations for an Amplify app Use it to inspect current state before making changes.',
+    tool: awsListAmplifyDomainAssociations as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAmplifyDomainAssociation',
+    description: 'Returns the domain information for an Amplify app Use it to inspect current state before making changes.',
+    tool: awsGetAmplifyDomainAssociation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateAmplifyDomainAssociation',
+    description: 'Creates a new domain association for an Amplify app Use it to provision a new resource.',
+    tool: awsCreateAmplifyDomainAssociation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateAmplifyDomainAssociation',
+    description: 'Updates the domain association for an Amplify app Use it to change an existing resource.',
+    tool: awsUpdateAmplifyDomainAssociation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteAmplifyDomainAssociation',
+    description: 'Deletes a domain association for an Amplify app Use it to permanently remove the resource.',
+    tool: awsDeleteAmplifyDomainAssociation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListAmplifyBackendEnvironments',
+    description: 'Lists the backend environments for an Amplify app Use it to inspect current state before making changes.',
+    tool: awsListAmplifyBackendEnvironments as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateAmplifyBackendEnvironment',
+    description: 'Creates a new backend environment for an Amplify app Use it to provision a new resource.',
+    tool: awsCreateAmplifyBackendEnvironment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteAmplifyBackendEnvironment',
+    description: 'Deletes a backend environment for an Amplify app Use it to permanently remove the resource.',
+    tool: awsDeleteAmplifyBackendEnvironment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListAmplifyWebhooks',
+    description: 'Returns the webhooks for an Amplify app Use it to inspect current state before making changes.',
+    tool: awsListAmplifyWebhooks as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetAmplifyWebhook',
+    description: 'Returns the webhook information that corresponds to a specified webhook ID Use it to inspect current state before making changes.',
+    tool: awsGetAmplifyWebhook as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateAmplifyWebhook',
+    description: 'Creates a new webhook on an Amplify app Use it to provision a new resource.',
+    tool: awsCreateAmplifyWebhook as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateAmplifyWebhook',
+    description: 'Updates a webhook Use it to change an existing resource.',
+    tool: awsUpdateAmplifyWebhook as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteAmplifyWebhook',
+    description: 'Deletes a webhook Use it to permanently remove the resource.',
+    tool: awsDeleteAmplifyWebhook as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListBatchComputeEnvironments',
+    description: 'List all Batch compute environments in your AWS account Use it to inspect current state before making changes.',
+    tool: awsListBatchComputeEnvironments as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeBatchComputeEnvironments',
+    description: 'Get details about one or more Batch compute environments Use it to inspect current state before making changes.',
+    tool: awsDescribeBatchComputeEnvironments as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateBatchComputeEnvironment',
+    description: 'Create a new Batch compute environment Use it to provision a new resource.',
+    tool: awsCreateBatchComputeEnvironment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateBatchComputeEnvironment',
+    description: 'Update an existing Batch compute environment Use it to change an existing resource.',
+    tool: awsUpdateBatchComputeEnvironment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBatchComputeEnvironment',
+    description: 'Delete a Batch compute environment Use it to permanently remove the resource.',
+    tool: awsDeleteBatchComputeEnvironment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListBatchJobQueues',
+    description: 'List all Batch job queues in your AWS account Use it to inspect current state before making changes.',
+    tool: awsListBatchJobQueues as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeBatchJobQueues',
+    description: 'Get details about one or more Batch job queues Use it to inspect current state before making changes.',
+    tool: awsDescribeBatchJobQueues as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateBatchJobQueue',
+    description: 'Create a new Batch job queue Use it to provision a new resource.',
+    tool: awsCreateBatchJobQueue as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateBatchJobQueue',
+    description: 'Update an existing Batch job queue Use it to change an existing resource.',
+    tool: awsUpdateBatchJobQueue as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBatchJobQueue',
+    description: 'Delete a Batch job queue Use it to permanently remove the resource.',
+    tool: awsDeleteBatchJobQueue as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListBatchJobDefinitions',
+    description: 'List all Batch job definitions Use it to inspect current state before making changes.',
+    tool: awsListBatchJobDefinitions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeBatchJobDefinitions',
+    description: 'Get details about one or more Batch job definitions Use it to inspect current state before making changes.',
+    tool: awsDescribeBatchJobDefinitions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsRegisterBatchJobDefinition',
+    description: 'Register a new Batch job definition Use it to provision a new resource.',
+    tool: awsRegisterBatchJobDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeregisterBatchJobDefinition',
+    description: 'Deregister a Batch job definition Use it to permanently remove the resource.',
+    tool: awsDeregisterBatchJobDefinition as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsSubmitBatchJob',
+    description: 'Submit a new Batch job Use it to submit work.',
+    tool: awsSubmitBatchJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListBatchJobs',
+    description: 'List Batch jobs in a job queue Use it to inspect current state before making changes.',
+    tool: awsListBatchJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeBatchJobs',
+    description: 'Get details about one or more Batch jobs Use it to inspect current state before making changes.',
+    tool: awsDescribeBatchJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCancelBatchJob',
+    description: 'Cancel a Batch job Use it to cancel a running operation.',
+    tool: awsCancelBatchJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsTerminateBatchJob',
+    description: 'Terminate a Batch job',
+    tool: awsTerminateBatchJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListBatchTags',
+    description: 'List tags for a Batch resource Use it to inspect current state before making changes.',
+    tool: awsListBatchTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagBatchResource',
+    description: 'Add tags to a Batch resource Use it to label the resource.',
+    tool: awsTagBatchResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagBatchResource',
+    description: 'Remove tags from a Batch resource Use it to remove tags from the resource.',
+    tool: awsUntagBatchResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateBackupVault',
+    description: 'Create a new backup vault Use it to provision a new resource.',
+    tool: awsCreateBackupVault as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeBackupVault',
+    description: 'Get details about a backup vault Use it to inspect current state before making changes.',
+    tool: awsDescribeBackupVault as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBackupVaults',
+    description: 'List all backup vaults Use it to inspect current state before making changes.',
+    tool: awsListBackupVaults as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteBackupVault',
+    description: 'Delete a backup vault Use it to permanently remove the resource.',
+    tool: awsDeleteBackupVault as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateBackupPlan',
+    description: 'Create a new backup plan Use it to provision a new resource.',
+    tool: awsCreateBackupPlan as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetBackupPlan',
+    description: 'Get details about a backup plan Use it to inspect current state before making changes.',
+    tool: awsGetBackupPlan as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBackupPlans',
+    description: 'List all backup plans Use it to inspect current state before making changes.',
+    tool: awsListBackupPlans as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateBackupPlan',
+    description: 'Update a backup plan Use it to change an existing resource.',
+    tool: awsUpdateBackupPlan as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBackupPlan',
+    description: 'Delete a backup plan Use it to permanently remove the resource.',
+    tool: awsDeleteBackupPlan as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetBackupPlanFromTemplate',
+    description: 'Get a backup plan from a template Use it to inspect current state before making changes.',
+    tool: awsGetBackupPlanFromTemplate as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateBackupSelection',
+    description: 'Create a backup selection Use it to provision a new resource.',
+    tool: awsCreateBackupSelection as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsGetBackupSelection',
+    description: 'Get details about a backup selection Use it to inspect current state before making changes.',
+    tool: awsGetBackupSelection as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBackupSelections',
+    description: 'List backup selections for a backup plan Use it to inspect current state before making changes.',
+    tool: awsListBackupSelections as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteBackupSelection',
+    description: 'Delete a backup selection Use it to permanently remove the resource.',
+    tool: awsDeleteBackupSelection as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsStartBackupJob',
+    description: 'Start a backup job Use it to start a stopped resource.',
+    tool: awsStartBackupJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeBackupJob',
+    description: 'Get details about a backup job Use it to inspect current state before making changes.',
+    tool: awsDescribeBackupJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBackupJobs',
+    description: 'List backup jobs Use it to inspect current state before making changes.',
+    tool: awsListBackupJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStopBackupJob',
+    description: 'Stop a backup job Use it to stop a running resource (billable config may remain).',
+    tool: awsStopBackupJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListRecoveryPointsByBackupVault',
+    description: 'List recovery points in a backup vault Use it to inspect current state before making changes.',
+    tool: awsListRecoveryPointsByBackupVault as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListRecoveryPointsByResource',
+    description: 'List recovery points for a resource Use it to inspect current state before making changes.',
+    tool: awsListRecoveryPointsByResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeRecoveryPoint',
+    description: 'Get details about a recovery point Use it to inspect current state before making changes.',
+    tool: awsDescribeRecoveryPoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteRecoveryPoint',
+    description: 'Delete a recovery point Use it to permanently remove the resource.',
+    tool: awsDeleteRecoveryPoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsStartRestoreJob',
+    description: 'Start a restore job Use it to start a stopped resource.',
+    tool: awsStartRestoreJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeRestoreJob',
+    description: 'Get details about a restore job Use it to inspect current state before making changes.',
+    tool: awsDescribeRestoreJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListRestoreJobs',
+    description: 'List restore jobs Use it to inspect current state before making changes.',
+    tool: awsListRestoreJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListProtectedResources',
+    description: 'List protected resources Use it to inspect current state before making changes.',
+    tool: awsListProtectedResources as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetBackupVaultAccessPolicy',
+    description: 'Get the access policy for a backup vault Use it to inspect current state before making changes.',
+    tool: awsGetBackupVaultAccessPolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutBackupVaultAccessPolicy',
+    description: 'Set the access policy for a backup vault Use it to write data or configuration.',
+    tool: awsPutBackupVaultAccessPolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBackupVaultAccessPolicy',
+    description: 'Delete the access policy for a backup vault Use it to permanently remove the resource.',
+    tool: awsDeleteBackupVaultAccessPolicy as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsGetBackupVaultNotifications',
+    description: 'Get notification settings for a backup vault Use it to inspect current state before making changes.',
+    tool: awsGetBackupVaultNotifications as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsPutBackupVaultNotifications',
+    description: 'Set notification settings for a backup vault Use it to write data or configuration.',
+    tool: awsPutBackupVaultNotifications as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteBackupVaultNotifications',
+    description: 'Delete notification settings for a backup vault Use it to permanently remove the resource.',
+    tool: awsDeleteBackupVaultNotifications as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsStartCopyJob',
+    description: 'Start a copy job Use it to start a stopped resource.',
+    tool: awsStartCopyJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeCopyJob',
+    description: 'Get details about a copy job Use it to inspect current state before making changes.',
+    tool: awsDescribeCopyJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListCopyJobs',
+    description: 'List copy jobs Use it to inspect current state before making changes.',
+    tool: awsListCopyJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListBackupTags',
+    description: 'List tags for a backup resource Use it to inspect current state before making changes.',
+    tool: awsListBackupTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagBackupResource',
+    description: 'Add tags to a backup resource Use it to label the resource.',
+    tool: awsTagBackupResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagBackupResource',
+    description: 'Remove tags from a backup resource Use it to remove tags from the resource.',
+    tool: awsUntagBackupResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeEfsFileSystems',
+    description: 'Get details about one or more EFS file systems Use it to inspect current state before making changes.',
+    tool: awsDescribeEfsFileSystems as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateEfsFileSystem',
+    description: 'Create a new EFS file system Use it to provision a new resource.',
+    tool: awsCreateEfsFileSystem as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateEfsFileSystem',
+    description: 'Update an EFS file system Use it to change an existing resource.',
+    tool: awsUpdateEfsFileSystem as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteEfsFileSystem',
+    description: 'Delete an EFS file system Use it to permanently remove the resource.',
+    tool: awsDeleteEfsFileSystem as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateEfsMountTarget',
+    description: 'Create a mount target for an EFS file system Use it to provision a new resource.',
+    tool: awsCreateEfsMountTarget as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeEfsMountTargets',
+    description: 'Get details about mount targets Use it to inspect current state before making changes.',
+    tool: awsDescribeEfsMountTargets as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteEfsMountTarget',
+    description: 'Delete a mount target Use it to permanently remove the resource.',
+    tool: awsDeleteEfsMountTarget as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeEfsMountTargetSecurityGroups',
+    description: 'Get security groups for a mount target Use it to inspect current state before making changes.',
+    tool: awsDescribeEfsMountTargetSecurityGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsModifyEfsMountTargetSecurityGroups',
+    description: 'Modify security groups for a mount target Use it to change an existing resource.',
+    tool: awsModifyEfsMountTargetSecurityGroups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateEfsAccessPoint',
+    description: 'Create an access point for an EFS file system Use it to provision a new resource.',
+    tool: awsCreateEfsAccessPoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeEfsAccessPoints',
+    description: 'Get details about access points Use it to inspect current state before making changes.',
+    tool: awsDescribeEfsAccessPoints as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteEfsAccessPoint',
+    description: 'Delete an access point Use it to permanently remove the resource.',
+    tool: awsDeleteEfsAccessPoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsPutEfsLifecycleConfiguration',
+    description: 'Create or update lifecycle configuration for an EFS file system Use it to write data or configuration.',
+    tool: awsPutEfsLifecycleConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeEfsLifecycleConfiguration',
+    description: 'Get lifecycle configuration for an EFS file system Use it to inspect current state before making changes.',
+    tool: awsDescribeEfsLifecycleConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteEfsLifecycleConfiguration',
+    description: 'Delete lifecycle configuration for an EFS file system (sets to empty) Use it to permanently remove the resource.',
+    tool: awsDeleteEfsLifecycleConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateEfsReplicationConfiguration',
+    description: 'Create a replication configuration for an EFS file system Use it to provision a new resource.',
+    tool: awsCreateEfsReplicationConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeEfsReplicationConfigurations',
+    description: 'Get replication configurations for EFS file systems Use it to inspect current state before making changes.',
+    tool: awsDescribeEfsReplicationConfigurations as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteEfsReplicationConfiguration',
+    description: 'Delete a replication configuration Use it to permanently remove the resource.',
+    tool: awsDeleteEfsReplicationConfiguration as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListEfsTags',
+    description: 'List tags for an EFS resource Use it to inspect current state before making changes.',
+    tool: awsListEfsTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagEfsResource',
+    description: 'Add tags to an EFS resource Use it to label the resource.',
+    tool: awsTagEfsResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagEfsResource',
+    description: 'Remove tags from an EFS resource Use it to remove tags from the resource.',
+    tool: awsUntagEfsResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeFsxFileSystems',
+    description: 'Get details about one or more FSx file systems Use it to inspect current state before making changes.',
+    tool: awsDescribeFsxFileSystems as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateFsxFileSystem',
+    description: 'Create a new FSx file system Use it to provision a new resource.',
+    tool: awsCreateFsxFileSystem as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUpdateFsxFileSystem',
+    description: 'Update an existing FSx file system Use it to change an existing resource.',
+    tool: awsUpdateFsxFileSystem as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteFsxFileSystem',
+    description: 'Delete an FSx file system Use it to permanently remove the resource.',
+    tool: awsDeleteFsxFileSystem as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateFsxBackup',
+    description: 'Create a backup of an FSx file system Use it to provision a new resource.',
+    tool: awsCreateFsxBackup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeFsxBackups',
+    description: 'Get details about one or more FSx backups Use it to inspect current state before making changes.',
+    tool: awsDescribeFsxBackups as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteFsxBackup',
+    description: 'Delete an FSx backup Use it to permanently remove the resource.',
+    tool: awsDeleteFsxBackup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCopyFsxBackup',
+    description: 'Copy an FSx backup to another region Use it to duplicate data.',
+    tool: awsCopyFsxBackup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRestoreFsxVolumeFromBackup',
+    description: 'Create an FSx volume from a backup Use it to restore from a backup.',
+    tool: awsRestoreFsxVolumeFromBackup as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsCreateFsxDataRepositoryAssociation',
+    description: 'Create a data repository association for an FSx file system Use it to provision a new resource.',
+    tool: awsCreateFsxDataRepositoryAssociation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeFsxDataRepositoryAssociations',
+    description: 'Get details about data repository associations Use it to inspect current state before making changes.',
+    tool: awsDescribeFsxDataRepositoryAssociations as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateFsxDataRepositoryAssociation',
+    description: 'Update a data repository association Use it to change an existing resource.',
+    tool: awsUpdateFsxDataRepositoryAssociation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteFsxDataRepositoryAssociation',
+    description: 'Delete a data repository association Use it to permanently remove the resource.',
+    tool: awsDeleteFsxDataRepositoryAssociation as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateFsxStorageVirtualMachine',
+    description: 'Create a storage virtual machine for an ONTAP file system Use it to provision a new resource.',
+    tool: awsCreateFsxStorageVirtualMachine as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeFsxStorageVirtualMachines',
+    description: 'Get details about storage virtual machines Use it to inspect current state before making changes.',
+    tool: awsDescribeFsxStorageVirtualMachines as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateFsxStorageVirtualMachine',
+    description: 'Update a storage virtual machine Use it to change an existing resource.',
+    tool: awsUpdateFsxStorageVirtualMachine as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteFsxStorageVirtualMachine',
+    description: 'Delete a storage virtual machine Use it to permanently remove the resource.',
+    tool: awsDeleteFsxStorageVirtualMachine as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateFsxVolume',
+    description: 'Create a volume in an ONTAP file system Use it to provision a new resource.',
+    tool: awsCreateFsxVolume as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeFsxVolumes',
+    description: 'Get details about volumes Use it to inspect current state before making changes.',
+    tool: awsDescribeFsxVolumes as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateFsxVolume',
+    description: 'Update a volume Use it to change an existing resource.',
+    tool: awsUpdateFsxVolume as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteFsxVolume',
+    description: 'Delete a volume Use it to permanently remove the resource.',
+    tool: awsDeleteFsxVolume as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateFsxSnapshot',
+    description: 'Create a snapshot of an FSx volume Use it to provision a new resource.',
+    tool: awsCreateFsxSnapshot as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeFsxSnapshots',
+    description: 'Get details about snapshots Use it to inspect current state before making changes.',
+    tool: awsDescribeFsxSnapshots as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateFsxSnapshot',
+    description: 'Update a snapshot Use it to change an existing resource.',
+    tool: awsUpdateFsxSnapshot as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteFsxSnapshot',
+    description: 'Delete a snapshot Use it to permanently remove the resource.',
+    tool: awsDeleteFsxSnapshot as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListFsxTags',
+    description: 'List tags for an FSx resource Use it to inspect current state before making changes.',
+    tool: awsListFsxTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsTagFsxResource',
+    description: 'Add tags to an FSx resource Use it to label the resource.',
+    tool: awsTagFsxResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsUntagFsxResource',
+    description: 'Remove tags from an FSx resource Use it to remove tags from the resource.',
+    tool: awsUntagFsxResource as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsDescribeOpensearchDomain',
+    description: 'Get detailed information about an OpenSearch domain Use it to inspect current state before making changes.',
+    tool: awsDescribeOpensearchDomain as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsListDomainNames',
+    description: 'List all OpenSearch domain names in the region Use it to inspect current state before making changes.',
+    tool: awsListDomainNames as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateDomain',
+    description: 'Create a new OpenSearch domain Use it to provision a new resource.',
+    tool: awsCreateDomain as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteDomain',
+    description: 'Delete an OpenSearch domain Use it to permanently remove the resource.',
+    tool: awsDeleteDomain as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsUpdateDomainConfig',
+    description: 'Modify OpenSearch domain settings (instance types, storage, replicas) Use it to change an existing resource.',
+    tool: awsUpdateDomainConfig as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribeDomainConfig',
+    description: 'Get current configuration of an OpenSearch domain Use it to inspect current state before making changes.',
+    tool: awsDescribeDomainConfig as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeDomainChangeProgress',
+    description: 'Check progress of OpenSearch domain configuration updates Use it to inspect current state before making changes.',
+    tool: awsDescribeDomainChangeProgress as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpgradeDomain',
+    description: 'Upgrade OpenSearch domain to a newer version',
+    tool: awsUpgradeDomain as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDescribePackages',
+    description: 'List custom packages (plugins and dictionaries) for OpenSearch Use it to inspect current state before making changes.',
+    tool: awsDescribePackages as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsAssociatePackage',
+    description: 'Associate a custom package with an OpenSearch domain Use it to connect resources.',
+    tool: awsAssociatePackage as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDissociatePackage',
+    description: 'Remove a custom package from an OpenSearch domain',
+    tool: awsDissociatePackage as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListOpensearchTags',
+    description: 'List tags for an OpenSearch domain Use it to inspect current state before making changes.',
+    tool: awsListOpensearchTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsAddOpensearchTags',
+    description: 'Add tags to an OpenSearch domain Use it to grant access or attach configuration.',
+    tool: awsAddOpensearchTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsRemoveOpensearchTags',
+    description: 'Remove tags from an OpenSearch domain Use it to remove access or configuration.',
+    tool: awsRemoveOpensearchTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListVersions',
+    description: 'List available OpenSearch and Elasticsearch versions Use it to inspect current state before making changes.',
+    tool: awsListVersions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsGetCompatibleVersions',
+    description: 'Get compatible OpenSearch versions for domain upgrade Use it to inspect current state before making changes.',
+    tool: awsGetCompatibleVersions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsCreateSagemakerNotebookInstance',
+    description: 'Create a new SageMaker notebook instance Use it to provision a new resource.',
+    tool: awsCreateSagemakerNotebookInstance as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerNotebookInstances',
+    description: 'List SageMaker notebook instances Use it to inspect current state before making changes.',
+    tool: awsListSagemakerNotebookInstances as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerNotebookInstance',
+    description: 'Get details about a SageMaker notebook instance Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerNotebookInstance as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStartSagemakerNotebookInstance',
+    description: 'Start a SageMaker notebook instance Use it to start a stopped resource.',
+    tool: awsStartSagemakerNotebookInstance as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsStopSagemakerNotebookInstance',
+    description: 'Stop a SageMaker notebook instance Use it to stop a running resource (billable config may remain).',
+    tool: awsStopSagemakerNotebookInstance as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsUpdateSagemakerNotebookInstance',
+    description: 'Update a SageMaker notebook instance Use it to change an existing resource.',
+    tool: awsUpdateSagemakerNotebookInstance as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteSagemakerNotebookInstance',
+    description: 'Delete a SageMaker notebook instance Use it to permanently remove the resource.',
+    tool: awsDeleteSagemakerNotebookInstance as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerTrainingJob',
+    description: 'Create a SageMaker training job Use it to provision a new resource.',
+    tool: awsCreateSagemakerTrainingJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerTrainingJobs',
+    description: 'List SageMaker training jobs Use it to inspect current state before making changes.',
+    tool: awsListSagemakerTrainingJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerTrainingJob',
+    description: 'Get details about a SageMaker training job Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerTrainingJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStopSagemakerTrainingJob',
+    description: 'Stop a SageMaker training job Use it to stop a running resource (billable config may remain).',
+    tool: awsStopSagemakerTrainingJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerModel',
+    description: 'Create a SageMaker model Use it to provision a new resource.',
+    tool: awsCreateSagemakerModel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerModels',
+    description: 'List SageMaker models Use it to inspect current state before making changes.',
+    tool: awsListSagemakerModels as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerModel',
+    description: 'Get details about a SageMaker model Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerModel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteSagemakerModel',
+    description: 'Delete a SageMaker model Use it to permanently remove the resource.',
+    tool: awsDeleteSagemakerModel as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerEndpoint',
+    description: 'Create a SageMaker endpoint Use it to provision a new resource.',
+    tool: awsCreateSagemakerEndpoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerEndpoints',
+    description: 'List SageMaker endpoints Use it to inspect current state before making changes.',
+    tool: awsListSagemakerEndpoints as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerEndpoint',
+    description: 'Get details about a SageMaker endpoint Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerEndpoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsUpdateSagemakerEndpoint',
+    description: 'Update a SageMaker endpoint Use it to change an existing resource.',
+    tool: awsUpdateSagemakerEndpoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteSagemakerEndpoint',
+    description: 'Delete a SageMaker endpoint Use it to permanently remove the resource.',
+    tool: awsDeleteSagemakerEndpoint as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerEndpointConfig',
+    description: 'Create a SageMaker endpoint configuration Use it to provision a new resource.',
+    tool: awsCreateSagemakerEndpointConfig as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerEndpointConfigs',
+    description: 'List SageMaker endpoint configurations Use it to inspect current state before making changes.',
+    tool: awsListSagemakerEndpointConfigs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerEndpointConfig',
+    description: 'Get details about a SageMaker endpoint configuration Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerEndpointConfig as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteSagemakerEndpointConfig',
+    description: 'Delete a SageMaker endpoint configuration Use it to permanently remove the resource.',
+    tool: awsDeleteSagemakerEndpointConfig as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerTransformJob',
+    description: 'Create a SageMaker transform job Use it to provision a new resource.',
+    tool: awsCreateSagemakerTransformJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerTransformJobs',
+    description: 'List SageMaker transform jobs Use it to inspect current state before making changes.',
+    tool: awsListSagemakerTransformJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerTransformJob',
+    description: 'Get details about a SageMaker transform job Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerTransformJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStopSagemakerTransformJob',
+    description: 'Stop a SageMaker transform job Use it to stop a running resource (billable config may remain).',
+    tool: awsStopSagemakerTransformJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerProcessingJob',
+    description: 'Create a SageMaker processing job Use it to provision a new resource.',
+    tool: awsCreateSagemakerProcessingJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerProcessingJobs',
+    description: 'List SageMaker processing jobs Use it to inspect current state before making changes.',
+    tool: awsListSagemakerProcessingJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerProcessingJob',
+    description: 'Get details about a SageMaker processing job Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerProcessingJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStopSagemakerProcessingJob',
+    description: 'Stop a SageMaker processing job Use it to stop a running resource (billable config may remain).',
+    tool: awsStopSagemakerProcessingJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerHyperparameterTuningJob',
+    description: 'Create a SageMaker hyperparameter tuning job Use it to provision a new resource.',
+    tool: awsCreateSagemakerHyperparameterTuningJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerHyperparameterTuningJobs',
+    description: 'List SageMaker hyperparameter tuning jobs Use it to inspect current state before making changes.',
+    tool: awsListSagemakerHyperparameterTuningJobs as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerHyperparameterTuningJob',
+    description: 'Get details about a SageMaker hyperparameter tuning job Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerHyperparameterTuningJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStopSagemakerHyperparameterTuningJob',
+    description: 'Stop a SageMaker hyperparameter tuning job Use it to stop a running resource (billable config may remain).',
+    tool: awsStopSagemakerHyperparameterTuningJob as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerPipeline',
+    description: 'Create a SageMaker pipeline Use it to provision a new resource.',
+    tool: awsCreateSagemakerPipeline as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerPipelines',
+    description: 'List SageMaker pipelines Use it to inspect current state before making changes.',
+    tool: awsListSagemakerPipelines as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerPipeline',
+    description: 'Get details about a SageMaker pipeline Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerPipeline as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteSagemakerPipeline',
+    description: 'Delete a SageMaker pipeline Use it to permanently remove the resource.',
+    tool: awsDeleteSagemakerPipeline as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsStartSagemakerPipelineExecution',
+    description: 'Start a SageMaker pipeline execution Use it to start a stopped resource.',
+    tool: awsStartSagemakerPipelineExecution as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerPipelineExecutions',
+    description: 'List SageMaker pipeline executions Use it to inspect current state before making changes.',
+    tool: awsListSagemakerPipelineExecutions as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerPipelineExecution',
+    description: 'Get details about a SageMaker pipeline execution Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerPipelineExecution as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsStopSagemakerPipelineExecution',
+    description: 'Stop a SageMaker pipeline execution Use it to stop a running resource (billable config may remain).',
+    tool: awsStopSagemakerPipelineExecution as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsCreateSagemakerExperiment',
+    description: 'Create a SageMaker experiment Use it to provision a new resource.',
+    tool: awsCreateSagemakerExperiment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsListSagemakerExperiments',
+    description: 'List SageMaker experiments Use it to inspect current state before making changes.',
+    tool: awsListSagemakerExperiments as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDescribeSagemakerExperiment',
+    description: 'Get details about a SageMaker experiment Use it to inspect current state before making changes.',
+    tool: awsDescribeSagemakerExperiment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsDeleteSagemakerExperiment',
+    description: 'Delete a SageMaker experiment Use it to permanently remove the resource.',
+    tool: awsDeleteSagemakerExperiment as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'delete' as const,
+  },
+  {
+    name: 'awsListSagemakerTags',
+    description: 'List tags for a SageMaker resource Use it to inspect current state before making changes.',
+    tool: awsListSagemakerTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'read' as const,
+  },
+  {
+    name: 'awsAddSagemakerTags',
+    description: 'Add tags to a SageMaker resource Use it to grant access or attach configuration.',
+    tool: awsAddSagemakerTags as Tool,
+    requiredAuth: 'awsCredentials' as const,
+    scope: 'write' as const,
+  },
+  {
+    name: 'awsDeleteSagemakerTags',
+    description: 'Remove tags from a SageMaker resource Use it to permanently remove the resource.',
+    tool: awsDeleteSagemakerTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
