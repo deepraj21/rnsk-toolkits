@@ -1,4 +1,5 @@
 import mathematics from './toolkits/mathematics/manifest.js';
+import mongodb from './toolkits/mongodb/manifest.js';
 import linear from './toolkits/linear/manifest.js';
 import gmail from './toolkits/gmail/manifest.js';
 import webSearch from './toolkits/web-search/manifest.js';
@@ -70,6 +71,7 @@ import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
   mathematics,
+  mongodb,
   linear,
   gmail,
   webSearch,
@@ -140,6 +142,7 @@ export const toolkits: ToolkitManifest[] = [
 ];
 export {
   mathematics,
+  mongodb,
   linear,
   gmail,
   webSearch,

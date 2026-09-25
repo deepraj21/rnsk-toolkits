@@ -80,7 +80,9 @@
     "@aws-sdk/lib-dynamodb": "^3.1139.0",
     "@google-cloud/compute": "^7.4.0",
     "@google-cloud/monitoring": "^6.1.0",
+    "bson": "^6.10.4",
     "firecrawl": "^4.38.0",
+    "mongodb": "^6.21.0",
     "octokit": "^5.0.5",
     "zod-to-json-schema": "^3.25.2"
   },

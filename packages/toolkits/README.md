@@ -16,11 +16,12 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**4505 tools** across **68 toolkits** (run `npm run validate` for live counts).
+**4532 tools** across **69 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
 | mathematics | 9 | none |
+| mongodb | 27 | service account |
 | linear | 8 | OAuth2 |
 | gmail | 61 | OAuth2 |
 | web-search (Firecrawl) | 2 | service env |
