@@ -1,0 +1,71 @@
+import { defineToolkit, defineTool } from '../../core/define.js';
+import { CONFLUENCE_ICON } from './icon.js';
+import { confluenceTools } from './tools/index.js';
+
+export default defineToolkit({
+  id: 'confluence',
+  displayName: 'Confluence',
+  shortDescription: 'Pages, blog posts, spaces, comments, labels, attachments, tasks and CQL search.',
+  category: 'Collaboration & Communication',
+  icon: CONFLUENCE_ICON,
+  auth: {
+    type: 'oauth2',
+    tokenField: 'confluenceToken',
+    provider: {
+      slug: 'confluence',
+      env: { clientId: 'CONFLUENCE_CLIENT_ID', clientSecret: 'CONFLUENCE_CLIENT_SECRET' },
+      authorizeUrl: 'https://auth.atlassian.com/authorize',
+      tokenUrl: 'https://auth.atlassian.com/oauth/token',
+      scopes: [
+        'read:page:confluence',
+        'write:page:confluence',
+        'delete:page:confluence',
+        'read:comment:confluence',
+        'write:comment:confluence',
+        'read:attachment:confluence',
+        'read:space:confluence',
+        'read:space-details:confluence',
+        'write:space:confluence',
+        'write:confluence-space',
+        'write:space.permission:confluence',
+        'delete:space:confluence',
+        'read:label:confluence',
+        'write:confluence-content',
+        'read:confluence-content.all',
+        'read:content-details:confluence',
+        'read:content.metadata:confluence',
+        'search:confluence',
+        'read:task:confluence',
+        'write:task:confluence',
+        'read:whiteboard:confluence',
+        'write:whiteboard:confluence',
+        'read:confluence-user',
+        'read:user:confluence',
+        'read:audit-log:confluence',
+      ],
+      scopeSeparator: ' ',
+      exchangeStyle: 'json',
+      extraAuthParams: { audience: 'api.atlassian.com', prompt: 'consent' },
+      connectDescription:
+        'Connect Confluence to manage pages, blog posts, spaces, comments, labels, attachments and tasks. Your Cloud site is detected automatically.',
+      callbackPath: '/api/auth/confluence/callback',
+      stateCookie: 'confluence_oauth_state',
+    },
+  },
+  allowedHosts: ['api.atlassian.com'],
+  tools: confluenceTools.map((entry) =>
+    defineTool({
+      name: entry.name,
+      description: entry.description,
+      tool: entry.tool,
+      requiredAuth: entry.requiredAuth,
+      scope: entry.scope,
+    }),
+  ),
+  meta: {
+    since: '0.0.12',
+    homepage: 'https://www.atlassian.com/software/confluence',
+    docsUrl: 'https://developer.atlassian.com/cloud/confluence/rest/v2/',
+    apiDocsUrl: 'https://developer.atlassian.com/cloud/confluence/rest/v2/',
+  },
+});

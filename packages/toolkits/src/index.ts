@@ -39,6 +39,7 @@ import groww from './toolkits/groww/manifest.js';
 import cloudflare from './toolkits/cloudflare/manifest.js';
 import slack from './toolkits/slack/manifest.js';
 import discord from './toolkits/discord/manifest.js';
+import confluence from './toolkits/confluence/manifest.js';
 import convex from './toolkits/convex/manifest.js';
 import datadog from './toolkits/datadog/manifest.js';
 import bitbucket from './toolkits/bitbucket/manifest.js';
@@ -109,6 +110,7 @@ export const toolkits: ToolkitManifest[] = [
   cloudflare,
   slack,
   discord,
+  confluence,
   convex,
   datadog,
   gitlab,
@@ -178,6 +180,7 @@ export {
   cloudflare,
   slack,
   discord,
+  confluence,
   convex,
   datadog,
   gitlab,
