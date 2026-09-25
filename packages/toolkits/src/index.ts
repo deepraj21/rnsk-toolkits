@@ -49,6 +49,7 @@ import hackerNews from './toolkits/hacker-news/manifest.js';
 import jira from './toolkits/jira/manifest.js';
 import jenkins from './toolkits/jenkins/manifest.js';
 import harness from './toolkits/harness/manifest.js';
+import dynatrace from './toolkits/dynatrace/manifest.js';
 import neo4j from './toolkits/neo4j/manifest.js';
 import neon from './toolkits/neon/manifest.js';
 import kaggle from './toolkits/kaggle/manifest.js';
@@ -117,6 +118,7 @@ export const toolkits: ToolkitManifest[] = [
   jira,
   jenkins,
   harness,
+  dynatrace,
   neo4j,
   neon,
   kaggle,
@@ -184,6 +186,7 @@ export {
   jira,
   jenkins,
   harness,
+  dynatrace,
   neo4j,
   neon,
   kaggle,
