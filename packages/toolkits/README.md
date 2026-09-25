@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**3639 tools** across **63 toolkits** (run `npm run validate` for live counts).
+**4361 tools** across **65 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -43,7 +43,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | google-ads | 28 | OAuth2 |
 | youtube | 49 | OAuth2 |
 | figma | 52 | OAuth2 |
-| aws | 855 | service account |
+| aws | 1487 | service account |
 | azure | 52 | service account |
 | gcp | 6 | service account |
 | grafana | 11 | service account |
@@ -69,10 +69,12 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | hostinger | 24 | API key |
 | hacker-news | 14 | none |
 | jira | 103 | OAuth2 |
+| jenkins | 32 | service account |
+| harness | 58 | service account |
 | neo4j | 21 | basic auth |
 | neon | 110 | API key |
 | kaggle | 35 | basic auth |
-| kubernetes | 43 | service account |
+| kubernetes | 43 | service_account |
 | dev-to | 28 | API key |
 | notebook-lm | 11 | OAuth2 |
 | nasa | 136 | API key |

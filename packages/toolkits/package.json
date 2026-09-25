@@ -23,7 +23,7 @@
   "scripts": {
     "validate": "tsx scripts/validate.ts && tsx scripts/validate-esm.ts --source",
     "validate:dist": "tsx scripts/validate-esm.ts --dist",
-    "build": "tsc && npm run validate:dist",
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 tsc && npm run validate:dist",
     "prepublishOnly": "npm run validate && npm run build"
   },
   "peerDependencies": {
