@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**4532 tools** across **69 toolkits** (run `npm run validate` for live counts).
+**4743 tools** across **70 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -87,6 +87,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | wordpress | 10 | OAuth2 |
 | wise | 9 | API key |
 | servicenow | 145 | service account |
+| sentry | 211 | OAuth2 |
 | postman | 126 | API key |
 | splunk | 29 | service account |
 
