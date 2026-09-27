@@ -6,7 +6,8 @@ import { googleAnalyticsTools } from './tools/index.js';
 export default defineToolkit({
   id: 'google-analytics',
   displayName: 'Google Analytics',
-  shortDescription: 'Run GA4 reports, manage audiences, properties, and Measurement Protocol events.',
+  shortDescription:
+    'Run GA4 reports, manage audiences, properties, and Measurement Protocol events.',
   category: 'Analytics & Data',
   icon: GANALYTICS_ICON,
   auth: {
@@ -14,7 +15,10 @@ export default defineToolkit({
     tokenField: 'googleAnalyticsToken',
     provider: {
       slug: 'google-analytics',
-      env: { clientId: 'GOOGLE_ANALYTICS_CLIENT_ID', clientSecret: 'GOOGLE_ANALYTICS_CLIENT_SECRET' },
+      env: {
+        clientId: 'GOOGLE_ANALYTICS_CLIENT_ID',
+        clientSecret: 'GOOGLE_ANALYTICS_CLIENT_SECRET',
+      },
       authorizeUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
       tokenUrl: 'https://oauth2.googleapis.com/token',
       scopes: [
@@ -23,7 +27,8 @@ export default defineToolkit({
       ],
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
-      connectDescription: 'Connect Google Analytics for GA4 reports, audiences, properties, and admin.',
+      connectDescription:
+        'Connect Google Analytics for GA4 reports, audiences, properties, and admin.',
       callbackPath: '/api/auth/google-analytics/callback',
       stateCookie: 'google_analytics_oauth_state',
     },

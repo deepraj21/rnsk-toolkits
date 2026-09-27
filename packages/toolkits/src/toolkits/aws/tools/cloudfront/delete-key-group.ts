@@ -19,16 +19,19 @@ export const awsDeleteCloudfrontKeyGroup = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new DeleteKeyGroupCommand({
-          Id: id,
-          IfMatch: ifMatch,
+        Id: id,
+        IfMatch: ifMatch,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Key group ${id} deleted successfully`,
-              };
+        success: true,
+        message: `Key group ${id} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CloudFront key group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CloudFront key group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

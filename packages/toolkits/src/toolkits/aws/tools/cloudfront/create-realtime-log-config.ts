@@ -21,17 +21,20 @@ export const awsCreateCloudfrontRealtimeLogConfig = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateRealtimeLogConfigCommand({
-          EndPoints: endPoints,
-          Fields: fields,
-          Name: name,
-          SamplingRate: samplingRate,
+        EndPoints: endPoints,
+        Fields: fields,
+        Name: name,
+        SamplingRate: samplingRate,
       } as any);
       const response = await client.send(command);
       return {
-                  realtimeLogConfig: response.RealtimeLogConfig,
-              };
+        realtimeLogConfig: response.RealtimeLogConfig,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront real-time log config', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront real-time log config',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { PutPublicAccessBlockCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsPutS3PublicAccessBlock = tool({
-  description: 'Set public access block configuration for an S3 bucket.. Use it to write data or configuration.',
+  description:
+    'Set public access block configuration for an S3 bucket.. Use it to write data or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,11 +19,17 @@ export const awsPutS3PublicAccessBlock = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new PutPublicAccessBlockCommand({ Bucket: bucket, PublicAccessBlockConfiguration: publicAccessBlockConfiguration });
+      const command = new PutPublicAccessBlockCommand({
+        Bucket: bucket,
+        PublicAccessBlockConfiguration: publicAccessBlockConfiguration,
+      });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to set public access block configuration for an S3 bucket', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set public access block configuration for an S3 bucket',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

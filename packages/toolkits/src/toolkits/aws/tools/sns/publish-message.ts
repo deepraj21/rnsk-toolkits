@@ -16,7 +16,17 @@ export const awsPublishSnsMessage = tool({
     messageStructure: z.string().optional().describe('Message structure (json, string)'),
     messageAttributes: z.record(z.any()).optional().describe('Message attributes'),
   }),
-  execute: async ({ awsCredentials, region, topicArn, targetArn, phoneNumber, message, subject, messageStructure, messageAttributes }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    topicArn,
+    targetArn,
+    phoneNumber,
+    message,
+    subject,
+    messageStructure,
+    messageAttributes,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,21 +34,24 @@ export const awsPublishSnsMessage = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new PublishCommand({
-          TopicArn: topicArn,
-          TargetArn: targetArn,
-          PhoneNumber: phoneNumber,
-          Message: message,
-          Subject: subject,
-          MessageStructure: messageStructure,
-          MessageAttributes: messageAttributes,
+        TopicArn: topicArn,
+        TargetArn: targetArn,
+        PhoneNumber: phoneNumber,
+        Message: message,
+        Subject: subject,
+        MessageStructure: messageStructure,
+        MessageAttributes: messageAttributes,
       });
       const response = await client.send(command);
       return {
-                  messageId: response.MessageId,
-                  sequenceNumber: response.SequenceNumber,
-              };
+        messageId: response.MessageId,
+        sequenceNumber: response.SequenceNumber,
+      };
     } catch (err) {
-      return { error: 'Failed to publish a message to an SNS topic', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to publish a message to an SNS topic',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

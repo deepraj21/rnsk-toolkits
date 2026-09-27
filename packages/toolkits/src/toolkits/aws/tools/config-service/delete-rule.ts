@@ -18,15 +18,18 @@ export const awsDeleteConfigRule = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DeleteConfigRuleCommand({
-          ConfigRuleName: configRuleName,
+        ConfigRuleName: configRuleName,
       });
       await client.send(command);
       return {
-                  message: 'Config rule deleted successfully',
-                  configRuleName: configRuleName,
-              };
+        message: 'Config rule deleted successfully',
+        configRuleName: configRuleName,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the specified Config rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes the specified Config rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

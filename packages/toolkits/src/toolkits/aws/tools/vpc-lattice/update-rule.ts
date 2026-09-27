@@ -15,7 +15,16 @@ export const awsUpdateVpcLatticeRule = tool({
     match: z.record(z.any()).optional().describe('Match criteria'),
     action: z.record(z.any()).optional().describe('Action'),
   }),
-  execute: async ({ awsCredentials, region, listenerIdentifier, serviceIdentifier, ruleIdentifier, priority, match, action }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    listenerIdentifier,
+    serviceIdentifier,
+    ruleIdentifier,
+    priority,
+    match,
+    action,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,25 +32,28 @@ export const awsUpdateVpcLatticeRule = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new UpdateRuleCommand({
-          listenerIdentifier: listenerIdentifier,
-          serviceIdentifier: serviceIdentifier,
-          ruleIdentifier: ruleIdentifier,
-          priority: priority,
-          match: match,
-          action: action,
+        listenerIdentifier: listenerIdentifier,
+        serviceIdentifier: serviceIdentifier,
+        ruleIdentifier: ruleIdentifier,
+        priority: priority,
+        match: match,
+        action: action,
       } as any);
       const response = await client.send(command);
       return {
-                  action: response.action,
-                  arn: response.arn,
-                  id: response.id,
-                  isDefault: response.isDefault,
-                  match: response.match,
-                  name: response.name,
-                  priority: response.priority,
-              };
+        action: response.action,
+        arn: response.arn,
+        id: response.id,
+        isDefault: response.isDefault,
+        match: response.match,
+        name: response.name,
+        priority: response.priority,
+      };
     } catch (err) {
-      return { error: 'Failed to update a VPC Lattice rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a VPC Lattice rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

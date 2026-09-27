@@ -22,7 +22,10 @@ export const awsDeleteS3Object = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete an object from S3', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an object from S3',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

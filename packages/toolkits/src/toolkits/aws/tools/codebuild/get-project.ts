@@ -4,7 +4,8 @@ import { BatchGetProjectsCommand } from '@aws-sdk/client-codebuild';
 import { createCodeBuildClient } from '../client.js';
 
 export const awsGetCodebuildProject = tool({
-  description: 'Get information about a CodeBuild build project. Use it to inspect current state before making changes.',
+  description:
+    'Get information about a CodeBuild build project. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsGetCodebuildProject = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new BatchGetProjectsCommand({
-          names: [name],
+        names: [name],
       });
       const response = await client.send(command);
       return {
-                  project: response.projects?.[0] || null,
-                  projectsNotFound: response.projectsNotFound || [],
-              };
+        project: response.projects?.[0] || null,
+        projectsNotFound: response.projectsNotFound || [],
+      };
     } catch (err) {
-      return { error: 'Failed to get information about a CodeBuild build project', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get information about a CodeBuild build project',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

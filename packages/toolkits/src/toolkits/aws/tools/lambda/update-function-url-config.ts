@@ -21,22 +21,25 @@ export const awsUpdateLambdaFunctionUrlConfig = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new UpdateFunctionUrlConfigCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
-          AuthType: authType as any,
-          Cors: cors,
+        FunctionName: functionName,
+        Qualifier: qualifier,
+        AuthType: authType as any,
+        Cors: cors,
       });
       const response = await client.send(command);
       return {
-                  functionUrl: response.FunctionUrl,
-                  functionArn: response.FunctionArn,
-                  authType: response.AuthType,
-                  cors: response.Cors,
-                  creationTime: response.CreationTime,
-                  lastModifiedTime: response.LastModifiedTime,
-              };
+        functionUrl: response.FunctionUrl,
+        functionArn: response.FunctionArn,
+        authType: response.AuthType,
+        cors: response.Cors,
+        creationTime: response.CreationTime,
+        lastModifiedTime: response.LastModifiedTime,
+      };
     } catch (err) {
-      return { error: 'Failed to update function URL configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update function URL configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

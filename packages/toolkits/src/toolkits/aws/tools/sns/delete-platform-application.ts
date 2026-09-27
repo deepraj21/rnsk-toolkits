@@ -18,15 +18,18 @@ export const awsDeleteSnsPlatformApplication = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new DeletePlatformApplicationCommand({
-          PlatformApplicationArn: platformApplicationArn,
+        PlatformApplicationArn: platformApplicationArn,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Platform application ${platformApplicationArn} deleted successfully`,
-              };
+        success: true,
+        message: `Platform application ${platformApplicationArn} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a platform application', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a platform application',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

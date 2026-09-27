@@ -20,14 +20,17 @@ export const awsCreateEc2Snapshot = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateSnapshotCommand({
-          VolumeId: volumeId,
-          Description: description,
-          TagSpecifications: tagSpecifications,
+        VolumeId: volumeId,
+        Description: description,
+        TagSpecifications: tagSpecifications,
       });
       const response = await client.send(command);
       return { snapshotId: response.SnapshotId };
     } catch (err) {
-      return { error: 'Failed to create a snapshot of an EBS volume', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a snapshot of an EBS volume',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

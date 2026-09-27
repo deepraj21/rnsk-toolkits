@@ -10,13 +10,35 @@ export const awsCreateRepository = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     repositoryName: z.string().describe('The name of the repository'),
     registryId: z.string().optional().describe('AWS account ID associated with the registry'),
-    imageTagMutability: z.enum(['MUTABLE', 'IMMUTABLE']).optional().describe('The tag mutability setting (MUTABLE, IMMUTABLE)'),
-    imageScanningConfiguration: z.record(z.any()).optional().describe('The image scanning configuration'),
-    encryptionConfiguration: z.record(z.any()).optional().describe('The encryption configuration for the repository'),
+    imageTagMutability: z
+      .enum(['MUTABLE', 'IMMUTABLE'])
+      .optional()
+      .describe('The tag mutability setting (MUTABLE, IMMUTABLE)'),
+    imageScanningConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('The image scanning configuration'),
+    encryptionConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('The encryption configuration for the repository'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the repository'),
-    lifecyclePolicy: z.record(z.any()).optional().describe('The lifecycle policy to apply to the repository after creation'),
+    lifecyclePolicy: z
+      .record(z.any())
+      .optional()
+      .describe('The lifecycle policy to apply to the repository after creation'),
   }),
-  execute: async ({ awsCredentials, region, repositoryName, registryId, imageTagMutability, imageScanningConfiguration, encryptionConfiguration, tags, lifecyclePolicy }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    repositoryName,
+    registryId,
+    imageTagMutability,
+    imageScanningConfiguration,
+    encryptionConfiguration,
+    tags,
+    lifecyclePolicy,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,35 +46,42 @@ export const awsCreateRepository = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new CreateRepositoryCommand({
-          repositoryName: repositoryName,
-          registryId: registryId,
-          imageTagMutability: imageTagMutability,
-          imageScanningConfiguration: imageScanningConfiguration,
-          encryptionConfiguration: encryptionConfiguration as any,
-          tags: tags as any,
+        repositoryName: repositoryName,
+        registryId: registryId,
+        imageTagMutability: imageTagMutability,
+        imageScanningConfiguration: imageScanningConfiguration,
+        encryptionConfiguration: encryptionConfiguration as any,
+        tags: tags as any,
       } as any);
       const response = await client.send(command);
       if (lifecyclePolicy) {
-          await client.send(new PutLifecyclePolicyCommand({
-              repositoryName: repositoryName,
-              registryId: registryId,
-              lifecyclePolicyText: JSON.stringify(lifecyclePolicy),
-          }));
+        await client.send(
+          new PutLifecyclePolicyCommand({
+            repositoryName: repositoryName,
+            registryId: registryId,
+            lifecyclePolicyText: JSON.stringify(lifecyclePolicy),
+          }),
+        );
       }
       return {
-                  repository: response.repository ? {
-                      repositoryName: response.repository.repositoryName,
-                      repositoryArn: response.repository.repositoryArn,
-                      registryId: response.repository.registryId,
-                      repositoryUri: response.repository.repositoryUri,
-                      createdAt: response.repository.createdAt,
-                      imageTagMutability: response.repository.imageTagMutability,
-                      imageScanningConfiguration: response.repository.imageScanningConfiguration,
-                      encryptionConfiguration: response.repository.encryptionConfiguration,
-                  } : null,
-              };
+        repository: response.repository
+          ? {
+              repositoryName: response.repository.repositoryName,
+              repositoryArn: response.repository.repositoryArn,
+              registryId: response.repository.registryId,
+              repositoryUri: response.repository.repositoryUri,
+              createdAt: response.repository.createdAt,
+              imageTagMutability: response.repository.imageTagMutability,
+              imageScanningConfiguration: response.repository.imageScanningConfiguration,
+              encryptionConfiguration: response.repository.encryptionConfiguration,
+            }
+          : null,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new ECR repository', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new ECR repository',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

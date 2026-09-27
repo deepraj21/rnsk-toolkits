@@ -18,15 +18,18 @@ export const awsDeleteSagemakerPipeline = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new DeletePipelineCommand({
-          PipelineName: pipelineName,
+        PipelineName: pipelineName,
       });
       await client.send(command);
       return {
-                  message: 'Pipeline deleted successfully',
-                  pipelineName: pipelineName,
-              };
+        message: 'Pipeline deleted successfully',
+        pipelineName: pipelineName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a SageMaker pipeline', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a SageMaker pipeline',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

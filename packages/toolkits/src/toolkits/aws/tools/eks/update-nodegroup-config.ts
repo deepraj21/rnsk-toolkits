@@ -15,7 +15,16 @@ export const awsUpdateEksNodegroupConfig = tool({
     scalingConfig: z.record(z.any()).optional().describe('Scaling configuration'),
     updateConfig: z.record(z.any()).optional().describe('Update configuration'),
   }),
-  execute: async ({ awsCredentials, region, clusterName, nodegroupName, labels, taints, scalingConfig, updateConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clusterName,
+    nodegroupName,
+    labels,
+    taints,
+    scalingConfig,
+    updateConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,19 +32,22 @@ export const awsUpdateEksNodegroupConfig = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new UpdateNodegroupConfigCommand({
-          clusterName: clusterName,
-          nodegroupName: nodegroupName,
-          labels: labels,
-          taints: taints,
-          scalingConfig: scalingConfig,
-          updateConfig: updateConfig,
+        clusterName: clusterName,
+        nodegroupName: nodegroupName,
+        labels: labels,
+        taints: taints,
+        scalingConfig: scalingConfig,
+        updateConfig: updateConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  update: response.update,
-              };
+        update: response.update,
+      };
     } catch (err) {
-      return { error: 'Failed to update the configuration of a nodegroup', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the configuration of a nodegroup',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

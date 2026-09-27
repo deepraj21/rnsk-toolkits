@@ -11,7 +11,9 @@ export default defineToolkit({
   icon: FIRECRAWL_ICON,
   auth: {
     type: 'service_env',
-    env: [{ name: 'FIRECRAWL_API_KEY', description: 'Firecrawl API key for web search and scraping' }],
+    env: [
+      { name: 'FIRECRAWL_API_KEY', description: 'Firecrawl API key for web search and scraping' },
+    ],
   },
   allowedHosts: ['api.firecrawl.dev'],
   tools: [

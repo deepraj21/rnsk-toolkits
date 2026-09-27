@@ -17,15 +17,20 @@ export const awsDeleteRoute53QueryLoggingConfig = tool({
     try {
       const client = createRoute53Client(awsCredentials, region);
 
-      await client.send(new DeleteQueryLoggingConfigCommand({
+      await client.send(
+        new DeleteQueryLoggingConfigCommand({
           Id: id,
-      }));
+        }),
+      );
       return {
-                  success: true,
-                  message: `Query logging config ${id} deleted successfully`,
-              };
+        success: true,
+        message: `Query logging config ${id} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a query logging configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a query logging configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

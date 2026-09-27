@@ -20,11 +20,19 @@ export const awsCopyS3Object = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new CopyObjectCommand({ Bucket: bucket, Key: key, CopySource: copySource, MetadataDirective: metadataDirective as any });
+      const command = new CopyObjectCommand({
+        Bucket: bucket,
+        Key: key,
+        CopySource: copySource,
+        MetadataDirective: metadataDirective as any,
+      });
       const response = await client.send(command);
       return { success: true, copyObjectResult: response.CopyObjectResult };
     } catch (err) {
-      return { error: 'Failed to copy an object from one S3 location to another', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to copy an object from one S3 location to another',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

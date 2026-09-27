@@ -4,7 +4,8 @@ import { GetLoggingConfigurationCommand } from '@aws-sdk/client-wafv2';
 import { createWafClient } from '../client.js';
 
 export const awsGetLoggingConfiguration = tool({
-  description: 'Get logging configuration for a Web ACL. Use it to inspect current state before making changes.',
+  description:
+    'Get logging configuration for a Web ACL. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,12 +19,15 @@ export const awsGetLoggingConfiguration = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new GetLoggingConfigurationCommand({
-          ResourceArn: resourceArn,
+        ResourceArn: resourceArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to get logging configuration for a Web ACL', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get logging configuration for a Web ACL',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -12,7 +12,13 @@ export const awsModifyCacheSubnetGroup = tool({
     cacheSubnetGroupDescription: z.string().optional().describe('New description'),
     subnetIds: z.array(z.string()).optional().describe('New list of subnet IDs'),
   }),
-  execute: async ({ awsCredentials, region, cacheSubnetGroupName, cacheSubnetGroupDescription, subnetIds }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cacheSubnetGroupName,
+    cacheSubnetGroupDescription,
+    subnetIds,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +26,17 @@ export const awsModifyCacheSubnetGroup = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new ModifyCacheSubnetGroupCommand({
-          CacheSubnetGroupName: cacheSubnetGroupName,
-          CacheSubnetGroupDescription: cacheSubnetGroupDescription,
-          SubnetIds: subnetIds,
+        CacheSubnetGroupName: cacheSubnetGroupName,
+        CacheSubnetGroupDescription: cacheSubnetGroupDescription,
+        SubnetIds: subnetIds,
       });
       const response = await client.send(command);
       return response.CacheSubnetGroup;
     } catch (err) {
-      return { error: 'Failed to modify a cache subnet group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify a cache subnet group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

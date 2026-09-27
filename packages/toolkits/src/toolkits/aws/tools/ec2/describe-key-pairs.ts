@@ -19,16 +19,21 @@ export const awsDescribeEc2KeyPairs = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribeKeyPairsCommand({
-          KeyNames: keyNames,
-          Filters: filters ? Object.entries(filters).map(([name, values]) => ({
+        KeyNames: keyNames,
+        Filters: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
+            }))
+          : undefined,
       });
       const response = await client.send(command);
       return { keyPairs: response.KeyPairs };
     } catch (err) {
-      return { error: 'Failed to describe EC2 key pairs', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe EC2 key pairs',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

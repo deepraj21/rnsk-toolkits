@@ -22,7 +22,10 @@ export const gcpListComputeInstances = tool({
     'List Compute Engine instances in the connected GCP project, optionally filtered by zone. Returns instance name, zone, status, and IPs.',
   inputSchema: z.object({
     gcpCredentials: z.string().optional().describe('Injected by system; do not provide'),
-    zone: z.string().optional().describe('Zone to filter by, e.g. "us-central1-a" (default: search common zones)'),
+    zone: z
+      .string()
+      .optional()
+      .describe('Zone to filter by, e.g. "us-central1-a" (default: search common zones)'),
   }),
   execute: async ({ gcpCredentials, zone }) => {
     if (!gcpCredentials) {

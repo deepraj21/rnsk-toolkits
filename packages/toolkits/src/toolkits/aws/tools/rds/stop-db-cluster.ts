@@ -4,7 +4,8 @@ import { StopDBClusterCommand } from '@aws-sdk/client-rds';
 import { createRdsClient } from '../client.js';
 
 export const awsStopDbCluster = tool({
-  description: 'Stop a running Aurora cluster. Use it to stop a running resource (billable config may remain).',
+  description:
+    'Stop a running Aurora cluster. Use it to stop a running resource (billable config may remain).',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,12 +19,15 @@ export const awsStopDbCluster = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new StopDBClusterCommand({
-          DBClusterIdentifier: dbClusterIdentifier,
+        DBClusterIdentifier: dbClusterIdentifier,
       });
       const response = await client.send(command);
       return response.DBCluster;
     } catch (err) {
-      return { error: 'Failed to stop a running Aurora cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to stop a running Aurora cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

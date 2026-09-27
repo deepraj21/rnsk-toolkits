@@ -19,15 +19,18 @@ export const awsUntagBillingView = tool({
       const client = createBillingClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          resourceArn: resourceArn,
-          tagKeys: tagKeys,
+        resourceArn: resourceArn,
+        tagKeys: tagKeys,
       } as any);
-      const response = await client.send(command) as any;
+      const response = (await client.send(command)) as any;
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from a billing view', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from a billing view',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

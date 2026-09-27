@@ -4,7 +4,8 @@ import { SetTopicAttributesCommand } from '@aws-sdk/client-sns';
 import { createSnsClient } from '../client.js';
 
 export const awsSetSnsTopicAttributes = tool({
-  description: 'Set attributes of an SNS topic. Use it to change the configuration of the resource.',
+  description:
+    'Set attributes of an SNS topic. Use it to change the configuration of the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsSetSnsTopicAttributes = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new SetTopicAttributesCommand({
-          TopicArn: topicArn,
-          AttributeName: attributeName,
-          AttributeValue: attributeValue,
+        TopicArn: topicArn,
+        AttributeName: attributeName,
+        AttributeValue: attributeValue,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Attribute ${attributeName} set successfully for topic ${topicArn}`,
-              };
+        success: true,
+        message: `Attribute ${attributeName} set successfully for topic ${topicArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to set attributes of an SNS topic', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set attributes of an SNS topic',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { UpdateAccessKeyCommand } from '@aws-sdk/client-iam';
 import { createIamClient } from '../client.js';
 
 export const awsUpdateAccessKey = tool({
-  description: 'Update the status of an access key (activate or deactivate). Use it to change an existing resource.',
+  description:
+    'Update the status of an access key (activate or deactivate). Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsUpdateAccessKey = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new UpdateAccessKeyCommand({
-          AccessKeyId: accessKeyId,
-          Status: status,
-          UserName: userName,
+        AccessKeyId: accessKeyId,
+        Status: status,
+        UserName: userName,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update the status of an access key (activate or deactivate)', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the status of an access key (activate or deactivate)',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

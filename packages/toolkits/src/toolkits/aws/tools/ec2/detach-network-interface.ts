@@ -19,13 +19,16 @@ export const awsDetachEc2NetworkInterface = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DetachNetworkInterfaceCommand({
-          AttachmentId: attachmentId,
-          Force: force,
+        AttachmentId: attachmentId,
+        Force: force,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to detach a network interface from an instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to detach a network interface from an instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

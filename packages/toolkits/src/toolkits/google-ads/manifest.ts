@@ -6,7 +6,8 @@ import { googleAdsTools } from './tools/index.js';
 export default defineToolkit({
   id: 'google-ads',
   displayName: 'Google Ads',
-  shortDescription: 'Manage campaigns, ad groups, ads, budgets, audiences, and reports in Google Ads.',
+  shortDescription:
+    'Manage campaigns, ad groups, ads, budgets, audiences, and reports in Google Ads.',
   category: 'Advertising & Marketing',
   icon: GADS_ICON,
   auth: {

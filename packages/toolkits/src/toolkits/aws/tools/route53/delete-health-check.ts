@@ -18,15 +18,18 @@ export const awsDeleteRoute53HealthCheck = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new DeleteHealthCheckCommand({
-          HealthCheckId: healthCheckId,
+        HealthCheckId: healthCheckId,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Health check ${healthCheckId} deleted successfully`,
-              };
+        success: true,
+        message: `Health check ${healthCheckId} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a Route 53 health check', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Route 53 health check',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

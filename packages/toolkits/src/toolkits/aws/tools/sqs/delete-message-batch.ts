@@ -4,7 +4,8 @@ import { DeleteMessageBatchCommand } from '@aws-sdk/client-sqs';
 import { createSqsClient } from '../client.js';
 
 export const awsDeleteSqsMessageBatch = tool({
-  description: 'Delete multiple messages from an SQS queue in a batch. Use it to permanently remove the resource.',
+  description:
+    'Delete multiple messages from an SQS queue in a batch. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,19 @@ export const awsDeleteSqsMessageBatch = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new DeleteMessageBatchCommand({
-          QueueUrl: queueUrl,
-          Entries: entries as any,
+        QueueUrl: queueUrl,
+        Entries: entries as any,
       });
       const response = await client.send(command);
       return {
-                  successful: response.Successful || [],
-                  failed: response.Failed || [],
-              };
+        successful: response.Successful || [],
+        failed: response.Failed || [],
+      };
     } catch (err) {
-      return { error: 'Failed to delete multiple messages from an SQS queue in a batch', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete multiple messages from an SQS queue in a batch',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

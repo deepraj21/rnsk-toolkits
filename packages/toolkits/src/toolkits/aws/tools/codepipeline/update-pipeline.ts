@@ -18,14 +18,17 @@ export const awsUpdateCodepipelinePipeline = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new UpdatePipelineCommand({
-          pipeline: pipeline,
+        pipeline: pipeline,
       } as any);
       const response = await client.send(command);
       return {
-                  pipeline: response.pipeline,
-              };
+        pipeline: response.pipeline,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CodePipeline pipeline', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CodePipeline pipeline',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

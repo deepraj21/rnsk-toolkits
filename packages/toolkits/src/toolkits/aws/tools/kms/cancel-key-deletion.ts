@@ -18,12 +18,15 @@ export const awsCancelKeyDeletion = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new CancelKeyDeletionCommand({
-          KeyId: keyId,
+        KeyId: keyId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to cancel a scheduled key deletion', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to cancel a scheduled key deletion',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

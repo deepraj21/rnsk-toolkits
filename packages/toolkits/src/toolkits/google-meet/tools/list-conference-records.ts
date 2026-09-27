@@ -18,7 +18,11 @@ export const listConferenceRecords = tool({
       });
 
       if (!result.ok) {
-        return { error: 'Failed to list conference records', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to list conference records',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

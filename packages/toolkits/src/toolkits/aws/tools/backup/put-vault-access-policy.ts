@@ -19,16 +19,19 @@ export const awsPutBackupVaultAccessPolicy = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new PutBackupVaultAccessPolicyCommand({
-          BackupVaultName: backupVaultName,
-          Policy: policy,
+        BackupVaultName: backupVaultName,
+        Policy: policy,
       });
       await client.send(command);
       return {
-                  message: 'Backup vault access policy updated successfully',
-                  backupVaultName: backupVaultName,
-              };
+        message: 'Backup vault access policy updated successfully',
+        backupVaultName: backupVaultName,
+      };
     } catch (err) {
-      return { error: 'Failed to set the access policy for a backup vault', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set the access policy for a backup vault',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

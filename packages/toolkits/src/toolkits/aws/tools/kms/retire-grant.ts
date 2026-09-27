@@ -20,14 +20,17 @@ export const awsRetireGrant = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new RetireGrantCommand({
-          GrantToken: grantToken,
-          GrantId: grantId,
-          KeyId: keyId,
+        GrantToken: grantToken,
+        GrantId: grantId,
+        KeyId: keyId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to retire a grant (can only be called by retiring principal)', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to retire a grant (can only be called by retiring principal)',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

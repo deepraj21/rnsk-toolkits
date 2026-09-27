@@ -18,12 +18,15 @@ export const awsDisableImportFindingsForProduct = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new DisableImportFindingsForProductCommand({
-          ProductSubscriptionArn: productSubscriptionArn,
+        ProductSubscriptionArn: productSubscriptionArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to disable a product integration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disable a product integration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

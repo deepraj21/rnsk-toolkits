@@ -4,7 +4,8 @@ import { DeleteBucketInventoryConfigurationCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsDeleteS3BucketInventory = tool({
-  description: 'Delete inventory configuration for an S3 bucket. Use it to permanently remove the resource.',
+  description:
+    'Delete inventory configuration for an S3 bucket. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -22,7 +23,10 @@ export const awsDeleteS3BucketInventory = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete inventory configuration for an S3 bucket', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete inventory configuration for an S3 bucket',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

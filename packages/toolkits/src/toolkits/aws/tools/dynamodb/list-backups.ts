@@ -4,7 +4,8 @@ import { ListBackupsCommand } from '@aws-sdk/client-dynamodb';
 import { createDynamoDbClient } from '../client.js';
 
 export const awsListDynamodbBackups = tool({
-  description: 'List on-demand backups for DynamoDB tables. Use it to inspect current state before making changes.',
+  description:
+    'List on-demand backups for DynamoDB tables. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,13 +20,16 @@ export const awsListDynamodbBackups = tool({
       const client = createDynamoDbClient(awsCredentials, region);
 
       const command = new ListBackupsCommand({
-          TableName: tableName,
-          Limit: limit,
+        TableName: tableName,
+        Limit: limit,
       });
       const response = await client.send(command);
       return response.BackupSummaries;
     } catch (err) {
-      return { error: 'Failed to list on-demand backups for DynamoDB tables', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list on-demand backups for DynamoDB tables',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,15 +18,18 @@ export const awsDeleteBatchJobQueue = tool({
       const client = createBatchClient(awsCredentials, region);
 
       const command = new DeleteJobQueueCommand({
-          jobQueue: jobQueue,
+        jobQueue: jobQueue,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Job queue ${jobQueue} deleted successfully`,
-              };
+        success: true,
+        message: `Job queue ${jobQueue} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a Batch job queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Batch job queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

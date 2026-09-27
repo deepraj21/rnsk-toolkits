@@ -20,20 +20,23 @@ export const awsCreateVpcLatticeAccessLogSubscription = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new CreateAccessLogSubscriptionCommand({
-          resourceIdentifier: resourceIdentifier,
-          destinationArn: destinationArn,
-          tags: tags,
+        resourceIdentifier: resourceIdentifier,
+        destinationArn: destinationArn,
+        tags: tags,
       });
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  destinationArn: response.destinationArn,
-                  id: response.id,
-                  resourceArn: response.resourceArn,
-                  resourceId: response.resourceId,
-              };
+        arn: response.arn,
+        destinationArn: response.destinationArn,
+        id: response.id,
+        resourceArn: response.resourceArn,
+        resourceId: response.resourceId,
+      };
     } catch (err) {
-      return { error: 'Failed to create an access log subscription', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an access log subscription',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

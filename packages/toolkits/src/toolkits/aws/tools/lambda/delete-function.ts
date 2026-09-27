@@ -9,7 +9,10 @@ export const awsDeleteLambdaFunction = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     functionName: z.string().describe('The name of the Lambda function'),
-    qualifier: z.string().optional().describe('Version or alias qualifier (optional, deletes specific version)'),
+    qualifier: z
+      .string()
+      .optional()
+      .describe('Version or alias qualifier (optional, deletes specific version)'),
   }),
   execute: async ({ awsCredentials, region, functionName, qualifier }) => {
     if (!awsCredentials) {
@@ -19,16 +22,19 @@ export const awsDeleteLambdaFunction = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new DeleteFunctionCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
+        FunctionName: functionName,
+        Qualifier: qualifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Function ${functionName}${qualifier ? ` (${qualifier})` : ''} deleted successfully`,
-              };
+        success: true,
+        message: `Function ${functionName}${qualifier ? ` (${qualifier})` : ''} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

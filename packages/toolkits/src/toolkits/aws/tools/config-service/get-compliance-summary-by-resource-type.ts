@@ -4,7 +4,8 @@ import { GetComplianceSummaryByResourceTypeCommand } from '@aws-sdk/client-confi
 import { createConfigServiceClient } from '../client.js';
 
 export const awsGetComplianceSummaryByResourceType = tool({
-  description: 'Returns the number of compliant and noncompliant rules for one or more resource types. Use it to inspect current state before making changes.',
+  description:
+    'Returns the number of compliant and noncompliant rules for one or more resource types. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,18 @@ export const awsGetComplianceSummaryByResourceType = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new GetComplianceSummaryByResourceTypeCommand({
-          ResourceTypes: resourceTypes,
+        ResourceTypes: resourceTypes,
       });
       const response = await client.send(command);
       return {
-                  complianceSummariesByResourceType: response.ComplianceSummariesByResourceType || [],
-              };
+        complianceSummariesByResourceType: response.ComplianceSummariesByResourceType || [],
+      };
     } catch (err) {
-      return { error: 'Failed to returns the number of compliant and noncompliant rules for one or more resource types', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error:
+          'Failed to returns the number of compliant and noncompliant rules for one or more resource types',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

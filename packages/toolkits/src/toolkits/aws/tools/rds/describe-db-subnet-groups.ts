@@ -19,13 +19,16 @@ export const awsDescribeDbSubnetGroups = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DescribeDBSubnetGroupsCommand({
-          DBSubnetGroupName: dbSubnetGroupName,
-          MaxRecords: maxRecords,
+        DBSubnetGroupName: dbSubnetGroupName,
+        MaxRecords: maxRecords,
       });
       const response = await client.send(command);
       return response.DBSubnetGroups;
     } catch (err) {
-      return { error: 'Failed to list all RDS subnet groups', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all RDS subnet groups',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

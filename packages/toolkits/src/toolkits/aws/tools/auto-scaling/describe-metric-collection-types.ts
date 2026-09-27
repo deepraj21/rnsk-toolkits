@@ -4,7 +4,8 @@ import { DescribeMetricCollectionTypesCommand } from '@aws-sdk/client-auto-scali
 import { createAutoScalingClient } from '../client.js';
 
 export const awsDescribeAutoscalingMetricCollectionTypes = tool({
-  description: 'Describe metric collection types. Use it to inspect current state before making changes.',
+  description:
+    'Describe metric collection types. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,11 +20,14 @@ export const awsDescribeAutoscalingMetricCollectionTypes = tool({
       const command = new DescribeMetricCollectionTypesCommand({});
       const response = await client.send(command);
       return {
-                  metrics: response.Metrics,
-                  granularities: response.Granularities,
-              };
+        metrics: response.Metrics,
+        granularities: response.Granularities,
+      };
     } catch (err) {
-      return { error: 'Failed to describe metric collection types', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe metric collection types',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

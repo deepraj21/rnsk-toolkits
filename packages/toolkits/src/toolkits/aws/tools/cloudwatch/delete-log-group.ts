@@ -18,15 +18,18 @@ export const awsDeleteLogGroup = tool({
       const client = createCloudWatchLogsClient(awsCredentials, region);
 
       const command = new DeleteLogGroupCommand({
-          logGroupName,
+        logGroupName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Log group ${logGroupName} deleted successfully`,
-              };
+        success: true,
+        message: `Log group ${logGroupName} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CloudWatch log group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CloudWatch log group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

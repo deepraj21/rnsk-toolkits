@@ -5,7 +5,8 @@ import { jenkinsTools } from './tools/index.js';
 export default defineToolkit({
   id: 'jenkins',
   displayName: 'Jenkins',
-  shortDescription: 'Jobs, builds, console logs, queues, agents, views, and plugins via the Jenkins Remote Access API.',
+  shortDescription:
+    'Jobs, builds, console logs, queues, agents, views, and plugins via the Jenkins Remote Access API.',
   category: 'Developer Tools & DevOps',
   icon: JENKINS_ICON,
   auth: {

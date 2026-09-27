@@ -19,18 +19,21 @@ export const awsUpdateVpcLatticeServiceNetwork = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new UpdateServiceNetworkCommand({
-          serviceNetworkIdentifier: serviceNetworkIdentifier,
-          authType: authType,
+        serviceNetworkIdentifier: serviceNetworkIdentifier,
+        authType: authType,
       });
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  authType: response.authType,
-                  id: response.id,
-                  name: response.name,
-              };
+        arn: response.arn,
+        authType: response.authType,
+        id: response.id,
+        name: response.name,
+      };
     } catch (err) {
-      return { error: 'Failed to update a VPC Lattice service network', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a VPC Lattice service network',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

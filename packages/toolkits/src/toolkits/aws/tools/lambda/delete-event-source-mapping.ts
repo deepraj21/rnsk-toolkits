@@ -18,15 +18,18 @@ export const awsDeleteLambdaEventSourceMapping = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new DeleteEventSourceMappingCommand({
-          UUID: uuid,
+        UUID: uuid,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Event source mapping ${uuid} deleted successfully`,
-              };
+        success: true,
+        message: `Event source mapping ${uuid} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an event source mapping', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an event source mapping',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

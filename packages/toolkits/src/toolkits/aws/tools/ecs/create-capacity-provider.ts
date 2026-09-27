@@ -9,7 +9,10 @@ export const awsCreateEcsCapacityProvider = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     name: z.string().describe('The name of the capacity provider'),
-    autoScalingGroupProvider: z.record(z.any()).optional().describe('Auto Scaling group provider configuration'),
+    autoScalingGroupProvider: z
+      .record(z.any())
+      .optional()
+      .describe('Auto Scaling group provider configuration'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the capacity provider'),
   }),
   execute: async ({ awsCredentials, region, name, autoScalingGroupProvider, tags }) => {
@@ -20,16 +23,19 @@ export const awsCreateEcsCapacityProvider = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new CreateCapacityProviderCommand({
-          name: name,
-          autoScalingGroupProvider: autoScalingGroupProvider,
-          tags: tags,
+        name: name,
+        autoScalingGroupProvider: autoScalingGroupProvider,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  capacityProvider: response.capacityProvider,
-              };
+        capacityProvider: response.capacityProvider,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new capacity provider', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new capacity provider',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

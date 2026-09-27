@@ -28,7 +28,10 @@ export const presentationsBatchUpdate = tool({
       const batchRequests = [...(requests ?? [])];
 
       if (markdown_text) {
-        const presentation = await slidesRequest(googleSlidesToken, `/presentations/${presentationId}`);
+        const presentation = await slidesRequest(
+          googleSlidesToken,
+          `/presentations/${presentationId}`,
+        );
         const insertionIndex = presentation.data?.slides?.length ?? 0;
         batchRequests.push(
           ...buildMarkdownSlideRequests(markdown_text, {
@@ -55,7 +58,11 @@ export const presentationsBatchUpdate = tool({
       );
 
       if (!result.ok) {
-        return { error: 'Failed to batch update presentation', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to batch update presentation',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

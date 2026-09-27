@@ -14,7 +14,15 @@ export const awsPutAutoscalingWarmPool = tool({
     poolState: z.enum(['Stopped', 'Running', 'Hibernated']).optional().describe('Pool state'),
     instanceReusePolicy: z.record(z.any()).optional().describe('Instance reuse policy'),
   }),
-  execute: async ({ awsCredentials, region, autoScalingGroupName, maxGroupPreparedCapacity, minSize, poolState, instanceReusePolicy }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    autoScalingGroupName,
+    maxGroupPreparedCapacity,
+    minSize,
+    poolState,
+    instanceReusePolicy,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,19 +30,22 @@ export const awsPutAutoscalingWarmPool = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new PutWarmPoolCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          MaxGroupPreparedCapacity: maxGroupPreparedCapacity,
-          MinSize: minSize,
-          PoolState: poolState,
-          InstanceReusePolicy: instanceReusePolicy,
+        AutoScalingGroupName: autoScalingGroupName,
+        MaxGroupPreparedCapacity: maxGroupPreparedCapacity,
+        MinSize: minSize,
+        PoolState: poolState,
+        InstanceReusePolicy: instanceReusePolicy,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Warm pool configuration created/updated successfully`,
-              };
+        success: true,
+        message: `Warm pool configuration created/updated successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to create or update warm pool configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or update warm pool configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

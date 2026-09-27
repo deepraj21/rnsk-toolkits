@@ -30,7 +30,7 @@ function resolveRoot(schema: JsonSchema): JsonSchema {
 function typeLabel(schema: JsonSchema): string {
   if (schema.enum) return schema.enum.map((v) => JSON.stringify(v)).join(' | ');
   if (schema.anyOf) return schema.anyOf.map(typeLabel).join(' | ');
-  const t = Array.isArray(schema.type) ? schema.type.join(' | ') : schema.type ?? 'any';
+  const t = Array.isArray(schema.type) ? schema.type.join(' | ') : (schema.type ?? 'any');
   return t === 'array' && schema.items ? `${typeLabel(schema.items)}[]` : t;
 }
 
@@ -111,7 +111,8 @@ export function ToolRunner({
   let argsError: string | null = null;
   try {
     const value: unknown = JSON.parse(argsText || '{}');
-    if (value && typeof value === 'object' && !Array.isArray(value)) parsedArgs = value as Record<string, unknown>;
+    if (value && typeof value === 'object' && !Array.isArray(value))
+      parsedArgs = value as Record<string, unknown>;
     else argsError = 'Arguments must be a JSON object';
   } catch (e) {
     argsError = e instanceof Error ? e.message : 'Invalid JSON';
@@ -236,7 +237,10 @@ export function ToolRunner({
               <span className="muted small">{result.durationMs} ms</span>
             ) : null}
             {result.requiredAuth && typeof result.toolkitId === 'string' ? (
-              <button className="link small" onClick={() => onOpenCredentials(result.toolkitId as string)}>
+              <button
+                className="link small"
+                onClick={() => onOpenCredentials(result.toolkitId as string)}
+              >
                 Add {String(result.requiredAuth)}
               </button>
             ) : null}
@@ -248,7 +252,9 @@ export function ToolRunner({
             </button>
           </div>
           {result.message ? <p className="error small">{result.message}</p> : null}
-          <pre className="code">{JSON.stringify(result.error ? result : result.result, null, 2)}</pre>
+          <pre className="code">
+            {JSON.stringify(result.error ? result : result.result, null, 2)}
+          </pre>
         </section>
       ) : null}
     </div>

@@ -18,15 +18,18 @@ export const awsDeleteVpcLatticeAccessLogSubscription = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new DeleteAccessLogSubscriptionCommand({
-          accessLogSubscriptionIdentifier: accessLogSubscriptionIdentifier,
+        accessLogSubscriptionIdentifier: accessLogSubscriptionIdentifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Access log subscription ${accessLogSubscriptionIdentifier} deleted successfully`,
-              };
+        success: true,
+        message: `Access log subscription ${accessLogSubscriptionIdentifier} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an access log subscription', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an access log subscription',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

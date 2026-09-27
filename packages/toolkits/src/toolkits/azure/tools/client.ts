@@ -18,7 +18,9 @@ export function parseAzureCredentials(azureCredentials: string): AzureCredential
   try {
     parsed = JSON.parse(azureCredentials) as Partial<AzureCredentials>;
   } catch {
-    throw new Error('Azure credentials must be a JSON object with tenantId, clientId, clientSecret and subscriptionId');
+    throw new Error(
+      'Azure credentials must be a JSON object with tenantId, clientId, clientSecret and subscriptionId',
+    );
   }
   if (!parsed.tenantId || !parsed.clientId || !parsed.clientSecret) {
     throw new Error('Azure credentials must include tenantId, clientId and clientSecret');
@@ -26,19 +28,20 @@ export function parseAzureCredentials(azureCredentials: string): AzureCredential
   return parsed as AzureCredentials;
 }
 
-export function resolveSubscriptionId(
-  azureCredentials: string,
-  subscriptionId?: string,
-): string {
+export function resolveSubscriptionId(azureCredentials: string, subscriptionId?: string): string {
   if (subscriptionId) return subscriptionId;
   const parsed = parseAzureCredentials(azureCredentials);
   if (!parsed.subscriptionId) {
-    throw new Error('A subscription ID is required. Provide subscriptionId or store it in Azure credentials.');
+    throw new Error(
+      'A subscription ID is required. Provide subscriptionId or store it in Azure credentials.',
+    );
   }
   return parsed.subscriptionId;
 }
 
-async function fetchArmToken(creds: AzureCredentials): Promise<{ token: string; expiresIn: number }> {
+async function fetchArmToken(
+  creds: AzureCredentials,
+): Promise<{ token: string; expiresIn: number }> {
   const url = `https://login.microsoftonline.com/${encodeURIComponent(creds.tenantId)}/oauth2/v2.0/token`;
   const body = new URLSearchParams({
     grant_type: 'client_credentials',
@@ -53,11 +56,15 @@ async function fetchArmToken(creds: AzureCredentials): Promise<{ token: string; 
   });
   if (!response.ok) {
     const details = await response.json().catch(() => ({}));
-    throw new Error(`Failed to acquire Azure AD token: ${response.status} ${JSON.stringify(details)}`);
+    throw new Error(
+      `Failed to acquire Azure AD token: ${response.status} ${JSON.stringify(details)}`,
+    );
   }
   const data = (await response.json()) as { access_token?: string; expires_in?: number | string };
-  if (!data.access_token) throw new Error('Azure AD token response did not include an access token');
-  const expiresIn = typeof data.expires_in === 'string' ? parseInt(data.expires_in, 10) : (data.expires_in ?? 3600);
+  if (!data.access_token)
+    throw new Error('Azure AD token response did not include an access token');
+  const expiresIn =
+    typeof data.expires_in === 'string' ? parseInt(data.expires_in, 10) : (data.expires_in ?? 3600);
   return { token: data.access_token, expiresIn };
 }
 
@@ -108,7 +115,9 @@ export async function armRequest(
   }
   if (response.status === 204) return { status: 204, deleted: true };
   const details = await response.json().catch(() => ({}));
-  throw new Error(`Azure request failed: ${options.method ?? 'GET'} ${path} -> ${response.status} ${JSON.stringify(details)}`);
+  throw new Error(
+    `Azure request failed: ${options.method ?? 'GET'} ${path} -> ${response.status} ${JSON.stringify(details)}`,
+  );
 }
 
 export function missingCredentialsError() {

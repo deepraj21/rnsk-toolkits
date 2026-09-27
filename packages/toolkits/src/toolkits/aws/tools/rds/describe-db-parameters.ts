@@ -4,7 +4,8 @@ import { DescribeDBParametersCommand } from '@aws-sdk/client-rds';
 import { createRdsClient } from '../client.js';
 
 export const awsDescribeDbParameters = tool({
-  description: 'List all parameters in an RDS parameter group. Use it to inspect current state before making changes.',
+  description:
+    'List all parameters in an RDS parameter group. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsDescribeDbParameters = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DescribeDBParametersCommand({
-          DBParameterGroupName: dbParameterGroupName,
-          Source: source,
-          MaxRecords: maxRecords,
+        DBParameterGroupName: dbParameterGroupName,
+        Source: source,
+        MaxRecords: maxRecords,
       });
       const response = await client.send(command);
       return response.Parameters;
     } catch (err) {
-      return { error: 'Failed to list all parameters in an RDS parameter group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all parameters in an RDS parameter group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -10,7 +10,9 @@ export const getConferenceRecordByName = tool({
     googleMeetToken: z.string().describe('The Google Meet access token'),
     name: z
       .string()
-      .describe("Conference record resource name (e.g. 'conferenceRecords/GLkPdCDLsjSXet2-QH9dDxIPOAIIigIgABgECA')"),
+      .describe(
+        "Conference record resource name (e.g. 'conferenceRecords/GLkPdCDLsjSXet2-QH9dDxIPOAIIigIgABgECA')",
+      ),
   }),
   execute: async ({ googleMeetToken, name }) => {
     try {
@@ -18,7 +20,11 @@ export const getConferenceRecordByName = tool({
       const result = await googleMeetRequest(googleMeetToken, `/${resource}`);
 
       if (!result.ok) {
-        return { error: 'Failed to get conference record', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to get conference record',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

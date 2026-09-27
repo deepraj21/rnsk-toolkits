@@ -22,7 +22,10 @@ export const awsCreateS3Session = tool({
       const response = await client.send(command);
       return { sessionCredentials: response.Credentials };
     } catch (err) {
-      return { error: 'Failed to create a session for S3 operations', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a session for S3 operations',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

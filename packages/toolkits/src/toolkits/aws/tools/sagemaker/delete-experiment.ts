@@ -18,14 +18,17 @@ export const awsDeleteSagemakerExperiment = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new DeleteExperimentCommand({
-          ExperimentName: experimentName,
+        ExperimentName: experimentName,
       });
       const response = await client.send(command);
       return {
-                  experimentArn: response.ExperimentArn,
-              };
+        experimentArn: response.ExperimentArn,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a SageMaker experiment', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a SageMaker experiment',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

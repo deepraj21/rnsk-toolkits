@@ -13,7 +13,14 @@ export const awsUpdateBillingView = tool({
     description: z.string().optional().describe('New description of the billing view'),
     viewDefinition: z.record(z.any()).optional().describe('The updated view definition'),
   }),
-  execute: async ({ awsCredentials, region, billingViewArn, billingViewName, description, viewDefinition }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    billingViewArn,
+    billingViewName,
+    description,
+    viewDefinition,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,25 +28,30 @@ export const awsUpdateBillingView = tool({
       const client = createBillingClient(awsCredentials, region);
 
       const command = new UpdateBillingViewCommand({
-          billingViewArn: billingViewArn,
-          billingViewName: billingViewName,
-          description: description,
-          viewDefinition: viewDefinition,
+        billingViewArn: billingViewArn,
+        billingViewName: billingViewName,
+        description: description,
+        viewDefinition: viewDefinition,
       } as any);
-      const response = await client.send(command) as any;
+      const response = (await client.send(command)) as any;
       return {
-                  billingView: response.billingView ? {
-                      billingViewArn: response.billingView.billingViewArn,
-                      billingViewName: response.billingView.billingViewName,
-                      description: response.billingView.description,
-                      ownerAccountId: response.billingView.ownerAccountId,
-                      createdAt: response.billingView.createdAt,
-                      lastModifiedAt: response.billingView.lastModifiedAt,
-                      viewDefinition: response.billingView.viewDefinition,
-                  } : null,
-              };
+        billingView: response.billingView
+          ? {
+              billingViewArn: response.billingView.billingViewArn,
+              billingViewName: response.billingView.billingViewName,
+              description: response.billingView.description,
+              ownerAccountId: response.billingView.ownerAccountId,
+              createdAt: response.billingView.createdAt,
+              lastModifiedAt: response.billingView.lastModifiedAt,
+              viewDefinition: response.billingView.viewDefinition,
+            }
+          : null,
+      };
     } catch (err) {
-      return { error: 'Failed to update an existing billing view', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an existing billing view',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

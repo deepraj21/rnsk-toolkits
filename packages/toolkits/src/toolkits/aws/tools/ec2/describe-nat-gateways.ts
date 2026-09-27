@@ -19,16 +19,21 @@ export const awsDescribeEc2NatGateways = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribeNatGatewaysCommand({
-          NatGatewayIds: natGatewayIds,
-          Filter: filters ? Object.entries(filters).map(([name, values]) => ({
+        NatGatewayIds: natGatewayIds,
+        Filter: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
+            }))
+          : undefined,
       });
       const response = await client.send(command);
       return { natGateways: response.NatGateways };
     } catch (err) {
-      return { error: 'Failed to describe NAT gateways', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe NAT gateways',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

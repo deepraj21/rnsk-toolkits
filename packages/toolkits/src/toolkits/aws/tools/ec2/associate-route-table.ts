@@ -19,13 +19,16 @@ export const awsAssociateEc2RouteTable = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new AssociateRouteTableCommand({
-          RouteTableId: routeTableId,
-          SubnetId: subnetId,
+        RouteTableId: routeTableId,
+        SubnetId: subnetId,
       });
       const response = await client.send(command);
       return { associationId: response.AssociationId };
     } catch (err) {
-      return { error: 'Failed to associate a route table with a subnet', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to associate a route table with a subnet',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

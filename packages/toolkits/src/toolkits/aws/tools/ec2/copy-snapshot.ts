@@ -4,7 +4,8 @@ import { CopySnapshotCommand } from '@aws-sdk/client-ec2';
 import { createEc2Client } from '../client.js';
 
 export const awsCopyEc2Snapshot = tool({
-  description: 'Copy an EBS snapshot to another region. Use it to duplicate a resource, optionally across regions.',
+  description:
+    'Copy an EBS snapshot to another region. Use it to duplicate a resource, optionally across regions.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsCopyEc2Snapshot = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CopySnapshotCommand({
-          SourceRegion: sourceRegion,
-          SourceSnapshotId: sourceSnapshotId,
-          Description: description,
+        SourceRegion: sourceRegion,
+        SourceSnapshotId: sourceSnapshotId,
+        Description: description,
       });
       const response = await client.send(command);
       return { snapshotId: response.SnapshotId };
     } catch (err) {
-      return { error: 'Failed to copy an EBS snapshot to another region', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to copy an EBS snapshot to another region',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

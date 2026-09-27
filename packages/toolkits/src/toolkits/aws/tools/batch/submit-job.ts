@@ -21,7 +21,22 @@ export const awsSubmitBatchJob = tool({
     tags: z.record(z.any()).optional().describe('Tags as key-value pairs'),
     propagateTags: z.boolean().optional().describe('Whether to propagate tags'),
   }),
-  execute: async ({ awsCredentials, region, jobName, jobQueue, jobDefinition, parameters, arrayProperties, dependsOn, containerOverrides, nodeOverrides, retryStrategy, timeout, tags, propagateTags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    jobName,
+    jobQueue,
+    jobDefinition,
+    parameters,
+    arrayProperties,
+    dependsOn,
+    containerOverrides,
+    nodeOverrides,
+    retryStrategy,
+    timeout,
+    tags,
+    propagateTags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -29,27 +44,30 @@ export const awsSubmitBatchJob = tool({
       const client = createBatchClient(awsCredentials, region);
 
       const command = new SubmitJobCommand({
-          jobName: jobName,
-          jobQueue: jobQueue,
-          jobDefinition: jobDefinition,
-          parameters: parameters,
-          arrayProperties: arrayProperties,
-          dependsOn: dependsOn,
-          containerOverrides: containerOverrides,
-          nodeOverrides: nodeOverrides,
-          retryStrategy: retryStrategy,
-          timeout: timeout,
-          tags: tags,
-          propagateTags: propagateTags,
+        jobName: jobName,
+        jobQueue: jobQueue,
+        jobDefinition: jobDefinition,
+        parameters: parameters,
+        arrayProperties: arrayProperties,
+        dependsOn: dependsOn,
+        containerOverrides: containerOverrides,
+        nodeOverrides: nodeOverrides,
+        retryStrategy: retryStrategy,
+        timeout: timeout,
+        tags: tags,
+        propagateTags: propagateTags,
       });
       const response = await client.send(command);
       return {
-                  jobId: response.jobId,
-                  jobName: response.jobName,
-                  jobArn: response.jobArn,
-              };
+        jobId: response.jobId,
+        jobName: response.jobName,
+        jobArn: response.jobArn,
+      };
     } catch (err) {
-      return { error: 'Failed to submit a new Batch job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to submit a new Batch job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

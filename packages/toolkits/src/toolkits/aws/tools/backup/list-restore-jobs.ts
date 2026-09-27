@@ -14,9 +14,22 @@ export const awsListRestoreJobs = tool({
     byResourceType: z.string().optional().describe('Filter by resource type'),
     byCreatedBefore: z.string().optional().describe('Filter by created before date'),
     byCreatedAfter: z.string().optional().describe('Filter by created after date'),
-    byStatus: z.enum(['PENDING', 'RUNNING', 'COMPLETED', 'ABORTED', 'FAILED']).optional().describe('Filter by job status'),
+    byStatus: z
+      .enum(['PENDING', 'RUNNING', 'COMPLETED', 'ABORTED', 'FAILED'])
+      .optional()
+      .describe('Filter by job status'),
   }),
-  execute: async ({ awsCredentials, region, nextToken, maxResults, byAccountId, byResourceType, byCreatedBefore, byCreatedAfter, byStatus }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    nextToken,
+    maxResults,
+    byAccountId,
+    byResourceType,
+    byCreatedBefore,
+    byCreatedAfter,
+    byStatus,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,21 +37,24 @@ export const awsListRestoreJobs = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new ListRestoreJobsCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
-          ByAccountId: byAccountId,
-          ByResourceType: byResourceType,
-          ByCreatedBefore: byCreatedBefore ? new Date(byCreatedBefore) : undefined,
-          ByCreatedAfter: byCreatedAfter ? new Date(byCreatedAfter) : undefined,
-          ByStatus: byStatus,
+        NextToken: nextToken,
+        MaxResults: maxResults,
+        ByAccountId: byAccountId,
+        ByResourceType: byResourceType,
+        ByCreatedBefore: byCreatedBefore ? new Date(byCreatedBefore) : undefined,
+        ByCreatedAfter: byCreatedAfter ? new Date(byCreatedAfter) : undefined,
+        ByStatus: byStatus,
       });
       const response = await client.send(command);
       return {
-                  restoreJobs: response.RestoreJobs || [],
-                  nextToken: response.NextToken,
-              };
+        restoreJobs: response.RestoreJobs || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list restore jobs', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list restore jobs',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

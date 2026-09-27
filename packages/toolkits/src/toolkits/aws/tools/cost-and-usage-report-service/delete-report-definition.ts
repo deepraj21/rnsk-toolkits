@@ -18,15 +18,18 @@ export const awsDeleteReportDefinition = tool({
       const client = createCostAndUsageReportServiceClient(awsCredentials, region);
 
       const command = new DeleteReportDefinitionCommand({
-          ReportName: reportName,
+        ReportName: reportName,
       });
       const response = await client.send(command);
       return {
-                  success: true,
-                  message: `Report definition ${reportName} deleted successfully`,
-              };
+        success: true,
+        message: `Report definition ${reportName} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the specified report', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes the specified report',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

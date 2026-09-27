@@ -21,15 +21,18 @@ export const awsUpdateInsight = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new UpdateInsightCommand({
-          InsightArn: insightArn,
-          Name: name,
-          Filters: filters,
-          GroupByAttribute: groupByAttribute,
+        InsightArn: insightArn,
+        Name: name,
+        Filters: filters,
+        GroupByAttribute: groupByAttribute,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update an existing custom insight', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an existing custom insight',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,11 +4,14 @@ import { UpdateContinuousDeploymentPolicyCommand } from '@aws-sdk/client-cloudfr
 import { createCloudFrontClient } from '../client.js';
 
 export const awsUpdateCloudfrontContinuousDeploymentPolicy = tool({
-  description: 'Update a CloudFront continuous deployment policy. Use it to change an existing resource.',
+  description:
+    'Update a CloudFront continuous deployment policy. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    continuousDeploymentPolicyConfig: z.record(z.any()).describe('Continuous deployment policy configuration'),
+    continuousDeploymentPolicyConfig: z
+      .record(z.any())
+      .describe('Continuous deployment policy configuration'),
     id: z.string().describe('The continuous deployment policy ID'),
     ifMatch: z.string().describe('The value of the ETag header'),
   }),
@@ -20,17 +23,20 @@ export const awsUpdateCloudfrontContinuousDeploymentPolicy = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdateContinuousDeploymentPolicyCommand({
-          ContinuousDeploymentPolicyConfig: continuousDeploymentPolicyConfig,
-          Id: id,
-          IfMatch: ifMatch,
+        ContinuousDeploymentPolicyConfig: continuousDeploymentPolicyConfig,
+        Id: id,
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  continuousDeploymentPolicy: response.ContinuousDeploymentPolicy,
-                  eTag: response.ETag,
-              };
+        continuousDeploymentPolicy: response.ContinuousDeploymentPolicy,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront continuous deployment policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront continuous deployment policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

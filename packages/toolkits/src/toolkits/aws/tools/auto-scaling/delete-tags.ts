@@ -4,7 +4,8 @@ import { DeleteTagsCommand } from '@aws-sdk/client-auto-scaling';
 import { createAutoScalingClient } from '../client.js';
 
 export const awsDeleteAutoscalingTags = tool({
-  description: 'Delete tags from Auto Scaling resources. Use it to permanently remove the resource.',
+  description:
+    'Delete tags from Auto Scaling resources. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsDeleteAutoscalingTags = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DeleteTagsCommand({
-          Tags: tags,
+        Tags: tags,
       } as any);
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags deleted successfully`,
-              };
+        success: true,
+        message: `Tags deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete tags from Auto Scaling resources', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete tags from Auto Scaling resources',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

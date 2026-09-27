@@ -18,15 +18,18 @@ export const awsDeleteSagemakerModel = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new DeleteModelCommand({
-          ModelName: modelName,
+        ModelName: modelName,
       });
       await client.send(command);
       return {
-                  message: 'Model deleted successfully',
-                  modelName: modelName,
-              };
+        message: 'Model deleted successfully',
+        modelName: modelName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a SageMaker model', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a SageMaker model',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

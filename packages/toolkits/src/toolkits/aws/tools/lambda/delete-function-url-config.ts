@@ -19,16 +19,19 @@ export const awsDeleteLambdaFunctionUrlConfig = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new DeleteFunctionUrlConfigCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
+        FunctionName: functionName,
+        Qualifier: qualifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Function URL config deleted successfully for function ${functionName}`,
-              };
+        success: true,
+        message: `Function URL config deleted successfully for function ${functionName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete function URL configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete function URL configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

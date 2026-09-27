@@ -1,6 +1,10 @@
 import { toolkits } from '../src/index.js';
 import { validateManifests } from '../src/core/validate.js';
-import { getToolInputZodSchema, toolInputToJsonSchema, resolveZodObjectShape } from '../src/core/schema-helpers.js';
+import {
+  getToolInputZodSchema,
+  toolInputToJsonSchema,
+  resolveZodObjectShape,
+} from '../src/core/schema-helpers.js';
 
 const errors = validateManifests(toolkits);
 
@@ -31,4 +35,6 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`Validated ${toolkits.length} toolkits, ${toolkits.reduce((n, t) => n + t.tools.length, 0)} tools`);
+console.log(
+  `Validated ${toolkits.length} toolkits, ${toolkits.reduce((n, t) => n + t.tools.length, 0)} tools`,
+);

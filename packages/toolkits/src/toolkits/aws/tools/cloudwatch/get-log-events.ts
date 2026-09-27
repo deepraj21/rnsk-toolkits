@@ -4,7 +4,8 @@ import { GetLogEventsCommand } from '@aws-sdk/client-cloudwatch-logs';
 import { createCloudWatchLogsClient } from '../client.js';
 
 export const awsGetLogEvents = tool({
-  description: 'Retrieve log events from a log stream. Use it to inspect current state before making changes.',
+  description:
+    'Retrieve log events from a log stream. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -16,7 +17,17 @@ export const awsGetLogEvents = tool({
     limit: z.number().optional().describe('Maximum number of events to return'),
     nextToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, logGroupName, logStreamName, startTime, endTime, startFromHead, limit, nextToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    logGroupName,
+    logStreamName,
+    startTime,
+    endTime,
+    startFromHead,
+    limit,
+    nextToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,26 +35,30 @@ export const awsGetLogEvents = tool({
       const client = createCloudWatchLogsClient(awsCredentials, region);
 
       const command = new GetLogEventsCommand({
-          logGroupName: logGroupName,
-          logStreamName: logStreamName,
-          startTime: startTime,
-          endTime: endTime,
-          startFromHead: startFromHead,
-          limit: limit,
-          nextToken: nextToken,
+        logGroupName: logGroupName,
+        logStreamName: logStreamName,
+        startTime: startTime,
+        endTime: endTime,
+        startFromHead: startFromHead,
+        limit: limit,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  events: response.events?.map((e: any) => ({
-                      timestamp: e.timestamp,
-                      message: e.message,
-                      ingestionTime: e.ingestionTime,
-                  })) || [],
-                  nextForwardToken: response.nextForwardToken,
-                  nextBackwardToken: response.nextBackwardToken,
-              };
+        events:
+          response.events?.map((e: any) => ({
+            timestamp: e.timestamp,
+            message: e.message,
+            ingestionTime: e.ingestionTime,
+          })) || [],
+        nextForwardToken: response.nextForwardToken,
+        nextBackwardToken: response.nextBackwardToken,
+      };
     } catch (err) {
-      return { error: 'Failed to retrieve log events from a log stream', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to retrieve log events from a log stream',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

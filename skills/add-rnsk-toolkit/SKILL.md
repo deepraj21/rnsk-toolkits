@@ -10,7 +10,7 @@ compatibility: Requires access to packages/toolkits in the rnsk-toolkits monorep
 metadata:
   author: deepraj21
   repository: https://github.com/deepraj21/rnsk-toolkits
-  version: "1.1.0"
+  version: '1.1.0'
 ---
 
 # Add @rnsk/toolkit Tools
@@ -49,14 +49,14 @@ packages/toolkits/src/
 
 Copy the nearest existing toolkit:
 
-| Auth | Copy from |
-|------|-----------|
-| OAuth2 | `google-docs/`, `notion/`, `linear/` |
-| api_key | `cloudflare/` |
-| bearer_token | `groww/` |
-| service_account | `aws/`, `gcp/`, `grafana/` |
-| service_env | `web-search/` |
-| none | `mathematics/` |
+| Auth            | Copy from                            |
+| --------------- | ------------------------------------ |
+| OAuth2          | `google-docs/`, `notion/`, `linear/` |
+| api_key         | `cloudflare/`                        |
+| bearer_token    | `groww/`                             |
+| service_account | `aws/`, `gcp/`, `grafana/`           |
+| service_env     | `web-search/`                        |
+| none            | `mathematics/`                       |
 
 ### Checklist
 
@@ -72,14 +72,14 @@ Copy the nearest existing toolkit:
 
 ### Naming rules (enforced by validate.ts)
 
-| Item | Rule | Example |
-|------|------|---------|
-| Toolkit `id` | kebab-case | `google-forms` |
-| Toolkit import var | camelCase | `googleForms` |
-| Tool `name` | `<Prefix><Action>` PascalCase after prefix | `googleFormsGetForm` |
-| Tool prefix | PascalCase of toolkit id | `google-forms` → `GoogleForms` |
-| Files/dirs | kebab-case | `get-form.ts` |
-| Legacy exception | `google-calendar` tools omit prefix (`listEvents`) — **do not use for new toolkits** |
+| Item               | Rule                                                                                 | Example                        |
+| ------------------ | ------------------------------------------------------------------------------------ | ------------------------------ |
+| Toolkit `id`       | kebab-case                                                                           | `google-forms`                 |
+| Toolkit import var | camelCase                                                                            | `googleForms`                  |
+| Tool `name`        | `<Prefix><Action>` PascalCase after prefix                                           | `googleFormsGetForm`           |
+| Tool prefix        | PascalCase of toolkit id                                                             | `google-forms` → `GoogleForms` |
+| Files/dirs         | kebab-case                                                                           | `get-form.ts`                  |
+| Legacy exception   | `google-calendar` tools omit prefix (`listEvents`) — **do not use for new toolkits** |
 
 Categories must be one of `CONNECTOR_CATEGORIES` in `src/core/categories.ts`.
 
@@ -93,36 +93,39 @@ import { tool } from 'ai';
 import { z } from 'zod';
 
 export const myAction = tool({
-    description: 'Clear LLM-facing description of when to use this tool.',
-    inputSchema: z.object({
-        myServiceToken: z.string().optional().describe('Injected auth token — match manifest tokenField'),
-        id: z.string().describe('Resource identifier'),
-        payload: z.record(z.any()).optional().describe('Complex nested API body'),
-    }),
-    execute: async ({ myServiceToken, id, payload }) => {
-        try {
-            const response = await fetch(`https://api.example.com/v1/${id}`, {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${myServiceToken}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload),
-            });
+  description: 'Clear LLM-facing description of when to use this tool.',
+  inputSchema: z.object({
+    myServiceToken: z
+      .string()
+      .optional()
+      .describe('Injected auth token — match manifest tokenField'),
+    id: z.string().describe('Resource identifier'),
+    payload: z.record(z.any()).optional().describe('Complex nested API body'),
+  }),
+  execute: async ({ myServiceToken, id, payload }) => {
+    try {
+      const response = await fetch(`https://api.example.com/v1/${id}`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${myServiceToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-            if (!response.ok) {
-                const details = await response.json().catch(() => ({}));
-                return { error: 'Failed to perform action', details };
-            }
+      if (!response.ok) {
+        const details = await response.json().catch(() => ({}));
+        return { error: 'Failed to perform action', details };
+      }
 
-            return await response.json();
-        } catch (error) {
-            return {
-                error: 'Error performing action',
-                message: error instanceof Error ? error.message : 'Unknown error',
-            };
-        }
-    },
+      return await response.json();
+    } catch (error) {
+      return {
+        error: 'Error performing action',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  },
 });
 ```
 
@@ -189,15 +192,15 @@ Alternative inline pattern (used by `gmail/`): declare each tool directly with
 
 ### Auth types
 
-| type | tokenField value | provider shape |
-|------|------------------|----------------|
-| `oauth2` | e.g. `googleFormsToken` | `provider.env`, scopes, callbackPath (see manifest pattern above) |
-| `bearer_token` | e.g. `growwAccessToken` | `{ connectDescription }` only — tool code attaches `Authorization: Bearer <token>` itself (see `groww/`) |
-| `api_key` | e.g. `cloudflareApiKey` | `{ in: 'header' \| 'query', name, prefix?, connectDescription }` — tool code attaches the key itself (see `cloudflare/`) |
-| `basic_auth` | e.g. `myServiceCredentials` | `{ connectDescription }` only — tokenField holds raw `'username:password'` string |
-| `service_account` | e.g. `grafanaCredentials` | `{ fields: ['baseUrl','apiToken'], connectDescription }` — JSON keys user supplies |
-| `service_env` | N/A | `env: [{ name: 'FIRECRAWL_API_KEY' }]` |
-| `none` | omit requiredAuth | pure computation |
+| type              | tokenField value            | provider shape                                                                                                           |
+| ----------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `oauth2`          | e.g. `googleFormsToken`     | `provider.env`, scopes, callbackPath (see manifest pattern above)                                                        |
+| `bearer_token`    | e.g. `growwAccessToken`     | `{ connectDescription }` only — tool code attaches `Authorization: Bearer <token>` itself (see `groww/`)                 |
+| `api_key`         | e.g. `cloudflareApiKey`     | `{ in: 'header' \| 'query', name, prefix?, connectDescription }` — tool code attaches the key itself (see `cloudflare/`) |
+| `basic_auth`      | e.g. `myServiceCredentials` | `{ connectDescription }` only — tokenField holds raw `'username:password'` string                                        |
+| `service_account` | e.g. `grafanaCredentials`   | `{ fields: ['baseUrl','apiToken'], connectDescription }` — JSON keys user supplies                                       |
+| `service_env`     | N/A                         | `env: [{ name: 'FIRECRAWL_API_KEY' }]`                                                                                   |
+| `none`            | omit requiredAuth           | pure computation                                                                                                         |
 
 ```typescript
 // bearer_token (per-user token pasted at connect time) — see groww/manifest.ts
@@ -248,16 +251,16 @@ import { myAction } from './my-action.js';
 export { myAction };
 
 export const myServiceTools = [
-    {
-        name: 'myServiceMyAction',
-        description: 'Same description as tool() or expanded.',
-        // Alternative (used by cloudflare/): reuse the tool's own description
-        // description: myAction.description!,
-        tool: myAction,
-        requiredAuth: 'myServiceToken' as const,
-        scope: 'read' as const,
-        keywords: ['synonym-one', 'synonym-two'],
-    },
+  {
+    name: 'myServiceMyAction',
+    description: 'Same description as tool() or expanded.',
+    // Alternative (used by cloudflare/): reuse the tool's own description
+    // description: myAction.description!,
+    tool: myAction,
+    requiredAuth: 'myServiceToken' as const,
+    scope: 'read' as const,
+    keywords: ['synonym-one', 'synonym-two'],
+  },
 ];
 ```
 

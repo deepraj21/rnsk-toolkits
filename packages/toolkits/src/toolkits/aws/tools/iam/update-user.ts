@@ -20,14 +20,17 @@ export const awsUpdateIamUser = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new UpdateUserCommand({
-          UserName: userName,
-          NewUserName: newUserName,
-          NewPath: newPath,
+        UserName: userName,
+        NewUserName: newUserName,
+        NewPath: newPath,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update the name or path of an IAM user', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the name or path of an IAM user',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

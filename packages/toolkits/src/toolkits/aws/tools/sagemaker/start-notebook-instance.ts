@@ -18,15 +18,18 @@ export const awsStartSagemakerNotebookInstance = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new StartNotebookInstanceCommand({
-          NotebookInstanceName: notebookInstanceName,
+        NotebookInstanceName: notebookInstanceName,
       });
       await client.send(command);
       return {
-                  message: 'Notebook instance started successfully',
-                  notebookInstanceName: notebookInstanceName,
-              };
+        message: 'Notebook instance started successfully',
+        notebookInstanceName: notebookInstanceName,
+      };
     } catch (err) {
-      return { error: 'Failed to start a SageMaker notebook instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start a SageMaker notebook instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -9,8 +9,14 @@ export const awsCreateSnapshot = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     snapshotName: z.string().describe('Snapshot name'),
-    replicationGroupId: z.string().optional().describe('Replication group ID to snapshot (optional if cacheClusterId provided)'),
-    cacheClusterId: z.string().optional().describe('Cache cluster ID to snapshot (optional if replicationGroupId provided)'),
+    replicationGroupId: z
+      .string()
+      .optional()
+      .describe('Replication group ID to snapshot (optional if cacheClusterId provided)'),
+    cacheClusterId: z
+      .string()
+      .optional()
+      .describe('Cache cluster ID to snapshot (optional if replicationGroupId provided)'),
   }),
   execute: async ({ awsCredentials, region, snapshotName, replicationGroupId, cacheClusterId }) => {
     if (!awsCredentials) {
@@ -20,14 +26,17 @@ export const awsCreateSnapshot = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new CreateSnapshotCommand({
-          SnapshotName: snapshotName,
-          ReplicationGroupId: replicationGroupId,
-          CacheClusterId: cacheClusterId,
+        SnapshotName: snapshotName,
+        ReplicationGroupId: replicationGroupId,
+        CacheClusterId: cacheClusterId,
       });
       const response = await client.send(command);
       return response.Snapshot;
     } catch (err) {
-      return { error: 'Failed to create a backup snapshot of a Redis cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a backup snapshot of a Redis cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

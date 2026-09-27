@@ -10,7 +10,10 @@ export const awsUpdateGuarddutyDetector = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     detectorId: z.string().describe('Detector ID'),
     enable: z.boolean().optional().describe('Enable or disable the detector'),
-    findingPublishingFrequency: z.enum(['FIFTEEN_MINUTES', 'ONE_HOUR', 'SIX_HOURS']).optional().describe('Update notification frequency'),
+    findingPublishingFrequency: z
+      .enum(['FIFTEEN_MINUTES', 'ONE_HOUR', 'SIX_HOURS'])
+      .optional()
+      .describe('Update notification frequency'),
   }),
   execute: async ({ awsCredentials, region, detectorId, enable, findingPublishingFrequency }) => {
     if (!awsCredentials) {
@@ -20,14 +23,17 @@ export const awsUpdateGuarddutyDetector = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new UpdateDetectorCommand({
-          DetectorId: detectorId,
-          Enable: enable,
-          FindingPublishingFrequency: findingPublishingFrequency,
+        DetectorId: detectorId,
+        Enable: enable,
+        FindingPublishingFrequency: findingPublishingFrequency,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update GuardDuty detector settings', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update GuardDuty detector settings',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

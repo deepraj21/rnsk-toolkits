@@ -10,9 +10,18 @@ export const awsDeleteReplicationGroup = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     replicationGroupId: z.string().describe('Replication group ID to delete'),
     retainPrimaryCluster: z.boolean().optional().describe('Retain primary cluster after deletion'),
-    finalSnapshotIdentifier: z.string().optional().describe('Create final snapshot before deletion'),
+    finalSnapshotIdentifier: z
+      .string()
+      .optional()
+      .describe('Create final snapshot before deletion'),
   }),
-  execute: async ({ awsCredentials, region, replicationGroupId, retainPrimaryCluster, finalSnapshotIdentifier }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    replicationGroupId,
+    retainPrimaryCluster,
+    finalSnapshotIdentifier,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +29,17 @@ export const awsDeleteReplicationGroup = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new DeleteReplicationGroupCommand({
-          ReplicationGroupId: replicationGroupId,
-          RetainPrimaryCluster: retainPrimaryCluster,
-          FinalSnapshotIdentifier: finalSnapshotIdentifier,
+        ReplicationGroupId: replicationGroupId,
+        RetainPrimaryCluster: retainPrimaryCluster,
+        FinalSnapshotIdentifier: finalSnapshotIdentifier,
       });
       const response = await client.send(command);
       return response.ReplicationGroup;
     } catch (err) {
-      return { error: 'Failed to delete a Redis replication group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Redis replication group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -152,10 +152,10 @@ Skip for self-hosted service_account toolkits where base URL is user-supplied (A
 
 ## Scope selection
 
-| scope | Use when |
-|-------|----------|
-| `read` | GET, list, search, fetch |
-| `write` | create, update, send, post, set |
-| `delete` | delete, remove, cancel |
+| scope    | Use when                        |
+| -------- | ------------------------------- |
+| `read`   | GET, list, search, fetch        |
+| `write`  | create, update, send, post, set |
+| `delete` | delete, remove, cancel          |
 
 Prefer explicit scope in `tools/index.ts`. Fallback: `inferToolScope(name)` in manifest map.

@@ -20,14 +20,17 @@ export const awsAttachEc2NetworkInterface = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new AttachNetworkInterfaceCommand({
-          NetworkInterfaceId: networkInterfaceId,
-          InstanceId: instanceId,
-          DeviceIndex: deviceIndex,
+        NetworkInterfaceId: networkInterfaceId,
+        InstanceId: instanceId,
+        DeviceIndex: deviceIndex,
       });
       const response = await client.send(command);
       return { attachmentId: response.AttachmentId };
     } catch (err) {
-      return { error: 'Failed to attach a network interface to an instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to attach a network interface to an instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,14 +18,17 @@ export const awsDeleteAnomalyMonitor = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new DeleteAnomalyMonitorCommand({
-          MonitorArn: monitorArn,
+        MonitorArn: monitorArn,
       });
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a cost anomaly monitor', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a cost anomaly monitor',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

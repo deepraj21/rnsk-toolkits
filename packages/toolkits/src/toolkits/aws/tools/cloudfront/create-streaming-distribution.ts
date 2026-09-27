@@ -18,16 +18,19 @@ export const awsCreateCloudfrontStreamingDistribution = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateStreamingDistributionCommand({
-          StreamingDistributionConfig: streamingDistributionConfig,
+        StreamingDistributionConfig: streamingDistributionConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  streamingDistribution: response.StreamingDistribution,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        streamingDistribution: response.StreamingDistribution,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront streaming distribution', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront streaming distribution',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,16 +18,19 @@ export const awsCreateCloudfrontDistribution = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateDistributionCommand({
-          DistributionConfig: distributionConfig,
+        DistributionConfig: distributionConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  distribution: response.Distribution,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        distribution: response.Distribution,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new CloudFront distribution', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new CloudFront distribution',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

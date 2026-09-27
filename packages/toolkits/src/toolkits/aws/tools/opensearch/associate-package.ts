@@ -19,13 +19,16 @@ export const awsAssociatePackage = tool({
       const client = createOpenSearchClient(awsCredentials, region);
 
       const command = new AssociatePackageCommand({
-          PackageID: packageId,
-          DomainName: domainName,
+        PackageID: packageId,
+        DomainName: domainName,
       });
       const response = await client.send(command);
       return response.DomainPackageDetails;
     } catch (err) {
-      return { error: 'Failed to associate a custom package with an OpenSearch domain', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to associate a custom package with an OpenSearch domain',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

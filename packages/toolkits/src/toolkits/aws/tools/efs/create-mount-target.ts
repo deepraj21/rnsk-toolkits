@@ -13,7 +13,14 @@ export const awsCreateEfsMountTarget = tool({
     ipAddress: z.string().optional().describe('IP address to assign to the mount target'),
     securityGroups: z.array(z.string()).optional().describe('Security group IDs'),
   }),
-  execute: async ({ awsCredentials, region, fileSystemId, subnetId, ipAddress, securityGroups }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    fileSystemId,
+    subnetId,
+    ipAddress,
+    securityGroups,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,17 +28,20 @@ export const awsCreateEfsMountTarget = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new CreateMountTargetCommand({
-          FileSystemId: fileSystemId,
-          SubnetId: subnetId,
-          IpAddress: ipAddress,
-          SecurityGroups: securityGroups,
+        FileSystemId: fileSystemId,
+        SubnetId: subnetId,
+        IpAddress: ipAddress,
+        SecurityGroups: securityGroups,
       });
       const response = await client.send(command);
       return {
-                  mountTarget: response,
-              };
+        mountTarget: response,
+      };
     } catch (err) {
-      return { error: 'Failed to create a mount target for an EFS file system', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a mount target for an EFS file system',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -20,16 +20,19 @@ export const awsDeleteEcsService = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new DeleteServiceCommand({
-          cluster: cluster,
-          service: service,
-          force: force,
+        cluster: cluster,
+        service: service,
+        force: force,
       });
       const response = await client.send(command);
       return {
-                  service: response.service,
-              };
+        service: response.service,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an ECS service', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an ECS service',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

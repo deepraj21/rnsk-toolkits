@@ -6,7 +6,8 @@ import { neo4jTools } from './tools/index.js';
 export default defineToolkit({
   id: 'neo4j',
   displayName: 'Neo4j',
-  shortDescription: 'Aura instances, snapshots, projects, users, IP filters, agents, and GDS sessions.',
+  shortDescription:
+    'Aura instances, snapshots, projects, users, IP filters, agents, and GDS sessions.',
   category: 'Data & Analytics',
   icon: NEO4J_ICON,
   auth: {

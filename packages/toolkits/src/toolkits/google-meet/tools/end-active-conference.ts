@@ -21,7 +21,11 @@ export const endActiveConference = tool({
       });
 
       if (!result.ok) {
-        return { error: 'Failed to end active conference', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to end active conference',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return {

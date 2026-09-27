@@ -17,7 +17,18 @@ export const awsCreateCacheCluster = tool({
     securityGroupIds: z.array(z.string()).optional().describe('VPC security group IDs'),
     azMode: z.string().optional().describe('Availability zone mode (single-az or cross-az)'),
   }),
-  execute: async ({ awsCredentials, region, cacheClusterId, cacheNodeType, engine, numCacheNodes, cacheParameterGroupName, cacheSubnetGroupName, securityGroupIds, azMode }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cacheClusterId,
+    cacheNodeType,
+    engine,
+    numCacheNodes,
+    cacheParameterGroupName,
+    cacheSubnetGroupName,
+    securityGroupIds,
+    azMode,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,19 +36,22 @@ export const awsCreateCacheCluster = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new CreateCacheClusterCommand({
-          CacheClusterId: cacheClusterId,
-          CacheNodeType: cacheNodeType,
-          Engine: engine,
-          NumCacheNodes: numCacheNodes,
-          CacheParameterGroupName: cacheParameterGroupName,
-          CacheSubnetGroupName: cacheSubnetGroupName,
-          SecurityGroupIds: securityGroupIds,
-          AZMode: azMode,
+        CacheClusterId: cacheClusterId,
+        CacheNodeType: cacheNodeType,
+        Engine: engine,
+        NumCacheNodes: numCacheNodes,
+        CacheParameterGroupName: cacheParameterGroupName,
+        CacheSubnetGroupName: cacheSubnetGroupName,
+        SecurityGroupIds: securityGroupIds,
+        AZMode: azMode,
       } as any);
       const response = await client.send(command);
       return response.CacheCluster;
     } catch (err) {
-      return { error: 'Failed to create a new Memcached cache cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new Memcached cache cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

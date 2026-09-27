@@ -18,15 +18,18 @@ export const awsDeleteBackupVault = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new DeleteBackupVaultCommand({
-          BackupVaultName: backupVaultName,
+        BackupVaultName: backupVaultName,
       });
       await client.send(command);
       return {
-                  message: 'Backup vault deleted successfully',
-                  backupVaultName: backupVaultName,
-              };
+        message: 'Backup vault deleted successfully',
+        backupVaultName: backupVaultName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a backup vault', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a backup vault',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

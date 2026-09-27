@@ -11,11 +11,23 @@ export const awsUpdateSagemakerEndpoint = tool({
     endpointName: z.string().describe('Name of the endpoint'),
     endpointConfigName: z.string().describe('Name of the new endpoint configuration'),
     retainAllVariantProperties: z.boolean().optional().describe('Retain all variant properties'),
-    excludeRetainedVariantProperties: z.record(z.any()).optional().describe('Exclude retained variant properties'),
+    excludeRetainedVariantProperties: z
+      .record(z.any())
+      .optional()
+      .describe('Exclude retained variant properties'),
     deploymentConfig: z.record(z.any()).optional().describe('Deployment configuration'),
     retainDeploymentConfig: z.boolean().optional().describe('Retain deployment configuration'),
   }),
-  execute: async ({ awsCredentials, region, endpointName, endpointConfigName, retainAllVariantProperties, excludeRetainedVariantProperties, deploymentConfig, retainDeploymentConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    endpointName,
+    endpointConfigName,
+    retainAllVariantProperties,
+    excludeRetainedVariantProperties,
+    deploymentConfig,
+    retainDeploymentConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,19 +35,22 @@ export const awsUpdateSagemakerEndpoint = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new UpdateEndpointCommand({
-          EndpointName: endpointName,
-          EndpointConfigName: endpointConfigName,
-          RetainAllVariantProperties: retainAllVariantProperties,
-          ExcludeRetainedVariantProperties: excludeRetainedVariantProperties,
-          DeploymentConfig: deploymentConfig,
-          RetainDeploymentConfig: retainDeploymentConfig,
+        EndpointName: endpointName,
+        EndpointConfigName: endpointConfigName,
+        RetainAllVariantProperties: retainAllVariantProperties,
+        ExcludeRetainedVariantProperties: excludeRetainedVariantProperties,
+        DeploymentConfig: deploymentConfig,
+        RetainDeploymentConfig: retainDeploymentConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  endpointArn: response.EndpointArn,
-              };
+        endpointArn: response.EndpointArn,
+      };
     } catch (err) {
-      return { error: 'Failed to update a SageMaker endpoint', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a SageMaker endpoint',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -55,11 +55,17 @@ export const getResource = tool({
         headers: { Authorization: `Bearer ${myServiceToken}` },
       });
       if (!response.ok) {
-        return { error: 'Failed to get resource', details: await response.json().catch(() => ({})) };
+        return {
+          error: 'Failed to get resource',
+          details: await response.json().catch(() => ({})),
+        };
       }
       return await response.json();
     } catch (error) {
-      return { error: 'Error getting resource', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting resource',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });

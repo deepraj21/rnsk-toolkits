@@ -20,16 +20,19 @@ export const awsCreateCodeartifactDomain = tool({
       const client = createCodeArtifactClient(awsCredentials, region);
 
       const command = new CreateDomainCommand({
-          domain: domain,
-          encryptionKey: encryptionKey,
-          tags: tags,
+        domain: domain,
+        encryptionKey: encryptionKey,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  domain: response.domain,
-              };
+        domain: response.domain,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new CodeArtifact domain', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new CodeArtifact domain',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

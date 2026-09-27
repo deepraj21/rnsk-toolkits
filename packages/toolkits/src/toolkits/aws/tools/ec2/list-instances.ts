@@ -13,7 +13,12 @@ export const awsListEc2Instances = tool({
       .enum(['pending', 'running', 'shutting-down', 'terminated', 'stopping', 'stopped'])
       .optional()
       .describe('Only return instances in this state'),
-    maxResults: z.number().min(5).max(1000).optional().describe('Maximum number of instances to return'),
+    maxResults: z
+      .number()
+      .min(5)
+      .max(1000)
+      .optional()
+      .describe('Maximum number of instances to return'),
   }),
   execute: async ({ awsCredentials, region, stateFilter, maxResults }) => {
     if (!awsCredentials) {
@@ -23,7 +28,9 @@ export const awsListEc2Instances = tool({
       const client = createEc2Client(awsCredentials, region);
       const response = await client.send(
         new DescribeInstancesCommand({
-          Filters: stateFilter ? [{ Name: 'instance-state-name', Values: [stateFilter] }] : undefined,
+          Filters: stateFilter
+            ? [{ Name: 'instance-state-name', Values: [stateFilter] }]
+            : undefined,
           MaxResults: maxResults,
         }),
       );
@@ -43,7 +50,10 @@ export const awsListEc2Instances = tool({
       );
       return { count: instances.length, instances };
     } catch (err) {
-      return { error: 'Failed to list EC2 instances', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list EC2 instances',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,12 +18,15 @@ export const awsCreateEc2InternetGateway = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateInternetGatewayCommand({
-          TagSpecifications: tagSpecifications,
+        TagSpecifications: tagSpecifications,
       });
       const response = await client.send(command);
       return { internetGateway: response.InternetGateway };
     } catch (err) {
-      return { error: 'Failed to create an internet gateway', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an internet gateway',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

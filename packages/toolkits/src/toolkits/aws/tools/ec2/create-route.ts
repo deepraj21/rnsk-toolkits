@@ -14,7 +14,15 @@ export const awsCreateEc2Route = tool({
     instanceId: z.string().optional().describe('Instance ID'),
     natGatewayId: z.string().optional().describe('NAT gateway ID'),
   }),
-  execute: async ({ awsCredentials, region, routeTableId, destinationCidrBlock, gatewayId, instanceId, natGatewayId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    routeTableId,
+    destinationCidrBlock,
+    gatewayId,
+    instanceId,
+    natGatewayId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,16 +30,19 @@ export const awsCreateEc2Route = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateRouteCommand({
-          RouteTableId: routeTableId,
-          DestinationCidrBlock: destinationCidrBlock,
-          GatewayId: gatewayId,
-          InstanceId: instanceId,
-          NatGatewayId: natGatewayId,
+        RouteTableId: routeTableId,
+        DestinationCidrBlock: destinationCidrBlock,
+        GatewayId: gatewayId,
+        InstanceId: instanceId,
+        NatGatewayId: natGatewayId,
       });
       const response = await client.send(command);
       return { return: response.Return };
     } catch (err) {
-      return { error: 'Failed to create a route in a route table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a route in a route table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

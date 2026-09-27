@@ -4,7 +4,8 @@ import { DescribeWarmPoolCommand } from '@aws-sdk/client-auto-scaling';
 import { createAutoScalingClient } from '../client.js';
 
 export const awsDescribeAutoscalingWarmPool = tool({
-  description: 'Describe warm pool configuration. Use it to inspect current state before making changes.',
+  description:
+    'Describe warm pool configuration. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,16 +19,19 @@ export const awsDescribeAutoscalingWarmPool = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DescribeWarmPoolCommand({
-          AutoScalingGroupName: autoScalingGroupName,
+        AutoScalingGroupName: autoScalingGroupName,
       });
       const response = await client.send(command);
       return {
-                  warmPoolConfiguration: response.WarmPoolConfiguration,
-                  instances: response.Instances,
-                  nextToken: response.NextToken,
-              };
+        warmPoolConfiguration: response.WarmPoolConfiguration,
+        instances: response.Instances,
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to describe warm pool configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe warm pool configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

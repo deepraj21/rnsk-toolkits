@@ -18,16 +18,19 @@ export const awsRestoreEventDataStore = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new RestoreEventDataStoreCommand({
-          EventDataStore: eventDataStore,
+        EventDataStore: eventDataStore,
       });
       const response = await client.send(command);
       return {
-                  eventDataStoreArn: response.EventDataStoreArn,
-                  name: response.Name,
-                  status: response.Status,
-              };
+        eventDataStoreArn: response.EventDataStoreArn,
+        name: response.Name,
+        status: response.Status,
+      };
     } catch (err) {
-      return { error: 'Failed to restores a deleted event data store', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to restores a deleted event data store',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

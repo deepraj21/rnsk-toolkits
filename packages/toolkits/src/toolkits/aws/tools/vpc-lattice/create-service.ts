@@ -14,7 +14,15 @@ export const awsCreateVpcLatticeService = tool({
     customDomainName: z.string().optional().describe('Custom domain name'),
     tags: z.record(z.any()).optional().describe('Tags to apply'),
   }),
-  execute: async ({ awsCredentials, region, name, authType, certificateArn, customDomainName, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    authType,
+    certificateArn,
+    customDomainName,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,24 +30,27 @@ export const awsCreateVpcLatticeService = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new CreateServiceCommand({
-          name: name,
-          authType: authType,
-          certificateArn: certificateArn,
-          customDomainName: customDomainName,
-          tags: tags,
+        name: name,
+        authType: authType,
+        certificateArn: certificateArn,
+        customDomainName: customDomainName,
+        tags: tags,
       });
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  authType: response.authType,
-                  certificateArn: response.certificateArn,
-                  customDomainName: response.customDomainName,
-                  dnsEntry: response.dnsEntry,
-                  id: response.id,
-                  name: response.name,
-              };
+        arn: response.arn,
+        authType: response.authType,
+        certificateArn: response.certificateArn,
+        customDomainName: response.customDomainName,
+        dnsEntry: response.dnsEntry,
+        id: response.id,
+        name: response.name,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new VPC Lattice service', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new VPC Lattice service',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

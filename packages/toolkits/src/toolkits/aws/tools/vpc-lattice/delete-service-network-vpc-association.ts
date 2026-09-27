@@ -4,7 +4,8 @@ import { DeleteServiceNetworkVpcAssociationCommand } from '@aws-sdk/client-vpc-l
 import { createVpcLatticeClient } from '../client.js';
 
 export const awsDeleteVpcLatticeServiceNetworkVpcAssociation = tool({
-  description: 'Delete a service network VPC association. Use it to permanently remove the resource.',
+  description:
+    'Delete a service network VPC association. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsDeleteVpcLatticeServiceNetworkVpcAssociation = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new DeleteServiceNetworkVpcAssociationCommand({
-          serviceNetworkVpcAssociationIdentifier: serviceNetworkVpcAssociationIdentifier,
+        serviceNetworkVpcAssociationIdentifier: serviceNetworkVpcAssociationIdentifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Service network VPC association ${serviceNetworkVpcAssociationIdentifier} deleted successfully`,
-              };
+        success: true,
+        message: `Service network VPC association ${serviceNetworkVpcAssociationIdentifier} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a service network VPC association', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a service network VPC association',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

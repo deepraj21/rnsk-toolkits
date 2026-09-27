@@ -19,18 +19,21 @@ export const awsUpdateBackupPlan = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new UpdateBackupPlanCommand({
-          BackupPlanId: backupPlanId,
-          BackupPlan: backupPlan,
+        BackupPlanId: backupPlanId,
+        BackupPlan: backupPlan,
       } as any);
       const response = await client.send(command);
       return {
-                  backupPlanId: response.BackupPlanId,
-                  backupPlanArn: response.BackupPlanArn,
-                  creationDate: response.CreationDate,
-                  versionId: response.VersionId,
-              };
+        backupPlanId: response.BackupPlanId,
+        backupPlanArn: response.BackupPlanArn,
+        creationDate: response.CreationDate,
+        versionId: response.VersionId,
+      };
     } catch (err) {
-      return { error: 'Failed to update a backup plan', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a backup plan',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

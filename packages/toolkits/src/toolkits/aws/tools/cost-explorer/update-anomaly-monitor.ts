@@ -19,15 +19,18 @@ export const awsUpdateAnomalyMonitor = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new UpdateAnomalyMonitorCommand({
-          MonitorArn: monitorArn,
-          MonitorName: monitorName,
+        MonitorArn: monitorArn,
+        MonitorName: monitorName,
       });
       const response = await client.send(command);
       return {
-                  monitorArn: response.MonitorArn,
-              };
+        monitorArn: response.MonitorArn,
+      };
     } catch (err) {
-      return { error: 'Failed to updates an existing cost anomaly monitor', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to updates an existing cost anomaly monitor',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

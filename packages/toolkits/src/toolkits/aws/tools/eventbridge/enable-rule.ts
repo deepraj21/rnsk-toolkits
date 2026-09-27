@@ -19,16 +19,19 @@ export const awsEnableEventbridgeRule = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new EnableRuleCommand({
-          Name: name,
-          EventBusName: eventBusName,
+        Name: name,
+        EventBusName: eventBusName,
       });
       await client.send(command);
       return {
-                  message: 'Rule enabled successfully',
-                  name: name,
-              };
+        message: 'Rule enabled successfully',
+        name: name,
+      };
     } catch (err) {
-      return { error: 'Failed to enable an EventBridge rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to enable an EventBridge rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

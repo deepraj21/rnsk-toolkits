@@ -18,15 +18,18 @@ export const awsDeleteLaunchConfiguration = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DeleteLaunchConfigurationCommand({
-          LaunchConfigurationName: launchConfigurationName,
+        LaunchConfigurationName: launchConfigurationName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Launch configuration ${launchConfigurationName} deleted successfully`,
-              };
+        success: true,
+        message: `Launch configuration ${launchConfigurationName} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a launch configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a launch configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

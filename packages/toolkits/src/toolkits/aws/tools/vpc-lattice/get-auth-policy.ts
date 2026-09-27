@@ -18,15 +18,18 @@ export const awsGetVpcLatticeAuthPolicy = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new GetAuthPolicyCommand({
-          resourceIdentifier: resourceIdentifier,
+        resourceIdentifier: resourceIdentifier,
       });
       const response = await client.send(command);
       return {
-                  policy: response.policy,
-                  state: response.state,
-              };
+        policy: response.policy,
+        state: response.state,
+      };
     } catch (err) {
-      return { error: 'Failed to get an auth policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get an auth policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

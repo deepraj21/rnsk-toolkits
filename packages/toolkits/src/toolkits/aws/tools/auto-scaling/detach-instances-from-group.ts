@@ -10,9 +10,18 @@ export const awsDetachInstancesFromAutoscalingGroup = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     instanceIds: z.array(z.string()).optional().describe('Instance IDs to detach'),
     autoScalingGroupName: z.string().describe('The name of the Auto Scaling group'),
-    shouldDecrementDesiredCapacity: z.boolean().optional().describe('Whether to decrement desired capacity'),
+    shouldDecrementDesiredCapacity: z
+      .boolean()
+      .optional()
+      .describe('Whether to decrement desired capacity'),
   }),
-  execute: async ({ awsCredentials, region, instanceIds, autoScalingGroupName, shouldDecrementDesiredCapacity }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    instanceIds,
+    autoScalingGroupName,
+    shouldDecrementDesiredCapacity,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,16 +29,19 @@ export const awsDetachInstancesFromAutoscalingGroup = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DetachInstancesCommand({
-          InstanceIds: instanceIds,
-          AutoScalingGroupName: autoScalingGroupName,
-          ShouldDecrementDesiredCapacity: shouldDecrementDesiredCapacity,
+        InstanceIds: instanceIds,
+        AutoScalingGroupName: autoScalingGroupName,
+        ShouldDecrementDesiredCapacity: shouldDecrementDesiredCapacity,
       });
       const response = await client.send(command);
       return {
-                  activities: response.Activities,
-              };
+        activities: response.Activities,
+      };
     } catch (err) {
-      return { error: 'Failed to detach instances from an Auto Scaling group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to detach instances from an Auto Scaling group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

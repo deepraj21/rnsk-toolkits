@@ -4,7 +4,8 @@ import { ListStreamingDistributionsCommand } from '@aws-sdk/client-cloudfront';
 import { createCloudFrontClient } from '../client.js';
 
 export const awsListCloudfrontStreamingDistributions = tool({
-  description: 'List all CloudFront streaming distributions. Use it to inspect current state before making changes.',
+  description:
+    'List all CloudFront streaming distributions. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsListCloudfrontStreamingDistributions = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new ListStreamingDistributionsCommand({
-          Marker: marker,
-          MaxItems: maxItems,
+        Marker: marker,
+        MaxItems: maxItems,
       });
       const response = await client.send(command);
       return {
-                  streamingDistributionList: response.StreamingDistributionList,
-              };
+        streamingDistributionList: response.StreamingDistributionList,
+      };
     } catch (err) {
-      return { error: 'Failed to list all CloudFront streaming distributions', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all CloudFront streaming distributions',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

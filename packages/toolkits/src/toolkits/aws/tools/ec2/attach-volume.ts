@@ -20,14 +20,17 @@ export const awsAttachEc2Volume = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new AttachVolumeCommand({
-          VolumeId: volumeId,
-          InstanceId: instanceId,
-          Device: device,
+        VolumeId: volumeId,
+        InstanceId: instanceId,
+        Device: device,
       });
       const response = await client.send(command);
       return { attachment: response };
     } catch (err) {
-      return { error: 'Failed to attach an EBS volume to an instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to attach an EBS volume to an instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

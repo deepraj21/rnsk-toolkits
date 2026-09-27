@@ -4,7 +4,8 @@ import { UpdateNodegroupVersionCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsUpdateEksNodegroupVersion = tool({
-  description: 'Update the Kubernetes version of a nodegroup. Use it to change an existing resource.',
+  description:
+    'Update the Kubernetes version of a nodegroup. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -15,7 +16,16 @@ export const awsUpdateEksNodegroupVersion = tool({
     launchTemplate: z.record(z.any()).optional().describe('Launch template configuration'),
     force: z.boolean().optional().describe('Force update'),
   }),
-  execute: async ({ awsCredentials, region, clusterName, nodegroupName, version, releaseVersion, launchTemplate, force }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clusterName,
+    nodegroupName,
+    version,
+    releaseVersion,
+    launchTemplate,
+    force,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,19 +33,22 @@ export const awsUpdateEksNodegroupVersion = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new UpdateNodegroupVersionCommand({
-          clusterName: clusterName,
-          nodegroupName: nodegroupName,
-          version: version,
-          releaseVersion: releaseVersion,
-          launchTemplate: launchTemplate,
-          force: force,
+        clusterName: clusterName,
+        nodegroupName: nodegroupName,
+        version: version,
+        releaseVersion: releaseVersion,
+        launchTemplate: launchTemplate,
+        force: force,
       });
       const response = await client.send(command);
       return {
-                  update: response.update,
-              };
+        update: response.update,
+      };
     } catch (err) {
-      return { error: 'Failed to update the Kubernetes version of a nodegroup', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the Kubernetes version of a nodegroup',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

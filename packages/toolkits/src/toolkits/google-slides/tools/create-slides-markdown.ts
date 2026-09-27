@@ -45,7 +45,9 @@ export const createSlidesMarkdown = tool({
       if (defaultSlideId) {
         requests.push({ deleteObject: { objectId: defaultSlideId } });
       }
-      requests.push(...buildMarkdownSlideRequests(markdown_text, { insertionIndex: 0, idPrefix: 'new' }));
+      requests.push(
+        ...buildMarkdownSlideRequests(markdown_text, { insertionIndex: 0, idPrefix: 'new' }),
+      );
 
       const batchResult = await slidesRequest(
         googleSlidesToken,

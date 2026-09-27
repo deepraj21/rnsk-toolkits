@@ -19,16 +19,19 @@ export const awsListBackupVaults = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new ListBackupVaultsCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
+        NextToken: nextToken,
+        MaxResults: maxResults,
       });
       const response = await client.send(command);
       return {
-                  backupVaultList: response.BackupVaultList || [],
-                  nextToken: response.NextToken,
-              };
+        backupVaultList: response.BackupVaultList || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list all backup vaults', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all backup vaults',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

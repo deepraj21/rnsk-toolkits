@@ -19,15 +19,18 @@ export const awsCreateCodepipelineWebhook = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new PutWebhookCommand({
-          webhook: webhook,
-          tags: tags,
+        webhook: webhook,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  webhook: response.webhook,
-              };
+        webhook: response.webhook,
+      };
     } catch (err) {
-      return { error: 'Failed to create a webhook for a CodePipeline pipeline', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a webhook for a CodePipeline pipeline',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

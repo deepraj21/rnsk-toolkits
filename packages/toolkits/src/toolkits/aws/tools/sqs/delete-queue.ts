@@ -18,15 +18,18 @@ export const awsDeleteSqsQueue = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new DeleteQueueCommand({
-          QueueUrl: queueUrl,
+        QueueUrl: queueUrl,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Queue ${queueUrl} deleted successfully`,
-              };
+        success: true,
+        message: `Queue ${queueUrl} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

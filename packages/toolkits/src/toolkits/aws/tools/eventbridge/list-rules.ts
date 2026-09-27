@@ -21,18 +21,21 @@ export const awsListEventbridgeRules = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new ListRulesCommand({
-          NamePrefix: namePrefix,
-          EventBusName: eventBusName,
-          NextToken: nextToken,
-          Limit: limit,
+        NamePrefix: namePrefix,
+        EventBusName: eventBusName,
+        NextToken: nextToken,
+        Limit: limit,
       });
       const response = await client.send(command);
       return {
-                  rules: response.Rules || [],
-                  nextToken: response.NextToken,
-              };
+        rules: response.Rules || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list EventBridge rules', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list EventBridge rules',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsTerminateBatchJob = tool({
       const client = createBatchClient(awsCredentials, region);
 
       const command = new TerminateJobCommand({
-          jobId: jobId,
-          reason: reason,
+        jobId: jobId,
+        reason: reason,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Job ${jobId} terminated successfully`,
-              };
+        success: true,
+        message: `Job ${jobId} terminated successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to terminate a Batch job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to terminate a Batch job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

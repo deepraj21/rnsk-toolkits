@@ -17,7 +17,18 @@ export const awsPutEventbridgeRule = tool({
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply'),
     eventBusName: z.string().optional().describe('Event bus name'),
   }),
-  execute: async ({ awsCredentials, region, name, eventPattern, scheduleExpression, state, description, roleArn, tags, eventBusName }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    eventPattern,
+    scheduleExpression,
+    state,
+    description,
+    roleArn,
+    tags,
+    eventBusName,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,21 +36,24 @@ export const awsPutEventbridgeRule = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new PutRuleCommand({
-          Name: name,
-          EventPattern: eventPattern,
-          ScheduleExpression: scheduleExpression,
-          State: state,
-          Description: description,
-          RoleArn: roleArn,
-          Tags: tags,
-          EventBusName: eventBusName,
+        Name: name,
+        EventPattern: eventPattern,
+        ScheduleExpression: scheduleExpression,
+        State: state,
+        Description: description,
+        RoleArn: roleArn,
+        Tags: tags,
+        EventBusName: eventBusName,
       } as any);
       const response = await client.send(command);
       return {
-                  ruleArn: response.RuleArn,
-              };
+        ruleArn: response.RuleArn,
+      };
     } catch (err) {
-      return { error: 'Failed to create or update an EventBridge rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or update an EventBridge rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

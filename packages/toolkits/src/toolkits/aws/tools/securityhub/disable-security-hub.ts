@@ -20,7 +20,10 @@ export const awsDisableSecurityHub = tool({
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to disable AWS Security Hub in the current region', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disable AWS Security Hub in the current region',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

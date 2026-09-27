@@ -19,16 +19,19 @@ export const awsDeleteEksAccessEntry = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DeleteAccessEntryCommand({
-          clusterName: clusterName,
-          principalArn: principalArn,
+        clusterName: clusterName,
+        principalArn: principalArn,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Access entry ${principalArn} deleted successfully from cluster ${clusterName}`,
-              };
+        success: true,
+        message: `Access entry ${principalArn} deleted successfully from cluster ${clusterName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an access entry', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an access entry',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

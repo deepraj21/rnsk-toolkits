@@ -12,11 +12,24 @@ export const awsUpdateEksAddon = tool({
     addonName: z.string().describe('The name of the addon'),
     addonVersion: z.string().optional().describe('Addon version to update to'),
     serviceAccountRoleArn: z.string().optional().describe('IAM role ARN for the addon'),
-    resolveConflicts: z.enum(['OVERWRITE', 'NONE']).optional().describe('Conflict resolution strategy (OVERWRITE, NONE)'),
+    resolveConflicts: z
+      .enum(['OVERWRITE', 'NONE'])
+      .optional()
+      .describe('Conflict resolution strategy (OVERWRITE, NONE)'),
     clientRequestToken: z.string().optional().describe('Unique identifier for the request'),
     configurationValues: z.string().optional().describe('Addon configuration values'),
   }),
-  execute: async ({ awsCredentials, region, clusterName, addonName, addonVersion, serviceAccountRoleArn, resolveConflicts, clientRequestToken, configurationValues }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clusterName,
+    addonName,
+    addonVersion,
+    serviceAccountRoleArn,
+    resolveConflicts,
+    clientRequestToken,
+    configurationValues,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,20 +37,23 @@ export const awsUpdateEksAddon = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new UpdateAddonCommand({
-          clusterName: clusterName,
-          addonName: addonName,
-          addonVersion: addonVersion,
-          serviceAccountRoleArn: serviceAccountRoleArn,
-          resolveConflicts: resolveConflicts as any,
-          clientRequestToken: clientRequestToken,
-          configurationValues: configurationValues,
+        clusterName: clusterName,
+        addonName: addonName,
+        addonVersion: addonVersion,
+        serviceAccountRoleArn: serviceAccountRoleArn,
+        resolveConflicts: resolveConflicts as any,
+        clientRequestToken: clientRequestToken,
+        configurationValues: configurationValues,
       });
       const response = await client.send(command);
       return {
-                  update: response.update,
-              };
+        update: response.update,
+      };
     } catch (err) {
-      return { error: 'Failed to update an addon', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an addon',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

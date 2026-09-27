@@ -11,8 +11,14 @@ export const awsUpdateEcsService = tool({
     cluster: z.string().describe('The name of the cluster'),
     service: z.string().describe('The name of the service'),
     desiredCount: z.number().optional().describe('The number of tasks to run'),
-    taskDefinition: z.string().optional().describe('The family and revision of the task definition'),
-    capacityProviderStrategy: z.array(z.record(z.any())).optional().describe('Capacity provider strategy'),
+    taskDefinition: z
+      .string()
+      .optional()
+      .describe('The family and revision of the task definition'),
+    capacityProviderStrategy: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Capacity provider strategy'),
     deploymentConfiguration: z.record(z.any()).optional().describe('Deployment configuration'),
     networkConfiguration: z.record(z.any()).optional().describe('Network configuration'),
     placementConstraints: z.array(z.record(z.any())).optional().describe('Placement constraints'),
@@ -23,10 +29,36 @@ export const awsUpdateEcsService = tool({
     enableExecuteCommand: z.boolean().optional().describe('Enable ECS Exec'),
     enableECSManagedTags: z.boolean().optional().describe('Enable ECS managed tags'),
     loadBalancers: z.array(z.record(z.any())).optional().describe('Load balancer configuration'),
-    propagateTags: z.enum(['SERVICE', 'TASK_DEFINITION']).optional().describe('Tag propagation (SERVICE, TASK_DEFINITION)'),
-    serviceRegistries: z.array(z.record(z.any())).optional().describe('Service registry configuration'),
+    propagateTags: z
+      .enum(['SERVICE', 'TASK_DEFINITION'])
+      .optional()
+      .describe('Tag propagation (SERVICE, TASK_DEFINITION)'),
+    serviceRegistries: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Service registry configuration'),
   }),
-  execute: async ({ awsCredentials, region, cluster, service, desiredCount, taskDefinition, capacityProviderStrategy, deploymentConfiguration, networkConfiguration, placementConstraints, placementStrategy, platformVersion, forceNewDeployment, healthCheckGracePeriodSeconds, enableExecuteCommand, enableECSManagedTags, loadBalancers, propagateTags, serviceRegistries }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cluster,
+    service,
+    desiredCount,
+    taskDefinition,
+    capacityProviderStrategy,
+    deploymentConfiguration,
+    networkConfiguration,
+    placementConstraints,
+    placementStrategy,
+    platformVersion,
+    forceNewDeployment,
+    healthCheckGracePeriodSeconds,
+    enableExecuteCommand,
+    enableECSManagedTags,
+    loadBalancers,
+    propagateTags,
+    serviceRegistries,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -34,30 +66,33 @@ export const awsUpdateEcsService = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new UpdateServiceCommand({
-          cluster: cluster,
-          service: service,
-          desiredCount: desiredCount,
-          taskDefinition: taskDefinition,
-          capacityProviderStrategy: capacityProviderStrategy,
-          deploymentConfiguration: deploymentConfiguration,
-          networkConfiguration: networkConfiguration,
-          placementConstraints: placementConstraints,
-          placementStrategy: placementStrategy,
-          platformVersion: platformVersion,
-          forceNewDeployment: forceNewDeployment,
-          healthCheckGracePeriodSeconds: healthCheckGracePeriodSeconds,
-          enableExecuteCommand: enableExecuteCommand,
-          enableECSManagedTags: enableECSManagedTags,
-          loadBalancers: loadBalancers,
-          propagateTags: propagateTags as any,
-          serviceRegistries: serviceRegistries,
+        cluster: cluster,
+        service: service,
+        desiredCount: desiredCount,
+        taskDefinition: taskDefinition,
+        capacityProviderStrategy: capacityProviderStrategy,
+        deploymentConfiguration: deploymentConfiguration,
+        networkConfiguration: networkConfiguration,
+        placementConstraints: placementConstraints,
+        placementStrategy: placementStrategy,
+        platformVersion: platformVersion,
+        forceNewDeployment: forceNewDeployment,
+        healthCheckGracePeriodSeconds: healthCheckGracePeriodSeconds,
+        enableExecuteCommand: enableExecuteCommand,
+        enableECSManagedTags: enableECSManagedTags,
+        loadBalancers: loadBalancers,
+        propagateTags: propagateTags as any,
+        serviceRegistries: serviceRegistries,
       } as any);
       const response = await client.send(command);
       return {
-                  service: response.service,
-              };
+        service: response.service,
+      };
     } catch (err) {
-      return { error: 'Failed to update an existing ECS service', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an existing ECS service',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

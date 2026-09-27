@@ -19,13 +19,16 @@ export const awsAuthorizeEc2SecurityGroupEgress = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new AuthorizeSecurityGroupEgressCommand({
-          GroupId: groupId,
-          IpPermissions: ipPermissions,
+        GroupId: groupId,
+        IpPermissions: ipPermissions,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to add outbound rules to a security group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add outbound rules to a security group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

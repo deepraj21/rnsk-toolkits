@@ -20,17 +20,20 @@ export const awsListSqsQueues = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new ListQueuesCommand({
-          QueueNamePrefix: queueNamePrefix,
-          MaxResults: maxResults,
-          NextToken: nextToken,
+        QueueNamePrefix: queueNamePrefix,
+        MaxResults: maxResults,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  queueUrls: response.QueueUrls || [],
-                  nextToken: response.NextToken,
-              };
+        queueUrls: response.QueueUrls || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list all SQS queues', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all SQS queues',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

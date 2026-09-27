@@ -18,15 +18,18 @@ export const awsDeleteCostCategoryDefinition = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new DeleteCostCategoryDefinitionCommand({
-          CostCategoryArn: costCategoryArn,
+        CostCategoryArn: costCategoryArn,
       });
       const response = await client.send(command);
       return {
-                  costCategoryArn: response.CostCategoryArn,
-                  effectiveEnd: response.EffectiveEnd,
-              };
+        costCategoryArn: response.CostCategoryArn,
+        effectiveEnd: response.EffectiveEnd,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a Cost Category', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a Cost Category',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

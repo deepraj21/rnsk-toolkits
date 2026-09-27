@@ -13,7 +13,14 @@ export const awsDescribeSnapshots = tool({
     snapshotName: z.string().optional().describe('Filter by specific snapshot name'),
     maxRecords: z.number().optional().describe('Maximum number of records to return'),
   }),
-  execute: async ({ awsCredentials, region, replicationGroupId, cacheClusterId, snapshotName, maxRecords }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    replicationGroupId,
+    cacheClusterId,
+    snapshotName,
+    maxRecords,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,15 +28,18 @@ export const awsDescribeSnapshots = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new DescribeSnapshotsCommand({
-          ReplicationGroupId: replicationGroupId,
-          CacheClusterId: cacheClusterId,
-          SnapshotName: snapshotName,
-          MaxRecords: maxRecords,
+        ReplicationGroupId: replicationGroupId,
+        CacheClusterId: cacheClusterId,
+        SnapshotName: snapshotName,
+        MaxRecords: maxRecords,
       });
       const response = await client.send(command);
       return response.Snapshots;
     } catch (err) {
-      return { error: 'Failed to list Redis snapshots', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list Redis snapshots',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

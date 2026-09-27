@@ -11,10 +11,21 @@ export const awsUpdateFsxVolume = tool({
     clientRequestToken: z.string().optional().describe('Client request token for idempotency'),
     name: z.string().optional().describe('New name for the volume'),
     ontapConfiguration: z.record(z.any()).optional().describe('ONTAP volume configuration updates'),
-    openZFSConfiguration: z.record(z.any()).optional().describe('OpenZFS volume configuration updates'),
+    openZFSConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('OpenZFS volume configuration updates'),
     volumeId: z.string().describe('The ID of the volume'),
   }),
-  execute: async ({ awsCredentials, region, clientRequestToken, name, ontapConfiguration, openZFSConfiguration, volumeId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clientRequestToken,
+    name,
+    ontapConfiguration,
+    openZFSConfiguration,
+    volumeId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,18 +33,21 @@ export const awsUpdateFsxVolume = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new UpdateVolumeCommand({
-          ClientRequestToken: clientRequestToken,
-          Name: name,
-          OntapConfiguration: ontapConfiguration,
-          OpenZFSConfiguration: openZFSConfiguration,
-          VolumeId: volumeId,
+        ClientRequestToken: clientRequestToken,
+        Name: name,
+        OntapConfiguration: ontapConfiguration,
+        OpenZFSConfiguration: openZFSConfiguration,
+        VolumeId: volumeId,
       });
       const response = await client.send(command);
       return {
-                  volume: response.Volume,
-              };
+        volume: response.Volume,
+      };
     } catch (err) {
-      return { error: 'Failed to update a volume', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a volume',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

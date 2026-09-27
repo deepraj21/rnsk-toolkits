@@ -19,7 +19,20 @@ export const awsPutAutoscalingScheduledAction = tool({
     desiredCapacity: z.number().optional().describe('Desired capacity'),
     timeZone: z.string().optional().describe('Time zone'),
   }),
-  execute: async ({ awsCredentials, region, autoScalingGroupName, scheduledActionName, time, startTime, endTime, recurrence, minSize, maxSize, desiredCapacity, timeZone }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    autoScalingGroupName,
+    scheduledActionName,
+    time,
+    startTime,
+    endTime,
+    recurrence,
+    minSize,
+    maxSize,
+    desiredCapacity,
+    timeZone,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -27,24 +40,27 @@ export const awsPutAutoscalingScheduledAction = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new PutScheduledUpdateGroupActionCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          ScheduledActionName: scheduledActionName,
-          Time: time ? new Date(time) : undefined,
-          StartTime: startTime ? new Date(startTime) : undefined,
-          EndTime: endTime ? new Date(endTime) : undefined,
-          Recurrence: recurrence,
-          MinSize: minSize,
-          MaxSize: maxSize,
-          DesiredCapacity: desiredCapacity,
-          TimeZone: timeZone,
+        AutoScalingGroupName: autoScalingGroupName,
+        ScheduledActionName: scheduledActionName,
+        Time: time ? new Date(time) : undefined,
+        StartTime: startTime ? new Date(startTime) : undefined,
+        EndTime: endTime ? new Date(endTime) : undefined,
+        Recurrence: recurrence,
+        MinSize: minSize,
+        MaxSize: maxSize,
+        DesiredCapacity: desiredCapacity,
+        TimeZone: timeZone,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Scheduled action ${scheduledActionName} created/updated successfully`,
-              };
+        success: true,
+        message: `Scheduled action ${scheduledActionName} created/updated successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to create or update a scheduled action', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or update a scheduled action',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

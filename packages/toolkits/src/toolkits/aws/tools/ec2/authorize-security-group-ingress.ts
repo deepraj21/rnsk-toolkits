@@ -20,14 +20,17 @@ export const awsAuthorizeEc2SecurityGroupIngress = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new AuthorizeSecurityGroupIngressCommand({
-          GroupId: groupId,
-          GroupName: groupName,
-          IpPermissions: ipPermissions,
+        GroupId: groupId,
+        GroupName: groupName,
+        IpPermissions: ipPermissions,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to add inbound rules to a security group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add inbound rules to a security group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

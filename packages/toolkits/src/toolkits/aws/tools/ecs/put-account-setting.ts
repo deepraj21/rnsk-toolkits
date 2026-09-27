@@ -20,16 +20,19 @@ export const awsPutEcsAccountSetting = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new PutAccountSettingCommand({
-          name: name as any,
-          value: value,
-          principalArn: principalArn,
+        name: name as any,
+        value: value,
+        principalArn: principalArn,
       });
       const response = await client.send(command);
       return {
-                  setting: response.setting,
-              };
+        setting: response.setting,
+      };
     } catch (err) {
-      return { error: 'Failed to update an account setting', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an account setting',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

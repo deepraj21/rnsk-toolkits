@@ -9,7 +9,10 @@ export const awsDeleteCodeartifactRepository = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     domain: z.string().describe('The name of the domain that contains the repository'),
-    domainOwner: z.string().optional().describe('The 12-digit account number of the AWS account that owns the domain'),
+    domainOwner: z
+      .string()
+      .optional()
+      .describe('The 12-digit account number of the AWS account that owns the domain'),
     repository: z.string().describe('The name of the repository to delete'),
   }),
   execute: async ({ awsCredentials, region, domain, domainOwner, repository }) => {
@@ -20,16 +23,19 @@ export const awsDeleteCodeartifactRepository = tool({
       const client = createCodeArtifactClient(awsCredentials, region);
 
       const command = new DeleteRepositoryCommand({
-          domain: domain,
-          domainOwner: domainOwner,
-          repository: repository,
+        domain: domain,
+        domainOwner: domainOwner,
+        repository: repository,
       });
       const response = await client.send(command);
       return {
-                  repository: response.repository,
-              };
+        repository: response.repository,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CodeArtifact repository', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CodeArtifact repository',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

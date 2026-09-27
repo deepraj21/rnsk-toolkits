@@ -19,16 +19,19 @@ export const awsDeleteAutoscalingNotificationConfiguration = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DeleteNotificationConfigurationCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          TopicARN: topicARN,
+        AutoScalingGroupName: autoScalingGroupName,
+        TopicARN: topicARN,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Notification configuration deleted successfully`,
-              };
+        success: true,
+        message: `Notification configuration deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a notification configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a notification configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

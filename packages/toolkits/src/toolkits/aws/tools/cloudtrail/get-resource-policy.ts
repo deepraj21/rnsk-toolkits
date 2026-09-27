@@ -4,7 +4,8 @@ import { GetResourcePolicyCommand } from '@aws-sdk/client-cloudtrail';
 import { createCloudTrailClient } from '../client.js';
 
 export const awsGetResourcePolicy = tool({
-  description: 'Retrieves the JSON-formatted resource-based policy document attached to the CloudTrail channel. Use it to inspect current state before making changes.',
+  description:
+    'Retrieves the JSON-formatted resource-based policy document attached to the CloudTrail channel. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,19 @@ export const awsGetResourcePolicy = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new GetResourcePolicyCommand({
-          ResourceArn: resourceArn,
+        ResourceArn: resourceArn,
       });
       const response = await client.send(command);
       return {
-                  resourceArn: response.ResourceArn,
-                  resourcePolicy: response.ResourcePolicy,
-              };
+        resourceArn: response.ResourceArn,
+        resourcePolicy: response.ResourcePolicy,
+      };
     } catch (err) {
-      return { error: 'Failed to retrieves the JSON-formatted resource-based policy document attached to the CloudTrail channel', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error:
+          'Failed to retrieves the JSON-formatted resource-based policy document attached to the CloudTrail channel',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

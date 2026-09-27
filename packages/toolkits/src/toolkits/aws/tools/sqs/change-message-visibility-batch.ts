@@ -4,7 +4,8 @@ import { ChangeMessageVisibilityBatchCommand } from '@aws-sdk/client-sqs';
 import { createSqsClient } from '../client.js';
 
 export const awsChangeSqsMessageVisibilityBatch = tool({
-  description: 'Change the visibility timeout of multiple messages in a batch. Use it to change the configuration of the resource.',
+  description:
+    'Change the visibility timeout of multiple messages in a batch. Use it to change the configuration of the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,19 @@ export const awsChangeSqsMessageVisibilityBatch = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new ChangeMessageVisibilityBatchCommand({
-          QueueUrl: queueUrl,
-          Entries: entries as any,
+        QueueUrl: queueUrl,
+        Entries: entries as any,
       });
       const response = await client.send(command);
       return {
-                  successful: response.Successful || [],
-                  failed: response.Failed || [],
-              };
+        successful: response.Successful || [],
+        failed: response.Failed || [],
+      };
     } catch (err) {
-      return { error: 'Failed to change the visibility timeout of multiple messages in a batch', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to change the visibility timeout of multiple messages in a batch',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

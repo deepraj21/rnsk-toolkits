@@ -4,7 +4,8 @@ import { ListReusableDelegationSetsCommand } from '@aws-sdk/client-route-53';
 import { createRoute53Client } from '../client.js';
 
 export const awsListRoute53ReusableDelegationSets = tool({
-  description: 'List all reusable delegation sets. Use it to inspect current state before making changes.',
+  description:
+    'List all reusable delegation sets. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,19 +20,22 @@ export const awsListRoute53ReusableDelegationSets = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new ListReusableDelegationSetsCommand({
-          Marker: marker,
-          MaxItems: maxItems,
+        Marker: marker,
+        MaxItems: maxItems,
       });
       const response = await client.send(command);
       return {
-                  delegationSets: response.DelegationSets,
-                  marker: response.Marker,
-                  isTruncated: response.IsTruncated,
-                  nextMarker: response.NextMarker,
-                  maxItems: response.MaxItems,
-              };
+        delegationSets: response.DelegationSets,
+        marker: response.Marker,
+        isTruncated: response.IsTruncated,
+        nextMarker: response.NextMarker,
+        maxItems: response.MaxItems,
+      };
     } catch (err) {
-      return { error: 'Failed to list all reusable delegation sets', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all reusable delegation sets',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

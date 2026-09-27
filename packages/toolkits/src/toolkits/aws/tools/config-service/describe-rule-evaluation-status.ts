@@ -4,7 +4,8 @@ import { DescribeConfigRuleEvaluationStatusCommand } from '@aws-sdk/client-confi
 import { createConfigServiceClient } from '../client.js';
 
 export const awsDescribeConfigRuleEvaluationStatus = tool({
-  description: 'Returns status information for each of your Config managed rules. Use it to inspect current state before making changes.',
+  description:
+    'Returns status information for each of your Config managed rules. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsDescribeConfigRuleEvaluationStatus = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DescribeConfigRuleEvaluationStatusCommand({
-          ConfigRuleNames: configRuleNames,
-          NextToken: nextToken,
-          Limit: limit,
+        ConfigRuleNames: configRuleNames,
+        NextToken: nextToken,
+        Limit: limit,
       });
       const response = await client.send(command);
       return {
-                  configRulesEvaluationStatus: response.ConfigRulesEvaluationStatus || [],
-                  nextToken: response.NextToken,
-              };
+        configRulesEvaluationStatus: response.ConfigRulesEvaluationStatus || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to returns status information for each of your Config managed rules', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to returns status information for each of your Config managed rules',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -13,8 +13,14 @@ export const awsRunEcsTask = tool({
     overrides: z.record(z.any()).optional().describe('Task overrides'),
     count: z.number().optional().describe('Number of tasks to run'),
     startedBy: z.string().optional().describe('Who started the task'),
-    launchType: z.enum(['EC2', 'FARGATE', 'EXTERNAL']).optional().describe('Launch type (EC2, FARGATE, EXTERNAL)'),
-    capacityProviderStrategy: z.array(z.record(z.any())).optional().describe('Capacity provider strategy'),
+    launchType: z
+      .enum(['EC2', 'FARGATE', 'EXTERNAL'])
+      .optional()
+      .describe('Launch type (EC2, FARGATE, EXTERNAL)'),
+    capacityProviderStrategy: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Capacity provider strategy'),
     platformVersion: z.string().optional().describe('Platform version for Fargate'),
     placementConstraints: z.array(z.record(z.any())).optional().describe('Placement constraints'),
     placementStrategy: z.array(z.record(z.any())).optional().describe('Placement strategy'),
@@ -22,10 +28,32 @@ export const awsRunEcsTask = tool({
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the task'),
     enableExecuteCommand: z.boolean().optional().describe('Enable ECS Exec'),
     enableLogging: z.boolean().optional().describe('Enable logging'),
-    propagateTags: z.enum(['TASK_DEFINITION', 'SERVICE', 'NONE']).optional().describe('Tag propagation (TASK_DEFINITION, SERVICE, NONE)'),
+    propagateTags: z
+      .enum(['TASK_DEFINITION', 'SERVICE', 'NONE'])
+      .optional()
+      .describe('Tag propagation (TASK_DEFINITION, SERVICE, NONE)'),
     referenceId: z.string().optional().describe('Reference ID for the task'),
   }),
-  execute: async ({ awsCredentials, region, cluster, taskDefinition, overrides, count, startedBy, launchType, capacityProviderStrategy, platformVersion, placementConstraints, placementStrategy, networkConfiguration, tags, enableExecuteCommand, enableLogging, propagateTags, referenceId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cluster,
+    taskDefinition,
+    overrides,
+    count,
+    startedBy,
+    launchType,
+    capacityProviderStrategy,
+    platformVersion,
+    placementConstraints,
+    placementStrategy,
+    networkConfiguration,
+    tags,
+    enableExecuteCommand,
+    enableLogging,
+    propagateTags,
+    referenceId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -33,29 +61,32 @@ export const awsRunEcsTask = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new RunTaskCommand({
-          cluster: cluster,
-          taskDefinition: taskDefinition,
-          overrides: overrides,
-          count: count,
-          startedBy: startedBy,
-          launchType: launchType as any,
-          capacityProviderStrategy: capacityProviderStrategy,
-          platformVersion: platformVersion,
-          placementConstraints: placementConstraints,
-          placementStrategy: placementStrategy,
-          networkConfiguration: networkConfiguration,
-          tags: tags,
-          enableExecuteCommand: enableExecuteCommand,
-          propagateTags: propagateTags as any,
-          referenceId: referenceId,
+        cluster: cluster,
+        taskDefinition: taskDefinition,
+        overrides: overrides,
+        count: count,
+        startedBy: startedBy,
+        launchType: launchType as any,
+        capacityProviderStrategy: capacityProviderStrategy,
+        platformVersion: platformVersion,
+        placementConstraints: placementConstraints,
+        placementStrategy: placementStrategy,
+        networkConfiguration: networkConfiguration,
+        tags: tags,
+        enableExecuteCommand: enableExecuteCommand,
+        propagateTags: propagateTags as any,
+        referenceId: referenceId,
       } as any);
       const response = await client.send(command);
       return {
-                  tasks: response.tasks || [],
-                  failures: response.failures || [],
-              };
+        tasks: response.tasks || [],
+        failures: response.failures || [],
+      };
     } catch (err) {
-      return { error: 'Failed to run a new task in an ECS cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to run a new task in an ECS cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

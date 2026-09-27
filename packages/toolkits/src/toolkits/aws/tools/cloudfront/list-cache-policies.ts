@@ -4,7 +4,8 @@ import { ListCachePoliciesCommand } from '@aws-sdk/client-cloudfront';
 import { createCloudFrontClient } from '../client.js';
 
 export const awsListCloudfrontCachePolicies = tool({
-  description: 'List all CloudFront cache policies. Use it to inspect current state before making changes.',
+  description:
+    'List all CloudFront cache policies. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,16 +21,19 @@ export const awsListCloudfrontCachePolicies = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new ListCachePoliciesCommand({
-          Type: type as any,
-          Marker: marker,
-          MaxItems: maxItems,
+        Type: type as any,
+        Marker: marker,
+        MaxItems: maxItems,
       });
       const response = await client.send(command);
       return {
-                  cachePolicyList: response.CachePolicyList,
-              };
+        cachePolicyList: response.CachePolicyList,
+      };
     } catch (err) {
-      return { error: 'Failed to list all CloudFront cache policies', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all CloudFront cache policies',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

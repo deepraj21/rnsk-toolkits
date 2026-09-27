@@ -18,14 +18,17 @@ export const awsDeleteEksCluster = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DeleteClusterCommand({
-          name: name,
+        name: name,
       });
       const response = await client.send(command);
       return {
-                  cluster: response.cluster,
-              };
+        cluster: response.cluster,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an EKS cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an EKS cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

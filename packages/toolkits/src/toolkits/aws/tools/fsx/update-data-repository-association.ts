@@ -13,7 +13,14 @@ export const awsUpdateFsxDataRepositoryAssociation = tool({
     importedFileChunkSize: z.number().optional().describe('Chunk size for imported files'),
     s3: z.record(z.any()).optional().describe('S3 configuration updates'),
   }),
-  execute: async ({ awsCredentials, region, associationId, clientRequestToken, importedFileChunkSize, s3 }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    associationId,
+    clientRequestToken,
+    importedFileChunkSize,
+    s3,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,17 +28,20 @@ export const awsUpdateFsxDataRepositoryAssociation = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new UpdateDataRepositoryAssociationCommand({
-          AssociationId: associationId,
-          ClientRequestToken: clientRequestToken,
-          ImportedFileChunkSize: importedFileChunkSize,
-          S3: s3,
+        AssociationId: associationId,
+        ClientRequestToken: clientRequestToken,
+        ImportedFileChunkSize: importedFileChunkSize,
+        S3: s3,
       });
       const response = await client.send(command);
       return {
-                  association: response.Association,
-              };
+        association: response.Association,
+      };
     } catch (err) {
-      return { error: 'Failed to update a data repository association', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a data repository association',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

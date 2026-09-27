@@ -16,7 +16,17 @@ export const awsListSagemakerModels = tool({
     creationTimeBefore: z.string().optional().describe('Filter by creation time before (ISO 8601)'),
     nameContains: z.string().optional().describe('Filter by name containing'),
   }),
-  execute: async ({ awsCredentials, region, nextToken, maxResults, sortBy, sortOrder, creationTimeAfter, creationTimeBefore, nameContains }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    nextToken,
+    maxResults,
+    sortBy,
+    sortOrder,
+    creationTimeAfter,
+    creationTimeBefore,
+    nameContains,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,21 +34,24 @@ export const awsListSagemakerModels = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new ListModelsCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
-          SortBy: sortBy,
-          SortOrder: sortOrder,
-          CreationTimeAfter: creationTimeAfter ? new Date(creationTimeAfter) : undefined,
-          CreationTimeBefore: creationTimeBefore ? new Date(creationTimeBefore) : undefined,
-          NameContains: nameContains,
+        NextToken: nextToken,
+        MaxResults: maxResults,
+        SortBy: sortBy,
+        SortOrder: sortOrder,
+        CreationTimeAfter: creationTimeAfter ? new Date(creationTimeAfter) : undefined,
+        CreationTimeBefore: creationTimeBefore ? new Date(creationTimeBefore) : undefined,
+        NameContains: nameContains,
       });
       const response = await client.send(command);
       return {
-                  models: response.Models || [],
-                  nextToken: response.NextToken,
-              };
+        models: response.Models || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list SageMaker models', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list SageMaker models',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

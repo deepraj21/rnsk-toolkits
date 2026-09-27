@@ -19,16 +19,19 @@ export const awsUpdateCodedeployApplication = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new UpdateApplicationCommand({
-          applicationName: applicationName,
-          newApplicationName: newApplicationName,
+        applicationName: applicationName,
+        newApplicationName: newApplicationName,
       });
       await client.send(command);
       return {
-                  message: 'Application updated successfully',
-                  applicationName: newApplicationName || applicationName,
-              };
+        message: 'Application updated successfully',
+        applicationName: newApplicationName || applicationName,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CodeDeploy application', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CodeDeploy application',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

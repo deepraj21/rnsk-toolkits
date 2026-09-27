@@ -19,16 +19,19 @@ export const awsDeleteCloudfrontFunction = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new DeleteFunctionCommand({
-          Name: name,
-          IfMatch: ifMatch,
+        Name: name,
+        IfMatch: ifMatch,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Function ${name} deleted successfully`,
-              };
+        success: true,
+        message: `Function ${name} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CloudFront function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CloudFront function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

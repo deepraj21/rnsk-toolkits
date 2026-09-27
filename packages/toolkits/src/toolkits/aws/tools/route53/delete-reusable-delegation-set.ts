@@ -17,15 +17,20 @@ export const awsDeleteRoute53ReusableDelegationSet = tool({
     try {
       const client = createRoute53Client(awsCredentials, region);
 
-      await client.send(new DeleteReusableDelegationSetCommand({
+      await client.send(
+        new DeleteReusableDelegationSetCommand({
           Id: id,
-      }));
+        }),
+      );
       return {
-                  success: true,
-                  message: `Delegation set ${id} deleted successfully`,
-              };
+        success: true,
+        message: `Delegation set ${id} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a reusable delegation set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a reusable delegation set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

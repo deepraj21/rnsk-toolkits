@@ -50,18 +50,40 @@ function parseCsvLine(line: string): string[] {
 }
 
 export const growwSearchInstruments = tool({
-  description: 'Search the Groww instruments master (no auth needed). Downloads the official CSV and filters by exchange, segment, symbol text, underlying or instrument type. Use it to resolve trading_symbol (for orders) and groww_symbol (for backtesting).',
+  description:
+    'Search the Groww instruments master (no auth needed). Downloads the official CSV and filters by exchange, segment, symbol text, underlying or instrument type. Use it to resolve trading_symbol (for orders) and groww_symbol (for backtesting).',
   inputSchema: z.object({
     exchange: z.string().optional().describe('Filter by exchange: NSE or BSE'),
     segment: z.string().optional().describe('Filter by segment: CASH or FNO'),
-    trading_symbol: z.string().optional().describe('Substring match on trading_symbol, e.g. RELIANCE'),
+    trading_symbol: z
+      .string()
+      .optional()
+      .describe('Substring match on trading_symbol, e.g. RELIANCE'),
     groww_symbol: z.string().optional().describe('Substring match on groww_symbol, e.g. NSE-NIFTY'),
-    underlying_symbol: z.string().optional().describe('Exact match on underlying symbol, e.g. NIFTY'),
+    underlying_symbol: z
+      .string()
+      .optional()
+      .describe('Exact match on underlying symbol, e.g. NIFTY'),
     instrument_type: z.string().optional().describe('CE, PE, FUT, EQ, etc.'),
-    limit: z.number().int().min(1).max(200).optional().describe('Max rows to return, default 50, max 200'),
+    limit: z
+      .number()
+      .int()
+      .min(1)
+      .max(200)
+      .optional()
+      .describe('Max rows to return, default 50, max 200'),
     offset: z.number().int().min(0).optional().describe('Rows to skip, default 0'),
   }),
-  execute: async ({ exchange, segment, trading_symbol, groww_symbol, underlying_symbol, instrument_type, limit = 50, offset = 0 }) => {
+  execute: async ({
+    exchange,
+    segment,
+    trading_symbol,
+    groww_symbol,
+    underlying_symbol,
+    instrument_type,
+    limit = 50,
+    offset = 0,
+  }) => {
     try {
       const response = await fetch(GROWW_INSTRUMENTS_URL);
       if (!response.ok) {
@@ -82,10 +104,23 @@ export const growwSearchInstruments = tool({
         const get = (name: string) => (idx[name] !== undefined ? (cols[idx[name]] ?? '') : '');
         if (exchange && get('exchange').toUpperCase() !== exchange.toUpperCase()) continue;
         if (segment && get('segment').toUpperCase() !== segment.toUpperCase()) continue;
-        if (trading_symbol && !get('trading_symbol').toUpperCase().includes(trading_symbol.toUpperCase())) continue;
-        if (groww_symbol && !get('groww_symbol').toUpperCase().includes(groww_symbol.toUpperCase())) continue;
-        if (underlying_symbol && get('underlying_symbol').toUpperCase() !== underlying_symbol.toUpperCase()) continue;
-        if (instrument_type && get('instrument_type').toUpperCase() !== instrument_type.toUpperCase()) continue;
+        if (
+          trading_symbol &&
+          !get('trading_symbol').toUpperCase().includes(trading_symbol.toUpperCase())
+        )
+          continue;
+        if (groww_symbol && !get('groww_symbol').toUpperCase().includes(groww_symbol.toUpperCase()))
+          continue;
+        if (
+          underlying_symbol &&
+          get('underlying_symbol').toUpperCase() !== underlying_symbol.toUpperCase()
+        )
+          continue;
+        if (
+          instrument_type &&
+          get('instrument_type').toUpperCase() !== instrument_type.toUpperCase()
+        )
+          continue;
         scanned++;
         if (scanned <= offset) continue;
         const row: Record<string, string> = {};
@@ -102,7 +137,10 @@ export const growwSearchInstruments = tool({
         note: 'Full CSV is large; results are filtered server-side in this tool. Narrow filters for precise symbol resolution.',
       };
     } catch (error) {
-      return { error: 'Error searching instruments', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error searching instruments',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });

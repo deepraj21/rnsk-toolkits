@@ -8,9 +8,19 @@ export const listRepos = tool({
     'List repositories for the authenticated GitHub user. Returns repo name, full_name, description, visibility, and URL. Use when the user asks to see their repos, list their repositories, or browse their GitHub repos.',
   inputSchema: z.object({
     githubToken: z.string().optional().describe('Injected by system; do not provide'),
-    perPage: z.number().min(1).max(100).optional().default(30).describe('Number of repos per page (max 100)'),
+    perPage: z
+      .number()
+      .min(1)
+      .max(100)
+      .optional()
+      .default(30)
+      .describe('Number of repos per page (max 100)'),
     page: z.number().min(1).optional().default(1).describe('Page number'),
-    sort: z.enum(['created', 'updated', 'pushed', 'full_name']).optional().default('updated').describe('Sort order'),
+    sort: z
+      .enum(['created', 'updated', 'pushed', 'full_name'])
+      .optional()
+      .default('updated')
+      .describe('Sort order'),
   }),
   execute: async ({ githubToken, perPage = 30, page = 1, sort = 'updated' }) => {
     if (!githubToken) {

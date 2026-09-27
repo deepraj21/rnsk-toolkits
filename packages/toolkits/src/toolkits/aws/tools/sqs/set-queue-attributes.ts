@@ -4,7 +4,8 @@ import { SetQueueAttributesCommand } from '@aws-sdk/client-sqs';
 import { createSqsClient } from '../client.js';
 
 export const awsSetSqsQueueAttributes = tool({
-  description: 'Set attributes of an SQS queue. Use it to change the configuration of the resource.',
+  description:
+    'Set attributes of an SQS queue. Use it to change the configuration of the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,19 @@ export const awsSetSqsQueueAttributes = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new SetQueueAttributesCommand({
-          QueueUrl: queueUrl,
-          Attributes: attributes,
+        QueueUrl: queueUrl,
+        Attributes: attributes,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Attributes set successfully for queue ${queueUrl}`,
-              };
+        success: true,
+        message: `Attributes set successfully for queue ${queueUrl}`,
+      };
     } catch (err) {
-      return { error: 'Failed to set attributes of an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set attributes of an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

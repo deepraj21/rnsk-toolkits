@@ -20,14 +20,17 @@ export const awsListKmsAliases = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new ListAliasesCommand({
-          KeyId: keyId,
-          Limit: limit,
-          Marker: marker,
+        KeyId: keyId,
+        Limit: limit,
+        Marker: marker,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to list aliases for KMS keys', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list aliases for KMS keys',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

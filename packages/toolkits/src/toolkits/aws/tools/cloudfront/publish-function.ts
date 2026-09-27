@@ -19,15 +19,18 @@ export const awsPublishCloudfrontFunction = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new PublishFunctionCommand({
-          Name: name,
-          IfMatch: ifMatch,
+        Name: name,
+        IfMatch: ifMatch,
       });
       const response = await client.send(command);
       return {
-                  functionSummary: response.FunctionSummary,
-              };
+        functionSummary: response.FunctionSummary,
+      };
     } catch (err) {
-      return { error: 'Failed to publish a CloudFront function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to publish a CloudFront function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

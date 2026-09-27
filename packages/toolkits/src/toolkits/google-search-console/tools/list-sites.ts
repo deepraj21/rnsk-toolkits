@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { webmastersRequest } from './utils.js';
 
 export const listSites = tool({
-  description: 'List all site properties accessible to the authenticated user in Google Search Console.',
+  description:
+    'List all site properties accessible to the authenticated user in Google Search Console.',
   inputSchema: z.object({
     googleSearchConsoleToken: z.string().describe('The Google Search Console access token'),
   }),

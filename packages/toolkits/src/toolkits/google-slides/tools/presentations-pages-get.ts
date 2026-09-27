@@ -18,7 +18,11 @@ export const presentationsPagesGet = tool({
       );
 
       if (!result.ok) {
-        return { error: 'Failed to get presentation page', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to get presentation page',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

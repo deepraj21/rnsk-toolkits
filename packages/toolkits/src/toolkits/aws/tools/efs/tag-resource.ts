@@ -19,16 +19,19 @@ export const awsTagEfsResource = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          ResourceId: resourceId,
-          Tags: tags,
+        ResourceId: resourceId,
+        Tags: tags,
       } as any);
       await client.send(command);
       return {
-                  message: 'Tags applied successfully',
-                  resourceId: resourceId,
-              };
+        message: 'Tags applied successfully',
+        resourceId: resourceId,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to an EFS resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to an EFS resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

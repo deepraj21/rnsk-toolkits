@@ -20,17 +20,20 @@ export const awsUpdateCloudfrontCachePolicy = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdateCachePolicyCommand({
-          CachePolicyConfig: cachePolicyConfig,
-          Id: id,
-          IfMatch: ifMatch,
+        CachePolicyConfig: cachePolicyConfig,
+        Id: id,
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  cachePolicy: response.CachePolicy,
-                  eTag: response.ETag,
-              };
+        cachePolicy: response.CachePolicy,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront cache policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront cache policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

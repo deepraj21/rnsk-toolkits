@@ -4,7 +4,8 @@ import { CreateMonitoringSubscriptionCommand } from '@aws-sdk/client-cloudfront'
 import { createCloudFrontClient } from '../client.js';
 
 export const awsCreateCloudfrontMonitoringSubscription = tool({
-  description: 'Create monitoring subscription for a CloudFront distribution. Use it to provision a new resource.',
+  description:
+    'Create monitoring subscription for a CloudFront distribution. Use it to provision a new resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsCreateCloudfrontMonitoringSubscription = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateMonitoringSubscriptionCommand({
-          DistributionId: distributionId,
-          MonitoringSubscription: monitoringSubscription,
+        DistributionId: distributionId,
+        MonitoringSubscription: monitoringSubscription,
       });
       const response = await client.send(command);
       return {
-                  monitoringSubscription: response.MonitoringSubscription,
-              };
+        monitoringSubscription: response.MonitoringSubscription,
+      };
     } catch (err) {
-      return { error: 'Failed to create monitoring subscription for a CloudFront distribution', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create monitoring subscription for a CloudFront distribution',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

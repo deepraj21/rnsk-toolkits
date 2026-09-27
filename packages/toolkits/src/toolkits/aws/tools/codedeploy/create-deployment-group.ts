@@ -12,8 +12,14 @@ export const awsCreateCodedeployDeploymentGroup = tool({
     deploymentGroupName: z.string().describe('The name of the deployment group'),
     serviceRoleArn: z.string().describe('The ARN of the service role'),
     deploymentConfigName: z.string().optional().describe('The deployment configuration name'),
-    ec2TagFilters: z.enum(['KEY_ONLY', 'VALUE_ONLY', 'KEY_AND_VALUE']).optional().describe('EC2 tag filters'),
-    onPremisesInstanceTagFilters: z.enum(['KEY_ONLY', 'VALUE_ONLY', 'KEY_AND_VALUE']).optional().describe('On-premises instance tag filters'),
+    ec2TagFilters: z
+      .enum(['KEY_ONLY', 'VALUE_ONLY', 'KEY_AND_VALUE'])
+      .optional()
+      .describe('EC2 tag filters'),
+    onPremisesInstanceTagFilters: z
+      .enum(['KEY_ONLY', 'VALUE_ONLY', 'KEY_AND_VALUE'])
+      .optional()
+      .describe('On-premises instance tag filters'),
     autoScalingGroups: z.array(z.string()).optional().describe('Auto Scaling group names'),
     loadBalancerInfo: z.record(z.any()).optional().describe('Load balancer information'),
     ec2TagSet: z.record(z.any()).optional().describe('EC2 tag set'),
@@ -22,10 +28,32 @@ export const awsCreateCodedeployDeploymentGroup = tool({
     alarmConfiguration: z.record(z.any()).optional().describe('Alarm configuration'),
     autoRollbackConfiguration: z.record(z.any()).optional().describe('Auto rollback configuration'),
     deploymentStyle: z.record(z.any()).optional().describe('Deployment style'),
-    blueGreenDeploymentConfiguration: z.record(z.any()).optional().describe('Blue/green deployment configuration'),
+    blueGreenDeploymentConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('Blue/green deployment configuration'),
     ecsServices: z.array(z.record(z.any())).optional().describe('ECS services'),
   }),
-  execute: async ({ awsCredentials, region, applicationName, deploymentGroupName, serviceRoleArn, deploymentConfigName, ec2TagFilters, onPremisesInstanceTagFilters, autoScalingGroups, loadBalancerInfo, ec2TagSet, onPremisesTagSet, tags, alarmConfiguration, autoRollbackConfiguration, deploymentStyle, blueGreenDeploymentConfiguration, ecsServices }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    applicationName,
+    deploymentGroupName,
+    serviceRoleArn,
+    deploymentConfigName,
+    ec2TagFilters,
+    onPremisesInstanceTagFilters,
+    autoScalingGroups,
+    loadBalancerInfo,
+    ec2TagSet,
+    onPremisesTagSet,
+    tags,
+    alarmConfiguration,
+    autoRollbackConfiguration,
+    deploymentStyle,
+    blueGreenDeploymentConfiguration,
+    ecsServices,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -33,29 +61,32 @@ export const awsCreateCodedeployDeploymentGroup = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new CreateDeploymentGroupCommand({
-          applicationName: applicationName,
-          deploymentGroupName: deploymentGroupName,
-          serviceRoleArn: serviceRoleArn,
-          deploymentConfigName: deploymentConfigName,
-          ec2TagFilters: ec2TagFilters,
-          onPremisesInstanceTagFilters: onPremisesInstanceTagFilters,
-          autoScalingGroups: autoScalingGroups,
-          loadBalancerInfo: loadBalancerInfo,
-          ec2TagSet: ec2TagSet,
-          onPremisesTagSet: onPremisesTagSet,
-          tags: tags,
-          alarmConfiguration: alarmConfiguration,
-          autoRollbackConfiguration: autoRollbackConfiguration,
-          deploymentStyle: deploymentStyle,
-          blueGreenDeploymentConfiguration: blueGreenDeploymentConfiguration,
-          ecsServices: ecsServices,
+        applicationName: applicationName,
+        deploymentGroupName: deploymentGroupName,
+        serviceRoleArn: serviceRoleArn,
+        deploymentConfigName: deploymentConfigName,
+        ec2TagFilters: ec2TagFilters,
+        onPremisesInstanceTagFilters: onPremisesInstanceTagFilters,
+        autoScalingGroups: autoScalingGroups,
+        loadBalancerInfo: loadBalancerInfo,
+        ec2TagSet: ec2TagSet,
+        onPremisesTagSet: onPremisesTagSet,
+        tags: tags,
+        alarmConfiguration: alarmConfiguration,
+        autoRollbackConfiguration: autoRollbackConfiguration,
+        deploymentStyle: deploymentStyle,
+        blueGreenDeploymentConfiguration: blueGreenDeploymentConfiguration,
+        ecsServices: ecsServices,
       } as any);
       const response = await client.send(command);
       return {
-                  deploymentGroupId: response.deploymentGroupId,
-              };
+        deploymentGroupId: response.deploymentGroupId,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new deployment group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new deployment group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

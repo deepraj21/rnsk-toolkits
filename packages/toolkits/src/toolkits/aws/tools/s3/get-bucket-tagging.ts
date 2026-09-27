@@ -21,7 +21,10 @@ export const awsGetS3BucketTagging = tool({
       const response = await client.send(command);
       return { tags: response.TagSet };
     } catch (err) {
-      return { error: 'Failed to get tags for an S3 bucket', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get tags for an S3 bucket',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

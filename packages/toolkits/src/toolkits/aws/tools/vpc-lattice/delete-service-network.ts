@@ -18,15 +18,18 @@ export const awsDeleteVpcLatticeServiceNetwork = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new DeleteServiceNetworkCommand({
-          serviceNetworkIdentifier: serviceNetworkIdentifier,
+        serviceNetworkIdentifier: serviceNetworkIdentifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Service network ${serviceNetworkIdentifier} deleted successfully`,
-              };
+        success: true,
+        message: `Service network ${serviceNetworkIdentifier} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a VPC Lattice service network', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a VPC Lattice service network',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

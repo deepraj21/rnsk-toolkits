@@ -6,7 +6,8 @@ import { accuweatherTools } from './tools/index.js';
 export default defineToolkit({
   id: 'accuweather',
   displayName: 'AccuWeather',
-  shortDescription: 'Look up locations, current conditions, forecasts, alerts, lifestyle indices, tropical storms, and lightning data.',
+  shortDescription:
+    'Look up locations, current conditions, forecasts, alerts, lifestyle indices, tropical storms, and lightning data.',
   category: 'Data & Analytics',
   icon: ACCUWEATHER_ICON,
   auth: {

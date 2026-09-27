@@ -18,15 +18,18 @@ export const awsDeleteSnsTopic = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new DeleteTopicCommand({
-          TopicArn: topicArn,
+        TopicArn: topicArn,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Topic ${topicArn} deleted successfully`,
-              };
+        success: true,
+        message: `Topic ${topicArn} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an SNS topic', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an SNS topic',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

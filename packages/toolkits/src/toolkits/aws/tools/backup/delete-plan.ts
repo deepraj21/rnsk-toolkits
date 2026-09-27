@@ -18,17 +18,20 @@ export const awsDeleteBackupPlan = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new DeleteBackupPlanCommand({
-          BackupPlanId: backupPlanId,
+        BackupPlanId: backupPlanId,
       });
       const response = await client.send(command);
       return {
-                  backupPlanId: response.BackupPlanId,
-                  backupPlanArn: response.BackupPlanArn,
-                  deletionDate: response.DeletionDate,
-                  versionId: response.VersionId,
-              };
+        backupPlanId: response.BackupPlanId,
+        backupPlanArn: response.BackupPlanArn,
+        deletionDate: response.DeletionDate,
+        versionId: response.VersionId,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a backup plan', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a backup plan',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

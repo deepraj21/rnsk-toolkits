@@ -9,7 +9,9 @@ export const awsCreateCloudfrontInvalidation = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     distributionId: z.string().describe('The distribution ID'),
-    invalidationBatch: z.record(z.any()).describe('Invalidation batch object with paths and caller reference'),
+    invalidationBatch: z
+      .record(z.any())
+      .describe('Invalidation batch object with paths and caller reference'),
   }),
   execute: async ({ awsCredentials, region, distributionId, invalidationBatch }) => {
     if (!awsCredentials) {
@@ -19,16 +21,19 @@ export const awsCreateCloudfrontInvalidation = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateInvalidationCommand({
-          DistributionId: distributionId,
-          InvalidationBatch: invalidationBatch,
+        DistributionId: distributionId,
+        InvalidationBatch: invalidationBatch,
       } as any);
       const response = await client.send(command);
       return {
-                  invalidation: response.Invalidation,
-                  location: response.Location,
-              };
+        invalidation: response.Invalidation,
+        location: response.Location,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront invalidation', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront invalidation',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

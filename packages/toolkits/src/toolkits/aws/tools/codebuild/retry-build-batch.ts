@@ -10,7 +10,10 @@ export const awsRetryCodebuildBuildBatch = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     id: z.string().describe('Specifies the identifier of the batch build to restart'),
     idempotencyToken: z.string().optional().describe('idempotencyToken'),
-    retryType: z.enum(['RETRY_ALL_BUILDS', 'RETRY_FAILED_BUILDS']).optional().describe('Specifies the type of retry to perform'),
+    retryType: z
+      .enum(['RETRY_ALL_BUILDS', 'RETRY_FAILED_BUILDS'])
+      .optional()
+      .describe('Specifies the type of retry to perform'),
   }),
   execute: async ({ awsCredentials, region, id, idempotencyToken, retryType }) => {
     if (!awsCredentials) {
@@ -20,16 +23,19 @@ export const awsRetryCodebuildBuildBatch = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new RetryBuildBatchCommand({
-          id: id,
-          idempotencyToken: idempotencyToken,
-          retryType: retryType as any,
+        id: id,
+        idempotencyToken: idempotencyToken,
+        retryType: retryType as any,
       });
       const response = await client.send(command);
       return {
-                  buildBatch: response.buildBatch,
-              };
+        buildBatch: response.buildBatch,
+      };
     } catch (err) {
-      return { error: 'Failed to restarts a failed batch build', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to restarts a failed batch build',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

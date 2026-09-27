@@ -5,8 +5,7 @@ import { dockerHubTools } from './tools/index.js';
 export default defineToolkit({
   id: 'docker-hub',
   displayName: 'Docker Hub',
-  shortDescription:
-    'Manage Docker Hub repositories, organizations, teams, tags, and images.',
+  shortDescription: 'Manage Docker Hub repositories, organizations, teams, tags, and images.',
   category: 'Developer Tools & DevOps',
   icon: DOCKER_HUB_ICON,
   auth: {

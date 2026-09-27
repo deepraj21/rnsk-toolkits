@@ -12,7 +12,13 @@ export const awsCreateVpcLatticeServiceNetworkServiceAssociation = tool({
     serviceIdentifier: z.string().describe('The service identifier'),
     tags: z.record(z.any()).optional().describe('Tags to apply'),
   }),
-  execute: async ({ awsCredentials, region, serviceNetworkIdentifier, serviceIdentifier, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    serviceNetworkIdentifier,
+    serviceIdentifier,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,18 +26,21 @@ export const awsCreateVpcLatticeServiceNetworkServiceAssociation = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new CreateServiceNetworkServiceAssociationCommand({
-          serviceNetworkIdentifier: serviceNetworkIdentifier,
-          serviceIdentifier: serviceIdentifier,
-          tags: tags,
+        serviceNetworkIdentifier: serviceNetworkIdentifier,
+        serviceIdentifier: serviceIdentifier,
+        tags: tags,
       });
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  dnsEntry: response.dnsEntry,
-                  id: response.id,
-              };
+        arn: response.arn,
+        dnsEntry: response.dnsEntry,
+        id: response.id,
+      };
     } catch (err) {
-      return { error: 'Failed to create a service network service association', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a service network service association',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

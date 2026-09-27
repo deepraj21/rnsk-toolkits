@@ -19,7 +19,11 @@ export const getParticipantSession = tool({
       const result = await googleMeetRequest(googleMeetToken, `/${name}`);
 
       if (!result.ok) {
-        return { error: 'Failed to get participant session', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to get participant session',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

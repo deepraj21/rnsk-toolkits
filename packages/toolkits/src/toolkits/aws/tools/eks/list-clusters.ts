@@ -4,7 +4,8 @@ import { ListClustersCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsListEksClusters = tool({
-  description: 'List all EKS clusters in your AWS account. Use it to inspect current state before making changes.',
+  description:
+    'List all EKS clusters in your AWS account. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsListEksClusters = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new ListClustersCommand({
-          maxResults: maxResults,
-          nextToken: nextToken,
-          include: include as any,
+        maxResults: maxResults,
+        nextToken: nextToken,
+        include: include as any,
       });
       const response = await client.send(command);
       return {
-                  clusters: response.clusters || [],
-                  nextToken: response.nextToken,
-              };
+        clusters: response.clusters || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list all EKS clusters in your AWS account', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all EKS clusters in your AWS account',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -15,7 +15,16 @@ export const awsCreateEksPodIdentityAssociation = tool({
     tags: z.record(z.any()).optional().describe('Tags to apply'),
     clientRequestToken: z.string().optional().describe('Unique identifier for the request'),
   }),
-  execute: async ({ awsCredentials, region, clusterName, namespace, serviceAccount, roleArn, tags, clientRequestToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clusterName,
+    namespace,
+    serviceAccount,
+    roleArn,
+    tags,
+    clientRequestToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,19 +32,22 @@ export const awsCreateEksPodIdentityAssociation = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new CreatePodIdentityAssociationCommand({
-          clusterName: clusterName,
-          namespace: namespace,
-          serviceAccount: serviceAccount,
-          roleArn: roleArn,
-          tags: tags,
-          clientRequestToken: clientRequestToken,
+        clusterName: clusterName,
+        namespace: namespace,
+        serviceAccount: serviceAccount,
+        roleArn: roleArn,
+        tags: tags,
+        clientRequestToken: clientRequestToken,
       });
       const response = await client.send(command);
       return {
-                  association: response.association,
-              };
+        association: response.association,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new pod identity association', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new pod identity association',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

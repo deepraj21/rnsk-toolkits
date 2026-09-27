@@ -9,7 +9,11 @@ export const awsCreateRoute53HealthCheck = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     callerReference: z.string().describe('Unique identifier'),
-    healthCheckConfig: z.record(z.any()).describe('Health check configuration (Type, ResourcePath, FullyQualifiedDomainName, Port, etc.)'),
+    healthCheckConfig: z
+      .record(z.any())
+      .describe(
+        'Health check configuration (Type, ResourcePath, FullyQualifiedDomainName, Port, etc.)',
+      ),
   }),
   execute: async ({ awsCredentials, region, callerReference, healthCheckConfig }) => {
     if (!awsCredentials) {
@@ -19,16 +23,19 @@ export const awsCreateRoute53HealthCheck = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new CreateHealthCheckCommand({
-          CallerReference: callerReference,
-          HealthCheckConfig: healthCheckConfig,
+        CallerReference: callerReference,
+        HealthCheckConfig: healthCheckConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  healthCheck: response.HealthCheck,
-                  location: response.Location,
-              };
+        healthCheck: response.HealthCheck,
+        location: response.Location,
+      };
     } catch (err) {
-      return { error: 'Failed to create a Route 53 health check', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a Route 53 health check',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

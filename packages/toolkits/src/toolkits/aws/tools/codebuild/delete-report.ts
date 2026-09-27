@@ -17,15 +17,20 @@ export const awsDeleteCodebuildReport = tool({
     try {
       const client = createCodeBuildClient(awsCredentials, region);
 
-      await client.send(new DeleteReportCommand({
+      await client.send(
+        new DeleteReportCommand({
           arn: arn,
-      }));
+        }),
+      );
       return {
-                  message: 'Report deleted successfully',
-                  arn: arn,
-              };
+        message: 'Report deleted successfully',
+        arn: arn,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a report', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a report',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

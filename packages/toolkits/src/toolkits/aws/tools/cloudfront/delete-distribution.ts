@@ -19,16 +19,19 @@ export const awsDeleteCloudfrontDistribution = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new DeleteDistributionCommand({
-          Id: id,
-          IfMatch: ifMatch,
+        Id: id,
+        IfMatch: ifMatch,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Distribution ${id} deleted successfully`,
-              };
+        success: true,
+        message: `Distribution ${id} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CloudFront distribution', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CloudFront distribution',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

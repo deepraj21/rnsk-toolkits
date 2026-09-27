@@ -19,13 +19,16 @@ export const awsUpdateAssumeRolePolicy = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new UpdateAssumeRolePolicyCommand({
-          RoleName: roleName,
-          PolicyDocument: policyDocument,
+        RoleName: roleName,
+        PolicyDocument: policyDocument,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update the trust policy of an IAM role', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the trust policy of an IAM role',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

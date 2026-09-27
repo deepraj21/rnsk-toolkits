@@ -20,17 +20,20 @@ export const awsListBackupPlans = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new ListBackupPlansCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
-          IncludeDeleted: includeDeleted,
+        NextToken: nextToken,
+        MaxResults: maxResults,
+        IncludeDeleted: includeDeleted,
       });
       const response = await client.send(command);
       return {
-                  backupPlansList: response.BackupPlansList || [],
-                  nextToken: response.NextToken,
-              };
+        backupPlansList: response.BackupPlansList || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list all backup plans', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all backup plans',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -9,7 +9,10 @@ export const awsUpdateCodeartifactPackageGroup = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     domain: z.string().describe('The name of the domain'),
-    domainOwner: z.string().optional().describe('The 12-digit account number of the AWS account that owns the domain'),
+    domainOwner: z
+      .string()
+      .optional()
+      .describe('The 12-digit account number of the AWS account that owns the domain'),
     packageGroup: z.string().describe('The name of the package group to update'),
     description: z.string().optional().describe('An updated description of the package group'),
   }),
@@ -21,17 +24,20 @@ export const awsUpdateCodeartifactPackageGroup = tool({
       const client = createCodeArtifactClient(awsCredentials, region);
 
       const command = new UpdatePackageGroupCommand({
-          domain: domain,
-          domainOwner: domainOwner,
-          packageGroup: packageGroup,
-          description: description,
+        domain: domain,
+        domainOwner: domainOwner,
+        packageGroup: packageGroup,
+        description: description,
       });
       const response = await client.send(command);
       return {
-                  packageGroup: response.packageGroup,
-              };
+        packageGroup: response.packageGroup,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CodeArtifact package group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CodeArtifact package group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

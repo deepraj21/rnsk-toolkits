@@ -19,15 +19,18 @@ export const awsActivateRoute53KeySigningKey = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new ActivateKeySigningKeyCommand({
-          HostedZoneId: hostedZoneId,
-          Name: name,
+        HostedZoneId: hostedZoneId,
+        Name: name,
       });
       const response = await client.send(command);
       return {
-                  changeInfo: response.ChangeInfo,
-              };
+        changeInfo: response.ChangeInfo,
+      };
     } catch (err) {
-      return { error: 'Failed to activate a key signing key for a hosted zone', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to activate a key signing key for a hosted zone',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

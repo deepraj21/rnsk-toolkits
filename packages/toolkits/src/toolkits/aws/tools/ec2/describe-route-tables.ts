@@ -19,16 +19,21 @@ export const awsDescribeEc2RouteTables = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribeRouteTablesCommand({
-          RouteTableIds: routeTableIds,
-          Filters: filters ? Object.entries(filters).map(([name, values]) => ({
+        RouteTableIds: routeTableIds,
+        Filters: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
+            }))
+          : undefined,
       });
       const response = await client.send(command);
       return { routeTables: response.RouteTables };
     } catch (err) {
-      return { error: 'Failed to describe route tables', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe route tables',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

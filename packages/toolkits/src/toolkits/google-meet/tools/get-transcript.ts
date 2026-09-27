@@ -9,14 +9,20 @@ export const getTranscript = tool({
     googleMeetToken: z.string().describe('The Google Meet access token'),
     name: z
       .string()
-      .describe("Transcript resource name: 'conferenceRecords/{conference_record}/transcripts/{transcript}'"),
+      .describe(
+        "Transcript resource name: 'conferenceRecords/{conference_record}/transcripts/{transcript}'",
+      ),
   }),
   execute: async ({ googleMeetToken, name }) => {
     try {
       const result = await googleMeetRequest(googleMeetToken, `/${name}`);
 
       if (!result.ok) {
-        return { error: 'Failed to get transcript', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to get transcript',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

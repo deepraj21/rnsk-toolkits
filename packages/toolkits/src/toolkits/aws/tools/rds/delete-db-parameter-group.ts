@@ -18,12 +18,15 @@ export const awsDeleteDbParameterGroup = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DeleteDBParameterGroupCommand({
-          DBParameterGroupName: dbParameterGroupName,
+        DBParameterGroupName: dbParameterGroupName,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete an RDS parameter group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an RDS parameter group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { DescribeConformancePackStatusCommand } from '@aws-sdk/client-config-ser
 import { createConfigServiceClient } from '../client.js';
 
 export const awsDescribeConformancePackStatus = tool({
-  description: 'Provides one or more conformance packs deployment status. Use it to inspect current state before making changes.',
+  description:
+    'Provides one or more conformance packs deployment status. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsDescribeConformancePackStatus = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DescribeConformancePackStatusCommand({
-          ConformancePackNames: conformancePackNames,
-          Limit: limit,
-          NextToken: nextToken,
+        ConformancePackNames: conformancePackNames,
+        Limit: limit,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  conformancePackStatusDetails: response.ConformancePackStatusDetails || [],
-                  nextToken: response.NextToken,
-              };
+        conformancePackStatusDetails: response.ConformancePackStatusDetails || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to provides one or more conformance packs deployment status', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to provides one or more conformance packs deployment status',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

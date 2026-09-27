@@ -12,7 +12,13 @@ export const awsModifyGlobalCluster = tool({
     newGlobalClusterIdentifier: z.string().optional().describe('New global cluster identifier'),
     deletionProtection: z.boolean().optional().describe('Enable deletion protection'),
   }),
-  execute: async ({ awsCredentials, region, globalClusterIdentifier, newGlobalClusterIdentifier, deletionProtection }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    globalClusterIdentifier,
+    newGlobalClusterIdentifier,
+    deletionProtection,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +26,17 @@ export const awsModifyGlobalCluster = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new ModifyGlobalClusterCommand({
-          GlobalClusterIdentifier: globalClusterIdentifier,
-          NewGlobalClusterIdentifier: newGlobalClusterIdentifier,
-          DeletionProtection: deletionProtection,
+        GlobalClusterIdentifier: globalClusterIdentifier,
+        NewGlobalClusterIdentifier: newGlobalClusterIdentifier,
+        DeletionProtection: deletionProtection,
       });
       const response = await client.send(command);
       return response.GlobalCluster;
     } catch (err) {
-      return { error: 'Failed to modify an Aurora Global Database cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify an Aurora Global Database cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

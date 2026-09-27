@@ -19,13 +19,16 @@ export const awsDeleteGuarddutyIpSet = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new DeleteIPSetCommand({
-          DetectorId: detectorId,
-          IpSetId: ipSetId,
+        DetectorId: detectorId,
+        IpSetId: ipSetId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete an IP set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an IP set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

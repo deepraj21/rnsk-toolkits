@@ -13,7 +13,14 @@ export const awsCopyCloudfrontDistribution = tool({
     ifMatch: z.string().describe('The value of the ETag header'),
     callerReference: z.string().describe('Unique caller reference'),
   }),
-  execute: async ({ awsCredentials, region, primaryDistributionId, staging, ifMatch, callerReference }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    primaryDistributionId,
+    staging,
+    ifMatch,
+    callerReference,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,19 +28,22 @@ export const awsCopyCloudfrontDistribution = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CopyDistributionCommand({
-          PrimaryDistributionId: primaryDistributionId,
-          Staging: staging,
-          IfMatch: ifMatch,
-          CallerReference: callerReference,
+        PrimaryDistributionId: primaryDistributionId,
+        Staging: staging,
+        IfMatch: ifMatch,
+        CallerReference: callerReference,
       });
       const response = await client.send(command);
       return {
-                  distribution: response.Distribution,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        distribution: response.Distribution,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to copy a CloudFront distribution', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to copy a CloudFront distribution',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

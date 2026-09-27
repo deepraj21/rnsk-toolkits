@@ -20,17 +20,20 @@ export const awsDeleteEventbridgeRule = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new DeleteRuleCommand({
-          Name: name,
-          EventBusName: eventBusName,
-          Force: force,
+        Name: name,
+        EventBusName: eventBusName,
+        Force: force,
       });
       await client.send(command);
       return {
-                  message: 'Rule deleted successfully',
-                  name: name,
-              };
+        message: 'Rule deleted successfully',
+        name: name,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an EventBridge rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an EventBridge rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

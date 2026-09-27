@@ -18,15 +18,18 @@ export const awsDeleteEfsAccessPoint = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new DeleteAccessPointCommand({
-          AccessPointId: accessPointId,
+        AccessPointId: accessPointId,
       });
       await client.send(command);
       return {
-                  message: 'Access point deleted successfully',
-                  accessPointId: accessPointId,
-              };
+        message: 'Access point deleted successfully',
+        accessPointId: accessPointId,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an access point', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an access point',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

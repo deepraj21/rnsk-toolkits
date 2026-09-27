@@ -1596,7 +1596,8 @@ export {
   awsAnalyzeLogGroup,
   awsExecuteLogInsightsQuery,
   awsGetLogsInsightQueryResults,
-  awsCancelLogsInsightQuery,  awsListS3Buckets,
+  awsCancelLogsInsightQuery,
+  awsListS3Buckets,
   awsCreateS3Bucket,
   awsDeleteS3Bucket,
   awsCheckS3BucketExists,
@@ -3057,14 +3058,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2InstanceStatus',
-    description: 'Describe the status of EC2 instances Use it to inspect current state before making changes.',
+    description:
+      'Describe the status of EC2 instances Use it to inspect current state before making changes.',
     tool: awsDescribeEc2InstanceStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEc2InstanceTypes',
-    description: 'Describe EC2 instance types Use it to inspect current state before making changes.',
+    description:
+      'Describe EC2 instance types Use it to inspect current state before making changes.',
     tool: awsDescribeEc2InstanceTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3078,28 +3081,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2InstanceAttribute',
-    description: 'Describe an attribute of an EC2 instance Use it to inspect current state before making changes.',
+    description:
+      'Describe an attribute of an EC2 instance Use it to inspect current state before making changes.',
     tool: awsDescribeEc2InstanceAttribute as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsMonitorEc2Instance',
-    description: 'Enable detailed monitoring for an EC2 instance Use it to toggle detailed monitoring.',
+    description:
+      'Enable detailed monitoring for an EC2 instance Use it to toggle detailed monitoring.',
     tool: awsMonitorEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUnmonitorEc2Instance',
-    description: 'Disable detailed monitoring for an EC2 instance Use it to toggle detailed monitoring.',
+    description:
+      'Disable detailed monitoring for an EC2 instance Use it to toggle detailed monitoring.',
     tool: awsUnmonitorEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeEc2Images',
-    description: 'Describe EC2 images (AMIs) Use it to inspect current state before making changes.',
+    description:
+      'Describe EC2 images (AMIs) Use it to inspect current state before making changes.',
     tool: awsDescribeEc2Images as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3120,7 +3127,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCopyEc2Image',
-    description: 'Copy an AMI to another region Use it to duplicate a resource, optionally across regions.',
+    description:
+      'Copy an AMI to another region Use it to duplicate a resource, optionally across regions.',
     tool: awsCopyEc2Image as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3155,7 +3163,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCopyEc2Snapshot',
-    description: 'Copy an EBS snapshot to another region Use it to duplicate a resource, optionally across regions.',
+    description:
+      'Copy an EBS snapshot to another region Use it to duplicate a resource, optionally across regions.',
     tool: awsCopyEc2Snapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3204,7 +3213,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2SecurityGroups',
-    description: 'Describe EC2 security groups Use it to inspect current state before making changes.',
+    description:
+      'Describe EC2 security groups Use it to inspect current state before making changes.',
     tool: awsDescribeEc2SecurityGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3330,7 +3340,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2NetworkInterfaces',
-    description: 'Describe network interfaces Use it to inspect current state before making changes.',
+    description:
+      'Describe network interfaces Use it to inspect current state before making changes.',
     tool: awsDescribeEc2NetworkInterfaces as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3365,7 +3376,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2InternetGateways',
-    description: 'Describe internet gateways Use it to inspect current state before making changes.',
+    description:
+      'Describe internet gateways Use it to inspect current state before making changes.',
     tool: awsDescribeEc2InternetGateways as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3470,7 +3482,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2Addresses',
-    description: 'Describe Elastic IP addresses Use it to inspect current state before making changes.',
+    description:
+      'Describe Elastic IP addresses Use it to inspect current state before making changes.',
     tool: awsDescribeEc2Addresses as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3526,7 +3539,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2Tags',
-    description: 'Describe tags for EC2 resources Use it to inspect current state before making changes.',
+    description:
+      'Describe tags for EC2 resources Use it to inspect current state before making changes.',
     tool: awsDescribeEc2Tags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3547,21 +3561,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2Regions',
-    description: 'Describe available AWS regions Use it to inspect current state before making changes.',
+    description:
+      'Describe available AWS regions Use it to inspect current state before making changes.',
     tool: awsDescribeEc2Regions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEc2AvailabilityZones',
-    description: 'Describe availability zones Use it to inspect current state before making changes.',
+    description:
+      'Describe availability zones Use it to inspect current state before making changes.',
     tool: awsDescribeEc2AvailabilityZones as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEc2AccountAttributes',
-    description: 'Describe EC2 account attributes Use it to inspect current state before making changes.',
+    description:
+      'Describe EC2 account attributes Use it to inspect current state before making changes.',
     tool: awsDescribeEc2AccountAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3589,56 +3606,64 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEc2LaunchTemplateVersions',
-    description: 'Describe launch template versions Use it to inspect current state before making changes.',
+    description:
+      'Describe launch template versions Use it to inspect current state before making changes.',
     tool: awsDescribeEc2LaunchTemplateVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCloudwatchMetrics',
-    description: 'Retrieve CloudWatch metrics Use it to inspect current state before making changes.',
+    description:
+      'Retrieve CloudWatch metrics Use it to inspect current state before making changes.',
     tool: awsGetCloudwatchMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetMetricMetadata',
-    description: 'Retrieves comprehensive metadata about a specific CloudWatch metric Use it to inspect current state before making changes.',
+    description:
+      'Retrieves comprehensive metadata about a specific CloudWatch metric Use it to inspect current state before making changes.',
     tool: awsGetMetricMetadata as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutMetricData',
-    description: 'Publish custom metric data points to CloudWatch Use it to publish data or configure the resource.',
+    description:
+      'Publish custom metric data points to CloudWatch Use it to publish data or configure the resource.',
     tool: awsPutMetricData as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetRecommendedMetricAlarms',
-    description: 'Gets recommended alarms for a CloudWatch metric based on best practice, and trend, seasonality and statistical analysis Use it to inspect current state before making changes.',
+    description:
+      'Gets recommended alarms for a CloudWatch metric based on best practice, and trend, seasonality and statistical analysis Use it to inspect current state before making changes.',
     tool: awsGetRecommendedMetricAlarms as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsAnalyzeMetric',
-    description: 'Analyzes CloudWatch metric data to determine trend, seasonality, and statistical properties Use it to analyze trends, patterns, and anomalies.',
+    description:
+      'Analyzes CloudWatch metric data to determine trend, seasonality, and statistical properties Use it to analyze trends, patterns, and anomalies.',
     tool: awsAnalyzeMetric as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetAlarmHistory',
-    description: 'Retrieves historical state changes and patterns for a given CloudWatch alarm Use it to inspect current state before making changes.',
+    description:
+      'Retrieves historical state changes and patterns for a given CloudWatch alarm Use it to inspect current state before making changes.',
     tool: awsGetAlarmHistory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutMetricAlarm',
-    description: 'Create or update a CloudWatch metric alarm Use it to publish data or configure the resource.',
+    description:
+      'Create or update a CloudWatch metric alarm Use it to publish data or configure the resource.',
     tool: awsPutMetricAlarm as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3652,7 +3677,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsSetAlarmState',
-    description: 'Temporarily set the state of a CloudWatch alarm Use it to change the state or configuration of the resource.',
+    description:
+      'Temporarily set the state of a CloudWatch alarm Use it to change the state or configuration of the resource.',
     tool: awsSetAlarmState as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3673,7 +3699,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeLogStreams',
-    description: 'List log streams in a log group Use it to inspect current state before making changes.',
+    description:
+      'List log streams in a log group Use it to inspect current state before making changes.',
     tool: awsDescribeLogStreams as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3687,56 +3714,64 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetLogEvents',
-    description: 'Retrieve log events from a log stream Use it to inspect current state before making changes.',
+    description:
+      'Retrieve log events from a log stream Use it to inspect current state before making changes.',
     tool: awsGetLogEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutLogEvents',
-    description: 'Upload log events to a log stream Use it to publish data or configure the resource.',
+    description:
+      'Upload log events to a log stream Use it to publish data or configure the resource.',
     tool: awsPutLogEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsPutRetentionPolicy',
-    description: 'Set retention policy for a log group Use it to publish data or configure the resource.',
+    description:
+      'Set retention policy for a log group Use it to publish data or configure the resource.',
     tool: awsPutRetentionPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsAnalyzeLogGroup',
-    description: 'Analyzes CloudWatch logs for anomalies, message patterns, and error patterns Use it to analyze trends, patterns, and anomalies.',
+    description:
+      'Analyzes CloudWatch logs for anomalies, message patterns, and error patterns Use it to analyze trends, patterns, and anomalies.',
     tool: awsAnalyzeLogGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsExecuteLogInsightsQuery',
-    description: 'Executes CloudWatch Logs insights query on CloudWatch log group(s) with specified time range and query syntax, returns a unique ID used to retrieve results Use it to start a query, then poll for results with the query ID.',
+    description:
+      'Executes CloudWatch Logs insights query on CloudWatch log group(s) with specified time range and query syntax, returns a unique ID used to retrieve results Use it to start a query, then poll for results with the query ID.',
     tool: awsExecuteLogInsightsQuery as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetLogsInsightQueryResults',
-    description: 'Retrieves the results of an executed CloudWatch insights query using the query ID. It is used after execute_log_insights_query has been called Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the results of an executed CloudWatch insights query using the query ID. It is used after execute_log_insights_query has been called Use it to inspect current state before making changes.',
     tool: awsGetLogsInsightQueryResults as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCancelLogsInsightQuery',
-    description: 'Cancels in progress CloudWatch logs insights query Use it to stop a running query.',
+    description:
+      'Cancels in progress CloudWatch logs insights query Use it to stop a running query.',
     tool: awsCancelLogsInsightQuery as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListS3Buckets',
-    description: 'List all S3 buckets in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all S3 buckets in your AWS account Use it to inspect current state before making changes.',
     tool: awsListS3Buckets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3757,21 +3792,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCheckS3BucketExists',
-    description: 'Check if an S3 bucket exists Use it to inspect current state before making changes.',
+    description:
+      'Check if an S3 bucket exists Use it to inspect current state before making changes.',
     tool: awsCheckS3BucketExists as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListS3Objects',
-    description: 'List objects in an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'List objects in an S3 bucket Use it to inspect current state before making changes.',
     tool: awsListS3Objects as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3Object',
-    description: 'Retrieve an object from S3 Use it to inspect current state before making changes.',
+    description:
+      'Retrieve an object from S3 Use it to inspect current state before making changes.',
     tool: awsGetS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3806,21 +3844,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListLambdaFunctions',
-    description: 'List all Lambda functions in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all Lambda functions in your AWS account Use it to inspect current state before making changes.',
     tool: awsListLambdaFunctions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetLambdaFunction',
-    description: 'Get details about a Lambda function including code location Use it to inspect current state before making changes.',
+    description:
+      'Get details about a Lambda function including code location Use it to inspect current state before making changes.',
     tool: awsGetLambdaFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsInvokeLambdaFunction',
-    description: 'Invoke a Lambda function synchronously or asynchronously Use it to execute the function.',
+    description:
+      'Invoke a Lambda function synchronously or asynchronously Use it to execute the function.',
     tool: awsInvokeLambdaFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3841,7 +3882,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateLambdaFunctionConfiguration',
-    description: 'Update configuration settings of a Lambda function Use it to change an existing resource.',
+    description:
+      'Update configuration settings of a Lambda function Use it to change an existing resource.',
     tool: awsUpdateLambdaFunctionConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3855,35 +3897,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListLambdaFunctionVersions',
-    description: 'List all versions of a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'List all versions of a Lambda function Use it to inspect current state before making changes.',
     tool: awsListLambdaFunctionVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListDynamodbTables',
-    description: 'List all DynamoDB tables in the region Use it to inspect current state before making changes.',
+    description:
+      'List all DynamoDB tables in the region Use it to inspect current state before making changes.',
     tool: awsListDynamodbTables as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeDynamodbTable',
-    description: 'Get detailed information about a DynamoDB table including schema, status, and metrics Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about a DynamoDB table including schema, status, and metrics Use it to inspect current state before making changes.',
     tool: awsDescribeDynamodbTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateDynamodbTable',
-    description: 'Create a new DynamoDB table with attributes and keys Use it to provision a new resource.',
+    description:
+      'Create a new DynamoDB table with attributes and keys Use it to provision a new resource.',
     tool: awsCreateDynamodbTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUpdateDynamodbTable',
-    description: 'Modify DynamoDB table settings (capacity, TTL, streams, PITR) Use it to change an existing resource.',
+    description:
+      'Modify DynamoDB table settings (capacity, TTL, streams, PITR) Use it to change an existing resource.',
     tool: awsUpdateDynamodbTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3897,7 +3944,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDynamodbGetItem',
-    description: 'Retrieve a single item from DynamoDB table by primary key. Use it to inspect current state before making changes.',
+    description:
+      'Retrieve a single item from DynamoDB table by primary key. Use it to inspect current state before making changes.',
     tool: awsDynamodbGetItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -3911,7 +3959,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDynamodbUpdateItem',
-    description: 'Update specific attributes of an item in DynamoDB. Use it to change an existing resource.',
+    description:
+      'Update specific attributes of an item in DynamoDB. Use it to change an existing resource.',
     tool: awsDynamodbUpdateItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3925,28 +3974,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDynamodbQuery',
-    description: 'Query DynamoDB table by partition key with optional sort key conditions. Use it to inspect current state before making changes.',
+    description:
+      'Query DynamoDB table by partition key with optional sort key conditions. Use it to inspect current state before making changes.',
     tool: awsDynamodbQuery as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDynamodbScan',
-    description: 'Scan entire DynamoDB table (use with caution on large tables). Use it to inspect current state before making changes.',
+    description:
+      'Scan entire DynamoDB table (use with caution on large tables). Use it to inspect current state before making changes.',
     tool: awsDynamodbScan as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDynamodbBatchGetItem',
-    description: 'Retrieve up to 100 items from one or more DynamoDB tables. Use it to inspect current state before making changes.',
+    description:
+      'Retrieve up to 100 items from one or more DynamoDB tables. Use it to inspect current state before making changes.',
     tool: awsDynamodbBatchGetItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDynamodbBatchWriteItem',
-    description: 'Write or delete up to 25 items across one or more DynamoDB tables. Use it to write data.',
+    description:
+      'Write or delete up to 25 items across one or more DynamoDB tables. Use it to write data.',
     tool: awsDynamodbBatchWriteItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3967,21 +4020,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetSqsQueueUrl',
-    description: 'Get the URL of an SQS queue Use it to inspect current state before making changes.',
+    description:
+      'Get the URL of an SQS queue Use it to inspect current state before making changes.',
     tool: awsGetSqsQueueUrl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSqsQueueAttributes',
-    description: 'Get attributes of an SQS queue Use it to inspect current state before making changes.',
+    description:
+      'Get attributes of an SQS queue Use it to inspect current state before making changes.',
     tool: awsGetSqsQueueAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsSetSqsQueueAttributes',
-    description: 'Set attributes of an SQS queue Use it to change the configuration of the resource.',
+    description:
+      'Set attributes of an SQS queue Use it to change the configuration of the resource.',
     tool: awsSetSqsQueueAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -3995,7 +4051,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPurgeSqsQueue',
-    description: 'Delete all messages in an SQS queue Use it to permanently remove all messages (cannot be undone).',
+    description:
+      'Delete all messages in an SQS queue Use it to permanently remove all messages (cannot be undone).',
     tool: awsPurgeSqsQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -4030,21 +4087,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteSqsMessageBatch',
-    description: 'Delete multiple messages from an SQS queue in a batch Use it to permanently remove the resource.',
+    description:
+      'Delete multiple messages from an SQS queue in a batch Use it to permanently remove the resource.',
     tool: awsDeleteSqsMessageBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsChangeSqsMessageVisibility',
-    description: 'Change the visibility timeout of a message Use it to change the configuration of the resource.',
+    description:
+      'Change the visibility timeout of a message Use it to change the configuration of the resource.',
     tool: awsChangeSqsMessageVisibility as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsChangeSqsMessageVisibilityBatch',
-    description: 'Change the visibility timeout of multiple messages in a batch Use it to change the configuration of the resource.',
+    description:
+      'Change the visibility timeout of multiple messages in a batch Use it to change the configuration of the resource.',
     tool: awsChangeSqsMessageVisibilityBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -4065,7 +4125,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSqsQueueTags',
-    description: 'List tags for an SQS queue Use it to inspect current state before making changes.',
+    description:
+      'List tags for an SQS queue Use it to inspect current state before making changes.',
     tool: awsListSqsQueueTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4100,7 +4161,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetSnsTopicAttributes',
-    description: 'Get attributes of an SNS topic Use it to inspect current state before making changes.',
+    description:
+      'Get attributes of an SNS topic Use it to inspect current state before making changes.',
     tool: awsGetSnsTopicAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4135,35 +4197,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSnsSubscriptions',
-    description: 'List all SNS subscriptions Use it to inspect current state before making changes.',
+    description:
+      'List all SNS subscriptions Use it to inspect current state before making changes.',
     tool: awsListSnsSubscriptions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListSnsSubscriptionsByTopic',
-    description: 'List subscriptions for a specific topic Use it to inspect current state before making changes.',
+    description:
+      'List subscriptions for a specific topic Use it to inspect current state before making changes.',
     tool: awsListSnsSubscriptionsByTopic as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3BucketVersioning',
-    description: 'Get the versioning configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the versioning configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketVersioning as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketVersioning',
-    description: 'Set the versioning configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the versioning configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketVersioning as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3BucketPolicy',
-    description: 'Get the bucket policy for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the bucket policy for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4177,7 +4244,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteS3BucketPolicy',
-    description: 'Delete the bucket policy for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete the bucket policy for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -4205,147 +4273,168 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetS3BucketCors',
-    description: 'Get the CORS configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the CORS configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketCors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketCors',
-    description: 'Set the CORS configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the CORS configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketCors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketCors',
-    description: 'Delete the CORS configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete the CORS configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketCors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetS3BucketEncryption',
-    description: 'Get the encryption configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the encryption configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketEncryption as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketEncryption',
-    description: 'Set the encryption configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the encryption configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketEncryption as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketEncryption',
-    description: 'Delete the encryption configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete the encryption configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketEncryption as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetS3BucketLifecycle',
-    description: 'Get the lifecycle configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the lifecycle configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketLifecycle as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketLifecycle',
-    description: 'Set the lifecycle configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the lifecycle configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketLifecycle as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketLifecycle',
-    description: 'Delete the lifecycle configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete the lifecycle configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketLifecycle as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetS3BucketWebsite',
-    description: 'Get the website configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the website configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketWebsite as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketWebsite',
-    description: 'Set the website configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the website configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketWebsite as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketWebsite',
-    description: 'Delete the website configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete the website configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketWebsite as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetS3BucketLogging',
-    description: 'Get the logging configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the logging configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketLogging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketLogging',
-    description: 'Set the logging configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the logging configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketLogging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3BucketNotification',
-    description: 'Get the notification configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the notification configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketNotification',
-    description: 'Set the notification configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the notification configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3BucketReplication',
-    description: 'Get the replication configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the replication configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketReplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketReplication',
-    description: 'Set the replication configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the replication configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketReplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketReplication',
-    description: 'Delete the replication configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete the replication configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketReplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListS3ObjectVersions',
-    description: 'List all versions of objects in an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'List all versions of objects in an S3 bucket Use it to inspect current state before making changes.',
     tool: awsListS3ObjectVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteS3Objects',
-    description: 'Delete multiple objects from S3 in a single request Use it to permanently remove the resource.',
+    description:
+      'Delete multiple objects from S3 in a single request Use it to permanently remove the resource.',
     tool: awsDeleteS3Objects as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -4380,14 +4469,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListS3MultipartUploads',
-    description: 'List in-progress multipart uploads Use it to inspect current state before making changes.',
+    description:
+      'List in-progress multipart uploads Use it to inspect current state before making changes.',
     tool: awsListS3MultipartUploads as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListS3Parts',
-    description: 'List parts that have been uploaded for a multipart upload Use it to inspect current state before making changes.',
+    description:
+      'List parts that have been uploaded for a multipart upload Use it to inspect current state before making changes.',
     tool: awsListS3Parts as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4415,56 +4506,64 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetS3ObjectAcl',
-    description: 'Get the ACL (Access Control List) for an S3 object Use it to inspect current state before making changes.',
+    description:
+      'Get the ACL (Access Control List) for an S3 object Use it to inspect current state before making changes.',
     tool: awsGetS3ObjectAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3ObjectAcl',
-    description: 'Set the ACL (Access Control List) for an S3 object Use it to write data or configuration.',
+    description:
+      'Set the ACL (Access Control List) for an S3 object Use it to write data or configuration.',
     tool: awsPutS3ObjectAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3BucketAcl',
-    description: 'Get the ACL (Access Control List) for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the ACL (Access Control List) for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketAcl',
-    description: 'Set the ACL (Access Control List) for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the ACL (Access Control List) for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3PublicAccessBlock',
-    description: 'Get public access block configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get public access block configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3PublicAccessBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3PublicAccessBlock',
-    description: 'Set public access block configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set public access block configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3PublicAccessBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3PublicAccessBlock',
-    description: 'Delete public access block configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete public access block configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3PublicAccessBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetLambdaFunctionConfiguration',
-    description: 'Get configuration details of a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'Get configuration details of a Lambda function Use it to inspect current state before making changes.',
     tool: awsGetLambdaFunctionConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4478,14 +4577,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListLambdaFunctionAliases',
-    description: 'List all aliases for a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'List all aliases for a Lambda function Use it to inspect current state before making changes.',
     tool: awsListLambdaFunctionAliases as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetLambdaFunctionAlias',
-    description: 'Get details about a Lambda function alias Use it to inspect current state before making changes.',
+    description:
+      'Get details about a Lambda function alias Use it to inspect current state before making changes.',
     tool: awsGetLambdaFunctionAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4513,42 +4614,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetLambdaFunctionPolicy',
-    description: 'Get the resource-based policy for a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'Get the resource-based policy for a Lambda function Use it to inspect current state before making changes.',
     tool: awsGetLambdaFunctionPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsAddLambdaFunctionPermission',
-    description: 'Add a permission to a Lambda function resource-based policy Use it to grant access or attach configuration.',
+    description:
+      'Add a permission to a Lambda function resource-based policy Use it to grant access or attach configuration.',
     tool: awsAddLambdaFunctionPermission as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsRemoveLambdaFunctionPermission',
-    description: 'Remove a permission from a Lambda function resource-based policy Use it to remove access or configuration.',
+    description:
+      'Remove a permission from a Lambda function resource-based policy Use it to remove access or configuration.',
     tool: awsRemoveLambdaFunctionPermission as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListLambdaEventSourceMappings',
-    description: 'List event source mappings for a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'List event source mappings for a Lambda function Use it to inspect current state before making changes.',
     tool: awsListLambdaEventSourceMappings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateLambdaEventSourceMapping',
-    description: 'Create an event source mapping for a Lambda function Use it to provision a new resource.',
+    description:
+      'Create an event source mapping for a Lambda function Use it to provision a new resource.',
     tool: awsCreateLambdaEventSourceMapping as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUpdateLambdaEventSourceMapping',
-    description: 'Update an event source mapping configuration Use it to change an existing resource.',
+    description:
+      'Update an event source mapping configuration Use it to change an existing resource.',
     tool: awsUpdateLambdaEventSourceMapping as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -4562,28 +4669,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListLambdaFunctionEventInvokeConfigs',
-    description: 'List async invocation configurations for a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'List async invocation configurations for a Lambda function Use it to inspect current state before making changes.',
     tool: awsListLambdaFunctionEventInvokeConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetLambdaFunctionEventInvokeConfig',
-    description: 'Get async invocation configuration for a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'Get async invocation configuration for a Lambda function Use it to inspect current state before making changes.',
     tool: awsGetLambdaFunctionEventInvokeConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutLambdaFunctionEventInvokeConfig',
-    description: 'Configure async invocation settings for a Lambda function Use it to write data or configuration.',
+    description:
+      'Configure async invocation settings for a Lambda function Use it to write data or configuration.',
     tool: awsPutLambdaFunctionEventInvokeConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteLambdaFunctionEventInvokeConfig',
-    description: 'Delete async invocation configuration for a Lambda function Use it to permanently remove the resource.',
+    description:
+      'Delete async invocation configuration for a Lambda function Use it to permanently remove the resource.',
     tool: awsDeleteLambdaFunctionEventInvokeConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -4597,49 +4708,56 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListLambdaLayerVersions',
-    description: 'List versions of a Lambda layer Use it to inspect current state before making changes.',
+    description:
+      'List versions of a Lambda layer Use it to inspect current state before making changes.',
     tool: awsListLambdaLayerVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetLambdaLayerVersion',
-    description: 'Get details about a specific Lambda layer version Use it to inspect current state before making changes.',
+    description:
+      'Get details about a specific Lambda layer version Use it to inspect current state before making changes.',
     tool: awsGetLambdaLayerVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListLambdaProvisionedConcurrencyConfigs',
-    description: 'List provisioned concurrency configurations for a function Use it to inspect current state before making changes.',
+    description:
+      'List provisioned concurrency configurations for a function Use it to inspect current state before making changes.',
     tool: awsListLambdaProvisionedConcurrencyConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetLambdaProvisionedConcurrencyConfig',
-    description: 'Get provisioned concurrency configuration for a function version Use it to inspect current state before making changes.',
+    description:
+      'Get provisioned concurrency configuration for a function version Use it to inspect current state before making changes.',
     tool: awsGetLambdaProvisionedConcurrencyConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutLambdaProvisionedConcurrencyConfig',
-    description: 'Configure provisioned concurrency for a function version Use it to write data or configuration.',
+    description:
+      'Configure provisioned concurrency for a function version Use it to write data or configuration.',
     tool: awsPutLambdaProvisionedConcurrencyConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteLambdaProvisionedConcurrencyConfig',
-    description: 'Delete provisioned concurrency configuration Use it to permanently remove the resource.',
+    description:
+      'Delete provisioned concurrency configuration Use it to permanently remove the resource.',
     tool: awsDeleteLambdaProvisionedConcurrencyConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListLambdaFunctionTags',
-    description: 'List tags for a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'List tags for a Lambda function Use it to inspect current state before making changes.',
     tool: awsListLambdaFunctionTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4660,7 +4778,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetLambdaFunctionUrlConfig',
-    description: 'Get function URL configuration for a Lambda function Use it to inspect current state before making changes.',
+    description:
+      'Get function URL configuration for a Lambda function Use it to inspect current state before making changes.',
     tool: awsGetLambdaFunctionUrlConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4688,21 +4807,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListDynamodbBackups',
-    description: 'List on-demand backups for DynamoDB tables Use it to inspect current state before making changes.',
+    description:
+      'List on-demand backups for DynamoDB tables Use it to inspect current state before making changes.',
     tool: awsListDynamodbBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeDynamodbBackup',
-    description: 'Get details about a specific DynamoDB backup Use it to inspect current state before making changes.',
+    description:
+      'Get details about a specific DynamoDB backup Use it to inspect current state before making changes.',
     tool: awsDescribeDynamodbBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateDynamodbBackup',
-    description: 'Create an on-demand backup of a DynamoDB table Use it to provision a new resource.',
+    description:
+      'Create an on-demand backup of a DynamoDB table Use it to provision a new resource.',
     tool: awsCreateDynamodbBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -4723,21 +4845,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeContinuousBackups',
-    description: 'Check Point-in-Time Recovery (PITR) status for a DynamoDB table Use it to inspect current state before making changes.',
+    description:
+      'Check Point-in-Time Recovery (PITR) status for a DynamoDB table Use it to inspect current state before making changes.',
     tool: awsDescribeContinuousBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateContinuousBackups',
-    description: 'Enable or disable Point-in-Time Recovery (PITR) for a DynamoDB table Use it to change an existing resource.',
+    description:
+      'Enable or disable Point-in-Time Recovery (PITR) for a DynamoDB table Use it to change an existing resource.',
     tool: awsUpdateContinuousBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeGlobalTable',
-    description: 'Get details about a DynamoDB Global Table Use it to inspect current state before making changes.',
+    description:
+      'Get details about a DynamoDB Global Table Use it to inspect current state before making changes.',
     tool: awsDescribeGlobalTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4751,28 +4876,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateGlobalTable',
-    description: 'Add or remove regions from a DynamoDB Global Table Use it to change an existing resource.',
+    description:
+      'Add or remove regions from a DynamoDB Global Table Use it to change an existing resource.',
     tool: awsUpdateGlobalTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeTimeToLive',
-    description: 'Get Time To Live (TTL) configuration for a DynamoDB table Use it to inspect current state before making changes.',
+    description:
+      'Get Time To Live (TTL) configuration for a DynamoDB table Use it to inspect current state before making changes.',
     tool: awsDescribeTimeToLive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateTimeToLive',
-    description: 'Enable or disable Time To Live (TTL) for a DynamoDB table Use it to change an existing resource.',
+    description:
+      'Enable or disable Time To Live (TTL) for a DynamoDB table Use it to change an existing resource.',
     tool: awsUpdateTimeToLive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListDynamodbTags',
-    description: 'List tags for a DynamoDB table Use it to inspect current state before making changes.',
+    description:
+      'List tags for a DynamoDB table Use it to inspect current state before making changes.',
     tool: awsListDynamodbTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4793,63 +4922,72 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsSetSnsTopicAttributes',
-    description: 'Set attributes of an SNS topic Use it to change the configuration of the resource.',
+    description:
+      'Set attributes of an SNS topic Use it to change the configuration of the resource.',
     tool: awsSetSnsTopicAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetSnsSubscriptionAttributes',
-    description: 'Get attributes of an SNS subscription Use it to inspect current state before making changes.',
+    description:
+      'Get attributes of an SNS subscription Use it to inspect current state before making changes.',
     tool: awsGetSnsSubscriptionAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsSetSnsSubscriptionAttributes',
-    description: 'Set attributes of an SNS subscription Use it to change the configuration of the resource.',
+    description:
+      'Set attributes of an SNS subscription Use it to change the configuration of the resource.',
     tool: awsSetSnsSubscriptionAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsConfirmSnsSubscription',
-    description: 'Confirm an SNS subscription (for HTTP/HTTPS) Use it to confirm a pending subscription.',
+    description:
+      'Confirm an SNS subscription (for HTTP/HTTPS) Use it to confirm a pending subscription.',
     tool: awsConfirmSnsSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsPublishSnsBatch',
-    description: 'Publish multiple messages to an SNS topic in a batch Use it to publish or release.',
+    description:
+      'Publish multiple messages to an SNS topic in a batch Use it to publish or release.',
     tool: awsPublishSnsBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsCreateSnsPlatformApplication',
-    description: 'Create a platform application for push notifications Use it to provision a new resource.',
+    description:
+      'Create a platform application for push notifications Use it to provision a new resource.',
     tool: awsCreateSnsPlatformApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListSnsPlatformApplications',
-    description: 'List all platform applications Use it to inspect current state before making changes.',
+    description:
+      'List all platform applications Use it to inspect current state before making changes.',
     tool: awsListSnsPlatformApplications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSnsPlatformApplicationAttributes',
-    description: 'Get attributes of a platform application Use it to inspect current state before making changes.',
+    description:
+      'Get attributes of a platform application Use it to inspect current state before making changes.',
     tool: awsGetSnsPlatformApplicationAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsSetSnsPlatformApplicationAttributes',
-    description: 'Set attributes of a platform application Use it to change the configuration of the resource.',
+    description:
+      'Set attributes of a platform application Use it to change the configuration of the resource.',
     tool: awsSetSnsPlatformApplicationAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -4863,28 +5001,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateSnsPlatformEndpoint',
-    description: 'Create a platform endpoint for push notifications Use it to provision a new resource.',
+    description:
+      'Create a platform endpoint for push notifications Use it to provision a new resource.',
     tool: awsCreateSnsPlatformEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListSnsEndpointsByPlatformApplication',
-    description: 'List endpoints for a platform application Use it to inspect current state before making changes.',
+    description:
+      'List endpoints for a platform application Use it to inspect current state before making changes.',
     tool: awsListSnsEndpointsByPlatformApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSnsEndpointAttributes',
-    description: 'Get attributes of a platform endpoint Use it to inspect current state before making changes.',
+    description:
+      'Get attributes of a platform endpoint Use it to inspect current state before making changes.',
     tool: awsGetSnsEndpointAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsSetSnsEndpointAttributes',
-    description: 'Set attributes of a platform endpoint Use it to change the configuration of the resource.',
+    description:
+      'Set attributes of a platform endpoint Use it to change the configuration of the resource.',
     tool: awsSetSnsEndpointAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -4898,14 +5040,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCheckSnsPhoneOptedOut',
-    description: 'Check if a phone number is opted out of SMS Use it to inspect current state before making changes.',
+    description:
+      'Check if a phone number is opted out of SMS Use it to inspect current state before making changes.',
     tool: awsCheckSnsPhoneOptedOut as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListSnsOptedOutPhoneNumbers',
-    description: 'List phone numbers opted out of SMS Use it to inspect current state before making changes.',
+    description:
+      'List phone numbers opted out of SMS Use it to inspect current state before making changes.',
     tool: awsListSnsOptedOutPhoneNumbers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4919,14 +5063,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetSnsSmsAttributes',
-    description: 'Get SMS attributes for the account Use it to inspect current state before making changes.',
+    description:
+      'Get SMS attributes for the account Use it to inspect current state before making changes.',
     tool: awsGetSnsSmsAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsSetSnsSmsAttributes',
-    description: 'Set SMS attributes for the account Use it to change the configuration of the resource.',
+    description:
+      'Set SMS attributes for the account Use it to change the configuration of the resource.',
     tool: awsSetSnsSmsAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -4947,7 +5093,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSnsTags',
-    description: 'List tags for an SNS resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for an SNS resource Use it to inspect current state before making changes.',
     tool: awsListSnsTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -4968,84 +5115,96 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListIamUsers',
-    description: 'List all IAM users in the AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all IAM users in the AWS account Use it to inspect current state before making changes.',
     tool: awsListIamUsers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetIamUser',
-    description: 'Get detailed information about a specific IAM user Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about a specific IAM user Use it to inspect current state before making changes.',
     tool: awsGetIamUser as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListIamRoles',
-    description: 'List all IAM roles in the AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all IAM roles in the AWS account Use it to inspect current state before making changes.',
     tool: awsListIamRoles as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetIamRole',
-    description: 'Get detailed information about a specific IAM role Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about a specific IAM role Use it to inspect current state before making changes.',
     tool: awsGetIamRole as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListIamPolicies',
-    description: 'List all customer managed and AWS managed policies Use it to inspect current state before making changes.',
+    description:
+      'List all customer managed and AWS managed policies Use it to inspect current state before making changes.',
     tool: awsListIamPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetIamPolicy',
-    description: 'Get metadata about a managed policy Use it to inspect current state before making changes.',
+    description:
+      'Get metadata about a managed policy Use it to inspect current state before making changes.',
     tool: awsGetIamPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetPolicyVersion',
-    description: 'Get the content of a specific policy version Use it to inspect current state before making changes.',
+    description:
+      'Get the content of a specific policy version Use it to inspect current state before making changes.',
     tool: awsGetPolicyVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListPolicyVersions',
-    description: 'List all versions of a policy Use it to inspect current state before making changes.',
+    description:
+      'List all versions of a policy Use it to inspect current state before making changes.',
     tool: awsListPolicyVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListIamGroups',
-    description: 'List all IAM groups in the AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all IAM groups in the AWS account Use it to inspect current state before making changes.',
     tool: awsListIamGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetIamGroup',
-    description: 'Get detailed information about a specific IAM group Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about a specific IAM group Use it to inspect current state before making changes.',
     tool: awsGetIamGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListAttachedRolePolicies',
-    description: 'List all managed policies attached to an IAM role Use it to inspect current state before making changes.',
+    description:
+      'List all managed policies attached to an IAM role Use it to inspect current state before making changes.',
     tool: awsListAttachedRolePolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAccountPasswordPolicy',
-    description: 'Get the password policy for the AWS account Use it to inspect current state before making changes.',
+    description:
+      'Get the password policy for the AWS account Use it to inspect current state before making changes.',
     tool: awsGetAccountPasswordPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5059,42 +5218,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetS3BucketLocation',
-    description: 'Get the AWS region where an S3 bucket is located Use it to inspect current state before making changes.',
+    description:
+      'Get the AWS region where an S3 bucket is located Use it to inspect current state before making changes.',
     tool: awsGetS3BucketLocation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3BucketPolicyStatus',
-    description: 'Get the policy status for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the policy status for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketPolicyStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListS3ObjectsV1',
-    description: 'List objects in an S3 bucket (v1 API) Use it to inspect current state before making changes.',
+    description:
+      'List objects in an S3 bucket (v1 API) Use it to inspect current state before making changes.',
     tool: awsListS3ObjectsV1 as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3ObjectAttributes',
-    description: 'Retrieve attributes of an S3 object Use it to inspect current state before making changes.',
+    description:
+      'Retrieve attributes of an S3 object Use it to inspect current state before making changes.',
     tool: awsGetS3ObjectAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3ObjectTorrent',
-    description: 'Get a torrent file for an S3 object Use it to inspect current state before making changes.',
+    description:
+      'Get a torrent file for an S3 object Use it to inspect current state before making changes.',
     tool: awsGetS3ObjectTorrent as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsRenameS3Object',
-    description: 'Rename an S3 object by copying and deleting Use it to rename an object (copy then delete).',
+    description:
+      'Rename an S3 object by copying and deleting Use it to rename an object (copy then delete).',
     tool: awsRenameS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -5108,231 +5273,264 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetS3BucketRequestPayment',
-    description: 'Get the request payer configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the request payer configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketRequestPayment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketRequestPayment',
-    description: 'Set the request payer configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the request payer configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketRequestPayment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3BucketOwnershipControls',
-    description: 'Get the ownership controls for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the ownership controls for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketOwnershipControls as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketOwnershipControls',
-    description: 'Set the ownership controls for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the ownership controls for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketOwnershipControls as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketOwnershipControls',
-    description: 'Delete the ownership controls for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete the ownership controls for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketOwnershipControls as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetS3BucketAccelerate',
-    description: 'Get the transfer acceleration configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get the transfer acceleration configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketAccelerate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketAccelerate',
-    description: 'Set the transfer acceleration configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set the transfer acceleration configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketAccelerate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3BucketIntelligentTiering',
-    description: 'Get intelligent tiering configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get intelligent tiering configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketIntelligentTiering as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketIntelligentTiering',
-    description: 'Set intelligent tiering configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set intelligent tiering configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketIntelligentTiering as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketIntelligentTiering',
-    description: 'Delete intelligent tiering configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete intelligent tiering configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketIntelligentTiering as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListS3BucketIntelligentTiering',
-    description: 'List intelligent tiering configurations for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'List intelligent tiering configurations for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsListS3BucketIntelligentTiering as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3BucketInventory',
-    description: 'Get inventory configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get inventory configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketInventory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketInventory',
-    description: 'Set inventory configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set inventory configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketInventory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketInventory',
-    description: 'Delete inventory configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete inventory configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketInventory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListS3BucketInventory',
-    description: 'List inventory configurations for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'List inventory configurations for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsListS3BucketInventory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3BucketMetrics',
-    description: 'Get metrics configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get metrics configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketMetrics',
-    description: 'Set metrics configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set metrics configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketMetrics',
-    description: 'Delete metrics configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete metrics configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListS3BucketMetrics',
-    description: 'List metrics configurations for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'List metrics configurations for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsListS3BucketMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3BucketAnalytics',
-    description: 'Get analytics configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get analytics configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketAnalytics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3BucketAnalytics',
-    description: 'Set analytics configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set analytics configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3BucketAnalytics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketAnalytics',
-    description: 'Delete analytics configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete analytics configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketAnalytics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListS3BucketAnalytics',
-    description: 'List analytics configurations for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'List analytics configurations for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsListS3BucketAnalytics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3BucketMetadataConfig',
-    description: 'Get metadata configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get metadata configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketMetadataConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateS3BucketMetadataConfig',
-    description: 'Create metadata configuration for an S3 bucket Use it to provision a new resource.',
+    description:
+      'Create metadata configuration for an S3 bucket Use it to provision a new resource.',
     tool: awsCreateS3BucketMetadataConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketMetadataConfig',
-    description: 'Delete metadata configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete metadata configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketMetadataConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetS3BucketMetadataTable',
-    description: 'Get metadata table configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get metadata table configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketMetadataTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateS3BucketMetadataTable',
-    description: 'Create metadata table configuration for an S3 bucket Use it to provision a new resource.',
+    description:
+      'Create metadata table configuration for an S3 bucket Use it to provision a new resource.',
     tool: awsCreateS3BucketMetadataTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteS3BucketMetadataTable',
-    description: 'Delete metadata table configuration for an S3 bucket Use it to permanently remove the resource.',
+    description:
+      'Delete metadata table configuration for an S3 bucket Use it to permanently remove the resource.',
     tool: awsDeleteS3BucketMetadataTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsUpdateS3BucketMetadataInventoryTable',
-    description: 'Update metadata inventory table configuration for an S3 bucket Use it to change an existing resource.',
+    description:
+      'Update metadata inventory table configuration for an S3 bucket Use it to change an existing resource.',
     tool: awsUpdateS3BucketMetadataInventoryTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUpdateS3BucketMetadataJournalTable',
-    description: 'Update metadata journal table configuration for an S3 bucket Use it to change an existing resource.',
+    description:
+      'Update metadata journal table configuration for an S3 bucket Use it to change an existing resource.',
     tool: awsUpdateS3BucketMetadataJournalTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3BucketAbac',
-    description: 'Get ABAC (Attribute-Based Access Control) configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get ABAC (Attribute-Based Access Control) configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3BucketAbac as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetS3ObjectLegalHold',
-    description: 'Get legal hold status for an S3 object Use it to inspect current state before making changes.',
+    description:
+      'Get legal hold status for an S3 object Use it to inspect current state before making changes.',
     tool: awsGetS3ObjectLegalHold as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5346,42 +5544,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetS3ObjectRetention',
-    description: 'Get retention configuration for an S3 object Use it to inspect current state before making changes.',
+    description:
+      'Get retention configuration for an S3 object Use it to inspect current state before making changes.',
     tool: awsGetS3ObjectRetention as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3ObjectRetention',
-    description: 'Set retention configuration for an S3 object Use it to write data or configuration.',
+    description:
+      'Set retention configuration for an S3 object Use it to write data or configuration.',
     tool: awsPutS3ObjectRetention as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetS3ObjectLockConfig',
-    description: 'Get object lock configuration for an S3 bucket Use it to inspect current state before making changes.',
+    description:
+      'Get object lock configuration for an S3 bucket Use it to inspect current state before making changes.',
     tool: awsGetS3ObjectLockConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutS3ObjectLockConfig',
-    description: 'Set object lock configuration for an S3 bucket Use it to write data or configuration.',
+    description:
+      'Set object lock configuration for an S3 bucket Use it to write data or configuration.',
     tool: awsPutS3ObjectLockConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsRestoreS3Object',
-    description: 'Restore an archived S3 object from Glacier or Deep Archive Use it to restore data.',
+    description:
+      'Restore an archived S3 object from Glacier or Deep Archive Use it to restore data.',
     tool: awsRestoreS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsSelectS3ObjectContent',
-    description: 'Select content from an S3 object using SQL expressions Use it to query object content.',
+    description:
+      'Select content from an S3 object using SQL expressions Use it to query object content.',
     tool: awsSelectS3ObjectContent as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5409,7 +5613,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteIamUser',
-    description: 'Delete an IAM user (user must not have any access keys, signing certificates, or MFA devices) Use it to permanently remove the resource.',
+    description:
+      'Delete an IAM user (user must not have any access keys, signing certificates, or MFA devices) Use it to permanently remove the resource.',
     tool: awsDeleteIamUser as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -5430,7 +5635,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteIamRole',
-    description: 'Delete an IAM role (role must not have any attached policies) Use it to permanently remove the resource.',
+    description:
+      'Delete an IAM role (role must not have any attached policies) Use it to permanently remove the resource.',
     tool: awsDeleteIamRole as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -5472,7 +5678,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreatePolicyVersion',
-    description: 'Create a new version of a customer managed policy Use it to provision a new resource.',
+    description:
+      'Create a new version of a customer managed policy Use it to provision a new resource.',
     tool: awsCreatePolicyVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -5486,7 +5693,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteIamGroup',
-    description: 'Delete an IAM group (group must not contain any users) Use it to permanently remove the resource.',
+    description:
+      'Delete an IAM group (group must not contain any users) Use it to permanently remove the resource.',
     tool: awsDeleteIamGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -5521,7 +5729,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListAccessKeys',
-    description: 'List access keys for an IAM user Use it to inspect current state before making changes.',
+    description:
+      'List access keys for an IAM user Use it to inspect current state before making changes.',
     tool: awsListAccessKeys as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5542,21 +5751,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateAccessKey',
-    description: 'Update the status of an access key (activate or deactivate) Use it to change an existing resource.',
+    description:
+      'Update the status of an access key (activate or deactivate) Use it to change an existing resource.',
     tool: awsUpdateAccessKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUpdateAccountPasswordPolicy',
-    description: 'Update the password policy for the AWS account Use it to change an existing resource.',
+    description:
+      'Update the password policy for the AWS account Use it to change an existing resource.',
     tool: awsUpdateAccountPasswordPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListMfaDevices',
-    description: 'List MFA devices for an IAM user Use it to inspect current state before making changes.',
+    description:
+      'List MFA devices for an IAM user Use it to inspect current state before making changes.',
     tool: awsListMfaDevices as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5577,21 +5789,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPutS3BucketAbac',
-    description: 'Set ABAC (Attribute-Based Access Control) status for an S3 general purpose bucket. When enabled, bucket tags can be used for access control. Use it to write data or configuration.',
+    description:
+      'Set ABAC (Attribute-Based Access Control) status for an S3 general purpose bucket. When enabled, bucket tags can be used for access control. Use it to write data or configuration.',
     tool: awsPutS3BucketAbac as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListEcsClusters',
-    description: 'List all ECS clusters in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all ECS clusters in your AWS account Use it to inspect current state before making changes.',
     tool: awsListEcsClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEcsClusters',
-    description: 'Get details about one or more ECS clusters Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more ECS clusters Use it to inspect current state before making changes.',
     tool: awsDescribeEcsClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5626,14 +5841,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEcsServices',
-    description: 'List all services in an ECS cluster Use it to inspect current state before making changes.',
+    description:
+      'List all services in an ECS cluster Use it to inspect current state before making changes.',
     tool: awsListEcsServices as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEcsServices',
-    description: 'Get details about one or more ECS services Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more ECS services Use it to inspect current state before making changes.',
     tool: awsDescribeEcsServices as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5661,14 +5878,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEcsTasks',
-    description: 'List all tasks in an ECS cluster or service Use it to inspect current state before making changes.',
+    description:
+      'List all tasks in an ECS cluster or service Use it to inspect current state before making changes.',
     tool: awsListEcsTasks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEcsTasks',
-    description: 'Get details about one or more ECS tasks Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more ECS tasks Use it to inspect current state before making changes.',
     tool: awsDescribeEcsTasks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5682,7 +5901,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopEcsTask',
-    description: 'Stop a running ECS task Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a running ECS task Use it to stop a running resource (billable config may remain).',
     tool: awsStopEcsTask as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -5703,7 +5923,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEcsTaskDefinition',
-    description: 'Get details about a task definition Use it to inspect current state before making changes.',
+    description:
+      'Get details about a task definition Use it to inspect current state before making changes.',
     tool: awsDescribeEcsTaskDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5724,14 +5945,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEcsContainerInstances',
-    description: 'List all container instances in an ECS cluster Use it to inspect current state before making changes.',
+    description:
+      'List all container instances in an ECS cluster Use it to inspect current state before making changes.',
     tool: awsListEcsContainerInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEcsContainerInstances',
-    description: 'Get details about one or more container instances Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more container instances Use it to inspect current state before making changes.',
     tool: awsDescribeEcsContainerInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5745,14 +5968,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEcsCapacityProviders',
-    description: 'List all capacity providers (uses DescribeCapacityProvidersCommand) Use it to inspect current state before making changes.',
+    description:
+      'List all capacity providers (uses DescribeCapacityProvidersCommand) Use it to inspect current state before making changes.',
     tool: awsListEcsCapacityProviders as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEcsCapacityProviders',
-    description: 'Get details about one or more capacity providers Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more capacity providers Use it to inspect current state before making changes.',
     tool: awsDescribeEcsCapacityProviders as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5787,7 +6012,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEcsTags',
-    description: 'List tags for an ECS resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for an ECS resource Use it to inspect current state before making changes.',
     tool: awsListEcsTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5836,14 +6062,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEcsTaskSets',
-    description: 'List all task sets in a service (uses DescribeTaskSetsCommand) Use it to inspect current state before making changes.',
+    description:
+      'List all task sets in a service (uses DescribeTaskSetsCommand) Use it to inspect current state before making changes.',
     tool: awsListEcsTaskSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEcsTaskSets',
-    description: 'Get details about one or more task sets Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more task sets Use it to inspect current state before making changes.',
     tool: awsDescribeEcsTaskSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5871,7 +6099,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEcsAttributes',
-    description: 'List attributes for a resource Use it to inspect current state before making changes.',
+    description:
+      'List attributes for a resource Use it to inspect current state before making changes.',
     tool: awsListEcsAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5892,14 +6121,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEksClusters',
-    description: 'List all EKS clusters in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all EKS clusters in your AWS account Use it to inspect current state before making changes.',
     tool: awsListEksClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEksCluster',
-    description: 'Get details about an EKS cluster Use it to inspect current state before making changes.',
+    description:
+      'Get details about an EKS cluster Use it to inspect current state before making changes.',
     tool: awsDescribeEksCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5913,14 +6144,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateEksClusterVersion',
-    description: 'Update the Kubernetes version of an EKS cluster Use it to change an existing resource.',
+    description:
+      'Update the Kubernetes version of an EKS cluster Use it to change an existing resource.',
     tool: awsUpdateEksClusterVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUpdateEksClusterConfig',
-    description: 'Update the configuration of an EKS cluster Use it to change an existing resource.',
+    description:
+      'Update the configuration of an EKS cluster Use it to change an existing resource.',
     tool: awsUpdateEksClusterConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -5934,14 +6167,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEksNodegroups',
-    description: 'List all nodegroups in an EKS cluster Use it to inspect current state before making changes.',
+    description:
+      'List all nodegroups in an EKS cluster Use it to inspect current state before making changes.',
     tool: awsListEksNodegroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEksNodegroup',
-    description: 'Get details about a nodegroup Use it to inspect current state before making changes.',
+    description:
+      'Get details about a nodegroup Use it to inspect current state before making changes.',
     tool: awsDescribeEksNodegroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -5955,7 +6190,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateEksNodegroupVersion',
-    description: 'Update the Kubernetes version of a nodegroup Use it to change an existing resource.',
+    description:
+      'Update the Kubernetes version of a nodegroup Use it to change an existing resource.',
     tool: awsUpdateEksNodegroupVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -5976,14 +6212,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEksFargateProfiles',
-    description: 'List all Fargate profiles in an EKS cluster Use it to inspect current state before making changes.',
+    description:
+      'List all Fargate profiles in an EKS cluster Use it to inspect current state before making changes.',
     tool: awsListEksFargateProfiles as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEksFargateProfile',
-    description: 'Get details about a Fargate profile Use it to inspect current state before making changes.',
+    description:
+      'Get details about a Fargate profile Use it to inspect current state before making changes.',
     tool: awsDescribeEksFargateProfile as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6004,21 +6242,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEksAddons',
-    description: 'List all addons in an EKS cluster Use it to inspect current state before making changes.',
+    description:
+      'List all addons in an EKS cluster Use it to inspect current state before making changes.',
     tool: awsListEksAddons as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEksAddon',
-    description: 'Get details about an addon Use it to inspect current state before making changes.',
+    description:
+      'Get details about an addon Use it to inspect current state before making changes.',
     tool: awsDescribeEksAddon as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEksAddonVersions',
-    description: 'Get available versions for an addon Use it to inspect current state before making changes.',
+    description:
+      'Get available versions for an addon Use it to inspect current state before making changes.',
     tool: awsDescribeEksAddonVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6046,35 +6287,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEksIdentityProviderConfigs',
-    description: 'List all identity provider configurations for a cluster Use it to inspect current state before making changes.',
+    description:
+      'List all identity provider configurations for a cluster Use it to inspect current state before making changes.',
     tool: awsListEksIdentityProviderConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEksIdentityProviderConfig',
-    description: 'Get details about an identity provider configuration Use it to inspect current state before making changes.',
+    description:
+      'Get details about an identity provider configuration Use it to inspect current state before making changes.',
     tool: awsDescribeEksIdentityProviderConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsAssociateEksIdentityProviderConfig',
-    description: 'Associate an identity provider configuration with a cluster Use it to connect resources.',
+    description:
+      'Associate an identity provider configuration with a cluster Use it to connect resources.',
     tool: awsAssociateEksIdentityProviderConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDisassociateEksIdentityProviderConfig',
-    description: 'Disassociate an identity provider configuration from a cluster Use it to disconnect resources.',
+    description:
+      'Disassociate an identity provider configuration from a cluster Use it to disconnect resources.',
     tool: awsDisassociateEksIdentityProviderConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListEksTags',
-    description: 'List tags for an EKS resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for an EKS resource Use it to inspect current state before making changes.',
     tool: awsListEksTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6095,14 +6341,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEksAccessEntries',
-    description: 'List all access entries for a cluster Use it to inspect current state before making changes.',
+    description:
+      'List all access entries for a cluster Use it to inspect current state before making changes.',
     tool: awsListEksAccessEntries as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEksAccessEntry',
-    description: 'Get details about an access entry Use it to inspect current state before making changes.',
+    description:
+      'Get details about an access entry Use it to inspect current state before making changes.',
     tool: awsDescribeEksAccessEntry as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6137,28 +6385,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDisassociateEksAccessPolicy',
-    description: 'Disassociate an access policy from an access entry Use it to disconnect resources.',
+    description:
+      'Disassociate an access policy from an access entry Use it to disconnect resources.',
     tool: awsDisassociateEksAccessPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListEksAssociatedAccessPolicies',
-    description: 'List access policies associated with an access entry Use it to inspect current state before making changes.',
+    description:
+      'List access policies associated with an access entry Use it to inspect current state before making changes.',
     tool: awsListEksAssociatedAccessPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListEksPodIdentityAssociations',
-    description: 'List all pod identity associations for a cluster Use it to inspect current state before making changes.',
+    description:
+      'List all pod identity associations for a cluster Use it to inspect current state before making changes.',
     tool: awsListEksPodIdentityAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEksPodIdentityAssociation',
-    description: 'Get details about a pod identity association Use it to inspect current state before making changes.',
+    description:
+      'Get details about a pod identity association Use it to inspect current state before making changes.',
     tool: awsDescribeEksPodIdentityAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6186,14 +6438,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListRepositories',
-    description: 'List all ECR repositories in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all ECR repositories in your AWS account Use it to inspect current state before making changes.',
     tool: awsListRepositories as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeRepositories',
-    description: 'Get details about one or more ECR repositories Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more ECR repositories Use it to inspect current state before making changes.',
     tool: awsDescribeRepositories as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6221,147 +6475,168 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListImages',
-    description: 'List all images in an ECR repository Use it to inspect current state before making changes.',
+    description:
+      'List all images in an ECR repository Use it to inspect current state before making changes.',
     tool: awsListImages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeImages',
-    description: 'Get details about images in an ECR repository Use it to inspect current state before making changes.',
+    description:
+      'Get details about images in an ECR repository Use it to inspect current state before making changes.',
     tool: awsDescribeImages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsBatchGetImage',
-    description: 'Get detailed information about images in an ECR repository Use it to operate on multiple resources.',
+    description:
+      'Get detailed information about images in an ECR repository Use it to operate on multiple resources.',
     tool: awsBatchGetImage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsPutImage',
-    description: 'Create or update an image in an ECR repository Use it to write data or configuration.',
+    description:
+      'Create or update an image in an ECR repository Use it to write data or configuration.',
     tool: awsPutImage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteImages',
-    description: 'Delete one or more images from an ECR repository Use it to permanently remove the resource.',
+    description:
+      'Delete one or more images from an ECR repository Use it to permanently remove the resource.',
     tool: awsDeleteImages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsBatchDeleteImage',
-    description: 'Delete multiple images from an ECR repository Use it to operate on multiple resources.',
+    description:
+      'Delete multiple images from an ECR repository Use it to operate on multiple resources.',
     tool: awsBatchDeleteImage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsPutLifecyclePolicy',
-    description: 'Create or update the lifecycle policy for an ECR repository Use it to write data or configuration.',
+    description:
+      'Create or update the lifecycle policy for an ECR repository Use it to write data or configuration.',
     tool: awsPutLifecyclePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetLifecyclePolicy',
-    description: 'Get the lifecycle policy for an ECR repository Use it to inspect current state before making changes.',
+    description:
+      'Get the lifecycle policy for an ECR repository Use it to inspect current state before making changes.',
     tool: awsGetLifecyclePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteLifecyclePolicy',
-    description: 'Delete the lifecycle policy from an ECR repository Use it to permanently remove the resource.',
+    description:
+      'Delete the lifecycle policy from an ECR repository Use it to permanently remove the resource.',
     tool: awsDeleteLifecyclePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsStartLifecyclePolicyPreview',
-    description: 'Start a preview of the lifecycle policy for an ECR repository Use it to start a stopped resource.',
+    description:
+      'Start a preview of the lifecycle policy for an ECR repository Use it to start a stopped resource.',
     tool: awsStartLifecyclePolicyPreview as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetLifecyclePolicyPreview',
-    description: 'Get the results of a lifecycle policy preview Use it to inspect current state before making changes.',
+    description:
+      'Get the results of a lifecycle policy preview Use it to inspect current state before making changes.',
     tool: awsGetLifecyclePolicyPreview as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutImageTagMutability',
-    description: 'Update the image tag mutability settings for an ECR repository Use it to write data or configuration.',
+    description:
+      'Update the image tag mutability settings for an ECR repository Use it to write data or configuration.',
     tool: awsPutImageTagMutability as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetImageTagMutability',
-    description: 'Get the image tag mutability settings for an ECR repository Use it to inspect current state before making changes.',
+    description:
+      'Get the image tag mutability settings for an ECR repository Use it to inspect current state before making changes.',
     tool: awsGetImageTagMutability as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutImageScanningConfiguration',
-    description: 'Update the image scanning configuration for an ECR repository Use it to write data or configuration.',
+    description:
+      'Update the image scanning configuration for an ECR repository Use it to write data or configuration.',
     tool: awsPutImageScanningConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetImageScanningConfiguration',
-    description: 'Get the image scanning configuration for an ECR repository Use it to inspect current state before making changes.',
+    description:
+      'Get the image scanning configuration for an ECR repository Use it to inspect current state before making changes.',
     tool: awsGetImageScanningConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeImageScanFindings',
-    description: 'Get the image scan findings for an ECR repository Use it to inspect current state before making changes.',
+    description:
+      'Get the image scan findings for an ECR repository Use it to inspect current state before making changes.',
     tool: awsDescribeImageScanFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsSetRepositoryPolicy',
-    description: 'Set the repository policy for an ECR repository Use it to change the configuration of the resource.',
+    description:
+      'Set the repository policy for an ECR repository Use it to change the configuration of the resource.',
     tool: awsSetRepositoryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetRepositoryPolicy',
-    description: 'Get the repository policy for an ECR repository Use it to inspect current state before making changes.',
+    description:
+      'Get the repository policy for an ECR repository Use it to inspect current state before making changes.',
     tool: awsGetRepositoryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteRepositoryPolicy',
-    description: 'Delete the repository policy from an ECR repository Use it to permanently remove the resource.',
+    description:
+      'Delete the repository policy from an ECR repository Use it to permanently remove the resource.',
     tool: awsDeleteRepositoryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsPutReplicationConfiguration',
-    description: 'Create or update the replication configuration for the registry Use it to write data or configuration.',
+    description:
+      'Create or update the replication configuration for the registry Use it to write data or configuration.',
     tool: awsPutReplicationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetReplicationConfiguration',
-    description: 'Get the replication configuration for the registry Use it to inspect current state before making changes.',
+    description:
+      'Get the replication configuration for the registry Use it to inspect current state before making changes.',
     tool: awsGetReplicationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6389,35 +6664,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPutRegistryScanningConfiguration',
-    description: 'Create or update the registry scanning configuration Use it to write data or configuration.',
+    description:
+      'Create or update the registry scanning configuration Use it to write data or configuration.',
     tool: awsPutRegistryScanningConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetRegistryScanningConfiguration',
-    description: 'Get the registry scanning configuration Use it to inspect current state before making changes.',
+    description:
+      'Get the registry scanning configuration Use it to inspect current state before making changes.',
     tool: awsGetRegistryScanningConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeRegistry',
-    description: 'Get details about the registry Use it to inspect current state before making changes.',
+    description:
+      'Get details about the registry Use it to inspect current state before making changes.',
     tool: awsDescribeRegistry as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeImageReplicationStatus',
-    description: 'Get the replication status of an image Use it to inspect current state before making changes.',
+    description:
+      'Get the replication status of an image Use it to inspect current state before making changes.',
     tool: awsDescribeImageReplicationStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListEcrTags',
-    description: 'List tags for an ECR resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for an ECR resource Use it to inspect current state before making changes.',
     tool: awsListEcrTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6438,21 +6718,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeRdsInstances',
-    description: 'List all RDS database instances with details about configuration, status, and endpoints Use it to inspect current state before making changes.',
+    description:
+      'List all RDS database instances with details about configuration, status, and endpoints Use it to inspect current state before making changes.',
     tool: awsDescribeRdsInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateDbInstance',
-    description: 'Create a new RDS database instance (MySQL, PostgreSQL, MariaDB, Oracle, SQL Server) Use it to provision a new resource.',
+    description:
+      'Create a new RDS database instance (MySQL, PostgreSQL, MariaDB, Oracle, SQL Server) Use it to provision a new resource.',
     tool: awsCreateDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsModifyDbInstance',
-    description: 'Modify an existing RDS database instance (change storage, compute, engine version) Use it to change an existing resource.',
+    description:
+      'Modify an existing RDS database instance (change storage, compute, engine version) Use it to change an existing resource.',
     tool: awsModifyDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -6473,7 +6756,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopDbInstance',
-    description: 'Stop a running RDS database instance (max 7 days) Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a running RDS database instance (max 7 days) Use it to stop a running resource (billable config may remain).',
     tool: awsStopDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -6487,14 +6771,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeDbSnapshots',
-    description: 'List all RDS database snapshots Use it to inspect current state before making changes.',
+    description:
+      'List all RDS database snapshots Use it to inspect current state before making changes.',
     tool: awsDescribeDbSnapshots as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateDbSnapshot',
-    description: 'Create a manual backup snapshot of an RDS instance Use it to provision a new resource.',
+    description:
+      'Create a manual backup snapshot of an RDS instance Use it to provision a new resource.',
     tool: awsCreateDbSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -6508,7 +6794,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsRestoreDbInstanceFromDbSnapshot',
-    description: 'Restore an RDS instance from a snapshot Use it to restore from a backup or snapshot.',
+    description:
+      'Restore an RDS instance from a snapshot Use it to restore from a backup or snapshot.',
     tool: awsRestoreDbInstanceFromDbSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -6522,14 +6809,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeDbAutomatedBackups',
-    description: 'List automated backups for RDS instances Use it to inspect current state before making changes.',
+    description:
+      'List automated backups for RDS instances Use it to inspect current state before making changes.',
     tool: awsDescribeDbAutomatedBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeDbClusters',
-    description: 'List all Aurora database clusters Use it to inspect current state before making changes.',
+    description:
+      'List all Aurora database clusters Use it to inspect current state before making changes.',
     tool: awsDescribeDbClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6564,28 +6853,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopDbCluster',
-    description: 'Stop a running Aurora cluster Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a running Aurora cluster Use it to stop a running resource (billable config may remain).',
     tool: awsStopDbCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsCreateDbClusterSnapshot',
-    description: 'Create a manual snapshot of an Aurora cluster Use it to provision a new resource.',
+    description:
+      'Create a manual snapshot of an Aurora cluster Use it to provision a new resource.',
     tool: awsCreateDbClusterSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsRestoreDbClusterFromSnapshot',
-    description: 'Restore an Aurora cluster from a snapshot Use it to restore from a backup or snapshot.',
+    description:
+      'Restore an Aurora cluster from a snapshot Use it to restore from a backup or snapshot.',
     tool: awsRestoreDbClusterFromSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeDbParameterGroups',
-    description: 'List all RDS parameter groups Use it to inspect current state before making changes.',
+    description:
+      'List all RDS parameter groups Use it to inspect current state before making changes.',
     tool: awsDescribeDbParameterGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6599,7 +6892,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsModifyDbParameterGroup',
-    description: 'Modify parameters in an RDS parameter group Use it to change an existing resource.',
+    description:
+      'Modify parameters in an RDS parameter group Use it to change an existing resource.',
     tool: awsModifyDbParameterGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -6613,14 +6907,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeDbParameters',
-    description: 'List all parameters in an RDS parameter group Use it to inspect current state before making changes.',
+    description:
+      'List all parameters in an RDS parameter group Use it to inspect current state before making changes.',
     tool: awsDescribeDbParameters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeDbSubnetGroups',
-    description: 'List all RDS subnet groups Use it to inspect current state before making changes.',
+    description:
+      'List all RDS subnet groups Use it to inspect current state before making changes.',
     tool: awsDescribeDbSubnetGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6655,7 +6951,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeGlobalClusters',
-    description: 'List all Aurora Global Database clusters Use it to inspect current state before making changes.',
+    description:
+      'List all Aurora Global Database clusters Use it to inspect current state before making changes.',
     tool: awsDescribeGlobalClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6669,35 +6966,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteGlobalCluster',
-    description: 'Delete an Aurora Global Database cluster Use it to permanently remove the resource.',
+    description:
+      'Delete an Aurora Global Database cluster Use it to permanently remove the resource.',
     tool: awsDeleteGlobalCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsRemoveFromGlobalCluster',
-    description: 'Remove a secondary cluster from an Aurora Global Database Use it to remove access or configuration.',
+    description:
+      'Remove a secondary cluster from an Aurora Global Database Use it to remove access or configuration.',
     tool: awsRemoveFromGlobalCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsFailoverGlobalCluster',
-    description: 'Promote a secondary Aurora cluster to primary in a Global Database Use it to trigger a failover (causes downtime).',
+    description:
+      'Promote a secondary Aurora cluster to primary in a Global Database Use it to trigger a failover (causes downtime).',
     tool: awsFailoverGlobalCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsRestoreDbClusterToPointInTime',
-    description: 'Clone an Aurora cluster from a point-in-time backup Use it to restore from a backup or snapshot.',
+    description:
+      'Clone an Aurora cluster from a point-in-time backup Use it to restore from a backup or snapshot.',
     tool: awsRestoreDbClusterToPointInTime as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeElasticacheCacheClusters',
-    description: 'List all ElastiCache cache clusters (Memcached and Redis) Use it to inspect current state before making changes.',
+    description:
+      'List all ElastiCache cache clusters (Memcached and Redis) Use it to inspect current state before making changes.',
     tool: awsDescribeElasticacheCacheClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6732,14 +7034,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeReplicationGroups',
-    description: 'List all Redis replication groups Use it to inspect current state before making changes.',
+    description:
+      'List all Redis replication groups Use it to inspect current state before making changes.',
     tool: awsDescribeReplicationGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateReplicationGroup',
-    description: 'Create a Redis replication group with read replicas Use it to provision a new resource.',
+    description:
+      'Create a Redis replication group with read replicas Use it to provision a new resource.',
     tool: awsCreateReplicationGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -6774,7 +7078,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCacheParameterGroups',
-    description: 'List all cache parameter groups Use it to inspect current state before making changes.',
+    description:
+      'List all cache parameter groups Use it to inspect current state before making changes.',
     tool: awsDescribeCacheParameterGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6788,7 +7093,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsModifyCacheParameterGroup',
-    description: 'Modify parameters in a cache parameter group Use it to change an existing resource.',
+    description:
+      'Modify parameters in a cache parameter group Use it to change an existing resource.',
     tool: awsModifyCacheParameterGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -6802,14 +7108,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCacheParameters',
-    description: 'List all parameters in a cache parameter group Use it to inspect current state before making changes.',
+    description:
+      'List all parameters in a cache parameter group Use it to inspect current state before making changes.',
     tool: awsDescribeCacheParameters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCacheSubnetGroups',
-    description: 'List all cache subnet groups Use it to inspect current state before making changes.',
+    description:
+      'List all cache subnet groups Use it to inspect current state before making changes.',
     tool: awsDescribeCacheSubnetGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6865,21 +7173,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListTagsForResource',
-    description: 'List tags for an ElastiCache resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for an ElastiCache resource Use it to inspect current state before making changes.',
     tool: awsListTagsForResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsAddTagsToResource',
-    description: 'Add tags to an ElastiCache resource Use it to grant access or attach configuration.',
+    description:
+      'Add tags to an ElastiCache resource Use it to grant access or attach configuration.',
     tool: awsAddTagsToResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsRemoveTagsFromResource',
-    description: 'Remove tags from an ElastiCache resource Use it to remove access or configuration.',
+    description:
+      'Remove tags from an ElastiCache resource Use it to remove access or configuration.',
     tool: awsRemoveTagsFromResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -6900,21 +7211,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetEbsSnapshotBlock',
-    description: 'Get a block of data from a snapshot Use it to inspect current state before making changes.',
+    description:
+      'Get a block of data from a snapshot Use it to inspect current state before making changes.',
     tool: awsGetEbsSnapshotBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListEbsSnapshotBlocks',
-    description: 'List all blocks in a snapshot Use it to inspect current state before making changes.',
+    description:
+      'List all blocks in a snapshot Use it to inspect current state before making changes.',
     tool: awsListEbsSnapshotBlocks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListEbsChangedBlocks',
-    description: 'List blocks that have changed between two snapshots Use it to inspect current state before making changes.',
+    description:
+      'List blocks that have changed between two snapshots Use it to inspect current state before making changes.',
     tool: awsListEbsChangedBlocks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6935,14 +7249,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53HostedZone',
-    description: 'Get information about a Route 53 hosted zone Use it to inspect current state before making changes.',
+    description:
+      'Get information about a Route 53 hosted zone Use it to inspect current state before making changes.',
     tool: awsGetRoute53HostedZone as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53HostedZones',
-    description: 'List all Route 53 hosted zones Use it to inspect current state before making changes.',
+    description:
+      'List all Route 53 hosted zones Use it to inspect current state before making changes.',
     tool: awsListRoute53HostedZones as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6956,21 +7272,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateRoute53HostedZoneComment',
-    description: 'Update the comment for a Route 53 hosted zone Use it to change an existing resource.',
+    description:
+      'Update the comment for a Route 53 hosted zone Use it to change an existing resource.',
     tool: awsUpdateRoute53HostedZoneComment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListRoute53HostedZonesByName',
-    description: 'List Route 53 hosted zones by name Use it to inspect current state before making changes.',
+    description:
+      'List Route 53 hosted zones by name Use it to inspect current state before making changes.',
     tool: awsListRoute53HostedZonesByName as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53ResourceRecordSets',
-    description: 'List resource record sets in a hosted zone Use it to inspect current state before making changes.',
+    description:
+      'List resource record sets in a hosted zone Use it to inspect current state before making changes.',
     tool: awsListRoute53ResourceRecordSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -6984,14 +7303,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53Change',
-    description: 'Get the status of a change batch request Use it to inspect current state before making changes.',
+    description:
+      'Get the status of a change batch request Use it to inspect current state before making changes.',
     tool: awsGetRoute53Change as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53TagsForResource',
-    description: 'List tags for a Route 53 resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a Route 53 resource Use it to inspect current state before making changes.',
     tool: awsListRoute53TagsForResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7012,14 +7333,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53HealthCheck',
-    description: 'Get information about a Route 53 health check Use it to inspect current state before making changes.',
+    description:
+      'Get information about a Route 53 health check Use it to inspect current state before making changes.',
     tool: awsGetRoute53HealthCheck as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53HealthChecks',
-    description: 'List all Route 53 health checks Use it to inspect current state before making changes.',
+    description:
+      'List all Route 53 health checks Use it to inspect current state before making changes.',
     tool: awsListRoute53HealthChecks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7040,21 +7363,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53HealthCheckStatus',
-    description: 'Get the current status of a Route 53 health check Use it to inspect current state before making changes.',
+    description:
+      'Get the current status of a Route 53 health check Use it to inspect current state before making changes.',
     tool: awsGetRoute53HealthCheckStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRoute53HealthCheckLastFailureReason',
-    description: 'Get the last failure reason for a Route 53 health check Use it to inspect current state before making changes.',
+    description:
+      'Get the last failure reason for a Route 53 health check Use it to inspect current state before making changes.',
     tool: awsGetRoute53HealthCheckLastFailureReason as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRoute53HealthCheckCount',
-    description: 'Get the number of health checks associated with the current AWS account Use it to inspect current state before making changes.',
+    description:
+      'Get the number of health checks associated with the current AWS account Use it to inspect current state before making changes.',
     tool: awsGetRoute53HealthCheckCount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7068,14 +7394,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53ReusableDelegationSet',
-    description: 'Get information about a reusable delegation set Use it to inspect current state before making changes.',
+    description:
+      'Get information about a reusable delegation set Use it to inspect current state before making changes.',
     tool: awsGetRoute53ReusableDelegationSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53ReusableDelegationSets',
-    description: 'List all reusable delegation sets Use it to inspect current state before making changes.',
+    description:
+      'List all reusable delegation sets Use it to inspect current state before making changes.',
     tool: awsListRoute53ReusableDelegationSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7096,14 +7424,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53TrafficPolicy',
-    description: 'Get information about a Route 53 traffic policy Use it to inspect current state before making changes.',
+    description:
+      'Get information about a Route 53 traffic policy Use it to inspect current state before making changes.',
     tool: awsGetRoute53TrafficPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53TrafficPolicies',
-    description: 'List all Route 53 traffic policies Use it to inspect current state before making changes.',
+    description:
+      'List all Route 53 traffic policies Use it to inspect current state before making changes.',
     tool: awsListRoute53TrafficPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7124,21 +7454,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53TrafficPolicyInstance',
-    description: 'Get information about a Route 53 traffic policy instance Use it to inspect current state before making changes.',
+    description:
+      'Get information about a Route 53 traffic policy instance Use it to inspect current state before making changes.',
     tool: awsGetRoute53TrafficPolicyInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53TrafficPolicyInstances',
-    description: 'List all Route 53 traffic policy instances Use it to inspect current state before making changes.',
+    description:
+      'List all Route 53 traffic policy instances Use it to inspect current state before making changes.',
     tool: awsListRoute53TrafficPolicyInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteRoute53TrafficPolicyInstance',
-    description: 'Delete a Route 53 traffic policy instance Use it to permanently remove the resource.',
+    description:
+      'Delete a Route 53 traffic policy instance Use it to permanently remove the resource.',
     tool: awsDeleteRoute53TrafficPolicyInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -7152,42 +7485,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53TrafficPolicyInstanceCount',
-    description: 'Get the number of traffic policy instances for the current AWS account Use it to inspect current state before making changes.',
+    description:
+      'Get the number of traffic policy instances for the current AWS account Use it to inspect current state before making changes.',
     tool: awsGetRoute53TrafficPolicyInstanceCount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateRoute53TrafficPolicyVersion',
-    description: 'Create a new version of a Route 53 traffic policy Use it to provision a new resource.',
+    description:
+      'Create a new version of a Route 53 traffic policy Use it to provision a new resource.',
     tool: awsCreateRoute53TrafficPolicyVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListRoute53TrafficPolicyVersions',
-    description: 'List all versions of a Route 53 traffic policy Use it to inspect current state before making changes.',
+    description:
+      'List all versions of a Route 53 traffic policy Use it to inspect current state before making changes.',
     tool: awsListRoute53TrafficPolicyVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRoute53AccountLimit',
-    description: 'Get the limit for a specific account setting Use it to inspect current state before making changes.',
+    description:
+      'Get the limit for a specific account setting Use it to inspect current state before making changes.',
     tool: awsGetRoute53AccountLimit as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRoute53HostedZoneLimit',
-    description: 'Get the limit for a specific hosted zone setting Use it to inspect current state before making changes.',
+    description:
+      'Get the limit for a specific hosted zone setting Use it to inspect current state before making changes.',
     tool: awsGetRoute53HostedZoneLimit as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRoute53ReusableDelegationSetLimit',
-    description: 'Get the limit for a specific reusable delegation set setting Use it to inspect current state before making changes.',
+    description:
+      'Get the limit for a specific reusable delegation set setting Use it to inspect current state before making changes.',
     tool: awsGetRoute53ReusableDelegationSetLimit as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7201,14 +7540,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53QueryLoggingConfig',
-    description: 'Get information about a query logging configuration Use it to inspect current state before making changes.',
+    description:
+      'Get information about a query logging configuration Use it to inspect current state before making changes.',
     tool: awsGetRoute53QueryLoggingConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53QueryLoggingConfigs',
-    description: 'List all query logging configurations Use it to inspect current state before making changes.',
+    description:
+      'List all query logging configurations Use it to inspect current state before making changes.',
     tool: awsListRoute53QueryLoggingConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7222,28 +7563,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRoute53CheckerIpRanges',
-    description: 'Get the IP ranges used by Route 53 health checkers Use it to inspect current state before making changes.',
+    description:
+      'Get the IP ranges used by Route 53 health checkers Use it to inspect current state before making changes.',
     tool: awsGetRoute53CheckerIpRanges as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRoute53GeoLocation',
-    description: 'Get information about a specific geo location Use it to inspect current state before making changes.',
+    description:
+      'Get information about a specific geo location Use it to inspect current state before making changes.',
     tool: awsGetRoute53GeoLocation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53GeoLocations',
-    description: 'List all supported geo locations Use it to inspect current state before making changes.',
+    description:
+      'List all supported geo locations Use it to inspect current state before making changes.',
     tool: awsListRoute53GeoLocations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRoute53Dnssec',
-    description: 'Get DNSSEC information for a hosted zone Use it to inspect current state before making changes.',
+    description:
+      'Get DNSSEC information for a hosted zone Use it to inspect current state before making changes.',
     tool: awsGetRoute53Dnssec as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7264,28 +7609,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListRoute53VpcAssociationAuthorizations',
-    description: 'List VPCs that can be associated with a hosted zone Use it to inspect current state before making changes.',
+    description:
+      'List VPCs that can be associated with a hosted zone Use it to inspect current state before making changes.',
     tool: awsListRoute53VpcAssociationAuthorizations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsTestRoute53DnsAnswer',
-    description: 'Test DNS answer for a specific record Use it to inspect current state before making changes.',
+    description:
+      'Test DNS answer for a specific record Use it to inspect current state before making changes.',
     tool: awsTestRoute53DnsAnswer as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRoute53HostedZoneCount',
-    description: 'Get the number of hosted zones associated with the current AWS account Use it to inspect current state before making changes.',
+    description:
+      'Get the number of hosted zones associated with the current AWS account Use it to inspect current state before making changes.',
     tool: awsGetRoute53HostedZoneCount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRoute53HostedZonesByVpc',
-    description: 'List hosted zones associated with a VPC Use it to inspect current state before making changes.',
+    description:
+      'List hosted zones associated with a VPC Use it to inspect current state before making changes.',
     tool: awsListRoute53HostedZonesByVpc as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7313,7 +7662,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteRoute53KeySigningKey',
-    description: 'Delete a key signing key for a hosted zone Use it to permanently remove the resource.',
+    description:
+      'Delete a key signing key for a hosted zone Use it to permanently remove the resource.',
     tool: awsDeleteRoute53KeySigningKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -7327,14 +7677,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontDistribution',
-    description: 'Get information about a CloudFront distribution Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront distribution Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCloudfrontDistributionConfig',
-    description: 'Get the configuration of a CloudFront distribution Use it to inspect current state before making changes.',
+    description:
+      'Get the configuration of a CloudFront distribution Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontDistributionConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7355,7 +7707,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCloudfrontDistributions',
-    description: 'List all CloudFront distributions Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront distributions Use it to inspect current state before making changes.',
     tool: awsListCloudfrontDistributions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7383,14 +7736,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontInvalidation',
-    description: 'Get information about a CloudFront invalidation Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront invalidation Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontInvalidation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCloudfrontInvalidations',
-    description: 'List all invalidations for a CloudFront distribution Use it to inspect current state before making changes.',
+    description:
+      'List all invalidations for a CloudFront distribution Use it to inspect current state before making changes.',
     tool: awsListCloudfrontInvalidations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7404,28 +7759,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontOriginAccessIdentity',
-    description: 'Get information about a CloudFront origin access identity Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront origin access identity Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontOriginAccessIdentity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateCloudfrontOriginAccessIdentity',
-    description: 'Update a CloudFront origin access identity Use it to change an existing resource.',
+    description:
+      'Update a CloudFront origin access identity Use it to change an existing resource.',
     tool: awsUpdateCloudfrontOriginAccessIdentity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteCloudfrontOriginAccessIdentity',
-    description: 'Delete a CloudFront origin access identity Use it to permanently remove the resource.',
+    description:
+      'Delete a CloudFront origin access identity Use it to permanently remove the resource.',
     tool: awsDeleteCloudfrontOriginAccessIdentity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListCloudfrontOriginAccessIdentities',
-    description: 'List all CloudFront origin access identities Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront origin access identities Use it to inspect current state before making changes.',
     tool: awsListCloudfrontOriginAccessIdentities as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7439,7 +7798,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontCachePolicy',
-    description: 'Get information about a CloudFront cache policy Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront cache policy Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontCachePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7460,7 +7820,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCloudfrontCachePolicies',
-    description: 'List all CloudFront cache policies Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront cache policies Use it to inspect current state before making changes.',
     tool: awsListCloudfrontCachePolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7474,28 +7835,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontResponseHeadersPolicy',
-    description: 'Get information about a CloudFront response headers policy Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront response headers policy Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontResponseHeadersPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateCloudfrontResponseHeadersPolicy',
-    description: 'Update a CloudFront response headers policy Use it to change an existing resource.',
+    description:
+      'Update a CloudFront response headers policy Use it to change an existing resource.',
     tool: awsUpdateCloudfrontResponseHeadersPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteCloudfrontResponseHeadersPolicy',
-    description: 'Delete a CloudFront response headers policy Use it to permanently remove the resource.',
+    description:
+      'Delete a CloudFront response headers policy Use it to permanently remove the resource.',
     tool: awsDeleteCloudfrontResponseHeadersPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListCloudfrontResponseHeadersPolicies',
-    description: 'List all CloudFront response headers policies Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront response headers policies Use it to inspect current state before making changes.',
     tool: awsListCloudfrontResponseHeadersPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7509,14 +7874,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontFunction',
-    description: 'Get information about a CloudFront function Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront function Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCloudfrontFunction',
-    description: 'Describe a CloudFront function Use it to inspect current state before making changes.',
+    description:
+      'Describe a CloudFront function Use it to inspect current state before making changes.',
     tool: awsDescribeCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7537,7 +7904,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCloudfrontFunctions',
-    description: 'List all CloudFront functions Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront functions Use it to inspect current state before making changes.',
     tool: awsListCloudfrontFunctions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7551,7 +7919,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsTestCloudfrontFunction',
-    description: 'Test a CloudFront function Use it to inspect current state before making changes.',
+    description:
+      'Test a CloudFront function Use it to inspect current state before making changes.',
     tool: awsTestCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7565,7 +7934,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontKeyGroup',
-    description: 'Get information about a CloudFront key group Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront key group Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontKeyGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7586,7 +7956,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCloudfrontKeyGroups',
-    description: 'List all CloudFront key groups Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront key groups Use it to inspect current state before making changes.',
     tool: awsListCloudfrontKeyGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7600,7 +7971,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontPublicKey',
-    description: 'Get information about a CloudFront public key Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront public key Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontPublicKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7621,7 +7993,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCloudfrontPublicKeys',
-    description: 'List all CloudFront public keys Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront public keys Use it to inspect current state before making changes.',
     tool: awsListCloudfrontPublicKeys as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7635,49 +8008,56 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontStreamingDistribution',
-    description: 'Get information about a CloudFront streaming distribution Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront streaming distribution Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontStreamingDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCloudfrontStreamingDistributionConfig',
-    description: 'Get the configuration of a CloudFront streaming distribution Use it to inspect current state before making changes.',
+    description:
+      'Get the configuration of a CloudFront streaming distribution Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontStreamingDistributionConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateCloudfrontStreamingDistribution',
-    description: 'Update a CloudFront streaming distribution Use it to change an existing resource.',
+    description:
+      'Update a CloudFront streaming distribution Use it to change an existing resource.',
     tool: awsUpdateCloudfrontStreamingDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteCloudfrontStreamingDistribution',
-    description: 'Delete a CloudFront streaming distribution Use it to permanently remove the resource.',
+    description:
+      'Delete a CloudFront streaming distribution Use it to permanently remove the resource.',
     tool: awsDeleteCloudfrontStreamingDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListCloudfrontStreamingDistributions',
-    description: 'List all CloudFront streaming distributions Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront streaming distributions Use it to inspect current state before making changes.',
     tool: awsListCloudfrontStreamingDistributions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateCloudfrontStreamingDistributionWithTags',
-    description: 'Create a CloudFront streaming distribution with tags Use it to provision a new resource.',
+    description:
+      'Create a CloudFront streaming distribution with tags Use it to provision a new resource.',
     tool: awsCreateCloudfrontStreamingDistributionWithTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListCloudfrontTags',
-    description: 'List tags for a CloudFront resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a CloudFront resource Use it to inspect current state before making changes.',
     tool: awsListCloudfrontTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7698,42 +8078,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCloudfrontContinuousDeploymentPolicy',
-    description: 'Get information about a CloudFront continuous deployment policy Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront continuous deployment policy Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontContinuousDeploymentPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateCloudfrontContinuousDeploymentPolicy',
-    description: 'Create a CloudFront continuous deployment policy Use it to provision a new resource.',
+    description:
+      'Create a CloudFront continuous deployment policy Use it to provision a new resource.',
     tool: awsCreateCloudfrontContinuousDeploymentPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUpdateCloudfrontContinuousDeploymentPolicy',
-    description: 'Update a CloudFront continuous deployment policy Use it to change an existing resource.',
+    description:
+      'Update a CloudFront continuous deployment policy Use it to change an existing resource.',
     tool: awsUpdateCloudfrontContinuousDeploymentPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteCloudfrontContinuousDeploymentPolicy',
-    description: 'Delete a CloudFront continuous deployment policy Use it to permanently remove the resource.',
+    description:
+      'Delete a CloudFront continuous deployment policy Use it to permanently remove the resource.',
     tool: awsDeleteCloudfrontContinuousDeploymentPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListCloudfrontContinuousDeploymentPolicies',
-    description: 'List all CloudFront continuous deployment policies Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront continuous deployment policies Use it to inspect current state before making changes.',
     tool: awsListCloudfrontContinuousDeploymentPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCloudfrontRealtimeLogConfig',
-    description: 'Get information about a CloudFront real-time log config Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CloudFront real-time log config Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontRealtimeLogConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7754,49 +8140,56 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteCloudfrontRealtimeLogConfig',
-    description: 'Delete a CloudFront real-time log config Use it to permanently remove the resource.',
+    description:
+      'Delete a CloudFront real-time log config Use it to permanently remove the resource.',
     tool: awsDeleteCloudfrontRealtimeLogConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListCloudfrontRealtimeLogConfigs',
-    description: 'List all CloudFront real-time log configs Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFront real-time log configs Use it to inspect current state before making changes.',
     tool: awsListCloudfrontRealtimeLogConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCloudfrontMonitoringSubscription',
-    description: 'Get monitoring subscription for a CloudFront distribution Use it to inspect current state before making changes.',
+    description:
+      'Get monitoring subscription for a CloudFront distribution Use it to inspect current state before making changes.',
     tool: awsGetCloudfrontMonitoringSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateCloudfrontMonitoringSubscription',
-    description: 'Create monitoring subscription for a CloudFront distribution Use it to provision a new resource.',
+    description:
+      'Create monitoring subscription for a CloudFront distribution Use it to provision a new resource.',
     tool: awsCreateCloudfrontMonitoringSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteCloudfrontMonitoringSubscription',
-    description: 'Delete monitoring subscription for a CloudFront distribution Use it to permanently remove the resource.',
+    description:
+      'Delete monitoring subscription for a CloudFront distribution Use it to permanently remove the resource.',
     tool: awsDeleteCloudfrontMonitoringSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListRestApis',
-    description: 'Lists the RestApis resources for your collection Use it to inspect current state before making changes.',
+    description:
+      'Lists the RestApis resources for your collection Use it to inspect current state before making changes.',
     tool: awsListRestApis as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRestApi',
-    description: 'Lists the RestApi resource in the collection Use it to inspect current state before making changes.',
+    description:
+      'Lists the RestApi resource in the collection Use it to inspect current state before making changes.',
     tool: awsGetRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7810,7 +8203,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateRestApi',
-    description: 'Changes information about the specified API Use it to change an existing resource.',
+    description:
+      'Changes information about the specified API Use it to change an existing resource.',
     tool: awsUpdateRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -7824,28 +8218,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsImportRestApi',
-    description: 'A feature of the API Gateway control service for creating a new API from an external API definition file Use it to import a definition.',
+    description:
+      'A feature of the API Gateway control service for creating a new API from an external API definition file Use it to import a definition.',
     tool: awsImportRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsPutRestApi',
-    description: 'A feature of the API Gateway control service for updating an existing API with an external API definition file Use it to write data or configuration.',
+    description:
+      'A feature of the API Gateway control service for updating an existing API with an external API definition file Use it to write data or configuration.',
     tool: awsPutRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListResources',
-    description: 'Lists information about a collection of Resource resources Use it to inspect current state before making changes.',
+    description:
+      'Lists information about a collection of Resource resources Use it to inspect current state before making changes.',
     tool: awsListResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetResource',
-    description: 'Lists information about a Resource resource Use it to inspect current state before making changes.',
+    description:
+      'Lists information about a Resource resource Use it to inspect current state before making changes.',
     tool: awsGetResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7859,7 +8257,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateResource',
-    description: 'Changes information about a Resource resource Use it to change an existing resource.',
+    description:
+      'Changes information about a Resource resource Use it to change an existing resource.',
     tool: awsUpdateResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -7873,14 +8272,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPutMethod',
-    description: 'Add a method to an existing Resource resource Use it to write data or configuration.',
+    description:
+      'Add a method to an existing Resource resource Use it to write data or configuration.',
     tool: awsPutMethod as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetMethod',
-    description: 'Describe an existing Method resource Use it to inspect current state before making changes.',
+    description:
+      'Describe an existing Method resource Use it to inspect current state before making changes.',
     tool: awsGetMethod as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7901,7 +8302,7 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPutIntegration',
-    description: 'Sets up a method\'s integration Use it to write data or configuration.',
+    description: "Sets up a method's integration Use it to write data or configuration.",
     tool: awsPutIntegration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -7929,14 +8330,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListDeployments',
-    description: 'Lists information about a collection of Deployment resources Use it to inspect current state before making changes.',
+    description:
+      'Lists information about a collection of Deployment resources Use it to inspect current state before making changes.',
     tool: awsListDeployments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetDeployment',
-    description: 'Gets information about a Deployment resource Use it to inspect current state before making changes.',
+    description:
+      'Gets information about a Deployment resource Use it to inspect current state before making changes.',
     tool: awsGetDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7950,7 +8353,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateDeployment',
-    description: 'Changes information about a Deployment resource Use it to change an existing resource.',
+    description:
+      'Changes information about a Deployment resource Use it to change an existing resource.',
     tool: awsUpdateDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -7964,14 +8368,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListStages',
-    description: 'Lists information about a collection of Stage resources Use it to inspect current state before making changes.',
+    description:
+      'Lists information about a collection of Stage resources Use it to inspect current state before making changes.',
     tool: awsListStages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetStage',
-    description: 'Gets information about a Stage resource Use it to inspect current state before making changes.',
+    description:
+      'Gets information about a Stage resource Use it to inspect current state before making changes.',
     tool: awsGetStage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -7985,7 +8391,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateStage',
-    description: 'Changes information about a Stage resource Use it to change an existing resource.',
+    description:
+      'Changes information about a Stage resource Use it to change an existing resource.',
     tool: awsUpdateStage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -8006,7 +8413,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeAutoscalingGroups',
-    description: 'Describe one or more Auto Scaling groups Use it to inspect current state before making changes.',
+    description:
+      'Describe one or more Auto Scaling groups Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8055,21 +8463,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsSetAutoscalingGroupDesiredCapacity',
-    description: 'Set the desired capacity for an Auto Scaling group Use it to change the configuration of the resource.',
+    description:
+      'Set the desired capacity for an Auto Scaling group Use it to change the configuration of the resource.',
     tool: awsSetAutoscalingGroupDesiredCapacity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsSetAutoscalingInstanceHealth',
-    description: 'Set the health status of an instance Use it to change the configuration of the resource.',
+    description:
+      'Set the health status of an instance Use it to change the configuration of the resource.',
     tool: awsSetAutoscalingInstanceHealth as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsTerminateAutoscalingInstance',
-    description: 'Terminate an instance in an Auto Scaling group Use it to permanently terminate the resource.',
+    description:
+      'Terminate an instance in an Auto Scaling group Use it to permanently terminate the resource.',
     tool: awsTerminateAutoscalingInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -8083,7 +8494,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeLaunchConfigurations',
-    description: 'Describe launch configurations Use it to inspect current state before making changes.',
+    description:
+      'Describe launch configurations Use it to inspect current state before making changes.',
     tool: awsDescribeLaunchConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8118,7 +8530,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsExecuteAutoscalingPolicy',
-    description: 'Execute a scaling policy Use it to start a query, then poll for results with the query ID.',
+    description:
+      'Execute a scaling policy Use it to start a query, then poll for results with the query ID.',
     tool: awsExecuteAutoscalingPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -8132,7 +8545,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeAutoscalingScheduledActions',
-    description: 'Describe scheduled actions Use it to inspect current state before making changes.',
+    description:
+      'Describe scheduled actions Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingScheduledActions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8181,49 +8595,56 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateOrUpdateAutoscalingTags',
-    description: 'Create or update tags for Auto Scaling resources Use it to provision a new resource.',
+    description:
+      'Create or update tags for Auto Scaling resources Use it to provision a new resource.',
     tool: awsCreateOrUpdateAutoscalingTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeAutoscalingTags',
-    description: 'Describe tags for Auto Scaling resources Use it to inspect current state before making changes.',
+    description:
+      'Describe tags for Auto Scaling resources Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteAutoscalingTags',
-    description: 'Delete tags from Auto Scaling resources Use it to permanently remove the resource.',
+    description:
+      'Delete tags from Auto Scaling resources Use it to permanently remove the resource.',
     tool: awsDeleteAutoscalingTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsDescribeAutoscalingActivities',
-    description: 'Describe scaling activities Use it to inspect current state before making changes.',
+    description:
+      'Describe scaling activities Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingActivities as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeAutoscalingInstances',
-    description: 'Describe Auto Scaling instances Use it to inspect current state before making changes.',
+    description:
+      'Describe Auto Scaling instances Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeAutoscalingNotificationConfigurations',
-    description: 'Describe notification configurations Use it to inspect current state before making changes.',
+    description:
+      'Describe notification configurations Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingNotificationConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutAutoscalingNotificationConfiguration',
-    description: 'Create or update a notification configuration Use it to write data or configuration.',
+    description:
+      'Create or update a notification configuration Use it to write data or configuration.',
     tool: awsPutAutoscalingNotificationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -8237,7 +8658,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeAutoscalingAccountLimits',
-    description: 'Describe account limits for Auto Scaling Use it to inspect current state before making changes.',
+    description:
+      'Describe account limits for Auto Scaling Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingAccountLimits as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8251,7 +8673,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeAutoscalingMetricCollectionTypes',
-    description: 'Describe metric collection types Use it to inspect current state before making changes.',
+    description:
+      'Describe metric collection types Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingMetricCollectionTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8265,21 +8688,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDisableAutoscalingMetricsCollection',
-    description: 'Disable metrics collection for an Auto Scaling group Use it to disable a feature.',
+    description:
+      'Disable metrics collection for an Auto Scaling group Use it to disable a feature.',
     tool: awsDisableAutoscalingMetricsCollection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeAutoscalingTerminationPolicyTypes',
-    description: 'Describe termination policy types Use it to inspect current state before making changes.',
+    description:
+      'Describe termination policy types Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingTerminationPolicyTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeAutoscalingScalingProcessTypes',
-    description: 'Describe scaling process types Use it to inspect current state before making changes.',
+    description:
+      'Describe scaling process types Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingScalingProcessTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8300,7 +8726,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsBatchPutAutoscalingScheduledAction',
-    description: 'Batch create or update scheduled actions Use it to operate on multiple resources.',
+    description:
+      'Batch create or update scheduled actions Use it to operate on multiple resources.',
     tool: awsBatchPutAutoscalingScheduledAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -8328,14 +8755,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeAutoscalingInstanceRefreshes',
-    description: 'Describe instance refreshes Use it to inspect current state before making changes.',
+    description:
+      'Describe instance refreshes Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingInstanceRefreshes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeAutoscalingWarmPool',
-    description: 'Describe warm pool configuration Use it to inspect current state before making changes.',
+    description:
+      'Describe warm pool configuration Use it to inspect current state before making changes.',
     tool: awsDescribeAutoscalingWarmPool as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8377,7 +8806,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEventbridgeRule',
-    description: 'Get details about an EventBridge rule Use it to inspect current state before making changes.',
+    description:
+      'Get details about an EventBridge rule Use it to inspect current state before making changes.',
     tool: awsDescribeEventbridgeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8405,21 +8835,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPutEventbridgeTargets',
-    description: 'Add or update targets for an EventBridge rule Use it to write data or configuration.',
+    description:
+      'Add or update targets for an EventBridge rule Use it to write data or configuration.',
     tool: awsPutEventbridgeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListEventbridgeTargets',
-    description: 'List targets for an EventBridge rule Use it to inspect current state before making changes.',
+    description:
+      'List targets for an EventBridge rule Use it to inspect current state before making changes.',
     tool: awsListEventbridgeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsRemoveEventbridgeTargets',
-    description: 'Remove targets from an EventBridge rule Use it to remove access or configuration.',
+    description:
+      'Remove targets from an EventBridge rule Use it to remove access or configuration.',
     tool: awsRemoveEventbridgeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -8433,14 +8866,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEventbridgeEventBuses',
-    description: 'List EventBridge event buses Use it to inspect current state before making changes.',
+    description:
+      'List EventBridge event buses Use it to inspect current state before making changes.',
     tool: awsListEventbridgeEventBuses as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEventbridgeEventBus',
-    description: 'Get details about an EventBridge event bus Use it to inspect current state before making changes.',
+    description:
+      'Get details about an EventBridge event bus Use it to inspect current state before making changes.',
     tool: awsDescribeEventbridgeEventBus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8468,7 +8903,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEventbridgeArchive',
-    description: 'Get details about an EventBridge archive Use it to inspect current state before making changes.',
+    description:
+      'Get details about an EventBridge archive Use it to inspect current state before making changes.',
     tool: awsDescribeEventbridgeArchive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8503,7 +8939,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEventbridgeReplay',
-    description: 'Get details about an EventBridge replay Use it to inspect current state before making changes.',
+    description:
+      'Get details about an EventBridge replay Use it to inspect current state before making changes.',
     tool: awsDescribeEventbridgeReplay as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8524,14 +8961,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEventbridgeConnections',
-    description: 'List EventBridge connections Use it to inspect current state before making changes.',
+    description:
+      'List EventBridge connections Use it to inspect current state before making changes.',
     tool: awsListEventbridgeConnections as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEventbridgeConnection',
-    description: 'Get details about an EventBridge connection Use it to inspect current state before making changes.',
+    description:
+      'Get details about an EventBridge connection Use it to inspect current state before making changes.',
     tool: awsDescribeEventbridgeConnection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8559,14 +8998,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEventbridgeEndpoints',
-    description: 'List EventBridge endpoints Use it to inspect current state before making changes.',
+    description:
+      'List EventBridge endpoints Use it to inspect current state before making changes.',
     tool: awsListEventbridgeEndpoints as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEventbridgeEndpoint',
-    description: 'Get details about an EventBridge endpoint Use it to inspect current state before making changes.',
+    description:
+      'Get details about an EventBridge endpoint Use it to inspect current state before making changes.',
     tool: awsDescribeEventbridgeEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8587,7 +9028,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEventbridgeTags',
-    description: 'List tags for an EventBridge resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for an EventBridge resource Use it to inspect current state before making changes.',
     tool: awsListEventbridgeTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8601,7 +9043,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUntagEventbridgeResource',
-    description: 'Remove tags from an EventBridge resource Use it to remove tags from the resource.',
+    description:
+      'Remove tags from an EventBridge resource Use it to remove tags from the resource.',
     tool: awsUntagEventbridgeResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -8615,7 +9058,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetVpcLatticeService',
-    description: 'Get information about a VPC Lattice service Use it to inspect current state before making changes.',
+    description:
+      'Get information about a VPC Lattice service Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeService as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8650,7 +9094,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetVpcLatticeServiceNetwork',
-    description: 'Get information about a VPC Lattice service network Use it to inspect current state before making changes.',
+    description:
+      'Get information about a VPC Lattice service network Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeServiceNetwork as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8671,7 +9116,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListVpcLatticeServiceNetworks',
-    description: 'List VPC Lattice service networks Use it to inspect current state before making changes.',
+    description:
+      'List VPC Lattice service networks Use it to inspect current state before making changes.',
     tool: awsListVpcLatticeServiceNetworks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8685,7 +9131,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetVpcLatticeListener',
-    description: 'Get information about a VPC Lattice listener Use it to inspect current state before making changes.',
+    description:
+      'Get information about a VPC Lattice listener Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeListener as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8706,7 +9153,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListVpcLatticeListeners',
-    description: 'List VPC Lattice listeners Use it to inspect current state before making changes.',
+    description:
+      'List VPC Lattice listeners Use it to inspect current state before making changes.',
     tool: awsListVpcLatticeListeners as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8720,7 +9168,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetVpcLatticeRule',
-    description: 'Get information about a VPC Lattice rule Use it to inspect current state before making changes.',
+    description:
+      'Get information about a VPC Lattice rule Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8755,7 +9204,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetVpcLatticeTargetGroup',
-    description: 'Get information about a VPC Lattice target group Use it to inspect current state before making changes.',
+    description:
+      'Get information about a VPC Lattice target group Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeTargetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8776,28 +9226,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListVpcLatticeTargetGroups',
-    description: 'List VPC Lattice target groups Use it to inspect current state before making changes.',
+    description:
+      'List VPC Lattice target groups Use it to inspect current state before making changes.',
     tool: awsListVpcLatticeTargetGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsRegisterVpcLatticeTargets',
-    description: 'Register targets with a VPC Lattice target group Use it to provision a new resource.',
+    description:
+      'Register targets with a VPC Lattice target group Use it to provision a new resource.',
     tool: awsRegisterVpcLatticeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeregisterVpcLatticeTargets',
-    description: 'Deregister targets from a VPC Lattice target group Use it to permanently remove the resource.',
+    description:
+      'Deregister targets from a VPC Lattice target group Use it to permanently remove the resource.',
     tool: awsDeregisterVpcLatticeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetVpcLatticeTargets',
-    description: 'Get targets for a VPC Lattice target group Use it to inspect current state before making changes.',
+    description:
+      'Get targets for a VPC Lattice target group Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8811,21 +9265,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetVpcLatticeServiceNetworkServiceAssociation',
-    description: 'Get information about a service network service association Use it to inspect current state before making changes.',
+    description:
+      'Get information about a service network service association Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeServiceNetworkServiceAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteVpcLatticeServiceNetworkServiceAssociation',
-    description: 'Delete a service network service association Use it to permanently remove the resource.',
+    description:
+      'Delete a service network service association Use it to permanently remove the resource.',
     tool: awsDeleteVpcLatticeServiceNetworkServiceAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListVpcLatticeServiceNetworkServiceAssociations',
-    description: 'List service network service associations Use it to inspect current state before making changes.',
+    description:
+      'List service network service associations Use it to inspect current state before making changes.',
     tool: awsListVpcLatticeServiceNetworkServiceAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8839,7 +9296,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetVpcLatticeServiceNetworkVpcAssociation',
-    description: 'Get information about a service network VPC association Use it to inspect current state before making changes.',
+    description:
+      'Get information about a service network VPC association Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeServiceNetworkVpcAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8853,14 +9311,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteVpcLatticeServiceNetworkVpcAssociation',
-    description: 'Delete a service network VPC association Use it to permanently remove the resource.',
+    description:
+      'Delete a service network VPC association Use it to permanently remove the resource.',
     tool: awsDeleteVpcLatticeServiceNetworkVpcAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListVpcLatticeServiceNetworkVpcAssociations',
-    description: 'List service network VPC associations Use it to inspect current state before making changes.',
+    description:
+      'List service network VPC associations Use it to inspect current state before making changes.',
     tool: awsListVpcLatticeServiceNetworkVpcAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8874,7 +9334,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetVpcLatticeAccessLogSubscription',
-    description: 'Get information about an access log subscription Use it to inspect current state before making changes.',
+    description:
+      'Get information about an access log subscription Use it to inspect current state before making changes.',
     tool: awsGetVpcLatticeAccessLogSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8895,7 +9356,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListVpcLatticeAccessLogSubscriptions',
-    description: 'List access log subscriptions Use it to inspect current state before making changes.',
+    description:
+      'List access log subscriptions Use it to inspect current state before making changes.',
     tool: awsListVpcLatticeAccessLogSubscriptions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8944,7 +9406,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListVpcLatticeTags',
-    description: 'List tags for a VPC Lattice resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a VPC Lattice resource Use it to inspect current state before making changes.',
     tool: awsListVpcLatticeTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -8986,42 +9449,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCloudformationStacks',
-    description: 'Describe CloudFormation stacks Use it to inspect current state before making changes.',
+    description:
+      'Describe CloudFormation stacks Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationStacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCloudformationStacks',
-    description: 'List all CloudFormation stacks Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFormation stacks Use it to inspect current state before making changes.',
     tool: awsListCloudformationStacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCloudformationStackEvents',
-    description: 'Describe events for a CloudFormation stack Use it to inspect current state before making changes.',
+    description:
+      'Describe events for a CloudFormation stack Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationStackEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCloudformationStackResource',
-    description: 'Describe a specific resource in a CloudFormation stack Use it to inspect current state before making changes.',
+    description:
+      'Describe a specific resource in a CloudFormation stack Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationStackResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCloudformationStackResources',
-    description: 'Describe all resources in a CloudFormation stack Use it to inspect current state before making changes.',
+    description:
+      'Describe all resources in a CloudFormation stack Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationStackResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCloudformationStackResources',
-    description: 'List all resources in a CloudFormation stack Use it to inspect current state before making changes.',
+    description:
+      'List all resources in a CloudFormation stack Use it to inspect current state before making changes.',
     tool: awsListCloudformationStackResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9035,7 +9504,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCloudformationChangeset',
-    description: 'Describe a CloudFormation change set Use it to inspect current state before making changes.',
+    description:
+      'Describe a CloudFormation change set Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationChangeset as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9056,28 +9526,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCloudformationChangesets',
-    description: 'List change sets for a CloudFormation stack Use it to inspect current state before making changes.',
+    description:
+      'List change sets for a CloudFormation stack Use it to inspect current state before making changes.',
     tool: awsListCloudformationChangesets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCloudformationTemplate',
-    description: 'Get the template for a CloudFormation stack Use it to inspect current state before making changes.',
+    description:
+      'Get the template for a CloudFormation stack Use it to inspect current state before making changes.',
     tool: awsGetCloudformationTemplate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCloudformationTemplateSummary',
-    description: 'Get a summary of a CloudFormation template Use it to inspect current state before making changes.',
+    description:
+      'Get a summary of a CloudFormation template Use it to inspect current state before making changes.',
     tool: awsGetCloudformationTemplateSummary as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsValidateCloudformationTemplate',
-    description: 'Validate a CloudFormation template Use it to validate a template or configuration.',
+    description:
+      'Validate a CloudFormation template Use it to validate a template or configuration.',
     tool: awsValidateCloudformationTemplate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9105,14 +9579,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCloudformationStackSet',
-    description: 'Describe a CloudFormation stack set Use it to inspect current state before making changes.',
+    description:
+      'Describe a CloudFormation stack set Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationStackSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCloudformationStackSets',
-    description: 'List all CloudFormation stack sets Use it to inspect current state before making changes.',
+    description:
+      'List all CloudFormation stack sets Use it to inspect current state before making changes.',
     tool: awsListCloudformationStackSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9126,63 +9602,72 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteCloudformationStackInstances',
-    description: 'Delete stack instances from a stack set Use it to permanently remove the resource.',
+    description:
+      'Delete stack instances from a stack set Use it to permanently remove the resource.',
     tool: awsDeleteCloudformationStackInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsDescribeCloudformationStackInstance',
-    description: 'Describe a stack instance in a stack set Use it to inspect current state before making changes.',
+    description:
+      'Describe a stack instance in a stack set Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationStackInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCloudformationStackInstances',
-    description: 'List stack instances in a stack set Use it to inspect current state before making changes.',
+    description:
+      'List stack instances in a stack set Use it to inspect current state before making changes.',
     tool: awsListCloudformationStackInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDetectCloudformationStackDrift',
-    description: 'Detect drift on a CloudFormation stack Use it to inspect current state before making changes.',
+    description:
+      'Detect drift on a CloudFormation stack Use it to inspect current state before making changes.',
     tool: awsDetectCloudformationStackDrift as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDetectCloudformationStackResourceDrift',
-    description: 'Detect drift on a specific resource in a stack Use it to inspect current state before making changes.',
+    description:
+      'Detect drift on a specific resource in a stack Use it to inspect current state before making changes.',
     tool: awsDetectCloudformationStackResourceDrift as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCloudformationStackResourceDrifts',
-    description: 'Describe resource drifts in a CloudFormation stack Use it to inspect current state before making changes.',
+    description:
+      'Describe resource drifts in a CloudFormation stack Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationStackResourceDrifts as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCloudformationExports',
-    description: 'List CloudFormation exports Use it to inspect current state before making changes.',
+    description:
+      'List CloudFormation exports Use it to inspect current state before making changes.',
     tool: awsListCloudformationExports as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCloudformationImports',
-    description: 'List CloudFormation imports for an export Use it to inspect current state before making changes.',
+    description:
+      'List CloudFormation imports for an export Use it to inspect current state before making changes.',
     tool: awsListCloudformationImports as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCloudformationAccountLimits',
-    description: 'Describe CloudFormation account limits Use it to inspect current state before making changes.',
+    description:
+      'Describe CloudFormation account limits Use it to inspect current state before making changes.',
     tool: awsDescribeCloudformationAccountLimits as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9196,14 +9681,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCodebuildProject',
-    description: 'Get information about a CodeBuild build project Use it to inspect current state before making changes.',
+    description:
+      'Get information about a CodeBuild build project Use it to inspect current state before making changes.',
     tool: awsGetCodebuildProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodebuildProjects',
-    description: 'List all CodeBuild build projects Use it to inspect current state before making changes.',
+    description:
+      'List all CodeBuild build projects Use it to inspect current state before making changes.',
     tool: awsListCodebuildProjects as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9224,7 +9711,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsBatchGetCodebuildProjects',
-    description: 'Get information about one or more build projects Use it to operate on multiple resources.',
+    description:
+      'Get information about one or more build projects Use it to operate on multiple resources.',
     tool: awsBatchGetCodebuildProjects as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9238,7 +9726,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopCodebuildBuild',
-    description: 'Stop a running build Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a running build Use it to stop a running resource (billable config may remain).',
     tool: awsStopCodebuildBuild as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -9252,14 +9741,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodebuildBuildsForProject',
-    description: 'List build IDs for a project Use it to inspect current state before making changes.',
+    description:
+      'List build IDs for a project Use it to inspect current state before making changes.',
     tool: awsListCodebuildBuildsForProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsBatchGetCodebuildBuilds',
-    description: 'Get information about one or more builds Use it to operate on multiple resources.',
+    description:
+      'Get information about one or more builds Use it to operate on multiple resources.',
     tool: awsBatchGetCodebuildBuilds as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9280,28 +9771,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopCodebuildBuildBatch',
-    description: 'Stops a running batch build Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stops a running batch build Use it to stop a running resource (billable config may remain).',
     tool: awsStopCodebuildBuildBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListCodebuildBuildBatches',
-    description: 'Retrieves the identifiers of your build batches Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the identifiers of your build batches Use it to inspect current state before making changes.',
     tool: awsListCodebuildBuildBatches as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodebuildBuildBatchesForProject',
-    description: 'Retrieves the identifiers of the build batches for a specific project Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the identifiers of the build batches for a specific project Use it to inspect current state before making changes.',
     tool: awsListCodebuildBuildBatchesForProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsBatchGetCodebuildBuildBatches',
-    description: 'Retrieves information about one or more batch builds Use it to operate on multiple resources.',
+    description:
+      'Retrieves information about one or more batch builds Use it to operate on multiple resources.',
     tool: awsBatchGetCodebuildBuildBatches as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9315,21 +9810,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodebuildReports',
-    description: 'Returns a list of ARNs for the reports Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of ARNs for the reports Use it to inspect current state before making changes.',
     tool: awsListCodebuildReports as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodebuildReportsForReportGroup',
-    description: 'Returns a list of ARNs for the reports that belong to a ReportGroup Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of ARNs for the reports that belong to a ReportGroup Use it to inspect current state before making changes.',
     tool: awsListCodebuildReportsForReportGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCodebuildReport',
-    description: 'Returns a list of ARNs for the reports in the current account Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of ARNs for the reports in the current account Use it to inspect current state before making changes.',
     tool: awsGetCodebuildReport as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9378,7 +9876,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodebuildReportGroups',
-    description: 'Returns a list of report groups Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of report groups Use it to inspect current state before making changes.',
     tool: awsListCodebuildReportGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9399,14 +9898,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCodedeployApplication',
-    description: 'Get details about a CodeDeploy application Use it to inspect current state before making changes.',
+    description:
+      'Get details about a CodeDeploy application Use it to inspect current state before making changes.',
     tool: awsGetCodedeployApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodedeployApplications',
-    description: 'List all CodeDeploy applications Use it to inspect current state before making changes.',
+    description:
+      'List all CodeDeploy applications Use it to inspect current state before making changes.',
     tool: awsListCodedeployApplications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9427,7 +9928,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsBatchGetCodedeployApplications',
-    description: 'Get information about one or more applications Use it to operate on multiple resources.',
+    description:
+      'Get information about one or more applications Use it to operate on multiple resources.',
     tool: awsBatchGetCodedeployApplications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9441,14 +9943,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCodedeployDeploymentGroup',
-    description: 'Get details about a deployment group Use it to inspect current state before making changes.',
+    description:
+      'Get details about a deployment group Use it to inspect current state before making changes.',
     tool: awsGetCodedeployDeploymentGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodedeployDeploymentGroups',
-    description: 'List deployment groups for an application Use it to inspect current state before making changes.',
+    description:
+      'List deployment groups for an application Use it to inspect current state before making changes.',
     tool: awsListCodedeployDeploymentGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9469,7 +9973,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsBatchGetCodedeployDeploymentGroups',
-    description: 'Get information about one or more deployment groups Use it to operate on multiple resources.',
+    description:
+      'Get information about one or more deployment groups Use it to operate on multiple resources.',
     tool: awsBatchGetCodedeployDeploymentGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9483,7 +9988,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCodedeployDeployment',
-    description: 'Get details about a deployment Use it to inspect current state before making changes.',
+    description:
+      'Get details about a deployment Use it to inspect current state before making changes.',
     tool: awsGetCodedeployDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9497,7 +10003,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopCodedeployDeployment',
-    description: 'Stop a deployment Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a deployment Use it to stop a running resource (billable config may remain).',
     tool: awsStopCodedeployDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -9511,21 +10018,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsBatchGetCodedeployDeployments',
-    description: 'Get information about one or more deployments Use it to operate on multiple resources.',
+    description:
+      'Get information about one or more deployments Use it to operate on multiple resources.',
     tool: awsBatchGetCodedeployDeployments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListCodedeployApplicationRevisions',
-    description: 'List application revisions Use it to inspect current state before making changes.',
+    description:
+      'List application revisions Use it to inspect current state before making changes.',
     tool: awsListCodedeployApplicationRevisions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCodedeployApplicationRevision',
-    description: 'Get details about an application revision Use it to inspect current state before making changes.',
+    description:
+      'Get details about an application revision Use it to inspect current state before making changes.',
     tool: awsGetCodedeployApplicationRevision as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9539,21 +10049,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodedeployOnPremisesInstances',
-    description: 'List on-premises instances Use it to inspect current state before making changes.',
+    description:
+      'List on-premises instances Use it to inspect current state before making changes.',
     tool: awsListCodedeployOnPremisesInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsBatchGetCodedeployOnPremisesInstances',
-    description: 'Get information about one or more on-premises instances Use it to operate on multiple resources.',
+    description:
+      'Get information about one or more on-premises instances Use it to operate on multiple resources.',
     tool: awsBatchGetCodedeployOnPremisesInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsAddTagsToCodedeployOnPremisesInstances',
-    description: 'Add tags to on-premises instances Use it to grant access or attach configuration.',
+    description:
+      'Add tags to on-premises instances Use it to grant access or attach configuration.',
     tool: awsAddTagsToCodedeployOnPremisesInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9567,7 +10080,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodedeployTags',
-    description: 'List tags for a CodeDeploy resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a CodeDeploy resource Use it to inspect current state before making changes.',
     tool: awsListCodedeployTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9595,14 +10109,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCodepipelinePipeline',
-    description: 'Get details about a CodePipeline pipeline Use it to inspect current state before making changes.',
+    description:
+      'Get details about a CodePipeline pipeline Use it to inspect current state before making changes.',
     tool: awsGetCodepipelinePipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodepipelinePipelines',
-    description: 'List all CodePipeline pipelines Use it to inspect current state before making changes.',
+    description:
+      'List all CodePipeline pipelines Use it to inspect current state before making changes.',
     tool: awsListCodepipelinePipelines as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9623,7 +10139,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCodepipelinePipelineState',
-    description: 'Get the current state of a CodePipeline pipeline Use it to inspect current state before making changes.',
+    description:
+      'Get the current state of a CodePipeline pipeline Use it to inspect current state before making changes.',
     tool: awsGetCodepipelinePipelineState as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9637,7 +10154,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetCodepipelineExecution',
-    description: 'Get details about a pipeline execution Use it to inspect current state before making changes.',
+    description:
+      'Get details about a pipeline execution Use it to inspect current state before making changes.',
     tool: awsGetCodepipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9651,28 +10169,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopCodepipelineExecution',
-    description: 'Stop a pipeline execution Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a pipeline execution Use it to stop a running resource (billable config may remain).',
     tool: awsStopCodepipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListCodepipelineActionExecutions',
-    description: 'List action executions for a pipeline execution Use it to inspect current state before making changes.',
+    description:
+      'List action executions for a pipeline execution Use it to inspect current state before making changes.',
     tool: awsListCodepipelineActionExecutions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodepipelineActionTypes',
-    description: 'List available action types Use it to inspect current state before making changes.',
+    description:
+      'List available action types Use it to inspect current state before making changes.',
     tool: awsListCodepipelineActionTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCodepipelineActionType',
-    description: 'Get details about an action type Use it to inspect current state before making changes.',
+    description:
+      'Get details about an action type Use it to inspect current state before making changes.',
     tool: awsGetCodepipelineActionType as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9686,7 +10208,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodepipelineWebhooks',
-    description: 'List webhooks for pipelines Use it to inspect current state before making changes.',
+    description:
+      'List webhooks for pipelines Use it to inspect current state before making changes.',
     tool: awsListCodepipelineWebhooks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9700,7 +10223,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeregisterCodepipelineWebhookWithThirdParty',
-    description: 'Deregister a webhook with a third party Use it to permanently remove the resource.',
+    description:
+      'Deregister a webhook with a third party Use it to permanently remove the resource.',
     tool: awsDeregisterCodepipelineWebhookWithThirdParty as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -9714,7 +10238,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPutCodepipelineApprovalResult',
-    description: 'Put approval result for an approval action Use it to write data or configuration.',
+    description:
+      'Put approval result for an approval action Use it to write data or configuration.',
     tool: awsPutCodepipelineApprovalResult as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9749,7 +10274,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodepipelineTags',
-    description: 'List tags for a CodePipeline resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a CodePipeline resource Use it to inspect current state before making changes.',
     tool: awsListCodepipelineTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9763,7 +10289,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUntagCodepipelineResource',
-    description: 'Remove tags from a CodePipeline resource Use it to remove tags from the resource.',
+    description:
+      'Remove tags from a CodePipeline resource Use it to remove tags from the resource.',
     tool: awsUntagCodepipelineResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -9777,14 +10304,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCodeartifactDomain',
-    description: 'Get details about a CodeArtifact domain Use it to inspect current state before making changes.',
+    description:
+      'Get details about a CodeArtifact domain Use it to inspect current state before making changes.',
     tool: awsDescribeCodeartifactDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodeartifactDomains',
-    description: 'List all CodeArtifact domains Use it to inspect current state before making changes.',
+    description:
+      'List all CodeArtifact domains Use it to inspect current state before making changes.',
     tool: awsListCodeartifactDomains as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9805,14 +10334,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCodeartifactRepository',
-    description: 'Get details about a CodeArtifact repository Use it to inspect current state before making changes.',
+    description:
+      'Get details about a CodeArtifact repository Use it to inspect current state before making changes.',
     tool: awsDescribeCodeartifactRepository as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodeartifactRepositories',
-    description: 'List CodeArtifact repositories Use it to inspect current state before making changes.',
+    description:
+      'List CodeArtifact repositories Use it to inspect current state before making changes.',
     tool: awsListCodeartifactRepositories as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9833,14 +10364,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodeartifactPackages',
-    description: 'List packages in a CodeArtifact repository Use it to inspect current state before making changes.',
+    description:
+      'List packages in a CodeArtifact repository Use it to inspect current state before making changes.',
     tool: awsListCodeartifactPackages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCodeartifactPackage',
-    description: 'Get details about a CodeArtifact package Use it to inspect current state before making changes.',
+    description:
+      'Get details about a CodeArtifact package Use it to inspect current state before making changes.',
     tool: awsDescribeCodeartifactPackage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9854,35 +10387,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListCodeartifactPackageVersions',
-    description: 'List versions of a CodeArtifact package Use it to inspect current state before making changes.',
+    description:
+      'List versions of a CodeArtifact package Use it to inspect current state before making changes.',
     tool: awsListCodeartifactPackageVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeCodeartifactPackageVersion',
-    description: 'Get details about a CodeArtifact package version Use it to inspect current state before making changes.',
+    description:
+      'Get details about a CodeArtifact package version Use it to inspect current state before making changes.',
     tool: awsDescribeCodeartifactPackageVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteCodeartifactPackageVersions',
-    description: 'Delete one or more CodeArtifact package versions Use it to permanently remove the resource.',
+    description:
+      'Delete one or more CodeArtifact package versions Use it to permanently remove the resource.',
     tool: awsDeleteCodeartifactPackageVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetCodeartifactAuthorizationToken',
-    description: 'Get an authorization token for CodeArtifact Use it to inspect current state before making changes.',
+    description:
+      'Get an authorization token for CodeArtifact Use it to inspect current state before making changes.',
     tool: awsGetCodeartifactAuthorizationToken as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCodeartifactRepositoryEndpoint',
-    description: 'Get the repository endpoint for CodeArtifact Use it to inspect current state before making changes.',
+    description:
+      'Get the repository endpoint for CodeArtifact Use it to inspect current state before making changes.',
     tool: awsGetCodeartifactRepositoryEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9896,14 +10434,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCodeartifactPackageGroup',
-    description: 'Get details about a CodeArtifact package group Use it to inspect current state before making changes.',
+    description:
+      'Get details about a CodeArtifact package group Use it to inspect current state before making changes.',
     tool: awsDescribeCodeartifactPackageGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCodeartifactPackageGroups',
-    description: 'List CodeArtifact package groups Use it to inspect current state before making changes.',
+    description:
+      'List CodeArtifact package groups Use it to inspect current state before making changes.',
     tool: awsListCodeartifactPackageGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9931,14 +10471,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDisassociateCodeartifactExternalConnection',
-    description: 'Disassociate an external connection from a repository Use it to disconnect resources.',
+    description:
+      'Disassociate an external connection from a repository Use it to disconnect resources.',
     tool: awsDisassociateCodeartifactExternalConnection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListCodeartifactTags',
-    description: 'List tags for a CodeArtifact resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a CodeArtifact resource Use it to inspect current state before making changes.',
     tool: awsListCodeartifactTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -9952,35 +10494,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUntagCodeartifactResource',
-    description: 'Remove tags from a CodeArtifact resource Use it to remove tags from the resource.',
+    description:
+      'Remove tags from a CodeArtifact resource Use it to remove tags from the resource.',
     tool: awsUntagCodeartifactResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListTrails',
-    description: 'Lists trails that are in the current account, or all trails in the current region Use it to inspect current state before making changes.',
+    description:
+      'Lists trails that are in the current account, or all trails in the current region Use it to inspect current state before making changes.',
     tool: awsListTrails as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetTrail',
-    description: 'Returns settings information for a specified trail Use it to inspect current state before making changes.',
+    description:
+      'Returns settings information for a specified trail Use it to inspect current state before making changes.',
     tool: awsGetTrail as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateTrail',
-    description: 'Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket Use it to provision a new resource.',
+    description:
+      'Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket Use it to provision a new resource.',
     tool: awsCreateTrail as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUpdateTrail',
-    description: 'Updates trail settings that control what events you are logging, and how to handle log files Use it to change an existing resource.',
+    description:
+      'Updates trail settings that control what events you are logging, and how to handle log files Use it to change an existing resource.',
     tool: awsUpdateTrail as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -9994,35 +10541,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeTrails',
-    description: 'Retrieves settings for one or more trails Use it to inspect current state before making changes.',
+    description:
+      'Retrieves settings for one or more trails Use it to inspect current state before making changes.',
     tool: awsDescribeTrails as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetTrailStatus',
-    description: 'Returns a JSON-formatted list of information about the specified trail Use it to inspect current state before making changes.',
+    description:
+      'Returns a JSON-formatted list of information about the specified trail Use it to inspect current state before making changes.',
     tool: awsGetTrailStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStartLogging',
-    description: 'Starts the recording of AWS API calls and log file delivery for a trail Use it to start a stopped resource.',
+    description:
+      'Starts the recording of AWS API calls and log file delivery for a trail Use it to start a stopped resource.',
     tool: awsStartLogging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsStopLogging',
-    description: 'Suspends the recording of AWS API calls and log file delivery for the specified trail Use it to stop a running resource (billable config may remain).',
+    description:
+      'Suspends the recording of AWS API calls and log file delivery for the specified trail Use it to stop a running resource (billable config may remain).',
     tool: awsStopLogging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsLookupEvents',
-    description: 'Looks up management events or CloudTrail Insights events that are captured by CloudTrail Use it to inspect current state before making changes.',
+    description:
+      'Looks up management events or CloudTrail Insights events that are captured by CloudTrail Use it to inspect current state before making changes.',
     tool: awsLookupEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10036,7 +10588,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteEventDataStore',
-    description: 'Disables the event data store specified by EventDataStore Use it to permanently remove the resource.',
+    description:
+      'Disables the event data store specified by EventDataStore Use it to permanently remove the resource.',
     tool: awsDeleteEventDataStore as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -10050,14 +10603,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetEventDataStore',
-    description: 'Returns information about an event data store Use it to inspect current state before making changes.',
+    description:
+      'Returns information about an event data store Use it to inspect current state before making changes.',
     tool: awsGetEventDataStore as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListEventDataStores',
-    description: 'Returns information about all event data stores in the account, in the current region Use it to inspect current state before making changes.',
+    description:
+      'Returns information about all event data stores in the account, in the current region Use it to inspect current state before making changes.',
     tool: awsListEventDataStores as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10071,7 +10626,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateChannel',
-    description: 'Creates a channel for CloudTrail to deliver events to a partner or external destination Use it to provision a new resource.',
+    description:
+      'Creates a channel for CloudTrail to deliver events to a partner or external destination Use it to provision a new resource.',
     tool: awsCreateChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -10092,77 +10648,88 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetChannel',
-    description: 'Returns information about a channel Use it to inspect current state before making changes.',
+    description:
+      'Returns information about a channel Use it to inspect current state before making changes.',
     tool: awsGetChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListChannels',
-    description: 'Returns information about all channels Use it to inspect current state before making changes.',
+    description:
+      'Returns information about all channels Use it to inspect current state before making changes.',
     tool: awsListChannels as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutResourcePolicy',
-    description: 'Attaches a resource-based permission policy to a CloudTrail channel, event data store, or lake Use it to write data or configuration.',
+    description:
+      'Attaches a resource-based permission policy to a CloudTrail channel, event data store, or lake Use it to write data or configuration.',
     tool: awsPutResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetResourcePolicy',
-    description: 'Retrieves the JSON-formatted resource-based policy document attached to the CloudTrail channel Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the JSON-formatted resource-based policy document attached to the CloudTrail channel Use it to inspect current state before making changes.',
     tool: awsGetResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteResourcePolicy',
-    description: 'Deletes the resource-based policy attached to the CloudTrail channel, event data store, or lake Use it to permanently remove the resource.',
+    description:
+      'Deletes the resource-based policy attached to the CloudTrail channel, event data store, or lake Use it to permanently remove the resource.',
     tool: awsDeleteResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsAddTags',
-    description: 'Adds one or more tags to a trail, event data store, or channel Use it to grant access or attach configuration.',
+    description:
+      'Adds one or more tags to a trail, event data store, or channel Use it to grant access or attach configuration.',
     tool: awsAddTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsRemoveTags',
-    description: 'Removes one or more tags from a trail, event data store, or channel Use it to remove access or configuration.',
+    description:
+      'Removes one or more tags from a trail, event data store, or channel Use it to remove access or configuration.',
     tool: awsRemoveTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListTags',
-    description: 'Lists the tags for the trail, event data store, or channel in the current region Use it to inspect current state before making changes.',
+    description:
+      'Lists the tags for the trail, event data store, or channel in the current region Use it to inspect current state before making changes.',
     tool: awsListTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsBatchGetTraces',
-    description: 'Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request Use it to operate on multiple resources.',
+    description:
+      'Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request Use it to operate on multiple resources.',
     tool: awsBatchGetTraces as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetTraceSummaries',
-    description: 'Retrieves IDs and annotations for traces available for a specified time frame using an optional filter Use it to inspect current state before making changes.',
+    description:
+      'Retrieves IDs and annotations for traces available for a specified time frame using an optional filter Use it to inspect current state before making changes.',
     tool: awsGetTraceSummaries as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetServiceGraph',
-    description: 'Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result Use it to inspect current state before making changes.',
+    description:
+      'Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result Use it to inspect current state before making changes.',
     tool: awsGetServiceGraph as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10176,21 +10743,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetTraceGraph',
-    description: 'Retrieves a service graph for one or more specific trace IDs Use it to inspect current state before making changes.',
+    description:
+      'Retrieves a service graph for one or more specific trace IDs Use it to inspect current state before making changes.',
     tool: awsGetTraceGraph as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetGroups',
-    description: 'Retrieves all active group details Use it to inspect current state before making changes.',
+    description:
+      'Retrieves all active group details Use it to inspect current state before making changes.',
     tool: awsGetGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateGroup',
-    description: 'Creates a group resource with a name and a filter expression Use it to provision a new resource.',
+    description:
+      'Creates a group resource with a name and a filter expression Use it to provision a new resource.',
     tool: awsCreateGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -10211,147 +10781,168 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetGroup',
-    description: 'Retrieves the group details with the provided ARN Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the group details with the provided ARN Use it to inspect current state before making changes.',
     tool: awsGetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSamplingRules',
-    description: 'Retrieves all sampling rules Use it to inspect current state before making changes.',
+    description:
+      'Retrieves all sampling rules Use it to inspect current state before making changes.',
     tool: awsGetSamplingRules as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSamplingTargets',
-    description: 'Retrieves a document that describes the current sampling targets for the sampling rules Use it to inspect current state before making changes.',
+    description:
+      'Retrieves a document that describes the current sampling targets for the sampling rules Use it to inspect current state before making changes.',
     tool: awsGetSamplingTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutTelemetryRecords',
-    description: 'Used by the AWS X-Ray daemon to upload telemetry Use it to write data or configuration.',
+    description:
+      'Used by the AWS X-Ray daemon to upload telemetry Use it to write data or configuration.',
     tool: awsPutTelemetryRecords as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetInsight',
-    description: 'Retrieves the summary information of an insight Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the summary information of an insight Use it to inspect current state before making changes.',
     tool: awsGetInsight as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetInsightSummaries',
-    description: 'Retrieves the summaries of all insights in the specified group matching the provided filter values Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the summaries of all insights in the specified group matching the provided filter values Use it to inspect current state before making changes.',
     tool: awsGetInsightSummaries as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetInsightEvents',
-    description: 'X-Ray reevaluates insights periodically until they are resolved, and records each intermediate state in an event Use it to inspect current state before making changes.',
+    description:
+      'X-Ray reevaluates insights periodically until they are resolved, and records each intermediate state in an event Use it to inspect current state before making changes.',
     tool: awsGetInsightEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetInsightImpactGraph',
-    description: 'Retrieves a service graph structure filtered by the insight Use it to inspect current state before making changes.',
+    description:
+      'Retrieves a service graph structure filtered by the insight Use it to inspect current state before making changes.',
     tool: awsGetInsightImpactGraph as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCostAndUsage',
-    description: 'Retrieves cost and usage metrics for your account Use it to inspect current state before making changes.',
+    description:
+      'Retrieves cost and usage metrics for your account Use it to inspect current state before making changes.',
     tool: awsGetCostAndUsage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCostAndUsageWithResources',
-    description: 'Retrieves cost and usage metrics with resources Use it to inspect current state before making changes.',
+    description:
+      'Retrieves cost and usage metrics with resources Use it to inspect current state before making changes.',
     tool: awsGetCostAndUsageWithResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetReservationCoverage',
-    description: 'Retrieves the reservation coverage for your account Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the reservation coverage for your account Use it to inspect current state before making changes.',
     tool: awsGetReservationCoverage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetReservationPurchaseRecommendation',
-    description: 'Gets recommendations for which reservations to purchase Use it to inspect current state before making changes.',
+    description:
+      'Gets recommendations for which reservations to purchase Use it to inspect current state before making changes.',
     tool: awsGetReservationPurchaseRecommendation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetReservationUtilization',
-    description: 'Retrieves the reservation utilization for your account Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the reservation utilization for your account Use it to inspect current state before making changes.',
     tool: awsGetReservationUtilization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRightsizingRecommendation',
-    description: 'Creates recommendations that help you reduce cost and improve efficiency Use it to inspect current state before making changes.',
+    description:
+      'Creates recommendations that help you reduce cost and improve efficiency Use it to inspect current state before making changes.',
     tool: awsGetRightsizingRecommendation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSavingsPlansCoverage',
-    description: 'Retrieves the Savings Plans coverage for your account Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the Savings Plans coverage for your account Use it to inspect current state before making changes.',
     tool: awsGetSavingsPlansCoverage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSavingsPlansPurchaseRecommendation',
-    description: 'Gets recommendations for which Savings Plans to purchase Use it to inspect current state before making changes.',
+    description:
+      'Gets recommendations for which Savings Plans to purchase Use it to inspect current state before making changes.',
     tool: awsGetSavingsPlansPurchaseRecommendation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSavingsPlansUtilization',
-    description: 'Retrieves the Savings Plans utilization for your account Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the Savings Plans utilization for your account Use it to inspect current state before making changes.',
     tool: awsGetSavingsPlansUtilization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSavingsPlansUtilizationDetails',
-    description: 'Retrieves attribute data about Savings Plans utilization Use it to inspect current state before making changes.',
+    description:
+      'Retrieves attribute data about Savings Plans utilization Use it to inspect current state before making changes.',
     tool: awsGetSavingsPlansUtilizationDetails as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListCostCategoryDefinitions',
-    description: 'Returns the name, ARN, effective date, and number of rules for all Cost Categories defined in the account Use it to inspect current state before making changes.',
+    description:
+      'Returns the name, ARN, effective date, and number of rules for all Cost Categories defined in the account Use it to inspect current state before making changes.',
     tool: awsListCostCategoryDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCostCategories',
-    description: 'Retrieves cost category values for a specific time period Use it to inspect current state before making changes.',
+    description:
+      'Retrieves cost category values for a specific time period Use it to inspect current state before making changes.',
     tool: awsGetCostCategories as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateCostCategoryDefinition',
-    description: 'Creates a new Cost Category with the requested name and rules Use it to provision a new resource.',
+    description:
+      'Creates a new Cost Category with the requested name and rules Use it to provision a new resource.',
     tool: awsCreateCostCategoryDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -10372,42 +10963,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCostCategoryDefinition',
-    description: 'Returns the name, ARN, rules, definition, and effective dates of a Cost Category Use it to inspect current state before making changes.',
+    description:
+      'Returns the name, ARN, rules, definition, and effective dates of a Cost Category Use it to inspect current state before making changes.',
     tool: awsDescribeCostCategoryDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetDimensionValues',
-    description: 'Retrieves all available filter values for a specific filter over a period of time Use it to inspect current state before making changes.',
+    description:
+      'Retrieves all available filter values for a specific filter over a period of time Use it to inspect current state before making changes.',
     tool: awsGetDimensionValues as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetTags',
-    description: 'Queries for available tag keys and tag values for a specified period Use it to inspect current state before making changes.',
+    description:
+      'Queries for available tag keys and tag values for a specified period Use it to inspect current state before making changes.',
     tool: awsGetTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAnomalies',
-    description: 'Retrieves all of the cost anomalies detected on your account Use it to inspect current state before making changes.',
+    description:
+      'Retrieves all of the cost anomalies detected on your account Use it to inspect current state before making changes.',
     tool: awsGetAnomalies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAnomalyMonitors',
-    description: 'Retrieves the cost anomaly monitor objects for your account Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the cost anomaly monitor objects for your account Use it to inspect current state before making changes.',
     tool: awsGetAnomalyMonitors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAnomalySubscriptions',
-    description: 'Retrieves the cost anomaly subscription objects for your account Use it to inspect current state before making changes.',
+    description:
+      'Retrieves the cost anomaly subscription objects for your account Use it to inspect current state before making changes.',
     tool: awsGetAnomalySubscriptions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10442,7 +11039,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateAnomalySubscription',
-    description: 'Updates an existing cost anomaly subscription Use it to change an existing resource.',
+    description:
+      'Updates an existing cost anomaly subscription Use it to change an existing resource.',
     tool: awsUpdateAnomalySubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -10456,14 +11054,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListBudgets',
-    description: 'List all budgets in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all budgets in your AWS account Use it to inspect current state before making changes.',
     tool: awsListBudgets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeBudget',
-    description: 'Get details about a specific budget Use it to inspect current state before making changes.',
+    description:
+      'Get details about a specific budget Use it to inspect current state before making changes.',
     tool: awsDescribeBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10491,7 +11091,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeBudgetPerformanceHistory',
-    description: 'Get the performance history of a budget Use it to inspect current state before making changes.',
+    description:
+      'Get the performance history of a budget Use it to inspect current state before making changes.',
     tool: awsDescribeBudgetPerformanceHistory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10519,21 +11120,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeBudgetAction',
-    description: 'Get details about a specific budget action Use it to inspect current state before making changes.',
+    description:
+      'Get details about a specific budget action Use it to inspect current state before making changes.',
     tool: awsDescribeBudgetAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListBudgetActionsForBudget',
-    description: 'List all budget actions for a specific budget Use it to inspect current state before making changes.',
+    description:
+      'List all budget actions for a specific budget Use it to inspect current state before making changes.',
     tool: awsListBudgetActionsForBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListBudgetActionsForAccount',
-    description: 'List all budget actions for an account Use it to inspect current state before making changes.',
+    description:
+      'List all budget actions for an account Use it to inspect current state before making changes.',
     tool: awsListBudgetActionsForAccount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10568,14 +11172,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListBudgetNotificationsForBudget',
-    description: 'List all notifications for a specific budget Use it to inspect current state before making changes.',
+    description:
+      'List all notifications for a specific budget Use it to inspect current state before making changes.',
     tool: awsListBudgetNotificationsForBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListBudgetNotificationsForAccount',
-    description: 'List all notifications for an account Use it to inspect current state before making changes.',
+    description:
+      'List all notifications for an account Use it to inspect current state before making changes.',
     tool: awsListBudgetNotificationsForAccount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10603,21 +11209,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSubscribersForNotification',
-    description: 'List all subscribers for a specific notification Use it to inspect current state before making changes.',
+    description:
+      'List all subscribers for a specific notification Use it to inspect current state before making changes.',
     tool: awsListSubscribersForNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListBillingViews',
-    description: 'List all billing views in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all billing views in your AWS account Use it to inspect current state before making changes.',
     tool: awsListBillingViews as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetBillingView',
-    description: 'Get details about a specific billing view Use it to inspect current state before making changes.',
+    description:
+      'Get details about a specific billing view Use it to inspect current state before making changes.',
     tool: awsGetBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10645,21 +11254,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetBillingViewResourcePolicy',
-    description: 'Get the resource-based policy attached to a billing view Use it to inspect current state before making changes.',
+    description:
+      'Get the resource-based policy attached to a billing view Use it to inspect current state before making changes.',
     tool: awsGetBillingViewResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListSourceViewsForBillingView',
-    description: 'List source views associated with a billing view Use it to inspect current state before making changes.',
+    description:
+      'List source views associated with a billing view Use it to inspect current state before making changes.',
     tool: awsListSourceViewsForBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListBillingViewTags',
-    description: 'List tags associated with a billing view Use it to inspect current state before making changes.',
+    description:
+      'List tags associated with a billing view Use it to inspect current state before making changes.',
     tool: awsListBillingViewTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10680,21 +11292,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeReportDefinitions',
-    description: 'Lists the AWS Cost and Usage reports available to the account Use it to inspect current state before making changes.',
+    description:
+      'Lists the AWS Cost and Usage reports available to the account Use it to inspect current state before making changes.',
     tool: awsDescribeReportDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutReportDefinition',
-    description: 'Creates a new report using the description that you provide Use it to write data or configuration.',
+    description:
+      'Creates a new report using the description that you provide Use it to write data or configuration.',
     tool: awsPutReportDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsModifyReportDefinition',
-    description: 'Allows you to programmatically update your report preferences Use it to change an existing resource.',
+    description:
+      'Allows you to programmatically update your report preferences Use it to change an existing resource.',
     tool: awsModifyReportDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -10708,14 +11323,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListKmsKeys',
-    description: 'List all KMS keys in the AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all KMS keys in the AWS account Use it to inspect current state before making changes.',
     tool: awsListKmsKeys as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeKmsKey',
-    description: 'Get detailed information about a KMS key Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about a KMS key Use it to inspect current state before making changes.',
     tool: awsDescribeKmsKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10799,7 +11416,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetKeyPolicy',
-    description: 'Get the key policy for a KMS key Use it to inspect current state before making changes.',
+    description:
+      'Get the key policy for a KMS key Use it to inspect current state before making changes.',
     tool: awsGetKeyPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10813,14 +11431,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListKeyPolicies',
-    description: 'List the names of key policies for a KMS key Use it to inspect current state before making changes.',
+    description:
+      'List the names of key policies for a KMS key Use it to inspect current state before making changes.',
     tool: awsListKeyPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateGrant',
-    description: 'Create a grant that allows a principal to use a KMS key Use it to provision a new resource.',
+    description:
+      'Create a grant that allows a principal to use a KMS key Use it to provision a new resource.',
     tool: awsCreateGrant as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -10869,7 +11489,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateKmsAlias',
-    description: 'Associate an existing alias with a different KMS key Use it to change an existing resource.',
+    description:
+      'Associate an existing alias with a different KMS key Use it to change an existing resource.',
     tool: awsUpdateKmsAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -10897,21 +11518,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateGuarddutyDetector',
-    description: 'Create a GuardDuty detector to enable threat detection Use it to provision a new resource.',
+    description:
+      'Create a GuardDuty detector to enable threat detection Use it to provision a new resource.',
     tool: awsCreateGuarddutyDetector as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListGuarddutyDetectors',
-    description: 'List all GuardDuty detectors in the current region Use it to inspect current state before making changes.',
+    description:
+      'List all GuardDuty detectors in the current region Use it to inspect current state before making changes.',
     tool: awsListGuarddutyDetectors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetGuarddutyDetector',
-    description: 'Get detailed information about a GuardDuty detector Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about a GuardDuty detector Use it to inspect current state before making changes.',
     tool: awsGetGuarddutyDetector as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -10925,28 +11549,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteGuarddutyDetector',
-    description: 'Delete a GuardDuty detector and disable threat detection Use it to permanently remove the resource.',
+    description:
+      'Delete a GuardDuty detector and disable threat detection Use it to permanently remove the resource.',
     tool: awsDeleteGuarddutyDetector as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListGuarddutyFindings',
-    description: 'List GuardDuty findings with optional filtering Use it to inspect current state before making changes.',
+    description:
+      'List GuardDuty findings with optional filtering Use it to inspect current state before making changes.',
     tool: awsListGuarddutyFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetGuarddutyFindings',
-    description: 'Get detailed information about specific findings Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about specific findings Use it to inspect current state before making changes.',
     tool: awsGetGuarddutyFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateGuarddutyFindingsFeedback',
-    description: 'Mark findings as useful or not useful for machine learning Use it to change an existing resource.',
+    description:
+      'Mark findings as useful or not useful for machine learning Use it to change an existing resource.',
     tool: awsUpdateGuarddutyFindingsFeedback as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -10967,21 +11595,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateGuarddutyIpSet',
-    description: 'Create an IP set of trusted or threat IP addresses Use it to provision a new resource.',
+    description:
+      'Create an IP set of trusted or threat IP addresses Use it to provision a new resource.',
     tool: awsCreateGuarddutyIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListGuarddutyIpSets',
-    description: 'List all IP sets for a detector Use it to inspect current state before making changes.',
+    description:
+      'List all IP sets for a detector Use it to inspect current state before making changes.',
     tool: awsListGuarddutyIpSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetGuarddutyIpSet',
-    description: 'Get details about a specific IP set Use it to inspect current state before making changes.',
+    description:
+      'Get details about a specific IP set Use it to inspect current state before making changes.',
     tool: awsGetGuarddutyIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11002,21 +11633,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateThreatIntelSet',
-    description: 'Create a threat intelligence set from external sources Use it to provision a new resource.',
+    description:
+      'Create a threat intelligence set from external sources Use it to provision a new resource.',
     tool: awsCreateThreatIntelSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListThreatIntelSets',
-    description: 'List all threat intelligence sets for a detector Use it to inspect current state before making changes.',
+    description:
+      'List all threat intelligence sets for a detector Use it to inspect current state before making changes.',
     tool: awsListThreatIntelSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetThreatIntelSet',
-    description: 'Get details about a specific threat intelligence set Use it to inspect current state before making changes.',
+    description:
+      'Get details about a specific threat intelligence set Use it to inspect current state before making changes.',
     tool: awsGetThreatIntelSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11051,49 +11685,56 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeHub',
-    description: 'Get information about the Security Hub hub resource Use it to inspect current state before making changes.',
+    description:
+      'Get information about the Security Hub hub resource Use it to inspect current state before making changes.',
     tool: awsDescribeHub as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateSecurityHubConfiguration',
-    description: 'Update Security Hub configuration settings Use it to change an existing resource.',
+    description:
+      'Update Security Hub configuration settings Use it to change an existing resource.',
     tool: awsUpdateSecurityHubConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetSecurityHubFindings',
-    description: 'Retrieve security findings with optional filters Use it to inspect current state before making changes.',
+    description:
+      'Retrieve security findings with optional filters Use it to inspect current state before making changes.',
     tool: awsGetSecurityHubFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateSecurityHubFindings',
-    description: 'Update the status, severity, or other attributes of findings Use it to change an existing resource.',
+    description:
+      'Update the status, severity, or other attributes of findings Use it to change an existing resource.',
     tool: awsUpdateSecurityHubFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsBatchImportFindings',
-    description: 'Import custom findings into Security Hub Use it to operate on multiple resources.',
+    description:
+      'Import custom findings into Security Hub Use it to operate on multiple resources.',
     tool: awsBatchImportFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsBatchUpdateFindings',
-    description: 'Update multiple findings in a single request Use it to operate on multiple resources.',
+    description:
+      'Update multiple findings in a single request Use it to operate on multiple resources.',
     tool: awsBatchUpdateFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsGetSecurityHubInsights',
-    description: 'Get a list of custom insights Use it to inspect current state before making changes.',
+    description:
+      'Get a list of custom insights Use it to inspect current state before making changes.',
     tool: awsGetSecurityHubInsights as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11121,21 +11762,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetInsightResults',
-    description: 'Get the results for a specific insight Use it to inspect current state before making changes.',
+    description:
+      'Get the results for a specific insight Use it to inspect current state before making changes.',
     tool: awsGetInsightResults as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeStandards',
-    description: 'List available security standards (CIS, PCI-DSS, AWS Foundational) Use it to inspect current state before making changes.',
+    description:
+      'List available security standards (CIS, PCI-DSS, AWS Foundational) Use it to inspect current state before making changes.',
     tool: awsDescribeStandards as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetEnabledStandards',
-    description: 'Get a list of enabled security standards Use it to inspect current state before making changes.',
+    description:
+      'Get a list of enabled security standards Use it to inspect current state before making changes.',
     tool: awsGetEnabledStandards as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11156,21 +11800,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeProducts',
-    description: 'List available Security Hub product integrations Use it to inspect current state before making changes.',
+    description:
+      'List available Security Hub product integrations Use it to inspect current state before making changes.',
     tool: awsDescribeProducts as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListEnabledProductsForImport',
-    description: 'List enabled product integrations that can send findings Use it to inspect current state before making changes.',
+    description:
+      'List enabled product integrations that can send findings Use it to inspect current state before making changes.',
     tool: awsListEnabledProductsForImport as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsEnableImportFindingsForProduct',
-    description: 'Enable a product integration to send findings to Security Hub Use it to enable a feature.',
+    description:
+      'Enable a product integration to send findings to Security Hub Use it to enable a feature.',
     tool: awsEnableImportFindingsForProduct as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -11184,42 +11831,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateMembers',
-    description: 'Invite AWS accounts to be member accounts in Security Hub Use it to provision a new resource.',
+    description:
+      'Invite AWS accounts to be member accounts in Security Hub Use it to provision a new resource.',
     tool: awsCreateMembers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListMembers',
-    description: 'List Security Hub member accounts Use it to inspect current state before making changes.',
+    description:
+      'List Security Hub member accounts Use it to inspect current state before making changes.',
     tool: awsListMembers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetMembers',
-    description: 'Get detailed information about specific member accounts Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about specific member accounts Use it to inspect current state before making changes.',
     tool: awsGetMembers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteMembers',
-    description: 'Remove member accounts from Security Hub Use it to permanently remove the resource.',
+    description:
+      'Remove member accounts from Security Hub Use it to permanently remove the resource.',
     tool: awsDeleteMembers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListWebAcls',
-    description: 'List all Web ACLs in the region or CloudFront Use it to inspect current state before making changes.',
+    description:
+      'List all Web ACLs in the region or CloudFront Use it to inspect current state before making changes.',
     tool: awsListWebAcls as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetWebAcl',
-    description: 'Get detailed information about a Web ACL Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about a Web ACL Use it to inspect current state before making changes.',
     tool: awsGetWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11247,7 +11900,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsAssociateWebAcl',
-    description: 'Associate a Web ACL with a resource (ALB, API Gateway, CloudFront) Use it to connect resources.',
+    description:
+      'Associate a Web ACL with a resource (ALB, API Gateway, CloudFront) Use it to connect resources.',
     tool: awsAssociateWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -11261,7 +11915,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListResourcesForWebAcl',
-    description: 'List all resources associated with a Web ACL Use it to inspect current state before making changes.',
+    description:
+      'List all resources associated with a Web ACL Use it to inspect current state before making changes.',
     tool: awsListResourcesForWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11275,7 +11930,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetWafIpSet',
-    description: 'Get details about an IP set Use it to inspect current state before making changes.',
+    description:
+      'Get details about an IP set Use it to inspect current state before making changes.',
     tool: awsGetWafIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11303,21 +11959,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListRegexPatternSets',
-    description: 'List all regex pattern sets Use it to inspect current state before making changes.',
+    description:
+      'List all regex pattern sets Use it to inspect current state before making changes.',
     tool: awsListRegexPatternSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetRegexPatternSet',
-    description: 'Get details about a regex pattern set Use it to inspect current state before making changes.',
+    description:
+      'Get details about a regex pattern set Use it to inspect current state before making changes.',
     tool: awsGetRegexPatternSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateRegexPatternSet',
-    description: 'Create a regex pattern set for matching strings Use it to provision a new resource.',
+    description:
+      'Create a regex pattern set for matching strings Use it to provision a new resource.',
     tool: awsCreateRegexPatternSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -11345,7 +12004,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetRuleGroup',
-    description: 'Get details about a rule group Use it to inspect current state before making changes.',
+    description:
+      'Get details about a rule group Use it to inspect current state before making changes.',
     tool: awsGetRuleGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11373,7 +12033,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetLoggingConfiguration',
-    description: 'Get logging configuration for a Web ACL Use it to inspect current state before making changes.',
+    description:
+      'Get logging configuration for a Web ACL Use it to inspect current state before making changes.',
     tool: awsGetLoggingConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11387,77 +12048,88 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteLoggingConfiguration',
-    description: 'Delete logging configuration for a Web ACL Use it to permanently remove the resource.',
+    description:
+      'Delete logging configuration for a Web ACL Use it to permanently remove the resource.',
     tool: awsDeleteLoggingConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListLoggingConfigurations',
-    description: 'List all logging configurations Use it to inspect current state before making changes.',
+    description:
+      'List all logging configurations Use it to inspect current state before making changes.',
     tool: awsListLoggingConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeManagedRuleGroup',
-    description: 'Get information about an AWS managed rule group Use it to inspect current state before making changes.',
+    description:
+      'Get information about an AWS managed rule group Use it to inspect current state before making changes.',
     tool: awsDescribeManagedRuleGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListAvailableManagedRuleGroups',
-    description: 'List AWS and Marketplace managed rule groups Use it to inspect current state before making changes.',
+    description:
+      'List AWS and Marketplace managed rule groups Use it to inspect current state before making changes.',
     tool: awsListAvailableManagedRuleGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetSampledRequests',
-    description: 'Get sample requests that matched a rule Use it to inspect current state before making changes.',
+    description:
+      'Get sample requests that matched a rule Use it to inspect current state before making changes.',
     tool: awsGetSampledRequests as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSubscription',
-    description: 'Get details about Shield Advanced subscription status Use it to inspect current state before making changes.',
+    description:
+      'Get details about Shield Advanced subscription status Use it to inspect current state before making changes.',
     tool: awsDescribeSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateSubscription',
-    description: 'Subscribe to AWS Shield Advanced (costs $3000/month) Use it to provision a new resource.',
+    description:
+      'Subscribe to AWS Shield Advanced (costs $3000/month) Use it to provision a new resource.',
     tool: awsCreateSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteSubscription',
-    description: 'Cancel AWS Shield Advanced subscription Use it to permanently remove the resource.',
+    description:
+      'Cancel AWS Shield Advanced subscription Use it to permanently remove the resource.',
     tool: awsDeleteSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListProtections',
-    description: 'List all protected resources Use it to inspect current state before making changes.',
+    description:
+      'List all protected resources Use it to inspect current state before making changes.',
     tool: awsListProtections as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeProtection',
-    description: 'Get details about a specific protection Use it to inspect current state before making changes.',
+    description:
+      'Get details about a specific protection Use it to inspect current state before making changes.',
     tool: awsDescribeProtection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateProtection',
-    description: 'Create protection for a resource (requires Shield Advanced) Use it to provision a new resource.',
+    description:
+      'Create protection for a resource (requires Shield Advanced) Use it to provision a new resource.',
     tool: awsCreateProtection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -11471,42 +12143,48 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListAttacks',
-    description: 'List DDoS attacks detected on protected resources Use it to inspect current state before making changes.',
+    description:
+      'List DDoS attacks detected on protected resources Use it to inspect current state before making changes.',
     tool: awsListAttacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeAttack',
-    description: 'Get detailed information about a specific DDoS attack Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about a specific DDoS attack Use it to inspect current state before making changes.',
     tool: awsDescribeAttack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeAttackStatistics',
-    description: 'Get summary statistics about DDoS attacks Use it to inspect current state before making changes.',
+    description:
+      'Get summary statistics about DDoS attacks Use it to inspect current state before making changes.',
     tool: awsDescribeAttackStatistics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeEmergencyContactSettings',
-    description: 'Get emergency contact information for DDoS Response Team (DRT) Use it to inspect current state before making changes.',
+    description:
+      'Get emergency contact information for DDoS Response Team (DRT) Use it to inspect current state before making changes.',
     tool: awsDescribeEmergencyContactSettings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsUpdateEmergencyContactSettings',
-    description: 'Update emergency contact information for DRT notifications Use it to change an existing resource.',
+    description:
+      'Update emergency contact information for DRT notifications Use it to change an existing resource.',
     tool: awsUpdateEmergencyContactSettings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeDrtAccess',
-    description: 'Get DDoS Response Team (DRT) access status and role Use it to inspect current state before making changes.',
+    description:
+      'Get DDoS Response Team (DRT) access status and role Use it to inspect current state before making changes.',
     tool: awsDescribeDrtAccess as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11527,28 +12205,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPutConfigRecorder',
-    description: 'Creates a new configuration recorder to record configuration changes Use it to write data or configuration.',
+    description:
+      'Creates a new configuration recorder to record configuration changes Use it to write data or configuration.',
     tool: awsPutConfigRecorder as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeConfigRecorders',
-    description: 'Returns details about one or more configuration recorders Use it to inspect current state before making changes.',
+    description:
+      'Returns details about one or more configuration recorders Use it to inspect current state before making changes.',
     tool: awsDescribeConfigRecorders as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStartConfigRecorder',
-    description: 'Starts recording configurations of the AWS resources Use it to start a stopped resource.',
+    description:
+      'Starts recording configurations of the AWS resources Use it to start a stopped resource.',
     tool: awsStartConfigRecorder as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsStopConfigRecorder',
-    description: 'Stops recording configurations of the AWS resources Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stops recording configurations of the AWS resources Use it to stop a running resource (billable config may remain).',
     tool: awsStopConfigRecorder as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -11562,21 +12244,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeConfigRecorderStatus',
-    description: 'Returns the current status of the configuration recorder Use it to inspect current state before making changes.',
+    description:
+      'Returns the current status of the configuration recorder Use it to inspect current state before making changes.',
     tool: awsDescribeConfigRecorderStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutDeliveryChannel',
-    description: 'Creates a delivery channel object to deliver configuration information Use it to write data or configuration.',
+    description:
+      'Creates a delivery channel object to deliver configuration information Use it to write data or configuration.',
     tool: awsPutDeliveryChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeDeliveryChannels',
-    description: 'Returns details about one or more delivery channels Use it to inspect current state before making changes.',
+    description:
+      'Returns details about one or more delivery channels Use it to inspect current state before making changes.',
     tool: awsDescribeDeliveryChannels as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11597,70 +12282,80 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeComplianceByConfigRule',
-    description: 'Indicates whether the specified Config rules are compliant Use it to inspect current state before making changes.',
+    description:
+      'Indicates whether the specified Config rules are compliant Use it to inspect current state before making changes.',
     tool: awsDescribeComplianceByConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeComplianceByResource',
-    description: 'Indicates whether the specified AWS resources are compliant Use it to inspect current state before making changes.',
+    description:
+      'Indicates whether the specified AWS resources are compliant Use it to inspect current state before making changes.',
     tool: awsDescribeComplianceByResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetComplianceSummaryByConfigRule',
-    description: 'Returns compliance summary for the specified Config rule Use it to inspect current state before making changes.',
+    description:
+      'Returns compliance summary for the specified Config rule Use it to inspect current state before making changes.',
     tool: awsGetComplianceSummaryByConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetComplianceSummaryByResourceType',
-    description: 'Returns the number of compliant and noncompliant rules for one or more resource types Use it to inspect current state before making changes.',
+    description:
+      'Returns the number of compliant and noncompliant rules for one or more resource types Use it to inspect current state before making changes.',
     tool: awsGetComplianceSummaryByResourceType as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetResourceConfigHistory',
-    description: 'Returns a list of configuration items for the specified resource Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of configuration items for the specified resource Use it to inspect current state before making changes.',
     tool: awsGetResourceConfigHistory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsBatchGetResourceConfig',
-    description: 'Returns the current configuration for one or more requested resources Use it to operate on multiple resources.',
+    description:
+      'Returns the current configuration for one or more requested resources Use it to operate on multiple resources.',
     tool: awsBatchGetResourceConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsListDiscoveredResources',
-    description: 'Accepts a resource type and returns a list of resource identifiers Use it to inspect current state before making changes.',
+    description:
+      'Accepts a resource type and returns a list of resource identifiers Use it to inspect current state before making changes.',
     tool: awsListDiscoveredResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsSelectResourceConfig',
-    description: 'Accepts a structured query language (SQL) SELECT command and returns resource configurations',
+    description:
+      'Accepts a structured query language (SQL) SELECT command and returns resource configurations',
     tool: awsSelectResourceConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutConfigRule',
-    description: 'Adds or updates an Config rule to evaluate if your AWS resources comply with your desired configurations Use it to write data or configuration.',
+    description:
+      'Adds or updates an Config rule to evaluate if your AWS resources comply with your desired configurations Use it to write data or configuration.',
     tool: awsPutConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeConfigRules',
-    description: 'Returns details about your Config rules Use it to inspect current state before making changes.',
+    description:
+      'Returns details about your Config rules Use it to inspect current state before making changes.',
     tool: awsDescribeConfigRules as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11674,49 +12369,56 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeConfigRuleEvaluationStatus',
-    description: 'Returns status information for each of your Config managed rules Use it to inspect current state before making changes.',
+    description:
+      'Returns status information for each of your Config managed rules Use it to inspect current state before making changes.',
     tool: awsDescribeConfigRuleEvaluationStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStartConfigRulesEvaluation',
-    description: 'Runs an evaluation for the specified Config rules Use it to start a stopped resource.',
+    description:
+      'Runs an evaluation for the specified Config rules Use it to start a stopped resource.',
     tool: awsStartConfigRulesEvaluation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsPutEvaluations',
-    description: 'Used by an AWS Lambda function to deliver evaluation results to Config Use it to write data or configuration.',
+    description:
+      'Used by an AWS Lambda function to deliver evaluation results to Config Use it to write data or configuration.',
     tool: awsPutEvaluations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsPutConfigurationAggregator',
-    description: 'Creates and updates the configuration aggregator Use it to write data or configuration.',
+    description:
+      'Creates and updates the configuration aggregator Use it to write data or configuration.',
     tool: awsPutConfigurationAggregator as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeConfigurationAggregators',
-    description: 'Returns the details of one or more configuration aggregators Use it to inspect current state before making changes.',
+    description:
+      'Returns the details of one or more configuration aggregators Use it to inspect current state before making changes.',
     tool: awsDescribeConfigurationAggregators as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteConfigurationAggregator',
-    description: 'Deletes the specified configuration aggregator Use it to permanently remove the resource.',
+    description:
+      'Deletes the specified configuration aggregator Use it to permanently remove the resource.',
     tool: awsDeleteConfigurationAggregator as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsDescribeConfigurationAggregatorSourcesStatus',
-    description: 'Returns status information for sources within an aggregator Use it to inspect current state before making changes.',
+    description:
+      'Returns status information for sources within an aggregator Use it to inspect current state before making changes.',
     tool: awsDescribeConfigurationAggregatorSourcesStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11730,91 +12432,104 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeConformancePacks',
-    description: 'Returns a list of one or more conformance packs Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of one or more conformance packs Use it to inspect current state before making changes.',
     tool: awsDescribeConformancePacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteConformancePack',
-    description: 'Deletes the specified conformance pack Use it to permanently remove the resource.',
+    description:
+      'Deletes the specified conformance pack Use it to permanently remove the resource.',
     tool: awsDeleteConformancePack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsDescribeConformancePackCompliance',
-    description: 'Returns compliance details of a conformance pack Use it to inspect current state before making changes.',
+    description:
+      'Returns compliance details of a conformance pack Use it to inspect current state before making changes.',
     tool: awsDescribeConformancePackCompliance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeConformancePackStatus',
-    description: 'Provides one or more conformance packs deployment status Use it to inspect current state before making changes.',
+    description:
+      'Provides one or more conformance packs deployment status Use it to inspect current state before making changes.',
     tool: awsDescribeConformancePackStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeOrganizationConfigRules',
-    description: 'Returns a list of organization Config rules Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of organization Config rules Use it to inspect current state before making changes.',
     tool: awsDescribeOrganizationConfigRules as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeOrganizationConformancePacks',
-    description: 'Returns a list of organization conformance packs Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of organization conformance packs Use it to inspect current state before making changes.',
     tool: awsDescribeOrganizationConformancePacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribePendingAggregationRequests',
-    description: 'Returns a list of all pending aggregation requests Use it to inspect current state before making changes.',
+    description:
+      'Returns a list of all pending aggregation requests Use it to inspect current state before making changes.',
     tool: awsDescribePendingAggregationRequests as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutOrganizationConfigRule',
-    description: 'Adds or updates an organization Config rule Use it to write data or configuration.',
+    description:
+      'Adds or updates an organization Config rule Use it to write data or configuration.',
     tool: awsPutOrganizationConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsPutOrganizationConformancePack',
-    description: 'Deploys conformance packs across member accounts in an AWS Organization Use it to write data or configuration.',
+    description:
+      'Deploys conformance packs across member accounts in an AWS Organization Use it to write data or configuration.',
     tool: awsPutOrganizationConformancePack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteOrganizationConfigRule',
-    description: 'Deletes the specified organization Config rule Use it to permanently remove the resource.',
+    description:
+      'Deletes the specified organization Config rule Use it to permanently remove the resource.',
     tool: awsDeleteOrganizationConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsDeleteOrganizationConformancePack',
-    description: 'Deletes the specified organization conformance pack Use it to permanently remove the resource.',
+    description:
+      'Deletes the specified organization conformance pack Use it to permanently remove the resource.',
     tool: awsDeleteOrganizationConformancePack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsPutRemediationConfigurations',
-    description: 'Adds or updates the remediation configuration with a specific Config rule Use it to write data or configuration.',
+    description:
+      'Adds or updates the remediation configuration with a specific Config rule Use it to write data or configuration.',
     tool: awsPutRemediationConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeRemediationConfigurations',
-    description: 'Returns the details of one or more remediation configurations Use it to inspect current state before making changes.',
+    description:
+      'Returns the details of one or more remediation configurations Use it to inspect current state before making changes.',
     tool: awsDescribeRemediationConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11828,28 +12543,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStartRemediationExecution',
-    description: 'Runs an on-demand remediation for the specified Config rules Use it to start a stopped resource.',
+    description:
+      'Runs an on-demand remediation for the specified Config rules Use it to start a stopped resource.',
     tool: awsStartRemediationExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeRemediationExecutionStatus',
-    description: 'Provides a detailed view of a Remediation Execution for a set of resources Use it to inspect current state before making changes.',
+    description:
+      'Provides a detailed view of a Remediation Execution for a set of resources Use it to inspect current state before making changes.',
     tool: awsDescribeRemediationExecutionStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutRetentionConfiguration',
-    description: 'Creates and updates the retention configuration Use it to write data or configuration.',
+    description:
+      'Creates and updates the retention configuration Use it to write data or configuration.',
     tool: awsPutRetentionConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeRetentionConfigurations',
-    description: 'Returns the details of one or more retention configurations Use it to inspect current state before making changes.',
+    description:
+      'Returns the details of one or more retention configurations Use it to inspect current state before making changes.',
     tool: awsDescribeRetentionConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11863,7 +12582,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListConfigTags',
-    description: 'List tags for a Config resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a Config resource Use it to inspect current state before making changes.',
     tool: awsListConfigTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11884,70 +12604,80 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeHealthEvents',
-    description: 'Get information about events that affect your AWS resources Use it to inspect current state before making changes.',
+    description:
+      'Get information about events that affect your AWS resources Use it to inspect current state before making changes.',
     tool: awsDescribeHealthEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthEventDetails',
-    description: 'Get detailed information about one or more events Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about one or more events Use it to inspect current state before making changes.',
     tool: awsDescribeHealthEventDetails as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthEventAggregates',
-    description: 'Get aggregated counts of events Use it to inspect current state before making changes.',
+    description:
+      'Get aggregated counts of events Use it to inspect current state before making changes.',
     tool: awsDescribeHealthEventAggregates as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthEventTypes',
-    description: 'Get information about event types Use it to inspect current state before making changes.',
+    description:
+      'Get information about event types Use it to inspect current state before making changes.',
     tool: awsDescribeHealthEventTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthAffectedEntities',
-    description: 'Get information about entities affected by events Use it to inspect current state before making changes.',
+    description:
+      'Get information about entities affected by events Use it to inspect current state before making changes.',
     tool: awsDescribeHealthAffectedEntities as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthEntityAggregates',
-    description: 'Get aggregated counts of entities affected by events Use it to inspect current state before making changes.',
+    description:
+      'Get aggregated counts of entities affected by events Use it to inspect current state before making changes.',
     tool: awsDescribeHealthEntityAggregates as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthEventsForOrganization',
-    description: 'Get information about events that affect your organization Use it to inspect current state before making changes.',
+    description:
+      'Get information about events that affect your organization Use it to inspect current state before making changes.',
     tool: awsDescribeHealthEventsForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthEventDetailsForOrganization',
-    description: 'Get detailed information about events for your organization Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about events for your organization Use it to inspect current state before making changes.',
     tool: awsDescribeHealthEventDetailsForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthAffectedAccountsForOrganization',
-    description: 'Get accounts affected by events in your organization Use it to inspect current state before making changes.',
+    description:
+      'Get accounts affected by events in your organization Use it to inspect current state before making changes.',
     tool: awsDescribeHealthAffectedAccountsForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeHealthServiceStatusForOrganization',
-    description: 'Get the status of the Health service for your organization Use it to inspect current state before making changes.',
+    description:
+      'Get the status of the Health service for your organization Use it to inspect current state before making changes.',
     tool: awsDescribeHealthServiceStatusForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -11968,14 +12698,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListAmplifyApps',
-    description: 'Lists existing Amplify apps Use it to inspect current state before making changes.',
+    description:
+      'Lists existing Amplify apps Use it to inspect current state before making changes.',
     tool: awsListAmplifyApps as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAmplifyApp',
-    description: 'Retrieves an existing Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Retrieves an existing Amplify app Use it to inspect current state before making changes.',
     tool: awsGetAmplifyApp as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12003,14 +12735,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListAmplifyBranches',
-    description: 'Lists the branches of an Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Lists the branches of an Amplify app Use it to inspect current state before making changes.',
     tool: awsListAmplifyBranches as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAmplifyBranch',
-    description: 'Retrieves a branch for an Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Retrieves a branch for an Amplify app Use it to inspect current state before making changes.',
     tool: awsGetAmplifyBranch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12038,98 +12772,112 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListAmplifyJobs',
-    description: 'Lists the jobs for a branch of an Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Lists the jobs for a branch of an Amplify app Use it to inspect current state before making changes.',
     tool: awsListAmplifyJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAmplifyJob',
-    description: 'Returns a job for a branch of an Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Returns a job for a branch of an Amplify app Use it to inspect current state before making changes.',
     tool: awsGetAmplifyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStartAmplifyJob',
-    description: 'Starts a new job for a branch of an Amplify app Use it to start a stopped resource.',
+    description:
+      'Starts a new job for a branch of an Amplify app Use it to start a stopped resource.',
     tool: awsStartAmplifyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsStopAmplifyJob',
-    description: 'Stops a job that is in progress for a branch of an Amplify app Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stops a job that is in progress for a branch of an Amplify app Use it to stop a running resource (billable config may remain).',
     tool: awsStopAmplifyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListAmplifyDomainAssociations',
-    description: 'Returns the domain associations for an Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Returns the domain associations for an Amplify app Use it to inspect current state before making changes.',
     tool: awsListAmplifyDomainAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAmplifyDomainAssociation',
-    description: 'Returns the domain information for an Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Returns the domain information for an Amplify app Use it to inspect current state before making changes.',
     tool: awsGetAmplifyDomainAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateAmplifyDomainAssociation',
-    description: 'Creates a new domain association for an Amplify app Use it to provision a new resource.',
+    description:
+      'Creates a new domain association for an Amplify app Use it to provision a new resource.',
     tool: awsCreateAmplifyDomainAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsUpdateAmplifyDomainAssociation',
-    description: 'Updates the domain association for an Amplify app Use it to change an existing resource.',
+    description:
+      'Updates the domain association for an Amplify app Use it to change an existing resource.',
     tool: awsUpdateAmplifyDomainAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteAmplifyDomainAssociation',
-    description: 'Deletes a domain association for an Amplify app Use it to permanently remove the resource.',
+    description:
+      'Deletes a domain association for an Amplify app Use it to permanently remove the resource.',
     tool: awsDeleteAmplifyDomainAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListAmplifyBackendEnvironments',
-    description: 'Lists the backend environments for an Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Lists the backend environments for an Amplify app Use it to inspect current state before making changes.',
     tool: awsListAmplifyBackendEnvironments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsCreateAmplifyBackendEnvironment',
-    description: 'Creates a new backend environment for an Amplify app Use it to provision a new resource.',
+    description:
+      'Creates a new backend environment for an Amplify app Use it to provision a new resource.',
     tool: awsCreateAmplifyBackendEnvironment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteAmplifyBackendEnvironment',
-    description: 'Deletes a backend environment for an Amplify app Use it to permanently remove the resource.',
+    description:
+      'Deletes a backend environment for an Amplify app Use it to permanently remove the resource.',
     tool: awsDeleteAmplifyBackendEnvironment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListAmplifyWebhooks',
-    description: 'Returns the webhooks for an Amplify app Use it to inspect current state before making changes.',
+    description:
+      'Returns the webhooks for an Amplify app Use it to inspect current state before making changes.',
     tool: awsListAmplifyWebhooks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetAmplifyWebhook',
-    description: 'Returns the webhook information that corresponds to a specified webhook ID Use it to inspect current state before making changes.',
+    description:
+      'Returns the webhook information that corresponds to a specified webhook ID Use it to inspect current state before making changes.',
     tool: awsGetAmplifyWebhook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12157,14 +12905,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListBatchComputeEnvironments',
-    description: 'List all Batch compute environments in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all Batch compute environments in your AWS account Use it to inspect current state before making changes.',
     tool: awsListBatchComputeEnvironments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeBatchComputeEnvironments',
-    description: 'Get details about one or more Batch compute environments Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more Batch compute environments Use it to inspect current state before making changes.',
     tool: awsDescribeBatchComputeEnvironments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12178,7 +12928,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateBatchComputeEnvironment',
-    description: 'Update an existing Batch compute environment Use it to change an existing resource.',
+    description:
+      'Update an existing Batch compute environment Use it to change an existing resource.',
     tool: awsUpdateBatchComputeEnvironment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -12192,14 +12943,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListBatchJobQueues',
-    description: 'List all Batch job queues in your AWS account Use it to inspect current state before making changes.',
+    description:
+      'List all Batch job queues in your AWS account Use it to inspect current state before making changes.',
     tool: awsListBatchJobQueues as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeBatchJobQueues',
-    description: 'Get details about one or more Batch job queues Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more Batch job queues Use it to inspect current state before making changes.',
     tool: awsDescribeBatchJobQueues as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12227,14 +12980,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListBatchJobDefinitions',
-    description: 'List all Batch job definitions Use it to inspect current state before making changes.',
+    description:
+      'List all Batch job definitions Use it to inspect current state before making changes.',
     tool: awsListBatchJobDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeBatchJobDefinitions',
-    description: 'Get details about one or more Batch job definitions Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more Batch job definitions Use it to inspect current state before making changes.',
     tool: awsDescribeBatchJobDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12262,14 +13017,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListBatchJobs',
-    description: 'List Batch jobs in a job queue Use it to inspect current state before making changes.',
+    description:
+      'List Batch jobs in a job queue Use it to inspect current state before making changes.',
     tool: awsListBatchJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeBatchJobs',
-    description: 'Get details about one or more Batch jobs Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more Batch jobs Use it to inspect current state before making changes.',
     tool: awsDescribeBatchJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12290,7 +13047,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListBatchTags',
-    description: 'List tags for a Batch resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a Batch resource Use it to inspect current state before making changes.',
     tool: awsListBatchTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12318,7 +13076,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeBackupVault',
-    description: 'Get details about a backup vault Use it to inspect current state before making changes.',
+    description:
+      'Get details about a backup vault Use it to inspect current state before making changes.',
     tool: awsDescribeBackupVault as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12346,7 +13105,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetBackupPlan',
-    description: 'Get details about a backup plan Use it to inspect current state before making changes.',
+    description:
+      'Get details about a backup plan Use it to inspect current state before making changes.',
     tool: awsGetBackupPlan as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12374,7 +13134,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetBackupPlanFromTemplate',
-    description: 'Get a backup plan from a template Use it to inspect current state before making changes.',
+    description:
+      'Get a backup plan from a template Use it to inspect current state before making changes.',
     tool: awsGetBackupPlanFromTemplate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12388,14 +13149,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetBackupSelection',
-    description: 'Get details about a backup selection Use it to inspect current state before making changes.',
+    description:
+      'Get details about a backup selection Use it to inspect current state before making changes.',
     tool: awsGetBackupSelection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListBackupSelections',
-    description: 'List backup selections for a backup plan Use it to inspect current state before making changes.',
+    description:
+      'List backup selections for a backup plan Use it to inspect current state before making changes.',
     tool: awsListBackupSelections as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12416,7 +13179,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeBackupJob',
-    description: 'Get details about a backup job Use it to inspect current state before making changes.',
+    description:
+      'Get details about a backup job Use it to inspect current state before making changes.',
     tool: awsDescribeBackupJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12430,28 +13194,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopBackupJob',
-    description: 'Stop a backup job Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a backup job Use it to stop a running resource (billable config may remain).',
     tool: awsStopBackupJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsListRecoveryPointsByBackupVault',
-    description: 'List recovery points in a backup vault Use it to inspect current state before making changes.',
+    description:
+      'List recovery points in a backup vault Use it to inspect current state before making changes.',
     tool: awsListRecoveryPointsByBackupVault as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListRecoveryPointsByResource',
-    description: 'List recovery points for a resource Use it to inspect current state before making changes.',
+    description:
+      'List recovery points for a resource Use it to inspect current state before making changes.',
     tool: awsListRecoveryPointsByResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeRecoveryPoint',
-    description: 'Get details about a recovery point Use it to inspect current state before making changes.',
+    description:
+      'Get details about a recovery point Use it to inspect current state before making changes.',
     tool: awsDescribeRecoveryPoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12472,7 +13240,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeRestoreJob',
-    description: 'Get details about a restore job Use it to inspect current state before making changes.',
+    description:
+      'Get details about a restore job Use it to inspect current state before making changes.',
     tool: awsDescribeRestoreJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12493,7 +13262,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsGetBackupVaultAccessPolicy',
-    description: 'Get the access policy for a backup vault Use it to inspect current state before making changes.',
+    description:
+      'Get the access policy for a backup vault Use it to inspect current state before making changes.',
     tool: awsGetBackupVaultAccessPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12507,28 +13277,32 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDeleteBackupVaultAccessPolicy',
-    description: 'Delete the access policy for a backup vault Use it to permanently remove the resource.',
+    description:
+      'Delete the access policy for a backup vault Use it to permanently remove the resource.',
     tool: awsDeleteBackupVaultAccessPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsGetBackupVaultNotifications',
-    description: 'Get notification settings for a backup vault Use it to inspect current state before making changes.',
+    description:
+      'Get notification settings for a backup vault Use it to inspect current state before making changes.',
     tool: awsGetBackupVaultNotifications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsPutBackupVaultNotifications',
-    description: 'Set notification settings for a backup vault Use it to write data or configuration.',
+    description:
+      'Set notification settings for a backup vault Use it to write data or configuration.',
     tool: awsPutBackupVaultNotifications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDeleteBackupVaultNotifications',
-    description: 'Delete notification settings for a backup vault Use it to permanently remove the resource.',
+    description:
+      'Delete notification settings for a backup vault Use it to permanently remove the resource.',
     tool: awsDeleteBackupVaultNotifications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -12542,7 +13316,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeCopyJob',
-    description: 'Get details about a copy job Use it to inspect current state before making changes.',
+    description:
+      'Get details about a copy job Use it to inspect current state before making changes.',
     tool: awsDescribeCopyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12556,7 +13331,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListBackupTags',
-    description: 'List tags for a backup resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a backup resource Use it to inspect current state before making changes.',
     tool: awsListBackupTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12577,7 +13353,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEfsFileSystems',
-    description: 'Get details about one or more EFS file systems Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more EFS file systems Use it to inspect current state before making changes.',
     tool: awsDescribeEfsFileSystems as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12612,7 +13389,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEfsMountTargets',
-    description: 'Get details about mount targets Use it to inspect current state before making changes.',
+    description:
+      'Get details about mount targets Use it to inspect current state before making changes.',
     tool: awsDescribeEfsMountTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12626,7 +13404,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeEfsMountTargetSecurityGroups',
-    description: 'Get security groups for a mount target Use it to inspect current state before making changes.',
+    description:
+      'Get security groups for a mount target Use it to inspect current state before making changes.',
     tool: awsDescribeEfsMountTargetSecurityGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12640,14 +13419,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateEfsAccessPoint',
-    description: 'Create an access point for an EFS file system Use it to provision a new resource.',
+    description:
+      'Create an access point for an EFS file system Use it to provision a new resource.',
     tool: awsCreateEfsAccessPoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeEfsAccessPoints',
-    description: 'Get details about access points Use it to inspect current state before making changes.',
+    description:
+      'Get details about access points Use it to inspect current state before making changes.',
     tool: awsDescribeEfsAccessPoints as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12661,35 +13442,40 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsPutEfsLifecycleConfiguration',
-    description: 'Create or update lifecycle configuration for an EFS file system Use it to write data or configuration.',
+    description:
+      'Create or update lifecycle configuration for an EFS file system Use it to write data or configuration.',
     tool: awsPutEfsLifecycleConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeEfsLifecycleConfiguration',
-    description: 'Get lifecycle configuration for an EFS file system Use it to inspect current state before making changes.',
+    description:
+      'Get lifecycle configuration for an EFS file system Use it to inspect current state before making changes.',
     tool: awsDescribeEfsLifecycleConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteEfsLifecycleConfiguration',
-    description: 'Delete lifecycle configuration for an EFS file system (sets to empty) Use it to permanently remove the resource.',
+    description:
+      'Delete lifecycle configuration for an EFS file system (sets to empty) Use it to permanently remove the resource.',
     tool: awsDeleteEfsLifecycleConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
   },
   {
     name: 'awsCreateEfsReplicationConfiguration',
-    description: 'Create a replication configuration for an EFS file system Use it to provision a new resource.',
+    description:
+      'Create a replication configuration for an EFS file system Use it to provision a new resource.',
     tool: awsCreateEfsReplicationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeEfsReplicationConfigurations',
-    description: 'Get replication configurations for EFS file systems Use it to inspect current state before making changes.',
+    description:
+      'Get replication configurations for EFS file systems Use it to inspect current state before making changes.',
     tool: awsDescribeEfsReplicationConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12703,7 +13489,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListEfsTags',
-    description: 'List tags for an EFS resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for an EFS resource Use it to inspect current state before making changes.',
     tool: awsListEfsTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12724,7 +13511,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeFsxFileSystems',
-    description: 'Get details about one or more FSx file systems Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more FSx file systems Use it to inspect current state before making changes.',
     tool: awsDescribeFsxFileSystems as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12759,7 +13547,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeFsxBackups',
-    description: 'Get details about one or more FSx backups Use it to inspect current state before making changes.',
+    description:
+      'Get details about one or more FSx backups Use it to inspect current state before making changes.',
     tool: awsDescribeFsxBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12787,14 +13576,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateFsxDataRepositoryAssociation',
-    description: 'Create a data repository association for an FSx file system Use it to provision a new resource.',
+    description:
+      'Create a data repository association for an FSx file system Use it to provision a new resource.',
     tool: awsCreateFsxDataRepositoryAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeFsxDataRepositoryAssociations',
-    description: 'Get details about data repository associations Use it to inspect current state before making changes.',
+    description:
+      'Get details about data repository associations Use it to inspect current state before making changes.',
     tool: awsDescribeFsxDataRepositoryAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12815,14 +13606,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsCreateFsxStorageVirtualMachine',
-    description: 'Create a storage virtual machine for an ONTAP file system Use it to provision a new resource.',
+    description:
+      'Create a storage virtual machine for an ONTAP file system Use it to provision a new resource.',
     tool: awsCreateFsxStorageVirtualMachine as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeFsxStorageVirtualMachines',
-    description: 'Get details about storage virtual machines Use it to inspect current state before making changes.',
+    description:
+      'Get details about storage virtual machines Use it to inspect current state before making changes.',
     tool: awsDescribeFsxStorageVirtualMachines as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12878,7 +13671,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeFsxSnapshots',
-    description: 'Get details about snapshots Use it to inspect current state before making changes.',
+    description:
+      'Get details about snapshots Use it to inspect current state before making changes.',
     tool: awsDescribeFsxSnapshots as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12899,7 +13693,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListFsxTags',
-    description: 'List tags for an FSx resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for an FSx resource Use it to inspect current state before making changes.',
     tool: awsListFsxTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12920,14 +13715,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeOpensearchDomain',
-    description: 'Get detailed information about an OpenSearch domain Use it to inspect current state before making changes.',
+    description:
+      'Get detailed information about an OpenSearch domain Use it to inspect current state before making changes.',
     tool: awsDescribeOpensearchDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsListDomainNames',
-    description: 'List all OpenSearch domain names in the region Use it to inspect current state before making changes.',
+    description:
+      'List all OpenSearch domain names in the region Use it to inspect current state before making changes.',
     tool: awsListDomainNames as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12948,21 +13745,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsUpdateDomainConfig',
-    description: 'Modify OpenSearch domain settings (instance types, storage, replicas) Use it to change an existing resource.',
+    description:
+      'Modify OpenSearch domain settings (instance types, storage, replicas) Use it to change an existing resource.',
     tool: awsUpdateDomainConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
   },
   {
     name: 'awsDescribeDomainConfig',
-    description: 'Get current configuration of an OpenSearch domain Use it to inspect current state before making changes.',
+    description:
+      'Get current configuration of an OpenSearch domain Use it to inspect current state before making changes.',
     tool: awsDescribeDomainConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeDomainChangeProgress',
-    description: 'Check progress of OpenSearch domain configuration updates Use it to inspect current state before making changes.',
+    description:
+      'Check progress of OpenSearch domain configuration updates Use it to inspect current state before making changes.',
     tool: awsDescribeDomainChangeProgress as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -12976,14 +13776,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribePackages',
-    description: 'List custom packages (plugins and dictionaries) for OpenSearch Use it to inspect current state before making changes.',
+    description:
+      'List custom packages (plugins and dictionaries) for OpenSearch Use it to inspect current state before making changes.',
     tool: awsDescribePackages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsAssociatePackage',
-    description: 'Associate a custom package with an OpenSearch domain Use it to connect resources.',
+    description:
+      'Associate a custom package with an OpenSearch domain Use it to connect resources.',
     tool: awsAssociatePackage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
@@ -12997,7 +13799,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListOpensearchTags',
-    description: 'List tags for an OpenSearch domain Use it to inspect current state before making changes.',
+    description:
+      'List tags for an OpenSearch domain Use it to inspect current state before making changes.',
     tool: awsListOpensearchTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -13018,14 +13821,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListVersions',
-    description: 'List available OpenSearch and Elasticsearch versions Use it to inspect current state before making changes.',
+    description:
+      'List available OpenSearch and Elasticsearch versions Use it to inspect current state before making changes.',
     tool: awsListVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsGetCompatibleVersions',
-    description: 'Get compatible OpenSearch versions for domain upgrade Use it to inspect current state before making changes.',
+    description:
+      'Get compatible OpenSearch versions for domain upgrade Use it to inspect current state before making changes.',
     tool: awsGetCompatibleVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -13039,14 +13844,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerNotebookInstances',
-    description: 'List SageMaker notebook instances Use it to inspect current state before making changes.',
+    description:
+      'List SageMaker notebook instances Use it to inspect current state before making changes.',
     tool: awsListSagemakerNotebookInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSagemakerNotebookInstance',
-    description: 'Get details about a SageMaker notebook instance Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker notebook instance Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerNotebookInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -13060,7 +13867,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsStopSagemakerNotebookInstance',
-    description: 'Stop a SageMaker notebook instance Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a SageMaker notebook instance Use it to stop a running resource (billable config may remain).',
     tool: awsStopSagemakerNotebookInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -13088,21 +13896,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerTrainingJobs',
-    description: 'List SageMaker training jobs Use it to inspect current state before making changes.',
+    description:
+      'List SageMaker training jobs Use it to inspect current state before making changes.',
     tool: awsListSagemakerTrainingJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSagemakerTrainingJob',
-    description: 'Get details about a SageMaker training job Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker training job Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerTrainingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStopSagemakerTrainingJob',
-    description: 'Stop a SageMaker training job Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a SageMaker training job Use it to stop a running resource (billable config may remain).',
     tool: awsStopSagemakerTrainingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -13123,7 +13934,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeSagemakerModel',
-    description: 'Get details about a SageMaker model Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker model Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerModel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -13151,7 +13963,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeSagemakerEndpoint',
-    description: 'Get details about a SageMaker endpoint Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker endpoint Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -13179,21 +13992,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerEndpointConfigs',
-    description: 'List SageMaker endpoint configurations Use it to inspect current state before making changes.',
+    description:
+      'List SageMaker endpoint configurations Use it to inspect current state before making changes.',
     tool: awsListSagemakerEndpointConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSagemakerEndpointConfig',
-    description: 'Get details about a SageMaker endpoint configuration Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker endpoint configuration Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerEndpointConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDeleteSagemakerEndpointConfig',
-    description: 'Delete a SageMaker endpoint configuration Use it to permanently remove the resource.',
+    description:
+      'Delete a SageMaker endpoint configuration Use it to permanently remove the resource.',
     tool: awsDeleteSagemakerEndpointConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -13207,21 +14023,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerTransformJobs',
-    description: 'List SageMaker transform jobs Use it to inspect current state before making changes.',
+    description:
+      'List SageMaker transform jobs Use it to inspect current state before making changes.',
     tool: awsListSagemakerTransformJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSagemakerTransformJob',
-    description: 'Get details about a SageMaker transform job Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker transform job Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerTransformJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStopSagemakerTransformJob',
-    description: 'Stop a SageMaker transform job Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a SageMaker transform job Use it to stop a running resource (billable config may remain).',
     tool: awsStopSagemakerTransformJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -13235,21 +14054,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerProcessingJobs',
-    description: 'List SageMaker processing jobs Use it to inspect current state before making changes.',
+    description:
+      'List SageMaker processing jobs Use it to inspect current state before making changes.',
     tool: awsListSagemakerProcessingJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSagemakerProcessingJob',
-    description: 'Get details about a SageMaker processing job Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker processing job Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerProcessingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStopSagemakerProcessingJob',
-    description: 'Stop a SageMaker processing job Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a SageMaker processing job Use it to stop a running resource (billable config may remain).',
     tool: awsStopSagemakerProcessingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -13263,21 +14085,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerHyperparameterTuningJobs',
-    description: 'List SageMaker hyperparameter tuning jobs Use it to inspect current state before making changes.',
+    description:
+      'List SageMaker hyperparameter tuning jobs Use it to inspect current state before making changes.',
     tool: awsListSagemakerHyperparameterTuningJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSagemakerHyperparameterTuningJob',
-    description: 'Get details about a SageMaker hyperparameter tuning job Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker hyperparameter tuning job Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerHyperparameterTuningJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStopSagemakerHyperparameterTuningJob',
-    description: 'Stop a SageMaker hyperparameter tuning job Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a SageMaker hyperparameter tuning job Use it to stop a running resource (billable config may remain).',
     tool: awsStopSagemakerHyperparameterTuningJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -13298,7 +14123,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsDescribeSagemakerPipeline',
-    description: 'Get details about a SageMaker pipeline Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker pipeline Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerPipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -13319,21 +14145,24 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerPipelineExecutions',
-    description: 'List SageMaker pipeline executions Use it to inspect current state before making changes.',
+    description:
+      'List SageMaker pipeline executions Use it to inspect current state before making changes.',
     tool: awsListSagemakerPipelineExecutions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSagemakerPipelineExecution',
-    description: 'Get details about a SageMaker pipeline execution Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker pipeline execution Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerPipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsStopSagemakerPipelineExecution',
-    description: 'Stop a SageMaker pipeline execution Use it to stop a running resource (billable config may remain).',
+    description:
+      'Stop a SageMaker pipeline execution Use it to stop a running resource (billable config may remain).',
     tool: awsStopSagemakerPipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
@@ -13347,14 +14176,16 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerExperiments',
-    description: 'List SageMaker experiments Use it to inspect current state before making changes.',
+    description:
+      'List SageMaker experiments Use it to inspect current state before making changes.',
     tool: awsListSagemakerExperiments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
   },
   {
     name: 'awsDescribeSagemakerExperiment',
-    description: 'Get details about a SageMaker experiment Use it to inspect current state before making changes.',
+    description:
+      'Get details about a SageMaker experiment Use it to inspect current state before making changes.',
     tool: awsDescribeSagemakerExperiment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
@@ -13368,7 +14199,8 @@ export const awsTools: ToolDefinition[] = [
   },
   {
     name: 'awsListSagemakerTags',
-    description: 'List tags for a SageMaker resource Use it to inspect current state before making changes.',
+    description:
+      'List tags for a SageMaker resource Use it to inspect current state before making changes.',
     tool: awsListSagemakerTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,

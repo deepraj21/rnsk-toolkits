@@ -20,13 +20,16 @@ export const awsModifyEc2InstanceAttribute = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new ModifyInstanceAttributeCommand({
-          InstanceId: instanceId,
-          [attribute]: value,
+        InstanceId: instanceId,
+        [attribute]: value,
       } as any);
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to modify an attribute of an EC2 instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify an attribute of an EC2 instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

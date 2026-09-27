@@ -18,14 +18,17 @@ export const awsDeleteRoute53HostedZone = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new DeleteHostedZoneCommand({
-          Id: id,
+        Id: id,
       });
       const response = await client.send(command);
       return {
-                  changeInfo: response.ChangeInfo,
-              };
+        changeInfo: response.ChangeInfo,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a Route 53 hosted zone', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Route 53 hosted zone',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

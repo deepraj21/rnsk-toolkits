@@ -18,15 +18,18 @@ export const awsBatchGetCodebuildReports = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new BatchGetReportsCommand({
-          reportArns: reportArns,
+        reportArns: reportArns,
       });
       const response = await client.send(command);
       return {
-                  reports: response.reports || [],
-                  reportsNotFound: response.reportsNotFound || [],
-              };
+        reports: response.reports || [],
+        reportsNotFound: response.reportsNotFound || [],
+      };
     } catch (err) {
-      return { error: 'Failed to returns an array of reports', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to returns an array of reports',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

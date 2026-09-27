@@ -18,12 +18,15 @@ export const awsDeleteDomain = tool({
       const client = createOpenSearchClient(awsCredentials, region);
 
       const command = new DeleteDomainCommand({
-          DomainName: domainName,
+        DomainName: domainName,
       });
       const response = await client.send(command);
       return response.DomainStatus;
     } catch (err) {
-      return { error: 'Failed to delete an OpenSearch domain', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an OpenSearch domain',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

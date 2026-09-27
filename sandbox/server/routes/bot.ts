@@ -51,7 +51,9 @@ function parseStringArray(value: unknown): string[] {
 
 function webOrigin(req: Request): string {
   const origin = req.headers.origin;
-  return typeof origin === 'string' && origin ? origin : process.env.WEB_ORIGIN ?? DEFAULT_WEB_ORIGIN;
+  return typeof origin === 'string' && origin
+    ? origin
+    : (process.env.WEB_ORIGIN ?? DEFAULT_WEB_ORIGIN);
 }
 
 export function buildInstructions(scope: string[], systemPrompt?: string): string {

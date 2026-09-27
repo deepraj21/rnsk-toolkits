@@ -19,16 +19,19 @@ export const awsDeleteCloudfrontPublicKey = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new DeletePublicKeyCommand({
-          Id: id,
-          IfMatch: ifMatch,
+        Id: id,
+        IfMatch: ifMatch,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Public key ${id} deleted successfully`,
-              };
+        success: true,
+        message: `Public key ${id} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CloudFront public key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CloudFront public key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

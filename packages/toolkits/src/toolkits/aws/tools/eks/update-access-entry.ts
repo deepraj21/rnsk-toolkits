@@ -13,7 +13,14 @@ export const awsUpdateEksAccessEntry = tool({
     kubernetesGroups: z.array(z.string()).optional().describe('Kubernetes groups'),
     username: z.string().optional().describe('Kubernetes username'),
   }),
-  execute: async ({ awsCredentials, region, clusterName, principalArn, kubernetesGroups, username }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clusterName,
+    principalArn,
+    kubernetesGroups,
+    username,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,17 +28,20 @@ export const awsUpdateEksAccessEntry = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new UpdateAccessEntryCommand({
-          clusterName: clusterName,
-          principalArn: principalArn,
-          kubernetesGroups: kubernetesGroups,
-          username: username,
+        clusterName: clusterName,
+        principalArn: principalArn,
+        kubernetesGroups: kubernetesGroups,
+        username: username,
       });
       const response = await client.send(command);
       return {
-                  accessEntry: response.accessEntry,
-              };
+        accessEntry: response.accessEntry,
+      };
     } catch (err) {
-      return { error: 'Failed to update an access entry', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an access entry',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

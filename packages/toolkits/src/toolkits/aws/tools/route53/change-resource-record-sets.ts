@@ -9,7 +9,9 @@ export const awsChangeRoute53ResourceRecordSets = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     hostedZoneId: z.string().describe('The hosted zone ID'),
-    changeBatch: z.record(z.any()).describe('Change batch with changes array (Action, ResourceRecordSet)'),
+    changeBatch: z
+      .record(z.any())
+      .describe('Change batch with changes array (Action, ResourceRecordSet)'),
   }),
   execute: async ({ awsCredentials, region, hostedZoneId, changeBatch }) => {
     if (!awsCredentials) {
@@ -19,15 +21,18 @@ export const awsChangeRoute53ResourceRecordSets = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new ChangeResourceRecordSetsCommand({
-          HostedZoneId: hostedZoneId,
-          ChangeBatch: changeBatch,
+        HostedZoneId: hostedZoneId,
+        ChangeBatch: changeBatch,
       } as any);
       const response = await client.send(command);
       return {
-                  changeInfo: response.ChangeInfo,
-              };
+        changeInfo: response.ChangeInfo,
+      };
     } catch (err) {
-      return { error: 'Failed to create, update, or delete resource record sets', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create, update, or delete resource record sets',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

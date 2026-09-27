@@ -19,16 +19,19 @@ export const awsRemoveSqsPermission = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new RemovePermissionCommand({
-          QueueUrl: queueUrl,
-          Label: label,
+        QueueUrl: queueUrl,
+        Label: label,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Permission ${label} removed successfully from queue ${queueUrl}`,
-              };
+        success: true,
+        message: `Permission ${label} removed successfully from queue ${queueUrl}`,
+      };
     } catch (err) {
-      return { error: 'Failed to remove a permission from an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove a permission from an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

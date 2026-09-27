@@ -11,9 +11,18 @@ export const awsUpdateMethod = tool({
     restApiId: z.string().describe('The string identifier of the associated RestApi'),
     resourceId: z.string().describe('The Resource identifier for the Method resource'),
     httpMethod: z.string().describe('The HTTP verb of the Method resource'),
-    patchOperations: z.array(z.record(z.any())).describe('A list of update operations (op, path, value, from) to apply')
+    patchOperations: z
+      .array(z.record(z.any()))
+      .describe('A list of update operations (op, path, value, from) to apply'),
   }),
-  execute: async ({ awsCredentials, region, restApiId, resourceId, httpMethod, patchOperations }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    restApiId,
+    resourceId,
+    httpMethod,
+    patchOperations,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,26 +30,29 @@ export const awsUpdateMethod = tool({
       const client = createApiGatewayClient(awsCredentials, region);
 
       const command = new UpdateMethodCommand({
-          restApiId: restApiId,
-          resourceId: resourceId,
-          httpMethod: httpMethod,
-          patchOperations: patchOperations,
+        restApiId: restApiId,
+        resourceId: resourceId,
+        httpMethod: httpMethod,
+        patchOperations: patchOperations,
       } as any);
       const response = await client.send(command);
       return {
-                  httpMethod: response.httpMethod,
-                  authorizationType: response.authorizationType,
-                  authorizerId: response.authorizerId,
-                  apiKeyRequired: response.apiKeyRequired,
-                  requestValidatorId: response.requestValidatorId,
-                  operationName: response.operationName,
-                  requestParameters: response.requestParameters,
-                  requestModels: response.requestModels,
-                  methodResponses: response.methodResponses,
-                  methodIntegration: response.methodIntegration,
-              };
+        httpMethod: response.httpMethod,
+        authorizationType: response.authorizationType,
+        authorizerId: response.authorizerId,
+        apiKeyRequired: response.apiKeyRequired,
+        requestValidatorId: response.requestValidatorId,
+        operationName: response.operationName,
+        requestParameters: response.requestParameters,
+        requestModels: response.requestModels,
+        methodResponses: response.methodResponses,
+        methodIntegration: response.methodIntegration,
+      };
     } catch (err) {
-      return { error: 'Failed to updates an existing Method resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to updates an existing Method resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

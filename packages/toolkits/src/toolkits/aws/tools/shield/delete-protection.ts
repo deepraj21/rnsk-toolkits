@@ -18,12 +18,15 @@ export const awsDeleteProtection = tool({
       const client = createShieldClient(awsCredentials, region);
 
       const command = new DeleteProtectionCommand({
-          ProtectionId: protectionId,
+        ProtectionId: protectionId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to remove protection from a resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove protection from a resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

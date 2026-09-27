@@ -19,13 +19,16 @@ export const awsRebootCacheCluster = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new RebootCacheClusterCommand({
-          CacheClusterId: cacheClusterId,
-          CacheNodeIdsToReboot: cacheNodeIdsToReboot,
+        CacheClusterId: cacheClusterId,
+        CacheNodeIdsToReboot: cacheNodeIdsToReboot,
       });
       const response = await client.send(command);
       return response.CacheCluster;
     } catch (err) {
-      return { error: 'Failed to reboot cache cluster nodes', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to reboot cache cluster nodes',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,14 +18,17 @@ export const awsListSqsQueueTags = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new ListQueueTagsCommand({
-          QueueUrl: queueUrl,
+        QueueUrl: queueUrl,
       });
       const response = await client.send(command);
       return {
-                  tags: response.Tags || {},
-              };
+        tags: response.Tags || {},
+      };
     } catch (err) {
-      return { error: 'Failed to list tags for an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list tags for an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

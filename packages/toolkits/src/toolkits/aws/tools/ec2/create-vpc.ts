@@ -20,14 +20,17 @@ export const awsCreateEc2Vpc = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateVpcCommand({
-          CidrBlock: cidrBlock,
-          Ipv6CidrBlock: ipv6CidrBlock,
-          TagSpecifications: tagSpecifications,
+        CidrBlock: cidrBlock,
+        Ipv6CidrBlock: ipv6CidrBlock,
+        TagSpecifications: tagSpecifications,
       });
       const response = await client.send(command);
       return { vpc: response.Vpc };
     } catch (err) {
-      return { error: 'Failed to create a new VPC', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new VPC',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

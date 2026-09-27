@@ -26,7 +26,7 @@ export const linearListTeams = tool({
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${linearToken}`,
+        Authorization: `Bearer ${linearToken}`,
       },
       body: JSON.stringify(graphqlQuery),
     });

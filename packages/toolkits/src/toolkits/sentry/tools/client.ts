@@ -73,12 +73,15 @@ export async function sentryUpload(
     if (content !== undefined && content !== null && typeof content !== 'object') {
       let payload: BlobPart = String(content);
       if (typeof content === 'string') {
-        const looksB64 = /^[A-Za-z0-9+/=\s]+$/.test(content) && content.length % 4 === 0 && content.length > 64;
+        const looksB64 =
+          /^[A-Za-z0-9+/=\s]+$/.test(content) && content.length % 4 === 0 && content.length > 64;
         payload = looksB64 ? Buffer.from(content, 'base64') : content;
       }
       form.append(
         'file',
-        typeof payload === 'string' ? new Blob([payload]) : new Blob([payload as unknown as ArrayBuffer]),
+        typeof payload === 'string'
+          ? new Blob([payload])
+          : new Blob([payload as unknown as ArrayBuffer]),
         String(name),
       );
     } else if (file !== undefined && file !== null && typeof file !== 'object') {

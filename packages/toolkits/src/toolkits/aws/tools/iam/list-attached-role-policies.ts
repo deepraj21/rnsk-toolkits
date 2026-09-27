@@ -4,7 +4,8 @@ import { ListAttachedRolePoliciesCommand } from '@aws-sdk/client-iam';
 import { createIamClient } from '../client.js';
 
 export const awsListAttachedRolePolicies = tool({
-  description: 'List all managed policies attached to an IAM role.. Use it to inspect current state before making changes.',
+  description:
+    'List all managed policies attached to an IAM role.. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsListAttachedRolePolicies = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new ListAttachedRolePoliciesCommand({
-          RoleName: roleName,
-          MaxItems: maxItems,
-          Marker: marker,
+        RoleName: roleName,
+        MaxItems: maxItems,
+        Marker: marker,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to list all managed policies attached to an IAM role', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all managed policies attached to an IAM role',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

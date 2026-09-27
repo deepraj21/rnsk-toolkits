@@ -21,15 +21,18 @@ export const awsDeleteWafIpSet = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new DeleteIPSetCommand({
-          Name: name,
-          Scope: scope,
-          Id: id,
-          LockToken: lockToken,
+        Name: name,
+        Scope: scope,
+        Id: id,
+        LockToken: lockToken,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete an IP set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an IP set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

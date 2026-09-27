@@ -4,7 +4,8 @@ import { CreateReplicationConfigurationCommand } from '@aws-sdk/client-efs';
 import { createEfsClient } from '../client.js';
 
 export const awsCreateEfsReplicationConfiguration = tool({
-  description: 'Create a replication configuration for an EFS file system. Use it to provision a new resource.',
+  description:
+    'Create a replication configuration for an EFS file system. Use it to provision a new resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsCreateEfsReplicationConfiguration = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new CreateReplicationConfigurationCommand({
-          SourceFileSystemId: sourceFileSystemId,
-          Destinations: destinations,
+        SourceFileSystemId: sourceFileSystemId,
+        Destinations: destinations,
       });
       const response = await client.send(command);
       return {
-                  replicationConfiguration: response,
-              };
+        replicationConfiguration: response,
+      };
     } catch (err) {
-      return { error: 'Failed to create a replication configuration for an EFS file system', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a replication configuration for an EFS file system',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

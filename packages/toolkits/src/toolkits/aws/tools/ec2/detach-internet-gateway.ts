@@ -19,13 +19,16 @@ export const awsDetachEc2InternetGateway = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DetachInternetGatewayCommand({
-          InternetGatewayId: internetGatewayId,
-          VpcId: vpcId,
+        InternetGatewayId: internetGatewayId,
+        VpcId: vpcId,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to detach an internet gateway from a VPC', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to detach an internet gateway from a VPC',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -11,9 +11,19 @@ export const awsUpdateEcsCluster = tool({
     cluster: z.string().describe('The name of the cluster'),
     settings: z.array(z.record(z.any())).optional().describe('Cluster settings to update'),
     configuration: z.record(z.any()).optional().describe('Cluster configuration to update'),
-    serviceConnectDefaults: z.record(z.any()).optional().describe('Service Connect defaults to update'),
+    serviceConnectDefaults: z
+      .record(z.any())
+      .optional()
+      .describe('Service Connect defaults to update'),
   }),
-  execute: async ({ awsCredentials, region, cluster, settings, configuration, serviceConnectDefaults }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cluster,
+    settings,
+    configuration,
+    serviceConnectDefaults,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,17 +31,20 @@ export const awsUpdateEcsCluster = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new UpdateClusterCommand({
-          cluster: cluster,
-          settings: settings,
-          configuration: configuration,
-          serviceConnectDefaults: serviceConnectDefaults,
+        cluster: cluster,
+        settings: settings,
+        configuration: configuration,
+        serviceConnectDefaults: serviceConnectDefaults,
       } as any);
       const response = await client.send(command);
       return {
-                  cluster: response.cluster,
-              };
+        cluster: response.cluster,
+      };
     } catch (err) {
-      return { error: 'Failed to update an existing ECS cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an existing ECS cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

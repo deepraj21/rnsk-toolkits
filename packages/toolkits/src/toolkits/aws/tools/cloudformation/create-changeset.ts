@@ -17,7 +17,18 @@ export const awsCreateCloudformationChangeset = tool({
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply'),
     changeSetType: z.string().optional().describe('Type: CREATE, UPDATE, or IMPORT'),
   }),
-  execute: async ({ awsCredentials, region, stackName, changeSetName, templateBody, templateURL, parameters, capabilities, tags, changeSetType }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    stackName,
+    changeSetName,
+    templateBody,
+    templateURL,
+    parameters,
+    capabilities,
+    tags,
+    changeSetType,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,19 +36,22 @@ export const awsCreateCloudformationChangeset = tool({
       const client = createCloudFormationClient(awsCredentials, region);
 
       const command = new CreateChangeSetCommand({
-          StackName: stackName,
-          ChangeSetName: changeSetName,
-          TemplateBody: templateBody,
-          TemplateURL: templateURL,
-          Parameters: parameters,
-          Capabilities: capabilities as any,
-          Tags: tags,
-          ChangeSetType: changeSetType as any,
+        StackName: stackName,
+        ChangeSetName: changeSetName,
+        TemplateBody: templateBody,
+        TemplateURL: templateURL,
+        Parameters: parameters,
+        Capabilities: capabilities as any,
+        Tags: tags,
+        ChangeSetType: changeSetType as any,
       } as any);
       const response = await client.send(command);
       return { id: response.Id, stackId: response.StackId };
     } catch (err) {
-      return { error: 'Failed to create a CloudFormation change set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFormation change set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

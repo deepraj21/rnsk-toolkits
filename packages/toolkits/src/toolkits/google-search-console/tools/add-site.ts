@@ -8,7 +8,9 @@ export const addSite = tool({
     'Add a site property to Google Search Console. For URL-prefix properties use the full URL with trailing slash.',
   inputSchema: z.object({
     googleSearchConsoleToken: z.string().describe('The Google Search Console access token'),
-    site_url: z.string().describe('The site URL to add (e.g. https://www.example.com/ or sc-domain:example.com)'),
+    site_url: z
+      .string()
+      .describe('The site URL to add (e.g. https://www.example.com/ or sc-domain:example.com)'),
   }),
   execute: async ({ googleSearchConsoleToken, site_url }) => {
     try {

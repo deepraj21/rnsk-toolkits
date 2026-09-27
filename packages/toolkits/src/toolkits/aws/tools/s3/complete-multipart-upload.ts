@@ -20,11 +20,19 @@ export const awsCompleteS3MultipartUpload = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new CompleteMultipartUploadCommand({ Bucket: bucket, Key: key, UploadId: uploadId, MultipartUpload: { Parts: parts } });
+      const command = new CompleteMultipartUploadCommand({
+        Bucket: bucket,
+        Key: key,
+        UploadId: uploadId,
+        MultipartUpload: { Parts: parts },
+      });
       const response = await client.send(command);
       return { success: true, location: response.Location, etag: response.ETag };
     } catch (err) {
-      return { error: 'Failed to complete a multipart upload', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to complete a multipart upload',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -10,9 +10,18 @@ export const awsPutEcsClusterCapacityProviders = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     cluster: z.string().describe('The name of the cluster'),
     capacityProviders: z.array(z.string()).optional().describe('List of capacity provider names'),
-    defaultCapacityProviderStrategy: z.array(z.record(z.any())).optional().describe('Default capacity provider strategy'),
+    defaultCapacityProviderStrategy: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Default capacity provider strategy'),
   }),
-  execute: async ({ awsCredentials, region, cluster, capacityProviders, defaultCapacityProviderStrategy }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cluster,
+    capacityProviders,
+    defaultCapacityProviderStrategy,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,16 +29,19 @@ export const awsPutEcsClusterCapacityProviders = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new PutClusterCapacityProvidersCommand({
-          cluster: cluster,
-          capacityProviders: capacityProviders,
-          defaultCapacityProviderStrategy: defaultCapacityProviderStrategy,
+        cluster: cluster,
+        capacityProviders: capacityProviders,
+        defaultCapacityProviderStrategy: defaultCapacityProviderStrategy,
       } as any);
       const response = await client.send(command);
       return {
-                  cluster: response.cluster,
-              };
+        cluster: response.cluster,
+      };
     } catch (err) {
-      return { error: 'Failed to update capacity providers for a cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update capacity providers for a cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

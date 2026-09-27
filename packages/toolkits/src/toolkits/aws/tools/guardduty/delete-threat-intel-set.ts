@@ -19,13 +19,16 @@ export const awsDeleteThreatIntelSet = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new DeleteThreatIntelSetCommand({
-          DetectorId: detectorId,
-          ThreatIntelSetId: threatIntelSetId,
+        DetectorId: detectorId,
+        ThreatIntelSetId: threatIntelSetId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete a threat intelligence set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a threat intelligence set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

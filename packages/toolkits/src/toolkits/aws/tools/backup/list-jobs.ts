@@ -11,14 +11,38 @@ export const awsListBackupJobs = tool({
     nextToken: z.string().optional().describe('Token for pagination'),
     maxResults: z.number().optional().describe('Maximum number of jobs to return'),
     byResourceArn: z.string().optional().describe('Filter by resource ARN'),
-    byState: z.enum(['CREATED', 'PENDING', 'RUNNING', 'ABORTING', 'ABORTED', 'COMPLETED', 'FAILED', 'EXPIRED']).optional().describe('Filter by job state'),
+    byState: z
+      .enum([
+        'CREATED',
+        'PENDING',
+        'RUNNING',
+        'ABORTING',
+        'ABORTED',
+        'COMPLETED',
+        'FAILED',
+        'EXPIRED',
+      ])
+      .optional()
+      .describe('Filter by job state'),
     byBackupVaultName: z.string().optional().describe('Filter by backup vault name'),
     byCreatedBefore: z.string().optional().describe('Filter by created before date'),
     byCreatedAfter: z.string().optional().describe('Filter by created after date'),
     byResourceType: z.string().optional().describe('Filter by resource type'),
     byAccountId: z.string().optional().describe('Filter by account ID'),
   }),
-  execute: async ({ awsCredentials, region, nextToken, maxResults, byResourceArn, byState, byBackupVaultName, byCreatedBefore, byCreatedAfter, byResourceType, byAccountId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    nextToken,
+    maxResults,
+    byResourceArn,
+    byState,
+    byBackupVaultName,
+    byCreatedBefore,
+    byCreatedAfter,
+    byResourceType,
+    byAccountId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -26,23 +50,26 @@ export const awsListBackupJobs = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new ListBackupJobsCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
-          ByResourceArn: byResourceArn,
-          ByState: byState,
-          ByBackupVaultName: byBackupVaultName,
-          ByCreatedBefore: byCreatedBefore ? new Date(byCreatedBefore) : undefined,
-          ByCreatedAfter: byCreatedAfter ? new Date(byCreatedAfter) : undefined,
-          ByResourceType: byResourceType,
-          ByAccountId: byAccountId,
+        NextToken: nextToken,
+        MaxResults: maxResults,
+        ByResourceArn: byResourceArn,
+        ByState: byState,
+        ByBackupVaultName: byBackupVaultName,
+        ByCreatedBefore: byCreatedBefore ? new Date(byCreatedBefore) : undefined,
+        ByCreatedAfter: byCreatedAfter ? new Date(byCreatedAfter) : undefined,
+        ByResourceType: byResourceType,
+        ByAccountId: byAccountId,
       });
       const response = await client.send(command);
       return {
-                  backupJobs: response.BackupJobs || [],
-                  nextToken: response.NextToken,
-              };
+        backupJobs: response.BackupJobs || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list backup jobs', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list backup jobs',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

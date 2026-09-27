@@ -10,10 +10,20 @@ export const awsDeleteFsxVolume = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     clientRequestToken: z.string().optional().describe('Client request token for idempotency'),
     ontapConfiguration: z.record(z.any()).optional().describe('ONTAP-specific deletion options'),
-    openZFSConfiguration: z.record(z.any()).optional().describe('OpenZFS-specific deletion options'),
+    openZFSConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('OpenZFS-specific deletion options'),
     volumeId: z.string().describe('The ID of the volume to delete'),
   }),
-  execute: async ({ awsCredentials, region, clientRequestToken, ontapConfiguration, openZFSConfiguration, volumeId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clientRequestToken,
+    ontapConfiguration,
+    openZFSConfiguration,
+    volumeId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,18 +31,21 @@ export const awsDeleteFsxVolume = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new DeleteVolumeCommand({
-          ClientRequestToken: clientRequestToken,
-          OntapConfiguration: ontapConfiguration,
-          OpenZFSConfiguration: openZFSConfiguration,
-          VolumeId: volumeId,
+        ClientRequestToken: clientRequestToken,
+        OntapConfiguration: ontapConfiguration,
+        OpenZFSConfiguration: openZFSConfiguration,
+        VolumeId: volumeId,
       });
       const response = await client.send(command);
       return {
-                  volumeId: response.VolumeId,
-                  lifeCycle: response.Lifecycle,
-              };
+        volumeId: response.VolumeId,
+        lifeCycle: response.Lifecycle,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a volume', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a volume',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

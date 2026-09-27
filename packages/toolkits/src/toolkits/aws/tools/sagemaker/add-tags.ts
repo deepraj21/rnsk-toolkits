@@ -19,15 +19,18 @@ export const awsAddSagemakerTags = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new AddTagsCommand({
-          ResourceArn: resourceArn,
-          Tags: tags,
+        ResourceArn: resourceArn,
+        Tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  tags: response.Tags || [],
-              };
+        tags: response.Tags || [],
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to a SageMaker resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a SageMaker resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -10,7 +10,9 @@ export const awsCreateBillingView = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     billingViewName: z.string().describe('The name of the billing view'),
     description: z.string().optional().describe('Description of the billing view'),
-    viewDefinition: z.record(z.any()).describe('The view definition containing filters and aggregations'),
+    viewDefinition: z
+      .record(z.any())
+      .describe('The view definition containing filters and aggregations'),
   }),
   execute: async ({ awsCredentials, region, billingViewName, description, viewDefinition }) => {
     if (!awsCredentials) {
@@ -20,24 +22,29 @@ export const awsCreateBillingView = tool({
       const client = createBillingClient(awsCredentials, region);
 
       const command = new CreateBillingViewCommand({
-          billingViewName: billingViewName,
-          description: description,
-          viewDefinition: viewDefinition,
+        billingViewName: billingViewName,
+        description: description,
+        viewDefinition: viewDefinition,
       } as any);
-      const response = await client.send(command) as any;
+      const response = (await client.send(command)) as any;
       return {
-                  billingView: response.billingView ? {
-                      billingViewArn: response.billingView.billingViewArn,
-                      billingViewName: response.billingView.billingViewName,
-                      description: response.billingView.description,
-                      ownerAccountId: response.billingView.ownerAccountId,
-                      createdAt: response.billingView.createdAt,
-                      lastModifiedAt: response.billingView.lastModifiedAt,
-                      viewDefinition: response.billingView.viewDefinition,
-                  } : null,
-              };
+        billingView: response.billingView
+          ? {
+              billingViewArn: response.billingView.billingViewArn,
+              billingViewName: response.billingView.billingViewName,
+              description: response.billingView.description,
+              ownerAccountId: response.billingView.ownerAccountId,
+              createdAt: response.billingView.createdAt,
+              lastModifiedAt: response.billingView.lastModifiedAt,
+              viewDefinition: response.billingView.viewDefinition,
+            }
+          : null,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new billing view', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new billing view',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

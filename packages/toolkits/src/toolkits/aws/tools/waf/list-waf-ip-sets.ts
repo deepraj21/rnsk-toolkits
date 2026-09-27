@@ -20,14 +20,17 @@ export const awsListWafIpSets = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new ListIPSetsCommand({
-          Scope: scope,
-          Limit: limit,
-          NextMarker: nextMarker,
+        Scope: scope,
+        Limit: limit,
+        NextMarker: nextMarker,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to list all IP sets', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all IP sets',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

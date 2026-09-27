@@ -2,13 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { api, type CredentialField, type ToolkitSummary } from '../api';
 
-function CredentialRow({
-  field,
-  onChanged,
-}: {
-  field: CredentialField;
-  onChanged: () => void;
-}) {
+function CredentialRow({ field, onChanged }: { field: CredentialField; onChanged: () => void }) {
   const [value, setValue] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -127,10 +121,7 @@ export function ToolkitDetail({
       ) : null}
 
       {toolkit.credentials.length > 0 ? (
-        <section
-          ref={credsRef}
-          className={connectRequested ? 'creds creds--highlight' : 'creds'}
-        >
+        <section ref={credsRef} className={connectRequested ? 'creds creds--highlight' : 'creds'}>
           <h3>Credentials</h3>
           {connectRequested ? (
             <p className="banner banner--info small">
@@ -139,9 +130,15 @@ export function ToolkitDetail({
             </p>
           ) : null}
           {toolkit.credentials.map((field) => (
-            <CredentialRow key={`${field.kind}:${field.name}`} field={field} onChanged={onCredentialsChanged} />
+            <CredentialRow
+              key={`${field.kind}:${field.name}`}
+              field={field}
+              onChanged={onCredentialsChanged}
+            />
           ))}
-          <p className="muted small">Kept in server memory only. Restarting the server clears pasted values.</p>
+          <p className="muted small">
+            Kept in server memory only. Restarting the server clears pasted values.
+          </p>
         </section>
       ) : (
         <p className="muted small">No credentials needed.</p>
@@ -163,7 +160,8 @@ export function ToolkitDetail({
           {tools.map((tool) => (
             <li key={tool.name} className="tool-row">
               <div>
-                <code>{tool.name}</code> <span className={`scope scope--${tool.scope}`}>{tool.scope}</span>
+                <code>{tool.name}</code>{' '}
+                <span className={`scope scope--${tool.scope}`}>{tool.scope}</span>
                 {tool.requiredAuth ? <span title={`needs ${tool.requiredAuth}`}> 🔒</span> : null}
                 <p className="muted small">{tool.description}</p>
               </div>

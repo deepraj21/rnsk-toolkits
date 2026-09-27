@@ -12,10 +12,22 @@ export const awsCreateAnomalySubscription = tool({
     subscribers: z.enum(['EMAIL', 'SNS']).describe('List of subscribers'),
     subscriptionName: z.string().describe('The name of the subscription'),
     threshold: z.number().optional().describe('The threshold value'),
-    frequency: z.enum(['DAILY', 'IMMEDIATE', 'WEEKLY']).optional().describe('The frequency of the subscription'),
+    frequency: z
+      .enum(['DAILY', 'IMMEDIATE', 'WEEKLY'])
+      .optional()
+      .describe('The frequency of the subscription'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the subscription'),
   }),
-  execute: async ({ awsCredentials, region, monitorArnList, subscribers, subscriptionName, threshold, frequency, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    monitorArnList,
+    subscribers,
+    subscriptionName,
+    threshold,
+    frequency,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,21 +35,24 @@ export const awsCreateAnomalySubscription = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new CreateAnomalySubscriptionCommand({
-          AnomalySubscription: {
-              MonitorArnList: monitorArnList,
-              Subscribers: subscribers,
-              SubscriptionName: subscriptionName,
-              Threshold: threshold,
-              Frequency: frequency,
-          },
-          ResourceTags: tags,
+        AnomalySubscription: {
+          MonitorArnList: monitorArnList,
+          Subscribers: subscribers,
+          SubscriptionName: subscriptionName,
+          Threshold: threshold,
+          Frequency: frequency,
+        },
+        ResourceTags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  subscriptionArn: response.SubscriptionArn,
-              };
+        subscriptionArn: response.SubscriptionArn,
+      };
     } catch (err) {
-      return { error: 'Failed to creates a new cost anomaly subscription', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to creates a new cost anomaly subscription',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

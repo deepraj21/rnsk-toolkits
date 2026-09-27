@@ -18,7 +18,11 @@ export const getMeet = tool({
       const result = await googleMeetRequest(googleMeetToken, `/${name}`);
 
       if (!result.ok) {
-        return { error: 'Failed to get Meet space details', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to get Meet space details',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

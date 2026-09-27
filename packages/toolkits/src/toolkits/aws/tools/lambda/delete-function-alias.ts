@@ -19,16 +19,19 @@ export const awsDeleteLambdaFunctionAlias = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new DeleteAliasCommand({
-          FunctionName: functionName,
-          Name: name,
+        FunctionName: functionName,
+        Name: name,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Alias ${name} deleted successfully from function ${functionName}`,
-              };
+        success: true,
+        message: `Alias ${name} deleted successfully from function ${functionName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a Lambda function alias', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Lambda function alias',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -5,7 +5,8 @@ import { mongodbTools } from './tools/index.js';
 export default defineToolkit({
   id: 'mongodb',
   displayName: 'MongoDB',
-  shortDescription: 'Query and manage MongoDB databases, collections, documents, aggregations and indexes.',
+  shortDescription:
+    'Query and manage MongoDB databases, collections, documents, aggregations and indexes.',
   category: 'Data & Analytics',
   icon: MONGODB_ICON,
   auth: {

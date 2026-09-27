@@ -19,16 +19,19 @@ export const awsStopCodedeployDeployment = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new StopDeploymentCommand({
-          deploymentId: deploymentId,
-          autoRollbackEnabled: autoRollbackEnabled,
+        deploymentId: deploymentId,
+        autoRollbackEnabled: autoRollbackEnabled,
       });
       const response = await client.send(command);
       return {
-                  status: response.status,
-                  statusMessage: response.statusMessage,
-              };
+        status: response.status,
+        statusMessage: response.statusMessage,
+      };
     } catch (err) {
-      return { error: 'Failed to stop a deployment', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to stop a deployment',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

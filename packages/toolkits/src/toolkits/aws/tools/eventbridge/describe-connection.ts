@@ -4,7 +4,8 @@ import { DescribeConnectionCommand } from '@aws-sdk/client-eventbridge';
 import { createEventBridgeClient } from '../client.js';
 
 export const awsDescribeEventbridgeConnection = tool({
-  description: 'Get details about an EventBridge connection. Use it to inspect current state before making changes.',
+  description:
+    'Get details about an EventBridge connection. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsDescribeEventbridgeConnection = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new DescribeConnectionCommand({
-          Name: name,
+        Name: name,
       });
       const response = await client.send(command);
       return {
-                  connection: response,
-              };
+        connection: response,
+      };
     } catch (err) {
-      return { error: 'Failed to get details about an EventBridge connection', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about an EventBridge connection',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

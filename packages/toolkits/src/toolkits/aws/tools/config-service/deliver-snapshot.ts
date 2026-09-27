@@ -18,14 +18,17 @@ export const awsDeliverConfigSnapshot = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DeliverConfigSnapshotCommand({
-          deliveryChannelName: deliveryChannelName,
+        deliveryChannelName: deliveryChannelName,
       });
       const response = await client.send(command);
       return {
-                  configSnapshotId: response.configSnapshotId,
-              };
+        configSnapshotId: response.configSnapshotId,
+      };
     } catch (err) {
-      return { error: 'Failed to schedules delivery of a configuration snapshot', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to schedules delivery of a configuration snapshot',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

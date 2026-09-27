@@ -4,7 +4,8 @@ import { AssociateIdentityProviderConfigCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsAssociateEksIdentityProviderConfig = tool({
-  description: 'Associate an identity provider configuration with a cluster. Use it to connect resources.',
+  description:
+    'Associate an identity provider configuration with a cluster. Use it to connect resources.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -21,18 +22,21 @@ export const awsAssociateEksIdentityProviderConfig = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new AssociateIdentityProviderConfigCommand({
-          clusterName: clusterName,
-          oidc: oidc,
-          tags: tags,
-          clientRequestToken: clientRequestToken,
+        clusterName: clusterName,
+        oidc: oidc,
+        tags: tags,
+        clientRequestToken: clientRequestToken,
       } as any);
       const response = await client.send(command);
       return {
-                  update: response.update,
-                  tags: response.tags || {},
-              };
+        update: response.update,
+        tags: response.tags || {},
+      };
     } catch (err) {
-      return { error: 'Failed to associate an identity provider configuration with a cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to associate an identity provider configuration with a cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

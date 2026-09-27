@@ -15,7 +15,16 @@ export const awsDescribeAutoscalingScheduledActions = tool({
     nextToken: z.string().optional().describe('Token for pagination'),
     maxRecords: z.number().optional().describe('Maximum number of records to return'),
   }),
-  execute: async ({ awsCredentials, region, autoScalingGroupName, scheduledActionNames, startTime, endTime, nextToken, maxRecords }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    autoScalingGroupName,
+    scheduledActionNames,
+    startTime,
+    endTime,
+    nextToken,
+    maxRecords,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,20 +32,23 @@ export const awsDescribeAutoscalingScheduledActions = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DescribeScheduledActionsCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          ScheduledActionNames: scheduledActionNames,
-          StartTime: startTime ? new Date(startTime) : undefined,
-          EndTime: endTime ? new Date(endTime) : undefined,
-          NextToken: nextToken,
-          MaxRecords: maxRecords,
+        AutoScalingGroupName: autoScalingGroupName,
+        ScheduledActionNames: scheduledActionNames,
+        StartTime: startTime ? new Date(startTime) : undefined,
+        EndTime: endTime ? new Date(endTime) : undefined,
+        NextToken: nextToken,
+        MaxRecords: maxRecords,
       });
       const response = await client.send(command);
       return {
-                  scheduledUpdateGroupActions: response.ScheduledUpdateGroupActions,
-                  nextToken: response.NextToken,
-              };
+        scheduledUpdateGroupActions: response.ScheduledUpdateGroupActions,
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to describe scheduled actions', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe scheduled actions',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

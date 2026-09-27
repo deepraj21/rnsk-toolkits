@@ -21,17 +21,20 @@ export const awsDeleteBudgetSubscriber = tool({
       const client = createBudgetsClient(awsCredentials, region);
 
       const command = new DeleteSubscriberCommand({
-          AccountId: accountId,
-          BudgetName: budgetName,
-          Notification: notification,
-          Subscriber: subscriber,
+        AccountId: accountId,
+        BudgetName: budgetName,
+        Notification: notification,
+        Subscriber: subscriber,
       } as any);
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a budget subscriber', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a budget subscriber',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

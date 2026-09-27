@@ -19,16 +19,19 @@ export const awsCancelBatchJob = tool({
       const client = createBatchClient(awsCredentials, region);
 
       const command = new CancelJobCommand({
-          jobId: jobId,
-          reason: reason,
+        jobId: jobId,
+        reason: reason,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Job ${jobId} canceled successfully`,
-              };
+        success: true,
+        message: `Job ${jobId} canceled successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to cancel a Batch job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to cancel a Batch job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

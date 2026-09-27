@@ -4,7 +4,8 @@ import { ListHostedZonesByVPCCommand } from '@aws-sdk/client-route-53';
 import { createRoute53Client } from '../client.js';
 
 export const awsListRoute53HostedZonesByVpc = tool({
-  description: 'List hosted zones associated with a VPC. Use it to inspect current state before making changes.',
+  description:
+    'List hosted zones associated with a VPC. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsListRoute53HostedZonesByVpc = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new ListHostedZonesByVPCCommand({
-          VPCId: vpcId,
-          VPCRegion: vpcRegion as any,
-          NextToken: nextToken,
+        VPCId: vpcId,
+        VPCRegion: vpcRegion as any,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  hostedZoneSummaries: response.HostedZoneSummaries,
-                  nextToken: response.NextToken,
-              };
+        hostedZoneSummaries: response.HostedZoneSummaries,
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list hosted zones associated with a VPC', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list hosted zones associated with a VPC',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

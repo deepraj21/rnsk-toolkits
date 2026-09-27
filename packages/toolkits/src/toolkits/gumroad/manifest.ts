@@ -20,7 +20,8 @@ export default defineToolkit({
       scopes: ['view_profile', 'view_sales'],
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
-      connectDescription: 'Connect Gumroad via OAuth to manage sales, products, licenses, and webhooks. The access token is sent as Authorization: Bearer to api.gumroad.com/v2.',
+      connectDescription:
+        'Connect Gumroad via OAuth to manage sales, products, licenses, and webhooks. The access token is sent as Authorization: Bearer to api.gumroad.com/v2.',
       callbackPath: '/api/auth/gumroad/callback',
       stateCookie: 'gumroad_oauth_state',
     },

@@ -20,16 +20,19 @@ export const awsRestoreFsxVolumeFromBackup = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new CreateVolumeFromBackupCommand({
-          BackupId: backupId,
-          ClientRequestToken: clientRequestToken,
-          Name: name,
+        BackupId: backupId,
+        ClientRequestToken: clientRequestToken,
+        Name: name,
       });
       const response = await client.send(command);
       return {
-                  volume: response.Volume,
-              };
+        volume: response.Volume,
+      };
     } catch (err) {
-      return { error: 'Failed to create an FSx volume from a backup', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an FSx volume from a backup',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

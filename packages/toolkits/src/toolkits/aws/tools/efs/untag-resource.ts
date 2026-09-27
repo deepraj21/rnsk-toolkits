@@ -19,16 +19,19 @@ export const awsUntagEfsResource = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          ResourceId: resourceId,
-          TagKeys: tagKeys,
+        ResourceId: resourceId,
+        TagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  message: 'Tags removed successfully',
-                  resourceId: resourceId,
-              };
+        message: 'Tags removed successfully',
+        resourceId: resourceId,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from an EFS resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from an EFS resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

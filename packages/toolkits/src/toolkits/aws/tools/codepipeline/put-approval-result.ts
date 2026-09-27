@@ -14,7 +14,15 @@ export const awsPutCodepipelineApprovalResult = tool({
     result: z.enum(['Approved', 'Rejected']).describe('Approval result'),
     token: z.string().describe('Approval token'),
   }),
-  execute: async ({ awsCredentials, region, pipelineName, stageName, actionName, result, token }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    pipelineName,
+    stageName,
+    actionName,
+    result,
+    token,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,18 +30,21 @@ export const awsPutCodepipelineApprovalResult = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new PutApprovalResultCommand({
-          pipelineName: pipelineName,
-          stageName: stageName,
-          actionName: actionName,
-          result: result,
-          token: token,
+        pipelineName: pipelineName,
+        stageName: stageName,
+        actionName: actionName,
+        result: result,
+        token: token,
       } as any);
       await client.send(command);
       return {
-                  message: 'Approval result submitted successfully',
-              };
+        message: 'Approval result submitted successfully',
+      };
     } catch (err) {
-      return { error: 'Failed to put approval result for an approval action', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to put approval result for an approval action',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

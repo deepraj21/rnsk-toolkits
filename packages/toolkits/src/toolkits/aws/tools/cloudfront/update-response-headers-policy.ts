@@ -4,11 +4,14 @@ import { UpdateResponseHeadersPolicyCommand } from '@aws-sdk/client-cloudfront';
 import { createCloudFrontClient } from '../client.js';
 
 export const awsUpdateCloudfrontResponseHeadersPolicy = tool({
-  description: 'Update a CloudFront response headers policy. Use it to change an existing resource.',
+  description:
+    'Update a CloudFront response headers policy. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    responseHeadersPolicyConfig: z.record(z.any()).describe('Response headers policy configuration'),
+    responseHeadersPolicyConfig: z
+      .record(z.any())
+      .describe('Response headers policy configuration'),
     id: z.string().describe('The response headers policy ID'),
     ifMatch: z.string().describe('The value of the ETag header'),
   }),
@@ -20,17 +23,20 @@ export const awsUpdateCloudfrontResponseHeadersPolicy = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdateResponseHeadersPolicyCommand({
-          ResponseHeadersPolicyConfig: responseHeadersPolicyConfig,
-          Id: id,
-          IfMatch: ifMatch,
+        ResponseHeadersPolicyConfig: responseHeadersPolicyConfig,
+        Id: id,
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  responseHeadersPolicy: response.ResponseHeadersPolicy,
-                  eTag: response.ETag,
-              };
+        responseHeadersPolicy: response.ResponseHeadersPolicy,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront response headers policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront response headers policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

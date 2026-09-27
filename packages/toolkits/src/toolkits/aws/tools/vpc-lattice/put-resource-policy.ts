@@ -19,16 +19,19 @@ export const awsPutVpcLatticeResourcePolicy = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new PutResourcePolicyCommand({
-          resourceArn: resourceArn,
-          policy: policy,
+        resourceArn: resourceArn,
+        policy: policy,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Resource policy put successfully for resource ${resourceArn}`,
-              };
+        success: true,
+        message: `Resource policy put successfully for resource ${resourceArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to put a resource policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to put a resource policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

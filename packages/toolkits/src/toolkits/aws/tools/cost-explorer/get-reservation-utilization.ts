@@ -4,7 +4,8 @@ import { GetReservationUtilizationCommand } from '@aws-sdk/client-cost-explorer'
 import { createCostExplorerClient } from '../client.js';
 
 export const awsGetReservationUtilization = tool({
-  description: 'Retrieves the reservation utilization for your account. Use it to inspect current state before making changes.',
+  description:
+    'Retrieves the reservation utilization for your account. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -16,7 +17,17 @@ export const awsGetReservationUtilization = tool({
     maxResults: z.number().optional().describe('Maximum number of results to return'),
     nextPageToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, timePeriod, groupBy, granularity, filter, sortBy, maxResults, nextPageToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    timePeriod,
+    groupBy,
+    granularity,
+    filter,
+    sortBy,
+    maxResults,
+    nextPageToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,25 +35,30 @@ export const awsGetReservationUtilization = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new GetReservationUtilizationCommand({
-          TimePeriod: timePeriod ? {
+        TimePeriod: timePeriod
+          ? {
               Start: timePeriod.start,
               End: timePeriod.end,
-          } : undefined,
-          GroupBy: groupBy,
-          Granularity: granularity,
-          Filter: filter,
-          SortBy: sortBy,
-          MaxResults: maxResults,
-          NextPageToken: nextPageToken,
+            }
+          : undefined,
+        GroupBy: groupBy,
+        Granularity: granularity,
+        Filter: filter,
+        SortBy: sortBy,
+        MaxResults: maxResults,
+        NextPageToken: nextPageToken,
       } as any);
       const response = await client.send(command);
       return {
-                  utilizationsByTime: response.UtilizationsByTime || [],
-                  total: response.Total,
-                  nextPageToken: response.NextPageToken,
-              };
+        utilizationsByTime: response.UtilizationsByTime || [],
+        total: response.Total,
+        nextPageToken: response.NextPageToken,
+      };
     } catch (err) {
-      return { error: 'Failed to retrieves the reservation utilization for your account', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to retrieves the reservation utilization for your account',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,15 +19,18 @@ export const awsDeleteEksNodegroup = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DeleteNodegroupCommand({
-          clusterName: clusterName,
-          nodegroupName: nodegroupName,
+        clusterName: clusterName,
+        nodegroupName: nodegroupName,
       });
       const response = await client.send(command);
       return {
-                  nodegroup: response.nodegroup,
-              };
+        nodegroup: response.nodegroup,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a nodegroup', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a nodegroup',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

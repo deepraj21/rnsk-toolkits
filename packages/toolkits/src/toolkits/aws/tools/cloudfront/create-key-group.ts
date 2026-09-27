@@ -18,16 +18,19 @@ export const awsCreateCloudfrontKeyGroup = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateKeyGroupCommand({
-          KeyGroupConfig: keyGroupConfig,
+        KeyGroupConfig: keyGroupConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  keyGroup: response.KeyGroup,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        keyGroup: response.KeyGroup,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront key group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront key group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

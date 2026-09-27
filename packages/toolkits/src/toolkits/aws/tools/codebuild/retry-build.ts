@@ -19,15 +19,18 @@ export const awsRetryCodebuildBuild = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new RetryBuildCommand({
-          id: id,
-          idempotencyToken: idempotencyToken,
+        id: id,
+        idempotencyToken: idempotencyToken,
       });
       const response = await client.send(command);
       return {
-                  build: response.build,
-              };
+        build: response.build,
+      };
     } catch (err) {
-      return { error: 'Failed to restart a build', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to restart a build',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

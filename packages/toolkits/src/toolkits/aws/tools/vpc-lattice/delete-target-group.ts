@@ -18,15 +18,18 @@ export const awsDeleteVpcLatticeTargetGroup = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new DeleteTargetGroupCommand({
-          targetGroupIdentifier: targetGroupIdentifier,
+        targetGroupIdentifier: targetGroupIdentifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Target group ${targetGroupIdentifier} deleted successfully`,
-              };
+        success: true,
+        message: `Target group ${targetGroupIdentifier} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a VPC Lattice target group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a VPC Lattice target group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

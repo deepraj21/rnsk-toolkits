@@ -23,7 +23,10 @@ export const awsUploadS3Object = tool({
       const response = await client.send(command);
       return { success: true, etag: response.ETag };
     } catch (err) {
-      return { error: 'Failed to upload an object to S3', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to upload an object to S3',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

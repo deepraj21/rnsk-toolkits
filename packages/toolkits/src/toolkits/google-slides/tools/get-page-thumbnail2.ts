@@ -38,7 +38,11 @@ export const getPageThumbnail2 = tool({
       );
 
       if (!result.ok) {
-        return { error: 'Failed to get page thumbnail', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to get page thumbnail',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

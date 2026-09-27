@@ -19,16 +19,19 @@ export const awsRemoveTagsFromCodedeployOnPremisesInstances = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new RemoveTagsFromOnPremisesInstancesCommand({
-          tags: tags,
-          instanceNames: instanceNames,
+        tags: tags,
+        instanceNames: instanceNames,
       });
       await client.send(command);
       return {
-                  message: 'Tags removed successfully',
-                  instanceNames: instanceNames,
-              };
+        message: 'Tags removed successfully',
+        instanceNames: instanceNames,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from on-premises instances', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from on-premises instances',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

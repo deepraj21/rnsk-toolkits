@@ -4,7 +4,8 @@ import { DescribePackagesCommand } from '@aws-sdk/client-opensearch';
 import { createOpenSearchClient } from '../client.js';
 
 export const awsDescribePackages = tool({
-  description: 'List custom packages (plugins and dictionaries) for OpenSearch. Use it to inspect current state before making changes.',
+  description:
+    'List custom packages (plugins and dictionaries) for OpenSearch. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,13 +20,16 @@ export const awsDescribePackages = tool({
       const client = createOpenSearchClient(awsCredentials, region);
 
       const command = new DescribePackagesCommand({
-          Filters: filters,
-          MaxResults: maxResults,
+        Filters: filters,
+        MaxResults: maxResults,
       });
       const response = await client.send(command);
       return response.PackageDetailsList;
     } catch (err) {
-      return { error: 'Failed to list custom packages (plugins and dictionaries) for OpenSearch', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list custom packages (plugins and dictionaries) for OpenSearch',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

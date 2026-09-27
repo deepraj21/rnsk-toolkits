@@ -22,7 +22,10 @@ export const awsPutS3BucketPolicy = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to set the bucket policy for an S3 bucket', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set the bucket policy for an S3 bucket',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

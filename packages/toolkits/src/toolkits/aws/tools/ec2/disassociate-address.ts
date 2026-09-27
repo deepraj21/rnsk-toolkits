@@ -21,7 +21,10 @@ export const awsDisassociateEc2Address = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to disassociate an Elastic IP from an instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disassociate an Elastic IP from an instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

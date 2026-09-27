@@ -3,10 +3,14 @@ import { z } from 'zod';
 import { createMonitoringClient, getProjectId } from '../client.js';
 
 export const gcpListMonitoringMetricDescriptors = tool({
-  description: 'List available Cloud Monitoring metric descriptors, optionally filtered by metric type.',
+  description:
+    'List available Cloud Monitoring metric descriptors, optionally filtered by metric type.',
   inputSchema: z.object({
     gcpCredentials: z.string().optional().describe('Injected by system; do not provide'),
-    filter: z.string().optional().describe('Optional filter for metric type, e.g. \'metric.type = starts_with("compute")\''),
+    filter: z
+      .string()
+      .optional()
+      .describe('Optional filter for metric type, e.g. \'metric.type = starts_with("compute")\''),
   }),
   execute: async ({ gcpCredentials, filter }) => {
     if (!gcpCredentials) {

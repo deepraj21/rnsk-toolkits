@@ -16,7 +16,9 @@ export const awsGetEc2Instance = tool({
     }
     try {
       const client = createEc2Client(awsCredentials, region);
-      const response = await client.send(new DescribeInstancesCommand({ InstanceIds: [instanceId] }));
+      const response = await client.send(
+        new DescribeInstancesCommand({ InstanceIds: [instanceId] }),
+      );
       const instance = response.Reservations?.[0]?.Instances?.[0];
       if (!instance) {
         return { error: 'Instance not found', instanceId };
@@ -31,14 +33,20 @@ export const awsGetEc2Instance = tool({
         availabilityZone: instance.Placement?.AvailabilityZone,
         vpcId: instance.VpcId,
         subnetId: instance.SubnetId,
-        securityGroups: (instance.SecurityGroups ?? []).map((sg) => ({ id: sg.GroupId, name: sg.GroupName })),
+        securityGroups: (instance.SecurityGroups ?? []).map((sg) => ({
+          id: sg.GroupId,
+          name: sg.GroupName,
+        })),
         tags: (instance.Tags ?? []).reduce<Record<string, string>>((acc, tag) => {
           if (tag.Key && tag.Value) acc[tag.Key] = tag.Value;
           return acc;
         }, {}),
       };
     } catch (err) {
-      return { error: 'Failed to get EC2 instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get EC2 instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

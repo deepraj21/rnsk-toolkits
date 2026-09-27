@@ -4,7 +4,8 @@ import { StopBuildBatchCommand } from '@aws-sdk/client-codebuild';
 import { createCodeBuildClient } from '../client.js';
 
 export const awsStopCodebuildBuildBatch = tool({
-  description: 'Stops a running batch build. Use it to stop a running resource (billable config may remain).',
+  description:
+    'Stops a running batch build. Use it to stop a running resource (billable config may remain).',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsStopCodebuildBuildBatch = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new StopBuildBatchCommand({
-          id: id,
+        id: id,
       });
       const response = await client.send(command);
       return {
-                  buildBatch: response.buildBatch,
-              };
+        buildBatch: response.buildBatch,
+      };
     } catch (err) {
-      return { error: 'Failed to stops a running batch build', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to stops a running batch build',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

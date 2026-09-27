@@ -21,7 +21,10 @@ export const awsDeleteEc2Volume = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete an EBS volume', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an EBS volume',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

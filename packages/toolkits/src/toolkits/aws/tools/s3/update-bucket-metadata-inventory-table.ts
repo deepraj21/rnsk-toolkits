@@ -4,12 +4,15 @@ import { UpdateBucketMetadataInventoryTableConfigurationCommand } from '@aws-sdk
 import { createS3Client } from '../client.js';
 
 export const awsUpdateS3BucketMetadataInventoryTable = tool({
-  description: 'Update metadata inventory table configuration for an S3 bucket. Use it to change an existing resource.',
+  description:
+    'Update metadata inventory table configuration for an S3 bucket. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     bucket: z.string().describe('The name of the S3 bucket'),
-    metadataInventoryTableConfiguration: z.record(z.any()).describe('Metadata inventory table configuration'),
+    metadataInventoryTableConfiguration: z
+      .record(z.any())
+      .describe('Metadata inventory table configuration'),
   }),
   execute: async ({ awsCredentials, region, bucket, metadataInventoryTableConfiguration }) => {
     if (!awsCredentials) {
@@ -18,11 +21,17 @@ export const awsUpdateS3BucketMetadataInventoryTable = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new UpdateBucketMetadataInventoryTableConfigurationCommand({ Bucket: bucket, InventoryTableConfiguration: metadataInventoryTableConfiguration as any });
+      const command = new UpdateBucketMetadataInventoryTableConfigurationCommand({
+        Bucket: bucket,
+        InventoryTableConfiguration: metadataInventoryTableConfiguration as any,
+      });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to update metadata inventory table configuration for an S3 bucket', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update metadata inventory table configuration for an S3 bucket',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,15 +18,18 @@ export const awsDeleteSagemakerEndpoint = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new DeleteEndpointCommand({
-          EndpointName: endpointName,
+        EndpointName: endpointName,
       });
       await client.send(command);
       return {
-                  message: 'Endpoint deleted successfully',
-                  endpointName: endpointName,
-              };
+        message: 'Endpoint deleted successfully',
+        endpointName: endpointName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a SageMaker endpoint', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a SageMaker endpoint',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

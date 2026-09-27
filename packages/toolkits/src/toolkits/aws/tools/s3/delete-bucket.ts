@@ -21,7 +21,10 @@ export const awsDeleteS3Bucket = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete an S3 bucket', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an S3 bucket',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -20,21 +20,25 @@ export const awsListLambdaLayers = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new ListLayersCommand({
-          CompatibleRuntime: compatibleRuntime as any,
-          Marker: marker,
-          MaxItems: maxItems,
+        CompatibleRuntime: compatibleRuntime as any,
+        Marker: marker,
+        MaxItems: maxItems,
       });
       const response = await client.send(command);
       return {
-                  layers: response.Layers?.map((l: any) => ({
-                      layerName: l.LayerName,
-                      layerArn: l.LayerArn,
-                      latestMatchingVersion: l.LatestMatchingVersion,
-                  })) || [],
-                  nextMarker: response.NextMarker,
-              };
+        layers:
+          response.Layers?.map((l: any) => ({
+            layerName: l.LayerName,
+            layerArn: l.LayerArn,
+            latestMatchingVersion: l.LatestMatchingVersion,
+          })) || [],
+        nextMarker: response.NextMarker,
+      };
     } catch (err) {
-      return { error: 'Failed to list Lambda layers', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list Lambda layers',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

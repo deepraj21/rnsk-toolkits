@@ -13,7 +13,14 @@ export const awsCreateSagemakerEndpoint = tool({
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply'),
     deploymentConfig: z.record(z.any()).optional().describe('Deployment configuration'),
   }),
-  execute: async ({ awsCredentials, region, endpointName, endpointConfigName, tags, deploymentConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    endpointName,
+    endpointConfigName,
+    tags,
+    deploymentConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,17 +28,20 @@ export const awsCreateSagemakerEndpoint = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new CreateEndpointCommand({
-          EndpointName: endpointName,
-          EndpointConfigName: endpointConfigName,
-          Tags: tags,
-          DeploymentConfig: deploymentConfig,
+        EndpointName: endpointName,
+        EndpointConfigName: endpointConfigName,
+        Tags: tags,
+        DeploymentConfig: deploymentConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  endpointArn: response.EndpointArn,
-              };
+        endpointArn: response.EndpointArn,
+      };
     } catch (err) {
-      return { error: 'Failed to create a SageMaker endpoint', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a SageMaker endpoint',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

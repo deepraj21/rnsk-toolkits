@@ -4,7 +4,8 @@ import { PutProvisionedConcurrencyConfigCommand } from '@aws-sdk/client-lambda';
 import { createLambdaClient } from '../client.js';
 
 export const awsPutLambdaProvisionedConcurrencyConfig = tool({
-  description: 'Configure provisioned concurrency for a function version. Use it to write data or configuration.',
+  description:
+    'Configure provisioned concurrency for a function version. Use it to write data or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -12,7 +13,13 @@ export const awsPutLambdaProvisionedConcurrencyConfig = tool({
     qualifier: z.string().describe('Version or alias qualifier'),
     provisionedConcurrentExecutions: z.number().describe('Number of concurrent executions'),
   }),
-  execute: async ({ awsCredentials, region, functionName, qualifier, provisionedConcurrentExecutions }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    functionName,
+    qualifier,
+    provisionedConcurrentExecutions,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,21 +27,24 @@ export const awsPutLambdaProvisionedConcurrencyConfig = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new PutProvisionedConcurrencyConfigCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
-          ProvisionedConcurrentExecutions: provisionedConcurrentExecutions,
+        FunctionName: functionName,
+        Qualifier: qualifier,
+        ProvisionedConcurrentExecutions: provisionedConcurrentExecutions,
       });
       const response = await client.send(command);
       return {
-                  requestedProvisionedConcurrentExecutions: response.RequestedProvisionedConcurrentExecutions,
-                  availableProvisionedConcurrentExecutions: response.AvailableProvisionedConcurrentExecutions,
-                  allocatedProvisionedConcurrentExecutions: response.AllocatedProvisionedConcurrentExecutions,
-                  status: response.Status,
-                  statusReason: response.StatusReason,
-                  lastModified: response.LastModified,
-              };
+        requestedProvisionedConcurrentExecutions: response.RequestedProvisionedConcurrentExecutions,
+        availableProvisionedConcurrentExecutions: response.AvailableProvisionedConcurrentExecutions,
+        allocatedProvisionedConcurrentExecutions: response.AllocatedProvisionedConcurrentExecutions,
+        status: response.Status,
+        statusReason: response.StatusReason,
+        lastModified: response.LastModified,
+      };
     } catch (err) {
-      return { error: 'Failed to configure provisioned concurrency for a function version', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to configure provisioned concurrency for a function version',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

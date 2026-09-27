@@ -13,7 +13,14 @@ export const awsListVpcLatticeRules = tool({
     maxResults: z.number().optional().describe('Maximum number of results'),
     nextToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, listenerIdentifier, serviceIdentifier, maxResults, nextToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    listenerIdentifier,
+    serviceIdentifier,
+    maxResults,
+    nextToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,18 +28,21 @@ export const awsListVpcLatticeRules = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new ListRulesCommand({
-          listenerIdentifier: listenerIdentifier,
-          serviceIdentifier: serviceIdentifier,
-          maxResults: maxResults,
-          nextToken: nextToken,
+        listenerIdentifier: listenerIdentifier,
+        serviceIdentifier: serviceIdentifier,
+        maxResults: maxResults,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  items: response.items,
-                  nextToken: response.nextToken,
-              };
+        items: response.items,
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list VPC Lattice rules', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list VPC Lattice rules',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

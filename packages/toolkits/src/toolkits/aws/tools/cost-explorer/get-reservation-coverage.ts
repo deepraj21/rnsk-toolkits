@@ -4,7 +4,8 @@ import { GetReservationCoverageCommand } from '@aws-sdk/client-cost-explorer';
 import { createCostExplorerClient } from '../client.js';
 
 export const awsGetReservationCoverage = tool({
-  description: 'Retrieves the reservation coverage for your account. Use it to inspect current state before making changes.',
+  description:
+    'Retrieves the reservation coverage for your account. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -15,7 +16,16 @@ export const awsGetReservationCoverage = tool({
     metrics: z.array(z.string()).optional().describe('The metrics to retrieve'),
     nextPageToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, timePeriod, groupBy, granularity, filter, metrics, nextPageToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    timePeriod,
+    groupBy,
+    granularity,
+    filter,
+    metrics,
+    nextPageToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,24 +33,29 @@ export const awsGetReservationCoverage = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new GetReservationCoverageCommand({
-          TimePeriod: timePeriod ? {
+        TimePeriod: timePeriod
+          ? {
               Start: timePeriod.start,
               End: timePeriod.end,
-          } : undefined,
-          GroupBy: groupBy,
-          Granularity: granularity,
-          Filter: filter,
-          Metrics: metrics,
-          NextPageToken: nextPageToken,
+            }
+          : undefined,
+        GroupBy: groupBy,
+        Granularity: granularity,
+        Filter: filter,
+        Metrics: metrics,
+        NextPageToken: nextPageToken,
       });
       const response = await client.send(command);
       return {
-                  coveragesByTime: response.CoveragesByTime || [],
-                  total: response.Total,
-                  nextPageToken: response.NextPageToken,
-              };
+        coveragesByTime: response.CoveragesByTime || [],
+        total: response.Total,
+        nextPageToken: response.NextPageToken,
+      };
     } catch (err) {
-      return { error: 'Failed to retrieves the reservation coverage for your account', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to retrieves the reservation coverage for your account',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

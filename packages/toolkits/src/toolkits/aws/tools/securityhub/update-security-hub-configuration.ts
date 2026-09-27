@@ -8,8 +8,14 @@ export const awsUpdateSecurityHubConfiguration = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    autoEnableControls: z.boolean().optional().describe('Automatically enable new controls when they are added'),
-    controlFindingGenerator: z.enum(['SECURITY_CONTROL', 'STANDARD_CONTROL']).optional().describe('Method for generating control findings'),
+    autoEnableControls: z
+      .boolean()
+      .optional()
+      .describe('Automatically enable new controls when they are added'),
+    controlFindingGenerator: z
+      .enum(['SECURITY_CONTROL', 'STANDARD_CONTROL'])
+      .optional()
+      .describe('Method for generating control findings'),
   }),
   execute: async ({ awsCredentials, region, autoEnableControls, controlFindingGenerator }) => {
     if (!awsCredentials) {
@@ -19,13 +25,16 @@ export const awsUpdateSecurityHubConfiguration = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new UpdateSecurityHubConfigurationCommand({
-          AutoEnableControls: autoEnableControls,
-          ControlFindingGenerator: controlFindingGenerator,
+        AutoEnableControls: autoEnableControls,
+        ControlFindingGenerator: controlFindingGenerator,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update Security Hub configuration settings', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update Security Hub configuration settings',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

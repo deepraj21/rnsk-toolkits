@@ -4,7 +4,8 @@ import { DescribeProductsCommand } from '@aws-sdk/client-securityhub';
 import { createSecurityHubClient } from '../client.js';
 
 export const awsDescribeProducts = tool({
-  description: 'List available Security Hub product integrations. Use it to inspect current state before making changes.',
+  description:
+    'List available Security Hub product integrations. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsDescribeProducts = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new DescribeProductsCommand({
-          MaxResults: maxResults,
-          NextToken: nextToken,
-          ProductArn: productArn,
+        MaxResults: maxResults,
+        NextToken: nextToken,
+        ProductArn: productArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to list available Security Hub product integrations', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list available Security Hub product integrations',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

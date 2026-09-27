@@ -6,7 +6,8 @@ import { growwRequest, handleGrowwResult } from './utils.js';
 const tokenField = z.string().optional().describe('Groww API access token (injected by system)');
 
 export const growwGetQuote = tool({
-  description: 'Get full live snapshot for an instrument: last price, market depth, OHLC, volumes, OI, circuits, 52-week high/low.',
+  description:
+    'Get full live snapshot for an instrument: last price, market depth, OHLC, volumes, OI, circuits, 52-week high/low.',
   inputSchema: z.object({
     growwAccessToken: tokenField,
     exchange: z.string().describe('NSE or BSE'),
@@ -20,17 +21,23 @@ export const growwGetQuote = tool({
       });
       return handleGrowwResult(result, 'get quote');
     } catch (error) {
-      return { error: 'Error getting quote', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting quote',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const growwGetLtp = tool({
-  description: 'Get last traded price for up to 50 instruments. exchange_symbols is a comma-separated list like NSE_RELIANCE,BSE_SENSEX.',
+  description:
+    'Get last traded price for up to 50 instruments. exchange_symbols is a comma-separated list like NSE_RELIANCE,BSE_SENSEX.',
   inputSchema: z.object({
     growwAccessToken: tokenField,
     segment: z.string().describe('CASH or FNO'),
-    exchange_symbols: z.string().describe('Comma-separated EXCHANGE_SYMBOL list, e.g. NSE_RELIANCE,BSE_SENSEX (max 50)'),
+    exchange_symbols: z
+      .string()
+      .describe('Comma-separated EXCHANGE_SYMBOL list, e.g. NSE_RELIANCE,BSE_SENSEX (max 50)'),
   }),
   execute: async ({ growwAccessToken, segment, exchange_symbols }) => {
     try {
@@ -39,7 +46,10 @@ export const growwGetLtp = tool({
       });
       return handleGrowwResult(result, 'get LTP');
     } catch (error) {
-      return { error: 'Error getting LTP', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting LTP',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -49,7 +59,9 @@ export const growwGetOhlc = tool({
   inputSchema: z.object({
     growwAccessToken: tokenField,
     segment: z.string().describe('CASH or FNO'),
-    exchange_symbols: z.string().describe('Comma-separated EXCHANGE_SYMBOL list, e.g. NSE_RELIANCE,BSE_SENSEX (max 50)'),
+    exchange_symbols: z
+      .string()
+      .describe('Comma-separated EXCHANGE_SYMBOL list, e.g. NSE_RELIANCE,BSE_SENSEX (max 50)'),
   }),
   execute: async ({ growwAccessToken, segment, exchange_symbols }) => {
     try {
@@ -58,13 +70,17 @@ export const growwGetOhlc = tool({
       });
       return handleGrowwResult(result, 'get OHLC');
     } catch (error) {
-      return { error: 'Error getting OHLC', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting OHLC',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const growwGetOptionChain = tool({
-  description: 'Get full FNO option chain with Greeks, LTP, OI and volume for an underlying and expiry.',
+  description:
+    'Get full FNO option chain with Greeks, LTP, OI and volume for an underlying and expiry.',
   inputSchema: z.object({
     growwAccessToken: tokenField,
     exchange: z.string().describe('NSE or BSE'),
@@ -80,7 +96,10 @@ export const growwGetOptionChain = tool({
       );
       return handleGrowwResult(result, 'get option chain');
     } catch (error) {
-      return { error: 'Error getting option chain', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting option chain',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -102,7 +121,10 @@ export const growwGetGreeks = tool({
       );
       return handleGrowwResult(result, 'get greeks');
     } catch (error) {
-      return { error: 'Error getting greeks', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting greeks',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { DescribeAutoScalingInstancesCommand } from '@aws-sdk/client-auto-scalin
 import { createAutoScalingClient } from '../client.js';
 
 export const awsDescribeAutoscalingInstances = tool({
-  description: 'Describe Auto Scaling instances. Use it to inspect current state before making changes.',
+  description:
+    'Describe Auto Scaling instances. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsDescribeAutoscalingInstances = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DescribeAutoScalingInstancesCommand({
-          InstanceIds: instanceIds,
-          MaxRecords: maxRecords,
-          NextToken: nextToken,
+        InstanceIds: instanceIds,
+        MaxRecords: maxRecords,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  autoScalingInstances: response.AutoScalingInstances,
-                  nextToken: response.NextToken,
-              };
+        autoScalingInstances: response.AutoScalingInstances,
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to describe Auto Scaling instances', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe Auto Scaling instances',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

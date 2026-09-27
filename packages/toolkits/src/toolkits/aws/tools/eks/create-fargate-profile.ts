@@ -16,7 +16,17 @@ export const awsCreateEksFargateProfile = tool({
     tags: z.record(z.any()).optional().describe('Tags to apply to the profile'),
     clientRequestToken: z.string().optional().describe('Unique identifier for the request'),
   }),
-  execute: async ({ awsCredentials, region, fargateProfileName, clusterName, podExecutionRoleArn, subnets, selectors, tags, clientRequestToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    fargateProfileName,
+    clusterName,
+    podExecutionRoleArn,
+    subnets,
+    selectors,
+    tags,
+    clientRequestToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,20 +34,23 @@ export const awsCreateEksFargateProfile = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new CreateFargateProfileCommand({
-          fargateProfileName: fargateProfileName,
-          clusterName: clusterName,
-          podExecutionRoleArn: podExecutionRoleArn,
-          subnets: subnets,
-          selectors: selectors,
-          tags: tags,
-          clientRequestToken: clientRequestToken,
+        fargateProfileName: fargateProfileName,
+        clusterName: clusterName,
+        podExecutionRoleArn: podExecutionRoleArn,
+        subnets: subnets,
+        selectors: selectors,
+        tags: tags,
+        clientRequestToken: clientRequestToken,
       });
       const response = await client.send(command);
       return {
-                  fargateProfile: response.fargateProfile,
-              };
+        fargateProfile: response.fargateProfile,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new Fargate profile', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new Fargate profile',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

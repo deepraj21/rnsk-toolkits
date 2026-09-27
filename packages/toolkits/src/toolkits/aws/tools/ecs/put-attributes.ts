@@ -19,15 +19,18 @@ export const awsPutEcsAttributes = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new PutAttributesCommand({
-          cluster: cluster,
-          attributes: attributes,
+        cluster: cluster,
+        attributes: attributes,
       } as any);
       const response = await client.send(command);
       return {
-                  attributes: response.attributes || [],
-              };
+        attributes: response.attributes || [],
+      };
     } catch (err) {
-      return { error: 'Failed to create or update attributes', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or update attributes',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

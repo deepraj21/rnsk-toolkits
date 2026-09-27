@@ -12,7 +12,10 @@ export const awsCreateEksCluster = tool({
     version: z.string().optional().describe('Kubernetes version'),
     roleArn: z.string().describe('IAM role ARN for the cluster'),
     resourcesVpcConfig: z.record(z.any()).describe('VPC configuration for the cluster'),
-    kubernetesNetworkConfig: z.record(z.any()).optional().describe('Kubernetes network configuration'),
+    kubernetesNetworkConfig: z
+      .record(z.any())
+      .optional()
+      .describe('Kubernetes network configuration'),
     logging: z.record(z.any()).optional().describe('Logging configuration'),
     clientRequestToken: z.string().optional().describe('Unique identifier for the request'),
     tags: z.record(z.any()).optional().describe('Tags to apply to the cluster'),
@@ -20,7 +23,21 @@ export const awsCreateEksCluster = tool({
     accessConfig: z.record(z.any()).optional().describe('Access configuration'),
     outpostConfig: z.record(z.any()).optional().describe('Outpost configuration'),
   }),
-  execute: async ({ awsCredentials, region, name, version, roleArn, resourcesVpcConfig, kubernetesNetworkConfig, logging, clientRequestToken, tags, encryptionConfig, accessConfig, outpostConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    version,
+    roleArn,
+    resourcesVpcConfig,
+    kubernetesNetworkConfig,
+    logging,
+    clientRequestToken,
+    tags,
+    encryptionConfig,
+    accessConfig,
+    outpostConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -28,24 +45,27 @@ export const awsCreateEksCluster = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new CreateClusterCommand({
-          name: name,
-          version: version,
-          roleArn: roleArn,
-          resourcesVpcConfig: resourcesVpcConfig,
-          kubernetesNetworkConfig: kubernetesNetworkConfig,
-          logging: logging,
-          clientRequestToken: clientRequestToken,
-          tags: tags,
-          encryptionConfig: encryptionConfig,
-          accessConfig: accessConfig,
-          outpostConfig: outpostConfig,
+        name: name,
+        version: version,
+        roleArn: roleArn,
+        resourcesVpcConfig: resourcesVpcConfig,
+        kubernetesNetworkConfig: kubernetesNetworkConfig,
+        logging: logging,
+        clientRequestToken: clientRequestToken,
+        tags: tags,
+        encryptionConfig: encryptionConfig,
+        accessConfig: accessConfig,
+        outpostConfig: outpostConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  cluster: response.cluster,
-              };
+        cluster: response.cluster,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new EKS cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new EKS cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,13 +19,16 @@ export const awsCreateEc2RouteTable = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateRouteTableCommand({
-          VpcId: vpcId,
-          TagSpecifications: tagSpecifications,
+        VpcId: vpcId,
+        TagSpecifications: tagSpecifications,
       });
       const response = await client.send(command);
       return { routeTable: response.RouteTable };
     } catch (err) {
-      return { error: 'Failed to create a route table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a route table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

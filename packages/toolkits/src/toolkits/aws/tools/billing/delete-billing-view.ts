@@ -18,14 +18,17 @@ export const awsDeleteBillingView = tool({
       const client = createBillingClient(awsCredentials, region);
 
       const command = new DeleteBillingViewCommand({
-          billingViewArn: billingViewArn,
+        billingViewArn: billingViewArn,
       } as any);
-      const response = await client.send(command) as any;
+      const response = (await client.send(command)) as any;
       return {
-                  billingViewArn: response.billingViewArn,
-              };
+        billingViewArn: response.billingViewArn,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a billing view', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a billing view',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

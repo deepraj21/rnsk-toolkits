@@ -18,15 +18,18 @@ export const awsDeleteSagemakerNotebookInstance = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new DeleteNotebookInstanceCommand({
-          NotebookInstanceName: notebookInstanceName,
+        NotebookInstanceName: notebookInstanceName,
       });
       await client.send(command);
       return {
-                  message: 'Notebook instance deleted successfully',
-                  notebookInstanceName: notebookInstanceName,
-              };
+        message: 'Notebook instance deleted successfully',
+        notebookInstanceName: notebookInstanceName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a SageMaker notebook instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a SageMaker notebook instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,15 +18,18 @@ export const awsListSnsTopics = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new ListTopicsCommand({
-          NextToken: nextToken,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  topics: response.Topics || [],
-                  nextToken: response.NextToken,
-              };
+        topics: response.Topics || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list all SNS topics', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all SNS topics',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

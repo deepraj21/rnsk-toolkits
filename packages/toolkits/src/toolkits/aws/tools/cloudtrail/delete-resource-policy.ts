@@ -4,7 +4,8 @@ import { DeleteResourcePolicyCommand } from '@aws-sdk/client-cloudtrail';
 import { createCloudTrailClient } from '../client.js';
 
 export const awsDeleteResourcePolicy = tool({
-  description: 'Deletes the resource-based policy attached to the CloudTrail channel, event data store, or lake. Use it to permanently remove the resource.',
+  description:
+    'Deletes the resource-based policy attached to the CloudTrail channel, event data store, or lake. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,18 @@ export const awsDeleteResourcePolicy = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new DeleteResourcePolicyCommand({
-          ResourceArn: resourceArn,
+        ResourceArn: resourceArn,
       });
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the resource-based policy attached to the CloudTrail channel, event data store, or lake', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error:
+          'Failed to deletes the resource-based policy attached to the CloudTrail channel, event data store, or lake',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsCreateCodepipelinePipeline = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new CreatePipelineCommand({
-          pipeline: pipeline,
-          tags: tags,
+        pipeline: pipeline,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  pipeline: response.pipeline,
-                  tags: response.tags,
-              };
+        pipeline: response.pipeline,
+        tags: response.tags,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new CodePipeline pipeline', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new CodePipeline pipeline',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

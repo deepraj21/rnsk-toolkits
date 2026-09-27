@@ -8,7 +8,11 @@ export const awsDeleteRemediationConfiguration = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    configRuleName: z.string().describe('The name of the Config rule for which you want to delete remediation configuration'),
+    configRuleName: z
+      .string()
+      .describe(
+        'The name of the Config rule for which you want to delete remediation configuration',
+      ),
     resourceType: z.string().optional().describe('The type of a resource'),
   }),
   execute: async ({ awsCredentials, region, configRuleName, resourceType }) => {
@@ -19,16 +23,19 @@ export const awsDeleteRemediationConfiguration = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DeleteRemediationConfigurationCommand({
-          ConfigRuleName: configRuleName,
-          ResourceType: resourceType,
+        ConfigRuleName: configRuleName,
+        ResourceType: resourceType,
       });
       await client.send(command);
       return {
-                  message: 'Remediation configuration deleted successfully',
-                  configRuleName: configRuleName,
-              };
+        message: 'Remediation configuration deleted successfully',
+        configRuleName: configRuleName,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the remediation configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes the remediation configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

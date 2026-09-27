@@ -18,14 +18,17 @@ export const awsDeleteEcsCluster = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new DeleteClusterCommand({
-          cluster: cluster,
+        cluster: cluster,
       });
       const response = await client.send(command);
       return {
-                  cluster: response.cluster,
-              };
+        cluster: response.cluster,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an ECS cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an ECS cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -6,8 +6,20 @@ import { missingCredentialsError, splunkEntries, splunkRequest } from './client.
 const authField = z.string().optional().describe('Injected by system; do not provide');
 
 const GENERATING_COMMANDS = [
-  'search', 'inputlookup', 'inputcsv', 'rest', 'makeresults', 'gentimes', 'pivot',
-  'datamodel', 'tstats', 'mstats', 'from', 'dbxquery', 'union', 'loadjob',
+  'search',
+  'inputlookup',
+  'inputcsv',
+  'rest',
+  'makeresults',
+  'gentimes',
+  'pivot',
+  'datamodel',
+  'tstats',
+  'mstats',
+  'from',
+  'dbxquery',
+  'union',
+  'loadjob',
 ];
 
 /** Splunk ad-hoc searches must start with `search` unless they use a generating command. */
@@ -34,14 +46,25 @@ function summarizeJob(entry: { name?: string; content?: Record<string, unknown> 
 }
 
 export const splunkCreateSearchJob = tool({
-  description: 'Run an SPL search as an async job. Returns a sid — poll status, then fetch results. Defaults to the last 24 hours.',
+  description:
+    'Run an SPL search as an async job. Returns a sid — poll status, then fetch results. Defaults to the last 24 hours.',
   inputSchema: z.object({
     splunkCredentials: authField,
-    search: z.string().describe('SPL search, e.g. "index=main error | stats count by host" ("search" prefix is added automatically)'),
-    earliestTime: z.string().optional().describe('Start of time range, e.g. "-24h", "-7d@d" (default "-24h")'),
+    search: z
+      .string()
+      .describe(
+        'SPL search, e.g. "index=main error | stats count by host" ("search" prefix is added automatically)',
+      ),
+    earliestTime: z
+      .string()
+      .optional()
+      .describe('Start of time range, e.g. "-24h", "-7d@d" (default "-24h")'),
     latestTime: z.string().optional().describe('End of time range, e.g. "now" (default "now")'),
     maxCount: z.number().int().min(1).optional().describe('Max events to return (default 10000)'),
-    execMode: z.enum(['normal', 'blocking']).optional().describe('normal returns immediately; blocking waits for completion'),
+    execMode: z
+      .enum(['normal', 'blocking'])
+      .optional()
+      .describe('normal returns immediately; blocking waits for completion'),
   }),
   execute: async ({ splunkCredentials, search, earliestTime, latestTime, maxCount, execMode }) => {
     if (!splunkCredentials) return missingCredentialsError();
@@ -58,13 +81,17 @@ export const splunkCreateSearchJob = tool({
       })) as { sid?: string };
       return { sid: data.sid };
     } catch (error) {
-      return { error: 'Failed to create search job', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to create search job',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkGetSearchJobStatus = tool({
-  description: 'Check an SPL search job state and progress. Use to poll until dispatchState is DONE before fetching results.',
+  description:
+    'Check an SPL search job state and progress. Use to poll until dispatchState is DONE before fetching results.',
   inputSchema: z.object({
     splunkCredentials: authField,
     sid: z.string().describe('Search job ID returned by splunkCreateSearchJob'),
@@ -72,7 +99,10 @@ export const splunkGetSearchJobStatus = tool({
   execute: async ({ splunkCredentials, sid }) => {
     if (!splunkCredentials) return missingCredentialsError();
     try {
-      const data = (await splunkRequest(splunkCredentials, `/services/search/jobs/${encodeURIComponent(sid)}`)) as {
+      const data = (await splunkRequest(
+        splunkCredentials,
+        `/services/search/jobs/${encodeURIComponent(sid)}`,
+      )) as {
         entry?: { content?: Record<string, unknown> };
       };
       const c = data.entry?.content ?? {};
@@ -88,54 +118,89 @@ export const splunkGetSearchJobStatus = tool({
         messages: c.messages,
       };
     } catch (error) {
-      return { error: 'Failed to get search job status', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to get search job status',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkGetSearchJobResults = tool({
-  description: 'Fetch transformed results of a completed search job with pagination. Use after status shows DONE.',
+  description:
+    'Fetch transformed results of a completed search job with pagination. Use after status shows DONE.',
   inputSchema: z.object({
     splunkCredentials: authField,
     sid: z.string().describe('Search job ID'),
-    count: z.number().int().min(0).max(50000).optional().describe('Max results to return (0 = all, default 100)'),
+    count: z
+      .number()
+      .int()
+      .min(0)
+      .max(50000)
+      .optional()
+      .describe('Max results to return (0 = all, default 100)'),
     offset: z.number().int().min(0).optional().describe('Result offset for pagination'),
-    fieldList: z.string().optional().describe('Comma-separated fields to return, e.g. "host,source,_time"'),
+    fieldList: z
+      .string()
+      .optional()
+      .describe('Comma-separated fields to return, e.g. "host,source,_time"'),
   }),
   execute: async ({ splunkCredentials, sid, count, offset, fieldList }) => {
     if (!splunkCredentials) return missingCredentialsError();
     try {
-      return await splunkRequest(splunkCredentials, `/services/search/jobs/${encodeURIComponent(sid)}/results`, {
-        query: { count: count ?? 100, offset, field_list: fieldList },
-      });
+      return await splunkRequest(
+        splunkCredentials,
+        `/services/search/jobs/${encodeURIComponent(sid)}/results`,
+        {
+          query: { count: count ?? 100, offset, field_list: fieldList },
+        },
+      );
     } catch (error) {
-      return { error: 'Failed to get search job results', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to get search job results',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkGetSearchJobEvents = tool({
-  description: 'Fetch raw untransformed events of a search job (available while it still runs). Use for raw log inspection.',
+  description:
+    'Fetch raw untransformed events of a search job (available while it still runs). Use for raw log inspection.',
   inputSchema: z.object({
     splunkCredentials: authField,
     sid: z.string().describe('Search job ID'),
-    count: z.number().int().min(0).max(50000).optional().describe('Max events to return (0 = all, default 100)'),
+    count: z
+      .number()
+      .int()
+      .min(0)
+      .max(50000)
+      .optional()
+      .describe('Max events to return (0 = all, default 100)'),
     offset: z.number().int().min(0).optional().describe('Event offset for pagination'),
   }),
   execute: async ({ splunkCredentials, sid, count, offset }) => {
     if (!splunkCredentials) return missingCredentialsError();
     try {
-      return await splunkRequest(splunkCredentials, `/services/search/jobs/${encodeURIComponent(sid)}/events`, {
-        query: { count: count ?? 100, offset },
-      });
+      return await splunkRequest(
+        splunkCredentials,
+        `/services/search/jobs/${encodeURIComponent(sid)}/events`,
+        {
+          query: { count: count ?? 100, offset },
+        },
+      );
     } catch (error) {
-      return { error: 'Failed to get search job events', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to get search job events',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkRunOneShotSearch = tool({
-  description: 'Run a short SPL search synchronously and get results directly. Use for quick lookups; prefer async jobs for long searches.',
+  description:
+    'Run a short SPL search synchronously and get results directly. Use for quick lookups; prefer async jobs for long searches.',
   inputSchema: z.object({
     splunkCredentials: authField,
     search: z.string().describe('SPL search ("search" prefix is added automatically)'),
@@ -157,13 +222,17 @@ export const splunkRunOneShotSearch = tool({
         },
       });
     } catch (error) {
-      return { error: 'Failed to run one-shot search', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to run one-shot search',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkExportSearch = tool({
-  description: 'Stream SPL search results as they become available (no sid). Use for large result sets and long-running searches.',
+  description:
+    'Stream SPL search results as they become available (no sid). Use for large result sets and long-running searches.',
   inputSchema: z.object({
     splunkCredentials: authField,
     search: z.string().describe('SPL search ("search" prefix is added automatically)'),
@@ -195,13 +264,17 @@ export const splunkExportSearch = tool({
       }
       return { count: results.length, results };
     } catch (error) {
-      return { error: 'Failed to export search', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to export search',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkListSearchJobs = tool({
-  description: 'List recent search jobs for the connected user with state and progress. Use to find lost sids or audit search activity.',
+  description:
+    'List recent search jobs for the connected user with state and progress. Use to find lost sids or audit search activity.',
   inputSchema: z.object({
     splunkCredentials: authField,
     count: z.number().int().min(1).max(1000).optional().describe('Max jobs to return (default 30)'),
@@ -215,13 +288,17 @@ export const splunkListSearchJobs = tool({
       const jobs = splunkEntries(data).map(summarizeJob);
       return { count: jobs.length, jobs };
     } catch (error) {
-      return { error: 'Failed to list search jobs', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to list search jobs',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkCancelSearchJob = tool({
-  description: 'Cancel and delete a search job, freeing its resources. Use to stop runaway or unwanted searches.',
+  description:
+    'Cancel and delete a search job, freeing its resources. Use to stop runaway or unwanted searches.',
   inputSchema: z.object({
     splunkCredentials: authField,
     sid: z.string().describe('Search job ID to cancel'),
@@ -229,17 +306,25 @@ export const splunkCancelSearchJob = tool({
   execute: async ({ splunkCredentials, sid }) => {
     if (!splunkCredentials) return missingCredentialsError();
     try {
-      return await splunkRequest(splunkCredentials, `/services/search/jobs/${encodeURIComponent(sid)}`, {
-        method: 'DELETE',
-      });
+      return await splunkRequest(
+        splunkCredentials,
+        `/services/search/jobs/${encodeURIComponent(sid)}`,
+        {
+          method: 'DELETE',
+        },
+      );
     } catch (error) {
-      return { error: 'Failed to cancel search job', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to cancel search job',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkControlSearchJob = tool({
-  description: 'Pause, unpause or finalize a running search job to manage long-running search load.',
+  description:
+    'Pause, unpause or finalize a running search job to manage long-running search load.',
   inputSchema: z.object({
     splunkCredentials: authField,
     sid: z.string().describe('Search job ID'),
@@ -248,12 +333,19 @@ export const splunkControlSearchJob = tool({
   execute: async ({ splunkCredentials, sid, action }) => {
     if (!splunkCredentials) return missingCredentialsError();
     try {
-      return await splunkRequest(splunkCredentials, `/services/search/jobs/${encodeURIComponent(sid)}/control`, {
-        method: 'POST',
-        form: { action },
-      });
+      return await splunkRequest(
+        splunkCredentials,
+        `/services/search/jobs/${encodeURIComponent(sid)}/control`,
+        {
+          method: 'POST',
+          form: { action },
+        },
+      );
     } catch (error) {
-      return { error: 'Failed to control search job', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to control search job',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });

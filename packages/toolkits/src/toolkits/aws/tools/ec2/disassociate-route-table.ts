@@ -21,7 +21,10 @@ export const awsDisassociateEc2RouteTable = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to disassociate a route table from a subnet', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disassociate a route table from a subnet',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

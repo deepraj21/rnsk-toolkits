@@ -19,16 +19,19 @@ export const awsUntagVpcLatticeResource = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          resourceArn: resourceArn,
-          tagKeys: tagKeys,
+        resourceArn: resourceArn,
+        tagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags removed successfully from resource ${resourceArn}`,
-              };
+        success: true,
+        message: `Tags removed successfully from resource ${resourceArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from a VPC Lattice resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from a VPC Lattice resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

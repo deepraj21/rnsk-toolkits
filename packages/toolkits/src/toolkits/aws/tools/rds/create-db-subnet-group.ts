@@ -12,7 +12,13 @@ export const awsCreateDbSubnetGroup = tool({
     dbSubnetGroupDescription: z.string().describe('Description of the subnet group'),
     subnetIds: z.array(z.string()).describe('List of subnet IDs'),
   }),
-  execute: async ({ awsCredentials, region, dbSubnetGroupName, dbSubnetGroupDescription, subnetIds }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    dbSubnetGroupName,
+    dbSubnetGroupDescription,
+    subnetIds,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +26,17 @@ export const awsCreateDbSubnetGroup = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new CreateDBSubnetGroupCommand({
-          DBSubnetGroupName: dbSubnetGroupName,
-          DBSubnetGroupDescription: dbSubnetGroupDescription,
-          SubnetIds: subnetIds,
+        DBSubnetGroupName: dbSubnetGroupName,
+        DBSubnetGroupDescription: dbSubnetGroupDescription,
+        SubnetIds: subnetIds,
       });
       const response = await client.send(command);
       return response.DBSubnetGroup;
     } catch (err) {
-      return { error: 'Failed to create a new RDS subnet group for VPC', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new RDS subnet group for VPC',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

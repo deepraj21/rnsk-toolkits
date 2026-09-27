@@ -21,17 +21,20 @@ export const awsDeleteEcsTaskSet = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new DeleteTaskSetCommand({
-          cluster: cluster,
-          service: service,
-          taskSet: taskSet,
-          force: force,
+        cluster: cluster,
+        service: service,
+        taskSet: taskSet,
+        force: force,
       });
       const response = await client.send(command);
       return {
-                  taskSet: response.taskSet,
-              };
+        taskSet: response.taskSet,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a task set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a task set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

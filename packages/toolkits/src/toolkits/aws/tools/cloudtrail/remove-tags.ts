@@ -4,7 +4,8 @@ import { RemoveTagsCommand } from '@aws-sdk/client-cloudtrail';
 import { createCloudTrailClient } from '../client.js';
 
 export const awsRemoveTags = tool({
-  description: 'Removes one or more tags from a trail, event data store, or channel. Use it to remove access or configuration.',
+  description:
+    'Removes one or more tags from a trail, event data store, or channel. Use it to remove access or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsRemoveTags = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new RemoveTagsCommand({
-          ResourceId: resourceId,
-          TagsList: tagsList,
+        ResourceId: resourceId,
+        TagsList: tagsList,
       } as any);
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to removes one or more tags from a trail, event data store, or channel', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to removes one or more tags from a trail, event data store, or channel',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

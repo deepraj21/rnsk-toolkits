@@ -14,7 +14,9 @@ export function parseMongodbCredentials(mongodbCredentials: string): MongodbCred
   try {
     parsed = JSON.parse(mongodbCredentials) as Partial<MongodbCredentials>;
   } catch {
-    throw new Error('MongoDB credentials must be a JSON object with connectionString and optional defaultDatabase');
+    throw new Error(
+      'MongoDB credentials must be a JSON object with connectionString and optional defaultDatabase',
+    );
   }
   if (!parsed.connectionString) {
     throw new Error('MongoDB credentials must include connectionString');
@@ -26,7 +28,9 @@ export function resolveDatabaseName(mongodbCredentials: string, database?: strin
   if (database) return database;
   const creds = parseMongodbCredentials(mongodbCredentials);
   if (!creds.defaultDatabase) {
-    throw new Error('A database name is required. Provide database or store defaultDatabase in MongoDB credentials.');
+    throw new Error(
+      'A database name is required. Provide database or store defaultDatabase in MongoDB credentials.',
+    );
   }
   return creds.defaultDatabase;
 }
@@ -66,10 +70,19 @@ const OBJECT_ID_HEX = /^[0-9a-fA-F]{24}$/;
 /** Deep-convert 24-hex strings under `_id` (or listed fields) to ObjectId so filters match stored documents. */
 export function reviveIds<T>(value: T, objectIdFields: string[] = []): T {
   if (Array.isArray(value)) return value.map((v) => reviveIds(v, objectIdFields)) as unknown as T;
-  if (value !== null && typeof value === 'object' && !(value instanceof ObjectId) && !(value instanceof Date)) {
+  if (
+    value !== null &&
+    typeof value === 'object' &&
+    !(value instanceof ObjectId) &&
+    !(value instanceof Date)
+  ) {
     const out: Record<string, unknown> = {};
     for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
-      if (typeof val === 'string' && (key === '_id' || objectIdFields.includes(key)) && OBJECT_ID_HEX.test(val)) {
+      if (
+        typeof val === 'string' &&
+        (key === '_id' || objectIdFields.includes(key)) &&
+        OBJECT_ID_HEX.test(val)
+      ) {
         out[key] = new ObjectId(val);
       } else {
         out[key] = reviveIds(val, objectIdFields);

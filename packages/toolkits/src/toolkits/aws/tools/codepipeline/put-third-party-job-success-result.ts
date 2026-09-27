@@ -14,7 +14,15 @@ export const awsPutCodepipelineThirdPartyJobSuccessResult = tool({
     continuationToken: z.string().optional().describe('Continuation token'),
     executionDetails: z.record(z.any()).optional().describe('Execution details'),
   }),
-  execute: async ({ awsCredentials, region, jobId, clientToken, currentRevision, continuationToken, executionDetails }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    jobId,
+    clientToken,
+    currentRevision,
+    continuationToken,
+    executionDetails,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,18 +30,21 @@ export const awsPutCodepipelineThirdPartyJobSuccessResult = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new PutThirdPartyJobSuccessResultCommand({
-          jobId: jobId,
-          clientToken: clientToken,
-          currentRevision: currentRevision,
-          continuationToken: continuationToken,
-          executionDetails: executionDetails,
+        jobId: jobId,
+        clientToken: clientToken,
+        currentRevision: currentRevision,
+        continuationToken: continuationToken,
+        executionDetails: executionDetails,
       } as any);
       await client.send(command);
       return {
-                  message: 'Third-party job success result submitted successfully',
-              };
+        message: 'Third-party job success result submitted successfully',
+      };
     } catch (err) {
-      return { error: 'Failed to put success result for a third-party job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to put success result for a third-party job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

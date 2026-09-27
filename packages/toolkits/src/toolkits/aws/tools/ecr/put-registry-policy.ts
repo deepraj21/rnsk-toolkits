@@ -18,15 +18,18 @@ export const awsPutRegistryPolicy = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new PutRegistryPolicyCommand({
-          policyText: policyText,
+        policyText: policyText,
       });
       const response = await client.send(command);
       return {
-                  registryId: response.registryId,
-                  policyText: response.policyText,
-              };
+        registryId: response.registryId,
+        policyText: response.policyText,
+      };
     } catch (err) {
-      return { error: 'Failed to create or update the registry policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or update the registry policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -17,15 +17,20 @@ export const awsDeleteVpcLatticeAuthPolicy = tool({
     try {
       const client = createVpcLatticeClient(awsCredentials, region);
 
-      await client.send(new DeleteAuthPolicyCommand({
+      await client.send(
+        new DeleteAuthPolicyCommand({
           resourceIdentifier: resourceIdentifier,
-      }));
+        }),
+      );
       return {
-                  success: true,
-                  message: `Auth policy deleted successfully for resource ${resourceIdentifier}`,
-              };
+        success: true,
+        message: `Auth policy deleted successfully for resource ${resourceIdentifier}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an auth policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an auth policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

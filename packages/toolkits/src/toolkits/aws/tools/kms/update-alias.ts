@@ -4,7 +4,8 @@ import { UpdateAliasCommand } from '@aws-sdk/client-kms';
 import { createKmsClient } from '../client.js';
 
 export const awsUpdateKmsAlias = tool({
-  description: 'Associate an existing alias with a different KMS key. Use it to change an existing resource.',
+  description:
+    'Associate an existing alias with a different KMS key. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,13 +20,16 @@ export const awsUpdateKmsAlias = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new UpdateAliasCommand({
-          AliasName: aliasName,
-          TargetKeyId: targetKeyId,
+        AliasName: aliasName,
+        TargetKeyId: targetKeyId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to associate an existing alias with a different KMS key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to associate an existing alias with a different KMS key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

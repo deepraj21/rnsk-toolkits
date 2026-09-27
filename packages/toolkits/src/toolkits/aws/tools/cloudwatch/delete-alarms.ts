@@ -18,15 +18,18 @@ export const awsDeleteCloudwatchAlarms = tool({
       const client = createCloudWatchClient(awsCredentials, region);
 
       const command = new DeleteAlarmsCommand({
-          AlarmNames: alarmNames,
+        AlarmNames: alarmNames,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Alarms deleted successfully: ${alarmNames.join(', ')}`,
-              };
+        success: true,
+        message: `Alarms deleted successfully: ${alarmNames.join(', ')}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete one or more CloudWatch alarms', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete one or more CloudWatch alarms',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

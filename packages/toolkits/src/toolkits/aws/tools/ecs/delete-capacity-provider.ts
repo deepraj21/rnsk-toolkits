@@ -18,14 +18,17 @@ export const awsDeleteEcsCapacityProvider = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new DeleteCapacityProviderCommand({
-          capacityProvider: capacityProvider,
+        capacityProvider: capacityProvider,
       });
       const response = await client.send(command);
       return {
-                  capacityProvider: response.capacityProvider,
-              };
+        capacityProvider: response.capacityProvider,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a capacity provider', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a capacity provider',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

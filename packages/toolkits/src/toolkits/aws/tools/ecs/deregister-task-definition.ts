@@ -18,14 +18,17 @@ export const awsDeregisterEcsTaskDefinition = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new DeregisterTaskDefinitionCommand({
-          taskDefinition: taskDefinition,
+        taskDefinition: taskDefinition,
       });
       const response = await client.send(command);
       return {
-                  taskDefinition: response.taskDefinition,
-              };
+        taskDefinition: response.taskDefinition,
+      };
     } catch (err) {
-      return { error: 'Failed to deregister a task definition', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deregister a task definition',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

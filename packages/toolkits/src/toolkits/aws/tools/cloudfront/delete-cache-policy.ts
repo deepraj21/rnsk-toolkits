@@ -19,16 +19,19 @@ export const awsDeleteCloudfrontCachePolicy = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new DeleteCachePolicyCommand({
-          Id: id,
-          IfMatch: ifMatch,
+        Id: id,
+        IfMatch: ifMatch,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Cache policy ${id} deleted successfully`,
-              };
+        success: true,
+        message: `Cache policy ${id} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CloudFront cache policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CloudFront cache policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

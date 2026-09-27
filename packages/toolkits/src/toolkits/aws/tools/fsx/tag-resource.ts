@@ -19,16 +19,19 @@ export const awsTagFsxResource = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          ResourceARN: resourceARN,
-          Tags: tags,
+        ResourceARN: resourceARN,
+        Tags: tags,
       } as any);
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags added successfully to resource ${resourceARN}`,
-              };
+        success: true,
+        message: `Tags added successfully to resource ${resourceARN}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to an FSx resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to an FSx resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

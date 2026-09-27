@@ -20,16 +20,19 @@ export const awsDeleteEksAddon = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DeleteAddonCommand({
-          clusterName: clusterName,
-          addonName: addonName,
-          preserve: preserve,
+        clusterName: clusterName,
+        addonName: addonName,
+        preserve: preserve,
       });
       const response = await client.send(command);
       return {
-                  addon: response.addon,
-              };
+        addon: response.addon,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an addon', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an addon',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

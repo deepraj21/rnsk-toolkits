@@ -13,6 +13,6 @@ const SVG = `<svg width="800px" height="800px" viewBox="0 -13 256 256" version="
 </svg>`;
 
 export const GADS_ICON = {
-    kind: 'svg' as const,
-    dataUri: `data:image/svg+xml;base64,${Buffer.from(SVG).toString('base64')}`,
+  kind: 'svg' as const,
+  dataUri: `data:image/svg+xml;base64,${Buffer.from(SVG).toString('base64')}`,
 };

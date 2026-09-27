@@ -4,7 +4,8 @@ import { DescribeHyperParameterTuningJobCommand } from '@aws-sdk/client-sagemake
 import { createSageMakerClient } from '../client.js';
 
 export const awsDescribeSagemakerHyperparameterTuningJob = tool({
-  description: 'Get details about a SageMaker hyperparameter tuning job. Use it to inspect current state before making changes.',
+  description:
+    'Get details about a SageMaker hyperparameter tuning job. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsDescribeSagemakerHyperparameterTuningJob = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new DescribeHyperParameterTuningJobCommand({
-          HyperParameterTuningJobName: hyperParameterTuningJobName,
+        HyperParameterTuningJobName: hyperParameterTuningJobName,
       });
       const response = await client.send(command);
       return {
-                  hyperParameterTuningJob: response,
-              };
+        hyperParameterTuningJob: response,
+      };
     } catch (err) {
-      return { error: 'Failed to get details about a SageMaker hyperparameter tuning job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about a SageMaker hyperparameter tuning job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -21,7 +21,10 @@ export const awsDeleteEc2Snapshot = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete an EC2 snapshot', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an EC2 snapshot',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

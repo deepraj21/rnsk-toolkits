@@ -18,12 +18,15 @@ export const awsDeleteDynamodbBackup = tool({
       const client = createDynamoDbClient(awsCredentials, region);
 
       const command = new DeleteBackupCommand({
-          BackupArn: backupArn,
+        BackupArn: backupArn,
       });
       const response = await client.send(command);
       return response.BackupDescription;
     } catch (err) {
-      return { error: 'Failed to delete an on-demand DynamoDB backup', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an on-demand DynamoDB backup',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

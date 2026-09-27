@@ -19,13 +19,16 @@ export const awsRemoveOpensearchTags = tool({
       const client = createOpenSearchClient(awsCredentials, region);
 
       const command = new RemoveTagsCommand({
-          ARN: arn,
-          TagKeys: tagKeys,
+        ARN: arn,
+        TagKeys: tagKeys,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to remove tags from an OpenSearch domain', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from an OpenSearch domain',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

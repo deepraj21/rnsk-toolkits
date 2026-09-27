@@ -19,15 +19,18 @@ export const awsPutEcsAccountSettingDefault = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new PutAccountSettingDefaultCommand({
-          name: name as any,
-          value: value,
+        name: name as any,
+        value: value,
       });
       const response = await client.send(command);
       return {
-                  setting: response.setting,
-              };
+        setting: response.setting,
+      };
     } catch (err) {
-      return { error: 'Failed to update the default account setting', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the default account setting',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,15 +18,18 @@ export const awsDeleteVpcLatticeService = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new DeleteServiceCommand({
-          serviceIdentifier: serviceIdentifier,
+        serviceIdentifier: serviceIdentifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Service ${serviceIdentifier} deleted successfully`,
-              };
+        success: true,
+        message: `Service ${serviceIdentifier} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a VPC Lattice service', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a VPC Lattice service',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

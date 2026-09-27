@@ -18,12 +18,15 @@ export const awsDeleteCacheCluster = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new DeleteCacheClusterCommand({
-          CacheClusterId: cacheClusterId,
+        CacheClusterId: cacheClusterId,
       });
       const response = await client.send(command);
       return response.CacheCluster;
     } catch (err) {
-      return { error: 'Failed to delete a Memcached cache cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Memcached cache cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

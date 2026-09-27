@@ -18,15 +18,18 @@ export const awsDeregisterBatchJobDefinition = tool({
       const client = createBatchClient(awsCredentials, region);
 
       const command = new DeregisterJobDefinitionCommand({
-          jobDefinition: jobDefinition,
+        jobDefinition: jobDefinition,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Job definition ${jobDefinition} deregistered successfully`,
-              };
+        success: true,
+        message: `Job definition ${jobDefinition} deregistered successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to deregister a Batch job definition', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deregister a Batch job definition',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

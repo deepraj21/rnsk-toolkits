@@ -19,15 +19,18 @@ export const awsDeleteResource = tool({
       const client = createApiGatewayClient(awsCredentials, region);
 
       const command = new DeleteResourceCommand({
-          restApiId: restApiId,
-          resourceId: resourceId,
+        restApiId: restApiId,
+        resourceId: resourceId,
       });
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a Resource resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a Resource resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

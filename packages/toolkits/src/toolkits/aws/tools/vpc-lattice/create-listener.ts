@@ -15,7 +15,16 @@ export const awsCreateVpcLatticeListener = tool({
     defaultAction: z.record(z.any()).describe('Default action'),
     tags: z.record(z.any()).optional().describe('Tags to apply'),
   }),
-  execute: async ({ awsCredentials, region, serviceIdentifier, name, protocol, port, defaultAction, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    serviceIdentifier,
+    name,
+    protocol,
+    port,
+    defaultAction,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,26 +32,29 @@ export const awsCreateVpcLatticeListener = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new CreateListenerCommand({
-          serviceIdentifier: serviceIdentifier,
-          name: name,
-          protocol: protocol,
-          port: port,
-          defaultAction: defaultAction,
-          tags: tags,
+        serviceIdentifier: serviceIdentifier,
+        name: name,
+        protocol: protocol,
+        port: port,
+        defaultAction: defaultAction,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  defaultAction: response.defaultAction,
-                  id: response.id,
-                  name: response.name,
-                  port: response.port,
-                  protocol: response.protocol,
-                  serviceArn: response.serviceArn,
-                  serviceId: response.serviceId,
-              };
+        arn: response.arn,
+        defaultAction: response.defaultAction,
+        id: response.id,
+        name: response.name,
+        port: response.port,
+        protocol: response.protocol,
+        serviceArn: response.serviceArn,
+        serviceId: response.serviceId,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new VPC Lattice listener', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new VPC Lattice listener',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

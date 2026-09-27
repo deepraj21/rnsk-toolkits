@@ -4,7 +4,8 @@ import { GetResourceConfigHistoryCommand } from '@aws-sdk/client-config-service'
 import { createConfigServiceClient } from '../client.js';
 
 export const awsGetResourceConfigHistory = tool({
-  description: 'Returns a list of configuration items for the specified resource. Use it to inspect current state before making changes.',
+  description:
+    'Returns a list of configuration items for the specified resource. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -16,7 +17,17 @@ export const awsGetResourceConfigHistory = tool({
     limit: z.number().optional().describe('Maximum number of results to return'),
     nextToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, resourceType, resourceId, laterTime, earlierTime, chronologicalOrder, limit, nextToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    resourceType,
+    resourceId,
+    laterTime,
+    earlierTime,
+    chronologicalOrder,
+    limit,
+    nextToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,21 +35,24 @@ export const awsGetResourceConfigHistory = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new GetResourceConfigHistoryCommand({
-          resourceType: resourceType,
-          resourceId: resourceId,
-          laterTime: laterTime ? new Date(laterTime) : undefined,
-          earlierTime: earlierTime ? new Date(earlierTime) : undefined,
-          chronologicalOrder: chronologicalOrder,
-          limit: limit,
-          nextToken: nextToken,
+        resourceType: resourceType,
+        resourceId: resourceId,
+        laterTime: laterTime ? new Date(laterTime) : undefined,
+        earlierTime: earlierTime ? new Date(earlierTime) : undefined,
+        chronologicalOrder: chronologicalOrder,
+        limit: limit,
+        nextToken: nextToken,
       } as any);
       const response = await client.send(command);
       return {
-                  configurationItems: response.configurationItems || [],
-                  nextToken: response.nextToken,
-              };
+        configurationItems: response.configurationItems || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to returns a list of configuration items for the specified resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to returns a list of configuration items for the specified resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

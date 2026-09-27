@@ -21,18 +21,21 @@ export const awsAddSnsPermission = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new AddPermissionCommand({
-          TopicArn: topicArn,
-          Label: label,
-          AWSAccountId: awsAccountId,
-          ActionName: actionName,
+        TopicArn: topicArn,
+        Label: label,
+        AWSAccountId: awsAccountId,
+        ActionName: actionName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Permission added successfully to topic ${topicArn}`,
-              };
+        success: true,
+        message: `Permission added successfully to topic ${topicArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add a permission to an SNS topic', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add a permission to an SNS topic',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

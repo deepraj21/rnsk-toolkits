@@ -18,15 +18,18 @@ export const awsOptInSnsPhoneNumber = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new OptInPhoneNumberCommand({
-          phoneNumber: phoneNumber,
+        phoneNumber: phoneNumber,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Phone number ${phoneNumber} opted in successfully`,
-              };
+        success: true,
+        message: `Phone number ${phoneNumber} opted in successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to opt in a phone number to receive SMS', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to opt in a phone number to receive SMS',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

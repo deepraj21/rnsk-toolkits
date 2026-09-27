@@ -4,7 +4,8 @@ import { ListRegexPatternSetsCommand } from '@aws-sdk/client-wafv2';
 import { createWafClient } from '../client.js';
 
 export const awsListRegexPatternSets = tool({
-  description: 'List all regex pattern sets. Use it to inspect current state before making changes.',
+  description:
+    'List all regex pattern sets. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsListRegexPatternSets = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new ListRegexPatternSetsCommand({
-          Scope: scope,
-          Limit: limit,
-          NextMarker: nextMarker,
+        Scope: scope,
+        Limit: limit,
+        NextMarker: nextMarker,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to list all regex pattern sets', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all regex pattern sets',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

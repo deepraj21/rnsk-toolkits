@@ -20,7 +20,10 @@ export const awsDisassociateDrtRole = tool({
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to revoke DRT access to your account', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to revoke DRT access to your account',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

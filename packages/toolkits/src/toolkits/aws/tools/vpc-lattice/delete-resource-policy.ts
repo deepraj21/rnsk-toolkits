@@ -17,15 +17,20 @@ export const awsDeleteVpcLatticeResourcePolicy = tool({
     try {
       const client = createVpcLatticeClient(awsCredentials, region);
 
-      await client.send(new DeleteResourcePolicyCommand({
+      await client.send(
+        new DeleteResourcePolicyCommand({
           resourceArn: resourceArn,
-      }));
+        }),
+      );
       return {
-                  success: true,
-                  message: `Resource policy deleted successfully for resource ${resourceArn}`,
-              };
+        success: true,
+        message: `Resource policy deleted successfully for resource ${resourceArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a resource policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a resource policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -5,7 +5,8 @@ import { confluenceTools } from './tools/index.js';
 export default defineToolkit({
   id: 'confluence',
   displayName: 'Confluence',
-  shortDescription: 'Pages, blog posts, spaces, comments, labels, attachments, tasks and CQL search.',
+  shortDescription:
+    'Pages, blog posts, spaces, comments, labels, attachments, tasks and CQL search.',
   category: 'Collaboration & Communication',
   icon: CONFLUENCE_ICON,
   auth: {

@@ -13,7 +13,14 @@ export const awsCreateGlobalTable = tool({
     properties: z.string().optional().describe('AWS region (e.g., us-east-1)'),
     RegionName: z.string().optional().describe('AWS region (e.g., us-east-1)'),
   }),
-  execute: async ({ awsCredentials, region, globalTableName, replicationGroup, properties, RegionName }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    globalTableName,
+    replicationGroup,
+    properties,
+    RegionName,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,13 +28,16 @@ export const awsCreateGlobalTable = tool({
       const client = createDynamoDbClient(awsCredentials, region);
 
       const command = new CreateGlobalTableCommand({
-          GlobalTableName: globalTableName,
-          ReplicationGroup: replicationGroup,
+        GlobalTableName: globalTableName,
+        ReplicationGroup: replicationGroup,
       });
       const response = await client.send(command);
       return response.GlobalTableDescription;
     } catch (err) {
-      return { error: 'Failed to create a multi-region DynamoDB Global Table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a multi-region DynamoDB Global Table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

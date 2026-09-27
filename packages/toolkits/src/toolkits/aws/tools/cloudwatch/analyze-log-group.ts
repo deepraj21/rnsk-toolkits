@@ -4,7 +4,8 @@ import { GetQueryResultsCommand, StartQueryCommand } from '@aws-sdk/client-cloud
 import { createCloudWatchLogsClient } from '../client.js';
 
 export const awsAnalyzeLogGroup = tool({
-  description: 'Analyzes CloudWatch logs for anomalies, message patterns, and error patterns. Use it to analyze trends, patterns, and anomalies.',
+  description:
+    'Analyzes CloudWatch logs for anomalies, message patterns, and error patterns. Use it to analyze trends, patterns, and anomalies.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -29,57 +30,60 @@ export const awsAnalyzeLogGroup = tool({
       | stats count() as errorCount by bin(5m)`;
 
       const queryCommand = new StartQueryCommand({
-          logGroupNames: [logGroupName],
-          queryString: errorQuery,
-          startTime: defaultStartTime,
-          endTime: defaultEndTime,
+        logGroupNames: [logGroupName],
+        queryString: errorQuery,
+        startTime: defaultStartTime,
+        endTime: defaultEndTime,
       });
 
       const queryResponse = await client.send(queryCommand);
       const queryId = queryResponse.queryId;
 
       if (!queryId) {
-          return {
-                      error: 'Failed to start query',
-                  };
+        return {
+          error: 'Failed to start query',
+        };
       }
 
       // Wait a bit and get results
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       const resultsCommand = new GetQueryResultsCommand({ queryId });
       const resultsResponse = await client.send(resultsCommand);
 
       const results = resultsResponse.results || [];
       const totalErrors = results.reduce((sum: number, r: any) => {
-          const countField = r.find((f: any) => f.field === 'errorCount');
-          return sum + (countField ? parseFloat(countField.value || '0') : 0);
+        const countField = r.find((f: any) => f.field === 'errorCount');
+        return sum + (countField ? parseFloat(countField.value || '0') : 0);
       }, 0);
 
       return {
-                  logGroupName,
-                  analysisPeriod: {
-                      startTime: new Date(defaultStartTime * 1000).toISOString(),
-                      endTime: new Date(defaultEndTime * 1000).toISOString(),
-                  },
-                  errorAnalysis: {
-                      totalErrorEvents: totalErrors,
-                      errorTimeSeries: results.map((r: any) => {
-                          const timeField = r.find((f: any) => f.field === 'bin(5m)');
-                          const countField = r.find((f: any) => f.field === 'errorCount');
-                          return {
-                              timestamp: timeField?.value,
-                              errorCount: countField ? parseFloat(countField.value || '0') : 0,
-                          };
-                      }),
-                  },
-                  patterns: {
-                      hasErrors: totalErrors > 0,
-                      errorFrequency: totalErrors > 0 ? 'high' : 'low',
-                  },
-              };
+        logGroupName,
+        analysisPeriod: {
+          startTime: new Date(defaultStartTime * 1000).toISOString(),
+          endTime: new Date(defaultEndTime * 1000).toISOString(),
+        },
+        errorAnalysis: {
+          totalErrorEvents: totalErrors,
+          errorTimeSeries: results.map((r: any) => {
+            const timeField = r.find((f: any) => f.field === 'bin(5m)');
+            const countField = r.find((f: any) => f.field === 'errorCount');
+            return {
+              timestamp: timeField?.value,
+              errorCount: countField ? parseFloat(countField.value || '0') : 0,
+            };
+          }),
+        },
+        patterns: {
+          hasErrors: totalErrors > 0,
+          errorFrequency: totalErrors > 0 ? 'high' : 'low',
+        },
+      };
     } catch (err) {
-      return { error: 'Failed to analyze CloudWatch log group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to analyze CloudWatch log group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

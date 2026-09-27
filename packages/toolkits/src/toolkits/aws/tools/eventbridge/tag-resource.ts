@@ -19,16 +19,19 @@ export const awsTagEventbridgeResource = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          ResourceARN: resourceARN,
-          Tags: tags,
+        ResourceARN: resourceARN,
+        Tags: tags,
       } as any);
       await client.send(command);
       return {
-                  message: 'Tags applied successfully',
-                  resourceARN: resourceARN,
-              };
+        message: 'Tags applied successfully',
+        resourceARN: resourceARN,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to an EventBridge resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to an EventBridge resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

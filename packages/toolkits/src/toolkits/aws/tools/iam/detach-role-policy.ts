@@ -19,13 +19,16 @@ export const awsDetachRolePolicy = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new DetachRolePolicyCommand({
-          RoleName: roleName,
-          PolicyArn: policyArn,
+        RoleName: roleName,
+        PolicyArn: policyArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to detach a managed policy from an IAM role', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to detach a managed policy from an IAM role',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

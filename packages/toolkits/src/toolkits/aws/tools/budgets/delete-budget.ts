@@ -19,15 +19,18 @@ export const awsDeleteBudget = tool({
       const client = createBudgetsClient(awsCredentials, region);
 
       const command = new DeleteBudgetCommand({
-          AccountId: accountId,
-          BudgetName: budgetName,
+        AccountId: accountId,
+        BudgetName: budgetName,
       });
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a budget', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a budget',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

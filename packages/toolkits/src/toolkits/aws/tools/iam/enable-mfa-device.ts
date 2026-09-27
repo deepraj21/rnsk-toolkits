@@ -13,7 +13,14 @@ export const awsEnableMfaDevice = tool({
     authenticationCode1: z.string().describe('First authentication code from the MFA device'),
     authenticationCode2: z.string().describe('Second authentication code from the MFA device'),
   }),
-  execute: async ({ awsCredentials, region, userName, serialNumber, authenticationCode1, authenticationCode2 }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    userName,
+    serialNumber,
+    authenticationCode1,
+    authenticationCode2,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,15 +28,18 @@ export const awsEnableMfaDevice = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new EnableMFADeviceCommand({
-          UserName: userName,
-          SerialNumber: serialNumber,
-          AuthenticationCode1: authenticationCode1,
-          AuthenticationCode2: authenticationCode2,
+        UserName: userName,
+        SerialNumber: serialNumber,
+        AuthenticationCode1: authenticationCode1,
+        AuthenticationCode2: authenticationCode2,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to enable an MFA device for an IAM user', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to enable an MFA device for an IAM user',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

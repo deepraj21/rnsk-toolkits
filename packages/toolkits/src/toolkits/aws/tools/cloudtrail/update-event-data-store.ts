@@ -10,14 +10,31 @@ export const awsUpdateEventDataStore = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     eventDataStore: z.string().describe('The ARN or ID of the event data store'),
     name: z.string().optional().describe('The updated name of the event data store'),
-    advancedEventSelectors: z.array(z.record(z.any())).optional().describe('Advanced event selectors'),
+    advancedEventSelectors: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Advanced event selectors'),
     multiRegionEnabled: z.boolean().optional().describe('Whether to enable multi-region'),
     organizationEnabled: z.boolean().optional().describe('Whether to enable organization'),
     retentionPeriod: z.number().optional().describe('Retention period in days'),
-    terminationProtectionEnabled: z.boolean().optional().describe('Whether to enable termination protection'),
+    terminationProtectionEnabled: z
+      .boolean()
+      .optional()
+      .describe('Whether to enable termination protection'),
     kmsKeyId: z.string().optional().describe('KMS key ID for encryption'),
   }),
-  execute: async ({ awsCredentials, region, eventDataStore, name, advancedEventSelectors, multiRegionEnabled, organizationEnabled, retentionPeriod, terminationProtectionEnabled, kmsKeyId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    eventDataStore,
+    name,
+    advancedEventSelectors,
+    multiRegionEnabled,
+    organizationEnabled,
+    retentionPeriod,
+    terminationProtectionEnabled,
+    kmsKeyId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,30 +42,33 @@ export const awsUpdateEventDataStore = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new UpdateEventDataStoreCommand({
-          EventDataStore: eventDataStore,
-          Name: name,
-          AdvancedEventSelectors: advancedEventSelectors,
-          MultiRegionEnabled: multiRegionEnabled,
-          OrganizationEnabled: organizationEnabled,
-          RetentionPeriod: retentionPeriod,
-          TerminationProtectionEnabled: terminationProtectionEnabled,
-          KmsKeyId: kmsKeyId,
+        EventDataStore: eventDataStore,
+        Name: name,
+        AdvancedEventSelectors: advancedEventSelectors,
+        MultiRegionEnabled: multiRegionEnabled,
+        OrganizationEnabled: organizationEnabled,
+        RetentionPeriod: retentionPeriod,
+        TerminationProtectionEnabled: terminationProtectionEnabled,
+        KmsKeyId: kmsKeyId,
       } as any);
       const response = await client.send(command);
       return {
-                  eventDataStoreArn: response.EventDataStoreArn,
-                  name: response.Name,
-                  status: response.Status,
-                  advancedEventSelectors: response.AdvancedEventSelectors,
-                  multiRegionEnabled: response.MultiRegionEnabled,
-                  organizationEnabled: response.OrganizationEnabled,
-                  retentionPeriod: response.RetentionPeriod,
-                  terminationProtectionEnabled: response.TerminationProtectionEnabled,
-                  createdTimestamp: response.CreatedTimestamp,
-                  updatedTimestamp: response.UpdatedTimestamp,
-              };
+        eventDataStoreArn: response.EventDataStoreArn,
+        name: response.Name,
+        status: response.Status,
+        advancedEventSelectors: response.AdvancedEventSelectors,
+        multiRegionEnabled: response.MultiRegionEnabled,
+        organizationEnabled: response.OrganizationEnabled,
+        retentionPeriod: response.RetentionPeriod,
+        terminationProtectionEnabled: response.TerminationProtectionEnabled,
+        createdTimestamp: response.CreatedTimestamp,
+        updatedTimestamp: response.UpdatedTimestamp,
+      };
     } catch (err) {
-      return { error: 'Failed to updates an event data store', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to updates an event data store',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

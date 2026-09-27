@@ -14,7 +14,15 @@ export const awsCreateWafIpSet = tool({
     addresses: z.array(z.string()).describe('IP addresses in CIDR notation (e.g., 192.0.2.0/24)'),
     description: z.string().optional().describe('Description of the IP set'),
   }),
-  execute: async ({ awsCredentials, region, name, scope, ipAddressVersion, addresses, description }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    scope,
+    ipAddressVersion,
+    addresses,
+    description,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,16 +30,19 @@ export const awsCreateWafIpSet = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new CreateIPSetCommand({
-          Name: name,
-          Scope: scope,
-          IPAddressVersion: ipAddressVersion,
-          Addresses: addresses,
-          Description: description,
+        Name: name,
+        Scope: scope,
+        IPAddressVersion: ipAddressVersion,
+        Addresses: addresses,
+        Description: description,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to create an IP set with IPv4 or IPv6 addresses', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an IP set with IPv4 or IPv6 addresses',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

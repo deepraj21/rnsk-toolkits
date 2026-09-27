@@ -4,7 +4,8 @@ import { DescribeRemediationExecutionStatusCommand } from '@aws-sdk/client-confi
 import { createConfigServiceClient } from '../client.js';
 
 export const awsDescribeRemediationExecutionStatus = tool({
-  description: 'Provides a detailed view of a Remediation Execution for a set of resources. Use it to inspect current state before making changes.',
+  description:
+    'Provides a detailed view of a Remediation Execution for a set of resources. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -21,18 +22,22 @@ export const awsDescribeRemediationExecutionStatus = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DescribeRemediationExecutionStatusCommand({
-          ConfigRuleName: configRuleName,
-          ResourceKeys: resourceKeys,
-          Limit: limit,
-          NextToken: nextToken,
+        ConfigRuleName: configRuleName,
+        ResourceKeys: resourceKeys,
+        Limit: limit,
+        NextToken: nextToken,
       } as any);
       const response = await client.send(command);
       return {
-                  remediationExecutionStatuses: response.RemediationExecutionStatuses || [],
-                  nextToken: response.NextToken,
-              };
+        remediationExecutionStatuses: response.RemediationExecutionStatuses || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to provides a detailed view of a Remediation Execution for a set of resources', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error:
+          'Failed to provides a detailed view of a Remediation Execution for a set of resources',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

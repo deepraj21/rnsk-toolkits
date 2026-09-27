@@ -4,7 +4,8 @@ import { StopLoggingCommand } from '@aws-sdk/client-cloudtrail';
 import { createCloudTrailClient } from '../client.js';
 
 export const awsStopLogging = tool({
-  description: 'Suspends the recording of AWS API calls and log file delivery for the specified trail. Use it to stop a running resource (billable config may remain).',
+  description:
+    'Suspends the recording of AWS API calls and log file delivery for the specified trail. Use it to stop a running resource (billable config may remain).',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,18 @@ export const awsStopLogging = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new StopLoggingCommand({
-          Name: name,
+        Name: name,
       });
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to suspends the recording of AWS API calls and log file delivery for the specified trail', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error:
+          'Failed to suspends the recording of AWS API calls and log file delivery for the specified trail',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

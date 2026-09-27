@@ -22,13 +22,16 @@ export const awsTagDynamodbResource = tool({
       const client = createDynamoDbClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          ResourceArn: resourceArn,
-          Tags: tags as any,
+        ResourceArn: resourceArn,
+        Tags: tags as any,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to add tags to a DynamoDB table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a DynamoDB table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

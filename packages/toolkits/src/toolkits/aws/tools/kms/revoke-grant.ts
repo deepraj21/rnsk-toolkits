@@ -19,13 +19,16 @@ export const awsRevokeGrant = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new RevokeGrantCommand({
-          KeyId: keyId,
-          GrantId: grantId,
+        KeyId: keyId,
+        GrantId: grantId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to revoke a grant on a KMS key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to revoke a grant on a KMS key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

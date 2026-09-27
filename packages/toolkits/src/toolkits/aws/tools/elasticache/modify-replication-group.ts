@@ -14,7 +14,15 @@ export const awsModifyReplicationGroup = tool({
     cacheNodeType: z.string().optional().describe('New node type'),
     applyImmediately: z.boolean().optional().describe('Apply changes immediately'),
   }),
-  execute: async ({ awsCredentials, region, replicationGroupId, replicationGroupDescription, automaticFailoverEnabled, cacheNodeType, applyImmediately }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    replicationGroupId,
+    replicationGroupDescription,
+    automaticFailoverEnabled,
+    cacheNodeType,
+    applyImmediately,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,16 +30,19 @@ export const awsModifyReplicationGroup = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new ModifyReplicationGroupCommand({
-          ReplicationGroupId: replicationGroupId,
-          ReplicationGroupDescription: replicationGroupDescription,
-          AutomaticFailoverEnabled: automaticFailoverEnabled,
-          CacheNodeType: cacheNodeType,
-          ApplyImmediately: applyImmediately,
+        ReplicationGroupId: replicationGroupId,
+        ReplicationGroupDescription: replicationGroupDescription,
+        AutomaticFailoverEnabled: automaticFailoverEnabled,
+        CacheNodeType: cacheNodeType,
+        ApplyImmediately: applyImmediately,
       });
       const response = await client.send(command);
       return response.ReplicationGroup;
     } catch (err) {
-      return { error: 'Failed to modify a Redis replication group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify a Redis replication group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

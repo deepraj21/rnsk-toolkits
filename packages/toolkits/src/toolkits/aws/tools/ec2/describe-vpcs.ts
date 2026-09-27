@@ -19,16 +19,21 @@ export const awsDescribeEc2Vpcs = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribeVpcsCommand({
-          VpcIds: vpcIds,
-          Filters: filters ? Object.entries(filters).map(([name, values]) => ({
+        VpcIds: vpcIds,
+        Filters: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
+            }))
+          : undefined,
       });
       const response = await client.send(command);
       return { vpcs: response.Vpcs };
     } catch (err) {
-      return { error: 'Failed to describe VPCs', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe VPCs',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

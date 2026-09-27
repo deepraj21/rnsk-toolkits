@@ -10,11 +10,22 @@ export const awsListCodedeployDeployments = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     applicationName: z.string().optional().describe('The name of the application'),
     deploymentGroupName: z.string().optional().describe('The name of the deployment group'),
-    includeOnlyStatuses: z.enum(['Created', 'Queued', 'InProgress', 'Succeeded', 'Failed', 'Stopped', 'Ready']).optional().describe('Filter by deployment status'),
+    includeOnlyStatuses: z
+      .enum(['Created', 'Queued', 'InProgress', 'Succeeded', 'Failed', 'Stopped', 'Ready'])
+      .optional()
+      .describe('Filter by deployment status'),
     createTimeRange: z.record(z.any()).optional().describe('Start time (ISO 8601)'),
     nextToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, applicationName, deploymentGroupName, includeOnlyStatuses, createTimeRange, nextToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    applicationName,
+    deploymentGroupName,
+    includeOnlyStatuses,
+    createTimeRange,
+    nextToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,19 +33,22 @@ export const awsListCodedeployDeployments = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new ListDeploymentsCommand({
-          applicationName: applicationName,
-          deploymentGroupName: deploymentGroupName,
-          includeOnlyStatuses: includeOnlyStatuses,
-          createTimeRange: createTimeRange,
-          nextToken: nextToken,
+        applicationName: applicationName,
+        deploymentGroupName: deploymentGroupName,
+        includeOnlyStatuses: includeOnlyStatuses,
+        createTimeRange: createTimeRange,
+        nextToken: nextToken,
       } as any);
       const response = await client.send(command);
       return {
-                  deployments: response.deployments || [],
-                  nextToken: response.nextToken,
-              };
+        deployments: response.deployments || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list deployments', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list deployments',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

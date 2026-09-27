@@ -21,18 +21,21 @@ export const awsChangeRoute53TagsForResource = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new ChangeTagsForResourceCommand({
-          ResourceType: resourceType as any,
-          ResourceId: resourceId,
-          AddTags: addTags,
-          RemoveTagKeys: removeTagKeys,
+        ResourceType: resourceType as any,
+        ResourceId: resourceId,
+        AddTags: addTags,
+        RemoveTagKeys: removeTagKeys,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags updated successfully for resource ${resourceId}`,
-              };
+        success: true,
+        message: `Tags updated successfully for resource ${resourceId}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add or remove tags from a Route 53 resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add or remove tags from a Route 53 resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { AddTagsCommand } from '@aws-sdk/client-cloudtrail';
 import { createCloudTrailClient } from '../client.js';
 
 export const awsAddTags = tool({
-  description: 'Adds one or more tags to a trail, event data store, or channel. Use it to grant access or attach configuration.',
+  description:
+    'Adds one or more tags to a trail, event data store, or channel. Use it to grant access or attach configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsAddTags = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new AddTagsCommand({
-          ResourceId: resourceId,
-          TagsList: tagsList,
+        ResourceId: resourceId,
+        TagsList: tagsList,
       } as any);
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to adds one or more tags to a trail, event data store, or channel', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to adds one or more tags to a trail, event data store, or channel',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

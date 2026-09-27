@@ -19,13 +19,16 @@ export const awsAllocateEc2Address = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new AllocateAddressCommand({
-          Domain: domain as any,
-          Address: address,
+        Domain: domain as any,
+        Address: address,
       });
       const response = await client.send(command);
       return { allocationId: response.AllocationId, publicIp: response.PublicIp };
     } catch (err) {
-      return { error: 'Failed to allocate an Elastic IP address', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to allocate an Elastic IP address',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

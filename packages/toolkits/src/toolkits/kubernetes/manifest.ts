@@ -5,7 +5,8 @@ import { kubernetesTools } from './tools/index.js';
 export default defineToolkit({
   id: 'kubernetes',
   displayName: 'Kubernetes',
-  shortDescription: 'Manage pods, deployments, services, config, storage, nodes, jobs and autoscaling via the Kubernetes API.',
+  shortDescription:
+    'Manage pods, deployments, services, config, storage, nodes, jobs and autoscaling via the Kubernetes API.',
   category: 'Developer Tools & DevOps',
   icon: KUBERNETES_ICON,
   auth: {

@@ -14,7 +14,15 @@ export const awsUpdateRegexPatternSet = tool({
     lockToken: z.string().describe('Lock token from Get operation'),
     regularExpressionList: z.array(z.record(z.any())).describe('Updated regex patterns'),
   }),
-  execute: async ({ awsCredentials, region, name, scope, id, lockToken, regularExpressionList }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    scope,
+    id,
+    lockToken,
+    regularExpressionList,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,16 +30,19 @@ export const awsUpdateRegexPatternSet = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new UpdateRegexPatternSetCommand({
-          Name: name,
-          Scope: scope,
-          Id: id,
-          LockToken: lockToken,
-          RegularExpressionList: regularExpressionList,
+        Name: name,
+        Scope: scope,
+        Id: id,
+        LockToken: lockToken,
+        RegularExpressionList: regularExpressionList,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update a regex pattern set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a regex pattern set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

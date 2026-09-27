@@ -4,7 +4,8 @@ import { GetPolicyCommand } from '@aws-sdk/client-lambda';
 import { createLambdaClient } from '../client.js';
 
 export const awsGetLambdaFunctionPolicy = tool({
-  description: 'Get the resource-based policy for a Lambda function. Use it to inspect current state before making changes.',
+  description:
+    'Get the resource-based policy for a Lambda function. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,19 @@ export const awsGetLambdaFunctionPolicy = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new GetPolicyCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
+        FunctionName: functionName,
+        Qualifier: qualifier,
       });
       const response = await client.send(command);
       return {
-                  policy: response.Policy ? JSON.parse(response.Policy) : null,
-                  revisionId: response.RevisionId,
-              };
+        policy: response.Policy ? JSON.parse(response.Policy) : null,
+        revisionId: response.RevisionId,
+      };
     } catch (err) {
-      return { error: 'Failed to get the resource-based policy for a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get the resource-based policy for a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

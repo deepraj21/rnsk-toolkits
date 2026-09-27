@@ -127,7 +127,12 @@ async function resolveOpenRouter(apiKey: string, requested?: string): Promise<Ll
         hint: 'Use an id ending in ":free" (see https://openrouter.ai/models?max_price=0) or leave SANDBOX_MODEL empty to auto-pick.',
       };
     }
-    return { ok: true, provider: 'openrouter', modelId: requested, model: openrouter.chat(requested) };
+    return {
+      ok: true,
+      provider: 'openrouter',
+      modelId: requested,
+      model: openrouter.chat(requested),
+    };
   }
 
   const free = await listFreeOpenRouterToolModels();
@@ -173,7 +178,10 @@ export async function resolveLlm(): Promise<LlmStatus> {
     };
   }
 
-  const keys: Record<LlmProvider, string | undefined> = { gemini: geminiKey, openrouter: openrouterKey };
+  const keys: Record<LlmProvider, string | undefined> = {
+    gemini: geminiKey,
+    openrouter: openrouterKey,
+  };
   // An explicit choice is final; otherwise try Gemini first and fall back to OpenRouter.
   const order: LlmProvider[] = preferred ? [preferred as LlmProvider] : ['gemini', 'openrouter'];
   const candidates = order.filter((provider) => keys[provider]);

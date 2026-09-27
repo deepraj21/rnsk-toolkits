@@ -12,7 +12,13 @@ export const awsDeleteDbCluster = tool({
     skipFinalSnapshot: z.boolean().optional().describe('Skip final snapshot before deletion'),
     finalDBSnapshotIdentifier: z.string().optional().describe('Final snapshot identifier'),
   }),
-  execute: async ({ awsCredentials, region, dbClusterIdentifier, skipFinalSnapshot, finalDBSnapshotIdentifier }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    dbClusterIdentifier,
+    skipFinalSnapshot,
+    finalDBSnapshotIdentifier,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +26,17 @@ export const awsDeleteDbCluster = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DeleteDBClusterCommand({
-          DBClusterIdentifier: dbClusterIdentifier,
-          SkipFinalSnapshot: skipFinalSnapshot,
-          FinalDBSnapshotIdentifier: finalDBSnapshotIdentifier,
+        DBClusterIdentifier: dbClusterIdentifier,
+        SkipFinalSnapshot: skipFinalSnapshot,
+        FinalDBSnapshotIdentifier: finalDBSnapshotIdentifier,
       });
       const response = await client.send(command);
       return response.DBCluster;
     } catch (err) {
-      return { error: 'Failed to delete an Aurora database cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an Aurora database cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

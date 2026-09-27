@@ -9,7 +9,10 @@ export const awsScheduleKeyDeletion = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     keyId: z.string().describe('Key ID or ARN'),
-    pendingWindowInDays: z.number().optional().describe('Waiting period before deletion (7-30 days)'),
+    pendingWindowInDays: z
+      .number()
+      .optional()
+      .describe('Waiting period before deletion (7-30 days)'),
   }),
   execute: async ({ awsCredentials, region, keyId, pendingWindowInDays }) => {
     if (!awsCredentials) {
@@ -19,13 +22,16 @@ export const awsScheduleKeyDeletion = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new ScheduleKeyDeletionCommand({
-          KeyId: keyId,
-          PendingWindowInDays: pendingWindowInDays,
+        KeyId: keyId,
+        PendingWindowInDays: pendingWindowInDays,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to schedule a KMS key for deletion (7-30 days waiting period)', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to schedule a KMS key for deletion (7-30 days waiting period)',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

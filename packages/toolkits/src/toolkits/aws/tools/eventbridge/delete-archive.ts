@@ -18,15 +18,18 @@ export const awsDeleteEventbridgeArchive = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new DeleteArchiveCommand({
-          ArchiveName: archiveName,
+        ArchiveName: archiveName,
       });
       await client.send(command);
       return {
-                  message: 'Archive deleted successfully',
-                  archiveName: archiveName,
-              };
+        message: 'Archive deleted successfully',
+        archiveName: archiveName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an EventBridge archive', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an EventBridge archive',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

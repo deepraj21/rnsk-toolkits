@@ -14,7 +14,15 @@ export const awsCreateEventbridgeEventBus = tool({
     kmsKeyIdentifier: z.string().optional().describe('KMS key identifier for encryption'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply'),
   }),
-  execute: async ({ awsCredentials, region, name, eventSourceName, description, kmsKeyIdentifier, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    eventSourceName,
+    description,
+    kmsKeyIdentifier,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,18 +30,21 @@ export const awsCreateEventbridgeEventBus = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new CreateEventBusCommand({
-          Name: name,
-          EventSourceName: eventSourceName,
-          Description: description,
-          KmsKeyIdentifier: kmsKeyIdentifier,
-          Tags: tags,
+        Name: name,
+        EventSourceName: eventSourceName,
+        Description: description,
+        KmsKeyIdentifier: kmsKeyIdentifier,
+        Tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  eventBusArn: response.EventBusArn,
-              };
+        eventBusArn: response.EventBusArn,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new EventBridge event bus', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new EventBridge event bus',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

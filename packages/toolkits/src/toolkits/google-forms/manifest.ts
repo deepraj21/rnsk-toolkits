@@ -26,7 +26,8 @@ export default defineToolkit({
       ],
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
-      connectDescription: 'Connect Google Forms to create forms, manage questions, and read responses.',
+      connectDescription:
+        'Connect Google Forms to create forms, manage questions, and read responses.',
       callbackPath: '/api/auth/google-forms/callback',
       stateCookie: 'google_forms_oauth_state',
     },

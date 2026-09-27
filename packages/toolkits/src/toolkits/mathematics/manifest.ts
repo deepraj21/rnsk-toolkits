@@ -26,7 +26,11 @@ export default defineToolkit({
     defineTool({ name: 'calculateQuadraticRoots', tool: calculateQuadraticRoots, scope: 'read' }),
     defineTool({ name: 'calculateCombinatorics', tool: calculateCombinatorics, scope: 'read' }),
     defineTool({ name: 'calculatePercentage', tool: calculatePercentage, scope: 'read' }),
-    defineTool({ name: 'calculateMatrixDeterminant', tool: calculateMatrixDeterminant, scope: 'read' }),
+    defineTool({
+      name: 'calculateMatrixDeterminant',
+      tool: calculateMatrixDeterminant,
+      scope: 'read',
+    }),
   ],
   meta: { since: '0.0.1' },
 });

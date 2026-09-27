@@ -4,7 +4,8 @@ import { ListIPSetsCommand } from '@aws-sdk/client-guardduty';
 import { createGuardDutyClient } from '../client.js';
 
 export const awsListGuarddutyIpSets = tool({
-  description: 'List all IP sets for a detector. Use it to inspect current state before making changes.',
+  description:
+    'List all IP sets for a detector. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsListGuarddutyIpSets = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new ListIPSetsCommand({
-          DetectorId: detectorId,
-          MaxResults: maxResults,
-          NextToken: nextToken,
+        DetectorId: detectorId,
+        MaxResults: maxResults,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to list all IP sets for a detector', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all IP sets for a detector',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

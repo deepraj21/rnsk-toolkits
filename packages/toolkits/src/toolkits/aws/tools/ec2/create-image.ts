@@ -21,15 +21,18 @@ export const awsCreateEc2Image = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateImageCommand({
-          InstanceId: instanceId,
-          Name: name,
-          Description: description,
-          NoReboot: noReboot,
+        InstanceId: instanceId,
+        Name: name,
+        Description: description,
+        NoReboot: noReboot,
       });
       const response = await client.send(command);
       return { imageId: response.ImageId };
     } catch (err) {
-      return { error: 'Failed to create an AMI from an EC2 instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an AMI from an EC2 instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

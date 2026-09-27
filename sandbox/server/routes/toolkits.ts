@@ -99,7 +99,11 @@ export function createToolkitsRouter(runtime: SandboxRuntime): Router {
       res.status(400).json({ error: 'args must be a JSON object' });
       return;
     }
-    const result = await runRegisteredTool(runtime, toolName, (args ?? {}) as Record<string, unknown>);
+    const result = await runRegisteredTool(
+      runtime,
+      toolName,
+      (args ?? {}) as Record<string, unknown>,
+    );
     res.status(result.error ? 400 : 200).json(result);
   });
 

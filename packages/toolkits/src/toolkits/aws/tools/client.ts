@@ -63,14 +63,23 @@ export function parseAwsCredentials(awsCredentials: string): AwsCredentials {
 }
 
 export function createEc2Client(awsCredentials: string, region?: string): EC2Client {
-  return new EC2Client({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new EC2Client({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createCloudWatchClient(awsCredentials: string, region?: string): CloudWatchClient {
-  return new CloudWatchClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new CloudWatchClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
-export function createCloudWatchLogsClient(awsCredentials: string, region?: string): CloudWatchLogsClient {
+export function createCloudWatchLogsClient(
+  awsCredentials: string,
+  region?: string,
+): CloudWatchLogsClient {
   return new CloudWatchLogsClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
@@ -78,11 +87,17 @@ export function createCloudWatchLogsClient(awsCredentials: string, region?: stri
 }
 
 export function createS3Client(awsCredentials: string, region?: string): S3Client {
-  return new S3Client({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new S3Client({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createLambdaClient(awsCredentials: string, region?: string): LambdaClient {
-  return new LambdaClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new LambdaClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createDynamoDbClient(awsCredentials: string, region?: string): DynamoDBClient {
@@ -92,39 +107,66 @@ export function createDynamoDbClient(awsCredentials: string, region?: string): D
   });
 }
 
-export function createDynamoDbDocClient(awsCredentials: string, region?: string): DynamoDBDocumentClient {
+export function createDynamoDbDocClient(
+  awsCredentials: string,
+  region?: string,
+): DynamoDBDocumentClient {
   return DynamoDBDocumentClient.from(createDynamoDbClient(awsCredentials, region));
 }
 
 export function createSqsClient(awsCredentials: string, region?: string): SQSClient {
-  return new SQSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new SQSClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createSnsClient(awsCredentials: string, region?: string): SNSClient {
-  return new SNSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new SNSClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createIamClient(awsCredentials: string, region?: string): IAMClient {
-  return new IAMClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new IAMClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createEcsClient(awsCredentials: string, region?: string): ECSClient {
-  return new ECSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new ECSClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createEksClient(awsCredentials: string, region?: string): EKSClient {
-  return new EKSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new EKSClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createEcrClient(awsCredentials: string, region?: string): ECRClient {
-  return new ECRClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new ECRClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createRdsClient(awsCredentials: string, region?: string): RDSClient {
-  return new RDSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new RDSClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
-export function createElastiCacheClient(awsCredentials: string, region?: string): ElastiCacheClient {
+export function createElastiCacheClient(
+  awsCredentials: string,
+  region?: string,
+): ElastiCacheClient {
   return new ElastiCacheClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
@@ -132,7 +174,10 @@ export function createElastiCacheClient(awsCredentials: string, region?: string)
 }
 
 export function createEbsClient(awsCredentials: string, region?: string): EBSClient {
-  return new EBSClient({ region: region || DEFAULT_REGION, credentials: parseAwsCredentials(awsCredentials) });
+  return new EBSClient({
+    region: region || DEFAULT_REGION,
+    credentials: parseAwsCredentials(awsCredentials),
+  });
 }
 
 export function createRoute53Client(awsCredentials: string, region?: string): Route53Client {
@@ -156,14 +201,20 @@ export function createApiGatewayClient(awsCredentials: string, region?: string):
   });
 }
 
-export function createAutoScalingClient(awsCredentials: string, region?: string): AutoScalingClient {
+export function createAutoScalingClient(
+  awsCredentials: string,
+  region?: string,
+): AutoScalingClient {
   return new AutoScalingClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
   });
 }
 
-export function createEventBridgeClient(awsCredentials: string, region?: string): EventBridgeClient {
+export function createEventBridgeClient(
+  awsCredentials: string,
+  region?: string,
+): EventBridgeClient {
   return new EventBridgeClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
@@ -177,7 +228,10 @@ export function createVpcLatticeClient(awsCredentials: string, region?: string):
   });
 }
 
-export function createCloudFormationClient(awsCredentials: string, region?: string): CloudFormationClient {
+export function createCloudFormationClient(
+  awsCredentials: string,
+  region?: string,
+): CloudFormationClient {
   return new CloudFormationClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
@@ -198,14 +252,20 @@ export function createCodeDeployClient(awsCredentials: string, region?: string):
   });
 }
 
-export function createCodePipelineClient(awsCredentials: string, region?: string): CodePipelineClient {
+export function createCodePipelineClient(
+  awsCredentials: string,
+  region?: string,
+): CodePipelineClient {
   return new CodePipelineClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
   });
 }
 
-export function createCodeArtifactClient(awsCredentials: string, region?: string): CodeartifactClient {
+export function createCodeArtifactClient(
+  awsCredentials: string,
+  region?: string,
+): CodeartifactClient {
   return new CodeartifactClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
@@ -226,7 +286,10 @@ export function createXRayClient(awsCredentials: string, region?: string): XRayC
   });
 }
 
-export function createCostExplorerClient(awsCredentials: string, region?: string): CostExplorerClient {
+export function createCostExplorerClient(
+  awsCredentials: string,
+  region?: string,
+): CostExplorerClient {
   return new CostExplorerClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
@@ -271,7 +334,10 @@ export function createGuardDutyClient(awsCredentials: string, region?: string): 
   });
 }
 
-export function createSecurityHubClient(awsCredentials: string, region?: string): SecurityHubClient {
+export function createSecurityHubClient(
+  awsCredentials: string,
+  region?: string,
+): SecurityHubClient {
   return new SecurityHubClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),
@@ -292,7 +358,10 @@ export function createShieldClient(awsCredentials: string, region?: string): Shi
   });
 }
 
-export function createConfigServiceClient(awsCredentials: string, region?: string): ConfigServiceClient {
+export function createConfigServiceClient(
+  awsCredentials: string,
+  region?: string,
+): ConfigServiceClient {
   return new ConfigServiceClient({
     region: region || DEFAULT_REGION,
     credentials: parseAwsCredentials(awsCredentials),

@@ -24,7 +24,8 @@ export function ChatGuide({
 GEMINI_API_KEY=...        # or
 OPENROUTER_API_KEY=...`}</pre>
         <p className="muted">
-          You can still test tools directly in the <strong>Tool runner</strong> tab. It doesn't use an LLM.
+          You can still test tools directly in the <strong>Tool runner</strong> tab. It doesn't use
+          an LLM.
         </p>
       </div>
     );
@@ -32,15 +33,17 @@ OPENROUTER_API_KEY=...`}</pre>
 
   const scoped = scope.length > 0 ? toolkits.filter((t) => scope.includes(t.id)) : toolkits;
   const suggestions = scoped
-    .flatMap((t) => t.tools.slice(0, 2).map((tool) => ({ toolkit: t.displayName, text: tool.description })))
+    .flatMap((t) =>
+      t.tools.slice(0, 2).map((tool) => ({ toolkit: t.displayName, text: tool.description })),
+    )
     .filter((s) => s.text)
     .slice(0, 6);
 
   return (
     <div className="pad chat-guide">
       <p>
-        The chat bubble in the <strong>bottom-right</strong> is the real <code>@rnsk/bot</code>, talking to
-        this sandbox instead of Runstack. It uses{' '}
+        The chat bubble in the <strong>bottom-right</strong> is the real <code>@rnsk/bot</code>,
+        talking to this sandbox instead of Runstack. It uses{' '}
         <strong>
           {health.llm.provider} / {health.llm.modelId}
         </strong>
@@ -77,9 +80,18 @@ OPENROUTER_API_KEY=...`}</pre>
 
       <h3>Debugging tips</h3>
       <ul className="muted small">
-        <li>Free models are weaker at multi-step tool calling. If the chat misbehaves, run the tool in the Tool runner first.</li>
-        <li>The bot runs searchTool → checkAuthentication → executeTool. Missing tokens show a Connect button that opens the Credentials panel.</li>
-        <li>Saving a file in packages/toolkits restarts the server. The UI picks up the change on its own.</li>
+        <li>
+          Free models are weaker at multi-step tool calling. If the chat misbehaves, run the tool in
+          the Tool runner first.
+        </li>
+        <li>
+          The bot runs searchTool → checkAuthentication → executeTool. Missing tokens show a Connect
+          button that opens the Credentials panel.
+        </li>
+        <li>
+          Saving a file in packages/toolkits restarts the server. The UI picks up the change on its
+          own.
+        </li>
       </ul>
     </div>
   );

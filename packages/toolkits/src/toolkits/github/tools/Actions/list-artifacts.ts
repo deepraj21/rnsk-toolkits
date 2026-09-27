@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { Octokit } from 'octokit';
 
 export const listArtifacts = tool({
-  description: 'List artifacts for a GitHub repository. Returns workflow run artifacts with their names, sizes, and download URLs.',
+  description:
+    'List artifacts for a GitHub repository. Returns workflow run artifacts with their names, sizes, and download URLs.',
   inputSchema: z.object({
     githubToken: z.string().optional().describe('Injected by system; do not provide'),
     owner: z.string().describe('Repository owner (username or org)'),
@@ -26,7 +27,7 @@ export const listArtifacts = tool({
       });
       return {
         total_count: data.total_count,
-        artifacts: data.artifacts.map(artifact => ({
+        artifacts: data.artifacts.map((artifact) => ({
           id: artifact.id,
           name: artifact.name,
           size_in_bytes: artifact.size_in_bytes,

@@ -5,7 +5,8 @@ import { stackOverflowTools } from './tools/index.js';
 export default defineToolkit({
   id: 'stack-overflow',
   displayName: 'Stack Overflow',
-  shortDescription: 'Search questions, answers, users, tags, and badges across the Stack Exchange network.',
+  shortDescription:
+    'Search questions, answers, users, tags, and badges across the Stack Exchange network.',
   category: 'Developer Tools & DevOps',
   icon: STACK_OVERFLOW_ICON,
   auth: {

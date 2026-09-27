@@ -15,7 +15,16 @@ export const awsUpdateRuleGroup = tool({
     rules: z.array(z.record(z.any())).optional().describe('Updated rules'),
     visibilityConfig: z.record(z.any()).describe('Updated visibility config'),
   }),
-  execute: async ({ awsCredentials, region, name, scope, id, lockToken, rules, visibilityConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    scope,
+    id,
+    lockToken,
+    rules,
+    visibilityConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,17 +32,20 @@ export const awsUpdateRuleGroup = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new UpdateRuleGroupCommand({
-          Name: name,
-          Scope: scope,
-          Id: id,
-          LockToken: lockToken,
-          Rules: rules,
-          VisibilityConfig: visibilityConfig,
+        Name: name,
+        Scope: scope,
+        Id: id,
+        LockToken: lockToken,
+        Rules: rules,
+        VisibilityConfig: visibilityConfig,
       } as any);
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update a custom rule group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a custom rule group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

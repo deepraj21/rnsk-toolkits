@@ -4,7 +4,8 @@ import { DescribeTasksCommand } from '@aws-sdk/client-ecs';
 import { createEcsClient } from '../client.js';
 
 export const awsDescribeEcsTasks = tool({
-  description: 'Get details about one or more ECS tasks. Use it to inspect current state before making changes.',
+  description:
+    'Get details about one or more ECS tasks. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsDescribeEcsTasks = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new DescribeTasksCommand({
-          cluster: cluster,
-          tasks: tasks,
-          include: include as any,
+        cluster: cluster,
+        tasks: tasks,
+        include: include as any,
       });
       const response = await client.send(command);
       return {
-                  tasks: response.tasks || [],
-                  failures: response.failures || [],
-              };
+        tasks: response.tasks || [],
+        failures: response.failures || [],
+      };
     } catch (err) {
-      return { error: 'Failed to get details about one or more ECS tasks', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about one or more ECS tasks',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

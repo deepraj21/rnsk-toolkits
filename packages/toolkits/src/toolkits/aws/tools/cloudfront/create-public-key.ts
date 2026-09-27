@@ -18,16 +18,19 @@ export const awsCreateCloudfrontPublicKey = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreatePublicKeyCommand({
-          PublicKeyConfig: publicKeyConfig,
+        PublicKeyConfig: publicKeyConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  publicKey: response.PublicKey,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        publicKey: response.PublicKey,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront public key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront public key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

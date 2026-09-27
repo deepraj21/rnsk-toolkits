@@ -15,9 +15,23 @@ export const awsStartBackupJob = tool({
     startWindowMinutes: z.number().optional().describe('The start window in minutes'),
     completeWindowMinutes: z.number().optional().describe('The complete window in minutes'),
     lifecycle: z.record(z.any()).optional().describe('Lifecycle configuration'),
-    recoveryPointTags: z.record(z.any()).optional().describe('Tags to assign to the recovery point'),
+    recoveryPointTags: z
+      .record(z.any())
+      .optional()
+      .describe('Tags to assign to the recovery point'),
   }),
-  execute: async ({ awsCredentials, region, backupVaultName, resourceArn, iamRoleArn, idempotencyToken, startWindowMinutes, completeWindowMinutes, lifecycle, recoveryPointTags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    backupVaultName,
+    resourceArn,
+    iamRoleArn,
+    idempotencyToken,
+    startWindowMinutes,
+    completeWindowMinutes,
+    lifecycle,
+    recoveryPointTags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,23 +39,26 @@ export const awsStartBackupJob = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new StartBackupJobCommand({
-          BackupVaultName: backupVaultName,
-          ResourceArn: resourceArn,
-          IamRoleArn: iamRoleArn,
-          IdempotencyToken: idempotencyToken,
-          StartWindowMinutes: startWindowMinutes,
-          CompleteWindowMinutes: completeWindowMinutes,
-          Lifecycle: lifecycle,
-          RecoveryPointTags: recoveryPointTags,
+        BackupVaultName: backupVaultName,
+        ResourceArn: resourceArn,
+        IamRoleArn: iamRoleArn,
+        IdempotencyToken: idempotencyToken,
+        StartWindowMinutes: startWindowMinutes,
+        CompleteWindowMinutes: completeWindowMinutes,
+        Lifecycle: lifecycle,
+        RecoveryPointTags: recoveryPointTags,
       });
       const response = await client.send(command);
       return {
-                  backupJobId: response.BackupJobId,
-                  recoveryPointArn: response.RecoveryPointArn,
-                  creationDate: response.CreationDate,
-              };
+        backupJobId: response.BackupJobId,
+        recoveryPointArn: response.RecoveryPointArn,
+        creationDate: response.CreationDate,
+      };
     } catch (err) {
-      return { error: 'Failed to start a backup job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start a backup job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

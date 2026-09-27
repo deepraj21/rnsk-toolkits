@@ -4,7 +4,8 @@ import { DeleteLifecyclePolicyCommand } from '@aws-sdk/client-ecr';
 import { createEcrClient } from '../client.js';
 
 export const awsDeleteLifecyclePolicy = tool({
-  description: 'Delete the lifecycle policy from an ECR repository. Use it to permanently remove the resource.',
+  description:
+    'Delete the lifecycle policy from an ECR repository. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,18 +20,21 @@ export const awsDeleteLifecyclePolicy = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new DeleteLifecyclePolicyCommand({
-          repositoryName: repositoryName,
-          registryId: registryId,
+        repositoryName: repositoryName,
+        registryId: registryId,
       });
       const response = await client.send(command);
       return {
-                  registryId: response.registryId,
-                  repositoryName: response.repositoryName,
-                  lifecyclePolicyText: response.lifecyclePolicyText,
-                  lastEvaluatedAt: response.lastEvaluatedAt,
-              };
+        registryId: response.registryId,
+        repositoryName: response.repositoryName,
+        lifecyclePolicyText: response.lifecyclePolicyText,
+        lastEvaluatedAt: response.lastEvaluatedAt,
+      };
     } catch (err) {
-      return { error: 'Failed to delete the lifecycle policy from an ECR repository', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete the lifecycle policy from an ECR repository',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

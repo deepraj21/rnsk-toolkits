@@ -17,7 +17,18 @@ export const awsCreateCloudformationStackSet = tool({
     administrationRoleARN: z.string().optional().describe('Administration role ARN'),
     executionRoleName: z.string().optional().describe('Execution role name'),
   }),
-  execute: async ({ awsCredentials, region, stackSetName, templateBody, templateURL, parameters, capabilities, tags, administrationRoleARN, executionRoleName }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    stackSetName,
+    templateBody,
+    templateURL,
+    parameters,
+    capabilities,
+    tags,
+    administrationRoleARN,
+    executionRoleName,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,19 +36,22 @@ export const awsCreateCloudformationStackSet = tool({
       const client = createCloudFormationClient(awsCredentials, region);
 
       const command = new CreateStackSetCommand({
-          StackSetName: stackSetName,
-          TemplateBody: templateBody,
-          TemplateURL: templateURL,
-          Parameters: parameters,
-          Capabilities: capabilities as any,
-          Tags: tags,
-          AdministrationRoleARN: administrationRoleARN,
-          ExecutionRoleName: executionRoleName,
+        StackSetName: stackSetName,
+        TemplateBody: templateBody,
+        TemplateURL: templateURL,
+        Parameters: parameters,
+        Capabilities: capabilities as any,
+        Tags: tags,
+        AdministrationRoleARN: administrationRoleARN,
+        ExecutionRoleName: executionRoleName,
       } as any);
       const response = await client.send(command);
       return { stackSetId: response.StackSetId };
     } catch (err) {
-      return { error: 'Failed to create a CloudFormation stack set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFormation stack set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

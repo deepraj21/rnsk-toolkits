@@ -18,15 +18,18 @@ export const awsDeleteBatchComputeEnvironment = tool({
       const client = createBatchClient(awsCredentials, region);
 
       const command = new DeleteComputeEnvironmentCommand({
-          computeEnvironment: computeEnvironment,
+        computeEnvironment: computeEnvironment,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Compute environment ${computeEnvironment} deleted successfully`,
-              };
+        success: true,
+        message: `Compute environment ${computeEnvironment} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a Batch compute environment', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Batch compute environment',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,16 +18,19 @@ export const awsCreateCloudfrontOriginAccessIdentity = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateCloudFrontOriginAccessIdentityCommand({
-          CloudFrontOriginAccessIdentityConfig: originAccessIdentityConfig,
+        CloudFrontOriginAccessIdentityConfig: originAccessIdentityConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  cloudFrontOriginAccessIdentity: response.CloudFrontOriginAccessIdentity,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        cloudFrontOriginAccessIdentity: response.CloudFrontOriginAccessIdentity,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront origin access identity', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront origin access identity',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

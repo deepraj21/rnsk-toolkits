@@ -14,7 +14,15 @@ export const awsCreateRoute53TrafficPolicyInstance = tool({
     trafficPolicyId: z.string().describe('The traffic policy ID'),
     trafficPolicyVersion: z.number().describe('The traffic policy version'),
   }),
-  execute: async ({ awsCredentials, region, hostedZoneId, name, ttl, trafficPolicyId, trafficPolicyVersion }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    hostedZoneId,
+    name,
+    ttl,
+    trafficPolicyId,
+    trafficPolicyVersion,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,19 +30,22 @@ export const awsCreateRoute53TrafficPolicyInstance = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new CreateTrafficPolicyInstanceCommand({
-          HostedZoneId: hostedZoneId,
-          Name: name,
-          TTL: ttl,
-          TrafficPolicyId: trafficPolicyId,
-          TrafficPolicyVersion: trafficPolicyVersion,
+        HostedZoneId: hostedZoneId,
+        Name: name,
+        TTL: ttl,
+        TrafficPolicyId: trafficPolicyId,
+        TrafficPolicyVersion: trafficPolicyVersion,
       });
       const response = await client.send(command);
       return {
-                  trafficPolicyInstance: response.TrafficPolicyInstance,
-                  location: response.Location,
-              };
+        trafficPolicyInstance: response.TrafficPolicyInstance,
+        location: response.Location,
+      };
     } catch (err) {
-      return { error: 'Failed to create a Route 53 traffic policy instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a Route 53 traffic policy instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { UpdateFindingsFeedbackCommand } from '@aws-sdk/client-guardduty';
 import { createGuardDutyClient } from '../client.js';
 
 export const awsUpdateGuarddutyFindingsFeedback = tool({
-  description: 'Mark findings as useful or not useful for machine learning. Use it to change an existing resource.',
+  description:
+    'Mark findings as useful or not useful for machine learning. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -21,15 +22,18 @@ export const awsUpdateGuarddutyFindingsFeedback = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new UpdateFindingsFeedbackCommand({
-          DetectorId: detectorId,
-          FindingIds: findingIds,
-          Feedback: feedback,
-          Comments: comments,
+        DetectorId: detectorId,
+        FindingIds: findingIds,
+        Feedback: feedback,
+        Comments: comments,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to mark findings as useful or not useful for machine learning', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to mark findings as useful or not useful for machine learning',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

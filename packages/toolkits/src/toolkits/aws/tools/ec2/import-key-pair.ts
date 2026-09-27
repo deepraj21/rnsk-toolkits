@@ -19,13 +19,16 @@ export const awsImportEc2KeyPair = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new ImportKeyPairCommand({
-          KeyName: keyName,
-          PublicKeyMaterial: new TextEncoder().encode(publicKeyMaterial),
+        KeyName: keyName,
+        PublicKeyMaterial: new TextEncoder().encode(publicKeyMaterial),
       });
       const response = await client.send(command);
       return { keyPair: response };
     } catch (err) {
-      return { error: 'Failed to import a public key to create a key pair', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to import a public key to create a key pair',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

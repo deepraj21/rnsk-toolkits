@@ -4,15 +4,25 @@ import { z } from 'zod';
 import { wpFetch } from './utils.js';
 
 export const wordpressGetSiteOverview = tool({
-  description: 'Get concise identity, plan, capabilities, editable settings, and traffic summary for one authorized site. Settings or stats that are unavailable by capability are reported as unavailable without hiding valid site details.',
+  description:
+    'Get concise identity, plan, capabilities, editable settings, and traffic summary for one authorized site. Settings or stats that are unavailable by capability are reported as unavailable without hiding valid site details.',
   inputSchema: z.object({
     wordpressToken: z.string().describe('WordPress.com OAuth access token.'),
     siteId: z.number().describe('Numeric site ID returned by WORDPRESS_COM_LIST_SITES.'),
-    statsPeriod: z.enum(['day', 'week', 'month', 'year']).optional().describe('Period for the traffic summary.'),
-    statsPeriods: z.number().min(1).max(90).optional().describe('Number of periods to aggregate in the traffic summary.'),
+    statsPeriod: z
+      .enum(['day', 'week', 'month', 'year'])
+      .optional()
+      .describe('Period for the traffic summary.'),
+    statsPeriods: z
+      .number()
+      .min(1)
+      .max(90)
+      .optional()
+      .describe('Number of periods to aggregate in the traffic summary.'),
   }),
   execute: async ({ wordpressToken, siteId, statsPeriod = 'day', statsPeriods = 1 }) => {
-    if (!wordpressToken) return { error: 'WordPress token is required. Connect WordPress.com first.' };
+    if (!wordpressToken)
+      return { error: 'WordPress token is required. Connect WordPress.com first.' };
     try {
       const warnings: string[] = [];
       // Site identity + settings
@@ -44,7 +54,9 @@ export const wordpressGetSiteOverview = tool({
           followers: s.followers ?? 0,
         };
       } else {
-        warnings.push(`Stats unavailable: ${statsRes.data?.message ?? statsRes.data?.error ?? 'no capability'}`);
+        warnings.push(
+          `Stats unavailable: ${statsRes.data?.message ?? statsRes.data?.error ?? 'no capability'}`,
+        );
       }
 
       // Settings are part of siteData.options
@@ -77,14 +89,20 @@ export const wordpressGetSiteOverview = tool({
           isComingSoon: siteData.is_coming_soon ?? false,
           jetpack: siteData.jetpack ?? false,
           plan: siteData.plan ?? siteData.products?.[0],
-          capabilities: siteData.capabilities ?? siteData.user_can_manage ? { manage_options: siteData.capabilities?.manage_options } : undefined,
+          capabilities:
+            (siteData.capabilities ?? siteData.user_can_manage)
+              ? { manage_options: siteData.capabilities?.manage_options }
+              : undefined,
         },
         settings,
         stats,
         warnings,
       };
     } catch (e) {
-      return { error: 'Error getting site overview', message: e instanceof Error ? e.message : 'Unknown error' };
+      return {
+        error: 'Error getting site overview',
+        message: e instanceof Error ? e.message : 'Unknown error',
+      };
     }
   },
 });

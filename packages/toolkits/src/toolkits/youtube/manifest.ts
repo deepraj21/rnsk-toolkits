@@ -27,7 +27,8 @@ export default defineToolkit({
       ],
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
-      connectDescription: 'Connect YouTube to search, upload, and manage videos, playlists, and channels.',
+      connectDescription:
+        'Connect YouTube to search, upload, and manage videos, playlists, and channels.',
       callbackPath: '/api/auth/youtube/callback',
       stateCookie: 'youtube_oauth_state',
     },

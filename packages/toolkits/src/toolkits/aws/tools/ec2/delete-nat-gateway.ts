@@ -21,7 +21,10 @@ export const awsDeleteEc2NatGateway = tool({
       const response = await client.send(command);
       return { natGatewayId: response.NatGatewayId };
     } catch (err) {
-      return { error: 'Failed to delete a NAT gateway', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a NAT gateway',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

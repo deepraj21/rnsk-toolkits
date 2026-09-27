@@ -19,15 +19,18 @@ export const awsDeleteDeployment = tool({
       const client = createApiGatewayClient(awsCredentials, region);
 
       const command = new DeleteDeploymentCommand({
-          restApiId: restApiId,
-          deploymentId: deploymentId,
+        restApiId: restApiId,
+        deploymentId: deploymentId,
       });
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a Deployment resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a Deployment resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

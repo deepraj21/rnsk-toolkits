@@ -20,17 +20,20 @@ export const awsUpdateCloudfrontDistribution = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdateDistributionCommand({
-          DistributionConfig: distributionConfig,
-          Id: id,
-          IfMatch: ifMatch,
+        DistributionConfig: distributionConfig,
+        Id: id,
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  distribution: response.Distribution,
-                  eTag: response.ETag,
-              };
+        distribution: response.Distribution,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront distribution', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront distribution',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -21,15 +21,18 @@ export const awsDetachEc2Volume = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DetachVolumeCommand({
-          VolumeId: volumeId,
-          InstanceId: instanceId,
-          Device: device,
-          Force: force,
+        VolumeId: volumeId,
+        InstanceId: instanceId,
+        Device: device,
+        Force: force,
       });
       const response = await client.send(command);
       return { attachment: response };
     } catch (err) {
-      return { error: 'Failed to detach an EBS volume from an instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to detach an EBS volume from an instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

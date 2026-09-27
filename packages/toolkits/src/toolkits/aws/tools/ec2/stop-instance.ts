@@ -24,7 +24,10 @@ export const awsStopEc2Instance = tool({
         previousState: status?.PreviousState?.Name,
       };
     } catch (err) {
-      return { error: 'Failed to stop EC2 instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to stop EC2 instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

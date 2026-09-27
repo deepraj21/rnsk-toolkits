@@ -21,18 +21,21 @@ export const awsDescribeFsxVolumes = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new DescribeVolumesCommand({
-          VolumeIds: volumeIds,
-          Filters: filters,
-          MaxResults: maxResults,
-          NextToken: nextToken,
+        VolumeIds: volumeIds,
+        Filters: filters,
+        MaxResults: maxResults,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  volumes: response.Volumes || [],
-                  nextToken: response.NextToken,
-              };
+        volumes: response.Volumes || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to get details about volumes', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about volumes',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

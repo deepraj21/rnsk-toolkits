@@ -14,7 +14,15 @@ export const awsUpdateThreatIntelSet = tool({
     location: z.string().optional().describe('New S3 URL for the threat intel file'),
     activate: z.boolean().optional().describe('Activate or deactivate the threat intel set'),
   }),
-  execute: async ({ awsCredentials, region, detectorId, threatIntelSetId, name, location, activate }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    detectorId,
+    threatIntelSetId,
+    name,
+    location,
+    activate,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,16 +30,19 @@ export const awsUpdateThreatIntelSet = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new UpdateThreatIntelSetCommand({
-          DetectorId: detectorId,
-          ThreatIntelSetId: threatIntelSetId,
-          Name: name,
-          Location: location,
-          Activate: activate,
+        DetectorId: detectorId,
+        ThreatIntelSetId: threatIntelSetId,
+        Name: name,
+        Location: location,
+        Activate: activate,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update a threat intelligence set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a threat intelligence set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

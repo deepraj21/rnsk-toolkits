@@ -20,14 +20,17 @@ export const awsCreateIamUser = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new CreateUserCommand({
-          UserName: userName,
-          Path: path,
-          Tags: tags as any,
+        UserName: userName,
+        Path: path,
+        Tags: tags as any,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to create a new IAM user', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new IAM user',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

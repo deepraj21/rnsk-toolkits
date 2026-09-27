@@ -18,15 +18,18 @@ export const awsDeleteAutoscalingWarmPool = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DeleteWarmPoolCommand({
-          AutoScalingGroupName: autoScalingGroupName,
+        AutoScalingGroupName: autoScalingGroupName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Warm pool configuration deleted successfully`,
-              };
+        success: true,
+        message: `Warm pool configuration deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete warm pool configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete warm pool configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

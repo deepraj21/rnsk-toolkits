@@ -20,16 +20,19 @@ export const awsStartCodepipelineExecution = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new StartPipelineExecutionCommand({
-          name: name,
-          clientRequestToken: clientRequestToken,
-          variables: variables,
+        name: name,
+        clientRequestToken: clientRequestToken,
+        variables: variables,
       } as any);
       const response = await client.send(command);
       return {
-                  pipelineExecutionId: response.pipelineExecutionId,
-              };
+        pipelineExecutionId: response.pipelineExecutionId,
+      };
     } catch (err) {
-      return { error: 'Failed to start a new pipeline execution', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start a new pipeline execution',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

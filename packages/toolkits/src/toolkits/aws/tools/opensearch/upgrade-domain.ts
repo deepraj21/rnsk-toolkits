@@ -10,7 +10,10 @@ export const awsUpgradeDomain = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     domainName: z.string().describe('Name of the OpenSearch domain'),
     targetVersion: z.string().describe('Target OpenSearch version (e.g., OpenSearch_2.5)'),
-    performCheckOnly: z.boolean().optional().describe('Perform compatibility check only without upgrading'),
+    performCheckOnly: z
+      .boolean()
+      .optional()
+      .describe('Perform compatibility check only without upgrading'),
   }),
   execute: async ({ awsCredentials, region, domainName, targetVersion, performCheckOnly }) => {
     if (!awsCredentials) {
@@ -20,14 +23,17 @@ export const awsUpgradeDomain = tool({
       const client = createOpenSearchClient(awsCredentials, region);
 
       const command = new UpgradeDomainCommand({
-          DomainName: domainName,
-          TargetVersion: targetVersion,
-          PerformCheckOnly: performCheckOnly,
+        DomainName: domainName,
+        TargetVersion: targetVersion,
+        PerformCheckOnly: performCheckOnly,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to upgrade OpenSearch domain to a newer version', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to upgrade OpenSearch domain to a newer version',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

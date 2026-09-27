@@ -4,7 +4,8 @@ import { ListDiscoveredResourcesCommand } from '@aws-sdk/client-config-service';
 import { createConfigServiceClient } from '../client.js';
 
 export const awsListDiscoveredResources = tool({
-  description: 'Accepts a resource type and returns a list of resource identifiers. Use it to inspect current state before making changes.',
+  description:
+    'Accepts a resource type and returns a list of resource identifiers. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -15,7 +16,16 @@ export const awsListDiscoveredResources = tool({
     includeDeletedResources: z.boolean().optional().describe('Include deleted resources'),
     nextToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, resourceType, resourceIds, resourceName, limit, includeDeletedResources, nextToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    resourceType,
+    resourceIds,
+    resourceName,
+    limit,
+    includeDeletedResources,
+    nextToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,20 +33,23 @@ export const awsListDiscoveredResources = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new ListDiscoveredResourcesCommand({
-          resourceType: resourceType,
-          resourceIds: resourceIds,
-          resourceName: resourceName,
-          limit: limit,
-          includeDeletedResources: includeDeletedResources,
-          nextToken: nextToken,
+        resourceType: resourceType,
+        resourceIds: resourceIds,
+        resourceName: resourceName,
+        limit: limit,
+        includeDeletedResources: includeDeletedResources,
+        nextToken: nextToken,
       } as any);
       const response = await client.send(command);
       return {
-                  resourceIdentifiers: response.resourceIdentifiers || [],
-                  nextToken: response.nextToken,
-              };
+        resourceIdentifiers: response.resourceIdentifiers || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to accepts a resource type and returns a list of resource identifiers', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to accepts a resource type and returns a list of resource identifiers',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

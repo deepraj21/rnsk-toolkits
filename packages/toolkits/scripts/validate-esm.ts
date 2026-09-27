@@ -15,7 +15,8 @@ const srcRoot = path.join(packageRoot, 'src');
 const distEntry = path.join(packageRoot, 'dist', 'index.js');
 
 const mode = process.argv.includes('--dist') ? 'dist' : 'source';
-const RELATIVE_IMPORT_RE = /(?:import|export)\s+(?:type\s+)?(?:[^'";]*?\sfrom\s+)?['"](\.[^'"]+)['"]/g;
+const RELATIVE_IMPORT_RE =
+  /(?:import|export)\s+(?:type\s+)?(?:[^'";]*?\sfrom\s+)?['"](\.[^'"]+)['"]/g;
 
 function collectSourceImportErrors(): string[] {
   const errors: string[] = [];

@@ -18,12 +18,15 @@ export const awsDeleteKmsAlias = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new DeleteAliasCommand({
-          AliasName: aliasName,
+        AliasName: aliasName,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete an alias for a KMS key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an alias for a KMS key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

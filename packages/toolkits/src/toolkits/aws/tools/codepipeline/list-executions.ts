@@ -20,17 +20,20 @@ export const awsListCodepipelineExecutions = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new ListPipelineExecutionsCommand({
-          pipelineName: pipelineName,
-          maxResults: maxResults,
-          nextToken: nextToken,
+        pipelineName: pipelineName,
+        maxResults: maxResults,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  pipelineExecutionSummaries: response.pipelineExecutionSummaries || [],
-                  nextToken: response.nextToken,
-              };
+        pipelineExecutionSummaries: response.pipelineExecutionSummaries || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list pipeline executions', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list pipeline executions',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

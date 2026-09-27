@@ -19,16 +19,19 @@ export const awsUntagConfigResource = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          ResourceArn: resourceArn,
-          TagKeys: tagKeys,
+        ResourceArn: resourceArn,
+        TagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  message: 'Tags removed successfully',
-                  resourceArn: resourceArn,
-              };
+        message: 'Tags removed successfully',
+        resourceArn: resourceArn,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from a Config resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from a Config resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

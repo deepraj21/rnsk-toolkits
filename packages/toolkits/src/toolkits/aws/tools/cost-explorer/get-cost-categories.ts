@@ -4,7 +4,8 @@ import { GetCostCategoriesCommand } from '@aws-sdk/client-cost-explorer';
 import { createCostExplorerClient } from '../client.js';
 
 export const awsGetCostCategories = tool({
-  description: 'Retrieves cost category values for a specific time period. Use it to inspect current state before making changes.',
+  description:
+    'Retrieves cost category values for a specific time period. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -16,7 +17,17 @@ export const awsGetCostCategories = tool({
     nextPageToken: z.string().optional().describe('Token for pagination'),
     searchString: z.string().optional().describe('Search string to filter results'),
   }),
-  execute: async ({ awsCredentials, region, timePeriod, costCategoryName, filter, sortBy, maxResults, nextPageToken, searchString }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    timePeriod,
+    costCategoryName,
+    filter,
+    sortBy,
+    maxResults,
+    nextPageToken,
+    searchString,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,26 +35,31 @@ export const awsGetCostCategories = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new GetCostCategoriesCommand({
-          TimePeriod: timePeriod ? {
+        TimePeriod: timePeriod
+          ? {
               Start: timePeriod.start,
               End: timePeriod.end,
-          } : undefined,
-          CostCategoryName: costCategoryName,
-          Filter: filter,
-          SortBy: sortBy,
-          MaxResults: maxResults,
-          NextPageToken: nextPageToken,
-          SearchString: searchString,
+            }
+          : undefined,
+        CostCategoryName: costCategoryName,
+        Filter: filter,
+        SortBy: sortBy,
+        MaxResults: maxResults,
+        NextPageToken: nextPageToken,
+        SearchString: searchString,
       } as any);
       const response = await client.send(command);
       return {
-                  returnSize: response.ReturnSize,
-                  costCategoryNames: response.CostCategoryNames || [],
-                  costCategoryValues: response.CostCategoryValues || [],
-                  nextPageToken: response.NextPageToken,
-              };
+        returnSize: response.ReturnSize,
+        costCategoryNames: response.CostCategoryNames || [],
+        costCategoryValues: response.CostCategoryValues || [],
+        nextPageToken: response.NextPageToken,
+      };
     } catch (err) {
-      return { error: 'Failed to retrieves cost category values for a specific time period', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to retrieves cost category values for a specific time period',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

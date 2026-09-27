@@ -19,16 +19,19 @@ export const awsTagSnsResource = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          ResourceArn: resourceArn,
-          Tags: tags as any,
+        ResourceArn: resourceArn,
+        Tags: tags as any,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags added successfully to resource ${resourceArn}`,
-              };
+        success: true,
+        message: `Tags added successfully to resource ${resourceArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to an SNS resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to an SNS resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

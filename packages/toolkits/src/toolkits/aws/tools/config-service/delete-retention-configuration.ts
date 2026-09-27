@@ -8,7 +8,9 @@ export const awsDeleteRetentionConfiguration = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    retentionConfigurationName: z.string().describe('The name of the retention configuration to delete'),
+    retentionConfigurationName: z
+      .string()
+      .describe('The name of the retention configuration to delete'),
   }),
   execute: async ({ awsCredentials, region, retentionConfigurationName }) => {
     if (!awsCredentials) {
@@ -18,15 +20,18 @@ export const awsDeleteRetentionConfiguration = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DeleteRetentionConfigurationCommand({
-          RetentionConfigurationName: retentionConfigurationName,
+        RetentionConfigurationName: retentionConfigurationName,
       });
       await client.send(command);
       return {
-                  message: 'Retention configuration deleted successfully',
-                  retentionConfigurationName: retentionConfigurationName,
-              };
+        message: 'Retention configuration deleted successfully',
+        retentionConfigurationName: retentionConfigurationName,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the retention configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes the retention configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -20,16 +20,19 @@ export const awsUpdateFsxSnapshot = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new UpdateSnapshotCommand({
-          ClientRequestToken: clientRequestToken,
-          Name: name,
-          SnapshotId: snapshotId,
+        ClientRequestToken: clientRequestToken,
+        Name: name,
+        SnapshotId: snapshotId,
       });
       const response = await client.send(command);
       return {
-                  snapshot: response.Snapshot,
-              };
+        snapshot: response.Snapshot,
+      };
     } catch (err) {
-      return { error: 'Failed to update a snapshot', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a snapshot',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

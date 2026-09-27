@@ -19,16 +19,19 @@ export const awsDeleteVpcLatticeListener = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new DeleteListenerCommand({
-          listenerIdentifier: listenerIdentifier,
-          serviceIdentifier: serviceIdentifier,
+        listenerIdentifier: listenerIdentifier,
+        serviceIdentifier: serviceIdentifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Listener ${listenerIdentifier} deleted successfully`,
-              };
+        success: true,
+        message: `Listener ${listenerIdentifier} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a VPC Lattice listener', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a VPC Lattice listener',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,14 +19,17 @@ export const awsDynamodbDeleteItem = tool({
       const client = createDynamoDbDocClient(awsCredentials, region);
 
       const command = new DeleteCommand({
-          TableName: tableName,
-          Key: key,
-          ReturnValues: 'ALL_OLD',
+        TableName: tableName,
+        Key: key,
+        ReturnValues: 'ALL_OLD',
       });
       const response = await client.send(command);
       return response.Attributes;
     } catch (err) {
-      return { error: 'Failed to delete an item from DynamoDB table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an item from DynamoDB table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

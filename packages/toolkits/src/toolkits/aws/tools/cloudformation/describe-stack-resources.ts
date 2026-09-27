@@ -4,7 +4,8 @@ import { DescribeStackResourcesCommand } from '@aws-sdk/client-cloudformation';
 import { createCloudFormationClient } from '../client.js';
 
 export const awsDescribeCloudformationStackResources = tool({
-  description: 'Describe all resources in a CloudFormation stack. Use it to inspect current state before making changes.',
+  description:
+    'Describe all resources in a CloudFormation stack. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsDescribeCloudformationStackResources = tool({
       const client = createCloudFormationClient(awsCredentials, region);
 
       const command = new DescribeStackResourcesCommand({
-          StackName: stackName,
-          LogicalResourceId: logicalResourceId,
-          PhysicalResourceId: physicalResourceId,
+        StackName: stackName,
+        LogicalResourceId: logicalResourceId,
+        PhysicalResourceId: physicalResourceId,
       });
       const response = await client.send(command);
       return { stackResources: response.StackResources };
     } catch (err) {
-      return { error: 'Failed to describe all resources in a CloudFormation stack', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe all resources in a CloudFormation stack',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

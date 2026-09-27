@@ -4,7 +4,8 @@ import { DescribeDeliveryChannelsCommand } from '@aws-sdk/client-config-service'
 import { createConfigServiceClient } from '../client.js';
 
 export const awsDescribeDeliveryChannels = tool({
-  description: 'Returns details about one or more delivery channels. Use it to inspect current state before making changes.',
+  description:
+    'Returns details about one or more delivery channels. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsDescribeDeliveryChannels = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DescribeDeliveryChannelsCommand({
-          DeliveryChannelNames: deliveryChannelNames,
+        DeliveryChannelNames: deliveryChannelNames,
       });
       const response = await client.send(command);
       return {
-                  deliveryChannels: response.DeliveryChannels || [],
-              };
+        deliveryChannels: response.DeliveryChannels || [],
+      };
     } catch (err) {
-      return { error: 'Failed to returns details about one or more delivery channels', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to returns details about one or more delivery channels',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

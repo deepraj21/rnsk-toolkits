@@ -16,7 +16,17 @@ export const awsListSagemakerPipelines = tool({
     sortBy: z.enum(['Name', 'CreationTime']).optional().describe('Sort by'),
     sortOrder: z.enum(['Ascending', 'Descending']).optional().describe('Sort order'),
   }),
-  execute: async ({ awsCredentials, region, nextToken, maxResults, pipelineNamePrefix, createdAfter, createdBefore, sortBy, sortOrder }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    nextToken,
+    maxResults,
+    pipelineNamePrefix,
+    createdAfter,
+    createdBefore,
+    sortBy,
+    sortOrder,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,21 +34,24 @@ export const awsListSagemakerPipelines = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new ListPipelinesCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
-          PipelineNamePrefix: pipelineNamePrefix,
-          CreatedAfter: createdAfter ? new Date(createdAfter) : undefined,
-          CreatedBefore: createdBefore ? new Date(createdBefore) : undefined,
-          SortBy: sortBy,
-          SortOrder: sortOrder,
+        NextToken: nextToken,
+        MaxResults: maxResults,
+        PipelineNamePrefix: pipelineNamePrefix,
+        CreatedAfter: createdAfter ? new Date(createdAfter) : undefined,
+        CreatedBefore: createdBefore ? new Date(createdBefore) : undefined,
+        SortBy: sortBy,
+        SortOrder: sortOrder,
       });
       const response = await client.send(command);
       return {
-                  pipelineSummaries: response.PipelineSummaries || [],
-                  nextToken: response.NextToken,
-              };
+        pipelineSummaries: response.PipelineSummaries || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list SageMaker pipelines', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list SageMaker pipelines',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

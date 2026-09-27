@@ -4,7 +4,8 @@ import { SelectResourceConfigCommand } from '@aws-sdk/client-config-service';
 import { createConfigServiceClient } from '../client.js';
 
 export const awsSelectResourceConfig = tool({
-  description: 'Accepts a structured query language (SQL) SELECT command and returns resource configurations',
+  description:
+    'Accepts a structured query language (SQL) SELECT command and returns resource configurations',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,18 +21,22 @@ export const awsSelectResourceConfig = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new SelectResourceConfigCommand({
-          Expression: expression,
-          Limit: limit,
-          NextToken: nextToken,
+        Expression: expression,
+        Limit: limit,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  results: response.Results || [],
-                  nextToken: response.NextToken,
-                  queryInfo: response.QueryInfo,
-              };
+        results: response.Results || [],
+        nextToken: response.NextToken,
+        queryInfo: response.QueryInfo,
+      };
     } catch (err) {
-      return { error: 'Failed to accepts a structured query language (SQL) SELECT command and returns resource configurations', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error:
+          'Failed to accepts a structured query language (SQL) SELECT command and returns resource configurations',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

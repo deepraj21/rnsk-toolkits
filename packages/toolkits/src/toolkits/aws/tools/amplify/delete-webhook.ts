@@ -18,14 +18,17 @@ export const awsDeleteAmplifyWebhook = tool({
       const client = createAmplifyClient(awsCredentials, region);
 
       const command = new DeleteWebhookCommand({
-          webhookId,
+        webhookId,
       });
       const response = await client.send(command);
       return {
-                  webhook: response.webhook,
-              };
+        webhook: response.webhook,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a webhook', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a webhook',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

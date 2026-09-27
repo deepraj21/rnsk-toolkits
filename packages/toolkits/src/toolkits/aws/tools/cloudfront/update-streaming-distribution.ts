@@ -20,17 +20,20 @@ export const awsUpdateCloudfrontStreamingDistribution = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdateStreamingDistributionCommand({
-          StreamingDistributionConfig: streamingDistributionConfig,
-          Id: id,
-          IfMatch: ifMatch,
+        StreamingDistributionConfig: streamingDistributionConfig,
+        Id: id,
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  streamingDistribution: response.StreamingDistribution,
-                  eTag: response.ETag,
-              };
+        streamingDistribution: response.StreamingDistribution,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront streaming distribution', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront streaming distribution',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

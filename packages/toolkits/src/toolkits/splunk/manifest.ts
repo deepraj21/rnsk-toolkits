@@ -5,7 +5,8 @@ import { splunkTools } from './tools/index.js';
 export default defineToolkit({
   id: 'splunk',
   displayName: 'Splunk',
-  shortDescription: 'Run SPL searches, manage saved searches, indexes, HEC inputs, alerts and KV Store via the Splunk REST API.',
+  shortDescription:
+    'Run SPL searches, manage saved searches, indexes, HEC inputs, alerts and KV Store via the Splunk REST API.',
   category: 'Analytics & Data',
   icon: SPLUNK_ICON,
   auth: {

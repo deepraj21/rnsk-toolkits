@@ -7,8 +7,12 @@ export const getSitemap = tool({
   description: 'Retrieve information about a specific sitemap submitted for a site.',
   inputSchema: z.object({
     googleSearchConsoleToken: z.string().describe('The Google Search Console access token'),
-    site_url: z.string().describe('The site URL including protocol (e.g. https://www.example.com/)'),
-    feedpath: z.string().describe('The URL of the sitemap (e.g. https://www.example.com/sitemap.xml)'),
+    site_url: z
+      .string()
+      .describe('The site URL including protocol (e.g. https://www.example.com/)'),
+    feedpath: z
+      .string()
+      .describe('The URL of the sitemap (e.g. https://www.example.com/sitemap.xml)'),
   }),
   execute: async ({ googleSearchConsoleToken, site_url, feedpath }) => {
     try {

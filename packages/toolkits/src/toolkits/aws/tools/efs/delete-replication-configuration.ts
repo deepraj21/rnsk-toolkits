@@ -18,15 +18,18 @@ export const awsDeleteEfsReplicationConfiguration = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new DeleteReplicationConfigurationCommand({
-          SourceFileSystemId: sourceFileSystemId,
+        SourceFileSystemId: sourceFileSystemId,
       });
       await client.send(command);
       return {
-                  message: 'Replication configuration deleted successfully',
-                  sourceFileSystemId: sourceFileSystemId,
-              };
+        message: 'Replication configuration deleted successfully',
+        sourceFileSystemId: sourceFileSystemId,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a replication configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a replication configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

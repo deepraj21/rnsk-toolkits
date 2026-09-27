@@ -21,17 +21,20 @@ export const awsCreateFsxSnapshot = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new CreateSnapshotCommand({
-          ClientRequestToken: clientRequestToken,
-          Name: name,
-          Tags: tags,
-          VolumeId: volumeId,
+        ClientRequestToken: clientRequestToken,
+        Name: name,
+        Tags: tags,
+        VolumeId: volumeId,
       } as any);
       const response = await client.send(command);
       return {
-                  snapshot: response.Snapshot,
-              };
+        snapshot: response.Snapshot,
+      };
     } catch (err) {
-      return { error: 'Failed to create a snapshot of an FSx volume', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a snapshot of an FSx volume',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

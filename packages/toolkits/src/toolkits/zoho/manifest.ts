@@ -29,7 +29,8 @@ export default defineToolkit({
       scopeSeparator: ',',
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
-      connectDescription: 'Connect Zoho CRM to manage leads, contacts, deals, accounts and activities. Requires Zoho CRM account with API access.',
+      connectDescription:
+        'Connect Zoho CRM to manage leads, contacts, deals, accounts and activities. Requires Zoho CRM account with API access.',
       callbackPath: '/api/auth/zoho/callback',
       stateCookie: 'zoho_oauth_state',
     },

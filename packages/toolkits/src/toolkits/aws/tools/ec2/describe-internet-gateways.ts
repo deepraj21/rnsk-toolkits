@@ -19,16 +19,21 @@ export const awsDescribeEc2InternetGateways = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribeInternetGatewaysCommand({
-          InternetGatewayIds: internetGatewayIds,
-          Filters: filters ? Object.entries(filters).map(([name, values]) => ({
+        InternetGatewayIds: internetGatewayIds,
+        Filters: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
+            }))
+          : undefined,
       });
       const response = await client.send(command);
       return { internetGateways: response.InternetGateways };
     } catch (err) {
-      return { error: 'Failed to describe internet gateways', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe internet gateways',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

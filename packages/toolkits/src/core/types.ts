@@ -70,13 +70,7 @@ export type ToolkitAuthSpec =
   | { type: 'service_account'; tokenField: string; provider: ServiceAccountProviderSpec };
 
 export type ToolkitAuthType =
-  | 'none'
-  | 'oauth2'
-  | 'service_env'
-  | 'api_key'
-  | 'basic_auth'
-  | 'bearer_token'
-  | 'service_account';
+  'none' | 'oauth2' | 'service_env' | 'api_key' | 'basic_auth' | 'bearer_token' | 'service_account';
 
 export interface ToolDefinition {
   name: string;

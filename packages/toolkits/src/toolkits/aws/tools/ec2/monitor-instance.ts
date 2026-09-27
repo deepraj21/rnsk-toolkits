@@ -4,7 +4,8 @@ import { MonitorInstancesCommand } from '@aws-sdk/client-ec2';
 import { createEc2Client } from '../client.js';
 
 export const awsMonitorEc2Instance = tool({
-  description: 'Enable detailed monitoring for an EC2 instance. Use it to toggle detailed monitoring.',
+  description:
+    'Enable detailed monitoring for an EC2 instance. Use it to toggle detailed monitoring.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -21,7 +22,10 @@ export const awsMonitorEc2Instance = tool({
       const response = await client.send(command);
       return { instanceMonitorings: response.InstanceMonitorings };
     } catch (err) {
-      return { error: 'Failed to enable detailed monitoring for an EC2 instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to enable detailed monitoring for an EC2 instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

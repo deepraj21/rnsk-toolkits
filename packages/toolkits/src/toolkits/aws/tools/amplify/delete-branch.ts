@@ -19,15 +19,18 @@ export const awsDeleteAmplifyBranch = tool({
       const client = createAmplifyClient(awsCredentials, region);
 
       const command = new DeleteBranchCommand({
-          appId,
-          branchName,
+        appId,
+        branchName,
       });
       const response = await client.send(command);
       return {
-                  branch: response.branch,
-              };
+        branch: response.branch,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a branch for an Amplify app', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a branch for an Amplify app',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

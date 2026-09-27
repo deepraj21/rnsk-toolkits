@@ -20,19 +20,22 @@ export const awsCreateBackupPlan = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new CreateBackupPlanCommand({
-          BackupPlan: backupPlan,
-          BackupPlanTags: backupPlanTags,
-          CreatorRequestId: creatorRequestId,
+        BackupPlan: backupPlan,
+        BackupPlanTags: backupPlanTags,
+        CreatorRequestId: creatorRequestId,
       } as any);
       const response = await client.send(command);
       return {
-                  backupPlanId: response.BackupPlanId,
-                  backupPlanArn: response.BackupPlanArn,
-                  creationDate: response.CreationDate,
-                  versionId: response.VersionId,
-              };
+        backupPlanId: response.BackupPlanId,
+        backupPlanArn: response.BackupPlanArn,
+        creationDate: response.CreationDate,
+        versionId: response.VersionId,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new backup plan', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new backup plan',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

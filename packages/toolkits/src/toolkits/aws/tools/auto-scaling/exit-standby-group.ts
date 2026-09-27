@@ -19,15 +19,18 @@ export const awsExitStandbyAutoscalingGroup = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new ExitStandbyCommand({
-          InstanceIds: instanceIds,
-          AutoScalingGroupName: autoScalingGroupName,
+        InstanceIds: instanceIds,
+        AutoScalingGroupName: autoScalingGroupName,
       });
       const response = await client.send(command);
       return {
-                  activities: response.Activities,
-              };
+        activities: response.Activities,
+      };
     } catch (err) {
-      return { error: 'Failed to move instances out of standby mode', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to move instances out of standby mode',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

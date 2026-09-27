@@ -16,7 +16,17 @@ export const awsCreateVpcLatticeRule = tool({
     action: z.record(z.any()).describe('Action'),
     tags: z.record(z.any()).optional().describe('Tags to apply'),
   }),
-  execute: async ({ awsCredentials, region, listenerIdentifier, serviceIdentifier, name, priority, match, action, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    listenerIdentifier,
+    serviceIdentifier,
+    name,
+    priority,
+    match,
+    action,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,25 +34,28 @@ export const awsCreateVpcLatticeRule = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new CreateRuleCommand({
-          listenerIdentifier: listenerIdentifier,
-          serviceIdentifier: serviceIdentifier,
-          name: name,
-          priority: priority,
-          match: match,
-          action: action,
-          tags: tags,
+        listenerIdentifier: listenerIdentifier,
+        serviceIdentifier: serviceIdentifier,
+        name: name,
+        priority: priority,
+        match: match,
+        action: action,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  action: response.action,
-                  arn: response.arn,
-                  id: response.id,
-                  match: response.match,
-                  name: response.name,
-                  priority: response.priority,
-              };
+        action: response.action,
+        arn: response.arn,
+        id: response.id,
+        match: response.match,
+        name: response.name,
+        priority: response.priority,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new VPC Lattice rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new VPC Lattice rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { ListIdentityProviderConfigsCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsListEksIdentityProviderConfigs = tool({
-  description: 'List all identity provider configurations for a cluster. Use it to inspect current state before making changes.',
+  description:
+    'List all identity provider configurations for a cluster. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsListEksIdentityProviderConfigs = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new ListIdentityProviderConfigsCommand({
-          clusterName: clusterName,
-          maxResults: maxResults,
-          nextToken: nextToken,
+        clusterName: clusterName,
+        maxResults: maxResults,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  identityProviderConfigs: response.identityProviderConfigs || [],
-                  nextToken: response.nextToken,
-              };
+        identityProviderConfigs: response.identityProviderConfigs || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list all identity provider configurations for a cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all identity provider configurations for a cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

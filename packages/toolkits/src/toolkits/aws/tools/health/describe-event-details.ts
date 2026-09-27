@@ -4,7 +4,8 @@ import { DescribeEventDetailsCommand } from '@aws-sdk/client-health';
 import { createHealthClient } from '../client.js';
 
 export const awsDescribeHealthEventDetails = tool({
-  description: 'Get detailed information about one or more events. Use it to inspect current state before making changes.',
+  description:
+    'Get detailed information about one or more events. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,19 @@ export const awsDescribeHealthEventDetails = tool({
       const client = createHealthClient(awsCredentials, region);
 
       const command = new DescribeEventDetailsCommand({
-          eventArns: eventArns,
-          locale: locale,
+        eventArns: eventArns,
+        locale: locale,
       });
       const response = await client.send(command);
       return {
-                  successfulSet: response.successfulSet || [],
-                  failedSet: response.failedSet || [],
-              };
+        successfulSet: response.successfulSet || [],
+        failedSet: response.failedSet || [],
+      };
     } catch (err) {
-      return { error: 'Failed to get detailed information about one or more events', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get detailed information about one or more events',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

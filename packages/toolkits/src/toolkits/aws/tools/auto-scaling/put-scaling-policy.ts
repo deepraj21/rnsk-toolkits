@@ -19,11 +19,34 @@ export const awsPutAutoscalingScalingPolicy = tool({
     metricAggregationType: z.string().optional().describe('Metric aggregation type'),
     stepAdjustments: z.array(z.record(z.any())).optional().describe('Step adjustments'),
     estimatedInstanceWarmup: z.number().optional().describe('Estimated instance warmup'),
-    targetTrackingConfiguration: z.record(z.any()).optional().describe('Target tracking configuration'),
+    targetTrackingConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('Target tracking configuration'),
     enabled: z.boolean().optional().describe('Whether the policy is enabled'),
-    predictiveScalingConfiguration: z.record(z.any()).optional().describe('Predictive scaling configuration'),
+    predictiveScalingConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('Predictive scaling configuration'),
   }),
-  execute: async ({ awsCredentials, region, autoScalingGroupName, policyName, policyType, adjustmentType, minAdjustmentStep, minAdjustmentMagnitude, scalingAdjustment, cooldown, metricAggregationType, stepAdjustments, estimatedInstanceWarmup, targetTrackingConfiguration, enabled, predictiveScalingConfiguration }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    autoScalingGroupName,
+    policyName,
+    policyType,
+    adjustmentType,
+    minAdjustmentStep,
+    minAdjustmentMagnitude,
+    scalingAdjustment,
+    cooldown,
+    metricAggregationType,
+    stepAdjustments,
+    estimatedInstanceWarmup,
+    targetTrackingConfiguration,
+    enabled,
+    predictiveScalingConfiguration,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -31,28 +54,31 @@ export const awsPutAutoscalingScalingPolicy = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new PutScalingPolicyCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          PolicyName: policyName,
-          PolicyType: policyType,
-          AdjustmentType: adjustmentType,
-          MinAdjustmentStep: minAdjustmentStep,
-          MinAdjustmentMagnitude: minAdjustmentMagnitude,
-          ScalingAdjustment: scalingAdjustment,
-          Cooldown: cooldown,
-          MetricAggregationType: metricAggregationType,
-          StepAdjustments: stepAdjustments,
-          EstimatedInstanceWarmup: estimatedInstanceWarmup,
-          TargetTrackingConfiguration: targetTrackingConfiguration,
-          Enabled: enabled,
-          PredictiveScalingConfiguration: predictiveScalingConfiguration,
+        AutoScalingGroupName: autoScalingGroupName,
+        PolicyName: policyName,
+        PolicyType: policyType,
+        AdjustmentType: adjustmentType,
+        MinAdjustmentStep: minAdjustmentStep,
+        MinAdjustmentMagnitude: minAdjustmentMagnitude,
+        ScalingAdjustment: scalingAdjustment,
+        Cooldown: cooldown,
+        MetricAggregationType: metricAggregationType,
+        StepAdjustments: stepAdjustments,
+        EstimatedInstanceWarmup: estimatedInstanceWarmup,
+        TargetTrackingConfiguration: targetTrackingConfiguration,
+        Enabled: enabled,
+        PredictiveScalingConfiguration: predictiveScalingConfiguration,
       } as any);
       const response = await client.send(command);
       return {
-                  policyARN: response.PolicyARN,
-                  alarms: response.Alarms,
-              };
+        policyARN: response.PolicyARN,
+        alarms: response.Alarms,
+      };
     } catch (err) {
-      return { error: 'Failed to create or update a scaling policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or update a scaling policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

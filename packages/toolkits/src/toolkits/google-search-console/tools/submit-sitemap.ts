@@ -19,7 +19,11 @@ export const submitSitemap = tool({
       );
 
       if (!result.ok) {
-        return { error: 'Failed to submit sitemap', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to submit sitemap',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return { success: true, site_url, feedpath, data: result.data };

@@ -4,7 +4,8 @@ import { CreateCostCategoryDefinitionCommand } from '@aws-sdk/client-cost-explor
 import { createCostExplorerClient } from '../client.js';
 
 export const awsCreateCostCategoryDefinition = tool({
-  description: 'Creates a new Cost Category with the requested name and rules. Use it to provision a new resource.',
+  description:
+    'Creates a new Cost Category with the requested name and rules. Use it to provision a new resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -15,7 +16,16 @@ export const awsCreateCostCategoryDefinition = tool({
     splitChargeRules: z.array(z.record(z.any())).optional().describe('The split charge rules'),
     resourceTags: z.array(z.record(z.any())).optional().describe('Resource tags'),
   }),
-  execute: async ({ awsCredentials, region, name, ruleVersion, rules, defaultValue, splitChargeRules, resourceTags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    ruleVersion,
+    rules,
+    defaultValue,
+    splitChargeRules,
+    resourceTags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,20 +33,23 @@ export const awsCreateCostCategoryDefinition = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new CreateCostCategoryDefinitionCommand({
-          Name: name,
-          RuleVersion: ruleVersion,
-          Rules: rules,
-          DefaultValue: defaultValue,
-          SplitChargeRules: splitChargeRules,
-          ResourceTags: resourceTags,
+        Name: name,
+        RuleVersion: ruleVersion,
+        Rules: rules,
+        DefaultValue: defaultValue,
+        SplitChargeRules: splitChargeRules,
+        ResourceTags: resourceTags,
       } as any);
       const response = await client.send(command);
       return {
-                  costCategoryArn: response.CostCategoryArn,
-                  effectiveStart: response.EffectiveStart,
-              };
+        costCategoryArn: response.CostCategoryArn,
+        effectiveStart: response.EffectiveStart,
+      };
     } catch (err) {
-      return { error: 'Failed to creates a new Cost Category with the requested name and rules', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to creates a new Cost Category with the requested name and rules',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

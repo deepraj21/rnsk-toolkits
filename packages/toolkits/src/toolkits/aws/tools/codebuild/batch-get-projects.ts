@@ -4,7 +4,8 @@ import { BatchGetProjectsCommand } from '@aws-sdk/client-codebuild';
 import { createCodeBuildClient } from '../client.js';
 
 export const awsBatchGetCodebuildProjects = tool({
-  description: 'Get information about one or more build projects. Use it to operate on multiple resources.',
+  description:
+    'Get information about one or more build projects. Use it to operate on multiple resources.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsBatchGetCodebuildProjects = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new BatchGetProjectsCommand({
-          names: names,
+        names: names,
       });
       const response = await client.send(command);
       return {
-                  projects: response.projects || [],
-                  projectsNotFound: response.projectsNotFound || [],
-              };
+        projects: response.projects || [],
+        projectsNotFound: response.projectsNotFound || [],
+      };
     } catch (err) {
-      return { error: 'Failed to get information about one or more build projects', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get information about one or more build projects',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

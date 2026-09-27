@@ -16,12 +16,30 @@ export const awsCreateDbCluster = tool({
     vpcSecurityGroupIds: z.array(z.string()).optional().describe('VPC security group IDs'),
     dbSubnetGroupName: z.string().optional().describe('DB subnet group name'),
     storageEncrypted: z.boolean().optional().describe('Enable storage encryption'),
-    serverlessV2ScalingConfiguration: z.record(z.any()).optional().describe('Aurora Serverless v2 scaling configuration'),
+    serverlessV2ScalingConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('Aurora Serverless v2 scaling configuration'),
     properties: z.number().optional().describe('Minimum ACUs (0.5-128)'),
     MinCapacity: z.number().optional().describe('Minimum ACUs (0.5-128)'),
     MaxCapacity: z.number().optional().describe('Maximum ACUs (0.5-128)'),
   }),
-  execute: async ({ awsCredentials, region, dbClusterIdentifier, engine, masterUsername, masterUserPassword, databaseName, vpcSecurityGroupIds, dbSubnetGroupName, storageEncrypted, serverlessV2ScalingConfiguration, properties, MinCapacity, MaxCapacity }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    dbClusterIdentifier,
+    engine,
+    masterUsername,
+    masterUserPassword,
+    databaseName,
+    vpcSecurityGroupIds,
+    dbSubnetGroupName,
+    storageEncrypted,
+    serverlessV2ScalingConfiguration,
+    properties,
+    MinCapacity,
+    MaxCapacity,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -29,20 +47,23 @@ export const awsCreateDbCluster = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new CreateDBClusterCommand({
-          DBClusterIdentifier: dbClusterIdentifier,
-          Engine: engine,
-          MasterUsername: masterUsername,
-          MasterUserPassword: masterUserPassword,
-          DatabaseName: databaseName,
-          VpcSecurityGroupIds: vpcSecurityGroupIds,
-          DBSubnetGroupName: dbSubnetGroupName,
-          StorageEncrypted: storageEncrypted,
-          ServerlessV2ScalingConfiguration: serverlessV2ScalingConfiguration,
+        DBClusterIdentifier: dbClusterIdentifier,
+        Engine: engine,
+        MasterUsername: masterUsername,
+        MasterUserPassword: masterUserPassword,
+        DatabaseName: databaseName,
+        VpcSecurityGroupIds: vpcSecurityGroupIds,
+        DBSubnetGroupName: dbSubnetGroupName,
+        StorageEncrypted: storageEncrypted,
+        ServerlessV2ScalingConfiguration: serverlessV2ScalingConfiguration,
       });
       const response = await client.send(command);
       return response.DBCluster;
     } catch (err) {
-      return { error: 'Failed to create a new Aurora database cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new Aurora database cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

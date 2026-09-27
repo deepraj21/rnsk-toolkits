@@ -21,17 +21,20 @@ export const awsUpdateEcsTaskSet = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new UpdateTaskSetCommand({
-          cluster: cluster,
-          service: service,
-          taskSet: taskSet,
-          scale: scale,
+        cluster: cluster,
+        service: service,
+        taskSet: taskSet,
+        scale: scale,
       });
       const response = await client.send(command);
       return {
-                  taskSet: response.taskSet,
-              };
+        taskSet: response.taskSet,
+      };
     } catch (err) {
-      return { error: 'Failed to update a task set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a task set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

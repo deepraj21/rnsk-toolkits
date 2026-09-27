@@ -4,7 +4,8 @@ import { CheckIfPhoneNumberIsOptedOutCommand } from '@aws-sdk/client-sns';
 import { createSnsClient } from '../client.js';
 
 export const awsCheckSnsPhoneOptedOut = tool({
-  description: 'Check if a phone number is opted out of SMS. Use it to inspect current state before making changes.',
+  description:
+    'Check if a phone number is opted out of SMS. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsCheckSnsPhoneOptedOut = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new CheckIfPhoneNumberIsOptedOutCommand({
-          phoneNumber: phoneNumber,
+        phoneNumber: phoneNumber,
       });
       const response = await client.send(command);
       return {
-                  isOptedOut: response.isOptedOut,
-              };
+        isOptedOut: response.isOptedOut,
+      };
     } catch (err) {
-      return { error: 'Failed to check if a phone number is opted out of SMS', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to check if a phone number is opted out of SMS',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

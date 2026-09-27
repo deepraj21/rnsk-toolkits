@@ -16,7 +16,17 @@ export const awsCreateEc2Instance = tool({
     securityGroupIds: z.array(z.string()).optional().describe('Security group IDs'),
     subnetId: z.string().optional().describe('Subnet ID'),
   }),
-  execute: async ({ awsCredentials, region, imageId, instanceType, keyName, minCount, maxCount, securityGroupIds, subnetId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    imageId,
+    instanceType,
+    keyName,
+    minCount,
+    maxCount,
+    securityGroupIds,
+    subnetId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,25 +34,28 @@ export const awsCreateEc2Instance = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new RunInstancesCommand({
-          ImageId: imageId,
-          InstanceType: instanceType as any,
-          MinCount: minCount || 1,
-          MaxCount: maxCount || 1,
-          KeyName: keyName,
-          SecurityGroupIds: securityGroupIds,
-          SubnetId: subnetId,
+        ImageId: imageId,
+        InstanceType: instanceType as any,
+        MinCount: minCount || 1,
+        MaxCount: maxCount || 1,
+        KeyName: keyName,
+        SecurityGroupIds: securityGroupIds,
+        SubnetId: subnetId,
       });
       const response = await client.send(command);
       return {
-                  success: true,
-                  instances: response.Instances?.map((i: any) => ({
-                      instanceId: i.InstanceId,
-                      instanceType: i.InstanceType,
-                      state: i.State?.Name,
-                  })),
-              };
+        success: true,
+        instances: response.Instances?.map((i: any) => ({
+          instanceId: i.InstanceId,
+          instanceType: i.InstanceType,
+          state: i.State?.Name,
+        })),
+      };
     } catch (err) {
-      return { error: 'Failed to launch a new EC2 instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to launch a new EC2 instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

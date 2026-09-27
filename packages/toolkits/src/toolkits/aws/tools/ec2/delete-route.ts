@@ -19,13 +19,16 @@ export const awsDeleteEc2Route = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DeleteRouteCommand({
-          RouteTableId: routeTableId,
-          DestinationCidrBlock: destinationCidrBlock,
+        RouteTableId: routeTableId,
+        DestinationCidrBlock: destinationCidrBlock,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete a route from a route table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a route from a route table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

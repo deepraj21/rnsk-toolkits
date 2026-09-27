@@ -25,9 +25,15 @@ export const awsCreateAutoscalingGroup = tool({
     placementGroup: z.string().optional().describe('Placement group name'),
     vpcZoneIdentifier: z.string().optional().describe('VPC zone identifier'),
     terminationPolicies: z.array(z.string()).optional().describe('Termination policies'),
-    newInstancesProtectedFromScaleIn: z.boolean().optional().describe('Whether new instances are protected from scale in'),
+    newInstancesProtectedFromScaleIn: z
+      .boolean()
+      .optional()
+      .describe('Whether new instances are protected from scale in'),
     capacityRebalance: z.boolean().optional().describe('Whether capacity rebalancing is enabled'),
-    lifecycleHookSpecificationList: z.array(z.record(z.any())).optional().describe('Lifecycle hook specifications'),
+    lifecycleHookSpecificationList: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Lifecycle hook specifications'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply'),
     serviceLinkedRoleARN: z.string().optional().describe('Service linked role ARN'),
     maxInstanceLifetime: z.number().optional().describe('Maximum instance lifetime'),
@@ -35,7 +41,36 @@ export const awsCreateAutoscalingGroup = tool({
     desiredCapacityType: z.string().optional().describe('Desired capacity type'),
     defaultInstanceWarmup: z.number().optional().describe('Default instance warmup'),
   }),
-  execute: async ({ awsCredentials, region, autoScalingGroupName, launchConfigurationName, launchTemplate, mixedInstancesPolicy, instanceId, minSize, maxSize, desiredCapacity, defaultCooldown, availabilityZones, loadBalancerNames, targetGroupARNs, healthCheckType, healthCheckGracePeriod, placementGroup, vpcZoneIdentifier, terminationPolicies, newInstancesProtectedFromScaleIn, capacityRebalance, lifecycleHookSpecificationList, tags, serviceLinkedRoleARN, maxInstanceLifetime, context, desiredCapacityType, defaultInstanceWarmup }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    autoScalingGroupName,
+    launchConfigurationName,
+    launchTemplate,
+    mixedInstancesPolicy,
+    instanceId,
+    minSize,
+    maxSize,
+    desiredCapacity,
+    defaultCooldown,
+    availabilityZones,
+    loadBalancerNames,
+    targetGroupARNs,
+    healthCheckType,
+    healthCheckGracePeriod,
+    placementGroup,
+    vpcZoneIdentifier,
+    terminationPolicies,
+    newInstancesProtectedFromScaleIn,
+    capacityRebalance,
+    lifecycleHookSpecificationList,
+    tags,
+    serviceLinkedRoleARN,
+    maxInstanceLifetime,
+    context,
+    desiredCapacityType,
+    defaultInstanceWarmup,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -43,40 +78,43 @@ export const awsCreateAutoscalingGroup = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new CreateAutoScalingGroupCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          LaunchConfigurationName: launchConfigurationName,
-          LaunchTemplate: launchTemplate,
-          MixedInstancesPolicy: mixedInstancesPolicy,
-          InstanceId: instanceId,
-          MinSize: minSize,
-          MaxSize: maxSize,
-          DesiredCapacity: desiredCapacity,
-          DefaultCooldown: defaultCooldown,
-          AvailabilityZones: availabilityZones,
-          LoadBalancerNames: loadBalancerNames,
-          TargetGroupARNs: targetGroupARNs,
-          HealthCheckType: healthCheckType,
-          HealthCheckGracePeriod: healthCheckGracePeriod,
-          PlacementGroup: placementGroup,
-          VPCZoneIdentifier: vpcZoneIdentifier,
-          TerminationPolicies: terminationPolicies,
-          NewInstancesProtectedFromScaleIn: newInstancesProtectedFromScaleIn,
-          CapacityRebalance: capacityRebalance,
-          LifecycleHookSpecificationList: lifecycleHookSpecificationList,
-          Tags: tags,
-          ServiceLinkedRoleARN: serviceLinkedRoleARN,
-          MaxInstanceLifetime: maxInstanceLifetime,
-          Context: context,
-          DesiredCapacityType: desiredCapacityType,
-          DefaultInstanceWarmup: defaultInstanceWarmup,
+        AutoScalingGroupName: autoScalingGroupName,
+        LaunchConfigurationName: launchConfigurationName,
+        LaunchTemplate: launchTemplate,
+        MixedInstancesPolicy: mixedInstancesPolicy,
+        InstanceId: instanceId,
+        MinSize: minSize,
+        MaxSize: maxSize,
+        DesiredCapacity: desiredCapacity,
+        DefaultCooldown: defaultCooldown,
+        AvailabilityZones: availabilityZones,
+        LoadBalancerNames: loadBalancerNames,
+        TargetGroupARNs: targetGroupARNs,
+        HealthCheckType: healthCheckType,
+        HealthCheckGracePeriod: healthCheckGracePeriod,
+        PlacementGroup: placementGroup,
+        VPCZoneIdentifier: vpcZoneIdentifier,
+        TerminationPolicies: terminationPolicies,
+        NewInstancesProtectedFromScaleIn: newInstancesProtectedFromScaleIn,
+        CapacityRebalance: capacityRebalance,
+        LifecycleHookSpecificationList: lifecycleHookSpecificationList,
+        Tags: tags,
+        ServiceLinkedRoleARN: serviceLinkedRoleARN,
+        MaxInstanceLifetime: maxInstanceLifetime,
+        Context: context,
+        DesiredCapacityType: desiredCapacityType,
+        DefaultInstanceWarmup: defaultInstanceWarmup,
       } as any);
       await client.send(command);
       return {
-                  success: true,
-                  message: `Auto Scaling group ${autoScalingGroupName} created successfully`,
-              };
+        success: true,
+        message: `Auto Scaling group ${autoScalingGroupName} created successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new Auto Scaling group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new Auto Scaling group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

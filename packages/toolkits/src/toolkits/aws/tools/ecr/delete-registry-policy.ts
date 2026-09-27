@@ -19,11 +19,14 @@ export const awsDeleteRegistryPolicy = tool({
       const command = new DeleteRegistryPolicyCommand({});
       const response = await client.send(command);
       return {
-                  registryId: response.registryId,
-                  policyText: response.policyText,
-              };
+        registryId: response.registryId,
+        policyText: response.policyText,
+      };
     } catch (err) {
-      return { error: 'Failed to delete the registry policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete the registry policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

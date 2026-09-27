@@ -4,7 +4,8 @@ import { DescribeTaskSetsCommand } from '@aws-sdk/client-ecs';
 import { createEcsClient } from '../client.js';
 
 export const awsListEcsTaskSets = tool({
-  description: 'List all task sets in a service (uses DescribeTaskSetsCommand). Use it to inspect current state before making changes.',
+  description:
+    'List all task sets in a service (uses DescribeTaskSetsCommand). Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -23,21 +24,25 @@ export const awsListEcsTaskSets = tool({
       // Use DescribeTaskSetsCommand without specifying taskSets to list all
       // Note: DescribeTaskSetsCommand doesn't support maxResults/nextToken, so we list all
       const command = new DescribeTaskSetsCommand({
-          cluster: cluster,
-          service: service,
+        cluster: cluster,
+        service: service,
       });
       const response = await client.send(command);
       return {
-                  taskSets: response.taskSets?.map((ts: any) => ({
-                      taskSetArn: ts.taskSetArn,
-                      taskSetId: ts.id,
-                      status: ts.status,
-                      createdAt: ts.createdAt,
-                  })) || [],
-                  failures: response.failures || [],
-              };
+        taskSets:
+          response.taskSets?.map((ts: any) => ({
+            taskSetArn: ts.taskSetArn,
+            taskSetId: ts.id,
+            status: ts.status,
+            createdAt: ts.createdAt,
+          })) || [],
+        failures: response.failures || [],
+      };
     } catch (err) {
-      return { error: 'Failed to list all task sets in a service (uses DescribeTaskSetsCommand)', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all task sets in a service (uses DescribeTaskSetsCommand)',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

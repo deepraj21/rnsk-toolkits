@@ -19,15 +19,18 @@ export const awsDeleteEksPodIdentityAssociation = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DeletePodIdentityAssociationCommand({
-          clusterName: clusterName,
-          associationId: associationId,
+        clusterName: clusterName,
+        associationId: associationId,
       });
       const response = await client.send(command);
       return {
-                  association: response.association,
-              };
+        association: response.association,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a pod identity association', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a pod identity association',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

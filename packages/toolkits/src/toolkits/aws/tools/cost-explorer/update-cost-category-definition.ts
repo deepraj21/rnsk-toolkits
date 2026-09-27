@@ -15,7 +15,16 @@ export const awsUpdateCostCategoryDefinition = tool({
     splitChargeRules: z.array(z.record(z.any())).optional().describe('The split charge rules'),
     resourceTags: z.array(z.record(z.any())).optional().describe('Resource tags'),
   }),
-  execute: async ({ awsCredentials, region, costCategoryArn, ruleVersion, rules, defaultValue, splitChargeRules, resourceTags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    costCategoryArn,
+    ruleVersion,
+    rules,
+    defaultValue,
+    splitChargeRules,
+    resourceTags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,19 +32,22 @@ export const awsUpdateCostCategoryDefinition = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new UpdateCostCategoryDefinitionCommand({
-          CostCategoryArn: costCategoryArn,
-          RuleVersion: ruleVersion,
-          Rules: rules,
-          DefaultValue: defaultValue,
-          SplitChargeRules: splitChargeRules,
+        CostCategoryArn: costCategoryArn,
+        RuleVersion: ruleVersion,
+        Rules: rules,
+        DefaultValue: defaultValue,
+        SplitChargeRules: splitChargeRules,
       } as any);
       const response = await client.send(command);
       return {
-                  costCategoryArn: response.CostCategoryArn,
-                  effectiveStart: response.EffectiveStart,
-              };
+        costCategoryArn: response.CostCategoryArn,
+        effectiveStart: response.EffectiveStart,
+      };
     } catch (err) {
-      return { error: 'Failed to updates an existing Cost Category', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to updates an existing Cost Category',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

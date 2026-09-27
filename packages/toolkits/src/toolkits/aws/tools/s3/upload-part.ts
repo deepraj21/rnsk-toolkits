@@ -21,11 +21,20 @@ export const awsUploadS3Part = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new UploadPartCommand({ Bucket: bucket, Key: key, UploadId: uploadId, PartNumber: partNumber, Body: body });
+      const command = new UploadPartCommand({
+        Bucket: bucket,
+        Key: key,
+        UploadId: uploadId,
+        PartNumber: partNumber,
+        Body: body,
+      });
       const response = await client.send(command);
       return { etag: response.ETag, partNumber };
     } catch (err) {
-      return { error: 'Failed to upload a part in a multipart upload', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to upload a part in a multipart upload',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -20,17 +20,20 @@ export const awsUpdateCloudfrontOriginAccessIdentity = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdateCloudFrontOriginAccessIdentityCommand({
-          CloudFrontOriginAccessIdentityConfig: originAccessIdentityConfig,
-          Id: id,
-          IfMatch: ifMatch,
+        CloudFrontOriginAccessIdentityConfig: originAccessIdentityConfig,
+        Id: id,
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  cloudFrontOriginAccessIdentity: response.CloudFrontOriginAccessIdentity,
-                  eTag: response.ETag,
-              };
+        cloudFrontOriginAccessIdentity: response.CloudFrontOriginAccessIdentity,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront origin access identity', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront origin access identity',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

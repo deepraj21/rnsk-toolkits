@@ -18,14 +18,17 @@ export const awsDeleteRestApi = tool({
       const client = createApiGatewayClient(awsCredentials, region);
 
       const command = new DeleteRestApiCommand({
-          restApiId: restApiId,
+        restApiId: restApiId,
       });
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the specified API', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes the specified API',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

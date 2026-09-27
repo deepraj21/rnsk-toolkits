@@ -10,7 +10,16 @@ export const awsPutCodepipelineThirdPartyJobFailureResult = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     jobId: z.string().describe('Job ID'),
     clientToken: z.string().describe('Client token for idempotency'),
-    failureDetails: z.enum(['JobFailed', 'ConfigurationError', 'PermissionError', 'RevisionOutOfSync', 'RevisionUnavailable', 'SystemUnavailable']).describe('Failure details'),
+    failureDetails: z
+      .enum([
+        'JobFailed',
+        'ConfigurationError',
+        'PermissionError',
+        'RevisionOutOfSync',
+        'RevisionUnavailable',
+        'SystemUnavailable',
+      ])
+      .describe('Failure details'),
   }),
   execute: async ({ awsCredentials, region, jobId, clientToken, failureDetails }) => {
     if (!awsCredentials) {
@@ -20,16 +29,19 @@ export const awsPutCodepipelineThirdPartyJobFailureResult = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new PutThirdPartyJobFailureResultCommand({
-          jobId: jobId,
-          clientToken: clientToken,
-          failureDetails: failureDetails,
+        jobId: jobId,
+        clientToken: clientToken,
+        failureDetails: failureDetails,
       } as any);
       await client.send(command);
       return {
-                  message: 'Third-party job failure result submitted successfully',
-              };
+        message: 'Third-party job failure result submitted successfully',
+      };
     } catch (err) {
-      return { error: 'Failed to put failure result for a third-party job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to put failure result for a third-party job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

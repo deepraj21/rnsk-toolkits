@@ -14,7 +14,15 @@ export const awsCreateEfsAccessPoint = tool({
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the access point'),
     clientToken: z.string().optional().describe('Client token for idempotency'),
   }),
-  execute: async ({ awsCredentials, region, fileSystemId, posixUser, rootDirectory, tags, clientToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    fileSystemId,
+    posixUser,
+    rootDirectory,
+    tags,
+    clientToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,18 +30,21 @@ export const awsCreateEfsAccessPoint = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new CreateAccessPointCommand({
-          FileSystemId: fileSystemId,
-          PosixUser: posixUser,
-          RootDirectory: rootDirectory,
-          Tags: tags,
-          ClientToken: clientToken,
+        FileSystemId: fileSystemId,
+        PosixUser: posixUser,
+        RootDirectory: rootDirectory,
+        Tags: tags,
+        ClientToken: clientToken,
       } as any);
       const response = await client.send(command);
       return {
-                  accessPoint: response,
-              };
+        accessPoint: response,
+      };
     } catch (err) {
-      return { error: 'Failed to create an access point for an EFS file system', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an access point for an EFS file system',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -12,7 +12,13 @@ export const awsCopyDbSnapshot = tool({
     targetDBSnapshotIdentifier: z.string().describe('Target snapshot identifier'),
     copyTags: z.boolean().optional().describe('Copy tags from source snapshot'),
   }),
-  execute: async ({ awsCredentials, region, sourceDBSnapshotIdentifier, targetDBSnapshotIdentifier, copyTags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    sourceDBSnapshotIdentifier,
+    targetDBSnapshotIdentifier,
+    copyTags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +26,17 @@ export const awsCopyDbSnapshot = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new CopyDBSnapshotCommand({
-          SourceDBSnapshotIdentifier: sourceDBSnapshotIdentifier,
-          TargetDBSnapshotIdentifier: targetDBSnapshotIdentifier,
-          CopyTags: copyTags,
+        SourceDBSnapshotIdentifier: sourceDBSnapshotIdentifier,
+        TargetDBSnapshotIdentifier: targetDBSnapshotIdentifier,
+        CopyTags: copyTags,
       });
       const response = await client.send(command);
       return response.DBSnapshot;
     } catch (err) {
-      return { error: 'Failed to copy an RDS snapshot across regions or accounts', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to copy an RDS snapshot across regions or accounts',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,12 +18,15 @@ export const awsDeleteCacheParameterGroup = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new DeleteCacheParameterGroupCommand({
-          CacheParameterGroupName: cacheParameterGroupName,
+        CacheParameterGroupName: cacheParameterGroupName,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete a cache parameter group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a cache parameter group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

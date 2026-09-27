@@ -18,15 +18,18 @@ export const awsDeleteSnsEndpoint = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new DeleteEndpointCommand({
-          EndpointArn: endpointArn,
+        EndpointArn: endpointArn,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Endpoint ${endpointArn} deleted successfully`,
-              };
+        success: true,
+        message: `Endpoint ${endpointArn} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a platform endpoint', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a platform endpoint',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

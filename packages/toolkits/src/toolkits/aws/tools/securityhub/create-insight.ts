@@ -10,7 +10,9 @@ export const awsCreateInsight = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     name: z.string().describe('Name of the insight'),
     filters: z.record(z.any()).describe('Filters to identify findings for the insight'),
-    groupByAttribute: z.string().describe('Attribute to group findings by (e.g., ResourceId, SeverityLabel)'),
+    groupByAttribute: z
+      .string()
+      .describe('Attribute to group findings by (e.g., ResourceId, SeverityLabel)'),
   }),
   execute: async ({ awsCredentials, region, name, filters, groupByAttribute }) => {
     if (!awsCredentials) {
@@ -20,14 +22,17 @@ export const awsCreateInsight = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new CreateInsightCommand({
-          Name: name,
-          Filters: filters,
-          GroupByAttribute: groupByAttribute,
+        Name: name,
+        Filters: filters,
+        GroupByAttribute: groupByAttribute,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to create a custom insight to group findings', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a custom insight to group findings',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

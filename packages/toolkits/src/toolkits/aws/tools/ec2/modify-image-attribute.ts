@@ -21,15 +21,18 @@ export const awsModifyEc2ImageAttribute = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new ModifyImageAttributeCommand({
-          ImageId: imageId,
-          Attribute: attribute,
-          OperationType: operationType as any,
-          UserIds: userIds,
+        ImageId: imageId,
+        Attribute: attribute,
+        OperationType: operationType as any,
+        UserIds: userIds,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to modify an attribute of an EC2 AMI', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify an attribute of an EC2 AMI',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

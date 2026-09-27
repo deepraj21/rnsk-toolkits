@@ -20,16 +20,19 @@ export const awsAssociateRoute53VpcWithHostedZone = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new AssociateVPCWithHostedZoneCommand({
-          HostedZoneId: hostedZoneId,
-          VPC: vpc,
-          Comment: comment,
+        HostedZoneId: hostedZoneId,
+        VPC: vpc,
+        Comment: comment,
       });
       const response = await client.send(command);
       return {
-                  changeInfo: response.ChangeInfo,
-              };
+        changeInfo: response.ChangeInfo,
+      };
     } catch (err) {
-      return { error: 'Failed to associate a VPC with a hosted zone', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to associate a VPC with a hosted zone',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

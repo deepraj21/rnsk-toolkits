@@ -100,7 +100,11 @@ export function createMetaTools(ctx: MetaToolContext) {
     execute: async ({ toolName }) => {
       const entry = runtime.registry.get(toolName);
       if (!entry) {
-        return { error: 'Tool not found', toolName, availableTools: runtime.registry.getToolNames() };
+        return {
+          error: 'Tool not found',
+          toolName,
+          availableTools: runtime.registry.getToolNames(),
+        };
       }
       if (!inScope(entry.toolkitId)) {
         return {
@@ -114,7 +118,12 @@ export function createMetaTools(ctx: MetaToolContext) {
       if (manifest?.auth.type === 'service_env') {
         const status = getToolkitStatus(manifest, runtime.credentials);
         if (!status.ready) {
-          return { authenticated: false, toolName, reason: 'toolkit_unconfigured', message: status.hint };
+          return {
+            authenticated: false,
+            toolName,
+            reason: 'toolkit_unconfigured',
+            message: status.hint,
+          };
         }
       }
       if (!entry.requiredAuth) {
@@ -142,7 +151,11 @@ export function createMetaTools(ctx: MetaToolContext) {
     execute: async ({ provider }) => {
       const manifest = findToolkitForProvider(provider);
       if (!manifest) {
-        return { error: 'unknown_provider', provider, message: `No toolkit matches "${provider}".` };
+        return {
+          error: 'unknown_provider',
+          provider,
+          message: `No toolkit matches "${provider}".`,
+        };
       }
       if (!inScope(manifest.id)) {
         return {

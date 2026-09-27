@@ -20,17 +20,20 @@ export const awsUpdateCloudfrontPublicKey = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdatePublicKeyCommand({
-          PublicKeyConfig: publicKeyConfig,
-          Id: id,
-          IfMatch: ifMatch,
+        PublicKeyConfig: publicKeyConfig,
+        Id: id,
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  publicKey: response.PublicKey,
-                  eTag: response.ETag,
-              };
+        publicKey: response.PublicKey,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront public key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront public key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

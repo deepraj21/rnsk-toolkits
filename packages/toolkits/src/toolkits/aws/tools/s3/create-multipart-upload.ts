@@ -20,11 +20,19 @@ export const awsCreateS3MultipartUpload = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new CreateMultipartUploadCommand({ Bucket: bucket, Key: key, ContentType: contentType, Metadata: metadata });
+      const command = new CreateMultipartUploadCommand({
+        Bucket: bucket,
+        Key: key,
+        ContentType: contentType,
+        Metadata: metadata,
+      });
       const response = await client.send(command);
       return { uploadId: response.UploadId, bucket: response.Bucket, key: response.Key };
     } catch (err) {
-      return { error: 'Failed to initiate a multipart upload to S3', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to initiate a multipart upload to S3',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

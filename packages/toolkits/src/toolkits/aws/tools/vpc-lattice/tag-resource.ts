@@ -19,16 +19,19 @@ export const awsTagVpcLatticeResource = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          resourceArn: resourceArn,
-          tags: tags,
+        resourceArn: resourceArn,
+        tags: tags,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags added successfully to resource ${resourceArn}`,
-              };
+        success: true,
+        message: `Tags added successfully to resource ${resourceArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to a VPC Lattice resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a VPC Lattice resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

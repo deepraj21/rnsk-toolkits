@@ -11,7 +11,10 @@ export interface MetricStatisticsQuery {
 }
 
 /** Shared GetMetricStatistics fetch used by metric tools (avoids MCP round-trips). */
-export async function fetchMetricStatistics(client: CloudWatchClient, query: MetricStatisticsQuery) {
+export async function fetchMetricStatistics(
+  client: CloudWatchClient,
+  query: MetricStatisticsQuery,
+) {
   const response = await client.send(
     new GetMetricStatisticsCommand({
       Namespace: query.namespace,

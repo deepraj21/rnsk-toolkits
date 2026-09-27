@@ -19,13 +19,16 @@ export const awsExecuteCloudformationChangeset = tool({
       const client = createCloudFormationClient(awsCredentials, region);
 
       const command = new ExecuteChangeSetCommand({
-          StackName: stackName,
-          ChangeSetName: changeSetName,
+        StackName: stackName,
+        ChangeSetName: changeSetName,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to execute a CloudFormation change set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to execute a CloudFormation change set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

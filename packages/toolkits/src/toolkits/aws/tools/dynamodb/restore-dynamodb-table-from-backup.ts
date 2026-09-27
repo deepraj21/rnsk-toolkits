@@ -19,13 +19,16 @@ export const awsRestoreDynamodbTableFromBackup = tool({
       const client = createDynamoDbClient(awsCredentials, region);
 
       const command = new RestoreTableFromBackupCommand({
-          TargetTableName: targetTableName,
-          BackupArn: backupArn,
+        TargetTableName: targetTableName,
+        BackupArn: backupArn,
       });
       const response = await client.send(command);
       return response.TableDescription;
     } catch (err) {
-      return { error: 'Failed to restore a DynamoDB table from a backup', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to restore a DynamoDB table from a backup',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

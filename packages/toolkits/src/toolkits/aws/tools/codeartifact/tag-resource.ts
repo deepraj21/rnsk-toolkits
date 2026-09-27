@@ -19,16 +19,19 @@ export const awsTagCodeartifactResource = tool({
       const client = createCodeArtifactClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          resourceArn: resourceArn,
-          tags: tags,
+        resourceArn: resourceArn,
+        tags: tags,
       } as any);
       await client.send(command);
       return {
-                  message: 'Tags applied successfully',
-                  resourceArn: resourceArn,
-              };
+        message: 'Tags applied successfully',
+        resourceArn: resourceArn,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to a CodeArtifact resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a CodeArtifact resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

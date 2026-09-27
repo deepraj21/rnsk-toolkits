@@ -14,7 +14,15 @@ export const awsDescribeAutoscalingPolicies = tool({
     nextToken: z.string().optional().describe('Token for pagination'),
     maxRecords: z.number().optional().describe('Maximum number of records to return'),
   }),
-  execute: async ({ awsCredentials, region, autoScalingGroupName, policyNames, policyTypes, nextToken, maxRecords }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    autoScalingGroupName,
+    policyNames,
+    policyTypes,
+    nextToken,
+    maxRecords,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,19 +30,22 @@ export const awsDescribeAutoscalingPolicies = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DescribePoliciesCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          PolicyNames: policyNames,
-          PolicyTypes: policyTypes,
-          NextToken: nextToken,
-          MaxRecords: maxRecords,
+        AutoScalingGroupName: autoScalingGroupName,
+        PolicyNames: policyNames,
+        PolicyTypes: policyTypes,
+        NextToken: nextToken,
+        MaxRecords: maxRecords,
       });
       const response = await client.send(command);
       return {
-                  scalingPolicies: response.ScalingPolicies,
-                  nextToken: response.NextToken,
-              };
+        scalingPolicies: response.ScalingPolicies,
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to describe scaling policies', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe scaling policies',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

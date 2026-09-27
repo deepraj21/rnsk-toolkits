@@ -10,7 +10,10 @@ export const awsDeleteRepository = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     repositoryName: z.string().describe('The name of the repository to delete'),
     registryId: z.string().optional().describe('AWS account ID associated with the registry'),
-    force: z.boolean().optional().describe('If true, force delete the repository even if it contains images'),
+    force: z
+      .boolean()
+      .optional()
+      .describe('If true, force delete the repository even if it contains images'),
   }),
   execute: async ({ awsCredentials, region, repositoryName, registryId, force }) => {
     if (!awsCredentials) {
@@ -20,22 +23,27 @@ export const awsDeleteRepository = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new DeleteRepositoryCommand({
-          repositoryName: repositoryName,
-          registryId: registryId,
-          force: force,
+        repositoryName: repositoryName,
+        registryId: registryId,
+        force: force,
       });
       const response = await client.send(command);
       return {
-                  repository: response.repository ? {
-                      repositoryName: response.repository.repositoryName,
-                      repositoryArn: response.repository.repositoryArn,
-                      registryId: response.repository.registryId,
-                      repositoryUri: response.repository.repositoryUri,
-                      createdAt: response.repository.createdAt,
-                  } : null,
-              };
+        repository: response.repository
+          ? {
+              repositoryName: response.repository.repositoryName,
+              repositoryArn: response.repository.repositoryArn,
+              registryId: response.repository.registryId,
+              repositoryUri: response.repository.repositoryUri,
+              createdAt: response.repository.createdAt,
+            }
+          : null,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an ECR repository', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an ECR repository',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

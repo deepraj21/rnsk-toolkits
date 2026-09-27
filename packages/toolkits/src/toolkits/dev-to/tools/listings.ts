@@ -6,11 +6,23 @@ import { devToRequest, toDevToError, requireApiKey } from './client.js';
 const apiKeyField = z.string().optional().describe('Injected by system; do not provide');
 
 const listingCategory = z
-  .enum(['cfp', 'education', 'jobs', 'mentors', 'products', 'mentees', 'forsale', 'events', 'collabs', 'misc'])
+  .enum([
+    'cfp',
+    'education',
+    'jobs',
+    'mentors',
+    'products',
+    'mentees',
+    'forsale',
+    'events',
+    'collabs',
+    'misc',
+  ])
   .describe('Listing category');
 
 export const devToGetListing = tool({
-  description: 'Get a single classified listing by ID, including title, body, category, and poster info.',
+  description:
+    'Get a single classified listing by ID, including title, body, category, and poster info.',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     id: z.number().int().describe('The ID of the listing'),
@@ -25,12 +37,19 @@ export const devToGetListing = tool({
 });
 
 export const devToListListings = tool({
-  description: 'List classified listings (jobs, mentors, products, events, etc.), optionally filtered by category.',
+  description:
+    'List classified listings (jobs, mentors, products, events, etc.), optionally filtered by category.',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     category: listingCategory.optional().describe('Filter by category'),
     page: z.number().int().min(1).optional().describe('Page number for pagination'),
-    perPage: z.number().int().min(1).max(100).optional().describe('Items per page (default 30, max 100)'),
+    perPage: z
+      .number()
+      .int()
+      .min(1)
+      .max(100)
+      .optional()
+      .describe('Items per page (default 30, max 100)'),
   }),
   execute: async ({ devToApiKey, perPage, ...rest }) => {
     try {
@@ -44,20 +63,32 @@ export const devToListListings = tool({
 });
 
 export const devToListListingsByCategory = tool({
-  description: 'List classified listings for one specific category (jobs, mentors, products, events, etc.).',
+  description:
+    'List classified listings for one specific category (jobs, mentors, products, events, etc.).',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     category: listingCategory,
     page: z.number().int().min(1).optional().describe('Page number for pagination'),
-    perPage: z.number().int().min(1).max(100).optional().describe('Items per page (default 30, max 100)'),
+    perPage: z
+      .number()
+      .int()
+      .min(1)
+      .max(100)
+      .optional()
+      .describe('Items per page (default 30, max 100)'),
   }),
   execute: async ({ devToApiKey, category, perPage, ...rest }) => {
     try {
       const query: Record<string, unknown> = { ...rest };
       if (perPage !== undefined) query.per_page = perPage;
-      return await devToRequest(devToApiKey, 'GET', `/listings/category/${encodeURIComponent(category)}`, {
-        query,
-      });
+      return await devToRequest(
+        devToApiKey,
+        'GET',
+        `/listings/category/${encodeURIComponent(category)}`,
+        {
+          query,
+        },
+      );
     } catch (error) {
       return toDevToError(error, 'Failed to list listings by category');
     }

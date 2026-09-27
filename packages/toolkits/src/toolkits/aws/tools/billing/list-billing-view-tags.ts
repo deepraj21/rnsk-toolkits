@@ -4,7 +4,8 @@ import { ListTagsForResourceCommand } from '@aws-sdk/client-billing';
 import { createBillingClient } from '../client.js';
 
 export const awsListBillingViewTags = tool({
-  description: 'List tags associated with a billing view. Use it to inspect current state before making changes.',
+  description:
+    'List tags associated with a billing view. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsListBillingViewTags = tool({
       const client = createBillingClient(awsCredentials, region);
 
       const command = new ListTagsForResourceCommand({
-          resourceArn: resourceArn,
+        resourceArn: resourceArn,
       } as any);
-      const response = await client.send(command) as any;
+      const response = (await client.send(command)) as any;
       return {
-                  tags: response.tags || {},
-              };
+        tags: response.tags || {},
+      };
     } catch (err) {
-      return { error: 'Failed to list tags associated with a billing view', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list tags associated with a billing view',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

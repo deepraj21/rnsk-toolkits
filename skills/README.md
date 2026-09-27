@@ -4,8 +4,8 @@ Reusable [Agent Skills](https://agentskills.io) instructions for AI coding agent
 
 ## Available skills
 
-| Skill | Purpose |
-|-------|---------|
+| Skill                                           | Purpose                                        |
+| ----------------------------------------------- | ---------------------------------------------- |
 | [add-rnsk-toolkit](./add-rnsk-toolkit/SKILL.md) | Add a new toolkit or tools to `@rnsk/toolkits` |
 
 ## Install (skills.sh / Skills CLI)

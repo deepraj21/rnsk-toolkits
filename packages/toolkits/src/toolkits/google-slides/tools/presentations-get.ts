@@ -33,7 +33,11 @@ export const presentationsGet = tool({
         });
 
         if (!search.ok) {
-          return { error: 'Failed to search for presentation by name', details: search.data, statusCode: search.status };
+          return {
+            error: 'Failed to search for presentation by name',
+            details: search.data,
+            statusCode: search.status,
+          };
         }
 
         resolvedId = search.data?.files?.[0]?.id;
@@ -51,7 +55,11 @@ export const presentationsGet = tool({
       });
 
       if (!result.ok) {
-        return { error: 'Failed to get presentation', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to get presentation',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

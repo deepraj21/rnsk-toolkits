@@ -19,17 +19,20 @@ export const awsDeleteRecoveryPoint = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new DeleteRecoveryPointCommand({
-          BackupVaultName: backupVaultName,
-          RecoveryPointArn: recoveryPointArn,
+        BackupVaultName: backupVaultName,
+        RecoveryPointArn: recoveryPointArn,
       });
       await client.send(command);
       return {
-                  message: 'Recovery point deleted successfully',
-                  backupVaultName: backupVaultName,
-                  recoveryPointArn: recoveryPointArn,
-              };
+        message: 'Recovery point deleted successfully',
+        backupVaultName: backupVaultName,
+        recoveryPointArn: recoveryPointArn,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a recovery point', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a recovery point',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

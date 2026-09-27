@@ -18,14 +18,17 @@ export const awsDeleteAmplifyApp = tool({
       const client = createAmplifyClient(awsCredentials, region);
 
       const command = new DeleteAppCommand({
-          appId,
+        appId,
       });
       const response = await client.send(command);
       return {
-                  app: response.app,
-              };
+        app: response.app,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes an existing Amplify app', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes an existing Amplify app',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

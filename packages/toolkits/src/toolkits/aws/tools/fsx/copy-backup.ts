@@ -15,7 +15,16 @@ export const awsCopyFsxBackup = tool({
     copyTags: z.boolean().optional().describe('Whether to copy tags from source backup'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the copied backup'),
   }),
-  execute: async ({ awsCredentials, region, sourceBackupId, sourceRegion, clientRequestToken, kmsKeyId, copyTags, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    sourceBackupId,
+    sourceRegion,
+    clientRequestToken,
+    kmsKeyId,
+    copyTags,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,19 +32,22 @@ export const awsCopyFsxBackup = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new CopyBackupCommand({
-          SourceBackupId: sourceBackupId,
-          SourceRegion: sourceRegion,
-          ClientRequestToken: clientRequestToken,
-          KmsKeyId: kmsKeyId,
-          CopyTags: copyTags,
-          Tags: tags,
+        SourceBackupId: sourceBackupId,
+        SourceRegion: sourceRegion,
+        ClientRequestToken: clientRequestToken,
+        KmsKeyId: kmsKeyId,
+        CopyTags: copyTags,
+        Tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  backup: response.Backup,
-              };
+        backup: response.Backup,
+      };
     } catch (err) {
-      return { error: 'Failed to copy an FSx backup to another region', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to copy an FSx backup to another region',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

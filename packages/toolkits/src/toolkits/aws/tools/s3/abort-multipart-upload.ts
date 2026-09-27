@@ -19,11 +19,18 @@ export const awsAbortS3MultipartUpload = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new AbortMultipartUploadCommand({ Bucket: bucket, Key: key, UploadId: uploadId });
+      const command = new AbortMultipartUploadCommand({
+        Bucket: bucket,
+        Key: key,
+        UploadId: uploadId,
+      });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to abort a multipart upload', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to abort a multipart upload',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

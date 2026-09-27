@@ -1,10 +1,7 @@
 export { CONNECTOR_CATEGORIES, type ConnectorCategory } from './categories.js';
 export { defineToolkit, defineTool, toolkitCamelId } from './define.js';
 export { inferToolScope } from './scope.js';
-export {
-  validateManifests,
-  getAuthType,
-} from './validate.js';
+export { validateManifests, getAuthType } from './validate.js';
 export {
   TOOL_OUTPUT_JSON_SCHEMA,
   getToolInputZodSchema,

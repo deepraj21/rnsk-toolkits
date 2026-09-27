@@ -18,14 +18,17 @@ export const awsGetVpcLatticeResourcePolicy = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new GetResourcePolicyCommand({
-          resourceArn: resourceArn,
+        resourceArn: resourceArn,
       });
       const response = await client.send(command);
       return {
-                  policy: response.policy,
-              };
+        policy: response.policy,
+      };
     } catch (err) {
-      return { error: 'Failed to get a resource policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get a resource policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

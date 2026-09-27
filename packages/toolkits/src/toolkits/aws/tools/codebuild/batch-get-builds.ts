@@ -18,15 +18,18 @@ export const awsBatchGetCodebuildBuilds = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new BatchGetBuildsCommand({
-          ids: ids,
+        ids: ids,
       });
       const response = await client.send(command);
       return {
-                  builds: response.builds || [],
-                  buildsNotFound: response.buildsNotFound || [],
-              };
+        builds: response.builds || [],
+        buildsNotFound: response.buildsNotFound || [],
+      };
     } catch (err) {
-      return { error: 'Failed to get information about one or more builds', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get information about one or more builds',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

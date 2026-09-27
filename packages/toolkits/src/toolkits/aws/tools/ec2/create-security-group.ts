@@ -20,14 +20,17 @@ export const awsCreateEc2SecurityGroup = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateSecurityGroupCommand({
-          GroupName: groupName,
-          Description: description,
-          VpcId: vpcId,
+        GroupName: groupName,
+        Description: description,
+        VpcId: vpcId,
       });
       const response = await client.send(command);
       return { groupId: response.GroupId };
     } catch (err) {
-      return { error: 'Failed to create a new security group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new security group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

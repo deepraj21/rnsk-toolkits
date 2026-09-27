@@ -12,7 +12,13 @@ export const awsDeleteVpcLatticeRule = tool({
     serviceIdentifier: z.string().describe('The service identifier'),
     ruleIdentifier: z.string().describe('The rule identifier'),
   }),
-  execute: async ({ awsCredentials, region, listenerIdentifier, serviceIdentifier, ruleIdentifier }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    listenerIdentifier,
+    serviceIdentifier,
+    ruleIdentifier,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,17 +26,20 @@ export const awsDeleteVpcLatticeRule = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new DeleteRuleCommand({
-          listenerIdentifier: listenerIdentifier,
-          serviceIdentifier: serviceIdentifier,
-          ruleIdentifier: ruleIdentifier,
+        listenerIdentifier: listenerIdentifier,
+        serviceIdentifier: serviceIdentifier,
+        ruleIdentifier: ruleIdentifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Rule ${ruleIdentifier} deleted successfully`,
-              };
+        success: true,
+        message: `Rule ${ruleIdentifier} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a VPC Lattice rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a VPC Lattice rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

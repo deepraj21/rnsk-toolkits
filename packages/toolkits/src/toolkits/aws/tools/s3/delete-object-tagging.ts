@@ -19,11 +19,18 @@ export const awsDeleteS3ObjectTagging = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new DeleteObjectTaggingCommand({ Bucket: bucket, Key: key, VersionId: versionId });
+      const command = new DeleteObjectTaggingCommand({
+        Bucket: bucket,
+        Key: key,
+        VersionId: versionId,
+      });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete tags from an S3 object', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete tags from an S3 object',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

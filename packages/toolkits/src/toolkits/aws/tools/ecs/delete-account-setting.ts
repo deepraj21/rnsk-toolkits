@@ -19,15 +19,18 @@ export const awsDeleteEcsAccountSetting = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new DeleteAccountSettingCommand({
-          name: name as any,
-          principalArn: principalArn,
+        name: name as any,
+        principalArn: principalArn,
       });
       const response = await client.send(command);
       return {
-                  setting: response.setting,
-              };
+        setting: response.setting,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an account setting', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an account setting',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

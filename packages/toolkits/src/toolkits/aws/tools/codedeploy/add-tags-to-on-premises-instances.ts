@@ -19,16 +19,19 @@ export const awsAddTagsToCodedeployOnPremisesInstances = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new AddTagsToOnPremisesInstancesCommand({
-          tags: tags,
-          instanceNames: instanceNames,
+        tags: tags,
+        instanceNames: instanceNames,
       });
       await client.send(command);
       return {
-                  message: 'Tags added successfully',
-                  instanceNames: instanceNames,
-              };
+        message: 'Tags added successfully',
+        instanceNames: instanceNames,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to on-premises instances', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to on-premises instances',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

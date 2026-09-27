@@ -21,18 +21,21 @@ export const awsUpdateCloudfrontFunction = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdateFunctionCommand({
-          Name: name,
-          FunctionConfig: functionConfig,
-          FunctionCode: Buffer.from(functionCode, 'base64'),
-          IfMatch: ifMatch,
+        Name: name,
+        FunctionConfig: functionConfig,
+        FunctionCode: Buffer.from(functionCode, 'base64'),
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  functionSummary: response.FunctionSummary,
-                  eTag: response.ETag,
-              };
+        functionSummary: response.FunctionSummary,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

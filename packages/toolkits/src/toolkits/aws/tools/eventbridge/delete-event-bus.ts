@@ -18,15 +18,18 @@ export const awsDeleteEventbridgeEventBus = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new DeleteEventBusCommand({
-          Name: name,
+        Name: name,
       });
       await client.send(command);
       return {
-                  message: 'Event bus deleted successfully',
-                  name: name,
-              };
+        message: 'Event bus deleted successfully',
+        name: name,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an EventBridge event bus', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an EventBridge event bus',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

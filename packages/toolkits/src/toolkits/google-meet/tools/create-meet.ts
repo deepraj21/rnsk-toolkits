@@ -11,7 +11,9 @@ export const createMeet = tool({
     config: z
       .record(z.unknown())
       .optional()
-      .describe('Optional meeting space configuration (accessType, moderation, artifactConfig, etc.)'),
+      .describe(
+        'Optional meeting space configuration (accessType, moderation, artifactConfig, etc.)',
+      ),
   }),
   execute: async ({ googleMeetToken, config }) => {
     try {
@@ -21,7 +23,11 @@ export const createMeet = tool({
       });
 
       if (!result.ok) {
-        return { error: 'Failed to create Google Meet space', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to create Google Meet space',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

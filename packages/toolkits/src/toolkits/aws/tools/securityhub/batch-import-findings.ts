@@ -18,12 +18,15 @@ export const awsBatchImportFindings = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new BatchImportFindingsCommand({
-          Findings: findings,
+        Findings: findings,
       } as any);
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to import custom findings into Security Hub', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to import custom findings into Security Hub',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

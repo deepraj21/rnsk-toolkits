@@ -20,12 +20,15 @@ export const awsTerminateEc2Instance = tool({
       const command = new TerminateInstancesCommand({ InstanceIds: [instanceId] });
       const response = await client.send(command);
       return {
-                  success: true,
-                  currentState: response.TerminatingInstances?.[0]?.CurrentState?.Name,
-                  previousState: response.TerminatingInstances?.[0]?.PreviousState?.Name,
-              };
+        success: true,
+        currentState: response.TerminatingInstances?.[0]?.CurrentState?.Name,
+        previousState: response.TerminatingInstances?.[0]?.PreviousState?.Name,
+      };
     } catch (err) {
-      return { error: 'Failed to terminate an EC2 instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to terminate an EC2 instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsTagLambdaFunction = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          Resource: resource,
-          Tags: tags,
+        Resource: resource,
+        Tags: tags,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags added successfully to resource ${resource}`,
-              };
+        success: true,
+        message: `Tags added successfully to resource ${resource}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

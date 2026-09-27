@@ -4,7 +4,8 @@ import { EnableImportFindingsForProductCommand } from '@aws-sdk/client-securityh
 import { createSecurityHubClient } from '../client.js';
 
 export const awsEnableImportFindingsForProduct = tool({
-  description: 'Enable a product integration to send findings to Security Hub. Use it to enable a feature.',
+  description:
+    'Enable a product integration to send findings to Security Hub. Use it to enable a feature.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,12 +19,15 @@ export const awsEnableImportFindingsForProduct = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new EnableImportFindingsForProductCommand({
-          ProductArn: productArn,
+        ProductArn: productArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to enable a product integration to send findings to Security Hub', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to enable a product integration to send findings to Security Hub',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

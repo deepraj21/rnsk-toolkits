@@ -19,16 +19,19 @@ export const awsTagCloudfrontResource = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          Resource: resource,
-          Tags: tags,
+        Resource: resource,
+        Tags: tags,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags added successfully to resource ${resource}`,
-              };
+        success: true,
+        message: `Tags added successfully to resource ${resource}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to a CloudFront resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a CloudFront resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

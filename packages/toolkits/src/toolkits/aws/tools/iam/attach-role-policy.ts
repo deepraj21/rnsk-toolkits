@@ -19,13 +19,16 @@ export const awsAttachRolePolicy = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new AttachRolePolicyCommand({
-          RoleName: roleName,
-          PolicyArn: policyArn,
+        RoleName: roleName,
+        PolicyArn: policyArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to attach a managed policy to an IAM role', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to attach a managed policy to an IAM role',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

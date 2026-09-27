@@ -19,11 +19,14 @@ export const awsGetRegistryPolicy = tool({
       const command = new GetRegistryPolicyCommand({});
       const response = await client.send(command);
       return {
-                  registryId: response.registryId,
-                  policyText: response.policyText,
-              };
+        registryId: response.registryId,
+        policyText: response.policyText,
+      };
     } catch (err) {
-      return { error: 'Failed to get the registry policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get the registry policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { DeleteBackendEnvironmentCommand } from '@aws-sdk/client-amplify';
 import { createAmplifyClient } from '../client.js';
 
 export const awsDeleteAmplifyBackendEnvironment = tool({
-  description: 'Deletes a backend environment for an Amplify app. Use it to permanently remove the resource.',
+  description:
+    'Deletes a backend environment for an Amplify app. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsDeleteAmplifyBackendEnvironment = tool({
       const client = createAmplifyClient(awsCredentials, region);
 
       const command = new DeleteBackendEnvironmentCommand({
-          appId,
-          environmentName,
+        appId,
+        environmentName,
       });
       const response = await client.send(command);
       return {
-                  backendEnvironment: response.backendEnvironment,
-              };
+        backendEnvironment: response.backendEnvironment,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a backend environment for an Amplify app', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a backend environment for an Amplify app',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { ListChangedBlocksCommand } from '@aws-sdk/client-ebs';
 import { createEbsClient } from '../client.js';
 
 export const awsListEbsChangedBlocks = tool({
-  description: 'List blocks that have changed between two snapshots. Use it to inspect current state before making changes.',
+  description:
+    'List blocks that have changed between two snapshots. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -14,7 +15,15 @@ export const awsListEbsChangedBlocks = tool({
     nextToken: z.string().optional().describe('Token for pagination'),
     startingBlockIndex: z.number().optional().describe('The block index to start listing from'),
   }),
-  execute: async ({ awsCredentials, region, firstSnapshotId, secondSnapshotId, maxResults, nextToken, startingBlockIndex }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    firstSnapshotId,
+    secondSnapshotId,
+    maxResults,
+    nextToken,
+    startingBlockIndex,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,26 +31,30 @@ export const awsListEbsChangedBlocks = tool({
       const client = createEbsClient(awsCredentials, region);
 
       const command = new ListChangedBlocksCommand({
-          FirstSnapshotId: firstSnapshotId,
-          SecondSnapshotId: secondSnapshotId,
-          MaxResults: maxResults,
-          NextToken: nextToken,
-          StartingBlockIndex: startingBlockIndex,
+        FirstSnapshotId: firstSnapshotId,
+        SecondSnapshotId: secondSnapshotId,
+        MaxResults: maxResults,
+        NextToken: nextToken,
+        StartingBlockIndex: startingBlockIndex,
       });
       const response = await client.send(command);
       return {
-                  changedBlocks: response.ChangedBlocks?.map((block: any) => ({
-                      blockIndex: block.BlockIndex,
-                      firstBlockToken: block.FirstBlockToken,
-                      secondBlockToken: block.SecondBlockToken,
-                  })) || [],
-                  expiryTime: response.ExpiryTime,
-                  volumeSize: response.VolumeSize,
-                  blockSize: response.BlockSize,
-                  nextToken: response.NextToken,
-              };
+        changedBlocks:
+          response.ChangedBlocks?.map((block: any) => ({
+            blockIndex: block.BlockIndex,
+            firstBlockToken: block.FirstBlockToken,
+            secondBlockToken: block.SecondBlockToken,
+          })) || [],
+        expiryTime: response.ExpiryTime,
+        volumeSize: response.VolumeSize,
+        blockSize: response.BlockSize,
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list blocks that have changed between two snapshots', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list blocks that have changed between two snapshots',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsUntagSnsResource = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          ResourceArn: resourceArn,
-          TagKeys: tagKeys,
+        ResourceArn: resourceArn,
+        TagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags removed successfully from resource ${resourceArn}`,
-              };
+        success: true,
+        message: `Tags removed successfully from resource ${resourceArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from an SNS resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from an SNS resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -21,18 +21,21 @@ export const awsRemoveEventbridgeTargets = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new RemoveTargetsCommand({
-          Rule: rule,
-          Ids: ids,
-          EventBusName: eventBusName,
-          Force: force,
+        Rule: rule,
+        Ids: ids,
+        EventBusName: eventBusName,
+        Force: force,
       });
       const response = await client.send(command);
       return {
-                  failedEntryCount: response.FailedEntryCount,
-                  failedEntries: response.FailedEntries || [],
-              };
+        failedEntryCount: response.FailedEntryCount,
+        failedEntries: response.FailedEntries || [],
+      };
     } catch (err) {
-      return { error: 'Failed to remove targets from an EventBridge rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove targets from an EventBridge rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

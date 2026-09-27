@@ -21,17 +21,20 @@ export const awsCreateFsxBackup = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new CreateBackupCommand({
-          FileSystemId: fileSystemId,
-          ClientRequestToken: clientRequestToken,
-          Tags: tags,
-          VolumeId: volumeId,
+        FileSystemId: fileSystemId,
+        ClientRequestToken: clientRequestToken,
+        Tags: tags,
+        VolumeId: volumeId,
       } as any);
       const response = await client.send(command);
       return {
-                  backup: response.Backup,
-              };
+        backup: response.Backup,
+      };
     } catch (err) {
-      return { error: 'Failed to create a backup of an FSx file system', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a backup of an FSx file system',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

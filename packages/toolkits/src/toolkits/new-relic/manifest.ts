@@ -6,7 +6,8 @@ import { newRelicTools } from './tools/index.js';
 export default defineToolkit({
   id: 'new-relic',
   displayName: 'New Relic',
-  shortDescription: 'Monitor with NRQL, manage alerts, dashboards, synthetics, entities, and ingest events.',
+  shortDescription:
+    'Monitor with NRQL, manage alerts, dashboards, synthetics, entities, and ingest events.',
   category: 'Developer Tools & DevOps',
   icon: NEW_RELIC_ICON,
   auth: {
@@ -39,6 +40,7 @@ export default defineToolkit({
   meta: {
     since: '0.0.8',
     homepage: 'https://newrelic.com',
-    docsUrl: 'https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph/',
+    docsUrl:
+      'https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph/',
   },
 });

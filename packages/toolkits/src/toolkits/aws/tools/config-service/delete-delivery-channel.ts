@@ -18,15 +18,18 @@ export const awsDeleteDeliveryChannel = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DeleteDeliveryChannelCommand({
-          DeliveryChannelName: deliveryChannelName,
+        DeliveryChannelName: deliveryChannelName,
       });
       await client.send(command);
       return {
-                  message: 'Delivery channel deleted successfully',
-                  deliveryChannelName: deliveryChannelName,
-              };
+        message: 'Delivery channel deleted successfully',
+        deliveryChannelName: deliveryChannelName,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the delivery channel', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes the delivery channel',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

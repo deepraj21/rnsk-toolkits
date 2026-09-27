@@ -9,7 +9,10 @@ export const awsDeleteAutoscalingGroup = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     autoScalingGroupName: z.string().describe('The name of the Auto Scaling group'),
-    forceDelete: z.boolean().optional().describe('Whether to force delete even if instances are running'),
+    forceDelete: z
+      .boolean()
+      .optional()
+      .describe('Whether to force delete even if instances are running'),
   }),
   execute: async ({ awsCredentials, region, autoScalingGroupName, forceDelete }) => {
     if (!awsCredentials) {
@@ -19,16 +22,19 @@ export const awsDeleteAutoscalingGroup = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DeleteAutoScalingGroupCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          ForceDelete: forceDelete,
+        AutoScalingGroupName: autoScalingGroupName,
+        ForceDelete: forceDelete,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Auto Scaling group ${autoScalingGroupName} deleted successfully`,
-              };
+        success: true,
+        message: `Auto Scaling group ${autoScalingGroupName} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an Auto Scaling group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an Auto Scaling group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

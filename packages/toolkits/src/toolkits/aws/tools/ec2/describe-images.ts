@@ -20,17 +20,22 @@ export const awsDescribeEc2Images = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribeImagesCommand({
-          ImageIds: imageIds,
-          Filters: filters ? Object.entries(filters).map(([name, values]) => ({
+        ImageIds: imageIds,
+        Filters: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
-          Owners: owners,
+            }))
+          : undefined,
+        Owners: owners,
       });
       const response = await client.send(command);
       return { images: response.Images };
     } catch (err) {
-      return { error: 'Failed to describe EC2 images (AMIs)', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe EC2 images (AMIs)',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

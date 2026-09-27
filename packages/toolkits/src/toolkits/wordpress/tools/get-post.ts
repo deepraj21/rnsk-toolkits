@@ -4,14 +4,16 @@ import { z } from 'zod';
 import { wpFetch } from './utils.js';
 
 export const wordpressGetPost = tool({
-  description: 'Get one post by ID in editable context, including raw content and its current status.',
+  description:
+    'Get one post by ID in editable context, including raw content and its current status.',
   inputSchema: z.object({
     wordpressToken: z.string().describe('WordPress.com OAuth access token.'),
     siteId: z.number().describe('Numeric site ID returned by WORDPRESS_COM_LIST_SITES.'),
     postId: z.number().describe('Post ID returned by create, list, or search.'),
   }),
   execute: async ({ wordpressToken, siteId, postId }) => {
-    if (!wordpressToken) return { error: 'WordPress token is required. Connect WordPress.com first.' };
+    if (!wordpressToken)
+      return { error: 'WordPress token is required. Connect WordPress.com first.' };
     try {
       const res = await wpFetch(`/rest/v1.1/sites/${siteId}/posts/${postId}`, {
         wordpressToken,
@@ -39,7 +41,10 @@ export const wordpressGetPost = tool({
         },
       };
     } catch (e) {
-      return { error: 'Error getting post', message: e instanceof Error ? e.message : 'Unknown error' };
+      return {
+        error: 'Error getting post',
+        message: e instanceof Error ? e.message : 'Unknown error',
+      };
     }
   },
 });

@@ -21,15 +21,18 @@ export const awsWriteS3GetObjectResponse = tool({
       const client = createS3Client(awsCredentials, region);
 
       const command = new WriteGetObjectResponseCommand({
-          RequestRoute: requestRoute,
-          RequestToken: requestToken,
-          Body: body,
-          StatusCode: statusCode,
+        RequestRoute: requestRoute,
+        RequestToken: requestToken,
+        Body: body,
+        StatusCode: statusCode,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to write a response to a GetObject request (used with S3 Object Lambda)', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to write a response to a GetObject request (used with S3 Object Lambda)',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

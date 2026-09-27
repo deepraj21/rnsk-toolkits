@@ -19,11 +19,18 @@ export const awsGetS3ObjectTagging = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new GetObjectTaggingCommand({ Bucket: bucket, Key: key, VersionId: versionId });
+      const command = new GetObjectTaggingCommand({
+        Bucket: bucket,
+        Key: key,
+        VersionId: versionId,
+      });
       const response = await client.send(command);
       return { tags: response.TagSet };
     } catch (err) {
-      return { error: 'Failed to get tags for an S3 object', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get tags for an S3 object',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

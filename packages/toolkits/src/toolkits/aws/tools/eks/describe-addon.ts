@@ -19,15 +19,18 @@ export const awsDescribeEksAddon = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DescribeAddonCommand({
-          clusterName: clusterName,
-          addonName: addonName,
+        clusterName: clusterName,
+        addonName: addonName,
       });
       const response = await client.send(command);
       return {
-                  addon: response.addon,
-              };
+        addon: response.addon,
+      };
     } catch (err) {
-      return { error: 'Failed to get details about an addon', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about an addon',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

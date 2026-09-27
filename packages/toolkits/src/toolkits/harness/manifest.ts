@@ -5,7 +5,8 @@ import { harnessTools } from './tools/index.js';
 export default defineToolkit({
   id: 'harness',
   displayName: 'Harness',
-  shortDescription: 'Pipelines, executions, services, environments, connectors, secrets, triggers, feature flags, SLOs and CI builds via the Harness REST API.',
+  shortDescription:
+    'Pipelines, executions, services, environments, connectors, secrets, triggers, feature flags, SLOs and CI builds via the Harness REST API.',
   category: 'Developer Tools & DevOps',
   icon: HARNESS_ICON,
   auth: {

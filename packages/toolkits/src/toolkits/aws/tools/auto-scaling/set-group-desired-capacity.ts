@@ -4,7 +4,8 @@ import { SetDesiredCapacityCommand } from '@aws-sdk/client-auto-scaling';
 import { createAutoScalingClient } from '../client.js';
 
 export const awsSetAutoscalingGroupDesiredCapacity = tool({
-  description: 'Set the desired capacity for an Auto Scaling group. Use it to change the configuration of the resource.',
+  description:
+    'Set the desired capacity for an Auto Scaling group. Use it to change the configuration of the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -12,7 +13,13 @@ export const awsSetAutoscalingGroupDesiredCapacity = tool({
     desiredCapacity: z.number().describe('Desired capacity'),
     honorCooldown: z.boolean().optional().describe('Whether to honor cooldown period'),
   }),
-  execute: async ({ awsCredentials, region, autoScalingGroupName, desiredCapacity, honorCooldown }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    autoScalingGroupName,
+    desiredCapacity,
+    honorCooldown,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,17 +27,20 @@ export const awsSetAutoscalingGroupDesiredCapacity = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new SetDesiredCapacityCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          DesiredCapacity: desiredCapacity,
-          HonorCooldown: honorCooldown,
+        AutoScalingGroupName: autoScalingGroupName,
+        DesiredCapacity: desiredCapacity,
+        HonorCooldown: honorCooldown,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Desired capacity set to ${desiredCapacity} for Auto Scaling group ${autoScalingGroupName}`,
-              };
+        success: true,
+        message: `Desired capacity set to ${desiredCapacity} for Auto Scaling group ${autoScalingGroupName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to set the desired capacity for an Auto Scaling group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set the desired capacity for an Auto Scaling group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

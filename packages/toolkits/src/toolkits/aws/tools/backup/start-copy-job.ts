@@ -15,7 +15,16 @@ export const awsStartCopyJob = tool({
     idempotencyToken: z.string().optional().describe('A unique token for idempotency'),
     lifecycle: z.record(z.any()).optional().describe('Lifecycle configuration'),
   }),
-  execute: async ({ awsCredentials, region, recoveryPointArn, sourceBackupVaultName, destinationBackupVaultArn, iamRoleArn, idempotencyToken, lifecycle }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    recoveryPointArn,
+    sourceBackupVaultName,
+    destinationBackupVaultArn,
+    iamRoleArn,
+    idempotencyToken,
+    lifecycle,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,20 +32,23 @@ export const awsStartCopyJob = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new StartCopyJobCommand({
-          RecoveryPointArn: recoveryPointArn,
-          SourceBackupVaultName: sourceBackupVaultName,
-          DestinationBackupVaultArn: destinationBackupVaultArn,
-          IamRoleArn: iamRoleArn,
-          IdempotencyToken: idempotencyToken,
-          Lifecycle: lifecycle,
+        RecoveryPointArn: recoveryPointArn,
+        SourceBackupVaultName: sourceBackupVaultName,
+        DestinationBackupVaultArn: destinationBackupVaultArn,
+        IamRoleArn: iamRoleArn,
+        IdempotencyToken: idempotencyToken,
+        Lifecycle: lifecycle,
       });
       const response = await client.send(command);
       return {
-                  copyJobId: response.CopyJobId,
-                  creationDate: response.CreationDate,
-              };
+        copyJobId: response.CopyJobId,
+        creationDate: response.CreationDate,
+      };
     } catch (err) {
-      return { error: 'Failed to start a copy job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start a copy job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

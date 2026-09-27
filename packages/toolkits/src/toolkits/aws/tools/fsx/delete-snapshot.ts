@@ -19,16 +19,19 @@ export const awsDeleteFsxSnapshot = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new DeleteSnapshotCommand({
-          ClientRequestToken: clientRequestToken,
-          SnapshotId: snapshotId,
+        ClientRequestToken: clientRequestToken,
+        SnapshotId: snapshotId,
       });
       const response = await client.send(command);
       return {
-                  snapshotId: response.SnapshotId,
-                  lifeCycle: response.Lifecycle,
-              };
+        snapshotId: response.SnapshotId,
+        lifeCycle: response.Lifecycle,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a snapshot', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a snapshot',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

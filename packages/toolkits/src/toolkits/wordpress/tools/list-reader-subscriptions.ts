@@ -4,12 +4,14 @@ import { z } from 'zod';
 import { wpFetch } from './utils.js';
 
 export const wordpressListReaderSubscriptions = tool({
-  description: 'List feeds and sites followed by the connected WordPress.com account without changing subscriptions.',
+  description:
+    'List feeds and sites followed by the connected WordPress.com account without changing subscriptions.',
   inputSchema: z.object({
     wordpressToken: z.string().describe('WordPress.com OAuth access token.'),
   }),
   execute: async ({ wordpressToken }) => {
-    if (!wordpressToken) return { error: 'WordPress token is required. Connect WordPress.com first.' };
+    if (!wordpressToken)
+      return { error: 'WordPress token is required. Connect WordPress.com first.' };
     try {
       const res = await wpFetch('/rest/v1.1/read/following/mine', {
         wordpressToken,
@@ -30,7 +32,10 @@ export const wordpressListReaderSubscriptions = tool({
         subscriptions: normalized.length ? normalized : subs,
       };
     } catch (e) {
-      return { error: 'Error listing reader subscriptions', message: e instanceof Error ? e.message : 'Unknown error' };
+      return {
+        error: 'Error listing reader subscriptions',
+        message: e instanceof Error ? e.message : 'Unknown error',
+      };
     }
   },
 });

@@ -6,7 +6,8 @@ import { sentryTools } from './tools/index.js';
 export default defineToolkit({
   id: 'sentry',
   displayName: 'Sentry',
-  shortDescription: 'Error tracking, issues, events, releases, alerts, crons, replays and dashboards.',
+  shortDescription:
+    'Error tracking, issues, events, releases, alerts, crons, replays and dashboards.',
   category: 'Developer Tools & DevOps',
   icon: SENTRY_ICON,
   auth: {

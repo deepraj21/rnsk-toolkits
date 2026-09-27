@@ -20,7 +20,21 @@ export const awsCreateSagemakerTransformJob = tool({
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply'),
     experimentConfig: z.record(z.any()).optional().describe('Experiment configuration'),
   }),
-  execute: async ({ awsCredentials, region, transformJobName, modelName, maxConcurrentTransforms, maxPayloadInMB, batchStrategy, environment, transformInput, transformOutput, dataProcessing, tags, experimentConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    transformJobName,
+    modelName,
+    maxConcurrentTransforms,
+    maxPayloadInMB,
+    batchStrategy,
+    environment,
+    transformInput,
+    transformOutput,
+    dataProcessing,
+    tags,
+    experimentConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -28,24 +42,27 @@ export const awsCreateSagemakerTransformJob = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new CreateTransformJobCommand({
-          TransformJobName: transformJobName,
-          ModelName: modelName,
-          MaxConcurrentTransforms: maxConcurrentTransforms,
-          MaxPayloadInMB: maxPayloadInMB,
-          BatchStrategy: batchStrategy,
-          Environment: environment,
-          TransformInput: transformInput,
-          TransformOutput: transformOutput,
-          DataProcessing: dataProcessing,
-          Tags: tags,
-          ExperimentConfig: experimentConfig,
+        TransformJobName: transformJobName,
+        ModelName: modelName,
+        MaxConcurrentTransforms: maxConcurrentTransforms,
+        MaxPayloadInMB: maxPayloadInMB,
+        BatchStrategy: batchStrategy,
+        Environment: environment,
+        TransformInput: transformInput,
+        TransformOutput: transformOutput,
+        DataProcessing: dataProcessing,
+        Tags: tags,
+        ExperimentConfig: experimentConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  transformJobArn: response.TransformJobArn,
-              };
+        transformJobArn: response.TransformJobArn,
+      };
     } catch (err) {
-      return { error: 'Failed to create a SageMaker transform job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a SageMaker transform job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { DescribeAccessEntryCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsDescribeEksAccessEntry = tool({
-  description: 'Get details about an access entry. Use it to inspect current state before making changes.',
+  description:
+    'Get details about an access entry. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsDescribeEksAccessEntry = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DescribeAccessEntryCommand({
-          clusterName: clusterName,
-          principalArn: principalArn,
+        clusterName: clusterName,
+        principalArn: principalArn,
       });
       const response = await client.send(command);
       return {
-                  accessEntry: response.accessEntry,
-              };
+        accessEntry: response.accessEntry,
+      };
     } catch (err) {
-      return { error: 'Failed to get details about an access entry', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about an access entry',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

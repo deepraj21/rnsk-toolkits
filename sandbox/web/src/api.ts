@@ -37,14 +37,20 @@ export type ToolkitSummary = {
   shortDescription: string;
   category: string;
   icon: { kind: string; dataUri: string };
-  authType: 'none' | 'oauth2' | 'service_env' | 'api_key' | 'basic_auth' | 'bearer_token' | 'service_account';
+  authType:
+    | 'none'
+    | 'oauth2'
+    | 'service_env'
+    | 'api_key'
+    | 'basic_auth'
+    | 'bearer_token'
+    | 'service_account';
   toolCount: number;
   status: { ready: boolean; missing: string[]; hint?: string };
   credentials: CredentialField[];
   meta: { homepage?: string; docsUrl?: string; since?: string };
   tools: ToolSummary[];
 };
-
 
 export type ToolDetail = {
   name: string;

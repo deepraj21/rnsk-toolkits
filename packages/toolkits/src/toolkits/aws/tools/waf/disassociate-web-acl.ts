@@ -18,12 +18,15 @@ export const awsDisassociateWebAcl = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new DisassociateWebACLCommand({
-          ResourceArn: resourceArn,
+        ResourceArn: resourceArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to disassociate a Web ACL from a resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disassociate a Web ACL from a resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

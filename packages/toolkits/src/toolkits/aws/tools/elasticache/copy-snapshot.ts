@@ -12,7 +12,13 @@ export const awsCopySnapshot = tool({
     targetSnapshotName: z.string().describe('Target snapshot name'),
     targetBucket: z.string().optional().describe('S3 bucket for cross-region copy'),
   }),
-  execute: async ({ awsCredentials, region, sourceSnapshotName, targetSnapshotName, targetBucket }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    sourceSnapshotName,
+    targetSnapshotName,
+    targetBucket,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +26,17 @@ export const awsCopySnapshot = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new CopySnapshotCommand({
-          SourceSnapshotName: sourceSnapshotName,
-          TargetSnapshotName: targetSnapshotName,
-          TargetBucket: targetBucket,
+        SourceSnapshotName: sourceSnapshotName,
+        TargetSnapshotName: targetSnapshotName,
+        TargetBucket: targetBucket,
       });
       const response = await client.send(command);
       return response.Snapshot;
     } catch (err) {
-      return { error: 'Failed to copy a Redis snapshot across regions', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to copy a Redis snapshot across regions',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

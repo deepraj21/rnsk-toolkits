@@ -5,7 +5,8 @@ import { growwTools } from './tools/index.js';
 export default defineToolkit({
   id: 'groww',
   displayName: 'Groww',
-  shortDescription: 'Trade equities and F&O, manage orders and smart orders, and fetch live market data.',
+  shortDescription:
+    'Trade equities and F&O, manage orders and smart orders, and fetch live market data.',
   category: 'Finance & Accounting',
   icon: GROWW_ICON,
   auth: {

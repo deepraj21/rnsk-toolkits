@@ -4,7 +4,8 @@ import { GetFindingsCommand } from '@aws-sdk/client-guardduty';
 import { createGuardDutyClient } from '../client.js';
 
 export const awsGetGuarddutyFindings = tool({
-  description: 'Get detailed information about specific findings. Use it to inspect current state before making changes.',
+  description:
+    'Get detailed information about specific findings. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsGetGuarddutyFindings = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new GetFindingsCommand({
-          DetectorId: detectorId,
-          FindingIds: findingIds,
-          SortCriteria: sortCriteria,
+        DetectorId: detectorId,
+        FindingIds: findingIds,
+        SortCriteria: sortCriteria,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to get detailed information about specific findings', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get detailed information about specific findings',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

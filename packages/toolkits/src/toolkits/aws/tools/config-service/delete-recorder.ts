@@ -8,7 +8,9 @@ export const awsDeleteConfigRecorder = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    configurationRecorderName: z.string().describe('The name of the configuration recorder to delete'),
+    configurationRecorderName: z
+      .string()
+      .describe('The name of the configuration recorder to delete'),
   }),
   execute: async ({ awsCredentials, region, configurationRecorderName }) => {
     if (!awsCredentials) {
@@ -18,15 +20,18 @@ export const awsDeleteConfigRecorder = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DeleteConfigurationRecorderCommand({
-          ConfigurationRecorderName: configurationRecorderName,
+        ConfigurationRecorderName: configurationRecorderName,
       });
       await client.send(command);
       return {
-                  message: 'Configuration recorder deleted successfully',
-                  configurationRecorderName: configurationRecorderName,
-              };
+        message: 'Configuration recorder deleted successfully',
+        configurationRecorderName: configurationRecorderName,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the configuration recorder', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes the configuration recorder',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

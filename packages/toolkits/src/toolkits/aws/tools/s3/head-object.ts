@@ -21,9 +21,18 @@ export const awsHeadS3Object = tool({
 
       const command = new HeadObjectCommand({ Bucket: bucket, Key: key, VersionId: versionId });
       const response = await client.send(command);
-      return { metadata: response.Metadata, contentType: response.ContentType, contentLength: response.ContentLength, lastModified: response.LastModified, etag: response.ETag };
+      return {
+        metadata: response.Metadata,
+        contentType: response.ContentType,
+        contentLength: response.ContentLength,
+        lastModified: response.LastModified,
+        etag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to retrieve metadata about an S3 object without returning the object itself', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to retrieve metadata about an S3 object without returning the object itself',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

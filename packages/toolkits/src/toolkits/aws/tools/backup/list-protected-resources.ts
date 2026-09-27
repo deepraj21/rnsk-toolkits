@@ -19,16 +19,19 @@ export const awsListProtectedResources = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new ListProtectedResourcesCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
+        NextToken: nextToken,
+        MaxResults: maxResults,
       });
       const response = await client.send(command);
       return {
-                  results: response.Results || [],
-                  nextToken: response.NextToken,
-              };
+        results: response.Results || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list protected resources', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list protected resources',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

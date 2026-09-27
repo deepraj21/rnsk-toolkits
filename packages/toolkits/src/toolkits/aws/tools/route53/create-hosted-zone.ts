@@ -10,11 +10,22 @@ export const awsCreateRoute53HostedZone = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     name: z.string().describe('The name of the domain'),
     callerReference: z.string().describe('Unique identifier'),
-    hostedZoneConfig: z.record(z.any()).optional().describe('Hosted zone configuration (Comment, PrivateZone)'),
+    hostedZoneConfig: z
+      .record(z.any())
+      .optional()
+      .describe('Hosted zone configuration (Comment, PrivateZone)'),
     delegationSetId: z.string().optional().describe('Delegation set ID'),
     vpc: z.record(z.any()).optional().describe('VPC configuration (VPCRegion, VPCId)'),
   }),
-  execute: async ({ awsCredentials, region, name, callerReference, hostedZoneConfig, delegationSetId, vpc }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    callerReference,
+    hostedZoneConfig,
+    delegationSetId,
+    vpc,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,22 +33,25 @@ export const awsCreateRoute53HostedZone = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new CreateHostedZoneCommand({
-          Name: name,
-          CallerReference: callerReference,
-          HostedZoneConfig: hostedZoneConfig,
-          DelegationSetId: delegationSetId,
-          VPC: vpc,
+        Name: name,
+        CallerReference: callerReference,
+        HostedZoneConfig: hostedZoneConfig,
+        DelegationSetId: delegationSetId,
+        VPC: vpc,
       });
       const response = await client.send(command);
       return {
-                  hostedZone: response.HostedZone,
-                  changeInfo: response.ChangeInfo,
-                  delegationSet: response.DelegationSet,
-                  vpc: response.VPC,
-                  location: response.Location,
-              };
+        hostedZone: response.HostedZone,
+        changeInfo: response.ChangeInfo,
+        delegationSet: response.DelegationSet,
+        vpc: response.VPC,
+        location: response.Location,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new Route 53 hosted zone', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new Route 53 hosted zone',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

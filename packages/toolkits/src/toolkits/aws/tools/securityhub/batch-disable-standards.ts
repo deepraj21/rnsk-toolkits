@@ -8,7 +8,9 @@ export const awsBatchDisableStandards = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    standardsSubscriptionArns: z.array(z.string()).describe('ARNs of standards subscriptions to disable'),
+    standardsSubscriptionArns: z
+      .array(z.string())
+      .describe('ARNs of standards subscriptions to disable'),
   }),
   execute: async ({ awsCredentials, region, standardsSubscriptionArns }) => {
     if (!awsCredentials) {
@@ -18,12 +20,15 @@ export const awsBatchDisableStandards = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new BatchDisableStandardsCommand({
-          StandardsSubscriptionArns: standardsSubscriptionArns,
+        StandardsSubscriptionArns: standardsSubscriptionArns,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to disable one or more security standards', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disable one or more security standards',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

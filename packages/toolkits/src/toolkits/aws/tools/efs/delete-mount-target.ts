@@ -18,15 +18,18 @@ export const awsDeleteEfsMountTarget = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new DeleteMountTargetCommand({
-          MountTargetId: mountTargetId,
+        MountTargetId: mountTargetId,
       });
       await client.send(command);
       return {
-                  message: 'Mount target deleted successfully',
-                  mountTargetId: mountTargetId,
-              };
+        message: 'Mount target deleted successfully',
+        mountTargetId: mountTargetId,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a mount target', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a mount target',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

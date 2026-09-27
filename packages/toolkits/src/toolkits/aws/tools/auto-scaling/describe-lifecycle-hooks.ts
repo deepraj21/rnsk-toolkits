@@ -19,15 +19,18 @@ export const awsDescribeAutoscalingLifecycleHooks = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DescribeLifecycleHooksCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          LifecycleHookNames: lifecycleHookNames,
+        AutoScalingGroupName: autoScalingGroupName,
+        LifecycleHookNames: lifecycleHookNames,
       });
       const response = await client.send(command);
       return {
-                  lifecycleHooks: response.LifecycleHooks,
-              };
+        lifecycleHooks: response.LifecycleHooks,
+      };
     } catch (err) {
-      return { error: 'Failed to describe lifecycle hooks', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe lifecycle hooks',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

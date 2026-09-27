@@ -4,11 +4,18 @@ import { z } from 'zod';
 import { wiseFetch } from './utils.js';
 
 export const wiseGetExchangeRate = tool({
-  description: "Get Wise's latest exchange rate for one source and target currency pair; this is an indicative rate, not a transfer quote.",
+  description:
+    "Get Wise's latest exchange rate for one source and target currency pair; this is an indicative rate, not a transfer quote.",
   inputSchema: z.object({
     wiseApiKey: z.string().optional().describe('Wise API token (Bearer).'),
-    sourceCurrency: z.string().length(3).describe('Three-letter ISO currency code to convert from, such as USD.'),
-    targetCurrency: z.string().length(3).describe('Three-letter ISO currency code to convert to, such as EUR.'),
+    sourceCurrency: z
+      .string()
+      .length(3)
+      .describe('Three-letter ISO currency code to convert from, such as USD.'),
+    targetCurrency: z
+      .string()
+      .length(3)
+      .describe('Three-letter ISO currency code to convert to, such as EUR.'),
   }),
   execute: async ({ wiseApiKey, sourceCurrency, targetCurrency }) => {
     if (!wiseApiKey) return { error: 'Wise API key is required. Connect Wise first.' };
@@ -34,7 +41,10 @@ export const wiseGetExchangeRate = tool({
         raw: data,
       };
     } catch (e) {
-      return { error: 'Error getting exchange rate', message: e instanceof Error ? e.message : 'Unknown error' };
+      return {
+        error: 'Error getting exchange rate',
+        message: e instanceof Error ? e.message : 'Unknown error',
+      };
     }
   },
 });

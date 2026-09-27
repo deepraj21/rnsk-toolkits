@@ -4,7 +4,8 @@ import { CopyObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsRenameS3Object = tool({
-  description: 'Rename an S3 object by copying and deleting. Use it to rename an object (copy then delete).',
+  description:
+    'Rename an S3 object by copying and deleting. Use it to rename an object (copy then delete).',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,13 +21,20 @@ export const awsRenameS3Object = tool({
       const client = createS3Client(awsCredentials, region);
 
       // Copy then delete
-      const copyCommand = new CopyObjectCommand({ Bucket: bucket, CopySource: `${bucket}/${sourceKey}`, Key: destinationKey });
+      const copyCommand = new CopyObjectCommand({
+        Bucket: bucket,
+        CopySource: `${bucket}/${sourceKey}`,
+        Key: destinationKey,
+      });
       await client.send(copyCommand);
       const deleteCommand = new DeleteObjectCommand({ Bucket: bucket, Key: sourceKey });
       await client.send(deleteCommand);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to rename an S3 object by copying and deleting', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to rename an S3 object by copying and deleting',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

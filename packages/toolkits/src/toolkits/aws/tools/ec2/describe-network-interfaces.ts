@@ -4,7 +4,8 @@ import { DescribeNetworkInterfacesCommand } from '@aws-sdk/client-ec2';
 import { createEc2Client } from '../client.js';
 
 export const awsDescribeEc2NetworkInterfaces = tool({
-  description: 'Describe network interfaces. Use it to inspect current state before making changes.',
+  description:
+    'Describe network interfaces. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,21 @@ export const awsDescribeEc2NetworkInterfaces = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribeNetworkInterfacesCommand({
-          NetworkInterfaceIds: networkInterfaceIds,
-          Filters: filters ? Object.entries(filters).map(([name, values]) => ({
+        NetworkInterfaceIds: networkInterfaceIds,
+        Filters: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
+            }))
+          : undefined,
       });
       const response = await client.send(command);
       return { networkInterfaces: response.NetworkInterfaces };
     } catch (err) {
-      return { error: 'Failed to describe network interfaces', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe network interfaces',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

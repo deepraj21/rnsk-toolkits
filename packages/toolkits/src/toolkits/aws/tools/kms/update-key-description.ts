@@ -19,13 +19,16 @@ export const awsUpdateKeyDescription = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new UpdateKeyDescriptionCommand({
-          KeyId: keyId,
-          Description: description,
+        KeyId: keyId,
+        Description: description,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update the description of a KMS key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the description of a KMS key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

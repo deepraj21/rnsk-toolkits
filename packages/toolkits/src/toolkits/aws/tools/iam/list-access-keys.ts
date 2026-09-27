@@ -4,7 +4,8 @@ import { ListAccessKeysCommand } from '@aws-sdk/client-iam';
 import { createIamClient } from '../client.js';
 
 export const awsListAccessKeys = tool({
-  description: 'List access keys for an IAM user. Use it to inspect current state before making changes.',
+  description:
+    'List access keys for an IAM user. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsListAccessKeys = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new ListAccessKeysCommand({
-          UserName: userName,
-          MaxItems: maxItems,
-          Marker: marker,
+        UserName: userName,
+        MaxItems: maxItems,
+        Marker: marker,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to list access keys for an IAM user', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list access keys for an IAM user',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

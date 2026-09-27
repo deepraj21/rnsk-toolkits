@@ -19,13 +19,16 @@ export const awsDeleteEc2SecurityGroup = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DeleteSecurityGroupCommand({
-          GroupId: groupId,
-          GroupName: groupName,
+        GroupId: groupId,
+        GroupName: groupName,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete a security group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a security group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

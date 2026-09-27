@@ -18,12 +18,15 @@ export const awsDeleteDbSnapshot = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DeleteDBSnapshotCommand({
-          DBSnapshotIdentifier: dbSnapshotIdentifier,
+        DBSnapshotIdentifier: dbSnapshotIdentifier,
       });
       const response = await client.send(command);
       return response.DBSnapshot;
     } catch (err) {
-      return { error: 'Failed to delete an RDS database snapshot', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an RDS database snapshot',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

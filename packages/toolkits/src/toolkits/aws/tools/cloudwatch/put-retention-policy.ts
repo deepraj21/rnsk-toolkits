@@ -4,7 +4,8 @@ import { PutRetentionPolicyCommand } from '@aws-sdk/client-cloudwatch-logs';
 import { createCloudWatchLogsClient } from '../client.js';
 
 export const awsPutRetentionPolicy = tool({
-  description: 'Set retention policy for a log group. Use it to publish data or configure the resource.',
+  description:
+    'Set retention policy for a log group. Use it to publish data or configure the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,19 @@ export const awsPutRetentionPolicy = tool({
       const client = createCloudWatchLogsClient(awsCredentials, region);
 
       const command = new PutRetentionPolicyCommand({
-          logGroupName,
-          retentionInDays,
+        logGroupName,
+        retentionInDays,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Retention policy set to ${retentionInDays} days for log group ${logGroupName}`,
-              };
+        success: true,
+        message: `Retention policy set to ${retentionInDays} days for log group ${logGroupName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to set retention policy for a log group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set retention policy for a log group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

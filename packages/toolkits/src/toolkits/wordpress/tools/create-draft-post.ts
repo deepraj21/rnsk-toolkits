@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { wpFetch } from './utils.js';
 
 export const wordpressCreateDraftPost = tool({
-  description: 'Create a non-public draft post on an authorized WordPress.com site. This tool never publishes content; use the returned post ID for review, update, and cleanup.',
+  description:
+    'Create a non-public draft post on an authorized WordPress.com site. This tool never publishes content; use the returned post ID for review, update, and cleanup.',
   inputSchema: z.object({
     wordpressToken: z.string().describe('WordPress.com OAuth access token.'),
     siteId: z.number().describe('Numeric site ID returned by WORDPRESS_COM_LIST_SITES.'),
@@ -13,11 +14,28 @@ export const wordpressCreateDraftPost = tool({
     excerpt: z.string().optional().describe('Optional draft excerpt.'),
     categoryIds: z.array(z.number()).optional().describe('Category IDs to assign.'),
     tagIds: z.array(z.number()).optional().describe('Tag IDs to assign.'),
-    featuredMediaId: z.number().optional().describe('Existing media item ID to use as the featured image.'),
-    commentStatus: z.enum(['open', 'closed']).optional().describe('Whether comments should be open if the draft is later published.'),
+    featuredMediaId: z
+      .number()
+      .optional()
+      .describe('Existing media item ID to use as the featured image.'),
+    commentStatus: z
+      .enum(['open', 'closed'])
+      .optional()
+      .describe('Whether comments should be open if the draft is later published.'),
   }),
-  execute: async ({ wordpressToken, siteId, title, content, excerpt, categoryIds, tagIds, featuredMediaId, commentStatus }) => {
-    if (!wordpressToken) return { error: 'WordPress token is required. Connect WordPress.com first.' };
+  execute: async ({
+    wordpressToken,
+    siteId,
+    title,
+    content,
+    excerpt,
+    categoryIds,
+    tagIds,
+    featuredMediaId,
+    commentStatus,
+  }) => {
+    if (!wordpressToken)
+      return { error: 'WordPress token is required. Connect WordPress.com first.' };
     try {
       const body: Record<string, unknown> = {
         title,
@@ -56,7 +74,10 @@ export const wordpressCreateDraftPost = tool({
         },
       };
     } catch (e) {
-      return { error: 'Error creating draft post', message: e instanceof Error ? e.message : 'Unknown error' };
+      return {
+        error: 'Error creating draft post',
+        message: e instanceof Error ? e.message : 'Unknown error',
+      };
     }
   },
 });

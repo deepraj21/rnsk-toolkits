@@ -14,7 +14,15 @@ export const awsCreateCloudformationStackInstances = tool({
     parameterOverrides: z.array(z.record(z.any())).optional().describe('Parameter overrides'),
     operationPreferences: z.record(z.any()).optional().describe('Operation preferences'),
   }),
-  execute: async ({ awsCredentials, region, stackSetName, accounts, regions, parameterOverrides, operationPreferences }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    stackSetName,
+    accounts,
+    regions,
+    parameterOverrides,
+    operationPreferences,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,16 +30,19 @@ export const awsCreateCloudformationStackInstances = tool({
       const client = createCloudFormationClient(awsCredentials, region);
 
       const command = new CreateStackInstancesCommand({
-          StackSetName: stackSetName,
-          Accounts: accounts,
-          Regions: regions,
-          ParameterOverrides: parameterOverrides,
-          OperationPreferences: operationPreferences,
+        StackSetName: stackSetName,
+        Accounts: accounts,
+        Regions: regions,
+        ParameterOverrides: parameterOverrides,
+        OperationPreferences: operationPreferences,
       });
       const response = await client.send(command);
       return { operationId: response.OperationId };
     } catch (err) {
-      return { error: 'Failed to create stack instances in a stack set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create stack instances in a stack set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

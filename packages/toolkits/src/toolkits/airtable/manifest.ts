@@ -5,7 +5,8 @@ import { airtableTools } from './tools/index.js';
 export default defineToolkit({
   id: 'airtable',
   displayName: 'Airtable',
-  shortDescription: 'Bases, tables, records, comments, schema, and webhooks via the Airtable Web API.',
+  shortDescription:
+    'Bases, tables, records, comments, schema, and webhooks via the Airtable Web API.',
   category: 'Productivity & Project Management',
   icon: AIRTABLE_ICON,
   auth: {

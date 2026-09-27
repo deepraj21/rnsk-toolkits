@@ -19,16 +19,19 @@ export const awsTagSqsQueue = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new TagQueueCommand({
-          QueueUrl: queueUrl,
-          Tags: tags,
+        QueueUrl: queueUrl,
+        Tags: tags,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags added successfully to queue ${queueUrl}`,
-              };
+        success: true,
+        message: `Tags added successfully to queue ${queueUrl}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

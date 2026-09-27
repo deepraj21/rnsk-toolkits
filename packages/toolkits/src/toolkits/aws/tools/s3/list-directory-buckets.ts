@@ -18,11 +18,17 @@ export const awsListS3DirectoryBuckets = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new ListDirectoryBucketsCommand({ ContinuationToken: continuationToken, MaxDirectoryBuckets: maxDirectoryBuckets });
+      const command = new ListDirectoryBucketsCommand({
+        ContinuationToken: continuationToken,
+        MaxDirectoryBuckets: maxDirectoryBuckets,
+      });
       const response = await client.send(command);
       return { buckets: response.Buckets, continuationToken: response.ContinuationToken };
     } catch (err) {
-      return { error: 'Failed to list S3 directory buckets', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list S3 directory buckets',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

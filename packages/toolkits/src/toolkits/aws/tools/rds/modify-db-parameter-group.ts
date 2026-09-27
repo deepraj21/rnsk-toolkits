@@ -4,7 +4,8 @@ import { ModifyDBParameterGroupCommand } from '@aws-sdk/client-rds';
 import { createRdsClient } from '../client.js';
 
 export const awsModifyDbParameterGroup = tool({
-  description: 'Modify parameters in an RDS parameter group. Use it to change an existing resource.',
+  description:
+    'Modify parameters in an RDS parameter group. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -15,7 +16,16 @@ export const awsModifyDbParameterGroup = tool({
     ParameterValue: z.string().optional().describe('Parameter value'),
     ApplyMethod: z.string().optional().describe('immediate or pending-reboot'),
   }),
-  execute: async ({ awsCredentials, region, dbParameterGroupName, parameters, properties, ParameterName, ParameterValue, ApplyMethod }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    dbParameterGroupName,
+    parameters,
+    properties,
+    ParameterName,
+    ParameterValue,
+    ApplyMethod,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,13 +33,16 @@ export const awsModifyDbParameterGroup = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new ModifyDBParameterGroupCommand({
-          DBParameterGroupName: dbParameterGroupName,
-          Parameters: parameters,
+        DBParameterGroupName: dbParameterGroupName,
+        Parameters: parameters,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to modify parameters in an RDS parameter group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify parameters in an RDS parameter group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

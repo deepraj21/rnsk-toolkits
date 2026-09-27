@@ -19,16 +19,19 @@ export const awsDeleteSqsMessage = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new DeleteMessageCommand({
-          QueueUrl: queueUrl,
-          ReceiptHandle: receiptHandle,
+        QueueUrl: queueUrl,
+        ReceiptHandle: receiptHandle,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Message deleted successfully from queue ${queueUrl}`,
-              };
+        success: true,
+        message: `Message deleted successfully from queue ${queueUrl}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a message from an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a message from an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

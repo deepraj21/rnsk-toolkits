@@ -19,16 +19,19 @@ export const awsSuspendAutoscalingProcesses = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new SuspendProcessesCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          ScalingProcesses: scalingProcesses,
+        AutoScalingGroupName: autoScalingGroupName,
+        ScalingProcesses: scalingProcesses,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Processes suspended for Auto Scaling group ${autoScalingGroupName}`,
-              };
+        success: true,
+        message: `Processes suspended for Auto Scaling group ${autoScalingGroupName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to suspend processes for an Auto Scaling group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to suspend processes for an Auto Scaling group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

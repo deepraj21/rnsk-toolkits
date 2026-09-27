@@ -20,14 +20,18 @@ export const awsModifyEc2VpcAttribute = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new ModifyVpcAttributeCommand({
-          VpcId: vpcId,
-          EnableDnsHostnames: enableDnsHostnames !== undefined ? { Value: enableDnsHostnames } : undefined,
-          EnableDnsSupport: enableDnsSupport !== undefined ? { Value: enableDnsSupport } : undefined,
+        VpcId: vpcId,
+        EnableDnsHostnames:
+          enableDnsHostnames !== undefined ? { Value: enableDnsHostnames } : undefined,
+        EnableDnsSupport: enableDnsSupport !== undefined ? { Value: enableDnsSupport } : undefined,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to modify a VPC attribute', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify a VPC attribute',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { HeadBucketCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsCheckS3BucketExists = tool({
-  description: 'Check if an S3 bucket exists... Use it to inspect current state before making changes.',
+  description:
+    'Check if an S3 bucket exists... Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsCheckS3BucketExists = tool({
       const client = createS3Client(awsCredentials, region);
 
       try {
-          const command = new HeadBucketCommand({ Bucket: bucket });
-          await client.send(command);
-          return { exists: true };
+        const command = new HeadBucketCommand({ Bucket: bucket });
+        await client.send(command);
+        return { exists: true };
       } catch (error: any) {
-          return { exists: false, error: error.message };
+        return { exists: false, error: error.message };
       }
     } catch (err) {
-      return { error: 'Failed to check if an S3 bucket exists', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to check if an S3 bucket exists',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

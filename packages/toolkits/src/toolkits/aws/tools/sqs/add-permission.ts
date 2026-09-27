@@ -11,7 +11,9 @@ export const awsAddSqsPermission = tool({
     queueUrl: z.string().describe('The URL of the queue'),
     label: z.string().describe('Unique identifier for the permission'),
     awsAccountIds: z.array(z.string()).describe('AWS account IDs'),
-    actions: z.array(z.string()).describe('Actions to allow (SendMessage, ReceiveMessage, DeleteMessage, etc.)'),
+    actions: z
+      .array(z.string())
+      .describe('Actions to allow (SendMessage, ReceiveMessage, DeleteMessage, etc.)'),
   }),
   execute: async ({ awsCredentials, region, queueUrl, label, awsAccountIds, actions }) => {
     if (!awsCredentials) {
@@ -21,18 +23,21 @@ export const awsAddSqsPermission = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new AddPermissionCommand({
-          QueueUrl: queueUrl,
-          Label: label,
-          AWSAccountIds: awsAccountIds,
-          Actions: actions,
+        QueueUrl: queueUrl,
+        Label: label,
+        AWSAccountIds: awsAccountIds,
+        Actions: actions,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Permission added successfully to queue ${queueUrl}`,
-              };
+        success: true,
+        message: `Permission added successfully to queue ${queueUrl}`,
+      };
     } catch (err) {
-      return { error: 'Failed to add a permission to an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add a permission to an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsDeleteFsxBackup = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new DeleteBackupCommand({
-          BackupId: backupId,
-          ClientRequestToken: clientRequestToken,
+        BackupId: backupId,
+        ClientRequestToken: clientRequestToken,
       });
       const response = await client.send(command);
       return {
-                  backupId: response.BackupId,
-                  lifeCycle: response.Lifecycle,
-              };
+        backupId: response.BackupId,
+        lifeCycle: response.Lifecycle,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an FSx backup', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an FSx backup',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

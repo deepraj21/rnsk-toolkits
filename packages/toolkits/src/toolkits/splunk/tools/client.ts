@@ -11,10 +11,14 @@ export function parseSplunkCredentials(splunkCredentials: string): SplunkCredent
   try {
     parsed = JSON.parse(splunkCredentials) as Partial<SplunkCredentials>;
   } catch {
-    throw new Error('Splunk credentials must be a JSON object with baseUrl plus username/password or token');
+    throw new Error(
+      'Splunk credentials must be a JSON object with baseUrl plus username/password or token',
+    );
   }
   if (!parsed.baseUrl) {
-    throw new Error('Splunk credentials must include baseUrl (e.g. https://splunk.example.com:8089)');
+    throw new Error(
+      'Splunk credentials must include baseUrl (e.g. https://splunk.example.com:8089)',
+    );
   }
   if (!parsed.token && (!parsed.username || !parsed.password)) {
     throw new Error('Splunk credentials must include a token or a username and password');
@@ -64,7 +68,9 @@ async function login(creds: SplunkCredentials): Promise<string> {
   return sessionKey;
 }
 
-async function getAuthHeader(creds: SplunkCredentials): Promise<{ header: string; usesSession: boolean }> {
+async function getAuthHeader(
+  creds: SplunkCredentials,
+): Promise<{ header: string; usesSession: boolean }> {
   if (creds.token) return { header: `Bearer ${creds.token}`, usesSession: false };
   const cached = sessionCache.get(cacheKey(creds));
   if (cached) return { header: `Splunk ${cached}`, usesSession: true };

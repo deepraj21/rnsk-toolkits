@@ -23,6 +23,6 @@ const SVG = `<svg width="150" height="150" viewBox="0 0 96 96" xmlns="http://www
 </svg>`;
 
 export const AZURE_ICON = {
-    kind: 'svg' as const,
-    dataUri: `data:image/svg+xml;base64,${Buffer.from(SVG).toString('base64')}`,
+  kind: 'svg' as const,
+  dataUri: `data:image/svg+xml;base64,${Buffer.from(SVG).toString('base64')}`,
 };

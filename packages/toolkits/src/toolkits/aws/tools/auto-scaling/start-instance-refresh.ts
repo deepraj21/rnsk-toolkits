@@ -9,11 +9,21 @@ export const awsStartAutoscalingInstanceRefresh = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     autoScalingGroupName: z.string().describe('The name of the Auto Scaling group'),
-    strategy: z.enum(['Rolling', 'RollingWithInstanceWarmup']).optional().describe('Refresh strategy'),
+    strategy: z
+      .enum(['Rolling', 'RollingWithInstanceWarmup'])
+      .optional()
+      .describe('Refresh strategy'),
     desiredConfiguration: z.record(z.any()).optional().describe('Desired configuration'),
     preferences: z.record(z.any()).optional().describe('Refresh preferences'),
   }),
-  execute: async ({ awsCredentials, region, autoScalingGroupName, strategy, desiredConfiguration, preferences }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    autoScalingGroupName,
+    strategy,
+    desiredConfiguration,
+    preferences,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,17 +31,20 @@ export const awsStartAutoscalingInstanceRefresh = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new StartInstanceRefreshCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          Strategy: strategy,
-          DesiredConfiguration: desiredConfiguration,
-          Preferences: preferences,
+        AutoScalingGroupName: autoScalingGroupName,
+        Strategy: strategy,
+        DesiredConfiguration: desiredConfiguration,
+        Preferences: preferences,
       } as any);
       const response = await client.send(command);
       return {
-                  instanceRefreshId: response.InstanceRefreshId,
-              };
+        instanceRefreshId: response.InstanceRefreshId,
+      };
     } catch (err) {
-      return { error: 'Failed to start an instance refresh', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start an instance refresh',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -8,9 +8,20 @@ export const awsListCloudwatchAlarms = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    alarmNamePrefix: z.string().optional().describe('Only return alarms whose name starts with this prefix'),
-    stateValue: z.enum(['OK', 'ALARM', 'INSUFFICIENT_DATA']).optional().describe('Only return alarms in this state'),
-    maxRecords: z.number().min(1).max(100).optional().describe('Maximum number of alarms to return'),
+    alarmNamePrefix: z
+      .string()
+      .optional()
+      .describe('Only return alarms whose name starts with this prefix'),
+    stateValue: z
+      .enum(['OK', 'ALARM', 'INSUFFICIENT_DATA'])
+      .optional()
+      .describe('Only return alarms in this state'),
+    maxRecords: z
+      .number()
+      .min(1)
+      .max(100)
+      .optional()
+      .describe('Maximum number of alarms to return'),
   }),
   execute: async ({ awsCredentials, region, alarmNamePrefix, stateValue, maxRecords }) => {
     if (!awsCredentials) {

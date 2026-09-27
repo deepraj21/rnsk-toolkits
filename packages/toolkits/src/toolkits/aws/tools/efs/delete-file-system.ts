@@ -18,15 +18,18 @@ export const awsDeleteEfsFileSystem = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new DeleteFileSystemCommand({
-          FileSystemId: fileSystemId,
+        FileSystemId: fileSystemId,
       });
       await client.send(command);
       return {
-                  message: 'File system deletion initiated',
-                  fileSystemId: fileSystemId,
-              };
+        message: 'File system deletion initiated',
+        fileSystemId: fileSystemId,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an EFS file system', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an EFS file system',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

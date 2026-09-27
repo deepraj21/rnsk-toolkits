@@ -11,14 +11,29 @@ export const awsListCopyJobs = tool({
     nextToken: z.string().optional().describe('Token for pagination'),
     maxResults: z.number().optional().describe('Maximum number of jobs to return'),
     byResourceArn: z.string().optional().describe('Filter by resource ARN'),
-    byState: z.enum(['CREATED', 'RUNNING', 'COMPLETED', 'FAILED', 'PARTIAL']).optional().describe('Filter by job state'),
+    byState: z
+      .enum(['CREATED', 'RUNNING', 'COMPLETED', 'FAILED', 'PARTIAL'])
+      .optional()
+      .describe('Filter by job state'),
     byCreatedBefore: z.string().optional().describe('Filter by created before date'),
     byCreatedAfter: z.string().optional().describe('Filter by created after date'),
     byResourceType: z.string().optional().describe('Filter by resource type'),
     byDestinationVaultArn: z.string().optional().describe('Filter by destination vault ARN'),
     byAccountId: z.string().optional().describe('Filter by account ID'),
   }),
-  execute: async ({ awsCredentials, region, nextToken, maxResults, byResourceArn, byState, byCreatedBefore, byCreatedAfter, byResourceType, byDestinationVaultArn, byAccountId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    nextToken,
+    maxResults,
+    byResourceArn,
+    byState,
+    byCreatedBefore,
+    byCreatedAfter,
+    byResourceType,
+    byDestinationVaultArn,
+    byAccountId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -26,23 +41,26 @@ export const awsListCopyJobs = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new ListCopyJobsCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
-          ByResourceArn: byResourceArn,
-          ByState: byState,
-          ByCreatedBefore: byCreatedBefore ? new Date(byCreatedBefore) : undefined,
-          ByCreatedAfter: byCreatedAfter ? new Date(byCreatedAfter) : undefined,
-          ByResourceType: byResourceType,
-          ByDestinationVaultArn: byDestinationVaultArn,
-          ByAccountId: byAccountId,
+        NextToken: nextToken,
+        MaxResults: maxResults,
+        ByResourceArn: byResourceArn,
+        ByState: byState,
+        ByCreatedBefore: byCreatedBefore ? new Date(byCreatedBefore) : undefined,
+        ByCreatedAfter: byCreatedAfter ? new Date(byCreatedAfter) : undefined,
+        ByResourceType: byResourceType,
+        ByDestinationVaultArn: byDestinationVaultArn,
+        ByAccountId: byAccountId,
       });
       const response = await client.send(command);
       return {
-                  copyJobs: response.CopyJobs || [],
-                  nextToken: response.NextToken,
-              };
+        copyJobs: response.CopyJobs || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list copy jobs', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list copy jobs',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

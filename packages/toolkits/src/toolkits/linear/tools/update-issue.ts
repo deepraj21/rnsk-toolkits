@@ -8,8 +8,15 @@ export const linearUpdateIssue = tool({
     issueId: z.string().describe('Linear issue UUID'),
     title: z.string().optional().describe('New title'),
     description: z.string().optional().describe('New description (markdown supported)'),
-    stateId: z.string().optional().describe('Workflow state ID (e.g. move to Done). Use linearListWorkflowStates.'),
-    assigneeId: z.string().nullable().optional().describe('User ID to assign, or null to unassign.'),
+    stateId: z
+      .string()
+      .optional()
+      .describe('Workflow state ID (e.g. move to Done). Use linearListWorkflowStates.'),
+    assigneeId: z
+      .string()
+      .nullable()
+      .optional()
+      .describe('User ID to assign, or null to unassign.'),
     priority: z
       .number()
       .int()
@@ -20,7 +27,16 @@ export const linearUpdateIssue = tool({
     projectId: z.string().optional().describe('Project ID to associate the issue with'),
     linearToken: z.string().optional().describe('Linear API token (injected by system)'),
   }),
-  execute: async ({ issueId, title, description, stateId, assigneeId, priority, projectId, linearToken }) => {
+  execute: async ({
+    issueId,
+    title,
+    description,
+    stateId,
+    assigneeId,
+    priority,
+    projectId,
+    linearToken,
+  }) => {
     const input: Record<string, unknown> = {};
     if (title !== undefined) input.title = title;
     if (description !== undefined) input.description = description;
@@ -30,7 +46,10 @@ export const linearUpdateIssue = tool({
     if (projectId !== undefined) input.projectId = projectId;
 
     if (Object.keys(input).length === 0) {
-      return { error: 'Provide at least one field to update (title, description, stateId, assigneeId, priority, or projectId).' };
+      return {
+        error:
+          'Provide at least one field to update (title, description, stateId, assigneeId, priority, or projectId).',
+      };
     }
 
     const graphqlQuery = {

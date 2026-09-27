@@ -20,17 +20,20 @@ export const awsUpdateEcsContainerInstancesState = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new UpdateContainerInstancesStateCommand({
-          cluster: cluster,
-          containerInstances: containerInstances,
-          status: status as any,
+        cluster: cluster,
+        containerInstances: containerInstances,
+        status: status as any,
       });
       const response = await client.send(command);
       return {
-                  containerInstances: response.containerInstances || [],
-                  failures: response.failures || [],
-              };
+        containerInstances: response.containerInstances || [],
+        failures: response.failures || [],
+      };
     } catch (err) {
-      return { error: 'Failed to update the state of container instances', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the state of container instances',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

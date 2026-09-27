@@ -16,10 +16,7 @@ export interface ToolRegistry {
   ) => void;
   get: (name: string) => ToolRegistryEntry | undefined;
   getToolNames: () => string[];
-  search: (
-    pattern: string,
-    searchIn?: 'names' | 'descriptions' | 'both',
-  ) => ToolRegistryEntry[];
+  search: (pattern: string, searchIn?: 'names' | 'descriptions' | 'both') => ToolRegistryEntry[];
 }
 
 export function createToolRegistry(): ToolRegistry {

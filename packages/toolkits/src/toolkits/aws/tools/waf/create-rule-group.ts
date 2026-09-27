@@ -15,7 +15,16 @@ export const awsCreateRuleGroup = tool({
     visibilityConfig: z.record(z.any()).describe('CloudWatch metrics configuration'),
     description: z.string().optional().describe('Description of the rule group'),
   }),
-  execute: async ({ awsCredentials, region, name, scope, capacity, rules, visibilityConfig, description }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    scope,
+    capacity,
+    rules,
+    visibilityConfig,
+    description,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,17 +32,20 @@ export const awsCreateRuleGroup = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new CreateRuleGroupCommand({
-          Name: name,
-          Scope: scope,
-          Capacity: capacity,
-          Rules: rules,
-          VisibilityConfig: visibilityConfig,
-          Description: description,
+        Name: name,
+        Scope: scope,
+        Capacity: capacity,
+        Rules: rules,
+        VisibilityConfig: visibilityConfig,
+        Description: description,
       } as any);
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to create a custom rule group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a custom rule group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

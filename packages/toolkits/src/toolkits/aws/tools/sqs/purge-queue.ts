@@ -4,7 +4,8 @@ import { PurgeQueueCommand } from '@aws-sdk/client-sqs';
 import { createSqsClient } from '../client.js';
 
 export const awsPurgeSqsQueue = tool({
-  description: 'Delete all messages in an SQS queue. Use it to permanently remove all messages (cannot be undone).',
+  description:
+    'Delete all messages in an SQS queue. Use it to permanently remove all messages (cannot be undone).',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsPurgeSqsQueue = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new PurgeQueueCommand({
-          QueueUrl: queueUrl,
+        QueueUrl: queueUrl,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Queue ${queueUrl} purged successfully`,
-              };
+        success: true,
+        message: `Queue ${queueUrl} purged successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete all messages in an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete all messages in an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

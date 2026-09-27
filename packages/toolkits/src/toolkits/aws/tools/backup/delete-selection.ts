@@ -19,17 +19,20 @@ export const awsDeleteBackupSelection = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new DeleteBackupSelectionCommand({
-          BackupPlanId: backupPlanId,
-          SelectionId: selectionId,
+        BackupPlanId: backupPlanId,
+        SelectionId: selectionId,
       });
       await client.send(command);
       return {
-                  message: 'Backup selection deleted successfully',
-                  backupPlanId: backupPlanId,
-                  selectionId: selectionId,
-              };
+        message: 'Backup selection deleted successfully',
+        backupPlanId: backupPlanId,
+        selectionId: selectionId,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a backup selection', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a backup selection',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

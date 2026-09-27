@@ -4,7 +4,8 @@ import { ListAttributesCommand } from '@aws-sdk/client-ecs';
 import { createEcsClient } from '../client.js';
 
 export const awsListEcsAttributes = tool({
-  description: 'List attributes for a resource. Use it to inspect current state before making changes.',
+  description:
+    'List attributes for a resource. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -15,7 +16,16 @@ export const awsListEcsAttributes = tool({
     maxResults: z.number().optional().describe('Maximum number of attributes to return'),
     nextToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, cluster, targetType, attributeName, attributeValue, maxResults, nextToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cluster,
+    targetType,
+    attributeName,
+    attributeValue,
+    maxResults,
+    nextToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,20 +33,23 @@ export const awsListEcsAttributes = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new ListAttributesCommand({
-          cluster: cluster,
-          targetType: targetType as any,
-          attributeName: attributeName,
-          attributeValue: attributeValue,
-          maxResults: maxResults,
-          nextToken: nextToken,
+        cluster: cluster,
+        targetType: targetType as any,
+        attributeName: attributeName,
+        attributeValue: attributeValue,
+        maxResults: maxResults,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  attributes: response.attributes || [],
-                  nextToken: response.nextToken,
-              };
+        attributes: response.attributes || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list attributes for a resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list attributes for a resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsTagCodedeployResource = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          ResourceArn: resourceArn,
-          Tags: tags,
+        ResourceArn: resourceArn,
+        Tags: tags,
       });
       await client.send(command);
       return {
-                  message: 'Tags applied successfully',
-                  resourceArn: resourceArn,
-              };
+        message: 'Tags applied successfully',
+        resourceArn: resourceArn,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to a CodeDeploy resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a CodeDeploy resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

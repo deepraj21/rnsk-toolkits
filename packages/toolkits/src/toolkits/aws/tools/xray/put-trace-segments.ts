@@ -8,7 +8,9 @@ export const awsPutTraceSegments = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    traceSegmentDocuments: z.array(z.string()).describe('Array of trace segment documents (JSON strings)'),
+    traceSegmentDocuments: z
+      .array(z.string())
+      .describe('Array of trace segment documents (JSON strings)'),
   }),
   execute: async ({ awsCredentials, region, traceSegmentDocuments }) => {
     if (!awsCredentials) {
@@ -18,14 +20,17 @@ export const awsPutTraceSegments = tool({
       const client = createXRayClient(awsCredentials, region);
 
       const command = new PutTraceSegmentsCommand({
-          TraceSegmentDocuments: traceSegmentDocuments,
+        TraceSegmentDocuments: traceSegmentDocuments,
       });
       const response = await client.send(command);
       return {
-                  unprocessedTraceSegments: response.UnprocessedTraceSegments || [],
-              };
+        unprocessedTraceSegments: response.UnprocessedTraceSegments || [],
+      };
     } catch (err) {
-      return { error: 'Failed to uploads segment documents to AWS X-Ray', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to uploads segment documents to AWS X-Ray',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

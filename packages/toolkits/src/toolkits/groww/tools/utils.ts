@@ -40,7 +40,8 @@ export async function growwRequest(
     headers,
   };
   if (options?.body !== undefined) {
-    fetchOptions.body = typeof options.body === 'string' ? options.body : JSON.stringify(options.body);
+    fetchOptions.body =
+      typeof options.body === 'string' ? options.body : JSON.stringify(options.body);
   }
   const response = await fetch(url, fetchOptions);
   const contentType = response.headers.get('content-type') ?? '';
@@ -53,7 +54,10 @@ export async function growwRequest(
   return { ok: response.ok, status: response.status, data };
 }
 
-export function handleGrowwResult(result: { ok: boolean; status: number; data: unknown }, action: string) {
+export function handleGrowwResult(
+  result: { ok: boolean; status: number; data: unknown },
+  action: string,
+) {
   if (!result.ok) {
     return { error: `Failed to ${action}`, details: result.data, statusCode: result.status };
   }

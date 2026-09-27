@@ -4,7 +4,8 @@ import { DeleteFunctionEventInvokeConfigCommand } from '@aws-sdk/client-lambda';
 import { createLambdaClient } from '../client.js';
 
 export const awsDeleteLambdaFunctionEventInvokeConfig = tool({
-  description: 'Delete async invocation configuration for a Lambda function. Use it to permanently remove the resource.',
+  description:
+    'Delete async invocation configuration for a Lambda function. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,19 @@ export const awsDeleteLambdaFunctionEventInvokeConfig = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new DeleteFunctionEventInvokeConfigCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
+        FunctionName: functionName,
+        Qualifier: qualifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Event invoke config deleted successfully for function ${functionName}`,
-              };
+        success: true,
+        message: `Event invoke config deleted successfully for function ${functionName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete async invocation configuration for a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete async invocation configuration for a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

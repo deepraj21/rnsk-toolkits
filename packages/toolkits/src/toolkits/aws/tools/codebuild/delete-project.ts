@@ -18,15 +18,18 @@ export const awsDeleteCodebuildProject = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new DeleteProjectCommand({
-          name: name,
+        name: name,
       });
       await client.send(command);
       return {
-                  message: 'Project deleted successfully',
-                  name: name,
-              };
+        message: 'Project deleted successfully',
+        name: name,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CodeBuild build project', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CodeBuild build project',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

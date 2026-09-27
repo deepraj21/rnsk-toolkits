@@ -15,7 +15,16 @@ export const awsCreateEc2Volume = tool({
     encrypted: z.boolean().optional().describe('Whether to encrypt the volume'),
     kmsKeyId: z.string().optional().describe('KMS key ID for encryption'),
   }),
-  execute: async ({ awsCredentials, region, availabilityZone, size, volumeType, iops, encrypted, kmsKeyId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    availabilityZone,
+    size,
+    volumeType,
+    iops,
+    encrypted,
+    kmsKeyId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,17 +32,20 @@ export const awsCreateEc2Volume = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateVolumeCommand({
-          AvailabilityZone: availabilityZone,
-          Size: size,
-          VolumeType: volumeType as any,
-          Iops: iops,
-          Encrypted: encrypted,
-          KmsKeyId: kmsKeyId,
+        AvailabilityZone: availabilityZone,
+        Size: size,
+        VolumeType: volumeType as any,
+        Iops: iops,
+        Encrypted: encrypted,
+        KmsKeyId: kmsKeyId,
       });
       const response = await client.send(command);
       return { volumeId: response.VolumeId };
     } catch (err) {
-      return { error: 'Failed to create an EBS volume', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an EBS volume',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

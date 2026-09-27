@@ -4,7 +4,8 @@ import { CreateDBSnapshotCommand } from '@aws-sdk/client-rds';
 import { createRdsClient } from '../client.js';
 
 export const awsCreateDbSnapshot = tool({
-  description: 'Create a manual backup snapshot of an RDS instance. Use it to provision a new resource.',
+  description:
+    'Create a manual backup snapshot of an RDS instance. Use it to provision a new resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -15,7 +16,16 @@ export const awsCreateDbSnapshot = tool({
     Key: z.string().optional().describe('Key'),
     Value: z.string().optional().describe('Value'),
   }),
-  execute: async ({ awsCredentials, region, dbSnapshotIdentifier, dbInstanceIdentifier, tags, properties, Key, Value }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    dbSnapshotIdentifier,
+    dbInstanceIdentifier,
+    tags,
+    properties,
+    Key,
+    Value,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,14 +33,17 @@ export const awsCreateDbSnapshot = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new CreateDBSnapshotCommand({
-          DBSnapshotIdentifier: dbSnapshotIdentifier,
-          DBInstanceIdentifier: dbInstanceIdentifier,
-          Tags: tags,
+        DBSnapshotIdentifier: dbSnapshotIdentifier,
+        DBInstanceIdentifier: dbInstanceIdentifier,
+        Tags: tags,
       });
       const response = await client.send(command);
       return response.DBSnapshot;
     } catch (err) {
-      return { error: 'Failed to create a manual backup snapshot of an RDS instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a manual backup snapshot of an RDS instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

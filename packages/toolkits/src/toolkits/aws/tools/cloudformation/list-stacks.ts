@@ -4,7 +4,8 @@ import { ListStacksCommand } from '@aws-sdk/client-cloudformation';
 import { createCloudFormationClient } from '../client.js';
 
 export const awsListCloudformationStacks = tool({
-  description: 'List all CloudFormation stacks. Use it to inspect current state before making changes.',
+  description:
+    'List all CloudFormation stacks. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,13 +20,16 @@ export const awsListCloudformationStacks = tool({
       const client = createCloudFormationClient(awsCredentials, region);
 
       const command = new ListStacksCommand({
-          StackStatusFilter: stackStatusFilter as any,
-          NextToken: nextToken,
+        StackStatusFilter: stackStatusFilter as any,
+        NextToken: nextToken,
       });
       const response = await client.send(command);
       return { stackSummaries: response.StackSummaries, nextToken: response.NextToken };
     } catch (err) {
-      return { error: 'Failed to list all CloudFormation stacks', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all CloudFormation stacks',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

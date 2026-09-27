@@ -15,7 +15,16 @@ export const awsListSagemakerExperiments = tool({
     sortBy: z.enum(['Name', 'CreationTime']).optional().describe('Sort by'),
     sortOrder: z.enum(['Ascending', 'Descending']).optional().describe('Sort order'),
   }),
-  execute: async ({ awsCredentials, region, nextToken, maxResults, createdAfter, createdBefore, sortBy, sortOrder }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    nextToken,
+    maxResults,
+    createdAfter,
+    createdBefore,
+    sortBy,
+    sortOrder,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,20 +32,23 @@ export const awsListSagemakerExperiments = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new ListExperimentsCommand({
-          NextToken: nextToken,
-          MaxResults: maxResults,
-          CreatedAfter: createdAfter ? new Date(createdAfter) : undefined,
-          CreatedBefore: createdBefore ? new Date(createdBefore) : undefined,
-          SortBy: sortBy,
-          SortOrder: sortOrder,
+        NextToken: nextToken,
+        MaxResults: maxResults,
+        CreatedAfter: createdAfter ? new Date(createdAfter) : undefined,
+        CreatedBefore: createdBefore ? new Date(createdBefore) : undefined,
+        SortBy: sortBy,
+        SortOrder: sortOrder,
       });
       const response = await client.send(command);
       return {
-                  experimentSummaries: response.ExperimentSummaries || [],
-                  nextToken: response.NextToken,
-              };
+        experimentSummaries: response.ExperimentSummaries || [],
+        nextToken: response.NextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list SageMaker experiments', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list SageMaker experiments',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

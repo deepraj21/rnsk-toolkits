@@ -19,15 +19,18 @@ export const awsUntagEcrResource = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          resourceArn: resourceArn,
-          tagKeys: tagKeys,
+        resourceArn: resourceArn,
+        tagKeys: tagKeys,
       });
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from an ECR resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from an ECR resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

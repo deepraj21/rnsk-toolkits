@@ -16,7 +16,17 @@ export const awsUpdateCloudformationStackSet = tool({
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply'),
     operationPreferences: z.record(z.any()).optional().describe('Operation preferences'),
   }),
-  execute: async ({ awsCredentials, region, stackSetName, templateBody, templateURL, parameters, capabilities, tags, operationPreferences }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    stackSetName,
+    templateBody,
+    templateURL,
+    parameters,
+    capabilities,
+    tags,
+    operationPreferences,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -24,18 +34,21 @@ export const awsUpdateCloudformationStackSet = tool({
       const client = createCloudFormationClient(awsCredentials, region);
 
       const command = new UpdateStackSetCommand({
-          StackSetName: stackSetName,
-          TemplateBody: templateBody,
-          TemplateURL: templateURL,
-          Parameters: parameters,
-          Capabilities: capabilities as any,
-          Tags: tags,
-          OperationPreferences: operationPreferences,
+        StackSetName: stackSetName,
+        TemplateBody: templateBody,
+        TemplateURL: templateURL,
+        Parameters: parameters,
+        Capabilities: capabilities as any,
+        Tags: tags,
+        OperationPreferences: operationPreferences,
       } as any);
       const response = await client.send(command);
       return { operationId: response.OperationId };
     } catch (err) {
-      return { error: 'Failed to update a CloudFormation stack set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFormation stack set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

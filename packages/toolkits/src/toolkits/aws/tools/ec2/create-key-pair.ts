@@ -20,14 +20,17 @@ export const awsCreateEc2KeyPair = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateKeyPairCommand({
-          KeyName: keyName,
-          KeyType: keyType as any,
-          TagSpecifications: tagSpecifications,
+        KeyName: keyName,
+        KeyType: keyType as any,
+        TagSpecifications: tagSpecifications,
       });
       const response = await client.send(command);
       return { keyPair: response };
     } catch (err) {
-      return { error: 'Failed to create a new key pair', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new key pair',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

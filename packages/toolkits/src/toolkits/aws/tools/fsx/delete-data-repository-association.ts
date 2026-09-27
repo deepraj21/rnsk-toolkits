@@ -10,9 +10,18 @@ export const awsDeleteFsxDataRepositoryAssociation = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     associationId: z.string().describe('The ID of the association to delete'),
     clientRequestToken: z.string().optional().describe('Client request token for idempotency'),
-    deleteDataInFileSystem: z.boolean().optional().describe('Whether to delete data in file system'),
+    deleteDataInFileSystem: z
+      .boolean()
+      .optional()
+      .describe('Whether to delete data in file system'),
   }),
-  execute: async ({ awsCredentials, region, associationId, clientRequestToken, deleteDataInFileSystem }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    associationId,
+    clientRequestToken,
+    deleteDataInFileSystem,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,18 +29,21 @@ export const awsDeleteFsxDataRepositoryAssociation = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new DeleteDataRepositoryAssociationCommand({
-          AssociationId: associationId,
-          ClientRequestToken: clientRequestToken,
-          DeleteDataInFileSystem: deleteDataInFileSystem,
+        AssociationId: associationId,
+        ClientRequestToken: clientRequestToken,
+        DeleteDataInFileSystem: deleteDataInFileSystem,
       });
       const response = await client.send(command);
       return {
-                  associationId: response.AssociationId,
-                  lifeCycle: response.Lifecycle,
-                  deleteDataInFileSystem: response.DeleteDataInFileSystem,
-              };
+        associationId: response.AssociationId,
+        lifeCycle: response.Lifecycle,
+        deleteDataInFileSystem: response.DeleteDataInFileSystem,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a data repository association', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a data repository association',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -13,7 +13,14 @@ export const awsCreateEc2Subnet = tool({
     availabilityZone: z.string().optional().describe('Availability zone'),
     tagSpecifications: z.array(z.any()).optional().describe('Tags to apply'),
   }),
-  execute: async ({ awsCredentials, region, vpcId, cidrBlock, availabilityZone, tagSpecifications }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    vpcId,
+    cidrBlock,
+    availabilityZone,
+    tagSpecifications,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,15 +28,18 @@ export const awsCreateEc2Subnet = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateSubnetCommand({
-          VpcId: vpcId,
-          CidrBlock: cidrBlock,
-          AvailabilityZone: availabilityZone,
-          TagSpecifications: tagSpecifications,
+        VpcId: vpcId,
+        CidrBlock: cidrBlock,
+        AvailabilityZone: availabilityZone,
+        TagSpecifications: tagSpecifications,
       });
       const response = await client.send(command);
       return { subnet: response.Subnet };
     } catch (err) {
-      return { error: 'Failed to create a new subnet', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new subnet',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

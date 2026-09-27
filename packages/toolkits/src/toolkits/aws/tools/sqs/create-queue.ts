@@ -9,7 +9,12 @@ export const awsCreateSqsQueue = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     queueName: z.string().describe('The name of the queue'),
-    attributes: z.record(z.any()).optional().describe('Queue attributes (DelaySeconds, MaximumMessageSize, MessageRetentionPeriod, Policy, ReceiveMessageWaitTimeSeconds, RedrivePolicy, VisibilityTimeout, etc.)'),
+    attributes: z
+      .record(z.any())
+      .optional()
+      .describe(
+        'Queue attributes (DelaySeconds, MaximumMessageSize, MessageRetentionPeriod, Policy, ReceiveMessageWaitTimeSeconds, RedrivePolicy, VisibilityTimeout, etc.)',
+      ),
     tags: z.record(z.any()).optional().describe('Tags to apply to the queue'),
   }),
   execute: async ({ awsCredentials, region, queueName, attributes, tags }) => {
@@ -20,16 +25,19 @@ export const awsCreateSqsQueue = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new CreateQueueCommand({
-          QueueName: queueName,
-          Attributes: attributes,
-          tags: tags,
+        QueueName: queueName,
+        Attributes: attributes,
+        tags: tags,
       });
       const response = await client.send(command);
       return {
-                  queueUrl: response.QueueUrl,
-              };
+        queueUrl: response.QueueUrl,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

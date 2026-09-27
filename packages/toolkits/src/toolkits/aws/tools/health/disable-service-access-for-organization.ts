@@ -19,10 +19,13 @@ export const awsDisableHealthServiceAccessForOrganization = tool({
       const command = new DisableHealthServiceAccessForOrganizationCommand({});
       await client.send(command);
       return {
-                  message: 'Health service access disabled for organization successfully',
-              };
+        message: 'Health service access disabled for organization successfully',
+      };
     } catch (err) {
-      return { error: 'Failed to disable Health service access for your organization', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disable Health service access for your organization',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

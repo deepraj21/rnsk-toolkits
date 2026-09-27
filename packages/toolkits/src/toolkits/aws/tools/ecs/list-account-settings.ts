@@ -15,7 +15,16 @@ export const awsListEcsAccountSettings = tool({
     nextToken: z.string().optional().describe('Token for pagination'),
     maxResults: z.number().optional().describe('Maximum number of settings to return'),
   }),
-  execute: async ({ awsCredentials, region, name, value, principalArn, effectiveSettings, nextToken, maxResults }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    value,
+    principalArn,
+    effectiveSettings,
+    nextToken,
+    maxResults,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,20 +32,23 @@ export const awsListEcsAccountSettings = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new ListAccountSettingsCommand({
-          name: name as any,
-          value: value,
-          principalArn: principalArn,
-          effectiveSettings: effectiveSettings,
-          nextToken: nextToken,
-          maxResults: maxResults,
+        name: name as any,
+        value: value,
+        principalArn: principalArn,
+        effectiveSettings: effectiveSettings,
+        nextToken: nextToken,
+        maxResults: maxResults,
       });
       const response = await client.send(command);
       return {
-                  settings: response.settings || [],
-                  nextToken: response.nextToken,
-              };
+        settings: response.settings || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list account settings', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list account settings',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

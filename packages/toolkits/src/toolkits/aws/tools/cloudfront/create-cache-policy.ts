@@ -18,16 +18,19 @@ export const awsCreateCloudfrontCachePolicy = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateCachePolicyCommand({
-          CachePolicyConfig: cachePolicyConfig,
+        CachePolicyConfig: cachePolicyConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  cachePolicy: response.CachePolicy,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        cachePolicy: response.CachePolicy,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront cache policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront cache policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

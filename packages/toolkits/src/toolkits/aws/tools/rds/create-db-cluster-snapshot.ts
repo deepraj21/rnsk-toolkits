@@ -15,7 +15,16 @@ export const awsCreateDbClusterSnapshot = tool({
     Key: z.string().optional().describe('Key'),
     Value: z.string().optional().describe('Value'),
   }),
-  execute: async ({ awsCredentials, region, dbClusterSnapshotIdentifier, dbClusterIdentifier, tags, properties, Key, Value }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    dbClusterSnapshotIdentifier,
+    dbClusterIdentifier,
+    tags,
+    properties,
+    Key,
+    Value,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,14 +32,17 @@ export const awsCreateDbClusterSnapshot = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new CreateDBClusterSnapshotCommand({
-          DBClusterSnapshotIdentifier: dbClusterSnapshotIdentifier,
-          DBClusterIdentifier: dbClusterIdentifier,
-          Tags: tags,
+        DBClusterSnapshotIdentifier: dbClusterSnapshotIdentifier,
+        DBClusterIdentifier: dbClusterIdentifier,
+        Tags: tags,
       });
       const response = await client.send(command);
       return response.DBClusterSnapshot;
     } catch (err) {
-      return { error: 'Failed to create a manual snapshot of an Aurora cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a manual snapshot of an Aurora cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

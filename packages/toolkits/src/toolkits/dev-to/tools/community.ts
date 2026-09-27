@@ -26,11 +26,16 @@ export const devToGetComment = tool({
 });
 
 export const devToListComments = tool({
-  description: 'List threaded comments for an article or a podcast episode. Provide articleId or podcastEpisodeId, not both.',
+  description:
+    'List threaded comments for an article or a podcast episode. Provide articleId or podcastEpisodeId, not both.',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     articleId: z.number().int().optional().describe('Article ID to get comments for'),
-    podcastEpisodeId: z.number().int().optional().describe('Podcast episode ID to get comments for'),
+    podcastEpisodeId: z
+      .number()
+      .int()
+      .optional()
+      .describe('Podcast episode ID to get comments for'),
   }),
   execute: async ({ devToApiKey, articleId, podcastEpisodeId }) => {
     try {
@@ -76,14 +81,19 @@ export const devToGetUser = tool({
 });
 
 export const devToGetOrganization = tool({
-  description: 'Get a single organization by username, including summary, links, and profile image.',
+  description:
+    'Get a single organization by username, including summary, links, and profile image.',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     username: z.string().describe("The organization's username (e.g. 'devteam')"),
   }),
   execute: async ({ devToApiKey, username }) => {
     try {
-      return await devToRequest(devToApiKey, 'GET', `/organizations/${encodeURIComponent(username)}`);
+      return await devToRequest(
+        devToApiKey,
+        'GET',
+        `/organizations/${encodeURIComponent(username)}`,
+      );
     } catch (error) {
       return toDevToError(error, 'Failed to get organization');
     }
@@ -101,9 +111,14 @@ export const devToListOrganizationUsers = tool({
     try {
       const query: Record<string, unknown> = { ...rest };
       if (perPage !== undefined) query.per_page = perPage;
-      return await devToRequest(devToApiKey, 'GET', `/organizations/${encodeURIComponent(username)}/users`, {
-        query,
-      });
+      return await devToRequest(
+        devToApiKey,
+        'GET',
+        `/organizations/${encodeURIComponent(username)}/users`,
+        {
+          query,
+        },
+      );
     } catch (error) {
       return toDevToError(error, 'Failed to list organization users');
     }
@@ -111,14 +126,19 @@ export const devToListOrganizationUsers = tool({
 });
 
 export const devToGetProfileImage = tool({
-  description: 'Get the full-size and 90px profile image URLs for a user or organization by username.',
+  description:
+    'Get the full-size and 90px profile image URLs for a user or organization by username.',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     username: z.string().describe('The username of the user or organization'),
   }),
   execute: async ({ devToApiKey, username }) => {
     try {
-      return await devToRequest(devToApiKey, 'GET', `/profile_images/${encodeURIComponent(username)}`);
+      return await devToRequest(
+        devToApiKey,
+        'GET',
+        `/profile_images/${encodeURIComponent(username)}`,
+      );
     } catch (error) {
       return toDevToError(error, 'Failed to get profile image');
     }
@@ -126,7 +146,8 @@ export const devToGetProfileImage = tool({
 });
 
 export const devToListTags = tool({
-  description: 'List tags used on DEV Community ordered by popularity. Useful for discovery and autocomplete.',
+  description:
+    'List tags used on DEV Community ordered by popularity. Useful for discovery and autocomplete.',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     ...paginationFields,

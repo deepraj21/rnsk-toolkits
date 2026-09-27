@@ -19,10 +19,13 @@ export const awsDescribeAutoscalingAdjustmentTypes = tool({
       const command = new DescribeAdjustmentTypesCommand({});
       const response = await client.send(command);
       return {
-                  adjustmentTypes: response.AdjustmentTypes,
-              };
+        adjustmentTypes: response.AdjustmentTypes,
+      };
     } catch (err) {
-      return { error: 'Failed to describe adjustment types', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe adjustment types',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

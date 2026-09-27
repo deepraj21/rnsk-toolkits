@@ -223,7 +223,9 @@ export function buildMarkdownSlideRequests(
 
     const imageUrl = extractImageUrl(slideContent);
     if (imageUrl) {
-      requests.push(...buildImageRequests(slideObjectId, uniqueId(`${prefix}_image`, index), imageUrl));
+      requests.push(
+        ...buildImageRequests(slideObjectId, uniqueId(`${prefix}_image`, index), imageUrl),
+      );
       const caption = slideContent.replace(/!\[[^\]]*]\([^)]+\)/, '').trim();
       if (caption) {
         requests.push(
@@ -237,7 +239,9 @@ export function buildMarkdownSlideRequests(
     }
 
     if (isTableSlide(slideContent)) {
-      requests.push(...buildTableRequests(slideObjectId, uniqueId(`${prefix}_table`, index), slideContent));
+      requests.push(
+        ...buildTableRequests(slideObjectId, uniqueId(`${prefix}_table`, index), slideContent),
+      );
       return;
     }
 

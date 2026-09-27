@@ -19,13 +19,16 @@ export const awsAddOpensearchTags = tool({
       const client = createOpenSearchClient(awsCredentials, region);
 
       const command = new AddTagsCommand({
-          ARN: arn,
-          TagList: tagList,
+        ARN: arn,
+        TagList: tagList,
       } as any);
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to add tags to an OpenSearch domain', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to an OpenSearch domain',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

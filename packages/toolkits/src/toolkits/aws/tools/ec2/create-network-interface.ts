@@ -21,15 +21,18 @@ export const awsCreateEc2NetworkInterface = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateNetworkInterfaceCommand({
-          SubnetId: subnetId,
-          Description: description,
-          PrivateIpAddress: privateIpAddress,
-          Groups: groups,
+        SubnetId: subnetId,
+        Description: description,
+        PrivateIpAddress: privateIpAddress,
+        Groups: groups,
       });
       const response = await client.send(command);
       return { networkInterface: response.NetworkInterface };
     } catch (err) {
-      return { error: 'Failed to create a network interface', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a network interface',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

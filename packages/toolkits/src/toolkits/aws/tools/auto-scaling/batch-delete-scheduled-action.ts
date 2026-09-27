@@ -19,15 +19,18 @@ export const awsBatchDeleteAutoscalingScheduledAction = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new BatchDeleteScheduledActionCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          ScheduledActionNames: scheduledActionNames,
+        AutoScalingGroupName: autoScalingGroupName,
+        ScheduledActionNames: scheduledActionNames,
       });
       const response = await client.send(command);
       return {
-                  failedScheduledActions: response.FailedScheduledActions,
-              };
+        failedScheduledActions: response.FailedScheduledActions,
+      };
     } catch (err) {
-      return { error: 'Failed to batch delete scheduled actions', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to batch delete scheduled actions',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

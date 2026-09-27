@@ -4,7 +4,8 @@ import { GetCloudFrontOriginAccessIdentityCommand } from '@aws-sdk/client-cloudf
 import { createCloudFrontClient } from '../client.js';
 
 export const awsGetCloudfrontOriginAccessIdentity = tool({
-  description: 'Get information about a CloudFront origin access identity. Use it to inspect current state before making changes.',
+  description:
+    'Get information about a CloudFront origin access identity. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsGetCloudfrontOriginAccessIdentity = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new GetCloudFrontOriginAccessIdentityCommand({
-          Id: id,
+        Id: id,
       });
       const response = await client.send(command);
       return {
-                  cloudFrontOriginAccessIdentity: response.CloudFrontOriginAccessIdentity,
-                  eTag: response.ETag,
-              };
+        cloudFrontOriginAccessIdentity: response.CloudFrontOriginAccessIdentity,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to get information about a CloudFront origin access identity', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get information about a CloudFront origin access identity',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

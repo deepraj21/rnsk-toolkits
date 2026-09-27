@@ -6,7 +6,8 @@ import { googleClassroomTools } from './tools/index.js';
 export default defineToolkit({
   id: 'google-classroom',
   displayName: 'Google Classroom',
-  shortDescription: 'Manage courses, coursework, rosters, announcements, and grades in Google Classroom.',
+  shortDescription:
+    'Manage courses, coursework, rosters, announcements, and grades in Google Classroom.',
   category: 'Education & LMS',
   icon: GCLASSROOM_ICON,
   auth: {
@@ -14,7 +15,10 @@ export default defineToolkit({
     tokenField: 'googleClassroomToken',
     provider: {
       slug: 'google-classroom',
-      env: { clientId: 'GOOGLE_CLASSROOM_CLIENT_ID', clientSecret: 'GOOGLE_CLASSROOM_CLIENT_SECRET' },
+      env: {
+        clientId: 'GOOGLE_CLASSROOM_CLIENT_ID',
+        clientSecret: 'GOOGLE_CLASSROOM_CLIENT_SECRET',
+      },
       authorizeUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
       tokenUrl: 'https://oauth2.googleapis.com/token',
       scopes: [
@@ -46,7 +50,8 @@ export default defineToolkit({
       ],
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
-      connectDescription: 'Connect Google Classroom to manage courses, coursework, rosters, and announcements.',
+      connectDescription:
+        'Connect Google Classroom to manage courses, coursework, rosters, and announcements.',
       callbackPath: '/api/auth/google-classroom/callback',
       stateCookie: 'google_classroom_oauth_state',
     },

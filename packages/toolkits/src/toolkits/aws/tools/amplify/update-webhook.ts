@@ -9,7 +9,10 @@ export const awsUpdateAmplifyWebhook = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     webhookId: z.string().describe('The unique ID for a webhook'),
-    branchName: z.string().optional().describe('The name for a branch that is part of an Amplify app'),
+    branchName: z
+      .string()
+      .optional()
+      .describe('The name for a branch that is part of an Amplify app'),
     description: z.string().optional().describe('The description for a webhook'),
   }),
   execute: async ({ awsCredentials, region, webhookId, branchName, description }) => {
@@ -20,16 +23,19 @@ export const awsUpdateAmplifyWebhook = tool({
       const client = createAmplifyClient(awsCredentials, region);
 
       const command = new UpdateWebhookCommand({
-          webhookId: webhookId,
-          branchName: branchName,
-          description: description,
+        webhookId: webhookId,
+        branchName: branchName,
+        description: description,
       });
       const response = await client.send(command);
       return {
-                  webhook: response.webhook,
-              };
+        webhook: response.webhook,
+      };
     } catch (err) {
-      return { error: 'Failed to updates a webhook', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to updates a webhook',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

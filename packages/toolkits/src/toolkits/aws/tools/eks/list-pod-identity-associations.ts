@@ -4,7 +4,8 @@ import { ListPodIdentityAssociationsCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsListEksPodIdentityAssociations = tool({
-  description: 'List all pod identity associations for a cluster. Use it to inspect current state before making changes.',
+  description:
+    'List all pod identity associations for a cluster. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -14,7 +15,15 @@ export const awsListEksPodIdentityAssociations = tool({
     maxResults: z.number().optional().describe('Maximum number of associations to return'),
     nextToken: z.string().optional().describe('Token for pagination'),
   }),
-  execute: async ({ awsCredentials, region, clusterName, namespace, serviceAccount, maxResults, nextToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clusterName,
+    namespace,
+    serviceAccount,
+    maxResults,
+    nextToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,19 +31,22 @@ export const awsListEksPodIdentityAssociations = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new ListPodIdentityAssociationsCommand({
-          clusterName: clusterName,
-          namespace: namespace,
-          serviceAccount: serviceAccount,
-          maxResults: maxResults,
-          nextToken: nextToken,
+        clusterName: clusterName,
+        namespace: namespace,
+        serviceAccount: serviceAccount,
+        maxResults: maxResults,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  associations: response.associations || [],
-                  nextToken: response.nextToken,
-              };
+        associations: response.associations || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list all pod identity associations for a cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all pod identity associations for a cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

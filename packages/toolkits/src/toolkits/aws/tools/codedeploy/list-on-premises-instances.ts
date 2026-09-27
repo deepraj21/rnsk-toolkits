@@ -18,15 +18,18 @@ export const awsListCodedeployOnPremisesInstances = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new ListOnPremisesInstancesCommand({
-          nextToken: nextToken,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  instanceNames: response.instanceNames || [],
-                  nextToken: response.nextToken,
-              };
+        instanceNames: response.instanceNames || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list on-premises instances', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list on-premises instances',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

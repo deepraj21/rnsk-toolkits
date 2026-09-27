@@ -13,7 +13,14 @@ export const awsAssociateEc2Address = tool({
     networkInterfaceId: z.string().optional().describe('Network interface ID'),
     privateIpAddress: z.string().optional().describe('Private IP address'),
   }),
-  execute: async ({ awsCredentials, region, allocationId, instanceId, networkInterfaceId, privateIpAddress }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    allocationId,
+    instanceId,
+    networkInterfaceId,
+    privateIpAddress,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,15 +28,18 @@ export const awsAssociateEc2Address = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new AssociateAddressCommand({
-          AllocationId: allocationId,
-          InstanceId: instanceId,
-          NetworkInterfaceId: networkInterfaceId,
-          PrivateIpAddress: privateIpAddress,
+        AllocationId: allocationId,
+        InstanceId: instanceId,
+        NetworkInterfaceId: networkInterfaceId,
+        PrivateIpAddress: privateIpAddress,
       });
       const response = await client.send(command);
       return { associationId: response.AssociationId };
     } catch (err) {
-      return { error: 'Failed to associate an Elastic IP with an instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to associate an Elastic IP with an instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,16 +18,19 @@ export const awsCancelEventbridgeReplay = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new CancelReplayCommand({
-          ReplayName: replayName,
+        ReplayName: replayName,
       });
       const response = await client.send(command);
       return {
-                  replayArn: response.ReplayArn,
-                  state: response.State,
-                  stateReason: response.StateReason,
-              };
+        replayArn: response.ReplayArn,
+        state: response.State,
+        stateReason: response.StateReason,
+      };
     } catch (err) {
-      return { error: 'Failed to cancel an EventBridge replay', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to cancel an EventBridge replay',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

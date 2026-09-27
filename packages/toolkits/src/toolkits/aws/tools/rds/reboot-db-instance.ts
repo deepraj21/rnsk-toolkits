@@ -9,7 +9,10 @@ export const awsRebootDbInstance = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     dbInstanceIdentifier: z.string().describe('DB instance identifier to reboot'),
-    forceFailover: z.boolean().optional().describe('Force a failover from primary to standby (Multi-AZ only)'),
+    forceFailover: z
+      .boolean()
+      .optional()
+      .describe('Force a failover from primary to standby (Multi-AZ only)'),
   }),
   execute: async ({ awsCredentials, region, dbInstanceIdentifier, forceFailover }) => {
     if (!awsCredentials) {
@@ -19,13 +22,16 @@ export const awsRebootDbInstance = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new RebootDBInstanceCommand({
-          DBInstanceIdentifier: dbInstanceIdentifier,
-          ForceFailover: forceFailover,
+        DBInstanceIdentifier: dbInstanceIdentifier,
+        ForceFailover: forceFailover,
       });
       const response = await client.send(command);
       return response.DBInstance;
     } catch (err) {
-      return { error: 'Failed to reboot an RDS database instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to reboot an RDS database instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsDeleteAutoscalingLifecycleHook = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DeleteLifecycleHookCommand({
-          LifecycleHookName: lifecycleHookName,
-          AutoScalingGroupName: autoScalingGroupName,
+        LifecycleHookName: lifecycleHookName,
+        AutoScalingGroupName: autoScalingGroupName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Lifecycle hook ${lifecycleHookName} deleted successfully`,
-              };
+        success: true,
+        message: `Lifecycle hook ${lifecycleHookName} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a lifecycle hook', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a lifecycle hook',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

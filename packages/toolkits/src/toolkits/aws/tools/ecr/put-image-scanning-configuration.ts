@@ -4,7 +4,8 @@ import { PutImageScanningConfigurationCommand } from '@aws-sdk/client-ecr';
 import { createEcrClient } from '../client.js';
 
 export const awsPutImageScanningConfiguration = tool({
-  description: 'Update the image scanning configuration for an ECR repository. Use it to write data or configuration.',
+  description:
+    'Update the image scanning configuration for an ECR repository. Use it to write data or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -12,7 +13,13 @@ export const awsPutImageScanningConfiguration = tool({
     registryId: z.string().optional().describe('AWS account ID associated with the registry'),
     imageScanningConfiguration: z.record(z.any()).describe('The image scanning configuration'),
   }),
-  execute: async ({ awsCredentials, region, repositoryName, registryId, imageScanningConfiguration }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    repositoryName,
+    registryId,
+    imageScanningConfiguration,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,18 +27,21 @@ export const awsPutImageScanningConfiguration = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new PutImageScanningConfigurationCommand({
-          repositoryName: repositoryName,
-          registryId: registryId,
-          imageScanningConfiguration: imageScanningConfiguration,
+        repositoryName: repositoryName,
+        registryId: registryId,
+        imageScanningConfiguration: imageScanningConfiguration,
       });
       const response = await client.send(command);
       return {
-                  registryId: response.registryId,
-                  repositoryName: response.repositoryName,
-                  imageScanningConfiguration: response.imageScanningConfiguration,
-              };
+        registryId: response.registryId,
+        repositoryName: response.repositoryName,
+        imageScanningConfiguration: response.imageScanningConfiguration,
+      };
     } catch (err) {
-      return { error: 'Failed to update the image scanning configuration for an ECR repository', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the image scanning configuration for an ECR repository',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsDeleteAutoscalingScheduledAction = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DeleteScheduledActionCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          ScheduledActionName: scheduledActionName,
+        AutoScalingGroupName: autoScalingGroupName,
+        ScheduledActionName: scheduledActionName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Scheduled action ${scheduledActionName} deleted successfully`,
-              };
+        success: true,
+        message: `Scheduled action ${scheduledActionName} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a scheduled action', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a scheduled action',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

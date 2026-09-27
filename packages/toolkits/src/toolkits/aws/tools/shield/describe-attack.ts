@@ -4,7 +4,8 @@ import { DescribeAttackCommand } from '@aws-sdk/client-shield';
 import { createShieldClient } from '../client.js';
 
 export const awsDescribeAttack = tool({
-  description: 'Get detailed information about a specific DDoS attack. Use it to inspect current state before making changes.',
+  description:
+    'Get detailed information about a specific DDoS attack. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,12 +19,15 @@ export const awsDescribeAttack = tool({
       const client = createShieldClient(awsCredentials, region);
 
       const command = new DescribeAttackCommand({
-          AttackId: attackId,
+        AttackId: attackId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to get detailed information about a specific DDoS attack', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get detailed information about a specific DDoS attack',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

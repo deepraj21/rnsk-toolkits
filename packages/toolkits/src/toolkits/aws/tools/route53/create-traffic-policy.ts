@@ -20,17 +20,20 @@ export const awsCreateRoute53TrafficPolicy = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new CreateTrafficPolicyCommand({
-          Name: name,
-          Document: document,
-          Comment: comment,
+        Name: name,
+        Document: document,
+        Comment: comment,
       });
       const response = await client.send(command);
       return {
-                  trafficPolicy: response.TrafficPolicy,
-                  location: response.Location,
-              };
+        trafficPolicy: response.TrafficPolicy,
+        location: response.Location,
+      };
     } catch (err) {
-      return { error: 'Failed to create a Route 53 traffic policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a Route 53 traffic policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

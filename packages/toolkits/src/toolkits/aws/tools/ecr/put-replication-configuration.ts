@@ -4,7 +4,8 @@ import { PutReplicationConfigurationCommand } from '@aws-sdk/client-ecr';
 import { createEcrClient } from '../client.js';
 
 export const awsPutReplicationConfiguration = tool({
-  description: 'Create or update the replication configuration for the registry. Use it to write data or configuration.',
+  description:
+    'Create or update the replication configuration for the registry. Use it to write data or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsPutReplicationConfiguration = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new PutReplicationConfigurationCommand({
-          replicationConfiguration: replicationConfiguration,
+        replicationConfiguration: replicationConfiguration,
       } as any);
       const response = await client.send(command);
       return {
-                  replicationConfiguration: response.replicationConfiguration,
-              };
+        replicationConfiguration: response.replicationConfiguration,
+      };
     } catch (err) {
-      return { error: 'Failed to create or update the replication configuration for the registry', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or update the replication configuration for the registry',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,15 +18,18 @@ export const awsStopBackupJob = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new StopBackupJobCommand({
-          BackupJobId: backupJobId,
+        BackupJobId: backupJobId,
       });
       await client.send(command);
       return {
-                  message: 'Backup job stopped successfully',
-                  backupJobId: backupJobId,
-              };
+        message: 'Backup job stopped successfully',
+        backupJobId: backupJobId,
+      };
     } catch (err) {
-      return { error: 'Failed to stop a backup job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to stop a backup job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

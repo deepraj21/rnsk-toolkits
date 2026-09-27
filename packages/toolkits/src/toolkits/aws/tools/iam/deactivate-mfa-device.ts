@@ -19,13 +19,16 @@ export const awsDeactivateMfaDevice = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new DeactivateMFADeviceCommand({
-          UserName: userName,
-          SerialNumber: serialNumber,
+        UserName: userName,
+        SerialNumber: serialNumber,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to deactivate an MFA device for an IAM user', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deactivate an MFA device for an IAM user',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

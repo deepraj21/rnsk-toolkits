@@ -19,16 +19,19 @@ export const awsCreateRoute53ReusableDelegationSet = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new CreateReusableDelegationSetCommand({
-          CallerReference: callerReference,
-          HostedZoneId: hostedZoneId,
+        CallerReference: callerReference,
+        HostedZoneId: hostedZoneId,
       });
       const response = await client.send(command);
       return {
-                  delegationSet: response.DelegationSet,
-                  location: response.Location,
-              };
+        delegationSet: response.DelegationSet,
+        location: response.Location,
+      };
     } catch (err) {
-      return { error: 'Failed to create a reusable delegation set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a reusable delegation set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

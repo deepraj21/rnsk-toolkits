@@ -13,10 +13,13 @@ export function getToolInputZodSchema(tool: any): any | null {
 }
 
 export function resolveZodObjectShape(
-  schema: {
-    shape?: Record<string, unknown>;
-    _def?: { shape?: Record<string, unknown> | (() => Record<string, unknown>) };
-  } | null | undefined,
+  schema:
+    | {
+        shape?: Record<string, unknown>;
+        _def?: { shape?: Record<string, unknown> | (() => Record<string, unknown>) };
+      }
+    | null
+    | undefined,
 ): Record<string, unknown> | null {
   if (!schema) return null;
   if (schema.shape) return schema.shape;
@@ -57,9 +60,7 @@ function stripAuthFromJsonSchema(
   }
 
   const required = Array.isArray(schema.required)
-    ? (schema.required as string[]).filter(
-        (key) => key !== requiredAuth && !key.endsWith('Token'),
-      )
+    ? (schema.required as string[]).filter((key) => key !== requiredAuth && !key.endsWith('Token'))
     : undefined;
 
   return {
@@ -143,14 +144,18 @@ export function extractParameterInfo(zodType: any): ParameterInfo | Record<strin
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function coerceArguments(args: Record<string, unknown>, schema: any): Record<string, unknown> {
+export function coerceArguments(
+  args: Record<string, unknown>,
+  schema: any,
+): Record<string, unknown> {
   const shape = resolveZodObjectShape(schema);
   if (!shape) return args;
 
   const coercedArgs: Record<string, unknown> = {};
 
   for (const [key, value] of Object.entries(args)) {
-    const fieldSchema = shape[key] as { _def?: { typeName?: string; innerType?: unknown } } | undefined;
+    const fieldSchema = shape[key] as
+      { _def?: { typeName?: string; innerType?: unknown } } | undefined;
     if (!fieldSchema) {
       coercedArgs[key] = value;
       continue;

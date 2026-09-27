@@ -4,7 +4,8 @@ import { DeleteMembersCommand } from '@aws-sdk/client-securityhub';
 import { createSecurityHubClient } from '../client.js';
 
 export const awsDeleteMembers = tool({
-  description: 'Remove member accounts from Security Hub. Use it to permanently remove the resource.',
+  description:
+    'Remove member accounts from Security Hub. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,12 +19,15 @@ export const awsDeleteMembers = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new DeleteMembersCommand({
-          AccountIds: accountIds,
+        AccountIds: accountIds,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to remove member accounts from Security Hub', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove member accounts from Security Hub',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,13 +19,16 @@ export const awsArchiveGuarddutyFindings = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new ArchiveFindingsCommand({
-          DetectorId: detectorId,
-          FindingIds: findingIds,
+        DetectorId: detectorId,
+        FindingIds: findingIds,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to archive findings to suppress future notifications', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to archive findings to suppress future notifications',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

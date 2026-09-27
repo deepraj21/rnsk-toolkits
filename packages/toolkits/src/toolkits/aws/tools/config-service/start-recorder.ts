@@ -4,11 +4,15 @@ import { StartConfigurationRecorderCommand } from '@aws-sdk/client-config-servic
 import { createConfigServiceClient } from '../client.js';
 
 export const awsStartConfigRecorder = tool({
-  description: 'Starts recording configurations of the AWS resources. Use it to start a stopped resource.',
+  description:
+    'Starts recording configurations of the AWS resources. Use it to start a stopped resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    configurationRecorderName: z.string().optional().describe('The name of the configuration recorder'),
+    configurationRecorderName: z
+      .string()
+      .optional()
+      .describe('The name of the configuration recorder'),
   }),
   execute: async ({ awsCredentials, region, configurationRecorderName }) => {
     if (!awsCredentials) {
@@ -18,15 +22,18 @@ export const awsStartConfigRecorder = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new StartConfigurationRecorderCommand({
-          ConfigurationRecorderName: configurationRecorderName,
+        ConfigurationRecorderName: configurationRecorderName,
       });
       await client.send(command);
       return {
-                  message: 'Configuration recorder started successfully',
-                  configurationRecorderName: configurationRecorderName,
-              };
+        message: 'Configuration recorder started successfully',
+        configurationRecorderName: configurationRecorderName,
+      };
     } catch (err) {
-      return { error: 'Failed to starts recording configurations of the AWS resources', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to starts recording configurations of the AWS resources',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

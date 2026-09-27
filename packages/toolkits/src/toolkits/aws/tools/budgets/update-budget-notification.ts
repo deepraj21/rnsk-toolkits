@@ -14,7 +14,15 @@ export const awsUpdateBudgetNotification = tool({
     newNotification: z.record(z.any()).describe('The updated notification object'),
     subscribers: z.array(z.record(z.any())).optional().describe('A list of subscribers'),
   }),
-  execute: async ({ awsCredentials, region, accountId, budgetName, oldNotification, newNotification, subscribers }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    accountId,
+    budgetName,
+    oldNotification,
+    newNotification,
+    subscribers,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,17 +30,20 @@ export const awsUpdateBudgetNotification = tool({
       const client = createBudgetsClient(awsCredentials, region);
 
       const command = new UpdateNotificationCommand({
-          AccountId: accountId,
-          BudgetName: budgetName,
-          OldNotification: oldNotification,
-          NewNotification: newNotification,
+        AccountId: accountId,
+        BudgetName: budgetName,
+        OldNotification: oldNotification,
+        NewNotification: newNotification,
       } as any);
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to update a budget notification', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a budget notification',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

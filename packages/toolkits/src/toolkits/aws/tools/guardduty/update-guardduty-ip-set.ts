@@ -22,16 +22,19 @@ export const awsUpdateGuarddutyIpSet = tool({
       const client = createGuardDutyClient(awsCredentials, region);
 
       const command = new UpdateIPSetCommand({
-          DetectorId: detectorId,
-          IpSetId: ipSetId,
-          Name: name,
-          Location: location,
-          Activate: activate,
+        DetectorId: detectorId,
+        IpSetId: ipSetId,
+        Name: name,
+        Location: location,
+        Activate: activate,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update an IP set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an IP set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

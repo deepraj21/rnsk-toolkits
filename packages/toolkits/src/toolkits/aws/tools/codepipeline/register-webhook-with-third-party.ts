@@ -18,15 +18,18 @@ export const awsRegisterCodepipelineWebhookWithThirdParty = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new RegisterWebhookWithThirdPartyCommand({
-          webhookName: webhookName,
+        webhookName: webhookName,
       });
       await client.send(command);
       return {
-                  message: 'Webhook registered successfully',
-                  webhookName: webhookName,
-              };
+        message: 'Webhook registered successfully',
+        webhookName: webhookName,
+      };
     } catch (err) {
-      return { error: 'Failed to register a webhook with a third party', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to register a webhook with a third party',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

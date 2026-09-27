@@ -19,16 +19,19 @@ export const awsUntagBackupResource = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          ResourceArn: resourceArn,
-          TagKeyList: tagKeyList,
+        ResourceArn: resourceArn,
+        TagKeyList: tagKeyList,
       });
       await client.send(command);
       return {
-                  message: 'Tags removed successfully',
-                  resourceArn: resourceArn,
-              };
+        message: 'Tags removed successfully',
+        resourceArn: resourceArn,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from a backup resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from a backup resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

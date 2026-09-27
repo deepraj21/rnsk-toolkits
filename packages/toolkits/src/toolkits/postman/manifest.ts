@@ -6,7 +6,8 @@ import { postmanTools } from './tools/index.js';
 export default defineToolkit({
   id: 'postman',
   displayName: 'Postman',
-  shortDescription: 'Collections, environments, workspaces, mocks, monitors, APIs, Spec Hub, comments, and pull requests.',
+  shortDescription:
+    'Collections, environments, workspaces, mocks, monitors, APIs, Spec Hub, comments, and pull requests.',
   category: 'Developer Tools & DevOps',
   icon: POSTMAN_ICON,
   auth: {

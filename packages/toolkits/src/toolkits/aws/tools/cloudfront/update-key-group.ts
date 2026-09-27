@@ -20,17 +20,20 @@ export const awsUpdateCloudfrontKeyGroup = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new UpdateKeyGroupCommand({
-          KeyGroupConfig: keyGroupConfig,
-          Id: id,
-          IfMatch: ifMatch,
+        KeyGroupConfig: keyGroupConfig,
+        Id: id,
+        IfMatch: ifMatch,
       } as any);
       const response = await client.send(command);
       return {
-                  keyGroup: response.KeyGroup,
-                  eTag: response.ETag,
-              };
+        keyGroup: response.KeyGroup,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to update a CloudFront key group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a CloudFront key group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

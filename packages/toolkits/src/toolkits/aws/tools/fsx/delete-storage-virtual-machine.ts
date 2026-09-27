@@ -19,16 +19,19 @@ export const awsDeleteFsxStorageVirtualMachine = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new DeleteStorageVirtualMachineCommand({
-          ClientRequestToken: clientRequestToken,
-          StorageVirtualMachineId: storageVirtualMachineId,
+        ClientRequestToken: clientRequestToken,
+        StorageVirtualMachineId: storageVirtualMachineId,
       });
       const response = await client.send(command);
       return {
-                  storageVirtualMachineId: response.StorageVirtualMachineId,
-                  lifeCycle: response.Lifecycle,
-              };
+        storageVirtualMachineId: response.StorageVirtualMachineId,
+        lifeCycle: response.Lifecycle,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a storage virtual machine', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a storage virtual machine',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

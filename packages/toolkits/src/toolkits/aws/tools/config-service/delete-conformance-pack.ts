@@ -18,15 +18,18 @@ export const awsDeleteConformancePack = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new DeleteConformancePackCommand({
-          ConformancePackName: conformancePackName,
+        ConformancePackName: conformancePackName,
       });
       await client.send(command);
       return {
-                  message: 'Conformance pack deleted successfully',
-                  conformancePackName: conformancePackName,
-              };
+        message: 'Conformance pack deleted successfully',
+        conformancePackName: conformancePackName,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes the specified conformance pack', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes the specified conformance pack',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

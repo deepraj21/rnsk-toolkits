@@ -20,19 +20,22 @@ export const awsCreateVpcLatticeServiceNetwork = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new CreateServiceNetworkCommand({
-          name: name,
-          authType: authType,
-          tags: tags,
+        name: name,
+        authType: authType,
+        tags: tags,
       });
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  authType: response.authType,
-                  id: response.id,
-                  name: response.name,
-              };
+        arn: response.arn,
+        authType: response.authType,
+        id: response.id,
+        name: response.name,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new VPC Lattice service network', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new VPC Lattice service network',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

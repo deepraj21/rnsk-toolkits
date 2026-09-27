@@ -88,9 +88,16 @@ export async function k8sRequest(
 }
 
 /** Collection path for a resource type. Empty group = core (/api/v1). Omit namespace to list across all namespaces. */
-export function collectionPath(group: string, version: string, resource: string, namespace?: string): string {
+export function collectionPath(
+  group: string,
+  version: string,
+  resource: string,
+  namespace?: string,
+): string {
   const prefix = group ? `/apis/${group}/${version}` : `/api/${version}`;
-  return namespace ? `${prefix}/namespaces/${encodeURIComponent(namespace)}/${resource}` : `${prefix}/${resource}`;
+  return namespace
+    ? `${prefix}/namespaces/${encodeURIComponent(namespace)}/${resource}`
+    : `${prefix}/${resource}`;
 }
 
 /** Single-object path for a resource instance. */

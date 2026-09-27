@@ -19,16 +19,19 @@ export const awsPutVpcLatticeAuthPolicy = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new PutAuthPolicyCommand({
-          resourceIdentifier: resourceIdentifier,
-          policy: policy,
+        resourceIdentifier: resourceIdentifier,
+        policy: policy,
       });
       const response = await client.send(command);
       return {
-                  policy: response.policy,
-                  state: response.state,
-              };
+        policy: response.policy,
+        state: response.state,
+      };
     } catch (err) {
-      return { error: 'Failed to put an auth policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to put an auth policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { PutImageCommand } from '@aws-sdk/client-ecr';
 import { createEcrClient } from '../client.js';
 
 export const awsPutImage = tool({
-  description: 'Create or update an image in an ECR repository. Use it to write data or configuration.',
+  description:
+    'Create or update an image in an ECR repository. Use it to write data or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -15,7 +16,16 @@ export const awsPutImage = tool({
     imageTag: z.string().optional().describe('The tag to associate with the image'),
     imageDigest: z.string().optional().describe('The image digest'),
   }),
-  execute: async ({ awsCredentials, region, repositoryName, registryId, imageManifest, imageManifestMediaType, imageTag, imageDigest }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    repositoryName,
+    registryId,
+    imageManifest,
+    imageManifestMediaType,
+    imageTag,
+    imageDigest,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,23 +33,28 @@ export const awsPutImage = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new PutImageCommand({
-          repositoryName: repositoryName,
-          registryId: registryId,
-          imageManifest: imageManifest,
-          imageManifestMediaType: imageManifestMediaType,
-          imageTag: imageTag,
-          imageDigest: imageDigest,
+        repositoryName: repositoryName,
+        registryId: registryId,
+        imageManifest: imageManifest,
+        imageManifestMediaType: imageManifestMediaType,
+        imageTag: imageTag,
+        imageDigest: imageDigest,
       });
       const response = await client.send(command);
       return {
-                  image: response.image ? {
-                      imageId: response.image.imageId,
-                      imageManifest: response.image.imageManifest,
-                      imageManifestMediaType: response.image.imageManifestMediaType,
-                  } : null,
-              };
+        image: response.image
+          ? {
+              imageId: response.image.imageId,
+              imageManifest: response.image.imageManifest,
+              imageManifestMediaType: response.image.imageManifestMediaType,
+            }
+          : null,
+      };
     } catch (err) {
-      return { error: 'Failed to create or update an image in an ECR repository', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or update an image in an ECR repository',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

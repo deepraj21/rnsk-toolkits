@@ -19,13 +19,16 @@ export const awsDynamodbPutItem = tool({
       const client = createDynamoDbDocClient(awsCredentials, region);
 
       const command = new PutCommand({
-          TableName: tableName,
-          Item: item,
+        TableName: tableName,
+        Item: item,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to create or replace an item in DynamoDB table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create or replace an item in DynamoDB table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

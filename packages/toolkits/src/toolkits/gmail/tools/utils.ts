@@ -118,11 +118,16 @@ export function chunkBase64(data: string): string {
   return data.match(/.{1,76}/g)?.join('\r\n') || data;
 }
 
-export function getHeaderValue(headers: Array<{ name?: string; value?: string }> | undefined, name: string): string | undefined {
+export function getHeaderValue(
+  headers: Array<{ name?: string; value?: string }> | undefined,
+  name: string,
+): string | undefined {
   return headers?.find((header) => header.name?.toLowerCase() === name.toLowerCase())?.value;
 }
 
-export function collectAttachments(payload: any): Array<{ attachmentId: string; filename: string; mimeType: string }> {
+export function collectAttachments(
+  payload: any,
+): Array<{ attachmentId: string; filename: string; mimeType: string }> {
   const attachments: Array<{ attachmentId: string; filename: string; mimeType: string }> = [];
 
   const walk = (part: any) => {

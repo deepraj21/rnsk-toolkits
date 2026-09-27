@@ -6,10 +6,17 @@ import { missingCredentialsError, splunkEntries, splunkRequest } from './client.
 const authField = z.string().optional().describe('Injected by system; do not provide');
 
 export const splunkListUsers = tool({
-  description: 'List Splunk users with roles, email and real name. Use to audit access and find search owners.',
+  description:
+    'List Splunk users with roles, email and real name. Use to audit access and find search owners.',
   inputSchema: z.object({
     splunkCredentials: authField,
-    count: z.number().int().min(1).max(1000).optional().describe('Max users to return (default 100)'),
+    count: z
+      .number()
+      .int()
+      .min(1)
+      .max(1000)
+      .optional()
+      .describe('Max users to return (default 100)'),
   }),
   execute: async ({ splunkCredentials, count }) => {
     if (!splunkCredentials) return missingCredentialsError();
@@ -25,13 +32,17 @@ export const splunkListUsers = tool({
       }));
       return { count: users.length, users };
     } catch (error) {
-      return { error: 'Failed to list users', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to list users',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkListRoles = tool({
-  description: 'List Splunk roles with capabilities, default app and inherited roles. Use to audit permissions.',
+  description:
+    'List Splunk roles with capabilities, default app and inherited roles. Use to audit permissions.',
   inputSchema: z.object({ splunkCredentials: authField }),
   execute: async ({ splunkCredentials }) => {
     if (!splunkCredentials) return missingCredentialsError();
@@ -45,17 +56,27 @@ export const splunkListRoles = tool({
       }));
       return { count: roles.length, roles };
     } catch (error) {
-      return { error: 'Failed to list roles', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to list roles',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkListFiredAlerts = tool({
-  description: 'List fired alert instances with severity and trigger time. Use to triage recent alert firings.',
+  description:
+    'List fired alert instances with severity and trigger time. Use to triage recent alert firings.',
   inputSchema: z.object({
     splunkCredentials: authField,
     savedSearchName: z.string().optional().describe('Limit to alerts from this saved search'),
-    count: z.number().int().min(1).max(1000).optional().describe('Max alerts to return (default 30)'),
+    count: z
+      .number()
+      .int()
+      .min(1)
+      .max(1000)
+      .optional()
+      .describe('Max alerts to return (default 30)'),
   }),
   execute: async ({ splunkCredentials, savedSearchName, count }) => {
     if (!splunkCredentials) return missingCredentialsError();
@@ -73,13 +94,17 @@ export const splunkListFiredAlerts = tool({
       }));
       return { count: alerts.length, alerts };
     } catch (error) {
-      return { error: 'Failed to list fired alerts', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to list fired alerts',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const splunkGetServerInfo = tool({
-  description: 'Get server info: version, build, GUID, roles and license state. Use to check deployment health and version.',
+  description:
+    'Get server info: version, build, GUID, roles and license state. Use to check deployment health and version.',
   inputSchema: z.object({ splunkCredentials: authField }),
   execute: async ({ splunkCredentials }) => {
     if (!splunkCredentials) return missingCredentialsError();
@@ -98,7 +123,10 @@ export const splunkGetServerInfo = tool({
         physicalMemoryMB: c.physicalMemoryMB,
       };
     } catch (error) {
-      return { error: 'Failed to get server info', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Failed to get server info',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });

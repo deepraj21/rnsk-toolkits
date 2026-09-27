@@ -20,17 +20,20 @@ export const awsCreateLogGroup = tool({
       const client = createCloudWatchLogsClient(awsCredentials, region);
 
       const command = new CreateLogGroupCommand({
-          logGroupName: logGroupName,
-          kmsKeyId: kmsKeyId,
-          tags: tags,
+        logGroupName: logGroupName,
+        kmsKeyId: kmsKeyId,
+        tags: tags,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Log group ${logGroupName} created successfully`,
-              };
+        success: true,
+        message: `Log group ${logGroupName} created successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new CloudWatch log group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new CloudWatch log group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,16 +19,19 @@ export const awsDeleteSagemakerTags = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new DeleteTagsCommand({
-          ResourceArn: resourceArn,
-          TagKeys: tagKeys,
+        ResourceArn: resourceArn,
+        TagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  message: 'Tags deleted successfully',
-                  resourceArn: resourceArn,
-              };
+        message: 'Tags deleted successfully',
+        resourceArn: resourceArn,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from a SageMaker resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from a SageMaker resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

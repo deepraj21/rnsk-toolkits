@@ -19,15 +19,18 @@ export const awsDeleteGroup = tool({
       const client = createXRayClient(awsCredentials, region);
 
       const command = new DeleteGroupCommand({
-          GroupName: groupName,
-          GroupARN: groupARN,
+        GroupName: groupName,
+        GroupARN: groupARN,
       });
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a group resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a group resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

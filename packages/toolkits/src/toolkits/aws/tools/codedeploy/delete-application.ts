@@ -18,15 +18,18 @@ export const awsDeleteCodedeployApplication = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new DeleteApplicationCommand({
-          applicationName: applicationName,
+        applicationName: applicationName,
       });
       await client.send(command);
       return {
-                  message: 'Application deleted successfully',
-                  applicationName: applicationName,
-              };
+        message: 'Application deleted successfully',
+        applicationName: applicationName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CodeDeploy application', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CodeDeploy application',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

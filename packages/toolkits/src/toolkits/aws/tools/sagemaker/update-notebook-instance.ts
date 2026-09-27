@@ -15,14 +15,39 @@ export const awsUpdateSagemakerNotebookInstance = tool({
     disassociateLifecycleConfig: z.boolean().optional().describe('Disassociate lifecycle config'),
     volumeSizeInGB: z.number().optional().describe('Volume size in GB'),
     defaultCodeRepository: z.string().optional().describe('Default code repository'),
-    additionalCodeRepositories: z.array(z.string()).optional().describe('Additional code repositories'),
+    additionalCodeRepositories: z
+      .array(z.string())
+      .optional()
+      .describe('Additional code repositories'),
     acceleratorTypes: z.array(z.string()).optional().describe('Accelerator types'),
     disassociateAcceleratorTypes: z.boolean().optional().describe('Disassociate accelerator types'),
-    disassociateDefaultCodeRepository: z.boolean().optional().describe('Disassociate default code repository'),
-    disassociateAdditionalCodeRepositories: z.boolean().optional().describe('Disassociate additional code repositories'),
+    disassociateDefaultCodeRepository: z
+      .boolean()
+      .optional()
+      .describe('Disassociate default code repository'),
+    disassociateAdditionalCodeRepositories: z
+      .boolean()
+      .optional()
+      .describe('Disassociate additional code repositories'),
     rootAccess: z.enum(['Enabled', 'Disabled']).optional().describe('Root access'),
   }),
-  execute: async ({ awsCredentials, region, notebookInstanceName, instanceType, roleArn, lifecycleConfigName, disassociateLifecycleConfig, volumeSizeInGB, defaultCodeRepository, additionalCodeRepositories, acceleratorTypes, disassociateAcceleratorTypes, disassociateDefaultCodeRepository, disassociateAdditionalCodeRepositories, rootAccess }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    notebookInstanceName,
+    instanceType,
+    roleArn,
+    lifecycleConfigName,
+    disassociateLifecycleConfig,
+    volumeSizeInGB,
+    defaultCodeRepository,
+    additionalCodeRepositories,
+    acceleratorTypes,
+    disassociateAcceleratorTypes,
+    disassociateDefaultCodeRepository,
+    disassociateAdditionalCodeRepositories,
+    rootAccess,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -30,27 +55,30 @@ export const awsUpdateSagemakerNotebookInstance = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new UpdateNotebookInstanceCommand({
-          NotebookInstanceName: notebookInstanceName,
-          InstanceType: instanceType,
-          RoleArn: roleArn,
-          LifecycleConfigName: lifecycleConfigName,
-          DisassociateLifecycleConfig: disassociateLifecycleConfig,
-          VolumeSizeInGB: volumeSizeInGB,
-          DefaultCodeRepository: defaultCodeRepository,
-          AdditionalCodeRepositories: additionalCodeRepositories,
-          AcceleratorTypes: acceleratorTypes,
-          DisassociateAcceleratorTypes: disassociateAcceleratorTypes,
-          DisassociateDefaultCodeRepository: disassociateDefaultCodeRepository,
-          DisassociateAdditionalCodeRepositories: disassociateAdditionalCodeRepositories,
-          RootAccess: rootAccess,
+        NotebookInstanceName: notebookInstanceName,
+        InstanceType: instanceType,
+        RoleArn: roleArn,
+        LifecycleConfigName: lifecycleConfigName,
+        DisassociateLifecycleConfig: disassociateLifecycleConfig,
+        VolumeSizeInGB: volumeSizeInGB,
+        DefaultCodeRepository: defaultCodeRepository,
+        AdditionalCodeRepositories: additionalCodeRepositories,
+        AcceleratorTypes: acceleratorTypes,
+        DisassociateAcceleratorTypes: disassociateAcceleratorTypes,
+        DisassociateDefaultCodeRepository: disassociateDefaultCodeRepository,
+        DisassociateAdditionalCodeRepositories: disassociateAdditionalCodeRepositories,
+        RootAccess: rootAccess,
       } as any);
       await client.send(command);
       return {
-                  message: 'Notebook instance updated successfully',
-                  notebookInstanceName: notebookInstanceName,
-              };
+        message: 'Notebook instance updated successfully',
+        notebookInstanceName: notebookInstanceName,
+      };
     } catch (err) {
-      return { error: 'Failed to update a SageMaker notebook instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a SageMaker notebook instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

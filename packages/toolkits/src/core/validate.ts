@@ -32,7 +32,9 @@ export function validateManifests(manifests: ToolkitManifest[]): string[] {
     ) {
       const authedTools = manifest.tools.filter((t) => t.requiredAuth);
       if (authedTools.length === 0) {
-        errors.push(`${manifest.auth.type} toolkit "${manifest.id}" has no tools with requiredAuth`);
+        errors.push(
+          `${manifest.auth.type} toolkit "${manifest.id}" has no tools with requiredAuth`,
+        );
       }
       for (const tool of manifest.tools) {
         if (tool.requiredAuth && tool.requiredAuth !== manifest.auth.tokenField) {
@@ -80,7 +82,14 @@ export function validateManifests(manifests: ToolkitManifest[]): string[] {
 
 export function getAuthType(
   manifest: ToolkitManifest,
-): 'OAUTH2' | 'None' | 'SERVICE_ENV' | 'API_KEY' | 'BASIC_AUTH' | 'BEARER_TOKEN' | 'SERVICE_ACCOUNT' {
+):
+  | 'OAUTH2'
+  | 'None'
+  | 'SERVICE_ENV'
+  | 'API_KEY'
+  | 'BASIC_AUTH'
+  | 'BEARER_TOKEN'
+  | 'SERVICE_ACCOUNT' {
   switch (manifest.auth.type) {
     case 'oauth2':
       return 'OAUTH2';

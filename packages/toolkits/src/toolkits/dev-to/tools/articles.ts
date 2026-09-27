@@ -17,15 +17,29 @@ export const devToCreateArticle = tool({
     devToApiKey: apiKeyField,
     title: z.string().describe('The title of the article'),
     bodyMarkdown: z.string().describe('The body content of the article in Markdown format'),
-    published: z.boolean().optional().describe('Publish immediately (true) or save as draft (false, default)'),
+    published: z
+      .boolean()
+      .optional()
+      .describe('Publish immediately (true) or save as draft (false, default)'),
     description: z.string().optional().describe('Short description used for preview text and SEO'),
     mainImage: z.string().optional().describe('URL of the main cover image'),
     tags: z.array(z.string()).max(4).optional().describe('Array of tag names, maximum 4'),
     series: z.string().optional().describe('Name of the series this article belongs to'),
     canonicalUrl: z.string().optional().describe('Canonical URL if crossposted elsewhere'),
-    organizationId: z.number().int().optional().describe('ID of the organization to publish under (must be a member)'),
+    organizationId: z
+      .number()
+      .int()
+      .optional()
+      .describe('ID of the organization to publish under (must be a member)'),
   }),
-  execute: async ({ devToApiKey, bodyMarkdown, mainImage, canonicalUrl, organizationId, ...rest }) => {
+  execute: async ({
+    devToApiKey,
+    bodyMarkdown,
+    mainImage,
+    canonicalUrl,
+    organizationId,
+    ...rest
+  }) => {
     const missing = requireApiKey(devToApiKey);
     if (missing) return missing;
     try {
@@ -82,10 +96,21 @@ export const devToListArticles = tool({
     devToApiKey: apiKeyField,
     tag: z.string().optional().describe('Filter by a single tag name'),
     tags: z.string().optional().describe('Filter by multiple tag names (comma-separated)'),
-    tagsExclude: z.string().optional().describe('Exclude articles with these tags (comma-separated)'),
+    tagsExclude: z
+      .string()
+      .optional()
+      .describe('Exclude articles with these tags (comma-separated)'),
     username: z.string().optional().describe('Articles from a specific user or organization'),
-    state: z.enum(['fresh', 'rising', 'all']).optional().describe('fresh or rising articles; all with username returns up to 1000'),
-    top: z.number().int().min(1).optional().describe('Top articles from the last N days (combinable with tag)'),
+    state: z
+      .enum(['fresh', 'rising', 'all'])
+      .optional()
+      .describe('fresh or rising articles; all with username returns up to 1000'),
+    top: z
+      .number()
+      .int()
+      .min(1)
+      .optional()
+      .describe('Top articles from the last N days (combinable with tag)'),
     collectionId: z.number().int().optional().describe('Articles belonging to a collection/series'),
     ...paginationFields,
   }),
@@ -103,7 +128,8 @@ export const devToListArticles = tool({
 });
 
 export const devToListLatestArticles = tool({
-  description: 'List published articles sorted strictly by descending publish date (no feed personalization).',
+  description:
+    'List published articles sorted strictly by descending publish date (no feed personalization).',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     ...paginationFields,
@@ -139,7 +165,8 @@ export const devToListUserArticles = tool({
 });
 
 export const devToListUserPublishedArticles = tool({
-  description: "List only the authenticated user's published articles. For drafts, use unpublished/all variants.",
+  description:
+    "List only the authenticated user's published articles. For drafts, use unpublished/all variants.",
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     ...paginationFields,
@@ -177,7 +204,8 @@ export const devToListUserUnpublishedArticles = tool({
 });
 
 export const devToListUserAllArticles = tool({
-  description: 'List all of the authenticated user articles, both published and drafts (drafts first).',
+  description:
+    'List all of the authenticated user articles, both published and drafts (drafts first).',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     ...paginationFields,
@@ -206,9 +234,14 @@ export const devToListOrganizationArticles = tool({
     try {
       const query: Record<string, unknown> = { ...rest };
       if (perPage !== undefined) query.per_page = perPage;
-      return await devToRequest(devToApiKey, 'GET', `/organizations/${encodeURIComponent(username)}/articles`, {
-        query,
-      });
+      return await devToRequest(
+        devToApiKey,
+        'GET',
+        `/organizations/${encodeURIComponent(username)}/articles`,
+        {
+          query,
+        },
+      );
     } catch (error) {
       return toDevToError(error, 'Failed to list organization articles');
     }
@@ -216,21 +249,39 @@ export const devToListOrganizationArticles = tool({
 });
 
 export const devToUpdateArticle = tool({
-  description: 'Update an existing article owned by the authenticated user. Only provide fields to change.',
+  description:
+    'Update an existing article owned by the authenticated user. Only provide fields to change.',
   inputSchema: z.object({
     devToApiKey: apiKeyField,
     id: z.number().int().describe('The ID of the article to update'),
     title: z.string().optional().describe('Updated title'),
-    bodyMarkdown: z.string().optional().describe('Updated body in Markdown (include front matter to change tags/series via markdown)'),
+    bodyMarkdown: z
+      .string()
+      .optional()
+      .describe(
+        'Updated body in Markdown (include front matter to change tags/series via markdown)',
+      ),
     published: z.boolean().optional().describe('Set false to revert a published article to draft'),
     description: z.string().optional().describe('Updated short description'),
     mainImage: z.string().optional().describe('Updated cover image URL'),
     tags: z.array(z.string()).max(4).optional().describe('Updated tag names, maximum 4'),
     series: z.string().optional().describe('Updated series name'),
     canonicalUrl: z.string().optional().describe('Updated canonical URL'),
-    organizationId: z.number().int().optional().describe('Organization ID to assign the article to'),
+    organizationId: z
+      .number()
+      .int()
+      .optional()
+      .describe('Organization ID to assign the article to'),
   }),
-  execute: async ({ devToApiKey, id, bodyMarkdown, mainImage, canonicalUrl, organizationId, ...rest }) => {
+  execute: async ({
+    devToApiKey,
+    id,
+    bodyMarkdown,
+    mainImage,
+    canonicalUrl,
+    organizationId,
+    ...rest
+  }) => {
     const missing = requireApiKey(devToApiKey);
     if (missing) return missing;
     try {

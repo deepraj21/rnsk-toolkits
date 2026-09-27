@@ -19,19 +19,22 @@ export const awsUpdateVpcLatticeTargetGroup = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new UpdateTargetGroupCommand({
-          targetGroupIdentifier: targetGroupIdentifier,
-          healthCheck: healthCheck,
+        targetGroupIdentifier: targetGroupIdentifier,
+        healthCheck: healthCheck,
       });
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  config: response.config,
-                  id: response.id,
-                  name: response.name,
-                  type: response.type,
-              };
+        arn: response.arn,
+        config: response.config,
+        id: response.id,
+        name: response.name,
+        type: response.type,
+      };
     } catch (err) {
-      return { error: 'Failed to update a VPC Lattice target group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a VPC Lattice target group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

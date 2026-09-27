@@ -19,16 +19,19 @@ export const awsUntagLambdaFunction = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          Resource: resource,
-          TagKeys: tagKeys,
+        Resource: resource,
+        TagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags removed successfully from resource ${resource}`,
-              };
+        success: true,
+        message: `Tags removed successfully from resource ${resource}`,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

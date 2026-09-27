@@ -4,7 +4,8 @@ import { BatchDeleteImageCommand } from '@aws-sdk/client-ecr';
 import { createEcrClient } from '../client.js';
 
 export const awsBatchDeleteImage = tool({
-  description: 'Delete multiple images from an ECR repository. Use it to operate on multiple resources.',
+  description:
+    'Delete multiple images from an ECR repository. Use it to operate on multiple resources.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,17 +21,20 @@ export const awsBatchDeleteImage = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new BatchDeleteImageCommand({
-          repositoryName: repositoryName,
-          registryId: registryId,
-          imageIds: imageIds,
+        repositoryName: repositoryName,
+        registryId: registryId,
+        imageIds: imageIds,
       });
       const response = await client.send(command);
       return {
-                  imageIds: response.imageIds || [],
-                  failures: response.failures || [],
-              };
+        imageIds: response.imageIds || [],
+        failures: response.failures || [],
+      };
     } catch (err) {
-      return { error: 'Failed to delete multiple images from an ECR repository', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete multiple images from an ECR repository',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

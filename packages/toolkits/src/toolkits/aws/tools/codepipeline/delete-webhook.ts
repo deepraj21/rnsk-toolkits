@@ -18,15 +18,18 @@ export const awsDeleteCodepipelineWebhook = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new DeleteWebhookCommand({
-          name: name,
+        name: name,
       });
       await client.send(command);
       return {
-                  message: 'Webhook deleted successfully',
-                  name: name,
-              };
+        message: 'Webhook deleted successfully',
+        name: name,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a webhook', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a webhook',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

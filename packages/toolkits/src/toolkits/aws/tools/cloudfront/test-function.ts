@@ -21,17 +21,20 @@ export const awsTestCloudfrontFunction = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new TestFunctionCommand({
-          Name: name,
-          IfMatch: ifMatch,
-          Stage: stage as any,
-          EventObject: Buffer.from(eventObject),
+        Name: name,
+        IfMatch: ifMatch,
+        Stage: stage as any,
+        EventObject: Buffer.from(eventObject),
       });
       const response = await client.send(command);
       return {
-                  testResult: response.TestResult,
-              };
+        testResult: response.TestResult,
+      };
     } catch (err) {
-      return { error: 'Failed to test a CloudFront function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to test a CloudFront function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

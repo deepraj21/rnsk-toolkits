@@ -18,16 +18,21 @@ export const awsDeleteRoute53TrafficPolicy = tool({
     try {
       const client = createRoute53Client(awsCredentials, region);
 
-      await client.send(new DeleteTrafficPolicyCommand({
+      await client.send(
+        new DeleteTrafficPolicyCommand({
           Id: id,
           Version: version,
-      }));
+        }),
+      );
       return {
-                  success: true,
-                  message: `Traffic policy ${id} version ${version} deleted successfully`,
-              };
+        success: true,
+        message: `Traffic policy ${id} version ${version} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a Route 53 traffic policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Route 53 traffic policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

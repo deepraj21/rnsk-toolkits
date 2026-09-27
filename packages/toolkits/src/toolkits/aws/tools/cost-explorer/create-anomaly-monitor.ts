@@ -13,7 +13,14 @@ export const awsCreateAnomalyMonitor = tool({
     monitorSpecification: z.record(z.any()).optional().describe('The monitor specification'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the monitor'),
   }),
-  execute: async ({ awsCredentials, region, monitorName, monitorType, monitorSpecification, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    monitorName,
+    monitorType,
+    monitorSpecification,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,19 +28,22 @@ export const awsCreateAnomalyMonitor = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new CreateAnomalyMonitorCommand({
-          AnomalyMonitor: {
-              MonitorName: monitorName,
-              MonitorType: monitorType,
-              MonitorSpecification: monitorSpecification,
-          },
-          ResourceTags: tags,
+        AnomalyMonitor: {
+          MonitorName: monitorName,
+          MonitorType: monitorType,
+          MonitorSpecification: monitorSpecification,
+        },
+        ResourceTags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  monitorArn: response.MonitorArn,
-              };
+        monitorArn: response.MonitorArn,
+      };
     } catch (err) {
-      return { error: 'Failed to creates a new cost anomaly detection monitor', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to creates a new cost anomaly detection monitor',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,12 +18,15 @@ export const awsDeleteSnapshot = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new DeleteSnapshotCommand({
-          SnapshotName: snapshotName,
+        SnapshotName: snapshotName,
       });
       const response = await client.send(command);
       return response.Snapshot;
     } catch (err) {
-      return { error: 'Failed to delete a Redis snapshot', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Redis snapshot',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

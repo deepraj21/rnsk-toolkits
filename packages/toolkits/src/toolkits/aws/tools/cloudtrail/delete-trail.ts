@@ -8,7 +8,9 @@ export const awsDeleteTrail = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    name: z.string().describe('The name or the Amazon Resource Name (ARN) of the trail to be deleted'),
+    name: z
+      .string()
+      .describe('The name or the Amazon Resource Name (ARN) of the trail to be deleted'),
   }),
   execute: async ({ awsCredentials, region, name }) => {
     if (!awsCredentials) {
@@ -18,14 +20,17 @@ export const awsDeleteTrail = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new DeleteTrailCommand({
-          Name: name,
+        Name: name,
       });
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a trail', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a trail',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

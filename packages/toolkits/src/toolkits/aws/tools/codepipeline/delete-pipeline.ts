@@ -18,15 +18,18 @@ export const awsDeleteCodepipelinePipeline = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new DeletePipelineCommand({
-          name: name,
+        name: name,
       });
       await client.send(command);
       return {
-                  message: 'Pipeline deleted successfully',
-                  name: name,
-              };
+        message: 'Pipeline deleted successfully',
+        name: name,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a CodePipeline pipeline', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CodePipeline pipeline',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

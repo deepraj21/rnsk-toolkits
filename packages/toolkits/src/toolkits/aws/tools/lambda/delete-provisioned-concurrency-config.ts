@@ -4,7 +4,8 @@ import { DeleteProvisionedConcurrencyConfigCommand } from '@aws-sdk/client-lambd
 import { createLambdaClient } from '../client.js';
 
 export const awsDeleteLambdaProvisionedConcurrencyConfig = tool({
-  description: 'Delete provisioned concurrency configuration. Use it to permanently remove the resource.',
+  description:
+    'Delete provisioned concurrency configuration. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,16 +20,19 @@ export const awsDeleteLambdaProvisionedConcurrencyConfig = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new DeleteProvisionedConcurrencyConfigCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
+        FunctionName: functionName,
+        Qualifier: qualifier,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Provisioned concurrency config deleted successfully for function ${functionName}:${qualifier}`,
-              };
+        success: true,
+        message: `Provisioned concurrency config deleted successfully for function ${functionName}:${qualifier}`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete provisioned concurrency configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete provisioned concurrency configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

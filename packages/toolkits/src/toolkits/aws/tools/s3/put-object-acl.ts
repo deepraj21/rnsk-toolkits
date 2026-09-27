@@ -4,7 +4,8 @@ import { PutObjectAclCommand } from '@aws-sdk/client-s3';
 import { createS3Client } from '../client.js';
 
 export const awsPutS3ObjectAcl = tool({
-  description: 'Set the ACL (Access Control List) for an S3 object.. Use it to write data or configuration.',
+  description:
+    'Set the ACL (Access Control List) for an S3 object.. Use it to write data or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -21,11 +22,20 @@ export const awsPutS3ObjectAcl = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new PutObjectAclCommand({ Bucket: bucket, Key: key, ACL: acl as any, AccessControlPolicy: accessControlPolicy, VersionId: versionId });
+      const command = new PutObjectAclCommand({
+        Bucket: bucket,
+        Key: key,
+        ACL: acl as any,
+        AccessControlPolicy: accessControlPolicy,
+        VersionId: versionId,
+      });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to set the ACL (Access Control List) for an S3 object', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set the ACL (Access Control List) for an S3 object',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

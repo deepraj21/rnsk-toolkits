@@ -6,7 +6,8 @@ import { growwRequest, handleGrowwResult } from './utils.js';
 const tokenField = z.string().optional().describe('Groww API access token (injected by system)');
 
 export const growwGetHoldings = tool({
-  description: 'Get current DEMAT stock holdings (ISIN, trading symbol, quantity, average price, pledge/locked quantities).',
+  description:
+    'Get current DEMAT stock holdings (ISIN, trading symbol, quantity, average price, pledge/locked quantities).',
   inputSchema: z.object({
     growwAccessToken: tokenField,
   }),
@@ -15,13 +16,17 @@ export const growwGetHoldings = tool({
       const result = await growwRequest(growwAccessToken, '/v1/holdings/user');
       return handleGrowwResult(result, 'get holdings');
     } catch (error) {
-      return { error: 'Error getting holdings', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting holdings',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const growwGetPositions = tool({
-  description: 'Get all user positions (credit/debit quantities and prices, carry-forward, net quantity, realised P&L).',
+  description:
+    'Get all user positions (credit/debit quantities and prices, carry-forward, net quantity, realised P&L).',
   inputSchema: z.object({
     growwAccessToken: tokenField,
     segment: z.string().optional().describe('Filter by segment: CASH or FNO'),
@@ -33,7 +38,10 @@ export const growwGetPositions = tool({
       });
       return handleGrowwResult(result, 'get positions');
     } catch (error) {
-      return { error: 'Error getting positions', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting positions',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -52,7 +60,10 @@ export const growwGetPositionForSymbol = tool({
       });
       return handleGrowwResult(result, 'get position for symbol');
     } catch (error) {
-      return { error: 'Error getting position', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting position',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });

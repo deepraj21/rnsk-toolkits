@@ -19,18 +19,21 @@ export const awsUpdateChannel = tool({
       const client = createCloudTrailClient(awsCredentials, region);
 
       const command = new UpdateChannelCommand({
-          Channel: channel,
-          Destinations: destinations,
+        Channel: channel,
+        Destinations: destinations,
       } as any);
       const response = await client.send(command);
       return {
-                  channelArn: response.ChannelArn,
-                  name: response.Name,
-                  source: response.Source,
-                  destinations: response.Destinations,
-              };
+        channelArn: response.ChannelArn,
+        name: response.Name,
+        source: response.Source,
+        destinations: response.Destinations,
+      };
     } catch (err) {
-      return { error: 'Failed to updates a channel', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to updates a channel',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

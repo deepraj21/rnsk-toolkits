@@ -6,7 +6,8 @@ import { huggingFaceTools } from './tools/index.js';
 export default defineToolkit({
   id: 'hugging-face',
   displayName: 'Hugging Face',
-  shortDescription: 'Models, datasets, spaces, papers, inference, and discussions on the Hugging Face Hub.',
+  shortDescription:
+    'Models, datasets, spaces, papers, inference, and discussions on the Hugging Face Hub.',
   category: 'AI & Machine Learning',
   icon: HUGGING_FACE_ICON,
   auth: {

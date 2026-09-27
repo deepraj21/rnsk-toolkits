@@ -4,7 +4,8 @@ import { DescribeDBInstanceAutomatedBackupsCommand } from '@aws-sdk/client-rds';
 import { createRdsClient } from '../client.js';
 
 export const awsDescribeDbAutomatedBackups = tool({
-  description: 'List automated backups for RDS instances. Use it to inspect current state before making changes.',
+  description:
+    'List automated backups for RDS instances. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,13 +20,16 @@ export const awsDescribeDbAutomatedBackups = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DescribeDBInstanceAutomatedBackupsCommand({
-          DBInstanceIdentifier: dbInstanceIdentifier,
-          MaxRecords: maxRecords,
+        DBInstanceIdentifier: dbInstanceIdentifier,
+        MaxRecords: maxRecords,
       });
       const response = await client.send(command);
       return response.DBInstanceAutomatedBackups;
     } catch (err) {
-      return { error: 'Failed to list automated backups for RDS instances', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list automated backups for RDS instances',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

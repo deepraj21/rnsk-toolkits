@@ -19,16 +19,19 @@ export const awsSendSqsMessageBatch = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new SendMessageBatchCommand({
-          QueueUrl: queueUrl,
-          Entries: entries as any,
+        QueueUrl: queueUrl,
+        Entries: entries as any,
       });
       const response = await client.send(command);
       return {
-                  successful: response.Successful || [],
-                  failed: response.Failed || [],
-              };
+        successful: response.Successful || [],
+        failed: response.Failed || [],
+      };
     } catch (err) {
-      return { error: 'Failed to send multiple messages to an SQS queue in a batch', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to send multiple messages to an SQS queue in a batch',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

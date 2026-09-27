@@ -18,15 +18,18 @@ export const awsDeleteEventbridgeConnection = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new DeleteConnectionCommand({
-          Name: name,
+        Name: name,
       });
       await client.send(command);
       return {
-                  message: 'Connection deleted successfully',
-                  name: name,
-              };
+        message: 'Connection deleted successfully',
+        name: name,
+      };
     } catch (err) {
-      return { error: 'Failed to delete an EventBridge connection', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an EventBridge connection',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

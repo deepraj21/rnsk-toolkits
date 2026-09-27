@@ -13,7 +13,10 @@ export const awsCreateLaunchConfiguration = tool({
     keyName: z.string().optional().describe('Key pair name'),
     securityGroups: z.array(z.string()).optional().describe('Security group IDs'),
     classicLinkVPCId: z.string().optional().describe('ClassicLink VPC ID'),
-    classicLinkVPCSecurityGroups: z.array(z.string()).optional().describe('ClassicLink VPC security groups'),
+    classicLinkVPCSecurityGroups: z
+      .array(z.string())
+      .optional()
+      .describe('ClassicLink VPC security groups'),
     userData: z.string().optional().describe('User data (base64 encoded)'),
     instanceId: z.string().optional().describe('Instance ID to use as template'),
     instanceType: z.string().optional().describe('Instance type'),
@@ -25,10 +28,35 @@ export const awsCreateLaunchConfiguration = tool({
     iamInstanceProfile: z.string().optional().describe('IAM instance profile'),
     ebsOptimized: z.boolean().optional().describe('Whether EBS optimized'),
     associatePublicIpAddress: z.boolean().optional().describe('Whether to associate public IP'),
-    placementTenancy: z.enum(['default', 'dedicated', 'host']).optional().describe('Placement tenancy'),
+    placementTenancy: z
+      .enum(['default', 'dedicated', 'host'])
+      .optional()
+      .describe('Placement tenancy'),
     metadataOptions: z.record(z.any()).optional().describe('Metadata options'),
   }),
-  execute: async ({ awsCredentials, region, launchConfigurationName, imageId, keyName, securityGroups, classicLinkVPCId, classicLinkVPCSecurityGroups, userData, instanceId, instanceType, kernelId, ramdiskId, blockDeviceMappings, instanceMonitoring, spotPrice, iamInstanceProfile, ebsOptimized, associatePublicIpAddress, placementTenancy, metadataOptions }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    launchConfigurationName,
+    imageId,
+    keyName,
+    securityGroups,
+    classicLinkVPCId,
+    classicLinkVPCSecurityGroups,
+    userData,
+    instanceId,
+    instanceType,
+    kernelId,
+    ramdiskId,
+    blockDeviceMappings,
+    instanceMonitoring,
+    spotPrice,
+    iamInstanceProfile,
+    ebsOptimized,
+    associatePublicIpAddress,
+    placementTenancy,
+    metadataOptions,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -36,33 +64,36 @@ export const awsCreateLaunchConfiguration = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new CreateLaunchConfigurationCommand({
-          LaunchConfigurationName: launchConfigurationName,
-          ImageId: imageId,
-          KeyName: keyName,
-          SecurityGroups: securityGroups,
-          ClassicLinkVPCId: classicLinkVPCId,
-          ClassicLinkVPCSecurityGroups: classicLinkVPCSecurityGroups,
-          UserData: userData,
-          InstanceId: instanceId,
-          InstanceType: instanceType,
-          KernelId: kernelId,
-          RamdiskId: ramdiskId,
-          BlockDeviceMappings: blockDeviceMappings,
-          InstanceMonitoring: instanceMonitoring,
-          SpotPrice: spotPrice,
-          IamInstanceProfile: iamInstanceProfile,
-          EbsOptimized: ebsOptimized,
-          AssociatePublicIpAddress: associatePublicIpAddress,
-          PlacementTenancy: placementTenancy,
-          MetadataOptions: metadataOptions,
+        LaunchConfigurationName: launchConfigurationName,
+        ImageId: imageId,
+        KeyName: keyName,
+        SecurityGroups: securityGroups,
+        ClassicLinkVPCId: classicLinkVPCId,
+        ClassicLinkVPCSecurityGroups: classicLinkVPCSecurityGroups,
+        UserData: userData,
+        InstanceId: instanceId,
+        InstanceType: instanceType,
+        KernelId: kernelId,
+        RamdiskId: ramdiskId,
+        BlockDeviceMappings: blockDeviceMappings,
+        InstanceMonitoring: instanceMonitoring,
+        SpotPrice: spotPrice,
+        IamInstanceProfile: iamInstanceProfile,
+        EbsOptimized: ebsOptimized,
+        AssociatePublicIpAddress: associatePublicIpAddress,
+        PlacementTenancy: placementTenancy,
+        MetadataOptions: metadataOptions,
       } as any);
       await client.send(command);
       return {
-                  success: true,
-                  message: `Launch configuration ${launchConfigurationName} created successfully`,
-              };
+        success: true,
+        message: `Launch configuration ${launchConfigurationName} created successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to create a launch configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a launch configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

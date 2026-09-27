@@ -11,7 +11,9 @@ export const awsCreateBudgetSubscriber = tool({
     accountId: z.string().describe('The account ID of the owner'),
     budgetName: z.string().describe('The name of the budget'),
     notification: z.record(z.any()).describe('The notification object'),
-    subscriber: z.record(z.any()).describe('The subscriber object containing subscriptionType and address'),
+    subscriber: z
+      .record(z.any())
+      .describe('The subscriber object containing subscriptionType and address'),
   }),
   execute: async ({ awsCredentials, region, accountId, budgetName, notification, subscriber }) => {
     if (!awsCredentials) {
@@ -21,17 +23,20 @@ export const awsCreateBudgetSubscriber = tool({
       const client = createBudgetsClient(awsCredentials, region);
 
       const command = new CreateSubscriberCommand({
-          AccountId: accountId,
-          BudgetName: budgetName,
-          Notification: notification,
-          Subscriber: subscriber,
+        AccountId: accountId,
+        BudgetName: budgetName,
+        Notification: notification,
+        Subscriber: subscriber,
       } as any);
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to create a budget subscriber', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a budget subscriber',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

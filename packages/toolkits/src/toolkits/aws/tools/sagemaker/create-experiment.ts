@@ -21,17 +21,20 @@ export const awsCreateSagemakerExperiment = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new CreateExperimentCommand({
-          ExperimentName: experimentName,
-          DisplayName: displayName,
-          Description: description,
-          Tags: tags,
+        ExperimentName: experimentName,
+        DisplayName: displayName,
+        Description: description,
+        Tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  experimentArn: response.ExperimentArn,
-              };
+        experimentArn: response.ExperimentArn,
+      };
     } catch (err) {
-      return { error: 'Failed to create a SageMaker experiment', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a SageMaker experiment',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

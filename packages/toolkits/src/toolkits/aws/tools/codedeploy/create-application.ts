@@ -9,7 +9,10 @@ export const awsCreateCodedeployApplication = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     applicationName: z.string().describe('The name of the application'),
-    computePlatform: z.enum(['Server', 'Lambda', 'ECS']).optional().describe('The destination platform type for the deployment'),
+    computePlatform: z
+      .enum(['Server', 'Lambda', 'ECS'])
+      .optional()
+      .describe('The destination platform type for the deployment'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the application'),
   }),
   execute: async ({ awsCredentials, region, applicationName, computePlatform, tags }) => {
@@ -20,16 +23,19 @@ export const awsCreateCodedeployApplication = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new CreateApplicationCommand({
-          applicationName: applicationName,
-          computePlatform: computePlatform,
-          tags: tags,
+        applicationName: applicationName,
+        computePlatform: computePlatform,
+        tags: tags,
       });
       const response = await client.send(command);
       return {
-                  applicationId: response.applicationId,
-              };
+        applicationId: response.applicationId,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new CodeDeploy application', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new CodeDeploy application',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,13 +19,16 @@ export const awsCreateIamGroup = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new CreateGroupCommand({
-          GroupName: groupName,
-          Path: path,
+        GroupName: groupName,
+        Path: path,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to create a new IAM group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new IAM group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

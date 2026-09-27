@@ -4,7 +4,8 @@ import { PutLifecycleConfigurationCommand } from '@aws-sdk/client-efs';
 import { createEfsClient } from '../client.js';
 
 export const awsDeleteEfsLifecycleConfiguration = tool({
-  description: 'Delete lifecycle configuration for an EFS file system (sets to empty). Use it to permanently remove the resource.',
+  description:
+    'Delete lifecycle configuration for an EFS file system (sets to empty). Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,17 +20,20 @@ export const awsDeleteEfsLifecycleConfiguration = tool({
 
       // Delete lifecycle configuration by setting it to empty array
       const command = new PutLifecycleConfigurationCommand({
-          FileSystemId: fileSystemId,
-          LifecyclePolicies: [],
+        FileSystemId: fileSystemId,
+        LifecyclePolicies: [],
       });
       const response = await client.send(command);
       return {
-                  message: 'Lifecycle configuration deleted successfully',
-                  fileSystemId: fileSystemId,
-                  lifecyclePolicies: response.LifecyclePolicies || [],
-              };
+        message: 'Lifecycle configuration deleted successfully',
+        fileSystemId: fileSystemId,
+        lifecyclePolicies: response.LifecyclePolicies || [],
+      };
     } catch (err) {
-      return { error: 'Failed to delete lifecycle configuration for an EFS file system (sets to empty)', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete lifecycle configuration for an EFS file system (sets to empty)',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

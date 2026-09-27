@@ -4,7 +4,8 @@ import { DeleteDomainAssociationCommand } from '@aws-sdk/client-amplify';
 import { createAmplifyClient } from '../client.js';
 
 export const awsDeleteAmplifyDomainAssociation = tool({
-  description: 'Deletes a domain association for an Amplify app. Use it to permanently remove the resource.',
+  description:
+    'Deletes a domain association for an Amplify app. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsDeleteAmplifyDomainAssociation = tool({
       const client = createAmplifyClient(awsCredentials, region);
 
       const command = new DeleteDomainAssociationCommand({
-          appId,
-          domainName,
+        appId,
+        domainName,
       });
       const response = await client.send(command);
       return {
-                  domainAssociation: response.domainAssociation,
-              };
+        domainAssociation: response.domainAssociation,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a domain association for an Amplify app', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a domain association for an Amplify app',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

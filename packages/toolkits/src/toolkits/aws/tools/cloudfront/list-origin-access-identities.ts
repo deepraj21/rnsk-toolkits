@@ -4,7 +4,8 @@ import { ListCloudFrontOriginAccessIdentitiesCommand } from '@aws-sdk/client-clo
 import { createCloudFrontClient } from '../client.js';
 
 export const awsListCloudfrontOriginAccessIdentities = tool({
-  description: 'List all CloudFront origin access identities. Use it to inspect current state before making changes.',
+  description:
+    'List all CloudFront origin access identities. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsListCloudfrontOriginAccessIdentities = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new ListCloudFrontOriginAccessIdentitiesCommand({
-          Marker: marker,
-          MaxItems: maxItems,
+        Marker: marker,
+        MaxItems: maxItems,
       });
       const response = await client.send(command);
       return {
-                  cloudFrontOriginAccessIdentityList: response.CloudFrontOriginAccessIdentityList,
-              };
+        cloudFrontOriginAccessIdentityList: response.CloudFrontOriginAccessIdentityList,
+      };
     } catch (err) {
-      return { error: 'Failed to list all CloudFront origin access identities', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all CloudFront origin access identities',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

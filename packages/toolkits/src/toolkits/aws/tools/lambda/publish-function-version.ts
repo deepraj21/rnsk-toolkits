@@ -20,28 +20,31 @@ export const awsPublishLambdaFunctionVersion = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new PublishVersionCommand({
-          FunctionName: functionName,
-          Description: description,
-          CodeSha256: codeSha256,
+        FunctionName: functionName,
+        Description: description,
+        CodeSha256: codeSha256,
       });
       const response = await client.send(command);
       return {
-                  functionName: response.FunctionName,
-                  functionArn: response.FunctionArn,
-                  runtime: response.Runtime,
-                  role: response.Role,
-                  handler: response.Handler,
-                  codeSize: response.CodeSize,
-                  description: response.Description,
-                  timeout: response.Timeout,
-                  memorySize: response.MemorySize,
-                  lastModified: response.LastModified,
-                  codeSha256: response.CodeSha256,
-                  version: response.Version,
-                  state: response.State,
-              };
+        functionName: response.FunctionName,
+        functionArn: response.FunctionArn,
+        runtime: response.Runtime,
+        role: response.Role,
+        handler: response.Handler,
+        codeSize: response.CodeSize,
+        description: response.Description,
+        timeout: response.Timeout,
+        memorySize: response.MemorySize,
+        lastModified: response.LastModified,
+        codeSha256: response.CodeSha256,
+        version: response.Version,
+        state: response.State,
+      };
     } catch (err) {
-      return { error: 'Failed to publish a new version of a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to publish a new version of a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

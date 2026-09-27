@@ -20,11 +20,19 @@ export const awsPutS3ObjectLegalHold = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new PutObjectLegalHoldCommand({ Bucket: bucket, Key: key, LegalHold: legalHold, VersionId: versionId });
+      const command = new PutObjectLegalHoldCommand({
+        Bucket: bucket,
+        Key: key,
+        LegalHold: legalHold,
+        VersionId: versionId,
+      });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to set legal hold status for an S3 object', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set legal hold status for an S3 object',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

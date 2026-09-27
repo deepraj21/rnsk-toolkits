@@ -19,15 +19,18 @@ export const awsTagBillingView = tool({
       const client = createBillingClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          resourceArn: resourceArn,
-          tags: tags,
+        resourceArn: resourceArn,
+        tags: tags,
       } as any);
-      const response = await client.send(command) as any;
+      const response = (await client.send(command)) as any;
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to a billing view', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a billing view',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

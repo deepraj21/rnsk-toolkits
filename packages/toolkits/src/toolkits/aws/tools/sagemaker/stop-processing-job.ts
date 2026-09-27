@@ -4,7 +4,8 @@ import { StopProcessingJobCommand } from '@aws-sdk/client-sagemaker';
 import { createSageMakerClient } from '../client.js';
 
 export const awsStopSagemakerProcessingJob = tool({
-  description: 'Stop a SageMaker processing job. Use it to stop a running resource (billable config may remain).',
+  description:
+    'Stop a SageMaker processing job. Use it to stop a running resource (billable config may remain).',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsStopSagemakerProcessingJob = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new StopProcessingJobCommand({
-          ProcessingJobName: processingJobName,
+        ProcessingJobName: processingJobName,
       });
       await client.send(command);
       return {
-                  message: 'Processing job stopped successfully',
-                  processingJobName: processingJobName,
-              };
+        message: 'Processing job stopped successfully',
+        processingJobName: processingJobName,
+      };
     } catch (err) {
-      return { error: 'Failed to stop a SageMaker processing job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to stop a SageMaker processing job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

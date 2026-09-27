@@ -18,12 +18,15 @@ export const awsStartDbCluster = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new StartDBClusterCommand({
-          DBClusterIdentifier: dbClusterIdentifier,
+        DBClusterIdentifier: dbClusterIdentifier,
       });
       const response = await client.send(command);
       return response.DBCluster;
     } catch (err) {
-      return { error: 'Failed to start a stopped Aurora cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start a stopped Aurora cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,7 +19,8 @@ export default defineToolkit({
       scopes: ['global'],
       exchangeStyle: 'form',
       extraAuthParams: { response_type: 'code' },
-      connectDescription: 'Connect WordPress.com to manage sites, draft posts, content and media. Requires a WordPress.com account with site access.',
+      connectDescription:
+        'Connect WordPress.com to manage sites, draft posts, content and media. Requires a WordPress.com account with site access.',
       callbackPath: '/api/auth/wordpress/callback',
       stateCookie: 'wordpress_oauth_state',
     },

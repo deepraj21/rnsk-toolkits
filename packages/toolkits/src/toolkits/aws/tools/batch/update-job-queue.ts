@@ -9,11 +9,24 @@ export const awsUpdateBatchJobQueue = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     jobQueue: z.string().describe('The name of the job queue'),
-    state: z.enum(['ENABLED', 'DISABLED']).optional().describe('The state of the job queue (ENABLED, DISABLED)'),
+    state: z
+      .enum(['ENABLED', 'DISABLED'])
+      .optional()
+      .describe('The state of the job queue (ENABLED, DISABLED)'),
     priority: z.number().optional().describe('Priority of the job queue'),
-    computeEnvironmentOrder: z.array(z.record(z.any())).optional().describe('Order of compute environments'),
+    computeEnvironmentOrder: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Order of compute environments'),
   }),
-  execute: async ({ awsCredentials, region, jobQueue, state, priority, computeEnvironmentOrder }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    jobQueue,
+    state,
+    priority,
+    computeEnvironmentOrder,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,18 +34,21 @@ export const awsUpdateBatchJobQueue = tool({
       const client = createBatchClient(awsCredentials, region);
 
       const command = new UpdateJobQueueCommand({
-          jobQueue: jobQueue,
-          state: state,
-          priority: priority,
-          computeEnvironmentOrder: computeEnvironmentOrder,
+        jobQueue: jobQueue,
+        state: state,
+        priority: priority,
+        computeEnvironmentOrder: computeEnvironmentOrder,
       } as any);
       const response = await client.send(command);
       return {
-                  jobQueueName: response.jobQueueName,
-                  jobQueueArn: response.jobQueueArn,
-              };
+        jobQueueName: response.jobQueueName,
+        jobQueueArn: response.jobQueueArn,
+      };
     } catch (err) {
-      return { error: 'Failed to update an existing Batch job queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an existing Batch job queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

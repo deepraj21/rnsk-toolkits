@@ -4,7 +4,8 @@ import { GetGroupCommand } from '@aws-sdk/client-iam';
 import { createIamClient } from '../client.js';
 
 export const awsGetIamGroup = tool({
-  description: 'Get detailed information about a specific IAM group.. Use it to inspect current state before making changes.',
+  description:
+    'Get detailed information about a specific IAM group.. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,14 +21,17 @@ export const awsGetIamGroup = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new GetGroupCommand({
-          GroupName: groupName,
-          MaxItems: maxItems,
-          Marker: marker,
+        GroupName: groupName,
+        MaxItems: maxItems,
+        Marker: marker,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to get detailed information about a specific IAM group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get detailed information about a specific IAM group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { DescribeReplicationGroupsCommand } from '@aws-sdk/client-elasticache';
 import { createElastiCacheClient } from '../client.js';
 
 export const awsDescribeReplicationGroups = tool({
-  description: 'List all Redis replication groups. Use it to inspect current state before making changes.',
+  description:
+    'List all Redis replication groups. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,13 +20,16 @@ export const awsDescribeReplicationGroups = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new DescribeReplicationGroupsCommand({
-          ReplicationGroupId: replicationGroupId,
-          MaxRecords: maxRecords,
+        ReplicationGroupId: replicationGroupId,
+        MaxRecords: maxRecords,
       });
       const response = await client.send(command);
       return response.ReplicationGroups;
     } catch (err) {
-      return { error: 'Failed to list all Redis replication groups', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all Redis replication groups',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

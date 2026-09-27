@@ -11,9 +11,19 @@ export const awsUpdateGroup = tool({
     groupName: z.string().optional().describe('The case-sensitive name of the group'),
     groupARN: z.string().optional().describe('The ARN of the group'),
     filterExpression: z.string().optional().describe('The updated filter expression'),
-    insightsConfiguration: z.record(z.any()).optional().describe('Structure containing configurations related to insights'),
+    insightsConfiguration: z
+      .record(z.any())
+      .optional()
+      .describe('Structure containing configurations related to insights'),
   }),
-  execute: async ({ awsCredentials, region, groupName, groupARN, filterExpression, insightsConfiguration }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    groupName,
+    groupARN,
+    filterExpression,
+    insightsConfiguration,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,17 +31,20 @@ export const awsUpdateGroup = tool({
       const client = createXRayClient(awsCredentials, region);
 
       const command = new UpdateGroupCommand({
-          GroupName: groupName,
-          GroupARN: groupARN,
-          FilterExpression: filterExpression,
-          InsightsConfiguration: insightsConfiguration,
+        GroupName: groupName,
+        GroupARN: groupARN,
+        FilterExpression: filterExpression,
+        InsightsConfiguration: insightsConfiguration,
       });
       const response = await client.send(command);
       return {
-                  group: response.Group,
-              };
+        group: response.Group,
+      };
     } catch (err) {
-      return { error: 'Failed to updates a group resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to updates a group resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,16 +18,19 @@ export const awsCreateCloudfrontDistributionWithTags = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateDistributionWithTagsCommand({
-          DistributionConfigWithTags: distributionConfigWithTags,
+        DistributionConfigWithTags: distributionConfigWithTags,
       } as any);
       const response = await client.send(command);
       return {
-                  distribution: response.Distribution,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        distribution: response.Distribution,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront distribution with tags', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront distribution with tags',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

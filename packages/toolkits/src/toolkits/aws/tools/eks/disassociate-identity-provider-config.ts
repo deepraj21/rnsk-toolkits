@@ -4,7 +4,8 @@ import { DisassociateIdentityProviderConfigCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsDisassociateEksIdentityProviderConfig = tool({
-  description: 'Disassociate an identity provider configuration from a cluster. Use it to disconnect resources.',
+  description:
+    'Disassociate an identity provider configuration from a cluster. Use it to disconnect resources.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsDisassociateEksIdentityProviderConfig = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DisassociateIdentityProviderConfigCommand({
-          clusterName: clusterName,
-          identityProviderConfig: identityProviderConfig,
+        clusterName: clusterName,
+        identityProviderConfig: identityProviderConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  update: response.update,
-              };
+        update: response.update,
+      };
     } catch (err) {
-      return { error: 'Failed to disassociate an identity provider configuration from a cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disassociate an identity provider configuration from a cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

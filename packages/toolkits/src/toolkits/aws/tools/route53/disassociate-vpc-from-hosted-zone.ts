@@ -19,15 +19,18 @@ export const awsDisassociateRoute53VpcFromHostedZone = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new DisassociateVPCFromHostedZoneCommand({
-          HostedZoneId: hostedZoneId,
-          VPC: vpc,
+        HostedZoneId: hostedZoneId,
+        VPC: vpc,
       });
       const response = await client.send(command);
       return {
-                  changeInfo: response.ChangeInfo,
-              };
+        changeInfo: response.ChangeInfo,
+      };
     } catch (err) {
-      return { error: 'Failed to disassociate a VPC from a hosted zone', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disassociate a VPC from a hosted zone',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

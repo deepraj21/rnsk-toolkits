@@ -21,18 +21,23 @@ export const awsGenerateDataKeyWithoutPlaintext = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new GenerateDataKeyWithoutPlaintextCommand({
-          KeyId: keyId,
-          KeySpec: keySpec,
-          NumberOfBytes: numberOfBytes,
-          EncryptionContext: encryptionContext,
+        KeyId: keyId,
+        KeySpec: keySpec,
+        NumberOfBytes: numberOfBytes,
+        EncryptionContext: encryptionContext,
       });
       const response = await client.send(command);
       return {
-                  ...response,
-                  CiphertextBlob: response.CiphertextBlob ? Buffer.from(response.CiphertextBlob).toString('base64') : undefined,
-              };
+        ...response,
+        CiphertextBlob: response.CiphertextBlob
+          ? Buffer.from(response.CiphertextBlob).toString('base64')
+          : undefined,
+      };
     } catch (err) {
-      return { error: 'Failed to generate an encrypted data encryption key without returning plaintext', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to generate an encrypted data encryption key without returning plaintext',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

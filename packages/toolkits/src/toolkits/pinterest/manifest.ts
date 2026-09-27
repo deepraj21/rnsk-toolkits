@@ -5,7 +5,8 @@ import { pinterestTools } from './tools/index.js';
 export default defineToolkit({
   id: 'pinterest',
   displayName: 'Pinterest',
-  shortDescription: 'Boards, Pins, analytics, trends, media, and profile via the Pinterest REST API v5.',
+  shortDescription:
+    'Boards, Pins, analytics, trends, media, and profile via the Pinterest REST API v5.',
   category: 'Social Media',
   icon: PINTEREST_ICON,
   auth: {

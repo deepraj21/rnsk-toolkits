@@ -13,7 +13,14 @@ export const awsRecordAutoscalingLifecycleActionHeartbeat = tool({
     lifecycleActionToken: z.string().describe('Lifecycle action token'),
     instanceId: z.string().optional().describe('Instance ID'),
   }),
-  execute: async ({ awsCredentials, region, lifecycleHookName, autoScalingGroupName, lifecycleActionToken, instanceId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    lifecycleHookName,
+    autoScalingGroupName,
+    lifecycleActionToken,
+    instanceId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,18 +28,21 @@ export const awsRecordAutoscalingLifecycleActionHeartbeat = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new RecordLifecycleActionHeartbeatCommand({
-          LifecycleHookName: lifecycleHookName,
-          AutoScalingGroupName: autoScalingGroupName,
-          LifecycleActionToken: lifecycleActionToken,
-          InstanceId: instanceId,
+        LifecycleHookName: lifecycleHookName,
+        AutoScalingGroupName: autoScalingGroupName,
+        LifecycleActionToken: lifecycleActionToken,
+        InstanceId: instanceId,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Lifecycle action heartbeat recorded successfully`,
-              };
+        success: true,
+        message: `Lifecycle action heartbeat recorded successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to record a lifecycle action heartbeat', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to record a lifecycle action heartbeat',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

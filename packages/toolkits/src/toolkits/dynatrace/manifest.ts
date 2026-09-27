@@ -5,7 +5,8 @@ import { dynatraceTools } from './tools/index.js';
 export default defineToolkit({
   id: 'dynatrace',
   displayName: 'Dynatrace',
-  shortDescription: 'Problems, metrics, entities, logs, DQL, events, SLOs, settings, security, synthetic and tokens via the Dynatrace Environment API.',
+  shortDescription:
+    'Problems, metrics, entities, logs, DQL, events, SLOs, settings, security, synthetic and tokens via the Dynatrace Environment API.',
   category: 'Developer Tools & DevOps',
   icon: DYNATRACE_ICON,
   auth: {

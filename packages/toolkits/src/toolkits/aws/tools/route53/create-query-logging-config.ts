@@ -19,16 +19,19 @@ export const awsCreateRoute53QueryLoggingConfig = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new CreateQueryLoggingConfigCommand({
-          HostedZoneId: hostedZoneId,
-          CloudWatchLogsLogGroupArn: cloudWatchLogsLogGroupArn,
+        HostedZoneId: hostedZoneId,
+        CloudWatchLogsLogGroupArn: cloudWatchLogsLogGroupArn,
       });
       const response = await client.send(command);
       return {
-                  queryLoggingConfig: response.QueryLoggingConfig,
-                  location: response.Location,
-              };
+        queryLoggingConfig: response.QueryLoggingConfig,
+        location: response.Location,
+      };
     } catch (err) {
-      return { error: 'Failed to create a query logging configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a query logging configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -20,14 +20,17 @@ export const awsCreateEc2PlacementGroup = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreatePlacementGroupCommand({
-          GroupName: groupName,
-          Strategy: strategy as any,
-          TagSpecifications: tagSpecifications,
+        GroupName: groupName,
+        Strategy: strategy as any,
+        TagSpecifications: tagSpecifications,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to create a placement group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a placement group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

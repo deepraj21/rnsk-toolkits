@@ -6,7 +6,8 @@ import { googleContactsTools } from './tools/index.js';
 export default defineToolkit({
   id: 'google-contacts',
   displayName: 'Google Contacts',
-  shortDescription: 'Create, search, and manage Google Contacts people, groups, and directory profiles.',
+  shortDescription:
+    'Create, search, and manage Google Contacts people, groups, and directory profiles.',
   category: 'CRM',
   icon: GCONTACTS_ICON,
   auth: {
@@ -27,7 +28,8 @@ export default defineToolkit({
       ],
       exchangeStyle: 'form',
       extraAuthParams: { access_type: 'offline', prompt: 'consent' },
-      connectDescription: 'Connect Google Contacts to manage people, groups, and directory profiles.',
+      connectDescription:
+        'Connect Google Contacts to manage people, groups, and directory profiles.',
       callbackPath: '/api/auth/google-contacts/callback',
       stateCookie: 'google_contacts_oauth_state',
     },

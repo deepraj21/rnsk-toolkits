@@ -19,16 +19,19 @@ export const awsUntagFsxResource = tool({
       const client = createFsxClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          ResourceARN: resourceARN,
-          TagKeys: tagKeys,
+        ResourceARN: resourceARN,
+        TagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags removed successfully from resource ${resourceARN}`,
-              };
+        success: true,
+        message: `Tags removed successfully from resource ${resourceARN}`,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from an FSx resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from an FSx resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -33,7 +33,8 @@ export default defineToolkit({
       scopeSeparator: ' ',
       exchangeStyle: 'basic',
       extraAuthParams: { duration: 'permanent' },
-      connectDescription: 'Connect Reddit to read posts and comments, publish content, and manage subreddits.',
+      connectDescription:
+        'Connect Reddit to read posts and comments, publish content, and manage subreddits.',
       callbackPath: '/api/auth/reddit/callback',
       stateCookie: 'reddit_oauth_state',
     },

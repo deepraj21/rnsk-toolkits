@@ -4,7 +4,8 @@ import { GetRuleGroupCommand } from '@aws-sdk/client-wafv2';
 import { createWafClient } from '../client.js';
 
 export const awsGetRuleGroup = tool({
-  description: 'Get details about a rule group. Use it to inspect current state before making changes.',
+  description:
+    'Get details about a rule group. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -21,15 +22,18 @@ export const awsGetRuleGroup = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new GetRuleGroupCommand({
-          Name: name,
-          Scope: scope,
-          Id: id,
-          ARN: arn,
+        Name: name,
+        Scope: scope,
+        Id: id,
+        ARN: arn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to get details about a rule group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about a rule group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

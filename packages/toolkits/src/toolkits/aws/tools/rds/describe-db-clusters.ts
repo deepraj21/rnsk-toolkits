@@ -4,7 +4,8 @@ import { DescribeDBClustersCommand } from '@aws-sdk/client-rds';
 import { createRdsClient } from '../client.js';
 
 export const awsDescribeDbClusters = tool({
-  description: 'List all Aurora database clusters. Use it to inspect current state before making changes.',
+  description:
+    'List all Aurora database clusters. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,13 +20,16 @@ export const awsDescribeDbClusters = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DescribeDBClustersCommand({
-          DBClusterIdentifier: dbClusterIdentifier,
-          MaxRecords: maxRecords,
+        DBClusterIdentifier: dbClusterIdentifier,
+        MaxRecords: maxRecords,
       });
       const response = await client.send(command);
       return response.DBClusters;
     } catch (err) {
-      return { error: 'Failed to list all Aurora database clusters', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all Aurora database clusters',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

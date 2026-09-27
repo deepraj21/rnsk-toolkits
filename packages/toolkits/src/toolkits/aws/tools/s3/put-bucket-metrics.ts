@@ -19,14 +19,17 @@ export const awsPutS3BucketMetrics = tool({
       const client = createS3Client(awsCredentials, region);
 
       const command = new PutBucketMetricsConfigurationCommand({
-          Bucket: bucket,
-          Id: metricsConfiguration.Id || 'default',
-          MetricsConfiguration: metricsConfiguration as any
+        Bucket: bucket,
+        Id: metricsConfiguration.Id || 'default',
+        MetricsConfiguration: metricsConfiguration as any,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to set metrics configuration for an S3 bucket', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to set metrics configuration for an S3 bucket',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

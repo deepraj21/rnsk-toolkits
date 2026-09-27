@@ -9,7 +9,10 @@ export const awsContinueCodedeployDeployment = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     deploymentId: z.string().describe('The unique ID of a deployment'),
-    deploymentWaitType: z.enum(['READY_WAIT', 'TERMINATION_WAIT']).optional().describe('The deployment wait type'),
+    deploymentWaitType: z
+      .enum(['READY_WAIT', 'TERMINATION_WAIT'])
+      .optional()
+      .describe('The deployment wait type'),
   }),
   execute: async ({ awsCredentials, region, deploymentId, deploymentWaitType }) => {
     if (!awsCredentials) {
@@ -19,16 +22,19 @@ export const awsContinueCodedeployDeployment = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new ContinueDeploymentCommand({
-          deploymentId: deploymentId,
-          deploymentWaitType: deploymentWaitType as any,
+        deploymentId: deploymentId,
+        deploymentWaitType: deploymentWaitType as any,
       });
       await client.send(command);
       return {
-                  message: 'Deployment continued successfully',
-                  deploymentId: deploymentId,
-              };
+        message: 'Deployment continued successfully',
+        deploymentId: deploymentId,
+      };
     } catch (err) {
-      return { error: 'Failed to continue a stopped deployment', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to continue a stopped deployment',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -9,7 +9,10 @@ export const awsDeleteCodebuildReportGroup = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     arn: z.string().describe('The ARN of the report group to delete'),
-    deleteReports: z.boolean().optional().describe('If true, deletes any reports that belong to a report group'),
+    deleteReports: z
+      .boolean()
+      .optional()
+      .describe('If true, deletes any reports that belong to a report group'),
   }),
   execute: async ({ awsCredentials, region, arn, deleteReports }) => {
     if (!awsCredentials) {
@@ -18,16 +21,21 @@ export const awsDeleteCodebuildReportGroup = tool({
     try {
       const client = createCodeBuildClient(awsCredentials, region);
 
-      await client.send(new DeleteReportGroupCommand({
+      await client.send(
+        new DeleteReportGroupCommand({
           arn: arn,
           deleteReports: deleteReports,
-      }));
+        }),
+      );
       return {
-                  message: 'Report group deleted successfully',
-                  arn: arn,
-              };
+        message: 'Report group deleted successfully',
+        arn: arn,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a report group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a report group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

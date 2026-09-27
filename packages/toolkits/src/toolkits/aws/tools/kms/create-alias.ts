@@ -19,13 +19,16 @@ export const awsCreateKmsAlias = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new CreateAliasCommand({
-          AliasName: aliasName,
-          TargetKeyId: targetKeyId,
+        AliasName: aliasName,
+        TargetKeyId: targetKeyId,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to create an alias for a KMS key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an alias for a KMS key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

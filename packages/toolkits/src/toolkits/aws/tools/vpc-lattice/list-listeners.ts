@@ -20,17 +20,20 @@ export const awsListVpcLatticeListeners = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new ListListenersCommand({
-          serviceIdentifier: serviceIdentifier,
-          maxResults: maxResults,
-          nextToken: nextToken,
+        serviceIdentifier: serviceIdentifier,
+        maxResults: maxResults,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  items: response.items,
-                  nextToken: response.nextToken,
-              };
+        items: response.items,
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list VPC Lattice listeners', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list VPC Lattice listeners',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

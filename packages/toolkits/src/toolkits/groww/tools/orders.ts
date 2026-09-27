@@ -7,27 +7,41 @@ const tokenField = z.string().optional().describe('Groww API access token (injec
 const segmentField = z.string().describe('Segment of the instrument: CASH or FNO');
 
 export const growwPlaceOrder = tool({
-  description: 'Place a new equity or F&O order on Groww. Requires trading_symbol, quantity, validity, exchange, segment, product, order_type, transaction_type and a unique order_reference_id (8-20 alphanumerics, max 2 hyphens).',
+  description:
+    'Place a new equity or F&O order on Groww. Requires trading_symbol, quantity, validity, exchange, segment, product, order_type, transaction_type and a unique order_reference_id (8-20 alphanumerics, max 2 hyphens).',
   inputSchema: z.object({
     growwAccessToken: tokenField,
-    trading_symbol: z.string().describe('Trading symbol as defined by the exchange, e.g. WIPRO, RELIANCE'),
+    trading_symbol: z
+      .string()
+      .describe('Trading symbol as defined by the exchange, e.g. WIPRO, RELIANCE'),
     quantity: z.number().int().positive().describe('Order quantity'),
     price: z.number().optional().describe('Limit price in rupees (required for LIMIT/SL orders)'),
-    trigger_price: z.number().optional().describe('Trigger price in rupees (required for SL/SL_M orders)'),
+    trigger_price: z
+      .number()
+      .optional()
+      .describe('Trigger price in rupees (required for SL/SL_M orders)'),
     validity: z.string().describe('Order validity, e.g. DAY, IOC'),
     exchange: z.string().describe('Stock exchange: NSE or BSE'),
     segment: segmentField,
     product: z.string().describe('Product type: CNC, MIS or NRML'),
     order_type: z.string().describe('Order type: MARKET, LIMIT, SL or SL_M'),
     transaction_type: z.string().describe('BUY or SELL'),
-    order_reference_id: z.string().describe('User-provided 8-20 char alphanumeric idempotency key with at most two hyphens'),
+    order_reference_id: z
+      .string()
+      .describe('User-provided 8-20 char alphanumeric idempotency key with at most two hyphens'),
   }),
   execute: async ({ growwAccessToken, ...body }) => {
     try {
-      const result = await growwRequest(growwAccessToken, '/v1/order/create', { method: 'POST', body });
+      const result = await growwRequest(growwAccessToken, '/v1/order/create', {
+        method: 'POST',
+        body,
+      });
       return handleGrowwResult(result, 'place order');
     } catch (error) {
-      return { error: 'Error placing order', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error placing order',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -45,10 +59,16 @@ export const growwModifyOrder = tool({
   }),
   execute: async ({ growwAccessToken, ...body }) => {
     try {
-      const result = await growwRequest(growwAccessToken, '/v1/order/modify', { method: 'POST', body });
+      const result = await growwRequest(growwAccessToken, '/v1/order/modify', {
+        method: 'POST',
+        body,
+      });
       return handleGrowwResult(result, 'modify order');
     } catch (error) {
-      return { error: 'Error modifying order', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error modifying order',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -68,13 +88,17 @@ export const growwCancelOrder = tool({
       });
       return handleGrowwResult(result, 'cancel order');
     } catch (error) {
-      return { error: 'Error cancelling order', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error cancelling order',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
 
 export const growwGetTradesForOrder = tool({
-  description: 'Get all trades (fills) assigned to a Groww order ID. One order may have multiple fills.',
+  description:
+    'Get all trades (fills) assigned to a Groww order ID. One order may have multiple fills.',
   inputSchema: z.object({
     growwAccessToken: tokenField,
     groww_order_id: z.string().describe('Groww order ID'),
@@ -84,12 +108,19 @@ export const growwGetTradesForOrder = tool({
   }),
   execute: async ({ growwAccessToken, groww_order_id, segment, page, page_size }) => {
     try {
-      const result = await growwRequest(growwAccessToken, `/v1/order/trades/${encodeURIComponent(groww_order_id)}`, {
-        query: { segment, page, page_size },
-      });
+      const result = await growwRequest(
+        growwAccessToken,
+        `/v1/order/trades/${encodeURIComponent(groww_order_id)}`,
+        {
+          query: { segment, page, page_size },
+        },
+      );
       return handleGrowwResult(result, 'get trades for order');
     } catch (error) {
-      return { error: 'Error getting trades', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting trades',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -103,12 +134,19 @@ export const growwGetOrderStatus = tool({
   }),
   execute: async ({ growwAccessToken, groww_order_id, segment }) => {
     try {
-      const result = await growwRequest(growwAccessToken, `/v1/order/status/${encodeURIComponent(groww_order_id)}`, {
-        query: { segment },
-      });
+      const result = await growwRequest(
+        growwAccessToken,
+        `/v1/order/status/${encodeURIComponent(groww_order_id)}`,
+        {
+          query: { segment },
+        },
+      );
       return handleGrowwResult(result, 'get order status');
     } catch (error) {
-      return { error: 'Error getting order status', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting order status',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -129,7 +167,10 @@ export const growwGetOrderStatusByReferenceId = tool({
       );
       return handleGrowwResult(result, 'get order status by reference ID');
     } catch (error) {
-      return { error: 'Error getting order status', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting order status',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -149,7 +190,10 @@ export const growwListOrders = tool({
       });
       return handleGrowwResult(result, 'list orders');
     } catch (error) {
-      return { error: 'Error listing orders', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error listing orders',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });
@@ -163,12 +207,19 @@ export const growwGetOrderDetail = tool({
   }),
   execute: async ({ growwAccessToken, groww_order_id, segment }) => {
     try {
-      const result = await growwRequest(growwAccessToken, `/v1/order/detail/${encodeURIComponent(groww_order_id)}`, {
-        query: { segment },
-      });
+      const result = await growwRequest(
+        growwAccessToken,
+        `/v1/order/detail/${encodeURIComponent(groww_order_id)}`,
+        {
+          query: { segment },
+        },
+      );
       return handleGrowwResult(result, 'get order detail');
     } catch (error) {
-      return { error: 'Error getting order detail', message: error instanceof Error ? error.message : 'Unknown error' };
+      return {
+        error: 'Error getting order detail',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   },
 });

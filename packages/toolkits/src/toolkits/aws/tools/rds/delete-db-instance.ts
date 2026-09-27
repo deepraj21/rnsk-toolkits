@@ -10,9 +10,18 @@ export const awsDeleteDbInstance = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     dbInstanceIdentifier: z.string().describe('DB instance identifier to delete'),
     skipFinalSnapshot: z.boolean().optional().describe('Skip final snapshot before deletion'),
-    finalDBSnapshotIdentifier: z.string().optional().describe('Final snapshot identifier (required if skipFinalSnapshot is false)'),
+    finalDBSnapshotIdentifier: z
+      .string()
+      .optional()
+      .describe('Final snapshot identifier (required if skipFinalSnapshot is false)'),
   }),
-  execute: async ({ awsCredentials, region, dbInstanceIdentifier, skipFinalSnapshot, finalDBSnapshotIdentifier }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    dbInstanceIdentifier,
+    skipFinalSnapshot,
+    finalDBSnapshotIdentifier,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +29,17 @@ export const awsDeleteDbInstance = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DeleteDBInstanceCommand({
-          DBInstanceIdentifier: dbInstanceIdentifier,
-          SkipFinalSnapshot: skipFinalSnapshot,
-          FinalDBSnapshotIdentifier: finalDBSnapshotIdentifier,
+        DBInstanceIdentifier: dbInstanceIdentifier,
+        SkipFinalSnapshot: skipFinalSnapshot,
+        FinalDBSnapshotIdentifier: finalDBSnapshotIdentifier,
       });
       const response = await client.send(command);
       return response.DBInstance;
     } catch (err) {
-      return { error: 'Failed to delete an RDS database instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an RDS database instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -21,22 +21,25 @@ export const awsUpdateLambdaFunctionAlias = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new UpdateAliasCommand({
-          FunctionName: functionName,
-          Name: name,
-          FunctionVersion: functionVersion,
-          Description: description,
+        FunctionName: functionName,
+        Name: name,
+        FunctionVersion: functionVersion,
+        Description: description,
       });
       const response = await client.send(command);
       return {
-                  aliasArn: response.AliasArn,
-                  name: response.Name,
-                  functionVersion: response.FunctionVersion,
-                  description: response.Description,
-                  revisionId: response.RevisionId,
-                  routingConfig: response.RoutingConfig,
-              };
+        aliasArn: response.AliasArn,
+        name: response.Name,
+        functionVersion: response.FunctionVersion,
+        description: response.Description,
+        revisionId: response.RevisionId,
+        routingConfig: response.RoutingConfig,
+      };
     } catch (err) {
-      return { error: 'Failed to update a Lambda function alias', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a Lambda function alias',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

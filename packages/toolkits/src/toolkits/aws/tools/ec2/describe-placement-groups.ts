@@ -19,16 +19,21 @@ export const awsDescribeEc2PlacementGroups = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribePlacementGroupsCommand({
-          GroupNames: groupNames,
-          Filters: filters ? Object.entries(filters).map(([name, values]) => ({
+        GroupNames: groupNames,
+        Filters: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
+            }))
+          : undefined,
       });
       const response = await client.send(command);
       return { placementGroups: response.PlacementGroups };
     } catch (err) {
-      return { error: 'Failed to describe placement groups', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe placement groups',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

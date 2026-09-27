@@ -20,18 +20,21 @@ export const awsCreateBackupSelection = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new CreateBackupSelectionCommand({
-          BackupPlanId: backupPlanId,
-          BackupSelection: backupSelection,
-          CreatorRequestId: creatorRequestId,
+        BackupPlanId: backupPlanId,
+        BackupSelection: backupSelection,
+        CreatorRequestId: creatorRequestId,
       } as any);
       const response = await client.send(command);
       return {
-                  selectionId: response.SelectionId,
-                  backupPlanId: response.BackupPlanId,
-                  creationDate: response.CreationDate,
-              };
+        selectionId: response.SelectionId,
+        backupPlanId: response.BackupPlanId,
+        creationDate: response.CreationDate,
+      };
     } catch (err) {
-      return { error: 'Failed to create a backup selection', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a backup selection',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

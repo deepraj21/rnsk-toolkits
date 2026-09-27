@@ -19,16 +19,19 @@ export const awsCreateLogStream = tool({
       const client = createCloudWatchLogsClient(awsCredentials, region);
 
       const command = new CreateLogStreamCommand({
-          logGroupName: logGroupName,
-          logStreamName: logStreamName,
+        logGroupName: logGroupName,
+        logStreamName: logStreamName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Log stream ${logStreamName} created successfully in log group ${logGroupName}`,
-              };
+        success: true,
+        message: `Log stream ${logStreamName} created successfully in log group ${logGroupName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new log stream in a log group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new log stream in a log group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

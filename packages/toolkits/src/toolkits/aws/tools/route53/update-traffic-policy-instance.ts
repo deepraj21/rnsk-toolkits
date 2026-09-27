@@ -21,17 +21,20 @@ export const awsUpdateRoute53TrafficPolicyInstance = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new UpdateTrafficPolicyInstanceCommand({
-          Id: id,
-          TTL: ttl,
-          TrafficPolicyId: trafficPolicyId,
-          TrafficPolicyVersion: trafficPolicyVersion,
+        Id: id,
+        TTL: ttl,
+        TrafficPolicyId: trafficPolicyId,
+        TrafficPolicyVersion: trafficPolicyVersion,
       });
       const response = await client.send(command);
       return {
-                  trafficPolicyInstance: response.TrafficPolicyInstance,
-              };
+        trafficPolicyInstance: response.TrafficPolicyInstance,
+      };
     } catch (err) {
-      return { error: 'Failed to update a Route 53 traffic policy instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a Route 53 traffic policy instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

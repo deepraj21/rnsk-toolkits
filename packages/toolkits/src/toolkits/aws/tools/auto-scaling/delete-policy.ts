@@ -19,16 +19,19 @@ export const awsDeleteAutoscalingPolicy = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DeletePolicyCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          PolicyName: policyName,
+        AutoScalingGroupName: autoScalingGroupName,
+        PolicyName: policyName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Policy ${policyName} deleted successfully`,
-              };
+        success: true,
+        message: `Policy ${policyName} deleted successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a scaling policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a scaling policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

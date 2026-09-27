@@ -10,12 +10,23 @@ export const awsCreateWebAcl = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     name: z.string().describe('Name of the Web ACL'),
     scope: z.enum(['REGIONAL', 'CLOUDFRONT']).describe('Scope of the Web ACL'),
-    defaultAction: z.record(z.any()).describe('Default action (Allow or Block) when no rules match'),
+    defaultAction: z
+      .record(z.any())
+      .describe('Default action (Allow or Block) when no rules match'),
     description: z.string().optional().describe('Description of the Web ACL'),
     rules: z.array(z.record(z.any())).optional().describe('Rules for the Web ACL'),
     visibilityConfig: z.record(z.any()).describe('CloudWatch metrics configuration'),
   }),
-  execute: async ({ awsCredentials, region, name, scope, defaultAction, description, rules, visibilityConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    scope,
+    defaultAction,
+    description,
+    rules,
+    visibilityConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,17 +34,20 @@ export const awsCreateWebAcl = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new CreateWebACLCommand({
-          Name: name,
-          Scope: scope,
-          DefaultAction: defaultAction,
-          Description: description,
-          Rules: rules,
-          VisibilityConfig: visibilityConfig,
+        Name: name,
+        Scope: scope,
+        DefaultAction: defaultAction,
+        Description: description,
+        Rules: rules,
+        VisibilityConfig: visibilityConfig,
       } as any);
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to create a new Web ACL', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new Web ACL',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { DescribeMountTargetSecurityGroupsCommand } from '@aws-sdk/client-efs';
 import { createEfsClient } from '../client.js';
 
 export const awsDescribeEfsMountTargetSecurityGroups = tool({
-  description: 'Get security groups for a mount target. Use it to inspect current state before making changes.',
+  description:
+    'Get security groups for a mount target. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,14 +19,17 @@ export const awsDescribeEfsMountTargetSecurityGroups = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new DescribeMountTargetSecurityGroupsCommand({
-          MountTargetId: mountTargetId,
+        MountTargetId: mountTargetId,
       });
       const response = await client.send(command);
       return {
-                  securityGroups: response.SecurityGroups || [],
-              };
+        securityGroups: response.SecurityGroups || [],
+      };
     } catch (err) {
-      return { error: 'Failed to get security groups for a mount target', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get security groups for a mount target',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

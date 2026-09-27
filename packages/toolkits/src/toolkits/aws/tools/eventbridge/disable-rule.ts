@@ -19,16 +19,19 @@ export const awsDisableEventbridgeRule = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new DisableRuleCommand({
-          Name: name,
-          EventBusName: eventBusName,
+        Name: name,
+        EventBusName: eventBusName,
       });
       await client.send(command);
       return {
-                  message: 'Rule disabled successfully',
-                  name: name,
-              };
+        message: 'Rule disabled successfully',
+        name: name,
+      };
     } catch (err) {
-      return { error: 'Failed to disable an EventBridge rule', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disable an EventBridge rule',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

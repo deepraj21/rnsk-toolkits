@@ -22,16 +22,19 @@ export const awsUpdateWafIpSet = tool({
       const client = createWafClient(awsCredentials, region);
 
       const command = new UpdateIPSetCommand({
-          Name: name,
-          Scope: scope,
-          Id: id,
-          LockToken: lockToken,
-          Addresses: addresses,
+        Name: name,
+        Scope: scope,
+        Id: id,
+        LockToken: lockToken,
+        Addresses: addresses,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update an IP set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an IP set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

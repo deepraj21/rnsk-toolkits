@@ -18,12 +18,15 @@ export const awsStartDbInstance = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new StartDBInstanceCommand({
-          DBInstanceIdentifier: dbInstanceIdentifier,
+        DBInstanceIdentifier: dbInstanceIdentifier,
       });
       const response = await client.send(command);
       return response.DBInstance;
     } catch (err) {
-      return { error: 'Failed to start a stopped RDS database instance', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start a stopped RDS database instance',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

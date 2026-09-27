@@ -18,12 +18,15 @@ export const awsAssociateDrtRole = tool({
       const client = createShieldClient(awsCredentials, region);
 
       const command = new AssociateDRTRoleCommand({
-          RoleArn: roleArn,
+        RoleArn: roleArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to grant DRT access to your account during attacks', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to grant DRT access to your account during attacks',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

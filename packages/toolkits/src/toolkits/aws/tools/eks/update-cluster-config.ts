@@ -14,7 +14,15 @@ export const awsUpdateEksClusterConfig = tool({
     clientRequestToken: z.string().optional().describe('Unique identifier for the request'),
     accessConfig: z.record(z.any()).optional().describe('Access configuration'),
   }),
-  execute: async ({ awsCredentials, region, name, resourcesVpcConfig, logging, clientRequestToken, accessConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    resourcesVpcConfig,
+    logging,
+    clientRequestToken,
+    accessConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,18 +30,21 @@ export const awsUpdateEksClusterConfig = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new UpdateClusterConfigCommand({
-          name: name,
-          resourcesVpcConfig: resourcesVpcConfig,
-          logging: logging,
-          clientRequestToken: clientRequestToken,
-          accessConfig: accessConfig,
+        name: name,
+        resourcesVpcConfig: resourcesVpcConfig,
+        logging: logging,
+        clientRequestToken: clientRequestToken,
+        accessConfig: accessConfig,
       });
       const response = await client.send(command);
       return {
-                  update: response.update,
-              };
+        update: response.update,
+      };
     } catch (err) {
-      return { error: 'Failed to update the configuration of an EKS cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the configuration of an EKS cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { UpdateFunctionConfigurationCommand } from '@aws-sdk/client-lambda';
 import { createLambdaClient } from '../client.js';
 
 export const awsUpdateLambdaFunctionConfiguration = tool({
-  description: 'Update configuration settings of a Lambda function.. Use it to change an existing resource.',
+  description:
+    'Update configuration settings of a Lambda function.. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -17,7 +18,18 @@ export const awsUpdateLambdaFunctionConfiguration = tool({
     environment: z.record(z.any()).optional().describe('Environment variables'),
     runtime: z.string().optional().describe('Runtime identifier'),
   }),
-  execute: async ({ awsCredentials, region, functionName, role, handler, description, timeout, memorySize, environment, runtime }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    functionName,
+    role,
+    handler,
+    description,
+    timeout,
+    memorySize,
+    environment,
+    runtime,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,33 +37,36 @@ export const awsUpdateLambdaFunctionConfiguration = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new UpdateFunctionConfigurationCommand({
-          FunctionName: functionName,
-          Role: role,
-          Handler: handler,
-          Description: description,
-          Timeout: timeout,
-          MemorySize: memorySize,
-          Environment: environment ? { Variables: environment } : undefined,
-          Runtime: runtime,
+        FunctionName: functionName,
+        Role: role,
+        Handler: handler,
+        Description: description,
+        Timeout: timeout,
+        MemorySize: memorySize,
+        Environment: environment ? { Variables: environment } : undefined,
+        Runtime: runtime,
       } as any);
       const response = await client.send(command);
       return {
-                  functionName: response.FunctionName,
-                  functionArn: response.FunctionArn,
-                  runtime: response.Runtime,
-                  role: response.Role,
-                  handler: response.Handler,
-                  description: response.Description,
-                  timeout: response.Timeout,
-                  memorySize: response.MemorySize,
-                  lastModified: response.LastModified,
-                  codeSha256: response.CodeSha256,
-                  version: response.Version,
-                  environment: response.Environment,
-                  revisionId: response.RevisionId,
-              };
+        functionName: response.FunctionName,
+        functionArn: response.FunctionArn,
+        runtime: response.Runtime,
+        role: response.Role,
+        handler: response.Handler,
+        description: response.Description,
+        timeout: response.Timeout,
+        memorySize: response.MemorySize,
+        lastModified: response.LastModified,
+        codeSha256: response.CodeSha256,
+        version: response.Version,
+        environment: response.Environment,
+        revisionId: response.RevisionId,
+      };
     } catch (err) {
-      return { error: 'Failed to update configuration settings of a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update configuration settings of a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

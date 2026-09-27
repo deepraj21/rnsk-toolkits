@@ -16,7 +16,17 @@ export const awsPutEbsSnapshotBlock = tool({
     checksumAlgorithm: z.enum(['SHA256']).describe('Checksum algorithm (SHA256)'),
     progress: z.number().optional().describe('Progress of the snapshot (0-100)'),
   }),
-  execute: async ({ awsCredentials, region, snapshotId, blockIndex, blockData, dataLength, checksum, checksumAlgorithm, progress }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    snapshotId,
+    blockIndex,
+    blockData,
+    dataLength,
+    checksum,
+    checksumAlgorithm,
+    progress,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,23 +35,26 @@ export const awsPutEbsSnapshotBlock = tool({
 
       // Convert base64 string to Uint8Array
       const blockBytes = Buffer.from(blockData, 'base64');
-      
+
       const command = new PutSnapshotBlockCommand({
-          SnapshotId: snapshotId,
-          BlockIndex: blockIndex,
-          BlockData: blockBytes,
-          DataLength: dataLength,
-          Checksum: checksum,
-          ChecksumAlgorithm: checksumAlgorithm,
-          Progress: progress,
+        SnapshotId: snapshotId,
+        BlockIndex: blockIndex,
+        BlockData: blockBytes,
+        DataLength: dataLength,
+        Checksum: checksum,
+        ChecksumAlgorithm: checksumAlgorithm,
+        Progress: progress,
       });
       const response = await client.send(command);
       return {
-                  checksum: response.Checksum,
-                  checksumAlgorithm: response.ChecksumAlgorithm,
-              };
+        checksum: response.Checksum,
+        checksumAlgorithm: response.ChecksumAlgorithm,
+      };
     } catch (err) {
-      return { error: 'Failed to write a block of data to a snapshot', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to write a block of data to a snapshot',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

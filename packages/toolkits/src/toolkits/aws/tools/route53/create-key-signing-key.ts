@@ -12,9 +12,20 @@ export const awsCreateRoute53KeySigningKey = tool({
     hostedZoneId: z.string().describe('The hosted zone ID'),
     keyManagementServiceArn: z.string().describe('KMS key ARN'),
     name: z.string().describe('The key signing key name'),
-    status: z.enum(['ACTIVE', 'INACTIVE']).optional().describe('Initial status of the key signing key'),
+    status: z
+      .enum(['ACTIVE', 'INACTIVE'])
+      .optional()
+      .describe('Initial status of the key signing key'),
   }),
-  execute: async ({ awsCredentials, region, callerReference, hostedZoneId, keyManagementServiceArn, name, status }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    callerReference,
+    hostedZoneId,
+    keyManagementServiceArn,
+    name,
+    status,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,18 +33,21 @@ export const awsCreateRoute53KeySigningKey = tool({
       const client = createRoute53Client(awsCredentials, region);
 
       const command = new CreateKeySigningKeyCommand({
-          CallerReference: callerReference,
-          HostedZoneId: hostedZoneId,
-          KeyManagementServiceArn: keyManagementServiceArn,
-          Name: name,
-          Status: status as any,
+        CallerReference: callerReference,
+        HostedZoneId: hostedZoneId,
+        KeyManagementServiceArn: keyManagementServiceArn,
+        Name: name,
+        Status: status as any,
       });
       const response = await client.send(command);
       return {
-                  changeInfo: response.ChangeInfo,
-              };
+        changeInfo: response.ChangeInfo,
+      };
     } catch (err) {
-      return { error: 'Failed to create a key signing key for a hosted zone', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a key signing key for a hosted zone',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

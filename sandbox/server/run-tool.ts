@@ -80,7 +80,9 @@ export async function runRegisteredTool(
 
   const started = Date.now();
   try {
-    const tool = entry.tool as { execute?: (input: unknown, options?: unknown) => Promise<unknown> };
+    const tool = entry.tool as {
+      execute?: (input: unknown, options?: unknown) => Promise<unknown>;
+    };
     if (typeof tool.execute !== 'function') {
       return { error: 'Tool has no execute function', toolName, toolkitId: entry.toolkitId };
     }

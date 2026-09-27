@@ -20,14 +20,17 @@ export const awsRevokeEc2SecurityGroupIngress = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new RevokeSecurityGroupIngressCommand({
-          GroupId: groupId,
-          GroupName: groupName,
-          IpPermissions: ipPermissions,
+        GroupId: groupId,
+        GroupName: groupName,
+        IpPermissions: ipPermissions,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to remove inbound rules from a security group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove inbound rules from a security group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

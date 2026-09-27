@@ -19,16 +19,19 @@ export const awsUntagSqsQueue = tool({
       const client = createSqsClient(awsCredentials, region);
 
       const command = new UntagQueueCommand({
-          QueueUrl: queueUrl,
-          TagKeys: tagKeys,
+        QueueUrl: queueUrl,
+        TagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Tags removed successfully from queue ${queueUrl}`,
-              };
+        success: true,
+        message: `Tags removed successfully from queue ${queueUrl}`,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from an SQS queue', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from an SQS queue',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,13 +19,16 @@ export const awsCreateEc2Tags = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateTagsCommand({
-          Resources: resources,
-          Tags: tags,
+        Resources: resources,
+        Tags: tags,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to create tags for EC2 resources', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create tags for EC2 resources',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,15 +19,18 @@ export const awsDeleteEksFargateProfile = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new DeleteFargateProfileCommand({
-          clusterName: clusterName,
-          fargateProfileName: fargateProfileName,
+        clusterName: clusterName,
+        fargateProfileName: fargateProfileName,
       });
       const response = await client.send(command);
       return {
-                  fargateProfile: response.fargateProfile,
-              };
+        fargateProfile: response.fargateProfile,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a Fargate profile', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a Fargate profile',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -21,7 +21,10 @@ export const awsReleaseEc2Address = tool({
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to release an Elastic IP address', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to release an Elastic IP address',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

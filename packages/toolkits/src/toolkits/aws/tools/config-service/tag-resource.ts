@@ -19,16 +19,19 @@ export const awsTagConfigResource = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          ResourceArn: resourceArn,
-          Tags: tags,
+        ResourceArn: resourceArn,
+        Tags: tags,
       });
       await client.send(command);
       return {
-                  message: 'Tags added successfully',
-                  resourceArn: resourceArn,
-              };
+        message: 'Tags added successfully',
+        resourceArn: resourceArn,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to a Config resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to a Config resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

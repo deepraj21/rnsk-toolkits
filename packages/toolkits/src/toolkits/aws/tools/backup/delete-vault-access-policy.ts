@@ -4,7 +4,8 @@ import { DeleteBackupVaultAccessPolicyCommand } from '@aws-sdk/client-backup';
 import { createBackupClient } from '../client.js';
 
 export const awsDeleteBackupVaultAccessPolicy = tool({
-  description: 'Delete the access policy for a backup vault. Use it to permanently remove the resource.',
+  description:
+    'Delete the access policy for a backup vault. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsDeleteBackupVaultAccessPolicy = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new DeleteBackupVaultAccessPolicyCommand({
-          BackupVaultName: backupVaultName,
+        BackupVaultName: backupVaultName,
       });
       await client.send(command);
       return {
-                  message: 'Backup vault access policy deleted successfully',
-                  backupVaultName: backupVaultName,
-              };
+        message: 'Backup vault access policy deleted successfully',
+        backupVaultName: backupVaultName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete the access policy for a backup vault', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete the access policy for a backup vault',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

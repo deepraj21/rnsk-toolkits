@@ -4,7 +4,8 @@ import { DeleteBucketIntelligentTieringConfigurationCommand } from '@aws-sdk/cli
 import { createS3Client } from '../client.js';
 
 export const awsDeleteS3BucketIntelligentTiering = tool({
-  description: 'Delete intelligent tiering configuration for an S3 bucket. Use it to permanently remove the resource.',
+  description:
+    'Delete intelligent tiering configuration for an S3 bucket. Use it to permanently remove the resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,11 +19,17 @@ export const awsDeleteS3BucketIntelligentTiering = tool({
     try {
       const client = createS3Client(awsCredentials, region);
 
-      const command = new DeleteBucketIntelligentTieringConfigurationCommand({ Bucket: bucket, Id: id });
+      const command = new DeleteBucketIntelligentTieringConfigurationCommand({
+        Bucket: bucket,
+        Id: id,
+      });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete intelligent tiering configuration for an S3 bucket', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete intelligent tiering configuration for an S3 bucket',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

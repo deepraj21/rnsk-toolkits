@@ -17,10 +17,27 @@ export const awsStartEcsTask = tool({
     enableExecuteCommand: z.boolean().optional().describe('Enable ECS Exec'),
     group: z.string().optional().describe('Task group'),
     networkConfiguration: z.record(z.any()).optional().describe('Network configuration'),
-    propagateTags: z.enum(['TASK_DEFINITION', 'SERVICE', 'NONE']).optional().describe('Tag propagation (TASK_DEFINITION, SERVICE, NONE)'),
+    propagateTags: z
+      .enum(['TASK_DEFINITION', 'SERVICE', 'NONE'])
+      .optional()
+      .describe('Tag propagation (TASK_DEFINITION, SERVICE, NONE)'),
     referenceId: z.string().optional().describe('Reference ID for the task'),
   }),
-  execute: async ({ awsCredentials, region, cluster, taskDefinition, containerInstances, overrides, startedBy, tags, enableExecuteCommand, group, networkConfiguration, propagateTags, referenceId }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cluster,
+    taskDefinition,
+    containerInstances,
+    overrides,
+    startedBy,
+    tags,
+    enableExecuteCommand,
+    group,
+    networkConfiguration,
+    propagateTags,
+    referenceId,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -28,25 +45,28 @@ export const awsStartEcsTask = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new StartTaskCommand({
-          cluster: cluster,
-          taskDefinition: taskDefinition,
-          containerInstances: containerInstances,
-          overrides: overrides,
-          startedBy: startedBy,
-          tags: tags,
-          enableExecuteCommand: enableExecuteCommand,
-          group: group,
-          networkConfiguration: networkConfiguration,
-          propagateTags: propagateTags as any,
-          referenceId: referenceId,
+        cluster: cluster,
+        taskDefinition: taskDefinition,
+        containerInstances: containerInstances,
+        overrides: overrides,
+        startedBy: startedBy,
+        tags: tags,
+        enableExecuteCommand: enableExecuteCommand,
+        group: group,
+        networkConfiguration: networkConfiguration,
+        propagateTags: propagateTags as any,
+        referenceId: referenceId,
       });
       const response = await client.send(command);
       return {
-                  tasks: response.tasks || [],
-                  failures: response.failures || [],
-              };
+        tasks: response.tasks || [],
+        failures: response.failures || [],
+      };
     } catch (err) {
-      return { error: 'Failed to start a stopped ECS task', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start a stopped ECS task',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

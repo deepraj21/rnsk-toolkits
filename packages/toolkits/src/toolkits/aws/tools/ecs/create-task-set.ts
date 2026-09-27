@@ -14,15 +14,40 @@ export const awsCreateEcsTaskSet = tool({
     externalId: z.string().optional().describe('External ID for the task set'),
     networkConfiguration: z.record(z.any()).optional().describe('Network configuration'),
     loadBalancers: z.array(z.record(z.any())).optional().describe('Load balancer configuration'),
-    serviceRegistries: z.array(z.record(z.any())).optional().describe('Service registry configuration'),
-    launchType: z.enum(['EC2', 'FARGATE', 'EXTERNAL']).optional().describe('Launch type (EC2, FARGATE, EXTERNAL)'),
-    capacityProviderStrategy: z.array(z.record(z.any())).optional().describe('Capacity provider strategy'),
+    serviceRegistries: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Service registry configuration'),
+    launchType: z
+      .enum(['EC2', 'FARGATE', 'EXTERNAL'])
+      .optional()
+      .describe('Launch type (EC2, FARGATE, EXTERNAL)'),
+    capacityProviderStrategy: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Capacity provider strategy'),
     platformVersion: z.string().optional().describe('Platform version for Fargate'),
     scale: z.record(z.any()).optional().describe('Scale configuration'),
     clientToken: z.string().optional().describe('Unique identifier for the task set'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the task set'),
   }),
-  execute: async ({ awsCredentials, region, cluster, service, taskDefinition, externalId, networkConfiguration, loadBalancers, serviceRegistries, launchType, capacityProviderStrategy, platformVersion, scale, clientToken, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    cluster,
+    service,
+    taskDefinition,
+    externalId,
+    networkConfiguration,
+    loadBalancers,
+    serviceRegistries,
+    launchType,
+    capacityProviderStrategy,
+    platformVersion,
+    scale,
+    clientToken,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -30,26 +55,29 @@ export const awsCreateEcsTaskSet = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new CreateTaskSetCommand({
-          cluster: cluster,
-          service: service,
-          taskDefinition: taskDefinition,
-          externalId: externalId,
-          networkConfiguration: networkConfiguration,
-          loadBalancers: loadBalancers,
-          serviceRegistries: serviceRegistries,
-          launchType: launchType as any,
-          capacityProviderStrategy: capacityProviderStrategy,
-          platformVersion: platformVersion,
-          scale: scale,
-          clientToken: clientToken,
-          tags: tags,
+        cluster: cluster,
+        service: service,
+        taskDefinition: taskDefinition,
+        externalId: externalId,
+        networkConfiguration: networkConfiguration,
+        loadBalancers: loadBalancers,
+        serviceRegistries: serviceRegistries,
+        launchType: launchType as any,
+        capacityProviderStrategy: capacityProviderStrategy,
+        platformVersion: platformVersion,
+        scale: scale,
+        clientToken: clientToken,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  taskSet: response.taskSet,
-              };
+        taskSet: response.taskSet,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new task set', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new task set',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

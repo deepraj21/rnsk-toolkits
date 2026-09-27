@@ -19,16 +19,19 @@ export const awsAttachInstancesToAutoscalingGroup = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new AttachInstancesCommand({
-          InstanceIds: instanceIds,
-          AutoScalingGroupName: autoScalingGroupName,
+        InstanceIds: instanceIds,
+        AutoScalingGroupName: autoScalingGroupName,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Instances attached to Auto Scaling group ${autoScalingGroupName} successfully`,
-              };
+        success: true,
+        message: `Instances attached to Auto Scaling group ${autoScalingGroupName} successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to attach instances to an Auto Scaling group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to attach instances to an Auto Scaling group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

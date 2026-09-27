@@ -13,9 +13,21 @@ export const awsStartRestoreJob = tool({
     iamRoleArn: z.string().describe('The ARN of the IAM role'),
     idempotencyToken: z.string().optional().describe('A unique token for idempotency'),
     resourceType: z.string().optional().describe('The type of resource to restore'),
-    copySourceTagsToRestoredResource: z.boolean().optional().describe('Copy source tags to restored resource'),
+    copySourceTagsToRestoredResource: z
+      .boolean()
+      .optional()
+      .describe('Copy source tags to restored resource'),
   }),
-  execute: async ({ awsCredentials, region, recoveryPointArn, metadata, iamRoleArn, idempotencyToken, resourceType, copySourceTagsToRestoredResource }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    recoveryPointArn,
+    metadata,
+    iamRoleArn,
+    idempotencyToken,
+    resourceType,
+    copySourceTagsToRestoredResource,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,19 +35,22 @@ export const awsStartRestoreJob = tool({
       const client = createBackupClient(awsCredentials, region);
 
       const command = new StartRestoreJobCommand({
-          RecoveryPointArn: recoveryPointArn,
-          Metadata: metadata,
-          IamRoleArn: iamRoleArn,
-          IdempotencyToken: idempotencyToken,
-          ResourceType: resourceType,
-          CopySourceTagsToRestoredResource: copySourceTagsToRestoredResource,
+        RecoveryPointArn: recoveryPointArn,
+        Metadata: metadata,
+        IamRoleArn: iamRoleArn,
+        IdempotencyToken: idempotencyToken,
+        ResourceType: resourceType,
+        CopySourceTagsToRestoredResource: copySourceTagsToRestoredResource,
       });
       const response = await client.send(command);
       return {
-                  restoreJobId: response.RestoreJobId,
-              };
+        restoreJobId: response.RestoreJobId,
+      };
     } catch (err) {
-      return { error: 'Failed to start a restore job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to start a restore job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

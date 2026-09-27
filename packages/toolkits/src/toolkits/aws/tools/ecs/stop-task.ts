@@ -4,7 +4,8 @@ import { StopTaskCommand } from '@aws-sdk/client-ecs';
 import { createEcsClient } from '../client.js';
 
 export const awsStopEcsTask = tool({
-  description: 'Stop a running ECS task. Use it to stop a running resource (billable config may remain).',
+  description:
+    'Stop a running ECS task. Use it to stop a running resource (billable config may remain).',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,16 +21,19 @@ export const awsStopEcsTask = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new StopTaskCommand({
-          cluster: cluster,
-          task: task,
-          reason: reason,
+        cluster: cluster,
+        task: task,
+        reason: reason,
       });
       const response = await client.send(command);
       return {
-                  task: response.task,
-              };
+        task: response.task,
+      };
     } catch (err) {
-      return { error: 'Failed to stop a running ECS task', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to stop a running ECS task',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

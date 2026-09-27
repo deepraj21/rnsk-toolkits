@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { wiseFetch } from './utils.js';
 
 export const wiseGetQuote = tool({
-  description: 'Retrieve a Wise quote by profile and quote ID, including its current status, pricing, payment options, and expiration.',
+  description:
+    'Retrieve a Wise quote by profile and quote ID, including its current status, pricing, payment options, and expiration.',
   inputSchema: z.object({
     wiseApiKey: z.string().optional().describe('Wise API token.'),
     profileId: z.number().describe('Wise profile ID that owns the quote.'),
@@ -37,7 +38,10 @@ export const wiseGetQuote = tool({
         raw: d,
       };
     } catch (e) {
-      return { error: 'Error getting quote', message: e instanceof Error ? e.message : 'Unknown error' };
+      return {
+        error: 'Error getting quote',
+        message: e instanceof Error ? e.message : 'Unknown error',
+      };
     }
   },
 });

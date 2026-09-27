@@ -18,14 +18,17 @@ export const awsCancelAutoscalingInstanceRefresh = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new CancelInstanceRefreshCommand({
-          AutoScalingGroupName: autoScalingGroupName,
+        AutoScalingGroupName: autoScalingGroupName,
       });
       const response = await client.send(command);
       return {
-                  instanceRefreshId: response.InstanceRefreshId,
-              };
+        instanceRefreshId: response.InstanceRefreshId,
+      };
     } catch (err) {
-      return { error: 'Failed to cancel an instance refresh', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to cancel an instance refresh',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -20,14 +20,17 @@ export const awsCreateEc2NatGateway = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateNatGatewayCommand({
-          SubnetId: subnetId,
-          AllocationId: allocationId,
-          TagSpecifications: tagSpecifications,
+        SubnetId: subnetId,
+        AllocationId: allocationId,
+        TagSpecifications: tagSpecifications,
       });
       const response = await client.send(command);
       return { natGateway: response.NatGateway };
     } catch (err) {
-      return { error: 'Failed to create a NAT gateway', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a NAT gateway',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -8,7 +8,9 @@ export const awsCreateCloudfrontResponseHeadersPolicy = tool({
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
-    responseHeadersPolicyConfig: z.record(z.any()).describe('Response headers policy configuration'),
+    responseHeadersPolicyConfig: z
+      .record(z.any())
+      .describe('Response headers policy configuration'),
   }),
   execute: async ({ awsCredentials, region, responseHeadersPolicyConfig }) => {
     if (!awsCredentials) {
@@ -18,16 +20,19 @@ export const awsCreateCloudfrontResponseHeadersPolicy = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateResponseHeadersPolicyCommand({
-          ResponseHeadersPolicyConfig: responseHeadersPolicyConfig,
+        ResponseHeadersPolicyConfig: responseHeadersPolicyConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  responseHeadersPolicy: response.ResponseHeadersPolicy,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        responseHeadersPolicy: response.ResponseHeadersPolicy,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront response headers policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront response headers policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

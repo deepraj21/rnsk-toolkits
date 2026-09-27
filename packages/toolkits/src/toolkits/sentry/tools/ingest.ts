@@ -12,7 +12,10 @@ export const sentryIngestEventViaDsn = tool({
   inputSchema: z.object({
     dsn: z.string().describe('Sentry DSN, e.g. https://<key>@o123.ingest.sentry.io/456.'),
     message: z.string().optional().describe('Error message.'),
-    level: z.enum(['fatal', 'error', 'warning', 'info', 'debug']).optional().describe('Severity level.'),
+    level: z
+      .enum(['fatal', 'error', 'warning', 'info', 'debug'])
+      .optional()
+      .describe('Severity level.'),
     logger: z.string().optional().describe('Logger name.'),
     release: z.string().optional().describe('Release version.'),
     environment: z.string().optional().describe('Environment name.'),
@@ -49,7 +52,8 @@ export const sentryIngestEventViaDsn = tool({
   }) => {
     try {
       const match = dsn.match(/^(https?):\/\/([^@/:]+)@([^/]+)\/(\d+)\/?$/);
-      if (!match) return { error: 'Invalid DSN format. Expected https://<key>@<host>/<projectId>.' };
+      if (!match)
+        return { error: 'Invalid DSN format. Expected https://<key>@<host>/<projectId>.' };
       const [, protocol, key, host, projectId] = match;
       const payload: Record<string, unknown> = {
         event_id: eventId ?? Math.random().toString(16).slice(2).padEnd(32, '0').slice(0, 32),
@@ -65,13 +69,19 @@ export const sentryIngestEventViaDsn = tool({
         extra,
       };
       if (exceptionType || exceptionValue) {
-        payload.exception = { values: [{ type: exceptionType ?? 'Error', value: exceptionValue ?? message ?? '' }] };
+        payload.exception = {
+          values: [{ type: exceptionType ?? 'Error', value: exceptionValue ?? message ?? '' }],
+        };
       }
-      const user: Record<string, unknown> = { id: userId, email: userEmail, username: userUsername, ip_address: userIpAddress };
+      const user: Record<string, unknown> = {
+        id: userId,
+        email: userEmail,
+        username: userUsername,
+        ip_address: userIpAddress,
+      };
       if (Object.values(user).some((v) => v !== undefined)) payload.user = user;
       const auth =
-        `Sentry sentry_version=7, sentry_key=${key}, ` +
-        `sentry_client=rnsk-toolkits/0.0.12`;
+        `Sentry sentry_version=7, sentry_key=${key}, ` + `sentry_client=rnsk-toolkits/0.0.12`;
       const response = await fetch(`${protocol}://${host}/api/${projectId}/store/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Sentry-Auth': auth },

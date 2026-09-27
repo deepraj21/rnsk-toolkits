@@ -27,7 +27,8 @@ export function createCredentialStore(): CredentialStore {
   const sourceOf = (kind: CredentialKind, name: string): CredentialSource => {
     const session = kind === 'token' ? tokens : env;
     if (session.has(name)) return 'session';
-    const fromEnv = kind === 'env' ? originalEnv.get(name) ?? process.env[name] : process.env[name];
+    const fromEnv =
+      kind === 'env' ? (originalEnv.get(name) ?? process.env[name]) : process.env[name];
     return fromEnv ? 'env' : null;
   };
 
@@ -164,6 +165,8 @@ export function isKnownCredential(
   name: string,
 ): boolean {
   return toolkits.some((manifest) =>
-    getCredentialFields(manifest, store).some((field) => field.kind === kind && field.name === name),
+    getCredentialFields(manifest, store).some(
+      (field) => field.kind === kind && field.name === name,
+    ),
   );
 }

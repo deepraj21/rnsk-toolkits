@@ -15,9 +15,23 @@ export const awsCreateSagemakerModel = tool({
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply'),
     vpcConfig: z.record(z.any()).optional().describe('VPC configuration'),
     enableNetworkIsolation: z.boolean().optional().describe('Enable network isolation'),
-    inferenceExecutionConfig: z.record(z.any()).optional().describe('Inference execution configuration'),
+    inferenceExecutionConfig: z
+      .record(z.any())
+      .optional()
+      .describe('Inference execution configuration'),
   }),
-  execute: async ({ awsCredentials, region, modelName, primaryContainer, containers, executionRoleArn, tags, vpcConfig, enableNetworkIsolation, inferenceExecutionConfig }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    modelName,
+    primaryContainer,
+    containers,
+    executionRoleArn,
+    tags,
+    vpcConfig,
+    enableNetworkIsolation,
+    inferenceExecutionConfig,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,21 +39,24 @@ export const awsCreateSagemakerModel = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new CreateModelCommand({
-          ModelName: modelName,
-          PrimaryContainer: primaryContainer,
-          Containers: containers,
-          ExecutionRoleArn: executionRoleArn,
-          Tags: tags,
-          VpcConfig: vpcConfig,
-          EnableNetworkIsolation: enableNetworkIsolation,
-          InferenceExecutionConfig: inferenceExecutionConfig,
+        ModelName: modelName,
+        PrimaryContainer: primaryContainer,
+        Containers: containers,
+        ExecutionRoleArn: executionRoleArn,
+        Tags: tags,
+        VpcConfig: vpcConfig,
+        EnableNetworkIsolation: enableNetworkIsolation,
+        InferenceExecutionConfig: inferenceExecutionConfig,
       } as any);
       const response = await client.send(command);
       return {
-                  modelArn: response.ModelArn,
-              };
+        modelArn: response.ModelArn,
+      };
     } catch (err) {
-      return { error: 'Failed to create a SageMaker model', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a SageMaker model',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

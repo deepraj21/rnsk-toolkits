@@ -20,7 +20,13 @@ import {
 } from './smart-orders.js';
 import { growwGetHoldings, growwGetPositions, growwGetPositionForSymbol } from './portfolio.js';
 import { growwGetUserMargin, growwGetRequiredMargin } from './margin.js';
-import { growwGetQuote, growwGetLtp, growwGetOhlc, growwGetOptionChain, growwGetGreeks } from './live-data.js';
+import {
+  growwGetQuote,
+  growwGetLtp,
+  growwGetOhlc,
+  growwGetOptionChain,
+  growwGetGreeks,
+} from './live-data.js';
 import {
   growwGetHistoricalCandles,
   growwGetHistoricalCandleRange,
@@ -65,7 +71,8 @@ export {
 export const growwTools = [
   {
     name: 'growwGetUserProfile',
-    description: 'Get Groww user profile including UCC, enabled exchanges, DDPI status and active segments.',
+    description:
+      'Get Groww user profile including UCC, enabled exchanges, DDPI status and active segments.',
     tool: growwGetUserProfile,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
@@ -268,7 +275,8 @@ export const growwTools = [
   },
   {
     name: 'growwSearchInstruments',
-    description: 'Search the Groww instruments master (no auth needed) to resolve trading and Groww symbols.',
+    description:
+      'Search the Groww instruments master (no auth needed) to resolve trading and Groww symbols.',
     tool: growwSearchInstruments,
     scope: 'read' as const,
   },

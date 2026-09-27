@@ -4,16 +4,27 @@ import { BatchGetImageCommand } from '@aws-sdk/client-ecr';
 import { createEcrClient } from '../client.js';
 
 export const awsBatchGetImage = tool({
-  description: 'Get detailed information about images in an ECR repository. Use it to operate on multiple resources.',
+  description:
+    'Get detailed information about images in an ECR repository. Use it to operate on multiple resources.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     repositoryName: z.string().describe('The name of the repository'),
     registryId: z.string().optional().describe('AWS account ID associated with the registry'),
     imageIds: z.array(z.record(z.any())).describe('List of image IDs to retrieve'),
-    acceptedMediaTypes: z.array(z.string()).optional().describe('Accepted media types for the image manifest'),
+    acceptedMediaTypes: z
+      .array(z.string())
+      .optional()
+      .describe('Accepted media types for the image manifest'),
   }),
-  execute: async ({ awsCredentials, region, repositoryName, registryId, imageIds, acceptedMediaTypes }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    repositoryName,
+    registryId,
+    imageIds,
+    acceptedMediaTypes,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,18 +32,21 @@ export const awsBatchGetImage = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new BatchGetImageCommand({
-          repositoryName: repositoryName,
-          registryId: registryId,
-          imageIds: imageIds,
-          acceptedMediaTypes: acceptedMediaTypes,
+        repositoryName: repositoryName,
+        registryId: registryId,
+        imageIds: imageIds,
+        acceptedMediaTypes: acceptedMediaTypes,
       });
       const response = await client.send(command);
       return {
-                  images: response.images || [],
-                  failures: response.failures || [],
-              };
+        images: response.images || [],
+        failures: response.failures || [],
+      };
     } catch (err) {
-      return { error: 'Failed to get detailed information about images in an ECR repository', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get detailed information about images in an ECR repository',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,15 +19,18 @@ export const awsTagEcrResource = tool({
       const client = createEcrClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          resourceArn: resourceArn,
-          tags: tags,
+        resourceArn: resourceArn,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to add tags to an ECR resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to an ECR resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,15 +18,18 @@ export const awsUnsubscribeSnsTopic = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new UnsubscribeCommand({
-          SubscriptionArn: subscriptionArn,
+        SubscriptionArn: subscriptionArn,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Unsubscribed from ${subscriptionArn} successfully`,
-              };
+        success: true,
+        message: `Unsubscribed from ${subscriptionArn} successfully`,
+      };
     } catch (err) {
-      return { error: 'Failed to unsubscribe from an SNS topic', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to unsubscribe from an SNS topic',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -13,7 +13,14 @@ export const awsCreateEc2LaunchTemplate = tool({
     description: z.string().optional().describe('Description'),
     tagSpecifications: z.array(z.any()).optional().describe('Tags to apply'),
   }),
-  execute: async ({ awsCredentials, region, launchTemplateName, launchTemplateData, description, tagSpecifications }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    launchTemplateName,
+    launchTemplateData,
+    description,
+    tagSpecifications,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,15 +28,18 @@ export const awsCreateEc2LaunchTemplate = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new CreateLaunchTemplateCommand({
-          LaunchTemplateName: launchTemplateName,
-          LaunchTemplateData: launchTemplateData,
-          VersionDescription: description,
-          TagSpecifications: tagSpecifications,
+        LaunchTemplateName: launchTemplateName,
+        LaunchTemplateData: launchTemplateData,
+        VersionDescription: description,
+        TagSpecifications: tagSpecifications,
       });
       const response = await client.send(command);
       return { launchTemplate: response.LaunchTemplate };
     } catch (err) {
-      return { error: 'Failed to create a launch template', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a launch template',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

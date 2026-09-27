@@ -4,7 +4,8 @@ import { DescribeBudgetActionCommand } from '@aws-sdk/client-budgets';
 import { createBudgetsClient } from '../client.js';
 
 export const awsDescribeBudgetAction = tool({
-  description: 'Get details about a specific budget action. Use it to inspect current state before making changes.',
+  description:
+    'Get details about a specific budget action. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,18 +21,21 @@ export const awsDescribeBudgetAction = tool({
       const client = createBudgetsClient(awsCredentials, region);
 
       const command = new DescribeBudgetActionCommand({
-          AccountId: accountId,
-          BudgetName: budgetName,
-          ActionId: actionId,
+        AccountId: accountId,
+        BudgetName: budgetName,
+        ActionId: actionId,
       });
       const response = await client.send(command);
       return {
-                  accountId: response.AccountId,
-                  budgetName: response.BudgetName,
-                  action: response.Action,
-              };
+        accountId: response.AccountId,
+        budgetName: response.BudgetName,
+        action: response.Action,
+      };
     } catch (err) {
-      return { error: 'Failed to get details about a specific budget action', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about a specific budget action',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

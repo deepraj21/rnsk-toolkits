@@ -4,7 +4,8 @@ import { UpdateClusterVersionCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsUpdateEksClusterVersion = tool({
-  description: 'Update the Kubernetes version of an EKS cluster. Use it to change an existing resource.',
+  description:
+    'Update the Kubernetes version of an EKS cluster. Use it to change an existing resource.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -20,16 +21,19 @@ export const awsUpdateEksClusterVersion = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new UpdateClusterVersionCommand({
-          name: name,
-          version: version,
-          clientRequestToken: clientRequestToken,
+        name: name,
+        version: version,
+        clientRequestToken: clientRequestToken,
       });
       const response = await client.send(command);
       return {
-                  update: response.update,
-              };
+        update: response.update,
+      };
     } catch (err) {
-      return { error: 'Failed to update the Kubernetes version of an EKS cluster', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the Kubernetes version of an EKS cluster',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

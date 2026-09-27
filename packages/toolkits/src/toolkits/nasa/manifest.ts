@@ -5,7 +5,8 @@ import { nasaTools } from './tools/index.js';
 export default defineToolkit({
   id: 'nasa',
   displayName: 'NASA',
-  shortDescription: 'Asteroids, APOD, space weather, Earth imagery, science datasets, and publications.',
+  shortDescription:
+    'Asteroids, APOD, space weather, Earth imagery, science datasets, and publications.',
   category: 'Analytics & Data',
   icon: NASA_ICON,
   auth: {

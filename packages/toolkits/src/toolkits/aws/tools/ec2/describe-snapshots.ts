@@ -20,17 +20,22 @@ export const awsDescribeEc2Snapshots = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new DescribeSnapshotsCommand({
-          SnapshotIds: snapshotIds,
-          Filters: filters ? Object.entries(filters).map(([name, values]) => ({
+        SnapshotIds: snapshotIds,
+        Filters: filters
+          ? Object.entries(filters).map(([name, values]) => ({
               Name: name,
               Values: Array.isArray(values) ? values : [values],
-          })) : undefined,
-          OwnerIds: ownerIds,
+            }))
+          : undefined,
+        OwnerIds: ownerIds,
       });
       const response = await client.send(command);
       return { snapshots: response.Snapshots };
     } catch (err) {
-      return { error: 'Failed to describe EC2 snapshots', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to describe EC2 snapshots',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

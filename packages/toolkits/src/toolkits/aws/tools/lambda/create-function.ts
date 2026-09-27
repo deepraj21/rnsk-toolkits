@@ -19,7 +19,20 @@ export const awsCreateLambdaFunction = tool({
     environment: z.record(z.any()).optional().describe('Environment variables'),
     tags: z.record(z.any()).optional().describe('Tags as key-value pairs'),
   }),
-  execute: async ({ awsCredentials, region, functionName, runtime, role, handler, code, description, timeout, memorySize, environment, tags }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    functionName,
+    runtime,
+    role,
+    handler,
+    code,
+    description,
+    timeout,
+    memorySize,
+    environment,
+    tags,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -27,38 +40,41 @@ export const awsCreateLambdaFunction = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new CreateFunctionCommand({
-          FunctionName: functionName,
-          Runtime: runtime,
-          Role: role,
-          Handler: handler,
-          Code: code,
-          Description: description,
-          Timeout: timeout,
-          MemorySize: memorySize,
-          Environment: environment ? { Variables: environment } : undefined,
-          Tags: tags,
+        FunctionName: functionName,
+        Runtime: runtime,
+        Role: role,
+        Handler: handler,
+        Code: code,
+        Description: description,
+        Timeout: timeout,
+        MemorySize: memorySize,
+        Environment: environment ? { Variables: environment } : undefined,
+        Tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  functionName: response.FunctionName,
-                  functionArn: response.FunctionArn,
-                  runtime: response.Runtime,
-                  role: response.Role,
-                  handler: response.Handler,
-                  codeSize: response.CodeSize,
-                  description: response.Description,
-                  timeout: response.Timeout,
-                  memorySize: response.MemorySize,
-                  lastModified: response.LastModified,
-                  codeSha256: response.CodeSha256,
-                  version: response.Version,
-                  state: response.State,
-                  stateReason: response.StateReason,
-                  stateReasonCode: response.StateReasonCode,
-                  lastUpdateStatus: response.LastUpdateStatus,
-              };
+        functionName: response.FunctionName,
+        functionArn: response.FunctionArn,
+        runtime: response.Runtime,
+        role: response.Role,
+        handler: response.Handler,
+        codeSize: response.CodeSize,
+        description: response.Description,
+        timeout: response.Timeout,
+        memorySize: response.MemorySize,
+        lastModified: response.LastModified,
+        codeSha256: response.CodeSha256,
+        version: response.Version,
+        state: response.State,
+        stateReason: response.StateReason,
+        stateReasonCode: response.StateReasonCode,
+        lastUpdateStatus: response.LastUpdateStatus,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

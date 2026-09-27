@@ -14,7 +14,15 @@ export const awsPutCodepipelineJobSuccessResult = tool({
     executionDetails: z.record(z.any()).optional().describe('Execution details'),
     outputVariables: z.record(z.any()).optional().describe('Output variables'),
   }),
-  execute: async ({ awsCredentials, region, jobId, currentRevision, continuationToken, executionDetails, outputVariables }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    jobId,
+    currentRevision,
+    continuationToken,
+    executionDetails,
+    outputVariables,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -22,18 +30,21 @@ export const awsPutCodepipelineJobSuccessResult = tool({
       const client = createCodePipelineClient(awsCredentials, region);
 
       const command = new PutJobSuccessResultCommand({
-          jobId: jobId,
-          currentRevision: currentRevision,
-          continuationToken: continuationToken,
-          executionDetails: executionDetails,
-          outputVariables: outputVariables,
+        jobId: jobId,
+        currentRevision: currentRevision,
+        continuationToken: continuationToken,
+        executionDetails: executionDetails,
+        outputVariables: outputVariables,
       } as any);
       await client.send(command);
       return {
-                  message: 'Job success result submitted successfully',
-              };
+        message: 'Job success result submitted successfully',
+      };
     } catch (err) {
-      return { error: 'Failed to put success result for a job', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to put success result for a job',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

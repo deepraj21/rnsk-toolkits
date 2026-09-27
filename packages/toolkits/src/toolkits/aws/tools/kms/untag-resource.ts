@@ -19,13 +19,16 @@ export const awsUntagKmsResource = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          KeyId: keyId,
-          TagKeys: tagKeys,
+        KeyId: keyId,
+        TagKeys: tagKeys,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to remove tags from a KMS key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from a KMS key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

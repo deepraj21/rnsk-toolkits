@@ -4,7 +4,8 @@ import { GetProvisionedConcurrencyConfigCommand } from '@aws-sdk/client-lambda';
 import { createLambdaClient } from '../client.js';
 
 export const awsGetLambdaProvisionedConcurrencyConfig = tool({
-  description: 'Get provisioned concurrency configuration for a function version. Use it to inspect current state before making changes.',
+  description:
+    'Get provisioned concurrency configuration for a function version. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,20 +20,23 @@ export const awsGetLambdaProvisionedConcurrencyConfig = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new GetProvisionedConcurrencyConfigCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
+        FunctionName: functionName,
+        Qualifier: qualifier,
       });
       const response = await client.send(command);
       return {
-                  requestedProvisionedConcurrentExecutions: response.RequestedProvisionedConcurrentExecutions,
-                  availableProvisionedConcurrentExecutions: response.AvailableProvisionedConcurrentExecutions,
-                  allocatedProvisionedConcurrentExecutions: response.AllocatedProvisionedConcurrentExecutions,
-                  status: response.Status,
-                  statusReason: response.StatusReason,
-                  lastModified: response.LastModified,
-              };
+        requestedProvisionedConcurrentExecutions: response.RequestedProvisionedConcurrentExecutions,
+        availableProvisionedConcurrentExecutions: response.AvailableProvisionedConcurrentExecutions,
+        allocatedProvisionedConcurrentExecutions: response.AllocatedProvisionedConcurrentExecutions,
+        status: response.Status,
+        statusReason: response.StatusReason,
+        lastModified: response.LastModified,
+      };
     } catch (err) {
-      return { error: 'Failed to get provisioned concurrency configuration for a function version', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get provisioned concurrency configuration for a function version',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

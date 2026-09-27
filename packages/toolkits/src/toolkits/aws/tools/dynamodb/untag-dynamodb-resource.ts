@@ -19,13 +19,16 @@ export const awsUntagDynamodbResource = tool({
       const client = createDynamoDbClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          ResourceArn: resourceArn,
-          TagKeys: tagKeys,
+        ResourceArn: resourceArn,
+        TagKeys: tagKeys,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to remove tags from a DynamoDB table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from a DynamoDB table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

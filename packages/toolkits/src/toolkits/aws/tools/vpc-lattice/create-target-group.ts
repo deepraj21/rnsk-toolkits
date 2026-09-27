@@ -21,21 +21,24 @@ export const awsCreateVpcLatticeTargetGroup = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new CreateTargetGroupCommand({
-          name: name,
-          type: type,
-          config: config,
-          tags: tags,
+        name: name,
+        type: type,
+        config: config,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  config: response.config,
-                  id: response.id,
-                  name: response.name,
-                  type: response.type,
-              };
+        arn: response.arn,
+        config: response.config,
+        id: response.id,
+        name: response.name,
+        type: response.type,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new VPC Lattice target group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new VPC Lattice target group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

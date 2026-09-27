@@ -6,7 +6,8 @@ import { figmaTools } from './tools/index.js';
 export default defineToolkit({
   id: 'figma',
   displayName: 'Figma',
-  shortDescription: 'Read files, export assets, manage comments, variables, webhooks, and libraries in Figma.',
+  shortDescription:
+    'Read files, export assets, manage comments, variables, webhooks, and libraries in Figma.',
   category: 'Design & Creative Tools',
   icon: FIGMA_ICON,
   auth: {

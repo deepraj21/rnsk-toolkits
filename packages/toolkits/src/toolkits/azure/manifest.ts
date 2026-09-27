@@ -5,7 +5,8 @@ import { azureTools } from './tools/index.js';
 export default defineToolkit({
   id: 'azure',
   displayName: 'Azure',
-  shortDescription: 'Manage VMs, disks, networking, storage, web apps, databases, containers, costs and governance via ARM.',
+  shortDescription:
+    'Manage VMs, disks, networking, storage, web apps, databases, containers, costs and governance via ARM.',
   category: 'Developer Tools & DevOps',
   icon: AZURE_ICON,
   auth: {

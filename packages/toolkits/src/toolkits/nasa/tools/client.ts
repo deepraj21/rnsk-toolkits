@@ -40,7 +40,11 @@ async function parseBody(response: Response): Promise<any> {
   return { raw: text };
 }
 
-export async function nasaGet(base: string, path: string, options?: { query?: Record<string, unknown> }): Promise<any> {
+export async function nasaGet(
+  base: string,
+  path: string,
+  options?: { query?: Record<string, unknown> },
+): Promise<any> {
   const url = new URL(`${base}${path}`);
   appendQuery(url, options?.query);
   const response = await fetch(url.toString(), { headers: { Accept: 'application/json' } });
@@ -61,7 +65,9 @@ export async function nasaGetText(
   const response = await fetch(url.toString());
   const text = await response.text();
   if (!response.ok) {
-    throw new NasaApiError('NASA API request failed', response.status, { raw: text.slice(0, 2000) });
+    throw new NasaApiError('NASA API request failed', response.status, {
+      raw: text.slice(0, 2000),
+    });
   }
   return { format: 'text', content: text };
 }
@@ -83,12 +89,20 @@ export async function nasaDownloadMeta(
   base: string,
   path: string,
   headers?: Record<string, string>,
-): Promise<{ name: string; mimetype: string | null; sizeBytes: number | null; url: string; note: string }> {
+): Promise<{
+  name: string;
+  mimetype: string | null;
+  sizeBytes: number | null;
+  url: string;
+  note: string;
+}> {
   const url = `${base}${path}`;
   const response = await fetch(url, { method: 'HEAD', headers });
   if (!response.ok) {
     const body = await response.text().catch(() => '');
-    throw new NasaApiError('NASA API request failed', response.status, { raw: body.slice(0, 2000) });
+    throw new NasaApiError('NASA API request failed', response.status, {
+      raw: body.slice(0, 2000),
+    });
   }
   const length = response.headers.get('content-length');
   return {
@@ -145,7 +159,9 @@ export async function tapSync(options: {
   const response = await fetch(url.toString());
   const text = await response.text();
   if (!response.ok) {
-    throw new NasaApiError('NASA API request failed', response.status, { raw: text.slice(0, 2000) });
+    throw new NasaApiError('NASA API request failed', response.status, {
+      raw: text.slice(0, 2000),
+    });
   }
   if (format === 'json') {
     try {
@@ -195,7 +211,8 @@ export function convertEonet(data: any, format: 'atom' | 'rss' | 'geojson'): any
   }
   const items = events
     .map(
-      (e: any) => `  <entry>\n    <title>${escapeXml(e.title)}</title>\n    <id>${escapeXml(e.id)}</id>\n    <link href="${escapeXml(e.link)}"/>\n    <summary>${escapeXml(e.description ?? '')}</summary>\n  </entry>`,
+      (e: any) =>
+        `  <entry>\n    <title>${escapeXml(e.title)}</title>\n    <id>${escapeXml(e.id)}</id>\n    <link href="${escapeXml(e.link)}"/>\n    <summary>${escapeXml(e.description ?? '')}</summary>\n  </entry>`,
     )
     .join('\n');
   if (format === 'atom') {
@@ -206,7 +223,8 @@ export function convertEonet(data: any, format: 'atom' | 'rss' | 'geojson'): any
   }
   const rssItems = events
     .map(
-      (e: any) => `  <item>\n    <title>${escapeXml(e.title)}</title>\n    <guid>${escapeXml(e.id)}</guid>\n    <link>${escapeXml(e.link)}</link>\n    <description>${escapeXml(e.description ?? '')}</description>\n  </item>`,
+      (e: any) =>
+        `  <item>\n    <title>${escapeXml(e.title)}</title>\n    <guid>${escapeXml(e.id)}</guid>\n    <link>${escapeXml(e.link)}</link>\n    <description>${escapeXml(e.description ?? '')}</description>\n  </item>`,
     )
     .join('\n');
   return {
@@ -224,8 +242,15 @@ function xmlEscape(s: string): string {
 }
 
 const SSC_COORDS: Record<string, string> = {
-  geo: 'Geo', gm: 'Gm', gse: 'Gse', gsm: 'Gsm', sm: 'Sm',
-  gei_tod: 'GeiTod', geitod: 'GeiTod', gei_j2000: 'GeiJ2000', geij2000: 'GeiJ2000',
+  geo: 'Geo',
+  gm: 'Gm',
+  gse: 'Gse',
+  gsm: 'Gsm',
+  sm: 'Sm',
+  gei_tod: 'GeiTod',
+  geitod: 'GeiTod',
+  gei_j2000: 'GeiJ2000',
+  geij2000: 'GeiJ2000',
 };
 
 /** Normalize a coordinate system name to the SSC API's case-sensitive enum. */
@@ -297,7 +322,11 @@ export async function sscGraph(options: {
 export async function sscLocations(options: {
   time_interval: { start: string; end: string };
   satellites: Array<{ satellite_id: string; resolution_factor?: number }>;
-  b_field_model?: { trace_stop_altitude?: number; internal_b_field_model?: string; external_b_field_model?: { key_parameter_values?: string } };
+  b_field_model?: {
+    trace_stop_altitude?: number;
+    internal_b_field_model?: string;
+    external_b_field_model?: { key_parameter_values?: string };
+  };
   output_options?: { coordinate_options: Array<{ coordinate_system: string; component: string }> };
   description?: string;
 }): Promise<any> {
@@ -312,11 +341,15 @@ export async function sscLocations(options: {
   if (bf) {
     bfield =
       '<BFieldModel>' +
-      (bf.internal_b_field_model ? `<InternalBFieldModel>${xmlEscape(bf.internal_b_field_model)}</InternalBFieldModel>` : '') +
+      (bf.internal_b_field_model
+        ? `<InternalBFieldModel>${xmlEscape(bf.internal_b_field_model)}</InternalBFieldModel>`
+        : '') +
       (bf.external_b_field_model?.key_parameter_values
         ? `<ExternalBFieldModel><KeyParameterValues>${xmlEscape(bf.external_b_field_model.key_parameter_values)}</KeyParameterValues></ExternalBFieldModel>`
         : '') +
-      (bf.trace_stop_altitude !== undefined ? `<TraceStopAltitude>${bf.trace_stop_altitude}</TraceStopAltitude>` : '') +
+      (bf.trace_stop_altitude !== undefined
+        ? `<TraceStopAltitude>${bf.trace_stop_altitude}</TraceStopAltitude>`
+        : '') +
       '</BFieldModel>';
   }
   let output = '';
@@ -381,7 +414,11 @@ async function cmrGqlPost(query: string): Promise<any> {
   return data?.data ?? data;
 }
 
-export async function cmrGraphql(root: string, args: Record<string, unknown>, selection: string): Promise<any> {
+export async function cmrGraphql(
+  root: string,
+  args: Record<string, unknown>,
+  selection: string,
+): Promise<any> {
   return cmrGqlPost(`query { ${root}${gqlArgsString(args)} ${selection} }`);
 }
 
@@ -398,7 +435,9 @@ export async function cmrGraphqlMutation(
   const parts = Object.entries(args)
     .filter(([, v]) => v !== undefined)
     .map(([k, v]) => `${k}: ${gqlValue(v)}`);
-  return cmrGqlPost(`mutation { ${name}${parts.length ? `(${parts.join(', ')})` : ''} ${selection} }`);
+  return cmrGqlPost(
+    `mutation { ${name}${parts.length ? `(${parts.join(', ')})` : ''} ${selection} }`,
+  );
 }
 
 export const CMR_GQL_URL = CMR_GQL;

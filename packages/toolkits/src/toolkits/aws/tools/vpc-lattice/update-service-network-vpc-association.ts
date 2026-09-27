@@ -11,7 +11,12 @@ export const awsUpdateVpcLatticeServiceNetworkVpcAssociation = tool({
     serviceNetworkVpcAssociationIdentifier: z.string().describe('The association identifier'),
     securityGroupIds: z.array(z.string()).optional().describe('Security group IDs'),
   }),
-  execute: async ({ awsCredentials, region, serviceNetworkVpcAssociationIdentifier, securityGroupIds }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    serviceNetworkVpcAssociationIdentifier,
+    securityGroupIds,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -19,18 +24,21 @@ export const awsUpdateVpcLatticeServiceNetworkVpcAssociation = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new UpdateServiceNetworkVpcAssociationCommand({
-          serviceNetworkVpcAssociationIdentifier: serviceNetworkVpcAssociationIdentifier,
-          securityGroupIds: securityGroupIds,
+        serviceNetworkVpcAssociationIdentifier: serviceNetworkVpcAssociationIdentifier,
+        securityGroupIds: securityGroupIds,
       });
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  createdBy: response.createdBy,
-                  id: response.id,
-                  securityGroupIds: response.securityGroupIds,
-              };
+        arn: response.arn,
+        createdBy: response.createdBy,
+        id: response.id,
+        securityGroupIds: response.securityGroupIds,
+      };
     } catch (err) {
-      return { error: 'Failed to update a service network VPC association', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a service network VPC association',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -4,7 +4,8 @@ import { PutConfigurationRecorderCommand } from '@aws-sdk/client-config-service'
 import { createConfigServiceClient } from '../client.js';
 
 export const awsPutConfigRecorder = tool({
-  description: 'Creates a new configuration recorder to record configuration changes. Use it to write data or configuration.',
+  description:
+    'Creates a new configuration recorder to record configuration changes. Use it to write data or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,18 @@ export const awsPutConfigRecorder = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new PutConfigurationRecorderCommand({
-          ConfigurationRecorder: configurationRecorder,
-          Tags: tags,
+        ConfigurationRecorder: configurationRecorder,
+        Tags: tags,
       });
       await client.send(command);
       return {
-                  message: 'Configuration recorder created/updated successfully',
-              };
+        message: 'Configuration recorder created/updated successfully',
+      };
     } catch (err) {
-      return { error: 'Failed to creates a new configuration recorder to record configuration changes', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to creates a new configuration recorder to record configuration changes',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

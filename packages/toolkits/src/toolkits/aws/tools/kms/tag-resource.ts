@@ -19,13 +19,16 @@ export const awsTagKmsResource = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new TagResourceCommand({
-          KeyId: keyId,
-          Tags: tags,
+        KeyId: keyId,
+        Tags: tags,
       } as any);
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to add or update tags for a KMS key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add or update tags for a KMS key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

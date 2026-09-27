@@ -19,7 +19,11 @@ export const getTranscriptsByConferenceRecordId = tool({
       });
 
       if (!result.ok) {
-        return { error: 'Failed to get transcripts', details: result.data, statusCode: result.status };
+        return {
+          error: 'Failed to get transcripts',
+          details: result.data,
+          statusCode: result.status,
+        };
       }
 
       return result.data;

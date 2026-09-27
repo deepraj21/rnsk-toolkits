@@ -11,11 +11,17 @@ export const awsRegisterEcsTaskDefinition = tool({
     family: z.string().describe('The family name of the task definition'),
     taskRoleArn: z.string().optional().describe('IAM role ARN for the task'),
     executionRoleArn: z.string().optional().describe('IAM role ARN for task execution'),
-    networkMode: z.enum(['bridge', 'host', 'awsvpc', 'none']).optional().describe('Network mode (bridge, host, awsvpc, none)'),
+    networkMode: z
+      .enum(['bridge', 'host', 'awsvpc', 'none'])
+      .optional()
+      .describe('Network mode (bridge, host, awsvpc, none)'),
     containerDefinitions: z.array(z.record(z.any())).describe('Container definitions'),
     volumes: z.array(z.record(z.any())).optional().describe('Volume definitions'),
     placementConstraints: z.array(z.record(z.any())).optional().describe('Placement constraints'),
-    requiresCompatibilities: z.array(z.string()).optional().describe('Required compatibilities (EC2, FARGATE, EXTERNAL)'),
+    requiresCompatibilities: z
+      .array(z.string())
+      .optional()
+      .describe('Required compatibilities (EC2, FARGATE, EXTERNAL)'),
     cpu: z.string().optional().describe('CPU units'),
     memory: z.string().optional().describe('Memory in MB'),
     tags: z.array(z.record(z.any())).optional().describe('Tags to apply to the task definition'),
@@ -26,7 +32,27 @@ export const awsRegisterEcsTaskDefinition = tool({
     ephemeralStorage: z.record(z.any()).optional().describe('Ephemeral storage configuration'),
     runtimePlatform: z.record(z.any()).optional().describe('Runtime platform configuration'),
   }),
-  execute: async ({ awsCredentials, region, family, taskRoleArn, executionRoleArn, networkMode, containerDefinitions, volumes, placementConstraints, requiresCompatibilities, cpu, memory, tags, pidMode, ipcMode, proxyConfiguration, inferenceAccelerators, ephemeralStorage, runtimePlatform }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    family,
+    taskRoleArn,
+    executionRoleArn,
+    networkMode,
+    containerDefinitions,
+    volumes,
+    placementConstraints,
+    requiresCompatibilities,
+    cpu,
+    memory,
+    tags,
+    pidMode,
+    ipcMode,
+    proxyConfiguration,
+    inferenceAccelerators,
+    ephemeralStorage,
+    runtimePlatform,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -34,31 +60,34 @@ export const awsRegisterEcsTaskDefinition = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new RegisterTaskDefinitionCommand({
-          family: family,
-          taskRoleArn: taskRoleArn,
-          executionRoleArn: executionRoleArn,
-          networkMode: networkMode as any,
-          containerDefinitions: containerDefinitions,
-          volumes: volumes,
-          placementConstraints: placementConstraints,
-          requiresCompatibilities: requiresCompatibilities as any,
-          cpu: cpu,
-          memory: memory,
-          tags: tags,
-          pidMode: pidMode as any,
-          ipcMode: ipcMode as any,
-          proxyConfiguration: proxyConfiguration,
-          inferenceAccelerators: inferenceAccelerators,
-          ephemeralStorage: ephemeralStorage,
-          runtimePlatform: runtimePlatform,
+        family: family,
+        taskRoleArn: taskRoleArn,
+        executionRoleArn: executionRoleArn,
+        networkMode: networkMode as any,
+        containerDefinitions: containerDefinitions,
+        volumes: volumes,
+        placementConstraints: placementConstraints,
+        requiresCompatibilities: requiresCompatibilities as any,
+        cpu: cpu,
+        memory: memory,
+        tags: tags,
+        pidMode: pidMode as any,
+        ipcMode: ipcMode as any,
+        proxyConfiguration: proxyConfiguration,
+        inferenceAccelerators: inferenceAccelerators,
+        ephemeralStorage: ephemeralStorage,
+        runtimePlatform: runtimePlatform,
       } as any);
       const response = await client.send(command);
       return {
-                  taskDefinition: response.taskDefinition,
-                  tags: response.tags || [],
-              };
+        taskDefinition: response.taskDefinition,
+        tags: response.tags || [],
+      };
     } catch (err) {
-      return { error: 'Failed to register a new task definition', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to register a new task definition',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

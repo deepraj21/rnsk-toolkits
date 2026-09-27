@@ -21,17 +21,20 @@ export const awsCreateCodebuildReportGroup = tool({
       const client = createCodeBuildClient(awsCredentials, region);
 
       const command = new CreateReportGroupCommand({
-          name: name,
-          type: type as any,
-          exportConfig: exportConfig,
-          tags: tags,
+        name: name,
+        type: type as any,
+        exportConfig: exportConfig,
+        tags: tags,
       } as any);
       const response = await client.send(command);
       return {
-                  reportGroup: (response as any).reportGroup,
-              };
+        reportGroup: (response as any).reportGroup,
+      };
     } catch (err) {
-      return { error: 'Failed to creates a report group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to creates a report group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

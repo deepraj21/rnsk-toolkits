@@ -19,15 +19,18 @@ export const awsUpdateBudget = tool({
       const client = createBudgetsClient(awsCredentials, region);
 
       const command = new UpdateBudgetCommand({
-          AccountId: accountId,
-          NewBudget: newBudget,
+        AccountId: accountId,
+        NewBudget: newBudget,
       } as any);
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to update an existing budget', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an existing budget',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

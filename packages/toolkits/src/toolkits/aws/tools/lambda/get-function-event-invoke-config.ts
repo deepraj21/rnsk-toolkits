@@ -4,7 +4,8 @@ import { GetFunctionEventInvokeConfigCommand } from '@aws-sdk/client-lambda';
 import { createLambdaClient } from '../client.js';
 
 export const awsGetLambdaFunctionEventInvokeConfig = tool({
-  description: 'Get async invocation configuration for a Lambda function. Use it to inspect current state before making changes.',
+  description:
+    'Get async invocation configuration for a Lambda function. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,19 +20,22 @@ export const awsGetLambdaFunctionEventInvokeConfig = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new GetFunctionEventInvokeConfigCommand({
-          FunctionName: functionName,
-          Qualifier: qualifier,
+        FunctionName: functionName,
+        Qualifier: qualifier,
       });
       const response = await client.send(command);
       return {
-                  functionArn: response.FunctionArn,
-                  lastModified: response.LastModified,
-                  maximumRetryAttempts: response.MaximumRetryAttempts,
-                  maximumEventAgeInSeconds: response.MaximumEventAgeInSeconds,
-                  destinationConfig: response.DestinationConfig,
-              };
+        functionArn: response.FunctionArn,
+        lastModified: response.LastModified,
+        maximumRetryAttempts: response.MaximumRetryAttempts,
+        maximumEventAgeInSeconds: response.MaximumEventAgeInSeconds,
+        destinationConfig: response.DestinationConfig,
+      };
     } catch (err) {
-      return { error: 'Failed to get async invocation configuration for a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get async invocation configuration for a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

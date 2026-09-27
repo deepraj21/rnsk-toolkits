@@ -4,7 +4,8 @@ import { ListTagsOfResourceCommand } from '@aws-sdk/client-dynamodb';
 import { createDynamoDbClient } from '../client.js';
 
 export const awsListDynamodbTags = tool({
-  description: 'List tags for a DynamoDB table. Use it to inspect current state before making changes.',
+  description:
+    'List tags for a DynamoDB table. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,12 +19,15 @@ export const awsListDynamodbTags = tool({
       const client = createDynamoDbClient(awsCredentials, region);
 
       const command = new ListTagsOfResourceCommand({
-          ResourceArn: resourceArn,
+        ResourceArn: resourceArn,
       });
       const response = await client.send(command);
       return response.Tags;
     } catch (err) {
-      return { error: 'Failed to list tags for a DynamoDB table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list tags for a DynamoDB table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

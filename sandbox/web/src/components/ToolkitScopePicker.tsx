@@ -50,7 +50,9 @@ export function ToolkitScopePicker({
         className={scope.length === 0 ? 'scope-all scope-all--active' : 'scope-all'}
         onClick={() => onScopeChange([])}
       >
-        {scope.length === 0 ? '✓ All toolkits in scope' : `Scope: ${scope.length} selected · reset to all`}
+        {scope.length === 0
+          ? '✓ All toolkits in scope'
+          : `Scope: ${scope.length} selected · reset to all`}
       </button>
 
       <ul className="toolkit-list">

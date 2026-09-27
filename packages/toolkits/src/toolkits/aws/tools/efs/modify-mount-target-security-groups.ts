@@ -19,16 +19,19 @@ export const awsModifyEfsMountTargetSecurityGroups = tool({
       const client = createEfsClient(awsCredentials, region);
 
       const command = new ModifyMountTargetSecurityGroupsCommand({
-          MountTargetId: mountTargetId,
-          SecurityGroups: securityGroups,
+        MountTargetId: mountTargetId,
+        SecurityGroups: securityGroups,
       });
       await client.send(command);
       return {
-                  message: 'Security groups updated successfully',
-                  mountTargetId: mountTargetId,
-              };
+        message: 'Security groups updated successfully',
+        mountTargetId: mountTargetId,
+      };
     } catch (err) {
-      return { error: 'Failed to modify security groups for a mount target', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify security groups for a mount target',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

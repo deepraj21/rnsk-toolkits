@@ -18,12 +18,15 @@ export const awsDeleteInsight = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new DeleteInsightCommand({
-          InsightArn: insightArn,
+        InsightArn: insightArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete a custom insight', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a custom insight',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

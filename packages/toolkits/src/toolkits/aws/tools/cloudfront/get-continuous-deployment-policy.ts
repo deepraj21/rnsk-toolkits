@@ -4,7 +4,8 @@ import { GetContinuousDeploymentPolicyCommand } from '@aws-sdk/client-cloudfront
 import { createCloudFrontClient } from '../client.js';
 
 export const awsGetCloudfrontContinuousDeploymentPolicy = tool({
-  description: 'Get information about a CloudFront continuous deployment policy. Use it to inspect current state before making changes.',
+  description:
+    'Get information about a CloudFront continuous deployment policy. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -18,15 +19,18 @@ export const awsGetCloudfrontContinuousDeploymentPolicy = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new GetContinuousDeploymentPolicyCommand({
-          Id: id,
+        Id: id,
       });
       const response = await client.send(command);
       return {
-                  continuousDeploymentPolicy: response.ContinuousDeploymentPolicy,
-                  eTag: response.ETag,
-              };
+        continuousDeploymentPolicy: response.ContinuousDeploymentPolicy,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to get information about a CloudFront continuous deployment policy', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get information about a CloudFront continuous deployment policy',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

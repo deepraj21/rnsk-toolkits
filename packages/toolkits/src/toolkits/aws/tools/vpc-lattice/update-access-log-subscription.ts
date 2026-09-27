@@ -19,19 +19,22 @@ export const awsUpdateVpcLatticeAccessLogSubscription = tool({
       const client = createVpcLatticeClient(awsCredentials, region);
 
       const command = new UpdateAccessLogSubscriptionCommand({
-          accessLogSubscriptionIdentifier: accessLogSubscriptionIdentifier,
-          destinationArn: destinationArn,
+        accessLogSubscriptionIdentifier: accessLogSubscriptionIdentifier,
+        destinationArn: destinationArn,
       });
       const response = await client.send(command);
       return {
-                  arn: response.arn,
-                  destinationArn: response.destinationArn,
-                  id: response.id,
-                  resourceArn: response.resourceArn,
-                  resourceId: response.resourceId,
-              };
+        arn: response.arn,
+        destinationArn: response.destinationArn,
+        id: response.id,
+        resourceArn: response.resourceArn,
+        resourceId: response.resourceId,
+      };
     } catch (err) {
-      return { error: 'Failed to update an access log subscription', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update an access log subscription',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -19,13 +19,16 @@ export const awsDetachGroupPolicy = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new DetachGroupPolicyCommand({
-          GroupName: groupName,
-          PolicyArn: policyArn,
+        GroupName: groupName,
+        PolicyArn: policyArn,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to detach a managed policy from an IAM group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to detach a managed policy from an IAM group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

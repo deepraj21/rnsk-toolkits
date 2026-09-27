@@ -19,13 +19,16 @@ export const awsDeleteCloudformationStack = tool({
       const client = createCloudFormationClient(awsCredentials, region);
 
       const command = new DeleteStackCommand({
-          StackName: stackName,
-          RetainResources: retainResources,
+        StackName: stackName,
+        RetainResources: retainResources,
       });
       await client.send(command);
       return { success: true };
     } catch (err) {
-      return { error: 'Failed to delete a CloudFormation stack', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a CloudFormation stack',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -10,7 +10,9 @@ export const awsRegisterCodedeployApplicationRevision = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     applicationName: z.string().describe('The name of the application'),
     description: z.string().optional().describe('A comment about the revision'),
-    revision: z.enum(['S3', 'GitHub', 'String', 'AppSpecContent']).describe('Information about the revision'),
+    revision: z
+      .enum(['S3', 'GitHub', 'String', 'AppSpecContent'])
+      .describe('Information about the revision'),
   }),
   execute: async ({ awsCredentials, region, applicationName, description, revision }) => {
     if (!awsCredentials) {
@@ -20,17 +22,20 @@ export const awsRegisterCodedeployApplicationRevision = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new RegisterApplicationRevisionCommand({
-          applicationName: applicationName,
-          description: description,
-          revision: revision,
+        applicationName: applicationName,
+        description: description,
+        revision: revision,
       } as any);
       await client.send(command);
       return {
-                  message: 'Application revision registered successfully',
-                  applicationName: applicationName,
-              };
+        message: 'Application revision registered successfully',
+        applicationName: applicationName,
+      };
     } catch (err) {
-      return { error: 'Failed to register a new application revision', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to register a new application revision',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

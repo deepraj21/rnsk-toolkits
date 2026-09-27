@@ -19,16 +19,19 @@ export const awsUntagEventbridgeResource = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new UntagResourceCommand({
-          ResourceARN: resourceARN,
-          TagKeys: tagKeys,
+        ResourceARN: resourceARN,
+        TagKeys: tagKeys,
       });
       await client.send(command);
       return {
-                  message: 'Tags removed successfully',
-                  resourceARN: resourceARN,
-              };
+        message: 'Tags removed successfully',
+        resourceARN: resourceARN,
+      };
     } catch (err) {
-      return { error: 'Failed to remove tags from an EventBridge resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove tags from an EventBridge resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

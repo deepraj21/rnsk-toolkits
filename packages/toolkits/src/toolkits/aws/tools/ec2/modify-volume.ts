@@ -21,15 +21,18 @@ export const awsModifyEc2Volume = tool({
       const client = createEc2Client(awsCredentials, region);
 
       const command = new ModifyVolumeCommand({
-          VolumeId: volumeId,
-          Size: size,
-          VolumeType: volumeType as any,
-          Iops: iops,
+        VolumeId: volumeId,
+        Size: size,
+        VolumeType: volumeType as any,
+        Iops: iops,
       });
       const response = await client.send(command);
       return { volumeModification: response.VolumeModification };
     } catch (err) {
-      return { error: 'Failed to modify an EBS volume (size, type, IOPS)', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify an EBS volume (size, type, IOPS)',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

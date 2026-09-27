@@ -15,7 +15,10 @@ export const awsGetCloudwatchMetricData = tool({
       .record(z.string(), z.string())
       .optional()
       .describe('Metric dimensions as key-value pairs, e.g. {"InstanceId": "i-0123456789abcdef0"}'),
-    startTime: z.string().optional().describe('Start time in ISO 8601 format (default: 1 hour ago)'),
+    startTime: z
+      .string()
+      .optional()
+      .describe('Start time in ISO 8601 format (default: 1 hour ago)'),
     endTime: z.string().optional().describe('End time in ISO 8601 format (default: now)'),
     period: z.number().optional().describe('Period in seconds (default: 300)'),
     statistic: z
@@ -23,7 +26,17 @@ export const awsGetCloudwatchMetricData = tool({
       .optional()
       .describe('Statistic to retrieve (default: Average)'),
   }),
-  execute: async ({ awsCredentials, region, namespace, metricName, dimensions, startTime, endTime, period, statistic }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    namespace,
+    metricName,
+    dimensions,
+    startTime,
+    endTime,
+    period,
+    statistic,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -33,7 +46,9 @@ export const awsGetCloudwatchMetricData = tool({
         new GetMetricStatisticsCommand({
           Namespace: namespace,
           MetricName: metricName,
-          Dimensions: dimensions ? Object.entries(dimensions).map(([Name, Value]) => ({ Name, Value })) : undefined,
+          Dimensions: dimensions
+            ? Object.entries(dimensions).map(([Name, Value]) => ({ Name, Value }))
+            : undefined,
           StartTime: startTime ? new Date(startTime) : new Date(Date.now() - 3600_000),
           EndTime: endTime ? new Date(endTime) : new Date(),
           Period: period ?? 300,

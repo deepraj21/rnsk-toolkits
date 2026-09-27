@@ -18,12 +18,15 @@ export const awsDeleteDbSubnetGroup = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new DeleteDBSubnetGroupCommand({
-          DBSubnetGroupName: dbSubnetGroupName,
+        DBSubnetGroupName: dbSubnetGroupName,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete an RDS subnet group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an RDS subnet group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

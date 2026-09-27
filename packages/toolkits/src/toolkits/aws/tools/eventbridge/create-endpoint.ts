@@ -15,7 +15,16 @@ export const awsCreateEventbridgeEndpoint = tool({
     eventBuses: z.array(z.record(z.any())).describe('Event buses'),
     roleArn: z.string().optional().describe('IAM role ARN'),
   }),
-  execute: async ({ awsCredentials, region, name, description, routingConfig, replicationConfig, eventBuses, roleArn }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    name,
+    description,
+    routingConfig,
+    replicationConfig,
+    eventBuses,
+    roleArn,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -23,25 +32,28 @@ export const awsCreateEventbridgeEndpoint = tool({
       const client = createEventBridgeClient(awsCredentials, region);
 
       const command = new CreateEndpointCommand({
-          Name: name,
-          Description: description,
-          RoutingConfig: routingConfig,
-          ReplicationConfig: replicationConfig,
-          EventBuses: eventBuses,
-          RoleArn: roleArn,
+        Name: name,
+        Description: description,
+        RoutingConfig: routingConfig,
+        ReplicationConfig: replicationConfig,
+        EventBuses: eventBuses,
+        RoleArn: roleArn,
       } as any);
       const response = await client.send(command);
       return {
-                  name: response.Name,
-                  arn: response.Arn,
-                  routingConfig: response.RoutingConfig,
-                  replicationConfig: response.ReplicationConfig,
-                  eventBuses: response.EventBuses,
-                  roleArn: response.RoleArn,
-                  state: response.State,
-              };
+        name: response.Name,
+        arn: response.Arn,
+        routingConfig: response.RoutingConfig,
+        replicationConfig: response.ReplicationConfig,
+        eventBuses: response.EventBuses,
+        roleArn: response.RoleArn,
+        state: response.State,
+      };
     } catch (err) {
-      return { error: 'Failed to create an EventBridge endpoint', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create an EventBridge endpoint',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

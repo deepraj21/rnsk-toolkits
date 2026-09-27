@@ -4,7 +4,8 @@ import { PutConfigRuleCommand } from '@aws-sdk/client-config-service';
 import { createConfigServiceClient } from '../client.js';
 
 export const awsPutConfigRule = tool({
-  description: 'Adds or updates an Config rule to evaluate if your AWS resources comply with your desired configurations. Use it to write data or configuration.',
+  description:
+    'Adds or updates an Config rule to evaluate if your AWS resources comply with your desired configurations. Use it to write data or configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,15 +20,19 @@ export const awsPutConfigRule = tool({
       const client = createConfigServiceClient(awsCredentials, region);
 
       const command = new PutConfigRuleCommand({
-          ConfigRule: configRule,
-          Tags: tags,
+        ConfigRule: configRule,
+        Tags: tags,
       } as any);
       await client.send(command);
       return {
-                  message: 'Config rule created/updated successfully',
-              };
+        message: 'Config rule created/updated successfully',
+      };
     } catch (err) {
-      return { error: 'Failed to adds or updates an Config rule to evaluate if your AWS resources comply with your desired configurations', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error:
+          'Failed to adds or updates an Config rule to evaluate if your AWS resources comply with your desired configurations',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

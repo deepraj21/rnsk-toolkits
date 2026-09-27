@@ -13,7 +13,14 @@ export const awsUpdateEksPodIdentityAssociation = tool({
     roleArn: z.string().describe('IAM role ARN'),
     clientRequestToken: z.string().optional().describe('Unique identifier for the request'),
   }),
-  execute: async ({ awsCredentials, region, clusterName, associationId, roleArn, clientRequestToken }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    clusterName,
+    associationId,
+    roleArn,
+    clientRequestToken,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -21,17 +28,20 @@ export const awsUpdateEksPodIdentityAssociation = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new UpdatePodIdentityAssociationCommand({
-          clusterName: clusterName,
-          associationId: associationId,
-          roleArn: roleArn,
-          clientRequestToken: clientRequestToken,
+        clusterName: clusterName,
+        associationId: associationId,
+        roleArn: roleArn,
+        clientRequestToken: clientRequestToken,
       });
       const response = await client.send(command);
       return {
-                  association: response.association,
-              };
+        association: response.association,
+      };
     } catch (err) {
-      return { error: 'Failed to update a pod identity association', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update a pod identity association',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

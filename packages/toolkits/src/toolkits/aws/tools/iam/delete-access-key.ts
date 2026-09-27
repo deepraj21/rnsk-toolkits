@@ -19,13 +19,16 @@ export const awsDeleteAccessKey = tool({
       const client = createIamClient(awsCredentials, region);
 
       const command = new DeleteAccessKeyCommand({
-          AccessKeyId: accessKeyId,
-          UserName: userName,
+        AccessKeyId: accessKeyId,
+        UserName: userName,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete an access key for an IAM user', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete an access key for an IAM user',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

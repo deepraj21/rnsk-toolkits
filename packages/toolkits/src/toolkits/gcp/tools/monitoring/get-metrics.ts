@@ -9,8 +9,13 @@ export const gcpGetMonitoringMetrics = tool({
     gcpCredentials: z.string().optional().describe('Injected by system; do not provide'),
     filter: z
       .string()
-      .describe('Monitoring filter, e.g. \'metric.type="compute.googleapis.com/instance/cpu/utilization"\''),
-    startTime: z.string().optional().describe('Start time in ISO 8601 format (default: 1 hour ago)'),
+      .describe(
+        'Monitoring filter, e.g. \'metric.type="compute.googleapis.com/instance/cpu/utilization"\'',
+      ),
+    startTime: z
+      .string()
+      .optional()
+      .describe('Start time in ISO 8601 format (default: 1 hour ago)'),
     endTime: z.string().optional().describe('End time in ISO 8601 format (default: now)'),
   }),
   execute: async ({ gcpCredentials, filter, startTime, endTime }) => {
@@ -25,10 +30,14 @@ export const gcpGetMonitoringMetrics = tool({
         filter,
         interval: {
           startTime: {
-            seconds: startTime ? Math.floor(new Date(startTime).getTime() / 1000) : Math.floor(Date.now() / 1000) - 3600,
+            seconds: startTime
+              ? Math.floor(new Date(startTime).getTime() / 1000)
+              : Math.floor(Date.now() / 1000) - 3600,
           },
           endTime: {
-            seconds: endTime ? Math.floor(new Date(endTime).getTime() / 1000) : Math.floor(Date.now() / 1000),
+            seconds: endTime
+              ? Math.floor(new Date(endTime).getTime() / 1000)
+              : Math.floor(Date.now() / 1000),
           },
         },
         view: 'FULL',

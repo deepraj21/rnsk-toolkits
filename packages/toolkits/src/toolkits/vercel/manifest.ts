@@ -18,7 +18,8 @@ export default defineToolkit({
       tokenUrl: 'https://api.vercel.com/v2/oauth/access_token',
       scopes: [],
       exchangeStyle: 'json',
-      connectDescription: 'Connect Vercel to manage deployments, projects, domains and environment variables.',
+      connectDescription:
+        'Connect Vercel to manage deployments, projects, domains and environment variables.',
       callbackPath: '/api/auth/vercel/callback',
       stateCookie: 'vercel_oauth_state',
     },

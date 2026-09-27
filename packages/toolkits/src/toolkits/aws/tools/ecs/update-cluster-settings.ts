@@ -19,15 +19,18 @@ export const awsUpdateEcsClusterSettings = tool({
       const client = createEcsClient(awsCredentials, region);
 
       const command = new UpdateClusterSettingsCommand({
-          cluster: cluster,
-          settings: settings,
+        cluster: cluster,
+        settings: settings,
       });
       const response = await client.send(command);
       return {
-                  cluster: response.cluster,
-              };
+        cluster: response.cluster,
+      };
     } catch (err) {
-      return { error: 'Failed to update cluster settings', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update cluster settings',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -18,12 +18,15 @@ export const awsDeleteCacheSubnetGroup = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new DeleteCacheSubnetGroupCommand({
-          CacheSubnetGroupName: cacheSubnetGroupName,
+        CacheSubnetGroupName: cacheSubnetGroupName,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to delete a cache subnet group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a cache subnet group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

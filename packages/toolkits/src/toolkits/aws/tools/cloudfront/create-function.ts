@@ -20,18 +20,21 @@ export const awsCreateCloudfrontFunction = tool({
       const client = createCloudFrontClient(awsCredentials, region);
 
       const command = new CreateFunctionCommand({
-          Name: name,
-          FunctionConfig: functionConfig,
-          FunctionCode: Buffer.from(functionCode, 'base64'),
+        Name: name,
+        FunctionConfig: functionConfig,
+        FunctionCode: Buffer.from(functionCode, 'base64'),
       } as any);
       const response = await client.send(command);
       return {
-                  functionSummary: response.FunctionSummary,
-                  location: response.Location,
-                  eTag: response.ETag,
-              };
+        functionSummary: response.FunctionSummary,
+        location: response.Location,
+        eTag: response.ETag,
+      };
     } catch (err) {
-      return { error: 'Failed to create a CloudFront function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a CloudFront function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

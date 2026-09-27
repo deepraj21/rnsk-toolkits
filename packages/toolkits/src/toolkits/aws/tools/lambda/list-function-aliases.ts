@@ -4,7 +4,8 @@ import { ListAliasesCommand } from '@aws-sdk/client-lambda';
 import { createLambdaClient } from '../client.js';
 
 export const awsListLambdaFunctionAliases = tool({
-  description: 'List all aliases for a Lambda function. Use it to inspect current state before making changes.',
+  description:
+    'List all aliases for a Lambda function. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -21,25 +22,29 @@ export const awsListLambdaFunctionAliases = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new ListAliasesCommand({
-          FunctionName: functionName,
-          FunctionVersion: functionVersion,
-          Marker: marker,
-          MaxItems: maxItems,
+        FunctionName: functionName,
+        FunctionVersion: functionVersion,
+        Marker: marker,
+        MaxItems: maxItems,
       });
       const response = await client.send(command);
       return {
-                  aliases: response.Aliases?.map((a: any) => ({
-                      aliasArn: a.AliasArn,
-                      name: a.Name,
-                      functionVersion: a.FunctionVersion,
-                      description: a.Description,
-                      revisionId: a.RevisionId,
-                      routingConfig: a.RoutingConfig,
-                  })) || [],
-                  nextMarker: response.NextMarker,
-              };
+        aliases:
+          response.Aliases?.map((a: any) => ({
+            aliasArn: a.AliasArn,
+            name: a.Name,
+            functionVersion: a.FunctionVersion,
+            description: a.Description,
+            revisionId: a.RevisionId,
+            routingConfig: a.RoutingConfig,
+          })) || [],
+        nextMarker: response.NextMarker,
+      };
     } catch (err) {
-      return { error: 'Failed to list all aliases for a Lambda function', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all aliases for a Lambda function',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

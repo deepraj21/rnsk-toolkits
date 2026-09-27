@@ -10,8 +10,18 @@ export const listRepoIssues = tool({
     githubToken: z.string().optional().describe('Injected by system; do not provide'),
     owner: z.string().describe('Repository owner (username or org)'),
     repo: z.string().describe('Repository name'),
-    state: z.enum(['open', 'closed', 'all']).optional().default('open').describe('Filter by issue state'),
-    perPage: z.number().min(1).max(100).optional().default(30).describe('Number of issues per page'),
+    state: z
+      .enum(['open', 'closed', 'all'])
+      .optional()
+      .default('open')
+      .describe('Filter by issue state'),
+    perPage: z
+      .number()
+      .min(1)
+      .max(100)
+      .optional()
+      .default(30)
+      .describe('Number of issues per page'),
     page: z.number().min(1).optional().default(1).describe('Page number'),
   }),
   execute: async ({ githubToken, owner, repo, state = 'open', perPage = 30, page = 1 }) => {

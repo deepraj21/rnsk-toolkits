@@ -10,7 +10,10 @@ export const awsGenerateDataKey = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     keyId: z.string().describe('Key ID, ARN, alias name, or alias ARN'),
     keySpec: z.enum(['AES_256', 'AES_128']).optional().describe('Length of the data key'),
-    numberOfBytes: z.number().optional().describe('Length of data key in bytes (alternative to keySpec)'),
+    numberOfBytes: z
+      .number()
+      .optional()
+      .describe('Length of data key in bytes (alternative to keySpec)'),
     encryptionContext: z.record(z.any()).optional().describe('Additional authenticated data'),
   }),
   execute: async ({ awsCredentials, region, keyId, keySpec, numberOfBytes, encryptionContext }) => {
@@ -21,19 +24,26 @@ export const awsGenerateDataKey = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new GenerateDataKeyCommand({
-          KeyId: keyId,
-          KeySpec: keySpec,
-          NumberOfBytes: numberOfBytes,
-          EncryptionContext: encryptionContext,
+        KeyId: keyId,
+        KeySpec: keySpec,
+        NumberOfBytes: numberOfBytes,
+        EncryptionContext: encryptionContext,
       });
       const response = await client.send(command);
       return {
-                  ...response,
-                  Plaintext: response.Plaintext ? Buffer.from(response.Plaintext).toString('base64') : undefined,
-                  CiphertextBlob: response.CiphertextBlob ? Buffer.from(response.CiphertextBlob).toString('base64') : undefined,
-              };
+        ...response,
+        Plaintext: response.Plaintext
+          ? Buffer.from(response.Plaintext).toString('base64')
+          : undefined,
+        CiphertextBlob: response.CiphertextBlob
+          ? Buffer.from(response.CiphertextBlob).toString('base64')
+          : undefined,
+      };
     } catch (err) {
-      return { error: 'Failed to generate a data encryption key (DEK) for client-side encryption', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to generate a data encryption key (DEK) for client-side encryption',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

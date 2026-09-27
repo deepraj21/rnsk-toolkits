@@ -4,7 +4,8 @@ import { ListKeysCommand } from '@aws-sdk/client-kms';
 import { createKmsClient } from '../client.js';
 
 export const awsListKmsKeys = tool({
-  description: 'List all KMS keys in the AWS account. Use it to inspect current state before making changes.',
+  description:
+    'List all KMS keys in the AWS account. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,13 +20,16 @@ export const awsListKmsKeys = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new ListKeysCommand({
-          Limit: limit,
-          Marker: marker,
+        Limit: limit,
+        Marker: marker,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to list all KMS keys in the AWS account', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list all KMS keys in the AWS account',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

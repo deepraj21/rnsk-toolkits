@@ -4,14 +4,24 @@ import { z } from 'zod';
 import { wpFetch } from './utils.js';
 
 export const wordpressListSites = tool({
-  description: 'List every WordPress.com or Jetpack-connected site authorized by the global OAuth account, returning stable numeric site IDs and concise capability and plan summaries for use with other tools.',
+  description:
+    'List every WordPress.com or Jetpack-connected site authorized by the global OAuth account, returning stable numeric site IDs and concise capability and plan summaries for use with other tools.',
   inputSchema: z.object({
     wordpressToken: z.string().describe('WordPress.com OAuth access token.'),
-    activity: z.enum(['all', 'active', 'inactive']).optional().describe('Include all sites or filter by active or inactive status.'),
-    visibility: z.enum(['all', 'visible', 'hidden']).optional().describe("Include all authorized sites or only sites visible or hidden in the user's site list."),
+    activity: z
+      .enum(['all', 'active', 'inactive'])
+      .optional()
+      .describe('Include all sites or filter by active or inactive status.'),
+    visibility: z
+      .enum(['all', 'visible', 'hidden'])
+      .optional()
+      .describe(
+        "Include all authorized sites or only sites visible or hidden in the user's site list.",
+      ),
   }),
   execute: async ({ wordpressToken, activity, visibility }) => {
-    if (!wordpressToken) return { error: 'WordPress token is required. Connect WordPress.com first.' };
+    if (!wordpressToken)
+      return { error: 'WordPress token is required. Connect WordPress.com first.' };
     try {
       const res = await wpFetch('/rest/v1.1/me/sites', {
         wordpressToken,
@@ -29,7 +39,9 @@ export const wordpressListSites = tool({
         // No direct activity field; keep all
       }
       if (visibility && visibility !== 'all') {
-        filtered = filtered.filter((s: any) => (visibility === 'visible' ? s.visible !== false : s.visible === false));
+        filtered = filtered.filter((s: any) =>
+          visibility === 'visible' ? s.visible !== false : s.visible === false,
+        );
       }
       const sites = filtered.map((s: any) => ({
         siteId: s.ID ?? s.site_id,
@@ -60,7 +72,10 @@ export const wordpressListSites = tool({
       }));
       return { sites };
     } catch (e) {
-      return { error: 'Error listing sites', message: e instanceof Error ? e.message : 'Unknown error' };
+      return {
+        error: 'Error listing sites',
+        message: e instanceof Error ? e.message : 'Unknown error',
+      };
     }
   },
 });

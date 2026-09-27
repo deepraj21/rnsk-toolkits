@@ -19,17 +19,20 @@ export const awsDeleteCodedeployDeploymentGroup = tool({
       const client = createCodeDeployClient(awsCredentials, region);
 
       const command = new DeleteDeploymentGroupCommand({
-          applicationName: applicationName,
-          deploymentGroupName: deploymentGroupName,
+        applicationName: applicationName,
+        deploymentGroupName: deploymentGroupName,
       });
       await client.send(command);
       return {
-                  message: 'Deployment group deleted successfully',
-                  applicationName: applicationName,
-                  deploymentGroupName: deploymentGroupName,
-              };
+        message: 'Deployment group deleted successfully',
+        applicationName: applicationName,
+        deploymentGroupName: deploymentGroupName,
+      };
     } catch (err) {
-      return { error: 'Failed to delete a deployment group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a deployment group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

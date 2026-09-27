@@ -19,16 +19,19 @@ export const awsRemoveSnsPermission = tool({
       const client = createSnsClient(awsCredentials, region);
 
       const command = new RemovePermissionCommand({
-          TopicArn: topicArn,
-          Label: label,
+        TopicArn: topicArn,
+        Label: label,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Permission ${label} removed successfully from topic ${topicArn}`,
-              };
+        success: true,
+        message: `Permission ${label} removed successfully from topic ${topicArn}`,
+      };
     } catch (err) {
-      return { error: 'Failed to remove a permission from an SNS topic', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to remove a permission from an SNS topic',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

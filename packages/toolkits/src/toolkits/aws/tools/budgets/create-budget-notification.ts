@@ -10,7 +10,11 @@ export const awsCreateBudgetNotification = tool({
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     accountId: z.string().describe('The account ID of the owner'),
     budgetName: z.string().describe('The name of the budget'),
-    notification: z.record(z.any()).describe('The notification object containing notificationType, comparisonOperator, threshold, etc.'),
+    notification: z
+      .record(z.any())
+      .describe(
+        'The notification object containing notificationType, comparisonOperator, threshold, etc.',
+      ),
     subscribers: z.array(z.record(z.any())).describe('A list of subscribers'),
   }),
   execute: async ({ awsCredentials, region, accountId, budgetName, notification, subscribers }) => {
@@ -21,17 +25,20 @@ export const awsCreateBudgetNotification = tool({
       const client = createBudgetsClient(awsCredentials, region);
 
       const command = new CreateNotificationCommand({
-          AccountId: accountId,
-          BudgetName: budgetName,
-          Notification: notification,
-          Subscribers: subscribers,
+        AccountId: accountId,
+        BudgetName: budgetName,
+        Notification: notification,
+        Subscribers: subscribers,
       } as any);
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to create a budget notification', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a budget notification',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

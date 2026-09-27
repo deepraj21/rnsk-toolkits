@@ -18,12 +18,15 @@ export const awsBatchEnableStandards = tool({
       const client = createSecurityHubClient(awsCredentials, region);
 
       const command = new BatchEnableStandardsCommand({
-          StandardsSubscriptionRequests: standardsSubscriptionRequests,
+        StandardsSubscriptionRequests: standardsSubscriptionRequests,
       } as any);
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to enable one or more security standards', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to enable one or more security standards',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

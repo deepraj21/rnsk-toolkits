@@ -4,7 +4,8 @@ import { GetAliasCommand } from '@aws-sdk/client-lambda';
 import { createLambdaClient } from '../client.js';
 
 export const awsGetLambdaFunctionAlias = tool({
-  description: 'Get details about a Lambda function alias. Use it to inspect current state before making changes.',
+  description:
+    'Get details about a Lambda function alias. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -19,20 +20,23 @@ export const awsGetLambdaFunctionAlias = tool({
       const client = createLambdaClient(awsCredentials, region);
 
       const command = new GetAliasCommand({
-          FunctionName: functionName,
-          Name: name,
+        FunctionName: functionName,
+        Name: name,
       });
       const response = await client.send(command);
       return {
-                  aliasArn: response.AliasArn,
-                  name: response.Name,
-                  functionVersion: response.FunctionVersion,
-                  description: response.Description,
-                  revisionId: response.RevisionId,
-                  routingConfig: response.RoutingConfig,
-              };
+        aliasArn: response.AliasArn,
+        name: response.Name,
+        functionVersion: response.FunctionVersion,
+        description: response.Description,
+        revisionId: response.RevisionId,
+        routingConfig: response.RoutingConfig,
+      };
     } catch (err) {
-      return { error: 'Failed to get details about a Lambda function alias', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to get details about a Lambda function alias',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

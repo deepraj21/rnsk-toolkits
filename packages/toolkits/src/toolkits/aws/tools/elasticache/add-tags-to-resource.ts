@@ -4,7 +4,8 @@ import { AddTagsToResourceCommand } from '@aws-sdk/client-elasticache';
 import { createElastiCacheClient } from '../client.js';
 
 export const awsAddTagsToResource = tool({
-  description: 'Add tags to an ElastiCache resource. Use it to grant access or attach configuration.',
+  description:
+    'Add tags to an ElastiCache resource. Use it to grant access or attach configuration.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -22,13 +23,16 @@ export const awsAddTagsToResource = tool({
       const client = createElastiCacheClient(awsCredentials, region);
 
       const command = new AddTagsToResourceCommand({
-          ResourceName: resourceName,
-          Tags: tags,
+        ResourceName: resourceName,
+        Tags: tags,
       });
       const response = await client.send(command);
       return response.TagList;
     } catch (err) {
-      return { error: 'Failed to add tags to an ElastiCache resource', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to add tags to an ElastiCache resource',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

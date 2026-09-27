@@ -9,7 +9,10 @@ export const awsPutKeyPolicy = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     keyId: z.string().describe('Key ID or ARN'),
-    policyName: z.string().optional().describe('Policy name (currently only "default" is supported)'),
+    policyName: z
+      .string()
+      .optional()
+      .describe('Policy name (currently only "default" is supported)'),
     policy: z.string().describe('JSON key policy document'),
   }),
   execute: async ({ awsCredentials, region, keyId, policyName, policy }) => {
@@ -20,14 +23,17 @@ export const awsPutKeyPolicy = tool({
       const client = createKmsClient(awsCredentials, region);
 
       const command = new PutKeyPolicyCommand({
-          KeyId: keyId,
-          PolicyName: policyName || 'default',
-          Policy: policy,
+        KeyId: keyId,
+        PolicyName: policyName || 'default',
+        Policy: policy,
       });
       const response = await client.send(command);
       return response;
     } catch (err) {
-      return { error: 'Failed to update the key policy for a KMS key', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to update the key policy for a KMS key',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

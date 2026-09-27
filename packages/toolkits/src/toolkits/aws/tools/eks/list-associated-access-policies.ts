@@ -4,7 +4,8 @@ import { ListAssociatedAccessPoliciesCommand } from '@aws-sdk/client-eks';
 import { createEksClient } from '../client.js';
 
 export const awsListEksAssociatedAccessPolicies = tool({
-  description: 'List access policies associated with an access entry. Use it to inspect current state before making changes.',
+  description:
+    'List access policies associated with an access entry. Use it to inspect current state before making changes.',
   inputSchema: z.object({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
@@ -21,18 +22,21 @@ export const awsListEksAssociatedAccessPolicies = tool({
       const client = createEksClient(awsCredentials, region);
 
       const command = new ListAssociatedAccessPoliciesCommand({
-          clusterName: clusterName,
-          principalArn: principalArn,
-          maxResults: maxResults,
-          nextToken: nextToken,
+        clusterName: clusterName,
+        principalArn: principalArn,
+        maxResults: maxResults,
+        nextToken: nextToken,
       });
       const response = await client.send(command);
       return {
-                  associatedAccessPolicies: response.associatedAccessPolicies || [],
-                  nextToken: response.nextToken,
-              };
+        associatedAccessPolicies: response.associatedAccessPolicies || [],
+        nextToken: response.nextToken,
+      };
     } catch (err) {
-      return { error: 'Failed to list access policies associated with an access entry', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to list access policies associated with an access entry',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

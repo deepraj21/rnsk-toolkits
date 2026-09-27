@@ -18,12 +18,15 @@ export const awsDeleteDynamodbTable = tool({
       const client = createDynamoDbClient(awsCredentials, region);
 
       const command = new DeleteTableCommand({
-          TableName: tableName,
+        TableName: tableName,
       });
       const response = await client.send(command);
       return response.TableDescription;
     } catch (err) {
-      return { error: 'Failed to delete a DynamoDB table', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to delete a DynamoDB table',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

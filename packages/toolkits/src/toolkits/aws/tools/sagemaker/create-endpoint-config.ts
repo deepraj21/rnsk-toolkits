@@ -15,9 +15,23 @@ export const awsCreateSagemakerEndpointConfig = tool({
     kmsKeyId: z.string().optional().describe('KMS key ID for encryption'),
     asyncInferenceConfig: z.record(z.any()).optional().describe('Async inference configuration'),
     explainerConfig: z.record(z.any()).optional().describe('Explainer configuration'),
-    shadowProductionVariants: z.array(z.record(z.any())).optional().describe('Shadow production variants'),
+    shadowProductionVariants: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('Shadow production variants'),
   }),
-  execute: async ({ awsCredentials, region, endpointConfigName, productionVariants, dataCaptureConfig, tags, kmsKeyId, asyncInferenceConfig, explainerConfig, shadowProductionVariants }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    endpointConfigName,
+    productionVariants,
+    dataCaptureConfig,
+    tags,
+    kmsKeyId,
+    asyncInferenceConfig,
+    explainerConfig,
+    shadowProductionVariants,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -25,21 +39,24 @@ export const awsCreateSagemakerEndpointConfig = tool({
       const client = createSageMakerClient(awsCredentials, region);
 
       const command = new CreateEndpointConfigCommand({
-          EndpointConfigName: endpointConfigName,
-          ProductionVariants: productionVariants,
-          DataCaptureConfig: dataCaptureConfig,
-          Tags: tags,
-          KmsKeyId: kmsKeyId,
-          AsyncInferenceConfig: asyncInferenceConfig,
-          ExplainerConfig: explainerConfig,
-          ShadowProductionVariants: shadowProductionVariants,
+        EndpointConfigName: endpointConfigName,
+        ProductionVariants: productionVariants,
+        DataCaptureConfig: dataCaptureConfig,
+        Tags: tags,
+        KmsKeyId: kmsKeyId,
+        AsyncInferenceConfig: asyncInferenceConfig,
+        ExplainerConfig: explainerConfig,
+        ShadowProductionVariants: shadowProductionVariants,
       } as any);
       const response = await client.send(command);
       return {
-                  endpointConfigArn: response.EndpointConfigArn,
-              };
+        endpointConfigArn: response.EndpointConfigArn,
+      };
     } catch (err) {
-      return { error: 'Failed to create a SageMaker endpoint configuration', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a SageMaker endpoint configuration',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -12,7 +12,13 @@ export const awsModifyDbSubnetGroup = tool({
     dbSubnetGroupDescription: z.string().optional().describe('New description'),
     subnetIds: z.array(z.string()).describe('New list of subnet IDs'),
   }),
-  execute: async ({ awsCredentials, region, dbSubnetGroupName, dbSubnetGroupDescription, subnetIds }) => {
+  execute: async ({
+    awsCredentials,
+    region,
+    dbSubnetGroupName,
+    dbSubnetGroupDescription,
+    subnetIds,
+  }) => {
     if (!awsCredentials) {
       return { error: 'AWS credentials are required. Connect AWS first.' };
     }
@@ -20,14 +26,17 @@ export const awsModifyDbSubnetGroup = tool({
       const client = createRdsClient(awsCredentials, region);
 
       const command = new ModifyDBSubnetGroupCommand({
-          DBSubnetGroupName: dbSubnetGroupName,
-          DBSubnetGroupDescription: dbSubnetGroupDescription,
-          SubnetIds: subnetIds,
+        DBSubnetGroupName: dbSubnetGroupName,
+        DBSubnetGroupDescription: dbSubnetGroupDescription,
+        SubnetIds: subnetIds,
       });
       const response = await client.send(command);
       return response.DBSubnetGroup;
     } catch (err) {
-      return { error: 'Failed to modify an RDS subnet group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to modify an RDS subnet group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

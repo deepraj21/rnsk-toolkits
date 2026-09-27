@@ -19,16 +19,19 @@ export const awsDisableAutoscalingMetricsCollection = tool({
       const client = createAutoScalingClient(awsCredentials, region);
 
       const command = new DisableMetricsCollectionCommand({
-          AutoScalingGroupName: autoScalingGroupName,
-          Metrics: metrics,
+        AutoScalingGroupName: autoScalingGroupName,
+        Metrics: metrics,
       });
       await client.send(command);
       return {
-                  success: true,
-                  message: `Metrics collection disabled for Auto Scaling group ${autoScalingGroupName}`,
-              };
+        success: true,
+        message: `Metrics collection disabled for Auto Scaling group ${autoScalingGroupName}`,
+      };
     } catch (err) {
-      return { error: 'Failed to disable metrics collection for an Auto Scaling group', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to disable metrics collection for an Auto Scaling group',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

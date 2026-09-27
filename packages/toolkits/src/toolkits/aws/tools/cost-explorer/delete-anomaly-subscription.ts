@@ -18,14 +18,17 @@ export const awsDeleteAnomalySubscription = tool({
       const client = createCostExplorerClient(awsCredentials, region);
 
       const command = new DeleteAnomalySubscriptionCommand({
-          SubscriptionArn: subscriptionArn,
+        SubscriptionArn: subscriptionArn,
       });
       await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to deletes a cost anomaly subscription', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to deletes a cost anomaly subscription',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });

@@ -9,8 +9,13 @@ export const awsCreateBudget = tool({
     awsCredentials: z.string().optional().describe('Injected by system; do not provide'),
     region: z.string().optional().describe('AWS region to query (default: us-east-1)'),
     accountId: z.string().describe('The account ID of the owner'),
-    budget: z.record(z.any()).describe('The budget object containing budgetName, budgetLimit, timeUnit, budgetType, etc.'),
-    notificationsWithSubscribers: z.array(z.record(z.any())).optional().describe('A list of notifications that you want to associate with the budget'),
+    budget: z
+      .record(z.any())
+      .describe('The budget object containing budgetName, budgetLimit, timeUnit, budgetType, etc.'),
+    notificationsWithSubscribers: z
+      .array(z.record(z.any()))
+      .optional()
+      .describe('A list of notifications that you want to associate with the budget'),
   }),
   execute: async ({ awsCredentials, region, accountId, budget, notificationsWithSubscribers }) => {
     if (!awsCredentials) {
@@ -20,16 +25,19 @@ export const awsCreateBudget = tool({
       const client = createBudgetsClient(awsCredentials, region);
 
       const command = new CreateBudgetCommand({
-          AccountId: accountId,
-          Budget: budget,
-          NotificationsWithSubscribers: notificationsWithSubscribers,
+        AccountId: accountId,
+        Budget: budget,
+        NotificationsWithSubscribers: notificationsWithSubscribers,
       } as any);
       const response = await client.send(command);
       return {
-                  success: true,
-              };
+        success: true,
+      };
     } catch (err) {
-      return { error: 'Failed to create a new budget', message: err instanceof Error ? err.message : 'Unknown error' };
+      return {
+        error: 'Failed to create a new budget',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      };
     }
   },
 });
