@@ -53,6 +53,7 @@ import jenkins from './toolkits/jenkins/manifest.js';
 import harness from './toolkits/harness/manifest.js';
 import dynatrace from './toolkits/dynatrace/manifest.js';
 import airtable from './toolkits/airtable/manifest.js';
+import stackOverflow from './toolkits/stack-overflow/manifest.js';
 import neo4j from './toolkits/neo4j/manifest.js';
 import neon from './toolkits/neon/manifest.js';
 import kaggle from './toolkits/kaggle/manifest.js';
@@ -126,6 +127,7 @@ export const toolkits: ToolkitManifest[] = [
   harness,
   dynatrace,
   airtable,
+  stackOverflow,
   neo4j,
   neon,
   kaggle,
@@ -198,6 +200,7 @@ export {
   harness,
   dynatrace,
   airtable,
+  stackOverflow,
   neo4j,
   neon,
   kaggle,
