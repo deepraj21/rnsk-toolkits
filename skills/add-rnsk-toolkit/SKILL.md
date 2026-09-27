@@ -10,7 +10,7 @@ compatibility: Requires access to packages/toolkits in the rnsk-toolkits monorep
 metadata:
   author: deepraj21
   repository: https://github.com/deepraj21/rnsk-toolkits
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Add @rnsk/toolkit Tools
@@ -65,7 +65,7 @@ Copy the nearest existing toolkit:
 - [ ] manifest.ts — defineToolkit({ id, displayName, shortDescription, category, icon, auth, tools, meta })
 - [ ] icon.ts — SVG base64 data URI (GFORMS_ICON pattern)
 - [ ] tools/*.ts — one AI SDK tool per file (or group related tools by domain, e.g. `orders.ts` in `groww/`)
-- [ ] tools/index.ts — export array with name, description, tool, requiredAuth, scope
+- [ ] tools/index.ts — export array with name, description, tool, requiredAuth, scope, keywords
 - [ ] Register import + export + toolkits[] in src/index.ts
 - [ ] npm run validate && npm run build (in packages/toolkits)
 ```
@@ -131,11 +131,12 @@ export const myAction = tool({
 1. **Never throw** from `execute` — return `{ error: string, details?, message? }`
 2. **Include auth field** in `inputSchema` when `requiredAuth` is set (name must match `manifest.auth.tokenField`)
 3. **Declare scope** explicitly in `tools/index.ts`: `read` | `write` | `delete`
-4. **Descriptions** must help LLM tool selection (what + when)
-5. **Minimize scope** — only implement requested tools; match surrounding style
-6. Use `z.record(z.any())` or `z.array(z.record(z.any()))` for complex API payloads
-7. Put shared fetch logic in `tools/utils.ts` or `tools/client.ts`
-8. **Guard missing token** in token-auth toolkits (`api_key` / `bearer_token` / `basic_auth`): return `{ error: '<Service> API key is required. Connect <Service> first.' }` when the injected field is absent (see `cloudflare/tools/list-zones.ts`)
+4. **Descriptions** must help LLM tool selection (what + when). They also feed ranked search — see "Search ranking" below
+5. **Declare keywords** on every tool (see "Keywords" below) — required for search discoverability
+6. **Minimize scope** — only implement requested tools; match surrounding style
+7. Use `z.record(z.any())` or `z.array(z.record(z.any()))` for complex API payloads
+8. Put shared fetch logic in `tools/utils.ts` or `tools/client.ts`
+9. **Guard missing token** in token-auth toolkits (`api_key` / `bearer_token` / `basic_auth`): return `{ error: '<Service> API key is required. Connect <Service> first.' }` when the injected field is absent (see `cloudflare/tools/list-zones.ts`)
 
 ## manifest.ts pattern
 
@@ -175,11 +176,16 @@ export default defineToolkit({
       tool: entry.tool,
       requiredAuth: entry.requiredAuth,
       scope: entry.scope ?? inferToolScope(entry.name),
+      keywords: entry.keywords ?? [],
     }),
   ),
   meta: { since: '0.0.6' },
 });
 ```
+
+Alternative inline pattern (used by `gmail/`): declare each tool directly with
+`defineTool({ name, tool, requiredAuth, scope, keywords })` instead of a
+`tools/index.ts` array. Prefer the array pattern for new toolkits.
 
 ### Auth types
 
@@ -250,9 +256,43 @@ export const myServiceTools = [
         tool: myAction,
         requiredAuth: 'myServiceToken' as const,
         scope: 'read' as const,
+        keywords: ['synonym-one', 'synonym-two'],
     },
 ];
 ```
+
+## Keywords
+
+`keywords: string[]` on every tool entry (or inline `defineTool`). They rank above
+description tokens in search, so add only true synonyms users type that the tool
+name and description do not already contain.
+
+Rules:
+
+- Lowercase words or short phrases, max ~5 per tool.
+- No duplicates of name tokens (`gmailSendMessage` already matches send/message).
+- Include both singular and plural where users vary them (`alias` + `aliases`;
+  the ranker does not stem).
+- Include domain synonyms and UI terms (`trash` + `delete` + `remove`;
+  `out-of-office` + `auto-reply` + `ooo`).
+- Omit the field value as `[]` only when name + description already cover every
+  likely phrasing, or the tool is niche admin surface where guesses add noise.
+- `validate.ts` rejects non-array or empty-string keywords.
+
+## Search ranking (write names/descriptions/keywords for it)
+
+Runstack discovers tools with a ranked keyword query (top 5, `expand` for full
+schema). Token weights, highest first: exact name → name prefix → name token →
+**keyword** → toolkit id/display name → description token. All query tokens
+matching beats partial matches.
+
+Consequences for contributors:
+
+- Put the action verb and resource noun in the **tool name** (`createIssue`
+  beats `handleIssueWorkflow` for "create issue").
+- Put the outcome and when-to-use in the **description** (first sentence matters
+  most; it is also truncated to ~140 chars in results).
+- Put user vocabulary that appears in neither into **keywords**.
 
 ## Using toolkit-todo-list JSON
 
@@ -293,6 +333,7 @@ Fix validation errors before finishing:
 - Invalid category
 - Empty JSON schema (missing inputSchema)
 - Tool name prefix mismatch
+- `keywords` not an array, or containing empty strings
 
 ## Local test (optional but recommended)
 

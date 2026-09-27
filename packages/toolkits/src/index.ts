@@ -231,6 +231,10 @@ export function getAllTools() {
       requiredAuth: toolDef.requiredAuth,
       scope: toolDef.scope,
       toolkitId: t.id,
+      keywords: toolDef.keywords ?? [],
+      category: t.category,
+      toolkitDisplayName: t.displayName,
+      toolkitShortDescription: t.shortDescription,
     })),
   );
 }
@@ -240,7 +244,15 @@ export function registerAllTools(registry: {
     name: string,
     description: string,
     tool: unknown,
-    options?: { requiredAuth?: string; scope?: 'read' | 'write' | 'delete'; toolkitId?: string },
+    options?: {
+      requiredAuth?: string;
+      scope?: 'read' | 'write' | 'delete';
+      toolkitId?: string;
+      keywords?: string[];
+      category?: string;
+      toolkitDisplayName?: string;
+      toolkitShortDescription?: string;
+    },
   ) => void;
 }) {
   for (const entry of getAllTools()) {
@@ -248,6 +260,10 @@ export function registerAllTools(registry: {
       requiredAuth: entry.requiredAuth,
       scope: entry.scope,
       toolkitId: entry.toolkitId,
+      keywords: entry.keywords,
+      category: entry.category,
+      toolkitDisplayName: entry.toolkitDisplayName,
+      toolkitShortDescription: entry.toolkitShortDescription,
     });
   }
 }

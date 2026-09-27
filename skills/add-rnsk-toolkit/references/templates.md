@@ -69,7 +69,7 @@ export const getResource = tool({
 
 1. Create `tools/new-action.ts`
 2. Import + export in `tools/index.ts`
-3. Append to `<toolkit>Tools` array with name, description, requiredAuth, scope
-4. Run validate — manifest auto-picks up via existing `tools.map(defineTool(...))`
+3. Append to `<toolkit>Tools` array with name, description, requiredAuth, scope, keywords
+4. Run validate — manifest auto-picks up via existing `tools.map(defineTool(...))` (ensure the map threads `keywords: entry.keywords ?? []`)
 
 No manifest.ts change unless auth/scopes/allowedHosts change.

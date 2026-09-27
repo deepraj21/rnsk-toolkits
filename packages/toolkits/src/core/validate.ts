@@ -59,6 +59,19 @@ export function validateManifests(manifests: ToolkitManifest[]): string[] {
       if (!tool.scope) {
         errors.push(`Tool "${tool.name}" must declare scope`);
       }
+
+      if (tool.keywords !== undefined) {
+        if (!Array.isArray(tool.keywords)) {
+          errors.push(`Tool "${tool.name}" keywords must be an array of strings`);
+        } else {
+          for (const keyword of tool.keywords) {
+            if (typeof keyword !== 'string' || keyword.trim().length === 0) {
+              errors.push(`Tool "${tool.name}" has an empty keyword`);
+              break;
+            }
+          }
+        }
+      }
     }
   }
 

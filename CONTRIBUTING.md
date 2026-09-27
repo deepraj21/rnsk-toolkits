@@ -86,6 +86,7 @@ Copy the nearest existing toolkit (e.g. `notion/` for OAuth, `mathematics/` for 
 - [ ] Errors return `{ error: string }` instead of throwing into the agent loop
 - [ ] New runtime dependencies are justified in the PR description
 - [ ] Tool descriptions are useful for LLM tool selection
+- [ ] Tools declare `keywords` (synonyms users might search for, e.g. `['trash', 'remove']` on a delete tool) for search discoverability
 
 ## Review expectations
 

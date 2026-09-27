@@ -84,6 +84,7 @@ export interface ToolDefinition {
   tool: Tool;
   requiredAuth?: string;
   scope: ToolScope;
+  keywords?: string[];
 }
 
 export interface ToolkitManifest {
