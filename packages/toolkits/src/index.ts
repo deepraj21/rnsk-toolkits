@@ -69,6 +69,7 @@ import wordpress from './toolkits/wordpress/manifest.js';
 import wise from './toolkits/wise/manifest.js';
 import servicenow from './toolkits/servicenow/manifest.js';
 import sentry from './toolkits/sentry/manifest.js';
+import salesforce from './toolkits/salesforce/manifest.js';
 import postman from './toolkits/postman/manifest.js';
 import splunk from './toolkits/splunk/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
@@ -145,6 +146,7 @@ export const toolkits: ToolkitManifest[] = [
   wise,
   servicenow,
   sentry,
+  salesforce,
   postman,
   splunk,
 ];
@@ -220,6 +222,7 @@ export {
   wise,
   servicenow,
   sentry,
+  salesforce,
   postman,
   splunk,
 };
