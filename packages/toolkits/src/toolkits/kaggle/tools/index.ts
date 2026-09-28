@@ -87,6 +87,7 @@ export { kaggleListModelInstanceVersionFiles };
 export const kaggleTools = [
   {
     name: 'kaggleCompetitionDownloadFiles',
+    keywords: ['competition', 'competitions', 'data', 'download', 'zip', 'dataset'],
     description: kaggleCompetitionDownloadFiles.description!,
     tool: kaggleCompetitionDownloadFiles,
     requiredAuth: 'kaggleCredentials' as const,
@@ -94,6 +95,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleCompetitionSubmit',
+    keywords: ['competition', 'submission', 'submissions', 'submit', 'entry'],
     description: kaggleCompetitionSubmit.description!,
     tool: kaggleCompetitionSubmit,
     requiredAuth: 'kaggleCredentials' as const,
@@ -101,6 +103,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleConfigDir',
+    keywords: ['config', 'credentials', 'path', 'setup'],
     description: kaggleConfigDir.description!,
     tool: kaggleConfigDir,
     requiredAuth: 'kaggleCredentials' as const,
@@ -108,6 +111,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleConfigInit',
+    keywords: ['config', 'setup', 'credentials'],
     description: kaggleConfigInit.description!,
     tool: kaggleConfigInit,
     requiredAuth: 'kaggleCredentials' as const,
@@ -115,6 +119,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleConfigKeys',
+    keywords: ['config', 'keys', 'settings'],
     description: kaggleConfigKeys.description!,
     tool: kaggleConfigKeys,
     requiredAuth: 'kaggleCredentials' as const,
@@ -122,6 +127,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleConfigPath',
+    keywords: ['config', 'path', 'credentials'],
     description: kaggleConfigPath.description!,
     tool: kaggleConfigPath,
     requiredAuth: 'kaggleCredentials' as const,
@@ -129,6 +135,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleConfigReset',
+    keywords: ['config', 'reset', 'defaults'],
     description: kaggleConfigReset.description!,
     tool: kaggleConfigReset,
     requiredAuth: 'kaggleCredentials' as const,
@@ -136,6 +143,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleConfigSet',
+    keywords: ['config', 'set', 'setting'],
     description: kaggleConfigSet.description!,
     tool: kaggleConfigSet,
     requiredAuth: 'kaggleCredentials' as const,
@@ -143,6 +151,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleConfigUnset',
+    keywords: ['config', 'unset', 'remove'],
     description: kaggleConfigUnset.description!,
     tool: kaggleConfigUnset,
     requiredAuth: 'kaggleCredentials' as const,
@@ -150,6 +159,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleConfigView',
+    keywords: ['config', 'view', 'credentials', 'settings'],
     description: kaggleConfigView.description!,
     tool: kaggleConfigView,
     requiredAuth: 'kaggleCredentials' as const,
@@ -157,6 +167,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDatasetCreate',
+    keywords: ['datasets', 'dataset', 'upload', 'new'],
     description: kaggleDatasetCreate.description!,
     tool: kaggleDatasetCreate,
     requiredAuth: 'kaggleCredentials' as const,
@@ -164,6 +175,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDatasetInit',
+    keywords: ['dataset', 'metadata', 'init', 'upload'],
     description: kaggleDatasetInit.description!,
     tool: kaggleDatasetInit,
     requiredAuth: 'kaggleCredentials' as const,
@@ -171,6 +183,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDatasetListFiles',
+    keywords: ['dataset', 'datasets', 'file', 'files'],
     description: kaggleDatasetListFiles.description!,
     tool: kaggleDatasetListFiles,
     requiredAuth: 'kaggleCredentials' as const,
@@ -178,6 +191,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDatasetStatus',
+    keywords: ['dataset', 'status', 'processing', 'ready'],
     description: kaggleDatasetStatus.description!,
     tool: kaggleDatasetStatus,
     requiredAuth: 'kaggleCredentials' as const,
@@ -185,6 +199,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDatasetVersion',
+    keywords: ['dataset', 'version', 'versions', 'update', 'new'],
     description: kaggleDatasetVersion.description!,
     tool: kaggleDatasetVersion,
     requiredAuth: 'kaggleCredentials' as const,
@@ -192,6 +207,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDownloadCompetitionFile',
+    keywords: ['competition', 'file', 'download', 'data'],
     description: kaggleDownloadCompetitionFile.description!,
     tool: kaggleDownloadCompetitionFile,
     requiredAuth: 'kaggleCredentials' as const,
@@ -199,6 +215,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDownloadCompetitionLeaderboard',
+    keywords: ['competition', 'leaderboard', 'ranking', 'standings', 'csv', 'download'],
     description: kaggleDownloadCompetitionLeaderboard.description!,
     tool: kaggleDownloadCompetitionLeaderboard,
     requiredAuth: 'kaggleCredentials' as const,
@@ -206,6 +223,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDownloadDataset',
+    keywords: ['datasets', 'dataset', 'download', 'zip', 'data'],
     description: kaggleDownloadDataset.description!,
     tool: kaggleDownloadDataset,
     requiredAuth: 'kaggleCredentials' as const,
@@ -213,6 +231,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleDownloadDatasetFile',
+    keywords: ['dataset', 'file', 'download', 'data'],
     description: kaggleDownloadDatasetFile.description!,
     tool: kaggleDownloadDatasetFile,
     requiredAuth: 'kaggleCredentials' as const,
@@ -220,6 +239,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleGenerateCompetitionSubmissionUrl',
+    keywords: ['competition', 'submission', 'upload', 'url', 'submit'],
     description: kaggleGenerateCompetitionSubmissionUrl.description!,
     tool: kaggleGenerateCompetitionSubmissionUrl,
     requiredAuth: 'kaggleCredentials' as const,
@@ -227,6 +247,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleGetDatasetMetadata',
+    keywords: ['dataset', 'datasets', 'metadata', 'info', 'details'],
     description: kaggleGetDatasetMetadata.description!,
     tool: kaggleGetDatasetMetadata,
     requiredAuth: 'kaggleCredentials' as const,
@@ -234,6 +255,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleGetModel',
+    keywords: ['models', 'model', 'info', 'details'],
     description: kaggleGetModel.description!,
     tool: kaggleGetModel,
     requiredAuth: 'kaggleCredentials' as const,
@@ -241,6 +263,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleGetModelInstance',
+    keywords: ['model', 'models', 'instance', 'variation', 'version'],
     description: kaggleGetModelInstance.description!,
     tool: kaggleGetModelInstance,
     requiredAuth: 'kaggleCredentials' as const,
@@ -248,6 +271,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleKernelInit',
+    keywords: ['notebook', 'notebooks', 'kernel', 'metadata', 'init', 'template'],
     description: kaggleKernelInit.description!,
     tool: kaggleKernelInit,
     requiredAuth: 'kaggleCredentials' as const,
@@ -255,6 +279,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleKernelOutput',
+    keywords: ['notebook', 'kernel', 'output', 'results', 'download'],
     description: kaggleKernelOutput.description!,
     tool: kaggleKernelOutput,
     requiredAuth: 'kaggleCredentials' as const,
@@ -262,6 +287,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleKernelsStatus',
+    keywords: ['notebook', 'notebooks', 'kernel', 'status', 'running', 'execution'],
     description: kaggleKernelsStatus.description!,
     tool: kaggleKernelsStatus,
     requiredAuth: 'kaggleCredentials' as const,
@@ -269,6 +295,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleListCompetitionFiles',
+    keywords: ['competition', 'competitions', 'file', 'files', 'data'],
     description: kaggleListCompetitionFiles.description!,
     tool: kaggleListCompetitionFiles,
     requiredAuth: 'kaggleCredentials' as const,
@@ -276,6 +303,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleListCompetitions',
+    keywords: ['competition', 'browse', 'discover', 'search'],
     description: kaggleListCompetitions.description!,
     tool: kaggleListCompetitions,
     requiredAuth: 'kaggleCredentials' as const,
@@ -283,6 +311,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleListDatasets',
+    keywords: ['dataset', 'browse', 'discover', 'search', 'data'],
     description: kaggleListDatasets.description!,
     tool: kaggleListDatasets,
     requiredAuth: 'kaggleCredentials' as const,
@@ -290,6 +319,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleListKernelOutputFiles',
+    keywords: ['notebook', 'kernel', 'output', 'file', 'files', 'results'],
     description: kaggleListKernelOutputFiles.description!,
     tool: kaggleListKernelOutputFiles,
     requiredAuth: 'kaggleCredentials' as const,
@@ -297,6 +327,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleListKernels',
+    keywords: ['notebook', 'notebooks', 'kernel', 'script', 'scripts', 'discover', 'search'],
     description: kaggleListKernels.description!,
     tool: kaggleListKernels,
     requiredAuth: 'kaggleCredentials' as const,
@@ -304,6 +335,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleListModelInstanceVersionFiles',
+    keywords: ['model', 'instance', 'file', 'files', 'version'],
     description: kaggleListModelInstanceVersionFiles.description!,
     tool: kaggleListModelInstanceVersionFiles,
     requiredAuth: 'kaggleCredentials' as const,
@@ -311,6 +343,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleListModels',
+    keywords: ['model', 'discover', 'search', 'browse'],
     description: kaggleListModels.description!,
     tool: kaggleListModels,
     requiredAuth: 'kaggleCredentials' as const,
@@ -318,6 +351,7 @@ export const kaggleTools = [
   },
   {
     name: 'kagglePullKernel',
+    keywords: ['notebook', 'kernel', 'download', 'source', 'code', 'pull'],
     description: kagglePullKernel.description!,
     tool: kagglePullKernel,
     requiredAuth: 'kaggleCredentials' as const,
@@ -325,6 +359,7 @@ export const kaggleTools = [
   },
   {
     name: 'kaggleViewCompetitionLeaderboard',
+    keywords: ['competition', 'leaderboard', 'ranking', 'rankings', 'standings', 'scores'],
     description: kaggleViewCompetitionLeaderboard.description!,
     tool: kaggleViewCompetitionLeaderboard,
     requiredAuth: 'kaggleCredentials' as const,

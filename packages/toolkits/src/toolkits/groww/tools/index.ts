@@ -76,6 +76,7 @@ export const growwTools = [
     tool: growwGetUserProfile,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['account'],
   },
   {
     name: 'growwPlaceOrder',
@@ -83,6 +84,7 @@ export const growwTools = [
     tool: growwPlaceOrder,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'write' as const,
+    keywords: ['buy', 'sell'],
   },
   {
     name: 'growwModifyOrder',
@@ -90,6 +92,7 @@ export const growwTools = [
     tool: growwModifyOrder,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'write' as const,
+    keywords: ['edit', 'amend'],
   },
   {
     name: 'growwCancelOrder',
@@ -104,6 +107,7 @@ export const growwTools = [
     tool: growwGetTradesForOrder,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['fill', 'executions'],
   },
   {
     name: 'growwGetOrderStatus',
@@ -111,6 +115,7 @@ export const growwTools = [
     tool: growwGetOrderStatus,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['track'],
   },
   {
     name: 'growwGetOrderStatusByReferenceId',
@@ -118,6 +123,7 @@ export const growwTools = [
     tool: growwGetOrderStatusByReferenceId,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['track'],
   },
   {
     name: 'growwListOrders',
@@ -125,6 +131,7 @@ export const growwTools = [
     tool: growwListOrders,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['order'],
   },
   {
     name: 'growwGetOrderDetail',
@@ -132,6 +139,7 @@ export const growwTools = [
     tool: growwGetOrderDetail,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['order'],
   },
   {
     name: 'growwCreateGttOrder',
@@ -139,6 +147,7 @@ export const growwTools = [
     tool: growwCreateGttOrder,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'write' as const,
+    keywords: ['trigger'],
   },
   {
     name: 'growwCreateOcoOrder',
@@ -146,6 +155,7 @@ export const growwTools = [
     tool: growwCreateOcoOrder,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'write' as const,
+    keywords: ['stoploss', 'target', 'bracket'],
   },
   {
     name: 'growwModifySmartOrder',
@@ -153,6 +163,7 @@ export const growwTools = [
     tool: growwModifySmartOrder,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'growwCancelSmartOrder',
@@ -181,6 +192,7 @@ export const growwTools = [
     tool: growwGetHoldings,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['portfolio', 'shares'],
   },
   {
     name: 'growwGetPositions',
@@ -188,6 +200,7 @@ export const growwTools = [
     tool: growwGetPositions,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['pnl', 'profit', 'portfolio'],
   },
   {
     name: 'growwGetPositionForSymbol',
@@ -195,6 +208,7 @@ export const growwTools = [
     tool: growwGetPositionForSymbol,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['stock'],
   },
   {
     name: 'growwGetUserMargin',
@@ -202,6 +216,7 @@ export const growwTools = [
     tool: growwGetUserMargin,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['funds', 'balance'],
   },
   {
     name: 'growwGetRequiredMargin',
@@ -209,6 +224,7 @@ export const growwTools = [
     tool: growwGetRequiredMargin,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['funds'],
   },
   {
     name: 'growwGetQuote',
@@ -216,6 +232,7 @@ export const growwTools = [
     tool: growwGetQuote,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['price'],
   },
   {
     name: 'growwGetLtp',
@@ -237,6 +254,7 @@ export const growwTools = [
     tool: growwGetOptionChain,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['options', 'strike'],
   },
   {
     name: 'growwGetGreeks',
@@ -244,6 +262,7 @@ export const growwTools = [
     tool: growwGetGreeks,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['delta', 'gamma', 'theta', 'vega'],
   },
   {
     name: 'growwGetHistoricalCandles',
@@ -251,6 +270,7 @@ export const growwTools = [
     tool: growwGetHistoricalCandles,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['history', 'chart'],
   },
   {
     name: 'growwGetHistoricalCandleRange',
@@ -265,6 +285,7 @@ export const growwTools = [
     tool: growwGetExpiries,
     requiredAuth: 'growwAccessToken' as const,
     scope: 'read' as const,
+    keywords: ['expiry', 'options'],
   },
   {
     name: 'growwGetContracts',
@@ -279,5 +300,6 @@ export const growwTools = [
       'Search the Groww instruments master (no auth needed) to resolve trading and Groww symbols.',
     tool: growwSearchInstruments,
     scope: 'read' as const,
+    keywords: ['symbol', 'scrip', 'lookup'],
   },
 ];

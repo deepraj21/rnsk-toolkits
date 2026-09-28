@@ -41,6 +41,7 @@ export const googleMeetTools = [
     tool: createMeet,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'write' as const,
+    keywords: ['meeting', 'call', 'video'],
   },
   {
     name: 'googleMeetEndActiveConference',
@@ -49,6 +50,7 @@ export const googleMeetTools = [
     tool: endActiveConference,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'delete' as const,
+    keywords: ['meeting', 'hangup', 'close'],
   },
   {
     name: 'googleMeetGetConferenceRecordByName',
@@ -57,6 +59,7 @@ export const googleMeetTools = [
     tool: getConferenceRecordByName,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['meeting', 'history'],
   },
   {
     name: 'googleMeetGetMeet',
@@ -65,6 +68,7 @@ export const googleMeetTools = [
     tool: getMeet,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['meeting', 'space'],
   },
   {
     name: 'googleMeetGetParticipantSession',
@@ -73,6 +77,7 @@ export const googleMeetTools = [
     tool: getParticipantSession,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['attendee'],
   },
   {
     name: 'googleMeetGetRecordingsByConferenceRecordId',
@@ -81,6 +86,7 @@ export const googleMeetTools = [
     tool: getRecordingsByConferenceRecordId,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['recording', 'playback'],
   },
   {
     name: 'googleMeetGetTranscript',
@@ -89,6 +95,7 @@ export const googleMeetTools = [
     tool: getTranscript,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['captions', 'notes'],
   },
   {
     name: 'googleMeetGetTranscriptEntry',
@@ -97,6 +104,7 @@ export const googleMeetTools = [
     tool: getTranscriptEntry,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['caption', 'segment'],
   },
   {
     name: 'googleMeetGetTranscriptsByConferenceRecordId',
@@ -105,6 +113,7 @@ export const googleMeetTools = [
     tool: getTranscriptsByConferenceRecordId,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['transcript', 'captions'],
   },
   {
     name: 'googleMeetListConferenceRecords',
@@ -113,6 +122,7 @@ export const googleMeetTools = [
     tool: listConferenceRecords,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['meeting', 'history'],
   },
   {
     name: 'googleMeetListParticipants',
@@ -121,6 +131,7 @@ export const googleMeetTools = [
     tool: listParticipants,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['participant', 'attendee', 'attendees'],
   },
   {
     name: 'googleMeetListParticipantSessions',
@@ -129,6 +140,7 @@ export const googleMeetTools = [
     tool: listParticipantSessions,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['session', 'attendee'],
   },
   {
     name: 'googleMeetListRecordings',
@@ -137,6 +149,7 @@ export const googleMeetTools = [
     tool: listRecordings,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['recording', 'video'],
   },
   {
     name: 'googleMeetListTranscriptEntries',
@@ -145,6 +158,7 @@ export const googleMeetTools = [
     tool: listTranscriptEntries,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'read' as const,
+    keywords: ['transcript', 'captions'],
   },
   {
     name: 'googleMeetUpdateSpace',
@@ -153,5 +167,6 @@ export const googleMeetTools = [
     tool: updateSpace,
     requiredAuth: 'googleMeetToken' as const,
     scope: 'write' as const,
+    keywords: ['meeting', 'edit'],
   },
 ];

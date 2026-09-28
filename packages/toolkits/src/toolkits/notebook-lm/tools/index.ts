@@ -48,6 +48,7 @@ export const notebookLmTools = [
     tool: listRecentNotebooks,
     requiredAuth: 'notebookLmToken' as const,
     scope: 'read' as const,
+    keywords: ['latest'],
   },
   {
     name: 'notebookLmDeleteNotebooks',
@@ -55,6 +56,7 @@ export const notebookLmTools = [
     tool: deleteNotebooks,
     requiredAuth: 'notebookLmToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'notebookLmShareNotebook',
@@ -62,6 +64,7 @@ export const notebookLmTools = [
     tool: shareNotebook,
     requiredAuth: 'notebookLmToken' as const,
     scope: 'write' as const,
+    keywords: ['invite', 'permission'],
   },
   {
     name: 'notebookLmAddTextSources',
@@ -69,6 +72,7 @@ export const notebookLmTools = [
     tool: addTextSources,
     requiredAuth: 'notebookLmToken' as const,
     scope: 'write' as const,
+    keywords: ['source'],
   },
   {
     name: 'notebookLmUploadSourceFile',
@@ -76,6 +80,7 @@ export const notebookLmTools = [
     tool: uploadSourceFile,
     requiredAuth: 'notebookLmToken' as const,
     scope: 'write' as const,
+    keywords: ['attach', 'import'],
   },
   {
     name: 'notebookLmGetSource',
@@ -90,6 +95,7 @@ export const notebookLmTools = [
     tool: deleteSources,
     requiredAuth: 'notebookLmToken' as const,
     scope: 'delete' as const,
+    keywords: ['source', 'remove'],
   },
   {
     name: 'notebookLmCreateAudioOverview',
@@ -98,6 +104,7 @@ export const notebookLmTools = [
     tool: createAudioOverview,
     requiredAuth: 'notebookLmToken' as const,
     scope: 'write' as const,
+    keywords: ['podcast'],
   },
   {
     name: 'notebookLmDeleteAudioOverview',
@@ -106,5 +113,6 @@ export const notebookLmTools = [
     tool: deleteAudioOverview,
     requiredAuth: 'notebookLmToken' as const,
     scope: 'delete' as const,
+    keywords: ['podcast', 'remove'],
   },
 ];

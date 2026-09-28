@@ -50,6 +50,7 @@ export const dockerHubTools = [
     tool: addOrgMember,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'write' as const,
+    keywords: ['invite'],
   },
   {
     name: 'dockerHubCreateOrganization',
@@ -57,6 +58,7 @@ export const dockerHubTools = [
     tool: createOrganization,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'write' as const,
+    keywords: ['org'],
   },
   {
     name: 'dockerHubCreateRepository',
@@ -64,6 +66,7 @@ export const dockerHubTools = [
     tool: createRepository,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'write' as const,
+    keywords: ['repo'],
   },
   {
     name: 'dockerHubDeleteImage',
@@ -71,6 +74,7 @@ export const dockerHubTools = [
     tool: deleteImage,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'dockerHubDeleteOrganization',
@@ -79,6 +83,7 @@ export const dockerHubTools = [
     tool: deleteOrganization,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'org'],
   },
   {
     name: 'dockerHubDeleteRepository',
@@ -86,6 +91,7 @@ export const dockerHubTools = [
     tool: deleteRepository,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'repo'],
   },
   {
     name: 'dockerHubDeleteTag',
@@ -93,6 +99,7 @@ export const dockerHubTools = [
     tool: deleteTag,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'dockerHubDeleteTeam',
@@ -100,6 +107,7 @@ export const dockerHubTools = [
     tool: deleteTeam,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'group'],
   },
   {
     name: 'dockerHubGetImage',
@@ -107,6 +115,7 @@ export const dockerHubTools = [
     tool: getImage,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['digest', 'layer'],
   },
   {
     name: 'dockerHubGetRepository',
@@ -114,6 +123,7 @@ export const dockerHubTools = [
     tool: getRepository,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['repo'],
   },
   {
     name: 'dockerHubGetTag',
@@ -128,6 +138,7 @@ export const dockerHubTools = [
     tool: getTeam,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['group'],
   },
   {
     name: 'dockerHubListOrgAccessTokens',
@@ -135,6 +146,7 @@ export const dockerHubTools = [
     tool: listOrgAccessTokens,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['token', 'pat'],
   },
   {
     name: 'dockerHubListOrganizations',
@@ -142,6 +154,7 @@ export const dockerHubTools = [
     tool: listOrganizations,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['org', 'orgs'],
   },
   {
     name: 'dockerHubListOrgMembers',
@@ -149,6 +162,7 @@ export const dockerHubTools = [
     tool: listOrgMembers,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['member', 'user'],
   },
   {
     name: 'dockerHubListRepositories',
@@ -157,6 +171,7 @@ export const dockerHubTools = [
     tool: listRepositories,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['repo', 'repos'],
   },
   {
     name: 'dockerHubListTeamMembers',
@@ -164,6 +179,7 @@ export const dockerHubTools = [
     tool: listTeamMembers,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['member'],
   },
   {
     name: 'dockerHubListTeams',
@@ -171,6 +187,7 @@ export const dockerHubTools = [
     tool: listTeams,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'read' as const,
+    keywords: ['group'],
   },
   {
     name: 'dockerHubRemoveOrgMember',
@@ -178,6 +195,7 @@ export const dockerHubTools = [
     tool: removeOrgMember,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['member', 'delete'],
   },
   {
     name: 'dockerHubRemoveTeamMember',
@@ -185,5 +203,6 @@ export const dockerHubTools = [
     tool: removeTeamMember,
     requiredAuth: 'dockerHubCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['member', 'delete'],
   },
 ];

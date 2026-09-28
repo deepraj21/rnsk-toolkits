@@ -25,6 +25,7 @@ export default defineToolkit({
       tool: entry.tool,
       requiredAuth: entry.requiredAuth,
       scope: entry.scope,
+      keywords: (entry as { keywords?: string[] }).keywords ?? [],
     }),
   ),
   meta: { since: '0.0.6', homepage: 'https://aws.amazon.com' },

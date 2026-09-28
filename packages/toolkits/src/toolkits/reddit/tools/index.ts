@@ -52,6 +52,7 @@ export const redditTools = [
     tool: redditCreatePost,
     requiredAuth: 'redditToken' as const,
     scope: 'write' as const,
+    keywords: ['submit', 'subreddit'],
   },
   {
     name: 'redditDeleteComment',
@@ -59,6 +60,7 @@ export const redditTools = [
     tool: redditDeleteComment,
     requiredAuth: 'redditToken' as const,
     scope: 'delete' as const,
+    keywords: ['comment', 'remove'],
   },
   {
     name: 'redditDeletePost',
@@ -66,6 +68,7 @@ export const redditTools = [
     tool: redditDeletePost,
     requiredAuth: 'redditToken' as const,
     scope: 'delete' as const,
+    keywords: ['post', 'remove', 'submission'],
   },
   {
     name: 'redditEditCommentOrPost',
@@ -73,6 +76,7 @@ export const redditTools = [
     tool: redditEditCommentOrPost,
     requiredAuth: 'redditToken' as const,
     scope: 'write' as const,
+    keywords: ['update'],
   },
   {
     name: 'redditGetListingBySort',
@@ -80,6 +84,7 @@ export const redditTools = [
     tool: redditGetListingBySort,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['frontpage', 'feed'],
   },
   {
     name: 'redditGetControversialPosts',
@@ -87,6 +92,7 @@ export const redditTools = [
     tool: redditGetControversialPosts,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['post'],
   },
   {
     name: 'redditGetUserPrefs',
@@ -94,6 +100,7 @@ export const redditTools = [
     tool: redditGetUserPrefs,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['settings', 'config'],
   },
   {
     name: 'redditGetRandomPost',
@@ -101,6 +108,7 @@ export const redditTools = [
     tool: redditGetRandomPost,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['post'],
   },
   {
     name: 'redditGetUserAbout',
@@ -108,6 +116,7 @@ export const redditTools = [
     tool: redditGetUserAbout,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['karma', 'profile'],
   },
   {
     name: 'redditGetOauthScopes',
@@ -115,6 +124,7 @@ export const redditTools = [
     tool: redditGetOauthScopes,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['permission', 'scope', 'auth'],
   },
   {
     name: 'redditGetSubredditRules',
@@ -122,6 +132,7 @@ export const redditTools = [
     tool: redditGetSubredditRules,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['rule', 'community'],
   },
   {
     name: 'redditSearchSubreddits',
@@ -129,6 +140,7 @@ export const redditTools = [
     tool: redditSearchSubreddits,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['community', 'subreddit', 'find'],
   },
   {
     name: 'redditGetUserFlair',
@@ -136,6 +148,7 @@ export const redditTools = [
     tool: redditGetUserFlair,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['flair', 'badge'],
   },
   {
     name: 'redditCheckUsernameAvailable',
@@ -143,6 +156,7 @@ export const redditTools = [
     tool: redditCheckUsernameAvailable,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['taken', 'signup'],
   },
   {
     name: 'redditListSubredditPostFlairs',
@@ -150,6 +164,7 @@ export const redditTools = [
     tool: redditListSubredditPostFlairs,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['flairs', 'template'],
   },
   {
     name: 'redditPostComment',
@@ -157,6 +172,7 @@ export const redditTools = [
     tool: redditPostComment,
     requiredAuth: 'redditToken' as const,
     scope: 'write' as const,
+    keywords: ['reply'],
   },
   {
     name: 'redditRetrievePostComments',
@@ -164,6 +180,7 @@ export const redditTools = [
     tool: redditRetrievePostComments,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['thread', 'discussion'],
   },
   {
     name: 'redditRetrievePostsFromSubreddit',
@@ -171,6 +188,7 @@ export const redditTools = [
     tool: redditRetrievePostsFromSubreddit,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['post', 'hot', 'top'],
   },
   {
     name: 'redditRetrieveSpecificCommentOrPost',
@@ -178,6 +196,7 @@ export const redditTools = [
     tool: redditRetrieveSpecificCommentOrPost,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['comment', 'post'],
   },
   {
     name: 'redditSearchAcrossSubreddits',
@@ -185,6 +204,7 @@ export const redditTools = [
     tool: redditSearchAcrossSubreddits,
     requiredAuth: 'redditToken' as const,
     scope: 'read' as const,
+    keywords: ['query', 'find'],
   },
   {
     name: 'redditToggleInboxReplies',
@@ -192,5 +212,6 @@ export const redditTools = [
     tool: redditToggleInboxReplies,
     requiredAuth: 'redditToken' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'mute'],
   },
 ];

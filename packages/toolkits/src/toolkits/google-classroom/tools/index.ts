@@ -152,6 +152,7 @@ export const googleClassroomTools = [
     tool: createCourse,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['class', 'classes', 'new'],
   },
   {
     name: 'googleClassroomDeleteCourse',
@@ -159,6 +160,7 @@ export const googleClassroomTools = [
     tool: deleteCourse,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['class', 'classes', 'remove'],
   },
   {
     name: 'googleClassroomGetCourse',
@@ -166,6 +168,7 @@ export const googleClassroomTools = [
     tool: getCourse,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['class', 'classes'],
   },
   {
     name: 'googleClassroomListCourses',
@@ -173,6 +176,7 @@ export const googleClassroomTools = [
     tool: listCourses,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['class', 'classes', 'browse'],
   },
   {
     name: 'googleClassroomPatchCourse',
@@ -180,6 +184,7 @@ export const googleClassroomTools = [
     tool: patchCourse,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['class', 'classes', 'rename'],
   },
   {
     name: 'googleClassroomUpdateCourse',
@@ -187,6 +192,7 @@ export const googleClassroomTools = [
     tool: updateCourse,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['class', 'classes'],
   },
   {
     name: 'googleClassroomGetGradingPeriodSettings',
@@ -194,6 +200,7 @@ export const googleClassroomTools = [
     tool: getGradingPeriodSettings,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['grade', 'grades', 'term', 'semester'],
   },
   {
     name: 'googleClassroomListCourseStudentGroups',
@@ -201,6 +208,7 @@ export const googleClassroomTools = [
     tool: listCourseStudentGroups,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['section'],
   },
   {
     name: 'googleClassroomCreateCourseAlias',
@@ -208,6 +216,7 @@ export const googleClassroomTools = [
     tool: createCourseAlias,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['code'],
   },
   {
     name: 'googleClassroomDeleteCourseAlias',
@@ -215,6 +224,7 @@ export const googleClassroomTools = [
     tool: deleteCourseAlias,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['code', 'remove'],
   },
   {
     name: 'googleClassroomListCourseAliases',
@@ -222,6 +232,7 @@ export const googleClassroomTools = [
     tool: listCourseAliases,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['code'],
   },
   {
     name: 'googleClassroomCreateAnnouncement',
@@ -229,6 +240,7 @@ export const googleClassroomTools = [
     tool: createAnnouncement,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['post', 'posts', 'notice'],
   },
   {
     name: 'googleClassroomDeleteAnnouncement',
@@ -236,6 +248,7 @@ export const googleClassroomTools = [
     tool: deleteAnnouncement,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['post', 'posts', 'remove'],
   },
   {
     name: 'googleClassroomGetAnnouncement',
@@ -243,6 +256,7 @@ export const googleClassroomTools = [
     tool: getAnnouncement,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['post', 'posts'],
   },
   {
     name: 'googleClassroomListAnnouncements',
@@ -250,6 +264,7 @@ export const googleClassroomTools = [
     tool: listAnnouncements,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['post', 'posts', 'feed'],
   },
   {
     name: 'googleClassroomModifyAnnouncementAssignees',
@@ -257,6 +272,7 @@ export const googleClassroomTools = [
     tool: modifyAnnouncementAssignees,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['assign', 'post'],
   },
   {
     name: 'googleClassroomPatchAnnouncement',
@@ -264,6 +280,7 @@ export const googleClassroomTools = [
     tool: patchAnnouncement,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['post', 'posts'],
   },
   {
     name: 'googleClassroomGetAnnouncementAddOnContext',
@@ -271,6 +288,7 @@ export const googleClassroomTools = [
     tool: getAnnouncementAddOnContext,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomDeleteAnnouncementAddOnAttachment',
@@ -278,6 +296,7 @@ export const googleClassroomTools = [
     tool: deleteAnnouncementAddOnAttachment,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomGetAnnouncementAddOnAttachment',
@@ -285,6 +304,7 @@ export const googleClassroomTools = [
     tool: getAnnouncementAddOnAttachment,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomListAnnouncementAddOnAttachments',
@@ -292,6 +312,7 @@ export const googleClassroomTools = [
     tool: listAnnouncementAddOnAttachments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomCreateCourseWork',
@@ -299,6 +320,7 @@ export const googleClassroomTools = [
     tool: createCourseWork,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['assignment', 'assignments', 'homework'],
   },
   {
     name: 'googleClassroomDeleteCourseWork',
@@ -306,6 +328,7 @@ export const googleClassroomTools = [
     tool: deleteCourseWork,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['assignment', 'assignments', 'remove'],
   },
   {
     name: 'googleClassroomGetCourseWork',
@@ -313,6 +336,7 @@ export const googleClassroomTools = [
     tool: getCourseWork,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['assignment', 'assignments'],
   },
   {
     name: 'googleClassroomListCourseWork',
@@ -320,6 +344,7 @@ export const googleClassroomTools = [
     tool: listCourseWork,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['assignment', 'assignments', 'browse'],
   },
   {
     name: 'googleClassroomPatchCourseWork',
@@ -327,6 +352,7 @@ export const googleClassroomTools = [
     tool: patchCourseWork,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['assignment', 'assignments'],
   },
   {
     name: 'googleClassroomModifyCourseWorkAssignees',
@@ -334,6 +360,7 @@ export const googleClassroomTools = [
     tool: modifyCourseWorkAssignees,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['assign', 'assignment'],
   },
   {
     name: 'googleClassroomListCourseWorkRubrics',
@@ -341,6 +368,7 @@ export const googleClassroomTools = [
     tool: listCourseWorkRubrics,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['grade', 'grades', 'criteria'],
   },
   {
     name: 'googleClassroomListStudentSubmissions',
@@ -348,6 +376,7 @@ export const googleClassroomTools = [
     tool: listStudentSubmissions,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['grade', 'grades', 'turn-in'],
   },
   {
     name: 'googleClassroomReclaimStudentSubmission',
@@ -355,6 +384,7 @@ export const googleClassroomTools = [
     tool: reclaimStudentSubmission,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['return', 'unsubmit'],
   },
   {
     name: 'googleClassroomDeleteCourseWorkAddOnAttachment',
@@ -362,6 +392,7 @@ export const googleClassroomTools = [
     tool: deleteCourseWorkAddOnAttachment,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomGetCourseWorkAddOnAttachment',
@@ -369,6 +400,7 @@ export const googleClassroomTools = [
     tool: getCourseWorkAddOnAttachment,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomListCourseWorkAddOnAttachments',
@@ -376,6 +408,7 @@ export const googleClassroomTools = [
     tool: listCourseWorkAddOnAttachments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomGetCourseWorkAddOnContext',
@@ -383,6 +416,7 @@ export const googleClassroomTools = [
     tool: getCourseWorkAddOnContext,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomCreateCourseWorkMaterial',
@@ -390,6 +424,7 @@ export const googleClassroomTools = [
     tool: createCourseWorkMaterial,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['handout', 'resource'],
   },
   {
     name: 'googleClassroomGetCourseWorkMaterial',
@@ -397,6 +432,7 @@ export const googleClassroomTools = [
     tool: getCourseWorkMaterial,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['handout', 'resource'],
   },
   {
     name: 'googleClassroomListCourseWorkMaterials',
@@ -404,6 +440,7 @@ export const googleClassroomTools = [
     tool: listCourseWorkMaterials,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['handout', 'resource', 'resources', 'browse'],
   },
   {
     name: 'googleClassroomDeleteCourseWorkMaterial',
@@ -411,6 +448,7 @@ export const googleClassroomTools = [
     tool: deleteCourseWorkMaterial,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['handout', 'remove'],
   },
   {
     name: 'googleClassroomPatchCourseWorkMaterial',
@@ -418,6 +456,7 @@ export const googleClassroomTools = [
     tool: patchCourseWorkMaterial,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['handout'],
   },
   {
     name: 'googleClassroomListCourseWorkMaterialAddOnAttachments',
@@ -425,6 +464,7 @@ export const googleClassroomTools = [
     tool: listCourseWorkMaterialAddOnAttachments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomGetCourseWorkMaterialAddOnContext',
@@ -432,6 +472,7 @@ export const googleClassroomTools = [
     tool: getCourseWorkMaterialAddOnContext,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomListPostAddOnAttachments',
@@ -439,6 +480,7 @@ export const googleClassroomTools = [
     tool: listPostAddOnAttachments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomGetPostAddOnContext',
@@ -446,6 +488,7 @@ export const googleClassroomTools = [
     tool: getPostAddOnContext,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'googleClassroomAddStudentToCourse',
@@ -453,6 +496,7 @@ export const googleClassroomTools = [
     tool: addStudentToCourse,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['enroll', 'roster'],
   },
   {
     name: 'googleClassroomDeleteCourseStudent',
@@ -460,6 +504,7 @@ export const googleClassroomTools = [
     tool: deleteCourseStudent,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['unenroll', 'remove', 'roster'],
   },
   {
     name: 'googleClassroomGetCourseStudent',
@@ -467,6 +512,7 @@ export const googleClassroomTools = [
     tool: getCourseStudent,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['roster'],
   },
   {
     name: 'googleClassroomListCourseStudents',
@@ -474,6 +520,7 @@ export const googleClassroomTools = [
     tool: listCourseStudents,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['roster', 'pupil'],
   },
   {
     name: 'googleClassroomListStudentGuardians',
@@ -481,6 +528,7 @@ export const googleClassroomTools = [
     tool: listStudentGuardians,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['parent', 'parents'],
   },
   {
     name: 'googleClassroomDeleteCourseTeacher',
@@ -488,6 +536,7 @@ export const googleClassroomTools = [
     tool: deleteCourseTeacher,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['instructor', 'remove'],
   },
   {
     name: 'googleClassroomGetTeacher',
@@ -495,6 +544,7 @@ export const googleClassroomTools = [
     tool: getTeacher,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['instructor'],
   },
   {
     name: 'googleClassroomListCourseTeachers',
@@ -502,6 +552,7 @@ export const googleClassroomTools = [
     tool: listCourseTeachers,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['instructor'],
   },
   {
     name: 'googleClassroomCreateCourseTopic',
@@ -509,6 +560,7 @@ export const googleClassroomTools = [
     tool: createCourseTopic,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['unit', 'units', 'module'],
   },
   {
     name: 'googleClassroomDeleteCourseTopic',
@@ -516,6 +568,7 @@ export const googleClassroomTools = [
     tool: deleteCourseTopic,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['unit', 'remove'],
   },
   {
     name: 'googleClassroomGetCourseTopic',
@@ -523,6 +576,7 @@ export const googleClassroomTools = [
     tool: getCourseTopic,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['unit'],
   },
   {
     name: 'googleClassroomListCourseTopics',
@@ -530,6 +584,7 @@ export const googleClassroomTools = [
     tool: listCourseTopics,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['unit', 'units', 'browse'],
   },
   {
     name: 'googleClassroomPatchCourseTopic',
@@ -537,6 +592,7 @@ export const googleClassroomTools = [
     tool: patchCourseTopic,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['rename', 'unit'],
   },
   {
     name: 'googleClassroomCreateInvitation',
@@ -544,6 +600,7 @@ export const googleClassroomTools = [
     tool: createInvitation,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['invite', 'invites', 'enroll'],
   },
   {
     name: 'googleClassroomDeleteInvitation',
@@ -551,6 +608,7 @@ export const googleClassroomTools = [
     tool: deleteInvitation,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['invite', 'revoke'],
   },
   {
     name: 'googleClassroomGetInvitation',
@@ -558,6 +616,7 @@ export const googleClassroomTools = [
     tool: getInvitation,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['invite'],
   },
   {
     name: 'googleClassroomListInvitations',
@@ -565,6 +624,7 @@ export const googleClassroomTools = [
     tool: listInvitations,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['invite', 'invites'],
   },
   {
     name: 'googleClassroomCreateRegistration',
@@ -572,6 +632,7 @@ export const googleClassroomTools = [
     tool: createRegistration,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['webhook', 'subscribe'],
   },
   {
     name: 'googleClassroomGetUserProfile',
@@ -579,5 +640,6 @@ export const googleClassroomTools = [
     tool: getUserProfile,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['account'],
   },
 ];

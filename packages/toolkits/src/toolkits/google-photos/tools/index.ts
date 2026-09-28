@@ -62,6 +62,7 @@ export const googlePhotosTools = [
     tool: updateAlbum,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['cover', 'edit'],
   },
   {
     name: 'googlePhotosAddEnrichment',
@@ -69,6 +70,7 @@ export const googlePhotosTools = [
     tool: addEnrichment,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['location'],
   },
   {
     name: 'googlePhotosBatchAddMediaItems',
@@ -76,6 +78,7 @@ export const googlePhotosTools = [
     tool: batchAddMediaItems,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['photo', 'photos', 'album'],
   },
   {
     name: 'googlePhotosBatchCreateMediaItems',
@@ -83,6 +86,7 @@ export const googlePhotosTools = [
     tool: batchCreateMediaItems,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['photo', 'photos', 'import'],
   },
   {
     name: 'googlePhotosUploadMedia',
@@ -90,6 +94,7 @@ export const googlePhotosTools = [
     tool: uploadMedia,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['photo', 'picture', 'import'],
   },
   {
     name: 'googlePhotosBatchGetMediaItems',
@@ -97,6 +102,7 @@ export const googlePhotosTools = [
     tool: batchGetMediaItems,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['photo'],
   },
   {
     name: 'googlePhotosListMediaItems',
@@ -104,6 +110,7 @@ export const googlePhotosTools = [
     tool: listMediaItems,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['photo', 'photos', 'library'],
   },
   {
     name: 'googlePhotosSearchMediaItems',
@@ -111,6 +118,7 @@ export const googlePhotosTools = [
     tool: searchMediaItems,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['photo', 'find'],
   },
   {
     name: 'googlePhotosUpdateMediaItem',
@@ -118,6 +126,7 @@ export const googlePhotosTools = [
     tool: updateMediaItem,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['photo', 'edit', 'caption'],
   },
   {
     name: 'googlePhotosDownloadMediaItem',
@@ -125,5 +134,6 @@ export const googlePhotosTools = [
     tool: downloadMediaItem,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['photo', 'export'],
   },
 ];

@@ -60,6 +60,7 @@ export const neo4jTools = [
     tool: neo4jCreateInstanceBeta,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'provision', 'cluster'],
   },
   {
     name: 'Neo4jGetInstanceBeta',
@@ -67,6 +68,7 @@ export const neo4jTools = [
     tool: neo4jGetInstanceBeta,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'status'],
   },
   {
     name: 'Neo4jListInstancesBeta',
@@ -74,6 +76,7 @@ export const neo4jTools = [
     tool: neo4jListInstancesBeta,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'instance'],
   },
   {
     name: 'Neo4jUpdateInstance',
@@ -81,6 +84,7 @@ export const neo4jTools = [
     tool: neo4jUpdateInstance,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'resize'],
   },
   {
     name: 'Neo4jUpdateInstanceBeta',
@@ -88,6 +92,7 @@ export const neo4jTools = [
     tool: neo4jUpdateInstanceBeta,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'resize'],
   },
   {
     name: 'Neo4jPauseInstanceBeta',
@@ -95,6 +100,7 @@ export const neo4jTools = [
     tool: neo4jPauseInstanceBeta,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'write' as const,
+    keywords: ['stop', 'suspend'],
   },
   {
     name: 'Neo4jCreateSnapshot',
@@ -102,6 +108,7 @@ export const neo4jTools = [
     tool: neo4jCreateSnapshot,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'write' as const,
+    keywords: ['backup'],
   },
   {
     name: 'Neo4jGetSnapshot',
@@ -109,6 +116,7 @@ export const neo4jTools = [
     tool: neo4jGetSnapshot,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['backup'],
   },
   {
     name: 'Neo4jListSnapshots',
@@ -116,6 +124,7 @@ export const neo4jTools = [
     tool: neo4jListSnapshots,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['backup'],
   },
   {
     name: 'Neo4jRestoreSnapshot',
@@ -123,6 +132,7 @@ export const neo4jTools = [
     tool: neo4jRestoreSnapshot,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'write' as const,
+    keywords: ['backup', 'recover', 'rollback'],
   },
   {
     name: 'Neo4jGetProject',
@@ -130,6 +140,7 @@ export const neo4jTools = [
     tool: neo4jGetProject,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['tenant'],
   },
   {
     name: 'Neo4jGetProjectBeta',
@@ -137,6 +148,7 @@ export const neo4jTools = [
     tool: neo4jGetProjectBeta,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['tenant'],
   },
   {
     name: 'Neo4jListProjects',
@@ -144,6 +156,7 @@ export const neo4jTools = [
     tool: neo4jListProjects,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['tenant', 'project'],
   },
   {
     name: 'Neo4jListProjectUsers',
@@ -151,6 +164,7 @@ export const neo4jTools = [
     tool: neo4jListProjectUsers,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['user', 'team'],
   },
   {
     name: 'Neo4jGetOrganizationUser',
@@ -158,6 +172,7 @@ export const neo4jTools = [
     tool: neo4jGetOrganizationUser,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['user', 'org'],
   },
   {
     name: 'Neo4jListIpFilters',
@@ -165,6 +180,7 @@ export const neo4jTools = [
     tool: neo4jListIpFilters,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['firewall', 'allowlist', 'network'],
   },
   {
     name: 'Neo4jUpdateIpFilter',
@@ -172,6 +188,7 @@ export const neo4jTools = [
     tool: neo4jUpdateIpFilter,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'write' as const,
+    keywords: ['firewall', 'allowlist'],
   },
   {
     name: 'Neo4jListAgents',
@@ -179,6 +196,7 @@ export const neo4jTools = [
     tool: neo4jListAgents,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['agent', 'mcp'],
   },
   {
     name: 'Neo4jEstimateGdsSessionSize',
@@ -186,6 +204,7 @@ export const neo4jTools = [
     tool: neo4jEstimateGdsSessionSize,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['gds', 'memory', 'graph'],
   },
   {
     name: 'Neo4jListGdsSessions',
@@ -193,6 +212,7 @@ export const neo4jTools = [
     tool: neo4jListGdsSessions,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['gds', 'session'],
   },
   {
     name: 'Neo4jAggregateDirectors',
@@ -200,5 +220,6 @@ export const neo4jTools = [
     tool: neo4jAggregateDirectors,
     requiredAuth: 'neo4jCredentials' as const,
     scope: 'read' as const,
+    keywords: ['graphql', 'movies', 'count'],
   },
 ];

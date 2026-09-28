@@ -81,8 +81,16 @@ function entry(
   description: string,
   toolRef: any,
   scope: Scope,
-): { name: string; description: string; tool: any; requiredAuth: typeof auth; scope: Scope } {
-  return { name, description, tool: toolRef, requiredAuth: auth, scope };
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
+  return { name, description, tool: toolRef, requiredAuth: auth, scope, keywords };
 }
 
 export const jenkinsTools = [
@@ -91,6 +99,7 @@ export const jenkinsTools = [
     'List jobs on the Jenkins controller with name, status color and build state. Use first to discover job names.',
     listJobs,
     'read',
+    ['pipeline', 'pipelines'],
   ),
   entry(
     'jenkinsGetJob',
@@ -103,24 +112,28 @@ export const jenkinsTools = [
     'Get the raw config.xml of a Jenkins job to read SCM, triggers and builder configuration.',
     getJobConfig,
     'read',
+    ['configuration'],
   ),
   entry(
     'jenkinsCreateJob',
     'Create a new Jenkins job from a config.xml document.',
     createJob,
     'write',
+    ['pipeline'],
   ),
   entry(
     'jenkinsCopyJob',
     'Copy an existing Jenkins job to a new name instead of hand-writing config.xml.',
     copyJob,
     'write',
+    ['clone', 'duplicate'],
   ),
   entry(
     'jenkinsUpdateJobConfig',
     'Update a Jenkins job by replacing its config.xml with a full replacement document.',
     updateJobConfig,
     'write',
+    ['configuration'],
   ),
   entry(
     'jenkinsEnableJob',
@@ -139,72 +152,84 @@ export const jenkinsTools = [
     'Permanently delete a Jenkins job and all of its builds and artifacts.',
     deleteJob,
     'delete',
+    ['remove'],
   ),
   entry(
     'jenkinsListBuilds',
     'List recent builds of a Jenkins job with number, result, building state and duration.',
     listBuilds,
     'read',
+    ['run', 'runs'],
   ),
   entry(
     'jenkinsGetBuild',
     'Get details of a single Jenkins build: result, duration, artifacts, change sets and culprits.',
     getBuild,
     'read',
+    ['run'],
   ),
   entry(
     'jenkinsGetLastBuild',
     'Get a symbolic build of a job (lastBuild, lastSuccessfulBuild, lastFailedBuild, lastCompletedBuild, lastStableBuild) without knowing its number.',
     getLastBuild,
     'read',
+    ['latest'],
   ),
   entry(
     'jenkinsGetConsoleLog',
     'Get the full console output of a Jenkins build to diagnose failures.',
     getConsoleLog,
     'read',
+    ['logs'],
   ),
   entry(
     'jenkinsGetProgressiveLog',
     'Page through a Jenkins build log with the progressiveText API; also works for live-tailing running builds.',
     getProgressiveLog,
     'read',
+    ['tail', 'stream', 'logs'],
   ),
   entry(
     'jenkinsGetTestReport',
     'Get the aggregated JUnit test report of a Jenkins build with pass/fail/skip counts.',
     getTestReport,
     'read',
+    ['tests'],
   ),
   entry(
     'jenkinsTriggerBuild',
     'Trigger a new build of a Jenkins job without parameters. Returns the queue item URL for tracking.',
     triggerBuild,
     'write',
+    ['start', 'run', 'launch'],
   ),
   entry(
     'jenkinsTriggerParameterizedBuild',
     'Trigger a new build of a parameterized Jenkins job with a key-value parameter map.',
     triggerParameterizedBuild,
     'write',
+    ['start', 'parameters'],
   ),
   entry(
     'jenkinsStopBuild',
     'Abort a running Jenkins build (marked ABORTED, kept in history).',
     stopBuild,
     'write',
+    ['cancel', 'kill'],
   ),
   entry(
     'jenkinsDeleteBuild',
     'Permanently delete a single Jenkins build with its log, artifacts and test results.',
     deleteBuild,
     'delete',
+    ['remove'],
   ),
   entry(
     'jenkinsGetServerInfo',
     'Get Jenkins controller info: version, jobs/views overview and executor counts. Use to verify connectivity.',
     getServerInfo,
     'read',
+    ['health', 'status'],
   ),
   entry(
     'jenkinsListQueue',
@@ -229,12 +254,14 @@ export const jenkinsTools = [
     'List Jenkins agents/nodes with offline state, executor counts and load statistics.',
     listNodes,
     'read',
+    ['agent', 'agents'],
   ),
   entry(
     'jenkinsGetNode',
     'Get details of a single Jenkins agent: executors, monitor data and offline cause.',
     getNode,
     'read',
+    ['agent'],
   ),
   entry(
     'jenkinsListViews',
@@ -253,18 +280,21 @@ export const jenkinsTools = [
     'List plugins installed on the Jenkins controller with version and enabled state.',
     listPlugins,
     'read',
+    ['plugin', 'extension', 'extensions'],
   ),
   entry(
     'jenkinsGetCurrentUser',
     'Get the Jenkins user the credentials authenticate as. Use to verify an API token.',
     getCurrentUser,
     'read',
+    ['whoami'],
   ),
   entry(
     'jenkinsQuietDown',
     'Put Jenkins into quiet-down mode: running builds finish, no new builds start.',
     quietDown,
     'write',
+    ['maintenance'],
   ),
   entry(
     'jenkinsCancelQuietDown',
@@ -277,5 +307,6 @@ export const jenkinsTools = [
     'Safely restart Jenkins after running jobs finish.',
     safeRestart,
     'write',
+    ['reboot'],
   ),
 ];

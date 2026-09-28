@@ -31,6 +31,7 @@ export const googleFormsTools = [
     tool: batchUpdateForm,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'write' as const,
+    keywords: ['question', 'edit'],
   },
   {
     name: 'googleFormsCreateForm',
@@ -39,6 +40,7 @@ export const googleFormsTools = [
     tool: createForm,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'write' as const,
+    keywords: ['survey', 'quiz'],
   },
   {
     name: 'googleFormsCreateWatch',
@@ -47,6 +49,7 @@ export const googleFormsTools = [
     tool: createWatch,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'write' as const,
+    keywords: ['webhook', 'subscribe', 'notification'],
   },
   {
     name: 'googleFormsDeleteWatch',
@@ -54,6 +57,7 @@ export const googleFormsTools = [
     tool: deleteWatch,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'unsubscribe'],
   },
   {
     name: 'googleFormsGetForm',
@@ -70,6 +74,7 @@ export const googleFormsTools = [
     tool: getResponse,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'read' as const,
+    keywords: ['submission', 'answer'],
   },
   {
     name: 'googleFormsListResponses',
@@ -78,6 +83,7 @@ export const googleFormsTools = [
     tool: listResponses,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'read' as const,
+    keywords: ['submissions', 'answers'],
   },
   {
     name: 'googleFormsListWatches',
@@ -86,6 +92,7 @@ export const googleFormsTools = [
     tool: listWatches,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'read' as const,
+    keywords: ['webhooks'],
   },
   {
     name: 'googleFormsRenewWatch',
@@ -94,6 +101,7 @@ export const googleFormsTools = [
     tool: renewWatch,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'write' as const,
+    keywords: ['extend', 'refresh'],
   },
   {
     name: 'googleFormsSetPublishSettings',
@@ -102,5 +110,6 @@ export const googleFormsTools = [
     tool: setPublishSettings,
     requiredAuth: 'googleFormsToken' as const,
     scope: 'write' as const,
+    keywords: ['publish', 'share'],
   },
 ];

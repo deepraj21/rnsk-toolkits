@@ -135,8 +135,16 @@ function entry(
   description: string,
   toolRef: any,
   scope: Scope,
-): { name: string; description: string; tool: any; requiredAuth: typeof auth; scope: Scope } {
-  return { name, description, tool: toolRef, requiredAuth: auth, scope };
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
+  return { name, description, tool: toolRef, requiredAuth: auth, scope, keywords };
 }
 
 export const harnessTools = [
@@ -218,24 +226,28 @@ export const harnessTools = [
     'List pipelines in a Harness project. Use first to discover pipeline identifiers.',
     listPipelines,
     'read',
+    ['pipeline', 'deploy', 'deployments', 'cd'],
   ),
   entry(
     'harnessGetPipeline',
     'Get a Harness pipeline definition including its YAML.',
     getPipeline,
     'read',
+    ['pipelines', 'cd'],
   ),
   entry(
     'harnessGetPipelineSummary',
     'Get a compact summary of a Harness pipeline with last execution status.',
     getPipelineSummary,
     'read',
+    ['pipelines', 'status'],
   ),
   entry(
     'harnessCreatePipeline',
     'Create a Harness pipeline from a YAML document.',
     createPipeline,
     'write',
+    ['pipelines', 'cd'],
   ),
   entry(
     'harnessUpdatePipeline',
@@ -249,32 +261,41 @@ export const harnessTools = [
     'Run a Harness pipeline with optional runtime inputs YAML. Returns the plan execution ID.',
     runPipeline,
     'write',
+    ['deploy', 'deployment', 'deployments', 'trigger', 'cd'],
   ),
   entry(
     'harnessGetExecution',
     'Get status and details of a pipeline execution by plan execution ID.',
     getExecution,
     'read',
+    ['executions', 'deploy', 'deployment', 'build'],
   ),
   entry(
     'harnessListExecutions',
     'List pipeline executions with status, trigger info and timing.',
     listExecutions,
     'read',
+    ['execution', 'deploys', 'deployments', 'builds'],
   ),
   entry(
     'harnessAbortExecution',
     'Abort a running Harness pipeline execution.',
     abortExecution,
     'write',
+    ['executions', 'cancel', 'stop', 'deploy'],
   ),
   entry(
     'harnessRetryExecution',
     'Retry a failed Harness pipeline execution from its failed stages.',
     retryExecution,
     'write',
+    ['executions', 'rerun', 'deploy'],
   ),
-  entry('harnessListServices', 'List services in a Harness project.', listServices, 'read'),
+  entry('harnessListServices', 'List services in a Harness project.', listServices, 'read', [
+    'service',
+    'deploy',
+    'deployments',
+  ]),
   entry(
     'harnessGetService',
     'Get a single Harness service definition by identifier.',
@@ -299,6 +320,7 @@ export const harnessTools = [
     'List environments in a Harness project.',
     listEnvironments,
     'read',
+    ['environment', 'deploy', 'deployments'],
   ),
   entry(
     'harnessGetEnvironment',
@@ -384,12 +406,14 @@ export const harnessTools = [
     'Get a Harness trigger: event source, pipeline target and input bindings.',
     getTrigger,
     'read',
+    ['triggers', 'webhook', 'schedule', 'cron'],
   ),
   entry(
     'harnessCreateTrigger',
     'Create a Harness trigger (webhook, schedule, artifact) from trigger YAML.',
     createTrigger,
     'write',
+    ['triggers', 'cron', 'scheduled'],
   ),
   entry(
     'harnessUpdateTrigger',
@@ -403,29 +427,34 @@ export const harnessTools = [
     'List Harness Feature Flags with state and targeting.',
     listFeatureFlags,
     'read',
+    ['flag', 'toggles', 'toggle', 'ff'],
   ),
   entry(
     'harnessGetFeatureFlag',
     'Get a single Harness feature flag with variations and targeting rules.',
     getFeatureFlag,
     'read',
+    ['flags', 'toggle', 'toggles'],
   ),
   entry(
     'harnessListSLOs',
     'List Harness SRM SLOs with error budgets and burn rates.',
     listSLOs,
     'read',
+    ['slo', 'reliability', 'error-budget'],
   ),
   entry(
     'harnessGetSLO',
     'Get a single Harness SLO with objectives and health sources.',
     getSLO,
     'read',
+    ['slos', 'reliability'],
   ),
   entry(
     'harnessListCIBuilds',
     'List Harness CI builds with branch, commit, status and timing.',
     listCIBuilds,
     'read',
+    ['build', 'ci', 'pipeline'],
   ),
 ];

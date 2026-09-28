@@ -622,6 +622,7 @@ export const servicenowTools = [
   },
   {
     name: 'ServiceNowCreateServicecatalogItemsOrderNow',
+    keywords: ['request', 'requests'],
     description: serviceNowCreateServicecatalogItemsOrderNow.description!,
     tool: serviceNowCreateServicecatalogItemsOrderNow,
     requiredAuth: 'servicenowCredentials' as const,
@@ -706,6 +707,7 @@ export const servicenowTools = [
   },
   {
     name: 'ServiceNowGetServiceCatalogItemsList',
+    keywords: ['request', 'requests', 'order', 'orders'],
     description: serviceNowGetServiceCatalogItemsList.description!,
     tool: serviceNowGetServiceCatalogItemsList,
     requiredAuth: 'servicenowCredentials' as const,
@@ -1119,6 +1121,7 @@ export const servicenowTools = [
   },
   {
     name: 'ServiceNowCreateIncident',
+    keywords: ['ticket', 'tickets'],
     description: createIncident.description!,
     tool: createIncident,
     requiredAuth: 'servicenowCredentials' as const,
@@ -1126,6 +1129,7 @@ export const servicenowTools = [
   },
   {
     name: 'ServiceNowDeleteIncident',
+    keywords: ['ticket', 'tickets'],
     description: deleteIncident.description!,
     tool: deleteIncident,
     requiredAuth: 'servicenowCredentials' as const,
@@ -1133,6 +1137,7 @@ export const servicenowTools = [
   },
   {
     name: 'ServiceNowGetIncident',
+    keywords: ['ticket', 'tickets'],
     description: getIncident.description!,
     tool: getIncident,
     requiredAuth: 'servicenowCredentials' as const,
@@ -1140,6 +1145,7 @@ export const servicenowTools = [
   },
   {
     name: 'ServiceNowGetIncidentList',
+    keywords: ['ticket', 'tickets', 'queue'],
     description: getIncidentList.description!,
     tool: getIncidentList,
     requiredAuth: 'servicenowCredentials' as const,
@@ -1147,6 +1153,7 @@ export const servicenowTools = [
   },
   {
     name: 'ServiceNowUpdateIncident',
+    keywords: ['ticket', 'tickets', 'assign'],
     description: updateIncident.description!,
     tool: updateIncident,
     requiredAuth: 'servicenowCredentials' as const,

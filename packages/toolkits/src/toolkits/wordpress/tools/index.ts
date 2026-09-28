@@ -31,6 +31,7 @@ export const wordpressTools = [
     tool: wordpressCreateDraftPost,
     requiredAuth: 'wordpressToken' as const,
     scope: 'write' as const,
+    keywords: ['article', 'blog'],
   },
   {
     name: 'wordpressDeleteDraftPost',
@@ -39,6 +40,7 @@ export const wordpressTools = [
     tool: wordpressDeleteDraftPost,
     requiredAuth: 'wordpressToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'wordpressGetPost',
@@ -47,6 +49,7 @@ export const wordpressTools = [
     tool: wordpressGetPost,
     requiredAuth: 'wordpressToken' as const,
     scope: 'read' as const,
+    keywords: ['article'],
   },
   {
     name: 'wordpressGetSiteOverview',
@@ -55,6 +58,7 @@ export const wordpressTools = [
     tool: wordpressGetSiteOverview,
     requiredAuth: 'wordpressToken' as const,
     scope: 'read' as const,
+    keywords: ['stats', 'info'],
   },
   {
     name: 'wordpressListBloggingPrompts',
@@ -63,6 +67,7 @@ export const wordpressTools = [
     tool: wordpressListBloggingPrompts,
     requiredAuth: 'wordpressToken' as const,
     scope: 'read' as const,
+    keywords: ['ideas', 'inspiration'],
   },
   {
     name: 'wordpressListCmsResources',
@@ -71,6 +76,7 @@ export const wordpressTools = [
     tool: wordpressListCmsResources,
     requiredAuth: 'wordpressToken' as const,
     scope: 'read' as const,
+    keywords: ['category', 'tag', 'comment'],
   },
   {
     name: 'wordpressListContent',
@@ -79,6 +85,7 @@ export const wordpressTools = [
     tool: wordpressListContent,
     requiredAuth: 'wordpressToken' as const,
     scope: 'read' as const,
+    keywords: ['post', 'page', 'article'],
   },
   {
     name: 'wordpressListReaderSubscriptions',
@@ -87,6 +94,7 @@ export const wordpressTools = [
     tool: wordpressListReaderSubscriptions,
     requiredAuth: 'wordpressToken' as const,
     scope: 'read' as const,
+    keywords: ['feed', 'following'],
   },
   {
     name: 'wordpressListSites',
@@ -95,6 +103,7 @@ export const wordpressTools = [
     tool: wordpressListSites,
     requiredAuth: 'wordpressToken' as const,
     scope: 'read' as const,
+    keywords: ['site', 'blog'],
   },
   {
     name: 'wordpressUpdateDraftPost',
@@ -103,5 +112,6 @@ export const wordpressTools = [
     tool: wordpressUpdateDraftPost,
     requiredAuth: 'wordpressToken' as const,
     scope: 'write' as const,
+    keywords: ['edit', 'article'],
   },
 ];

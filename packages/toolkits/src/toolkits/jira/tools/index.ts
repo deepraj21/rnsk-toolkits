@@ -237,6 +237,7 @@ export const jiraTools = [
     tool: jiraAddAttachment,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['upload', 'file', 'vulnerabilities'],
   },
   {
     name: 'JiraAddComment',
@@ -244,6 +245,7 @@ export const jiraTools = [
     tool: jiraAddComment,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['reply', 'note'],
   },
   {
     name: 'JiraAddUsersToProjectRole',
@@ -251,6 +253,7 @@ export const jiraTools = [
     tool: jiraAddUsersToProjectRole,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['permissions', 'member'],
   },
   {
     name: 'JiraAddUserToGroup',
@@ -258,6 +261,7 @@ export const jiraTools = [
     tool: jiraAddUserToGroup,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['member'],
   },
   {
     name: 'JiraAddWatcherToIssue',
@@ -265,6 +269,7 @@ export const jiraTools = [
     tool: jiraAddWatcherToIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['watch', 'subscribe', 'follow'],
   },
   {
     name: 'JiraAddWorklog',
@@ -272,6 +277,7 @@ export const jiraTools = [
     tool: jiraAddWorklog,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['time', 'log-time', 'track'],
   },
   {
     name: 'JiraAnalyseExpression',
@@ -279,6 +285,7 @@ export const jiraTools = [
     tool: jiraAnalyseExpression,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraAssignIssue',
@@ -286,6 +293,7 @@ export const jiraTools = [
     tool: jiraAssignIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['assignee'],
   },
   {
     name: 'JiraBulkCreateIssue',
@@ -293,6 +301,7 @@ export const jiraTools = [
     tool: jiraBulkCreateIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['bulk', 'batch', 'many'],
   },
   {
     name: 'JiraCheckPermissions',
@@ -300,6 +309,7 @@ export const jiraTools = [
     tool: jiraCheckPermissions,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['access'],
   },
   {
     name: 'JiraCreateBoard',
@@ -307,6 +317,7 @@ export const jiraTools = [
     tool: jiraCreateBoard,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['kanban', 'scrum', 'new'],
   },
   {
     name: 'JiraCreateGroup',
@@ -314,6 +325,7 @@ export const jiraTools = [
     tool: jiraCreateGroup,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'JiraCreateIssue',
@@ -321,6 +333,7 @@ export const jiraTools = [
     tool: jiraCreateIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['new', 'ticket', 'bug', 'task', 'story'],
   },
   {
     name: 'JiraCreateIssueLink',
@@ -328,6 +341,7 @@ export const jiraTools = [
     tool: jiraCreateIssueLink,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['link', 'relate', 'blocks'],
   },
   {
     name: 'JiraCreateJqlAutocompletedata',
@@ -335,6 +349,7 @@ export const jiraTools = [
     tool: jiraCreateJqlAutocompletedata,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['jql', 'help'],
   },
   {
     name: 'JiraCreateProject',
@@ -342,6 +357,7 @@ export const jiraTools = [
     tool: jiraCreateProject,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['new'],
   },
   {
     name: 'JiraCreateSprint',
@@ -349,6 +365,7 @@ export const jiraTools = [
     tool: jiraCreateSprint,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['new', 'scrum'],
   },
   {
     name: 'JiraCreateVersion',
@@ -356,6 +373,7 @@ export const jiraTools = [
     tool: jiraCreateVersion,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['release', 'milestone', 'new'],
   },
   {
     name: 'JiraDeleteAttachment',
@@ -363,6 +381,7 @@ export const jiraTools = [
     tool: jiraDeleteAttachment,
     requiredAuth: 'jiraToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'file'],
   },
   {
     name: 'JiraDeleteComment',
@@ -370,6 +389,7 @@ export const jiraTools = [
     tool: jiraDeleteComment,
     requiredAuth: 'jiraToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'JiraDeleteIssue',
@@ -377,6 +397,7 @@ export const jiraTools = [
     tool: jiraDeleteIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'ticket'],
   },
   {
     name: 'JiraDeleteVersion',
@@ -384,6 +405,7 @@ export const jiraTools = [
     tool: jiraDeleteVersion,
     requiredAuth: 'jiraToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'release'],
   },
   {
     name: 'JiraDeleteWorklog',
@@ -391,6 +413,7 @@ export const jiraTools = [
     tool: jiraDeleteWorklog,
     requiredAuth: 'jiraToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'time'],
   },
   {
     name: 'JiraEditIssue',
@@ -398,6 +421,7 @@ export const jiraTools = [
     tool: jiraEditIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['update', 'ticket'],
   },
   {
     name: 'JiraEvaluateJiraExpression',
@@ -405,6 +429,7 @@ export const jiraTools = [
     tool: jiraEvaluateJiraExpression,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraFetchBulkIssues',
@@ -412,6 +437,7 @@ export const jiraTools = [
     tool: jiraFetchBulkIssues,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['batch', 'many'],
   },
   {
     name: 'JiraFindUsers',
@@ -419,6 +445,7 @@ export const jiraTools = [
     tool: jiraFindUsers,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['search', 'lookup'],
   },
   {
     name: 'JiraFindUsers2',
@@ -426,6 +453,7 @@ export const jiraTools = [
     tool: jiraFindUsers2,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['search'],
   },
   {
     name: 'JiraFindUsersForPicker',
@@ -433,6 +461,7 @@ export const jiraTools = [
     tool: jiraFindUsersForPicker,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['assign'],
   },
   {
     name: 'JiraGetAllGroups',
@@ -440,6 +469,7 @@ export const jiraTools = [
     tool: jiraGetAllGroups,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetAllIssueTypeSchemes',
@@ -447,6 +477,7 @@ export const jiraTools = [
     tool: jiraGetAllIssueTypeSchemes,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['types'],
   },
   {
     name: 'JiraGetAllProjects',
@@ -454,6 +485,7 @@ export const jiraTools = [
     tool: jiraGetAllProjects,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['browse'],
   },
   {
     name: 'JiraGetAllStatuses',
@@ -461,6 +493,7 @@ export const jiraTools = [
     tool: jiraGetAllStatuses,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['status', 'workflow'],
   },
   {
     name: 'JiraGetAllUsers',
@@ -468,6 +501,7 @@ export const jiraTools = [
     tool: jiraGetAllUsers,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['browse', 'directory'],
   },
   {
     name: 'JiraGetAttachment',
@@ -475,6 +509,7 @@ export const jiraTools = [
     tool: jiraGetAttachment,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['download', 'file'],
   },
   {
     name: 'JiraGetAttachmentMeta',
@@ -482,6 +517,7 @@ export const jiraTools = [
     tool: jiraGetAttachmentMeta,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['limits', 'settings'],
   },
   {
     name: 'JiraGetComment',
@@ -489,6 +525,7 @@ export const jiraTools = [
     tool: jiraGetComment,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetComponents',
@@ -496,6 +533,7 @@ export const jiraTools = [
     tool: jiraGetComponents,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetCreateMetadataIssueTypeFields',
@@ -503,6 +541,7 @@ export const jiraTools = [
     tool: jiraGetCreateMetadataIssueTypeFields,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['fields', 'required', 'form'],
   },
   {
     name: 'JiraGetCurrentUser',
@@ -510,6 +549,7 @@ export const jiraTools = [
     tool: jiraGetCurrentUser,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['me', 'profile'],
   },
   {
     name: 'JiraGetDashboards',
@@ -517,6 +557,7 @@ export const jiraTools = [
     tool: jiraGetDashboards,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['browse', 'reports'],
   },
   {
     name: 'JiraGetFavoriteFilters',
@@ -524,6 +565,7 @@ export const jiraTools = [
     tool: jiraGetFavoriteFilters,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['saved', 'jql'],
   },
   {
     name: 'JiraGetFields',
@@ -531,6 +573,7 @@ export const jiraTools = [
     tool: jiraGetFields,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['custom-fields', 'schema'],
   },
   {
     name: 'JiraGetFieldsPaginated',
@@ -538,6 +581,7 @@ export const jiraTools = [
     tool: jiraGetFieldsPaginated,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetFilter',
@@ -545,6 +589,7 @@ export const jiraTools = [
     tool: jiraGetFilter,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['saved-search', 'jql'],
   },
   {
     name: 'JiraGetGroup',
@@ -552,6 +597,7 @@ export const jiraTools = [
     tool: jiraGetGroup,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetInfo',
@@ -559,6 +605,7 @@ export const jiraTools = [
     tool: jiraGetInfo,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['version', 'server'],
   },
   {
     name: 'JiraGetIssue',
@@ -566,6 +613,7 @@ export const jiraTools = [
     tool: jiraGetIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['ticket'],
   },
   {
     name: 'JiraGetIssueCreateMetadata',
@@ -573,6 +621,7 @@ export const jiraTools = [
     tool: jiraGetIssueCreateMetadata,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetIssueEditMetadata',
@@ -580,6 +629,7 @@ export const jiraTools = [
     tool: jiraGetIssueEditMetadata,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['fields', 'edit'],
   },
   {
     name: 'JiraGetIssueLinkTypes',
@@ -587,6 +637,7 @@ export const jiraTools = [
     tool: jiraGetIssueLinkTypes,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['link-types'],
   },
   {
     name: 'JiraGetIssuePickerSuggestions',
@@ -594,6 +645,7 @@ export const jiraTools = [
     tool: jiraGetIssuePickerSuggestions,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['autocomplete', 'search'],
   },
   {
     name: 'JiraGetIssueProperty',
@@ -601,6 +653,7 @@ export const jiraTools = [
     tool: jiraGetIssueProperty,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetIssueResolutions',
@@ -608,6 +661,7 @@ export const jiraTools = [
     tool: jiraGetIssueResolutions,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['status', 'done'],
   },
   {
     name: 'JiraGetIssueTypes',
@@ -615,6 +669,7 @@ export const jiraTools = [
     tool: jiraGetIssueTypes,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['bug', 'task', 'story', 'epic', 'types'],
   },
   {
     name: 'JiraGetIssueWatchers',
@@ -622,6 +677,7 @@ export const jiraTools = [
     tool: jiraGetIssueWatchers,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['watchers'],
   },
   {
     name: 'JiraGetIssueWorklogs',
@@ -629,6 +685,7 @@ export const jiraTools = [
     tool: jiraGetIssueWorklogs,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['time', 'logged'],
   },
   {
     name: 'JiraGetJqlAutocompletedata',
@@ -636,6 +693,7 @@ export const jiraTools = [
     tool: jiraGetJqlAutocompletedata,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['jql', 'fields', 'help'],
   },
   {
     name: 'JiraGetJqlAutocompletedataSuggestions',
@@ -643,6 +701,7 @@ export const jiraTools = [
     tool: jiraGetJqlAutocompletedataSuggestions,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['jql', 'autocomplete'],
   },
   {
     name: 'JiraGetMyPermissions',
@@ -650,6 +709,7 @@ export const jiraTools = [
     tool: jiraGetMyPermissions,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['access'],
   },
   {
     name: 'JiraGetMypreferencesLocale',
@@ -657,6 +717,7 @@ export const jiraTools = [
     tool: jiraGetMypreferencesLocale,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['language', 'locale'],
   },
   {
     name: 'JiraGetPermissions',
@@ -664,6 +725,7 @@ export const jiraTools = [
     tool: jiraGetPermissions,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetPermittedProjects',
@@ -671,6 +733,7 @@ export const jiraTools = [
     tool: jiraGetPermittedProjects,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['access'],
   },
   {
     name: 'JiraGetProject',
@@ -678,6 +741,7 @@ export const jiraTools = [
     tool: jiraGetProject,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetProjectRoles',
@@ -685,6 +749,7 @@ export const jiraTools = [
     tool: jiraGetProjectRoles,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['permissions'],
   },
   {
     name: 'JiraGetProjectTemplates',
@@ -692,6 +757,7 @@ export const jiraTools = [
     tool: jiraGetProjectTemplates,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['template', 'new'],
   },
   {
     name: 'JiraGetProjectType',
@@ -699,6 +765,7 @@ export const jiraTools = [
     tool: jiraGetProjectType,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetProjectVersions',
@@ -706,6 +773,7 @@ export const jiraTools = [
     tool: jiraGetProjectVersions,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['releases'],
   },
   {
     name: 'JiraGetRecentProjects',
@@ -713,6 +781,7 @@ export const jiraTools = [
     tool: jiraGetRecentProjects,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['recent'],
   },
   {
     name: 'JiraGetRemoteIssueLinks',
@@ -720,6 +789,7 @@ export const jiraTools = [
     tool: jiraGetRemoteIssueLinks,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['links', 'external'],
   },
   {
     name: 'JiraGetServerInfo',
@@ -727,6 +797,7 @@ export const jiraTools = [
     tool: jiraGetServerInfo,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['version'],
   },
   {
     name: 'JiraGetServiceDeskRequestTypeFields',
@@ -734,6 +805,7 @@ export const jiraTools = [
     tool: jiraGetServiceDeskRequestTypeFields,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['fields', 'form'],
   },
   {
     name: 'JiraGetSprint',
@@ -741,6 +813,7 @@ export const jiraTools = [
     tool: jiraGetSprint,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetSystemAvatars',
@@ -748,6 +821,7 @@ export const jiraTools = [
     tool: jiraGetSystemAvatars,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['icons'],
   },
   {
     name: 'JiraGetTransitions',
@@ -755,6 +829,7 @@ export const jiraTools = [
     tool: jiraGetTransitions,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['status', 'workflow', 'move'],
   },
   {
     name: 'JiraGetUniversalAvatarTypeOwner',
@@ -762,6 +837,7 @@ export const jiraTools = [
     tool: jiraGetUniversalAvatarTypeOwner,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetUniversalAvatarViewType',
@@ -769,6 +845,7 @@ export const jiraTools = [
     tool: jiraGetUniversalAvatarViewType,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetUserGroups',
@@ -776,6 +853,7 @@ export const jiraTools = [
     tool: jiraGetUserGroups,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['memberships'],
   },
   {
     name: 'JiraGetViewTypeAvatar',
@@ -783,6 +861,7 @@ export const jiraTools = [
     tool: jiraGetViewTypeAvatar,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraGetVotes',
@@ -790,6 +869,7 @@ export const jiraTools = [
     tool: jiraGetVotes,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['vote'],
   },
   {
     name: 'JiraGetWorklog',
@@ -797,6 +877,7 @@ export const jiraTools = [
     tool: jiraGetWorklog,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['time'],
   },
   {
     name: 'JiraListAllProjects',
@@ -804,6 +885,7 @@ export const jiraTools = [
     tool: jiraListAllProjects,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraListBoards',
@@ -811,6 +893,7 @@ export const jiraTools = [
     tool: jiraListBoards,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['kanban', 'scrum', 'browse'],
   },
   {
     name: 'JiraListComments',
@@ -818,6 +901,7 @@ export const jiraTools = [
     tool: jiraListComments,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraListFilters',
@@ -825,6 +909,7 @@ export const jiraTools = [
     tool: jiraListFilters,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['saved-searches', 'jql'],
   },
   {
     name: 'JiraListGroupsPicker',
@@ -832,6 +917,7 @@ export const jiraTools = [
     tool: jiraListGroupsPicker,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['autocomplete'],
   },
   {
     name: 'JiraListIssueComments',
@@ -839,6 +925,7 @@ export const jiraTools = [
     tool: jiraListIssueComments,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraListProjectTypes',
@@ -846,6 +933,7 @@ export const jiraTools = [
     tool: jiraListProjectTypes,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraListSprints',
@@ -853,6 +941,7 @@ export const jiraTools = [
     tool: jiraListSprints,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'JiraMoveIssueToSprint',
@@ -860,6 +949,7 @@ export const jiraTools = [
     tool: jiraMoveIssueToSprint,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['sprint', 'scrum', 'plan'],
   },
   {
     name: 'JiraParseJqlQueries',
@@ -867,6 +957,7 @@ export const jiraTools = [
     tool: jiraParseJqlQueries,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['validate', 'jql', 'syntax'],
   },
   {
     name: 'JiraRemoveUserFromGroup',
@@ -874,6 +965,7 @@ export const jiraTools = [
     tool: jiraRemoveUserFromGroup,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['remove'],
   },
   {
     name: 'JiraRemoveUserFromProjectRole',
@@ -881,6 +973,7 @@ export const jiraTools = [
     tool: jiraRemoveUserFromProjectRole,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['remove', 'permissions'],
   },
   {
     name: 'JiraRemoveWatcherFromIssue',
@@ -888,6 +981,7 @@ export const jiraTools = [
     tool: jiraRemoveWatcherFromIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['unwatch', 'unfollow', 'remove'],
   },
   {
     name: 'JiraSearchApproximateCount',
@@ -895,6 +989,7 @@ export const jiraTools = [
     tool: jiraSearchApproximateCount,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['count', 'jql'],
   },
   {
     name: 'JiraSearchDashboards',
@@ -902,6 +997,7 @@ export const jiraTools = [
     tool: jiraSearchDashboards,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['find'],
   },
   {
     name: 'JiraSearchForIssuesUsingJqlGet',
@@ -909,6 +1005,7 @@ export const jiraTools = [
     tool: jiraSearchForIssuesUsingJqlGet,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['jql', 'find'],
   },
   {
     name: 'JiraSearchForIssuesUsingJqlPost',
@@ -916,6 +1013,7 @@ export const jiraTools = [
     tool: jiraSearchForIssuesUsingJqlPost,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['jql', 'find'],
   },
   {
     name: 'JiraSearchIssues',
@@ -923,6 +1021,7 @@ export const jiraTools = [
     tool: jiraSearchIssues,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['jql', 'find', 'ticket'],
   },
   {
     name: 'JiraSendNotificationForIssue',
@@ -930,6 +1029,7 @@ export const jiraTools = [
     tool: jiraSendNotificationForIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['email', 'notify'],
   },
   {
     name: 'JiraTransitionIssue',
@@ -937,6 +1037,7 @@ export const jiraTools = [
     tool: jiraTransitionIssue,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['status', 'move', 'workflow', 'close', 'reopen'],
   },
   {
     name: 'JiraUpdateComment',
@@ -944,6 +1045,7 @@ export const jiraTools = [
     tool: jiraUpdateComment,
     requiredAuth: 'jiraToken' as const,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'JiraWhoAmI',
@@ -951,5 +1053,6 @@ export const jiraTools = [
     tool: jiraWhoAmI,
     requiredAuth: 'jiraToken' as const,
     scope: 'read' as const,
+    keywords: ['identity', 'sites'],
   },
 ];

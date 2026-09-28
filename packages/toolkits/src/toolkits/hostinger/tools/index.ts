@@ -67,6 +67,7 @@ export const hostingerTools = [
     tool: hostingerCheckDomainAvailability,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['domain', 'buy'],
   },
   {
     name: 'HostingerListDomains',
@@ -74,6 +75,7 @@ export const hostingerTools = [
     tool: hostingerListDomains,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['domain'],
   },
   {
     name: 'HostingerGetDomainForwarding',
@@ -81,6 +83,7 @@ export const hostingerTools = [
     tool: hostingerGetDomainForwarding,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['redirect', 'domain'],
   },
   {
     name: 'HostingerGenerateFreeSubdomain',
@@ -88,6 +91,7 @@ export const hostingerTools = [
     tool: hostingerGenerateFreeSubdomain,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'write' as const,
+    keywords: ['subdomain'],
   },
   {
     name: 'HostingerVerifyDomainOwnership',
@@ -95,6 +99,7 @@ export const hostingerTools = [
     tool: hostingerVerifyDomainOwnership,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['verify', 'domain'],
   },
   {
     name: 'HostingerCreateWhoisProfile',
@@ -102,6 +107,7 @@ export const hostingerTools = [
     tool: hostingerCreateWhoisProfile,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'write' as const,
+    keywords: ['registrant', 'contact'],
   },
   {
     name: 'HostingerGetWhoisProfile',
@@ -109,6 +115,7 @@ export const hostingerTools = [
     tool: hostingerGetWhoisProfile,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['whois', 'registrant'],
   },
   {
     name: 'HostingerGetWhoisProfileUsage',
@@ -116,6 +123,7 @@ export const hostingerTools = [
     tool: hostingerGetWhoisProfileUsage,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['whois', 'domains'],
   },
   {
     name: 'HostingerListWhoisProfiles',
@@ -123,6 +131,7 @@ export const hostingerTools = [
     tool: hostingerListWhoisProfiles,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['whois', 'profile'],
   },
   {
     name: 'HostingerGetDnsRecords',
@@ -130,6 +139,7 @@ export const hostingerTools = [
     tool: hostingerGetDnsRecords,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['record', 'zone'],
   },
   {
     name: 'HostingerValidateDnsRecords',
@@ -137,6 +147,7 @@ export const hostingerTools = [
     tool: hostingerValidateDnsRecords,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['check', 'record'],
   },
   {
     name: 'HostingerListDnsSnapshots',
@@ -144,6 +155,7 @@ export const hostingerTools = [
     tool: hostingerListDnsSnapshots,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['snapshot', 'backup'],
   },
   {
     name: 'HostingerListVirtualMachines',
@@ -151,6 +163,7 @@ export const hostingerTools = [
     tool: hostingerListVirtualMachines,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['server', 'vm'],
   },
   {
     name: 'HostingerListTemplates',
@@ -158,6 +171,7 @@ export const hostingerTools = [
     tool: hostingerListTemplates,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['os', 'image'],
   },
   {
     name: 'HostingerGetTemplateDetails',
@@ -165,6 +179,7 @@ export const hostingerTools = [
     tool: hostingerGetTemplateDetails,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['os', 'template'],
   },
   {
     name: 'HostingerListDataCenters',
@@ -172,6 +187,7 @@ export const hostingerTools = [
     tool: hostingerListDataCenters,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['region', 'regions', 'location', 'datacenter'],
   },
   {
     name: 'HostingerCreatePublicKey',
@@ -179,6 +195,7 @@ export const hostingerTools = [
     tool: hostingerCreatePublicKey,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'write' as const,
+    keywords: ['ssh', 'key'],
   },
   {
     name: 'HostingerListPublicKeys',
@@ -186,6 +203,7 @@ export const hostingerTools = [
     tool: hostingerListPublicKeys,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['ssh', 'key'],
   },
   {
     name: 'HostingerDeletePublicKey',
@@ -193,6 +211,7 @@ export const hostingerTools = [
     tool: hostingerDeletePublicKey,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['ssh', 'key', 'remove'],
   },
   {
     name: 'HostingerListCatalogItems',
@@ -200,6 +219,7 @@ export const hostingerTools = [
     tool: hostingerListCatalogItems,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['price', 'plan'],
   },
   {
     name: 'HostingerListPaymentMethods',
@@ -207,6 +227,7 @@ export const hostingerTools = [
     tool: hostingerListPaymentMethods,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['payment', 'billing'],
   },
   {
     name: 'HostingerListSubscriptions',
@@ -214,6 +235,7 @@ export const hostingerTools = [
     tool: hostingerListSubscriptions,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['subscription', 'billing'],
   },
   {
     name: 'HostingerListOrders',
@@ -221,6 +243,7 @@ export const hostingerTools = [
     tool: hostingerListOrders,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['order'],
   },
   {
     name: 'HostingerListWebsites',
@@ -228,5 +251,6 @@ export const hostingerTools = [
     tool: hostingerListWebsites,
     requiredAuth: 'hostingerApiKey' as const,
     scope: 'read' as const,
+    keywords: ['website', 'site'],
   },
 ];

@@ -25,6 +25,7 @@ export default defineToolkit({
       tool: entry.tool,
       requiredAuth: (entry as { requiredAuth?: 'growwAccessToken' }).requiredAuth,
       scope: entry.scope,
+      keywords: (entry as { keywords?: string[] }).keywords ?? [],
     }),
   ),
   meta: {

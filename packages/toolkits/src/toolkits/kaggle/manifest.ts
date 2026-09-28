@@ -24,6 +24,7 @@ export default defineToolkit({
       tool: entry.tool,
       requiredAuth: entry.requiredAuth,
       scope: (entry as any).scope,
+      keywords: (entry as { keywords?: string[] }).keywords ?? [],
     }),
   ),
   meta: {

@@ -41,6 +41,7 @@ export const googleTasksTools = [
     tool: listTaskLists,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'read' as const,
+    keywords: ['todo'],
   },
   {
     name: 'googleTasksGetTaskList',
@@ -49,6 +50,7 @@ export const googleTasksTools = [
     tool: getTaskList,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'read' as const,
+    keywords: ['todo'],
   },
   {
     name: 'googleTasksCreateTaskList',
@@ -57,6 +59,7 @@ export const googleTasksTools = [
     tool: createTaskList,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'write' as const,
+    keywords: ['todo'],
   },
   {
     name: 'googleTasksUpdateTaskList',
@@ -64,6 +67,7 @@ export const googleTasksTools = [
     tool: updateTaskList,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'write' as const,
+    keywords: ['todo', 'rename'],
   },
   {
     name: 'googleTasksDeleteTaskList',
@@ -72,6 +76,7 @@ export const googleTasksTools = [
     tool: deleteTaskList,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'delete' as const,
+    keywords: ['todo', 'remove'],
   },
   {
     name: 'googleTasksListTasks',
@@ -80,6 +85,7 @@ export const googleTasksTools = [
     tool: listTasks,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'read' as const,
+    keywords: ['todo', 'todos'],
   },
   {
     name: 'googleTasksGetTask',
@@ -88,6 +94,7 @@ export const googleTasksTools = [
     tool: getTask,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'read' as const,
+    keywords: ['todo'],
   },
   {
     name: 'googleTasksCreateTask',
@@ -96,6 +103,7 @@ export const googleTasksTools = [
     tool: createTask,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'write' as const,
+    keywords: ['todo', 'reminder'],
   },
   {
     name: 'googleTasksUpdateTask',
@@ -104,6 +112,7 @@ export const googleTasksTools = [
     tool: updateTask,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'write' as const,
+    keywords: ['todo', 'complete', 'done'],
   },
   {
     name: 'googleTasksDeleteTask',
@@ -112,6 +121,7 @@ export const googleTasksTools = [
     tool: deleteTask,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'delete' as const,
+    keywords: ['todo', 'remove'],
   },
   {
     name: 'googleTasksMoveTask',
@@ -120,6 +130,7 @@ export const googleTasksTools = [
     tool: moveTask,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'write' as const,
+    keywords: ['todo', 'reorder', 'subtask'],
   },
   {
     name: 'googleTasksUpdateTaskFull',
@@ -128,6 +139,7 @@ export const googleTasksTools = [
     tool: updateTaskFull,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'write' as const,
+    keywords: ['todo', 'replace'],
   },
   {
     name: 'googleTasksListAllTasks',
@@ -136,6 +148,7 @@ export const googleTasksTools = [
     tool: listAllTasks,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'read' as const,
+    keywords: ['todo', 'todos'],
   },
   {
     name: 'googleTasksBatchExecute',
@@ -144,6 +157,7 @@ export const googleTasksTools = [
     tool: batchExecute,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'write' as const,
+    keywords: ['bulk'],
   },
   {
     name: 'googleTasksClearTasks',
@@ -152,5 +166,6 @@ export const googleTasksTools = [
     tool: clearTasks,
     requiredAuth: 'googleTasksToken' as const,
     scope: 'delete' as const,
+    keywords: ['todo', 'archive'],
   },
 ];

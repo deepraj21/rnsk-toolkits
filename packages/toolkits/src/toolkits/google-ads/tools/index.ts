@@ -69,6 +69,7 @@ export const googleAdsTools = [
     tool: addOrRemoveToCustomerList,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['remarketing', 'members'],
   },
   {
     name: 'googleAdsCreateCalloutAsset',
@@ -77,6 +78,7 @@ export const googleAdsTools = [
     tool: createCalloutAsset,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['extension'],
   },
   {
     name: 'googleAdsCreateCustomerList',
@@ -107,6 +109,7 @@ export const googleAdsTools = [
     tool: getConversionActionTagSnippets,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tracking', 'pixel'],
   },
   {
     name: 'googleAdsGetCustomerLists',
@@ -115,6 +118,7 @@ export const googleAdsTools = [
     tool: getCustomerLists,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['audience'],
   },
   {
     name: 'googleAdsGetRmfReport',
@@ -123,6 +127,7 @@ export const googleAdsTools = [
     tool: getRmfReport,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['performance', 'stats'],
   },
   {
     name: 'googleAdsListAccessibleCustomers',
@@ -131,6 +136,7 @@ export const googleAdsTools = [
     tool: listAccessibleCustomers,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['account', 'mcc'],
   },
   {
     name: 'googleAdsListSubAccounts',
@@ -139,6 +145,7 @@ export const googleAdsTools = [
     tool: listSubAccounts,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['account', 'child'],
   },
   {
     name: 'googleAdsMutateAdGroupAds',
@@ -146,6 +153,7 @@ export const googleAdsTools = [
     tool: mutateAdGroupAds,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateAdGroupAssets',
@@ -154,6 +162,7 @@ export const googleAdsTools = [
     tool: mutateAdGroupAssets,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['create', 'update', 'delete', 'sitelink'],
   },
   {
     name: 'googleAdsMutateAdGroupBidModifiers',
@@ -161,6 +170,7 @@ export const googleAdsTools = [
     tool: mutateAdGroupBidModifiers,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['create', 'update', 'delete', 'bidding'],
   },
   {
     name: 'googleAdsMutateAdGroupCriteria',
@@ -169,6 +179,7 @@ export const googleAdsTools = [
     tool: mutateAdGroupCriteria,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['keyword', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateAdGroups',
@@ -176,6 +187,7 @@ export const googleAdsTools = [
     tool: mutateAdGroups,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['adgroup', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateAssets',
@@ -184,6 +196,7 @@ export const googleAdsTools = [
     tool: mutateAssets,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['create', 'update', 'delete', 'sitelink', 'extension'],
   },
   {
     name: 'googleAdsMutateBiddingStrategies',
@@ -192,6 +205,7 @@ export const googleAdsTools = [
     tool: mutateBiddingStrategies,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['strategy', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateCampaignAssets',
@@ -199,6 +213,7 @@ export const googleAdsTools = [
     tool: mutateCampaignAssets,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['create', 'update', 'delete', 'link'],
   },
   {
     name: 'googleAdsMutateCampaignBudgets',
@@ -206,6 +221,7 @@ export const googleAdsTools = [
     tool: mutateCampaignBudgets,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['budget', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateCampaignCriteria',
@@ -214,6 +230,7 @@ export const googleAdsTools = [
     tool: mutateCampaignCriteria,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['keyword', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateCampaignLabels',
@@ -221,6 +238,7 @@ export const googleAdsTools = [
     tool: mutateCampaignLabels,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['label', 'create', 'delete'],
   },
   {
     name: 'googleAdsMutateCampaigns',
@@ -228,6 +246,7 @@ export const googleAdsTools = [
     tool: mutateCampaigns,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['campaign', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateCampaignsV2',
@@ -236,6 +255,7 @@ export const googleAdsTools = [
     tool: mutateCampaignsV2,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['campaign', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateConversionActions',
@@ -243,6 +263,7 @@ export const googleAdsTools = [
     tool: mutateConversionActions,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutateCustomerAssets',
@@ -250,6 +271,7 @@ export const googleAdsTools = [
     tool: mutateCustomerAssets,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['create', 'delete'],
   },
   {
     name: 'googleAdsMutateLabels',
@@ -257,6 +279,7 @@ export const googleAdsTools = [
     tool: mutateLabels,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['label', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsMutatePortfolioBiddingStrategies',
@@ -264,6 +287,7 @@ export const googleAdsTools = [
     tool: mutatePortfolioBiddingStrategies,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['strategy', 'create', 'update', 'delete'],
   },
   {
     name: 'googleAdsSearchStreamGaql',
@@ -272,5 +296,6 @@ export const googleAdsTools = [
     tool: searchStreamGaql,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['query', 'report', 'lookup'],
   },
 ];

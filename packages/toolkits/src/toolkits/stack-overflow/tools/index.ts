@@ -86,10 +86,18 @@ function entry(
   toolRef: any,
   scope: Scope,
   requiredAuth?: typeof auth,
-): { name: string; description: string; tool: any; requiredAuth?: typeof auth; scope: Scope } {
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth?: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
   return requiredAuth
-    ? { name, description, tool: toolRef, requiredAuth, scope }
-    : { name, description, tool: toolRef, scope };
+    ? { name, description, tool: toolRef, requiredAuth, scope, keywords }
+    : { name, description, tool: toolRef, scope, keywords };
 }
 
 export const stackOverflowTools = [
@@ -99,6 +107,7 @@ export const stackOverflowTools = [
     searchQuestions,
     'read',
     auth,
+    ['question', 'query', 'find', 'lookup'],
   ),
   entry(
     'stackOverflowSearchQuestionsByTitle',
@@ -106,6 +115,7 @@ export const stackOverflowTools = [
     searchQuestionsByTitle,
     'read',
     auth,
+    ['question', 'questions', 'title', 'duplicate'],
   ),
   entry(
     'stackOverflowGetSimilarQuestions',
@@ -113,6 +123,7 @@ export const stackOverflowTools = [
     getSimilarQuestions,
     'read',
     auth,
+    ['question', 'duplicate', 'duplicates', 'related'],
   ),
   entry(
     'stackOverflowGetQuestions',
@@ -120,6 +131,7 @@ export const stackOverflowTools = [
     getQuestions,
     'read',
     auth,
+    ['question', 'hot', 'browse', 'trending'],
   ),
   entry(
     'stackOverflowGetQuestion',
@@ -127,6 +139,7 @@ export const stackOverflowTools = [
     getQuestion,
     'read',
     auth,
+    ['questions', 'question', 'post', 'detail'],
   ),
   entry(
     'stackOverflowGetQuestionAnswers',
@@ -134,6 +147,7 @@ export const stackOverflowTools = [
     getQuestionAnswers,
     'read',
     auth,
+    ['answer', 'solution', 'solutions'],
   ),
   entry(
     'stackOverflowGetQuestionComments',
@@ -141,6 +155,7 @@ export const stackOverflowTools = [
     getQuestionComments,
     'read',
     auth,
+    ['comment', 'comments', 'discussion'],
   ),
   entry(
     'stackOverflowGetLinkedQuestions',
@@ -148,6 +163,7 @@ export const stackOverflowTools = [
     getLinkedQuestions,
     'read',
     auth,
+    ['question', 'questions', 'linked', 'duplicate'],
   ),
   entry(
     'stackOverflowGetRelatedQuestions',
@@ -155,6 +171,7 @@ export const stackOverflowTools = [
     getRelatedQuestions,
     'read',
     auth,
+    ['question', 'questions', 'related', 'similar'],
   ),
   entry(
     'stackOverflowGetQuestionTimeline',
@@ -162,6 +179,7 @@ export const stackOverflowTools = [
     getQuestionTimeline,
     'read',
     auth,
+    ['question', 'history', 'timeline', 'event'],
   ),
   entry(
     'stackOverflowGetAnswers',
@@ -169,6 +187,7 @@ export const stackOverflowTools = [
     getAnswers,
     'read',
     auth,
+    ['answer', 'solution', 'post'],
   ),
   entry(
     'stackOverflowGetAnswerComments',
@@ -176,14 +195,20 @@ export const stackOverflowTools = [
     getAnswerComments,
     'read',
     auth,
+    ['comment', 'comments', 'answer', 'discussion'],
   ),
-  entry('stackOverflowGetPost', 'Get any post (question or answer) by ID.', getPost, 'read', auth),
+  entry('stackOverflowGetPost', 'Get any post (question or answer) by ID.', getPost, 'read', auth, [
+    'question',
+    'answer',
+    'post',
+  ]),
   entry(
     'stackOverflowGetPostComments',
     'Get comments on any post(s).',
     getPostComments,
     'read',
     auth,
+    ['comment', 'comments', 'discussion'],
   ),
   entry(
     'stackOverflowGetPostRevisions',
@@ -191,15 +216,25 @@ export const stackOverflowTools = [
     getPostRevisions,
     'read',
     auth,
+    ['edit', 'edits', 'history', 'revision', 'diff'],
   ),
-  entry('stackOverflowGetComments', 'Get comment(s) by ID.', getComments, 'read', auth),
-  entry('stackOverflowSearchUsers', 'Find users by display-name text.', searchUsers, 'read', auth),
+  entry('stackOverflowGetComments', 'Get comment(s) by ID.', getComments, 'read', auth, [
+    'comment',
+    'discussion',
+  ]),
+  entry('stackOverflowSearchUsers', 'Find users by display-name text.', searchUsers, 'read', auth, [
+    'user',
+    'profile',
+    'author',
+    'reputation',
+  ]),
   entry(
     'stackOverflowGetUser',
     'Get user profile(s): reputation, badges, acceptance rate.',
     getUser,
     'read',
     auth,
+    ['users', 'profile', 'reputation', 'karma'],
   ),
   entry(
     'stackOverflowGetUserQuestions',
@@ -207,6 +242,7 @@ export const stackOverflowTools = [
     getUserQuestions,
     'read',
     auth,
+    ['user', 'question', 'questions', 'asked'],
   ),
   entry(
     'stackOverflowGetUserAnswers',
@@ -214,6 +250,7 @@ export const stackOverflowTools = [
     getUserAnswers,
     'read',
     auth,
+    ['user', 'answer', 'answers', 'solutions'],
   ),
   entry(
     'stackOverflowGetUserTags',
@@ -221,6 +258,7 @@ export const stackOverflowTools = [
     getUserTags,
     'read',
     auth,
+    ['user', 'tag', 'expertise', 'top'],
   ),
   entry(
     'stackOverflowGetUserReputationHistory',
@@ -228,14 +266,23 @@ export const stackOverflowTools = [
     getUserReputationHistory,
     'read',
     auth,
+    ['user', 'reputation', 'rep', 'karma', 'history'],
   ),
-  entry('stackOverflowGetUserBadges', 'Get badges earned by user(s).', getUserBadges, 'read', auth),
+  entry(
+    'stackOverflowGetUserBadges',
+    'Get badges earned by user(s).',
+    getUserBadges,
+    'read',
+    auth,
+    ['user', 'badge', 'achievement'],
+  ),
   entry(
     'stackOverflowSearchTags',
     'Find tags by name, sorted by popularity.',
     searchTags,
     'read',
     auth,
+    ['tag', 'find', 'popular', 'trending'],
   ),
   entry(
     'stackOverflowGetTagInfo',
@@ -243,6 +290,7 @@ export const stackOverflowTools = [
     getTagInfo,
     'read',
     auth,
+    ['tags', 'tag', 'wiki', 'synonym'],
   ),
   entry(
     'stackOverflowGetTagWikis',
@@ -250,6 +298,7 @@ export const stackOverflowTools = [
     getTagWikis,
     'read',
     auth,
+    ['tag', 'tags', 'wiki', 'docs', 'guidance'],
   ),
   entry(
     'stackOverflowGetTagRelated',
@@ -257,6 +306,7 @@ export const stackOverflowTools = [
     getTagRelated,
     'read',
     auth,
+    ['tag', 'tags', 'related', 'similar'],
   ),
   entry(
     'stackOverflowGetTopAnswerers',
@@ -264,6 +314,7 @@ export const stackOverflowTools = [
     getTopAnswerers,
     'read',
     auth,
+    ['answer', 'answerers', 'expert', 'experts', 'tag', 'leaderboard'],
   ),
   entry(
     'stackOverflowGetTopAskers',
@@ -271,6 +322,7 @@ export const stackOverflowTools = [
     getTopAskers,
     'read',
     auth,
+    ['asker', 'question', 'tag', 'leaderboard'],
   ),
   entry(
     'stackOverflowGetTagSynonyms',
@@ -278,6 +330,7 @@ export const stackOverflowTools = [
     getTagSynonyms,
     'read',
     auth,
+    ['tag', 'tags', 'synonym', 'alias'],
   ),
   entry(
     'stackOverflowGetSiteInfo',
@@ -285,6 +338,7 @@ export const stackOverflowTools = [
     getSiteInfo,
     'read',
     auth,
+    ['site', 'stats', 'statistics', 'quota'],
   ),
   entry(
     'stackOverflowListSites',
@@ -292,14 +346,19 @@ export const stackOverflowTools = [
     listSites,
     'read',
     auth,
+    ['site', 'sites', 'network', 'stackexchange'],
   ),
-  entry('stackOverflowGetBadges', 'List badges on a site.', getBadges, 'read', auth),
+  entry('stackOverflowGetBadges', 'List badges on a site.', getBadges, 'read', auth, [
+    'badge',
+    'achievements',
+  ]),
   entry(
     'stackOverflowGetBadgeRecipients',
     'Get recent recipients of badge(s).',
     getBadgeRecipients,
     'read',
     auth,
+    ['badge', 'badges', 'user', 'users', 'leaderboard'],
   ),
   entry(
     'stackOverflowCreateFilter',
@@ -307,5 +366,6 @@ export const stackOverflowTools = [
     createFilter,
     'read',
     auth,
+    ['filter', 'custom', 'fields', 'slim'],
   ),
 ];

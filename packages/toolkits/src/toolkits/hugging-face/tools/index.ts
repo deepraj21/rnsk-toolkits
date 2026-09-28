@@ -319,6 +319,7 @@ export const huggingFaceTools = [
     tool: huggingFaceChangeDiscussionsStatus,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['thread', 'reopen'],
   },
   {
     name: 'HuggingFaceCheckDatasetValidity',
@@ -326,6 +327,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCheckDatasetValidity,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['preview', 'viewer'],
   },
   {
     name: 'HuggingFaceCheckModelsUploadMethod',
@@ -333,6 +335,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCheckModelsUploadMethod,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['lfs'],
   },
   {
     name: 'HuggingFaceCheckSpacesUploadMethod',
@@ -340,6 +343,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCheckSpacesUploadMethod,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['lfs'],
   },
   {
     name: 'HuggingFaceClaimSettingsPapersClaim',
@@ -347,6 +351,7 @@ export const huggingFaceTools = [
     tool: huggingFaceClaimSettingsPapersClaim,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['authorship', 'author'],
   },
   {
     name: 'HuggingFaceCreateAskAccess',
@@ -354,6 +359,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateAskAccess,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['gated', 'approval', 'permission'],
   },
   {
     name: 'HuggingFaceCreateCollection',
@@ -361,6 +367,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateCollection,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['curate', 'organize'],
   },
   {
     name: 'HuggingFaceCreateDatasetsBranch',
@@ -368,6 +375,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateDatasetsBranch,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['version'],
   },
   {
     name: 'HuggingFaceCreateDatasetsCommit',
@@ -375,6 +383,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateDatasetsCommit,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['push', 'upload'],
   },
   {
     name: 'HuggingFaceCreateDatasetsPreupload',
@@ -382,6 +391,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateDatasetsPreupload,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['lfs'],
   },
   {
     name: 'HuggingFaceCreateDatasetsTag',
@@ -389,6 +399,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateDatasetsTag,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['release'],
   },
   {
     name: 'HuggingFaceCreateDiscussions',
@@ -396,6 +407,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateDiscussions,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['thread', 'issue', 'pr'],
   },
   {
     name: 'HuggingFaceCreateDiscussionsComment',
@@ -403,6 +415,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateDiscussionsComment,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['thread', 'reply'],
   },
   {
     name: 'HuggingFaceCreateDiscussionsPin',
@@ -410,6 +423,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateDiscussionsPin,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['thread', 'highlight'],
   },
   {
     name: 'HuggingFaceCreateModelsBranch',
@@ -417,6 +431,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateModelsBranch,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['version'],
   },
   {
     name: 'HuggingFaceCreateModelsCommit',
@@ -424,6 +439,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateModelsCommit,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['push', 'upload', 'weights'],
   },
   {
     name: 'HuggingFaceCreateModelsTag',
@@ -431,6 +447,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateModelsTag,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['release', 'version'],
   },
   {
     name: 'HuggingFaceCreatePapersComment',
@@ -438,6 +455,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreatePapersComment,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['review', 'feedback'],
   },
   {
     name: 'HuggingFaceCreatePapersCommentReply',
@@ -445,6 +463,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreatePapersCommentReply,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['review', 'reply'],
   },
   {
     name: 'HuggingFaceCreatePapersIndex',
@@ -452,6 +471,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreatePapersIndex,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['arxiv', 'submit', 'publish'],
   },
   {
     name: 'HuggingFaceCreateRepo',
@@ -459,6 +479,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateRepo,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['repos', 'repository', 'new'],
   },
   {
     name: 'HuggingFaceCreateSpacesBranch',
@@ -466,6 +487,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateSpacesBranch,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['version'],
   },
   {
     name: 'HuggingFaceCreateSpacesCommit',
@@ -473,6 +495,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateSpacesCommit,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['push', 'deploy'],
   },
   {
     name: 'HuggingFaceCreateSpacesSecrets',
@@ -480,6 +503,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateSpacesSecrets,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['env', 'credentials'],
   },
   {
     name: 'HuggingFaceCreateSpacesTag',
@@ -487,6 +511,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateSpacesTag,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['release'],
   },
   {
     name: 'HuggingFaceCreateSpacesVariables',
@@ -494,6 +519,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateSpacesVariables,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['env'],
   },
   {
     name: 'HuggingFaceCreateSqlConsoleEmbed',
@@ -501,6 +527,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateSqlConsoleEmbed,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['duckdb', 'share'],
   },
   {
     name: 'HuggingFaceCreateWebhook',
@@ -508,6 +535,7 @@ export const huggingFaceTools = [
     tool: huggingFaceCreateWebhook,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'callback'],
   },
   {
     name: 'HuggingFaceDeleteDatasetsBranch',
@@ -515,6 +543,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteDatasetsBranch,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceDeleteDatasetsTag',
@@ -522,6 +551,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteDatasetsTag,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceDeleteDiscussions',
@@ -529,6 +559,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteDiscussions,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceDeleteNetworkCidrList',
@@ -536,6 +567,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteNetworkCidrList,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: ['firewall', 'allowlist', 'ip'],
   },
   {
     name: 'HuggingFaceDeleteNotifications',
@@ -543,6 +575,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteNotifications,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: ['notification', 'inbox', 'alert'],
   },
   {
     name: 'HuggingFaceDeleteSettingsWebhooks',
@@ -550,6 +583,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteSettingsWebhooks,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: ['notification', 'callback'],
   },
   {
     name: 'HuggingFaceDeleteSpacesBranch',
@@ -557,6 +591,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteSpacesBranch,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceDeleteSpacesSecrets',
@@ -564,6 +599,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteSpacesSecrets,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: ['env'],
   },
   {
     name: 'HuggingFaceDeleteSpacesTag',
@@ -571,6 +607,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteSpacesTag,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceDeleteSpacesVariables',
@@ -578,6 +615,7 @@ export const huggingFaceTools = [
     tool: huggingFaceDeleteSpacesVariables,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'delete' as const,
+    keywords: ['env'],
   },
   {
     name: 'HuggingFaceFilterDatasetRows',
@@ -585,6 +623,7 @@ export const huggingFaceTools = [
     tool: huggingFaceFilterDatasetRows,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['where'],
   },
   {
     name: 'HuggingFaceGenerateChatCompletion',
@@ -592,6 +631,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGenerateChatCompletion,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['llm', 'inference', 'chatbot'],
   },
   {
     name: 'HuggingFaceGenerateEmbeddings',
@@ -599,6 +639,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGenerateEmbeddings,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['embedding', 'vector'],
   },
   {
     name: 'HuggingFaceGetDailyPapers',
@@ -606,6 +647,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDailyPapers,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['arxiv', 'trending'],
   },
   {
     name: 'HuggingFaceGetDatasetCroissant',
@@ -613,6 +655,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetCroissant,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetDatasetFirstRows',
@@ -620,6 +663,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetFirstRows,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetDatasetInfo',
@@ -627,6 +671,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetInfo,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['schema', 'metadata'],
   },
   {
     name: 'HuggingFaceGetDatasetRepoInfo',
@@ -634,6 +679,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetRepoInfo,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['metadata', 'downloads', 'likes'],
   },
   {
     name: 'HuggingFaceGetDatasetRows',
@@ -641,6 +687,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetRows,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetDatasetsCompare',
@@ -648,6 +695,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsCompare,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['diff'],
   },
   {
     name: 'HuggingFaceGetDatasetSize',
@@ -655,6 +703,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetSize,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetDatasetsJwt',
@@ -662,6 +711,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsJwt,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['token', 'auth'],
   },
   {
     name: 'HuggingFaceGetDatasetsLeaderboard',
@@ -669,6 +719,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsLeaderboard,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['ranking', 'benchmark', 'eval'],
   },
   {
     name: 'HuggingFaceGetDatasetsNotebook',
@@ -676,6 +727,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsNotebook,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['colab', 'jupyter'],
   },
   {
     name: 'HuggingFaceGetDatasetsResolve',
@@ -683,6 +735,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsResolve,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['download'],
   },
   {
     name: 'HuggingFaceGetDatasetsScan',
@@ -690,6 +743,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsScan,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetDatasetsTagsByType',
@@ -697,6 +751,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsTagsByType,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['taxonomy', 'filter'],
   },
   {
     name: 'HuggingFaceGetDatasetStatistics',
@@ -704,6 +759,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetStatistics,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['stats'],
   },
   {
     name: 'HuggingFaceGetDatasetsTreesize',
@@ -711,6 +767,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsTreesize,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetDatasetsXetReadToken',
@@ -718,6 +775,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDatasetsXetReadToken,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['token'],
   },
   {
     name: 'HuggingFaceGetDiscussion',
@@ -725,6 +783,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetDiscussion,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['thread', 'pr', 'diff'],
   },
   {
     name: 'HuggingFaceGetJobsHardware',
@@ -732,6 +791,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetJobsHardware,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['gpu', 'compute'],
   },
   {
     name: 'HuggingFaceGetModelInfo',
@@ -739,6 +799,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetModelInfo,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['metadata', 'downloads', 'weights'],
   },
   {
     name: 'HuggingFaceGetModelsCompare',
@@ -746,6 +807,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetModelsCompare,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['diff'],
   },
   {
     name: 'HuggingFaceGetModelsJwt',
@@ -753,6 +815,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetModelsJwt,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['token', 'auth'],
   },
   {
     name: 'HuggingFaceGetModelsNotebook',
@@ -760,6 +823,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetModelsNotebook,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['colab', 'jupyter'],
   },
   {
     name: 'HuggingFaceGetModelsScan',
@@ -767,6 +831,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetModelsScan,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['security', 'malware'],
   },
   {
     name: 'HuggingFaceGetModelsTreesize',
@@ -774,6 +839,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetModelsTreesize,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetModelsXetReadToken',
@@ -781,6 +847,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetModelsXetReadToken,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['token', 'weights'],
   },
   {
     name: 'HuggingFaceGetModelTagsByType',
@@ -788,6 +855,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetModelTagsByType,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['taxonomy', 'filter'],
   },
   {
     name: 'HuggingFaceGetOrganizationsAvatar',
@@ -795,6 +863,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetOrganizationsAvatar,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['logo', 'picture'],
   },
   {
     name: 'HuggingFaceGetOrganizationsMembers',
@@ -802,6 +871,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetOrganizationsMembers,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['org', 'team'],
   },
   {
     name: 'HuggingFaceGetOrganizationsSocials',
@@ -809,6 +879,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetOrganizationsSocials,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['github', 'twitter'],
   },
   {
     name: 'HuggingFaceGetResolve',
@@ -816,6 +887,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetResolve,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['download'],
   },
   {
     name: 'HuggingFaceGetResolveCacheDatasets',
@@ -823,6 +895,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetResolveCacheDatasets,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetResolveCacheModels',
@@ -830,6 +903,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetResolveCacheModels,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetResolveCacheSpaces',
@@ -837,6 +911,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetResolveCacheSpaces,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetSettingsBillingUsageJobs',
@@ -844,6 +919,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSettingsBillingUsageJobs,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'credits'],
   },
   {
     name: 'HuggingFaceGetSettingsBillingUsageLive',
@@ -851,6 +927,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSettingsBillingUsageLive,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'credits', 'limits'],
   },
   {
     name: 'HuggingFaceGetSettingsBillingUsageV2',
@@ -858,6 +935,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSettingsBillingUsageV2,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'credits'],
   },
   {
     name: 'HuggingFaceGetSettingsMcp',
@@ -865,6 +943,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSettingsMcp,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['agent', 'claude'],
   },
   {
     name: 'HuggingFaceGetSettingsWebhooks',
@@ -872,6 +951,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSettingsWebhooks,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['notification'],
   },
   {
     name: 'HuggingFaceGetSpaceInfo',
@@ -879,6 +959,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpaceInfo,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['status', 'hardware', 'app'],
   },
   {
     name: 'HuggingFaceGetSpacesCompare',
@@ -886,6 +967,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesCompare,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['diff'],
   },
   {
     name: 'HuggingFaceGetSpacesEvents',
@@ -893,6 +975,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesEvents,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['logs', 'status'],
   },
   {
     name: 'HuggingFaceGetSpacesJwt',
@@ -900,6 +983,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesJwt,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['token', 'auth'],
   },
   {
     name: 'HuggingFaceGetSpacesMetrics',
@@ -907,6 +991,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesMetrics,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['logs', 'gpu'],
   },
   {
     name: 'HuggingFaceGetSpacesNotebook',
@@ -914,6 +999,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesNotebook,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['colab', 'jupyter'],
   },
   {
     name: 'HuggingFaceGetSpacesResolve',
@@ -921,6 +1007,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesResolve,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetSpacesScan',
@@ -928,6 +1015,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesScan,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetSpacesTreesize',
@@ -935,6 +1023,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesTreesize,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetSpacesXetReadToken',
@@ -942,6 +1031,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesXetReadToken,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetSpacesXetWriteToken',
@@ -949,6 +1039,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetSpacesXetWriteToken,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetTrending',
@@ -956,6 +1047,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetTrending,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['popular', 'discover'],
   },
   {
     name: 'HuggingFaceGetUsersAvatar',
@@ -963,6 +1055,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetUsersAvatar,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['logo', 'picture'],
   },
   {
     name: 'HuggingFaceGetUsersOverview',
@@ -970,6 +1063,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetUsersOverview,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceGetUsersSocials',
@@ -977,6 +1071,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetUsersSocials,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['github', 'twitter'],
   },
   {
     name: 'HuggingFaceGetWhoami',
@@ -984,6 +1079,7 @@ export const huggingFaceTools = [
     tool: huggingFaceGetWhoami,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['profile', 'username'],
   },
   {
     name: 'HuggingFaceHandleDatasetsUserAccessRequest',
@@ -991,6 +1087,7 @@ export const huggingFaceTools = [
     tool: huggingFaceHandleDatasetsUserAccessRequest,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['approve', 'deny'],
   },
   {
     name: 'HuggingFaceListCollections',
@@ -998,6 +1095,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListCollections,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['curate', 'discover'],
   },
   {
     name: 'HuggingFaceListDatasetParquetFiles',
@@ -1005,6 +1103,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDatasetParquetFiles,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['export', 'download'],
   },
   {
     name: 'HuggingFaceListDatasetPathsInfo',
@@ -1012,6 +1111,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDatasetPathsInfo,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceListDatasets',
@@ -1019,6 +1119,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDatasets,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['discover', 'browse'],
   },
   {
     name: 'HuggingFaceListDatasetsCommits',
@@ -1026,6 +1127,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDatasetsCommits,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceListDatasetSplits',
@@ -1033,6 +1135,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDatasetSplits,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceListDatasetsRefs',
@@ -1040,6 +1143,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDatasetsRefs,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceListDatasetsUserAccessRequest',
@@ -1047,6 +1151,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDatasetsUserAccessRequest,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['approve', 'gated'],
   },
   {
     name: 'HuggingFaceListDiscussions',
@@ -1054,6 +1159,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDiscussions,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['thread', 'prs'],
   },
   {
     name: 'HuggingFaceListDocs',
@@ -1061,6 +1167,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListDocs,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['guide', 'help', 'manual'],
   },
   {
     name: 'HuggingFaceListEndpoints',
@@ -1068,6 +1175,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListEndpoints,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['endpoint', 'deploy', 'serverless'],
   },
   {
     name: 'HuggingFaceListModelsCommits',
@@ -1075,6 +1183,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListModelsCommits,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['history'],
   },
   {
     name: 'HuggingFaceListModelsPathsInfo',
@@ -1082,6 +1191,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListModelsPathsInfo,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceListModelsRefs',
@@ -1089,6 +1199,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListModelsRefs,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['version'],
   },
   {
     name: 'HuggingFaceListNotifications',
@@ -1096,6 +1207,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListNotifications,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['notification', 'inbox', 'alert'],
   },
   {
     name: 'HuggingFaceListRepoFiles',
@@ -1103,6 +1215,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListRepoFiles,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['repository', 'repos', 'browse'],
   },
   {
     name: 'HuggingFaceListSettingsWebhooks',
@@ -1110,6 +1223,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListSettingsWebhooks,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['notification'],
   },
   {
     name: 'HuggingFaceListSpaces',
@@ -1117,6 +1231,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListSpaces,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['app', 'apps', 'demo', 'gradio', 'streamlit'],
   },
   {
     name: 'HuggingFaceListSpacesCommits',
@@ -1124,6 +1239,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListSpacesCommits,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceListSpacesHardware',
@@ -1131,6 +1247,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListSpacesHardware,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['gpu', 'cpu'],
   },
   {
     name: 'HuggingFaceListSpacesLfsFiles',
@@ -1138,6 +1255,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListSpacesLfsFiles,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceListSpacesPathsInfo',
@@ -1145,6 +1263,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListSpacesPathsInfo,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceListSpacesRefs',
@@ -1152,6 +1271,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListSpacesRefs,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['version'],
   },
   {
     name: 'HuggingFaceListVendors',
@@ -1159,6 +1279,7 @@ export const huggingFaceTools = [
     tool: huggingFaceListVendors,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['gpu', 'hardware', 'deploy'],
   },
   {
     name: 'HuggingFaceSearchDataset',
@@ -1166,6 +1287,7 @@ export const huggingFaceTools = [
     tool: huggingFaceSearchDataset,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['find'],
   },
   {
     name: 'HuggingFaceSearchDocs',
@@ -1173,6 +1295,7 @@ export const huggingFaceTools = [
     tool: huggingFaceSearchDocs,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['guide', 'help'],
   },
   {
     name: 'HuggingFaceSearchPapers',
@@ -1180,6 +1303,7 @@ export const huggingFaceTools = [
     tool: huggingFaceSearchPapers,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'read' as const,
+    keywords: ['arxiv', 'semantic'],
   },
   {
     name: 'HuggingFaceSquashDatasetCommits',
@@ -1187,6 +1311,7 @@ export const huggingFaceTools = [
     tool: huggingFaceSquashDatasetCommits,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['rebase'],
   },
   {
     name: 'HuggingFaceSquashSpacesCommits',
@@ -1194,6 +1319,7 @@ export const huggingFaceTools = [
     tool: huggingFaceSquashSpacesCommits,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['rebase'],
   },
   {
     name: 'HuggingFaceUpdateDatasetsSettings',
@@ -1201,6 +1327,7 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateDatasetsSettings,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceUpdateDiscussionsTitle',
@@ -1208,6 +1335,7 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateDiscussionsTitle,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['thread', 'rename'],
   },
   {
     name: 'HuggingFaceUpdateModelsSettings',
@@ -1215,6 +1343,7 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateModelsSettings,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceUpdateSettingsNotifications',
@@ -1222,6 +1351,7 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateSettingsNotifications,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'alert'],
   },
   {
     name: 'HuggingFaceUpdateSettingsWatch',
@@ -1229,6 +1359,7 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateSettingsWatch,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['subscribe', 'follow'],
   },
   {
     name: 'HuggingFaceUpdateSettingsWebhooks',
@@ -1236,6 +1367,7 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateSettingsWebhooks,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'callback'],
   },
   {
     name: 'HuggingFaceUpdateSpacesSettings',
@@ -1243,6 +1375,7 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateSpacesSettings,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceUpdateSqlConsoleEmbed',
@@ -1250,6 +1383,7 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateSqlConsoleEmbed,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'HuggingFaceUpdateWebhookStatus',
@@ -1257,5 +1391,6 @@ export const huggingFaceTools = [
     tool: huggingFaceUpdateWebhookStatus,
     requiredAuth: 'huggingFaceToken' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'enable', 'disable'],
   },
 ];

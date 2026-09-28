@@ -70,8 +70,16 @@ function entry(
   description: string,
   toolRef: any,
   scope: Scope,
-): { name: string; description: string; tool: any; requiredAuth: typeof auth; scope: Scope } {
-  return { name, description, tool: toolRef, requiredAuth: auth, scope };
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
+  return { name, description, tool: toolRef, requiredAuth: auth, scope, keywords };
 }
 
 export const pinterestTools = [
@@ -88,8 +96,11 @@ export const pinterestTools = [
     'Update a board name, description, or privacy.',
     updateBoard,
     'write',
+    ['rename', 'edit'],
   ),
-  entry('pinterestDeleteBoard', 'Permanently delete a board by ID.', deleteBoard, 'delete'),
+  entry('pinterestDeleteBoard', 'Permanently delete a board by ID.', deleteBoard, 'delete', [
+    'remove',
+  ]),
   entry('pinterestListBoardSections', 'List sections within a board.', listBoardSections, 'read'),
   entry(
     'pinterestCreateBoardSection',
@@ -108,6 +119,7 @@ export const pinterestTools = [
     'Permanently delete a section from a board.',
     deleteBoardSection,
     'delete',
+    ['remove'],
   ),
   entry(
     'pinterestListBoardPins',
@@ -121,40 +133,52 @@ export const pinterestTools = [
     'List account Pins with creative-type and metrics filters.',
     listPins,
     'read',
+    ['pin'],
   ),
-  entry('pinterestGetPin', 'Get one Pin by ID, with optional metrics.', getPin, 'read'),
+  entry('pinterestGetPin', 'Get one Pin by ID, with optional metrics.', getPin, 'read', ['pin']),
   entry(
     'pinterestCreatePin',
     'Create an image, carousel, or registered-video Pin on a board.',
     createPin,
     'write',
+    ['pin', 'post', 'upload'],
   ),
-  entry('pinterestUpdatePin', 'Update content on an owned Pin or move it.', updatePin, 'write'),
-  entry('pinterestDeletePin', 'Permanently delete a Pin by ID.', deletePin, 'delete'),
-  entry('pinterestSavePin', 'Save (repin) a Pin to one of your boards.', savePin, 'write'),
+  entry('pinterestUpdatePin', 'Update content on an owned Pin or move it.', updatePin, 'write', [
+    'pin',
+    'edit',
+  ]),
+  entry('pinterestDeletePin', 'Permanently delete a Pin by ID.', deletePin, 'delete', [
+    'pin',
+    'remove',
+  ]),
+  entry('pinterestSavePin', 'Save (repin) a Pin to one of your boards.', savePin, 'write', ['pin']),
   entry(
     'pinterestGetPinAnalytics',
     'Get daily, summary, and lifetime analytics for one Pin.',
     getPinAnalytics,
     'read',
+    ['pin', 'stats', 'metrics', 'insights'],
   ),
   entry(
     'pinterestGetMultiPinAnalytics',
     'Get analytics for up to 100 Pins in one call.',
     getMultiPinAnalytics,
     'read',
+    ['pins', 'stats', 'bulk'],
   ),
   entry(
     'pinterestGetProfile',
     'Get the connected account profile and content counts.',
     getProfile,
     'read',
+    ['account'],
   ),
   entry(
     'pinterestListProfileResources',
     'List followers, followed users/boards/interests, websites, or linked businesses.',
     listProfileResources,
     'read',
+    ['follower', 'following'],
   ),
   entry('pinterestFollowUser', 'Follow a Pinterest user by username.', followUser, 'write'),
   entry(
@@ -162,6 +186,7 @@ export const pinterestTools = [
     'Get website-claim verification material.',
     getWebsiteVerification,
     'read',
+    ['verify', 'domain'],
   ),
   entry(
     'pinterestRegisterMedia',
@@ -170,7 +195,10 @@ export const pinterestTools = [
     'write',
   ),
   entry('pinterestGetMedia', 'Get a registered video upload/processing status.', getMedia, 'read'),
-  entry('pinterestListMedia', 'List media uploads registered by the account.', listMedia, 'read'),
+  entry('pinterestListMedia', 'List media uploads registered by the account.', listMedia, 'read', [
+    'video',
+    'videos',
+  ]),
   entry(
     'pinterestSearchOwnContent',
     "Search the account's own boards or Pins (incl. secret content).",
@@ -182,29 +210,34 @@ export const pinterestTools = [
     'Get aggregate account analytics over a UTC date range.',
     getAccountAnalytics,
     'read',
+    ['stats', 'metrics', 'insights', 'performance'],
   ),
   entry(
     'pinterestGetTopPins',
     'Get top regular or video Pins ranked by an analytics metric.',
     getTopPins,
     'read',
+    ['popular', 'best', 'pins'],
   ),
   entry(
     'pinterestGetKeywordTrends',
     'Get top growing/monthly/yearly/seasonal search keywords for a market.',
     getKeywordTrends,
     'read',
+    ['trending'],
   ),
   entry(
     'pinterestGetInspirationTrends',
     'Get editorial trend articles or featured trend topics for a region.',
     getInspirationTrends,
     'read',
+    ['trending', 'ideas'],
   ),
   entry(
     'pinterestGetProductTrends',
     'Discover growing shopping categories or inspect category trend metrics.',
     getProductTrends,
     'read',
+    ['trending'],
   ),
 ];

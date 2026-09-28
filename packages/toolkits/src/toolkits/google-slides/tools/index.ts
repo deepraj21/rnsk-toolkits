@@ -27,6 +27,7 @@ export const googleSlidesTools = [
     tool: createPresentation,
     requiredAuth: 'googleSlidesToken' as const,
     scope: 'write' as const,
+    keywords: ['deck', 'new'],
   },
   {
     name: 'googleSlidesCreateSlidesMarkdown',
@@ -35,6 +36,7 @@ export const googleSlidesTools = [
     tool: createSlidesMarkdown,
     requiredAuth: 'googleSlidesToken' as const,
     scope: 'write' as const,
+    keywords: ['slide', 'deck'],
   },
   {
     name: 'googleSlidesGetPageThumbnail2',
@@ -43,6 +45,7 @@ export const googleSlidesTools = [
     tool: getPageThumbnail2,
     requiredAuth: 'googleSlidesToken' as const,
     scope: 'read' as const,
+    keywords: ['slide', 'preview', 'screenshot'],
   },
   {
     name: 'googleSlidesPresentationsBatchUpdate',
@@ -51,6 +54,7 @@ export const googleSlidesTools = [
     tool: presentationsBatchUpdate,
     requiredAuth: 'googleSlidesToken' as const,
     scope: 'write' as const,
+    keywords: ['presentation', 'edit', 'slide'],
   },
   {
     name: 'googleSlidesPresentationsCopyFromTemplate',
@@ -59,6 +63,7 @@ export const googleSlidesTools = [
     tool: presentationsCopyFromTemplate,
     requiredAuth: 'googleSlidesToken' as const,
     scope: 'write' as const,
+    keywords: ['clone', 'duplicate'],
   },
   {
     name: 'googleSlidesPresentationsGet',
@@ -67,6 +72,7 @@ export const googleSlidesTools = [
     tool: presentationsGet,
     requiredAuth: 'googleSlidesToken' as const,
     scope: 'read' as const,
+    keywords: ['presentation'],
   },
   {
     name: 'googleSlidesPresentationsPagesGet',
@@ -75,6 +81,7 @@ export const googleSlidesTools = [
     tool: presentationsPagesGet,
     requiredAuth: 'googleSlidesToken' as const,
     scope: 'read' as const,
+    keywords: ['slide'],
   },
   {
     name: 'googleSlidesPresentationsPagesGetThumbnail',
@@ -83,5 +90,6 @@ export const googleSlidesTools = [
     tool: presentationsPagesGetThumbnail,
     requiredAuth: 'googleSlidesToken' as const,
     scope: 'read' as const,
+    keywords: ['slide', 'preview'],
   },
 ];

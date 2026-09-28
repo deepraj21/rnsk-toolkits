@@ -721,6 +721,7 @@ export const sentryTools = [
   },
   {
     name: 'sentryGetProjectEvents',
+    keywords: ['errors'],
     description: sentryGetProjectEvents.description!,
     tool: sentryGetProjectEvents,
     requiredAuth: auth,
@@ -959,6 +960,7 @@ export const sentryTools = [
   },
   {
     name: 'sentryListAnOrganizationsIssues',
+    keywords: ['errors', 'crash', 'crashes', 'exception', 'exceptions'],
     description: sentryListAnOrganizationsIssues.description!,
     tool: sentryListAnOrganizationsIssues,
     requiredAuth: auth,
@@ -1008,6 +1010,7 @@ export const sentryTools = [
   },
   {
     name: 'sentryRetrieveProjectIssuesList',
+    keywords: ['errors', 'crash', 'crashes', 'exception', 'exceptions'],
     description: sentryRetrieveProjectIssuesList.description!,
     tool: sentryRetrieveProjectIssuesList,
     requiredAuth: auth,
@@ -1344,6 +1347,7 @@ export const sentryTools = [
   },
   {
     name: 'sentryListAnOrganizationSClientKeys',
+    keywords: ['dsn'],
     description: sentryListAnOrganizationSClientKeys.description!,
     tool: sentryListAnOrganizationSClientKeys,
     requiredAuth: auth,
@@ -1841,6 +1845,7 @@ export const sentryTools = [
   },
   {
     name: 'sentryRetrieveOrganizationReplays',
+    keywords: ['session', 'sessions'],
     description: sentryRetrieveOrganizationReplays.description!,
     tool: sentryRetrieveOrganizationReplays,
     requiredAuth: auth,
@@ -1946,6 +1951,7 @@ export const sentryTools = [
   },
   {
     name: 'sentryIngestEventViaDsn',
+    keywords: ['crash', 'crashes'],
     description: sentryIngestEventViaDsn.description!,
     tool: sentryIngestEventViaDsn,
     scope: 'write' as const,

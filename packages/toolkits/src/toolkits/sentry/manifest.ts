@@ -52,6 +52,7 @@ export default defineToolkit({
       tool: entry.tool,
       requiredAuth: (entry as any).requiredAuth,
       scope: (entry as any).scope ?? inferToolScope(entry.name),
+      keywords: (entry as { keywords?: string[] }).keywords ?? [],
     }),
   ),
   meta: {

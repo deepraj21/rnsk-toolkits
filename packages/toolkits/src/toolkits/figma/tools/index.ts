@@ -112,6 +112,7 @@ const auth = 'figmaToken' as const;
 export const figmaTools = [
   {
     name: 'figmaAddCommentToAFile',
+    keywords: ['comments', 'design', 'file', 'reply'],
     description: 'Posts a comment to a file or branch, optionally replying to a root comment.',
     tool: addCommentToAFile,
     requiredAuth: auth,
@@ -119,6 +120,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaAddReactionToAComment',
+    keywords: ['emoji', 'comments'],
     description: 'Posts an emoji reaction to a comment.',
     tool: addReactionToAComment,
     requiredAuth: auth,
@@ -126,6 +128,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaCreateAWebhook',
+    keywords: ['webhooks', 'design'],
     description: 'Creates a team/project/file webhook for Figma events.',
     tool: createAWebhook,
     requiredAuth: auth,
@@ -133,6 +136,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaCreateDevResources',
+    keywords: ['design', 'developer', 'github', 'jira'],
     description: 'Attaches dev resources (Jira, GitHub, docs) to file nodes.',
     tool: createDevResources,
     requiredAuth: auth,
@@ -140,6 +144,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaCreateModifyDeleteVariables',
+    keywords: ['variable', 'design', 'token', 'tokens'],
     description: 'Batch creates, updates, or deletes variables, collections, modes, and values.',
     tool: createModifyDeleteVariables,
     requiredAuth: auth,
@@ -147,6 +152,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaDeleteAComment',
+    keywords: ['comments', 'design'],
     description: 'Deletes your comment from a file or branch.',
     tool: deleteAComment,
     requiredAuth: auth,
@@ -154,6 +160,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaDeleteAReaction',
+    keywords: ['emoji', 'comments'],
     description: 'Removes your emoji reaction from a comment.',
     tool: deleteAReaction,
     requiredAuth: auth,
@@ -161,6 +168,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaDeleteAWebhook',
+    keywords: ['webhooks'],
     description: 'Permanently deletes a webhook. Irreversible.',
     tool: deleteAWebhook,
     requiredAuth: auth,
@@ -168,6 +176,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaDeleteDevResource',
+    keywords: ['design', 'developer'],
     description: 'Deletes a dev resource from a main file.',
     tool: deleteDevResource,
     requiredAuth: auth,
@@ -175,6 +184,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaDesignTokensToTailwind',
+    keywords: ['design', 'token', 'tokens', 'css', 'tailwind'],
     description:
       'Converts extracted design tokens into a Tailwind config plus font CSS. No auth needed.',
     tool: designTokensToTailwind,
@@ -182,6 +192,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaDetectBackground',
+    keywords: ['design', 'node', 'nodes', 'frame'],
     description: 'Finds background candidates behind target nodes with confidence scores.',
     tool: detectBackground,
     requiredAuth: auth,
@@ -189,6 +200,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaDiscoverFigmaResources',
+    keywords: ['design', 'file', 'files', 'team', 'project'],
     description: 'Extracts IDs from any Figma URL and traverses team → projects → files → nodes.',
     tool: discoverFigmaResources,
     requiredAuth: auth,
@@ -196,6 +208,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaDownloadFigmaImages',
+    keywords: ['design', 'export', 'image', 'images', 'asset', 'assets'],
     description: 'Renders nodes and downloads image bytes (base64) in PNG/SVG/JPG/PDF.',
     tool: downloadFigmaImages,
     requiredAuth: auth,
@@ -203,6 +216,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaExtractDesignTokens',
+    keywords: ['design', 'token', 'tokens', 'color', 'colors', 'typography'],
     description: 'Extracts colors, typography, spacing, radii, and shadows from a file.',
     tool: extractDesignTokens,
     requiredAuth: auth,
@@ -210,6 +224,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaExtractPrototypeInteractions',
+    keywords: ['design', 'prototype', 'flow', 'animation'],
     description: 'Extracts prototype flows, interactions, animations, and variant states.',
     tool: extractPrototypeInteractions,
     requiredAuth: auth,
@@ -217,6 +232,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetActivityLogs',
+    keywords: ['design', 'audit', 'org'],
     description: 'Retrieves org activity log events with filters and pagination.',
     tool: getActivityLogs,
     requiredAuth: auth,
@@ -224,6 +240,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetAWebhook',
+    keywords: ['webhooks'],
     description: 'Retrieves a webhook by ID.',
     tool: getAWebhook,
     requiredAuth: auth,
@@ -231,6 +248,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetCommentsInAFile',
+    keywords: ['comment', 'design', 'file', 'feedback'],
     description: 'Retrieves all comments from a file or branch.',
     tool: getCommentsInAFile,
     requiredAuth: auth,
@@ -238,6 +256,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetComponent2',
+    keywords: ['components', 'design', 'library'],
     description: 'Fetches published component metadata by component key.',
     tool: getComponent2,
     requiredAuth: auth,
@@ -245,6 +264,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetComponentSet',
+    keywords: ['components', 'design', 'variant', 'variants'],
     description: 'Fetches published component set metadata by set key.',
     tool: getComponentSet,
     requiredAuth: auth,
@@ -252,6 +272,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetCurrentUser',
+    keywords: ['me', 'profile', 'design'],
     description: 'Returns the authenticated user details.',
     tool: getCurrentUser,
     requiredAuth: auth,
@@ -259,6 +280,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetDevResources',
+    keywords: ['design', 'developer'],
     description: 'Lists dev resources on a main file, optionally filtered to nodes.',
     tool: getDevResources,
     requiredAuth: auth,
@@ -266,6 +288,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetFileComponentSets',
+    keywords: ['components', 'design', 'library', 'variant'],
     description: 'Lists published component sets from a main library file.',
     tool: getFileComponentSets,
     requiredAuth: auth,
@@ -273,6 +296,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetFileComponents',
+    keywords: ['component', 'design', 'library'],
     description: 'Lists published components from a main library file.',
     tool: getFileComponents,
     requiredAuth: auth,
@@ -280,6 +304,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetFileJson',
+    keywords: ['design', 'document', 'tree', 'node', 'nodes'],
     description: 'Gets a Design file document tree, optionally scoped to nodes and depth.',
     tool: getFileJson,
     requiredAuth: auth,
@@ -287,6 +312,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetFileMetadata',
+    keywords: ['design', 'file', 'overview'],
     description: 'Gets file overview without the document tree.',
     tool: getFileMetadata,
     requiredAuth: auth,
@@ -294,6 +320,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetFileNodes',
+    keywords: ['node', 'design', 'frame', 'frames'],
     description: 'Fetches JSON for known node IDs without full-file payloads.',
     tool: getFileNodes,
     requiredAuth: auth,
@@ -301,6 +328,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetFileStyles',
+    keywords: ['style', 'design', 'library'],
     description: 'Lists published styles from a main library file.',
     tool: getFileStyles,
     requiredAuth: auth,
@@ -308,6 +336,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetFilesInAProject',
+    keywords: ['file', 'design', 'branch', 'branches'],
     description: 'Lists files in a project, optionally with branch metadata.',
     tool: getFilesInAProject,
     requiredAuth: auth,
@@ -315,6 +344,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetImageFills',
+    keywords: ['image', 'images', 'design', 'asset'],
     description: 'Returns temporary download URLs for all image fills in a file.',
     tool: getImageFills,
     requiredAuth: auth,
@@ -322,6 +352,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetLibraryAnalyticsComponentActionData',
+    keywords: ['components', 'analytics', 'design', 'usage'],
     description: 'Weekly component insertions/detachments for a library.',
     tool: getLibraryAnalyticsComponentActionData,
     requiredAuth: auth,
@@ -329,6 +360,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetLibraryAnalyticsComponentUsageData',
+    keywords: ['components', 'analytics', 'design'],
     description: 'Component usage totals for a library.',
     tool: getLibraryAnalyticsComponentUsageData,
     requiredAuth: auth,
@@ -336,6 +368,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetLibraryAnalyticsStyleActionData',
+    keywords: ['styles', 'analytics', 'design'],
     description: 'Weekly style insertions/detachments for a library.',
     tool: getLibraryAnalyticsStyleActionData,
     requiredAuth: auth,
@@ -343,6 +376,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetLibraryAnalyticsStyleUsageData',
+    keywords: ['styles', 'analytics', 'design'],
     description: 'Style usage totals for a library.',
     tool: getLibraryAnalyticsStyleUsageData,
     requiredAuth: auth,
@@ -350,6 +384,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetLibraryAnalyticsVariableActionData',
+    keywords: ['variables', 'analytics', 'design'],
     description: 'Weekly variable insertions/detachments for a library.',
     tool: getLibraryAnalyticsVariableActionData,
     requiredAuth: auth,
@@ -357,6 +392,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetLibraryAnalyticsVariableUsageData',
+    keywords: ['variables', 'analytics', 'design'],
     description: 'Variable usage totals for a library.',
     tool: getLibraryAnalyticsVariableUsageData,
     requiredAuth: auth,
@@ -364,6 +400,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetLocalVariables',
+    keywords: ['variable', 'design', 'token', 'mode'],
     description: 'Gets all local/remote variables with mode-specific values.',
     tool: getLocalVariables,
     requiredAuth: auth,
@@ -371,6 +408,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetPayments',
+    keywords: ['payment', 'plugin', 'design'],
     description: 'Checks a user payment status for your plugin, widget, or Community file.',
     tool: getPayments,
     requiredAuth: auth,
@@ -378,6 +416,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetProjectsInATeam',
+    keywords: ['project', 'design', 'team'],
     description: 'Lists projects in a team.',
     tool: getProjectsInATeam,
     requiredAuth: auth,
@@ -385,6 +424,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetPublishedVariables',
+    keywords: ['variable', 'variables', 'design', 'library'],
     description: 'Gets published variables from a main library file.',
     tool: getPublishedVariables,
     requiredAuth: auth,
@@ -392,6 +432,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetReactionsForAComment',
+    keywords: ['emoji', 'comments'],
     description: 'Lists reactions on a comment with pagination.',
     tool: getReactionsForAComment,
     requiredAuth: auth,
@@ -399,6 +440,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetScimServiceProviderConfig',
+    keywords: ['scim', 'provisioning', 'sso'],
     description: 'Returns SCIM capabilities for account provisioning.',
     tool: getScimServiceProviderConfig,
     requiredAuth: auth,
@@ -406,6 +448,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetStyle',
+    keywords: ['styles', 'design', 'library'],
     description: 'Fetches published style metadata by style key.',
     tool: getStyle,
     requiredAuth: auth,
@@ -413,6 +456,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetTeamComponentSets',
+    keywords: ['components', 'design', 'library', 'variant'],
     description: 'Lists published component sets in a team library.',
     tool: getTeamComponentSets,
     requiredAuth: auth,
@@ -420,6 +464,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetTeamComponents',
+    keywords: ['component', 'design', 'library'],
     description: 'Lists published components in a team library.',
     tool: getTeamComponents,
     requiredAuth: auth,
@@ -427,6 +472,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetTeamStyles',
+    keywords: ['style', 'design', 'library'],
     description: 'Lists published styles in a team library.',
     tool: getTeamStyles,
     requiredAuth: auth,
@@ -434,6 +480,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetTeamWebhooks',
+    keywords: ['webhooks', 'design'],
     description: 'Lists webhooks for a team, project, or file context.',
     tool: getTeamWebhooks,
     requiredAuth: auth,
@@ -441,6 +488,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetVersionsOfAFile',
+    keywords: ['version', 'versions', 'history', 'design', 'file'],
     description: 'Retrieves version history for a file or branch.',
     tool: getVersionsOfAFile,
     requiredAuth: auth,
@@ -448,6 +496,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaGetWebhookRequests',
+    keywords: ['webhooks', 'deliveries', 'design'],
     description: 'Shows 7-day delivery history for a webhook.',
     tool: getWebhookRequests,
     requiredAuth: auth,
@@ -455,6 +504,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaRenderImagesOfFileNodes',
+    keywords: ['image', 'images', 'export', 'design', 'node', 'nodes'],
     description: 'Renders nodes as images and returns temporary URLs.',
     tool: renderImagesOfFileNodes,
     requiredAuth: auth,
@@ -462,6 +512,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaUpdateAWebhook',
+    keywords: ['webhooks'],
     description: 'Updates a webhook event type, endpoint, passcode, status, or description.',
     tool: updateAWebhook,
     requiredAuth: auth,
@@ -469,6 +520,7 @@ export const figmaTools = [
   },
   {
     name: 'figmaUpdateDevResources',
+    keywords: ['design', 'developer'],
     description: 'Updates dev resource names and URLs by ID.',
     tool: updateDevResources,
     requiredAuth: auth,

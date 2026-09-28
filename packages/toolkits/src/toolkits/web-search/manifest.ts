@@ -17,8 +17,18 @@ export default defineToolkit({
   },
   allowedHosts: ['api.firecrawl.dev'],
   tools: [
-    defineTool({ name: 'webSearch', tool: webSearch, scope: 'read' }),
-    defineTool({ name: 'webScrape', tool: webScrape, scope: 'read' }),
+    defineTool({
+      name: 'webSearch',
+      tool: webSearch,
+      scope: 'read',
+      keywords: ['google', 'lookup', 'internet'],
+    }),
+    defineTool({
+      name: 'webScrape',
+      tool: webScrape,
+      scope: 'read',
+      keywords: ['fetch', 'extract', 'crawl'],
+    }),
   ],
   meta: { since: '0.0.1', homepage: 'https://firecrawl.dev' },
 });

@@ -153,13 +153,14 @@ function entry(
   description: string,
   toolRef: any,
   scope: 'read' | 'write' | 'delete',
-  opts?: { noAuth?: boolean },
+  opts?: { noAuth?: boolean; keywords?: string[] },
 ): {
   name: string;
   description: string;
   tool: any;
   requiredAuth?: typeof auth;
   scope: 'read' | 'write' | 'delete';
+  keywords?: string[];
 } {
   return {
     name,
@@ -167,6 +168,7 @@ function entry(
     tool: toolRef,
     ...(opts?.noAuth ? {} : { requiredAuth: auth }),
     scope,
+    ...(opts?.keywords ? { keywords: opts.keywords } : {}),
   };
 }
 
@@ -176,12 +178,14 @@ export const googleAnalyticsTools = [
     'Runs a standard GA4 report (dimensions x metrics over date ranges).',
     runReport,
     'read',
+    { keywords: ['traffic', 'pageview', 'pageviews', 'page'] },
   ),
   entry(
     'googleAnalyticsBatchRunReports',
     'Runs multiple standard reports for one property in a single call.',
     batchRunReports,
     'read',
+    { keywords: ['traffic', 'pageviews'] },
   ),
   entry('googleAnalyticsRunPivotReport', 'Runs a GA4 pivot-table report.', runPivotReport, 'read'),
   entry(
@@ -195,12 +199,14 @@ export const googleAnalyticsTools = [
     'Runs a realtime report over the last 30 minutes of activity.',
     runRealtimeReport,
     'read',
+    { keywords: ['live'] },
   ),
   entry(
     'googleAnalyticsRunFunnelReport',
     'Runs a funnel analysis report.',
     runFunnelReport,
     'read',
+    { keywords: ['conversion', 'conversions'] },
   ),
   entry(
     'googleAnalyticsCheckCompatibility',
@@ -213,12 +219,14 @@ export const googleAnalyticsTools = [
     'Gets report metadata (available dimensions, metrics, comparisons).',
     getMetadata,
     'read',
+    { keywords: ['schema', 'fields'] },
   ),
   entry(
     'googleAnalyticsCreateReportTask',
     'Creates an async report task for large/complex reports.',
     createReportTask,
     'write',
+    { keywords: ['async', 'export'] },
   ),
   entry(
     'googleAnalyticsGetReportTask',
@@ -237,79 +245,98 @@ export const googleAnalyticsTools = [
     'Retrieves rows from an ACTIVE report task.',
     queryReportTask,
     'read',
+    { keywords: ['results'] },
   ),
-  entry('googleAnalyticsGetAudience', 'Gets a single audience configuration.', getAudience, 'read'),
+  entry(
+    'googleAnalyticsGetAudience',
+    'Gets a single audience configuration.',
+    getAudience,
+    'read',
+    { keywords: ['segment'] },
+  ),
   entry(
     'googleAnalyticsListAudiences',
     'Lists audience configurations on a property.',
     listAudiences,
     'read',
+    { keywords: ['segment', 'segments'] },
   ),
   entry(
     'googleAnalyticsCreateAudienceExport',
     'Exports a snapshot of users in an audience (async).',
     createAudienceExport,
     'write',
+    { keywords: ['segment', 'export'] },
   ),
   entry(
     'googleAnalyticsGetAudienceExport',
     'Gets audience-export metadata/state.',
     getAudienceExport,
     'read',
+    { keywords: ['segment'] },
   ),
   entry(
     'googleAnalyticsListAudienceExports',
     'Lists audience exports for a property.',
     listAudienceExports,
     'read',
+    { keywords: ['segment', 'segments'] },
   ),
   entry(
     'googleAnalyticsQueryAudienceExport',
     'Retrieves rows from an audience export.',
     queryAudienceExport,
     'read',
+    { keywords: ['segment', 'results'] },
   ),
   entry(
     'googleAnalyticsCreateAudienceList',
     'Creates an audience list snapshot (async).',
     createAudienceList,
     'write',
+    { keywords: ['segment'] },
   ),
   entry(
     'googleAnalyticsGetAudienceList',
     'Gets audience-list metadata/state.',
     getAudienceList,
     'read',
+    { keywords: ['segment'] },
   ),
   entry(
     'googleAnalyticsListAudienceLists',
     'Lists audience lists for a property.',
     listAudienceLists,
     'read',
+    { keywords: ['segment', 'segments'] },
   ),
   entry(
     'googleAnalyticsQueryAudienceList',
     'Retrieves rows from an audience list.',
     queryAudienceList,
     'read',
+    { keywords: ['segment', 'results'] },
   ),
   entry(
     'googleAnalyticsCreateRecurringAudienceList',
     'Creates a recurring (daily) audience list.',
     createRecurringAudienceList,
     'write',
+    { keywords: ['segment', 'daily'] },
   ),
   entry(
     'googleAnalyticsGetRecurringAudienceList',
     'Gets a recurring audience list and its latest generated list.',
     getRecurringAudienceList,
     'read',
+    { keywords: ['segment'] },
   ),
   entry(
     'googleAnalyticsListRecurringAudienceLists',
     'Lists recurring audience lists for a property.',
     listRecurringAudienceLists,
     'read',
+    { keywords: ['segment', 'segments'] },
   ),
   entry('googleAnalyticsGetAccount', 'Gets a single account by resource name.', getAccount, 'read'),
   entry(
@@ -335,30 +362,35 @@ export const googleAnalyticsTools = [
     'Gets a single GA4 property by resource name.',
     getProperty,
     'read',
+    { keywords: ['website'] },
   ),
   entry(
     'googleAnalyticsListPropertiesFiltered',
     'Lists GA4 properties by filter expression.',
     listPropertiesFiltered,
     'read',
+    { keywords: ['website', 'websites'] },
   ),
   entry(
     'googleAnalyticsUpdateProperty',
     'Updates a property (displayName, timeZone, currencyCode).',
     updateProperty,
     'write',
+    { keywords: ['settings', 'rename', 'website'] },
   ),
   entry(
     'googleAnalyticsCreateRollupProperty',
     'Creates a roll-up property aggregating source properties.',
     createRollupProperty,
     'write',
+    { keywords: ['aggregate'] },
   ),
   entry(
     'googleAnalyticsGetPropertyQuotasSnapshot',
     'Gets property quota usage by category.',
     getPropertyQuotasSnapshot,
     'read',
+    { keywords: ['limits'] },
   ),
   entry(
     'googleAnalyticsGetAttributionSettings',
@@ -371,6 +403,7 @@ export const googleAnalyticsTools = [
     'Gets data retention configuration for a property.',
     getDataRetentionSettings,
     'read',
+    { keywords: ['privacy'] },
   ),
   entry(
     'googleAnalyticsGetDataSharingSettings',
@@ -383,30 +416,35 @@ export const googleAnalyticsTools = [
     'Gets Google Signals configuration for a property.',
     getGoogleSignalsSettings,
     'read',
+    { keywords: ['remarketing'] },
   ),
   entry(
     'googleAnalyticsCreateCustomDimension',
     'Creates a custom dimension (EVENT, USER, or ITEM scope).',
     createCustomDimension,
     'write',
+    { keywords: ['parameter'] },
   ),
   entry(
     'googleAnalyticsGetCustomDimension',
     'Gets a single custom dimension by resource name.',
     getCustomDimension,
     'read',
+    { keywords: ['parameter'] },
   ),
   entry(
     'googleAnalyticsListCustomDimensions',
     'Lists custom dimensions on a property.',
     listCustomDimensions,
     'read',
+    { keywords: ['parameter', 'parameters'] },
   ),
   entry(
     'googleAnalyticsArchiveCustomDimension',
     'Archives a custom dimension (removes from active use).',
     archiveCustomDimension,
     'write',
+    { keywords: ['parameter', 'remove'] },
   ),
   entry(
     'googleAnalyticsCreateCustomMetric',
@@ -425,18 +463,21 @@ export const googleAnalyticsTools = [
     'Lists calculated metrics on a property.',
     listCalculatedMetrics,
     'read',
+    { keywords: ['formula', 'computed'] },
   ),
   entry(
     'googleAnalyticsCreateExpandedDataSet',
     'Creates an expanded data set (dimensions + metrics).',
     createExpandedDataSet,
     'write',
+    { keywords: ['dataset'] },
   ),
   entry(
     'googleAnalyticsListExpandedDataSets',
     'Lists expanded data sets on a property.',
     listExpandedDataSets,
     'read',
+    { keywords: ['dataset', 'datasets'] },
   ),
   entry(
     'googleAnalyticsListAdsenseLinks',
@@ -449,31 +490,38 @@ export const googleAnalyticsTools = [
     'Lists BigQuery links on a property.',
     listBigqueryLinks,
     'read',
+    { keywords: ['warehouse', 'export'] },
   ),
   entry(
     'googleAnalyticsListChannelGroups',
     'Lists channel groups on a property.',
     listChannelGroups,
     'read',
+    { keywords: ['traffic', 'source'] },
   ),
   entry(
     'googleAnalyticsListConversionEvents',
     'Lists conversion events on a property.',
     listConversionEvents,
     'read',
+    { keywords: ['goal', 'goals', 'key'] },
   ),
-  entry('googleAnalyticsListKeyEvents', 'Lists key events on a property.', listKeyEvents, 'read'),
+  entry('googleAnalyticsListKeyEvents', 'Lists key events on a property.', listKeyEvents, 'read', {
+    keywords: ['conversion', 'conversions'],
+  }),
   entry(
     'googleAnalyticsGetKeyEvent',
     'Gets a single key event by resource name.',
     getKeyEvent,
     'read',
+    { keywords: ['conversion'] },
   ),
   entry(
     'googleAnalyticsListDataStreams',
     'Lists data streams on a property.',
     listDataStreams,
     'read',
+    { keywords: ['tracking', 'gtag'] },
   ),
   entry(
     'googleAnalyticsListDv360AdLinks',
@@ -504,12 +552,14 @@ export const googleAnalyticsTools = [
     'Lists Google Ads links on a property.',
     listGoogleAdsLinks,
     'read',
+    { keywords: ['adwords'] },
   ),
   entry(
     'googleAnalyticsListMeasurementProtocolSecrets',
     'Lists Measurement Protocol secrets on a property.',
     listMeasurementProtocolSecrets,
     'read',
+    { keywords: ['secret', 'api'] },
   ),
   entry(
     'googleAnalyticsListSearchAds360Links',
@@ -522,6 +572,7 @@ export const googleAnalyticsTools = [
     'Lists SKAdNetwork schemas for an iOS data stream.',
     listSkAdNetworkSchemas,
     'read',
+    { keywords: ['apple', 'attribution'] },
   ),
   entry(
     'googleAnalyticsListSubpropertyEventFilters',
@@ -540,19 +591,20 @@ export const googleAnalyticsTools = [
     'Lists reporting data annotations on a property.',
     listReportingDataAnnotations,
     'read',
+    { keywords: ['note', 'notes'] },
   ),
   entry(
     'googleAnalyticsSendEvents',
     'Sends server-side events via Measurement Protocol (API-secret auth).',
     sendEvents,
     'write',
-    { noAuth: true },
+    { noAuth: true, keywords: ['pageview', 'track', 'hit'] },
   ),
   entry(
     'googleAnalyticsValidateEvents',
     'Validates Measurement Protocol events without recording them.',
     validateEvents,
     'read',
-    { noAuth: true },
+    { noAuth: true, keywords: ['debug', 'track'] },
   ),
 ];

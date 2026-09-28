@@ -138,6 +138,7 @@ export const datadogTools = [
     tool: datadogAggregateLogs,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['log', 'analytics'],
   },
   {
     name: 'datadogSearchLogs',
@@ -145,6 +146,7 @@ export const datadogTools = [
     tool: datadogSearchLogs,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['log', 'grep'],
   },
   {
     name: 'datadogListLogIndexes',
@@ -152,6 +154,7 @@ export const datadogTools = [
     tool: datadogListLogIndexes,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['log'],
   },
   {
     name: 'datadogListMetrics',
@@ -159,6 +162,7 @@ export const datadogTools = [
     tool: datadogListMetrics,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['metric', 'browse'],
   },
   {
     name: 'datadogQueryMetrics',
@@ -166,6 +170,7 @@ export const datadogTools = [
     tool: datadogQueryMetrics,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['metric', 'graph', 'chart'],
   },
   {
     name: 'datadogSubmitMetrics',
@@ -173,6 +178,7 @@ export const datadogTools = [
     tool: datadogSubmitMetrics,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['metric', 'statsd', 'custom'],
   },
   {
     name: 'datadogCreateMonitor',
@@ -180,6 +186,7 @@ export const datadogTools = [
     tool: datadogCreateMonitor,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alert', 'alerts'],
   },
   {
     name: 'datadogGetMonitor',
@@ -187,6 +194,7 @@ export const datadogTools = [
     tool: datadogGetMonitor,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alert', 'alerts', 'status'],
   },
   {
     name: 'datadogListMonitors',
@@ -194,6 +202,7 @@ export const datadogTools = [
     tool: datadogListMonitors,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alert', 'alerts', 'browse'],
   },
   {
     name: 'datadogUpdateMonitor',
@@ -201,6 +210,7 @@ export const datadogTools = [
     tool: datadogUpdateMonitor,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alert', 'alerts'],
   },
   {
     name: 'datadogDeleteMonitor',
@@ -208,6 +218,7 @@ export const datadogTools = [
     tool: datadogDeleteMonitor,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['alert', 'alerts', 'remove'],
   },
   {
     name: 'datadogMuteMonitor',
@@ -215,6 +226,7 @@ export const datadogTools = [
     tool: datadogMuteMonitor,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alert', 'snooze', 'silence'],
   },
   {
     name: 'datadogUnmuteMonitor',
@@ -222,6 +234,7 @@ export const datadogTools = [
     tool: datadogUnmuteMonitor,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alert', 'resume'],
   },
   {
     name: 'datadogCreateDowntime',
@@ -229,6 +242,7 @@ export const datadogTools = [
     tool: datadogCreateDowntime,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['schedule', 'maintenance', 'silence'],
   },
   {
     name: 'datadogCreateDashboard',
@@ -236,6 +250,7 @@ export const datadogTools = [
     tool: datadogCreateDashboard,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['widget', 'widgets', 'screenboard', 'timeboard'],
   },
   {
     name: 'datadogGetDashboard',
@@ -243,6 +258,7 @@ export const datadogTools = [
     tool: datadogGetDashboard,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['widget', 'widgets'],
   },
   {
     name: 'datadogUpdateDashboard',
@@ -250,6 +266,7 @@ export const datadogTools = [
     tool: datadogUpdateDashboard,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['widget', 'widgets'],
   },
   {
     name: 'datadogDeleteDashboard',
@@ -257,6 +274,7 @@ export const datadogTools = [
     tool: datadogDeleteDashboard,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['widget', 'remove'],
   },
   {
     name: 'datadogListDashboards',
@@ -264,6 +282,7 @@ export const datadogTools = [
     tool: datadogListDashboards,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['widget', 'widgets', 'browse'],
   },
   {
     name: 'datadogCreateEvent',
@@ -271,6 +290,7 @@ export const datadogTools = [
     tool: datadogCreateEvent,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['deploy', 'annotation'],
   },
   {
     name: 'datadogListEvents',
@@ -278,6 +298,7 @@ export const datadogTools = [
     tool: datadogListEvents,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['deploy', 'incident'],
   },
   {
     name: 'datadogListHosts',
@@ -285,6 +306,7 @@ export const datadogTools = [
     tool: datadogListHosts,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['host', 'server', 'servers', 'agent'],
   },
   {
     name: 'datadogGetHostTags',
@@ -292,6 +314,7 @@ export const datadogTools = [
     tool: datadogGetHostTags,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['host', 'tag'],
   },
   {
     name: 'datadogListAllTags',
@@ -299,6 +322,7 @@ export const datadogTools = [
     tool: datadogListAllTags,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['tag', 'label', 'labels'],
   },
   {
     name: 'datadogUpdateHostTags',
@@ -306,6 +330,7 @@ export const datadogTools = [
     tool: datadogUpdateHostTags,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['host', 'tag', 'label'],
   },
   {
     name: 'datadogListApmServices',
@@ -313,6 +338,7 @@ export const datadogTools = [
     tool: datadogListApmServices,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['trace', 'profiling', 'service'],
   },
   {
     name: 'datadogSearchTraces',
@@ -320,6 +346,7 @@ export const datadogTools = [
     tool: datadogSearchTraces,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['span', 'spans', 'apm'],
   },
   {
     name: 'datadogSearchSpansAnalytics',
@@ -327,6 +354,7 @@ export const datadogTools = [
     tool: datadogSearchSpansAnalytics,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['analytics', 'apm', 'errors'],
   },
   {
     name: 'datadogCreateSyntheticApiTest',
@@ -334,6 +362,7 @@ export const datadogTools = [
     tool: datadogCreateSyntheticApiTest,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['uptime', 'ping', 'browser'],
   },
   {
     name: 'datadogListSynthetics',
@@ -341,6 +370,7 @@ export const datadogTools = [
     tool: datadogListSynthetics,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['uptime', 'test'],
   },
   {
     name: 'datadogGetSyntheticsLocations',
@@ -348,6 +378,7 @@ export const datadogTools = [
     tool: datadogGetSyntheticsLocations,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['uptime', 'region'],
   },
   {
     name: 'datadogListIncidents',
@@ -355,6 +386,7 @@ export const datadogTools = [
     tool: datadogListIncidents,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['incident', 'outage', 'postmortem'],
   },
   {
     name: 'datadogCreateSlo',
@@ -362,6 +394,7 @@ export const datadogTools = [
     tool: datadogCreateSlo,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['sli', 'reliability', 'error-budget'],
   },
   {
     name: 'datadogListSlos',
@@ -369,6 +402,7 @@ export const datadogTools = [
     tool: datadogListSlos,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['sli', 'reliability'],
   },
   {
     name: 'datadogListUsers',
@@ -376,6 +410,7 @@ export const datadogTools = [
     tool: datadogListUsers,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'datadogListRoles',
@@ -383,6 +418,7 @@ export const datadogTools = [
     tool: datadogListRoles,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'datadogGetUsageSummary',
@@ -390,6 +426,7 @@ export const datadogTools = [
     tool: datadogGetUsageSummary,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['billing', 'cost'],
   },
   {
     name: 'datadogListApiKeys',
@@ -397,6 +434,7 @@ export const datadogTools = [
     tool: datadogListApiKeys,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['token', 'rotate', 'secret'],
   },
   {
     name: 'datadogListAwsIntegrations',
@@ -404,6 +442,7 @@ export const datadogTools = [
     tool: datadogListAwsIntegrations,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'datadogCreateWebhook',
@@ -411,6 +450,7 @@ export const datadogTools = [
     tool: datadogCreateWebhook,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notify', 'slack', 'alerts'],
   },
   {
     name: 'datadogCreateEscalationPolicy',
@@ -418,6 +458,7 @@ export const datadogTools = [
     tool: datadogCreateEscalationPolicy,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oncall', 'on-call', 'page', 'paging'],
   },
   {
     name: 'datadogGetEscalationPolicy',
@@ -425,6 +466,7 @@ export const datadogTools = [
     tool: datadogGetEscalationPolicy,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall', 'on-call', 'page'],
   },
   {
     name: 'datadogUpdateEscalationPolicy',
@@ -432,6 +474,7 @@ export const datadogTools = [
     tool: datadogUpdateEscalationPolicy,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oncall', 'on-call'],
   },
   {
     name: 'datadogDeleteEscalationPolicy',
@@ -439,6 +482,7 @@ export const datadogTools = [
     tool: datadogDeleteEscalationPolicy,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['oncall', 'remove'],
   },
   {
     name: 'datadogCreateSchedule',
@@ -446,6 +490,7 @@ export const datadogTools = [
     tool: datadogCreateSchedule,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oncall', 'on-call', 'shift', 'rotation', 'rota'],
   },
   {
     name: 'datadogGetSchedule',
@@ -453,6 +498,7 @@ export const datadogTools = [
     tool: datadogGetSchedule,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall', 'on-call', 'shift'],
   },
   {
     name: 'datadogUpdateSchedule',
@@ -460,6 +506,7 @@ export const datadogTools = [
     tool: datadogUpdateSchedule,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oncall', 'on-call', 'shift'],
   },
   {
     name: 'datadogDeleteSchedule',
@@ -467,6 +514,7 @@ export const datadogTools = [
     tool: datadogDeleteSchedule,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['oncall', 'remove'],
   },
   {
     name: 'datadogGetScheduledOnCallUser',
@@ -474,6 +522,7 @@ export const datadogTools = [
     tool: datadogGetScheduledOnCallUser,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall', 'page', 'shift'],
   },
   {
     name: 'datadogCreateNotificationChannel',
@@ -481,6 +530,7 @@ export const datadogTools = [
     tool: datadogCreateNotificationChannel,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oncall', 'sms', 'page'],
   },
   {
     name: 'datadogGetNotificationChannel',
@@ -488,6 +538,7 @@ export const datadogTools = [
     tool: datadogGetNotificationChannel,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall'],
   },
   {
     name: 'datadogListNotificationChannels',
@@ -495,6 +546,7 @@ export const datadogTools = [
     tool: datadogListNotificationChannels,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall', 'sms'],
   },
   {
     name: 'datadogDeleteNotificationChannel',
@@ -502,6 +554,7 @@ export const datadogTools = [
     tool: datadogDeleteNotificationChannel,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['oncall', 'remove'],
   },
   {
     name: 'datadogCreateNotificationRule',
@@ -509,6 +562,7 @@ export const datadogTools = [
     tool: datadogCreateNotificationRule,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oncall', 'page'],
   },
   {
     name: 'datadogGetNotificationRule',
@@ -516,6 +570,7 @@ export const datadogTools = [
     tool: datadogGetNotificationRule,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall'],
   },
   {
     name: 'datadogListNotificationRules',
@@ -523,6 +578,7 @@ export const datadogTools = [
     tool: datadogListNotificationRules,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall'],
   },
   {
     name: 'datadogUpdateNotificationRule',
@@ -530,6 +586,7 @@ export const datadogTools = [
     tool: datadogUpdateNotificationRule,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oncall'],
   },
   {
     name: 'datadogDeleteNotificationRule',
@@ -537,6 +594,7 @@ export const datadogTools = [
     tool: datadogDeleteNotificationRule,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['oncall', 'remove'],
   },
   {
     name: 'datadogGetTeamOnCallUsers',
@@ -544,6 +602,7 @@ export const datadogTools = [
     tool: datadogGetTeamOnCallUsers,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall', 'page', 'responders'],
   },
   {
     name: 'datadogGetTeamRoutingRules',
@@ -551,6 +610,7 @@ export const datadogTools = [
     tool: datadogGetTeamRoutingRules,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oncall', 'escalation'],
   },
   {
     name: 'datadogSetTeamRoutingRules',
@@ -558,5 +618,6 @@ export const datadogTools = [
     tool: datadogSetTeamRoutingRules,
     requiredAuth: 'datadogCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oncall', 'escalation'],
   },
 ];

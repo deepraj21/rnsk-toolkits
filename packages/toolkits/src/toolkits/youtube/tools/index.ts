@@ -106,6 +106,7 @@ const auth = 'youtubeToken' as const;
 export const youtubeTools = [
   {
     name: 'youtubeAddVideoToPlaylist',
+    keywords: ['playlists', 'playlist', 'organize'],
     description: 'Adds a video to a playlist. Use to organize videos or build curated collections.',
     tool: addVideoToPlaylist,
     requiredAuth: auth,
@@ -113,6 +114,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeCreateChannelSection',
+    keywords: ['channel', 'channels', 'layout', 'homepage'],
     description:
       'Creates a channel section (featured playlists, uploads, channels) on your channel.',
     tool: createChannelSection,
@@ -121,6 +123,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeCreateCommentReply',
+    keywords: ['comments', 'comment', 'reply', 'respond'],
     description: 'Replies to an existing comment. Use to respond to users on videos.',
     tool: createCommentReply,
     requiredAuth: auth,
@@ -128,6 +131,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeCreatePlaylist',
+    keywords: ['playlists', 'playlist', 'collection'],
     description: 'Creates a new playlist on your channel.',
     tool: createPlaylist,
     requiredAuth: auth,
@@ -135,6 +139,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeDeleteChannelSection',
+    keywords: ['channel', 'layout', 'remove'],
     description: 'Deletes a channel section you have permission to remove.',
     tool: deleteChannelSection,
     requiredAuth: auth,
@@ -142,6 +147,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeDeleteComment',
+    keywords: ['comments', 'comment', 'remove'],
     description: 'Deletes a comment owned by your channel.',
     tool: deleteComment,
     requiredAuth: auth,
@@ -149,6 +155,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeDeletePlaylist',
+    keywords: ['playlists', 'playlist', 'remove'],
     description: 'Permanently deletes your playlist. Requires explicit confirmation.',
     tool: deletePlaylist,
     requiredAuth: auth,
@@ -156,6 +163,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeDeletePlaylistItem',
+    keywords: ['playlists', 'playlist', 'remove'],
     description: 'Removes a video from a playlist by playlist item ID.',
     tool: deletePlaylistItem,
     requiredAuth: auth,
@@ -163,6 +171,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeDeleteVideo',
+    keywords: ['videos', 'remove'],
     description: 'Permanently deletes your video. Requires explicit confirmation.',
     tool: deleteVideo,
     requiredAuth: auth,
@@ -170,6 +179,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeDownloadCaptionTrack',
+    keywords: ['captions', 'caption', 'subtitle', 'subtitles', 'transcript'],
     description: 'Downloads an owned caption track as text. Requires owning the video.',
     tool: downloadCaptionTrack,
     requiredAuth: auth,
@@ -177,6 +187,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeGetChannelActivities',
+    keywords: ['channel', 'channels', 'uploads', 'activity'],
     description: 'Gets recent channel activities (uploads, likes, playlist events).',
     tool: getChannelActivities,
     requiredAuth: auth,
@@ -184,6 +195,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeGetChannelIdByHandle',
+    keywords: ['channel', 'handle', 'username', 'id'],
     description: 'Resolves a channel handle or URL to its channel ID.',
     tool: getChannelIdByHandle,
     requiredAuth: auth,
@@ -191,6 +203,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeGetChannelStatistics',
+    keywords: ['channel', 'channels', 'subscribers', 'views', 'analytics', 'stats'],
     description: 'Gets subscriber, view, and video counts for channels.',
     tool: getChannelStatistics,
     requiredAuth: auth,
@@ -198,6 +211,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeGetVideoDetailsBatch',
+    keywords: ['videos', 'video', 'details', 'metrics', 'stats'],
     description: 'Retrieves details for many videos in one batched call. Use for cohort metrics.',
     tool: getVideoDetailsBatch,
     requiredAuth: auth,
@@ -205,6 +219,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeGetVideoRating',
+    keywords: ['videos', 'video', 'like', 'likes', 'dislike'],
     description: 'Checks your like/dislike ratings on videos.',
     tool: getVideoRating,
     requiredAuth: auth,
@@ -212,6 +227,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListCaptionTrack',
+    keywords: ['captions', 'caption', 'subtitles', 'subtitle', 'tracks'],
     description: 'Lists caption tracks for a video. Use track IDs to download or update.',
     tool: listCaptionTrack,
     requiredAuth: auth,
@@ -219,6 +235,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListChannelSections',
+    keywords: ['channel', 'sections', 'layout'],
     description: 'Retrieves channel homepage layout sections.',
     tool: listChannelSections,
     requiredAuth: auth,
@@ -226,6 +243,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListChannelVideos',
+    keywords: ['videos', 'video', 'channel', 'uploads'],
     description: 'Lists videos from a channel via its uploads playlist, with search fallback.',
     tool: listChannelVideos,
     requiredAuth: auth,
@@ -233,6 +251,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListChannels',
+    keywords: ['channel', 'mine', 'handle', 'username'],
     description: 'Lists channels by ID, handle, username, or ownership with full details.',
     tool: listChannels,
     requiredAuth: auth,
@@ -240,6 +259,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListCommentThreads',
+    keywords: ['comments', 'comment', 'thread', 'threads', 'replies'],
     description: 'Retrieves comment threads for a video or channel with replies.',
     tool: listCommentThreads,
     requiredAuth: auth,
@@ -247,6 +267,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListComments',
+    keywords: ['comment', 'replies', 'thread'],
     description: 'Lists individual comments by ID or replies to a parent comment.',
     tool: listComments,
     requiredAuth: auth,
@@ -254,6 +275,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListI18nLanguages',
+    keywords: ['language', 'languages', 'locale', 'i18n'],
     description: 'Lists interface languages YouTube supports.',
     tool: listI18nLanguages,
     requiredAuth: auth,
@@ -261,6 +283,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListI18nRegions',
+    keywords: ['region', 'regions', 'country', 'geo', 'i18n'],
     description: 'Lists content regions YouTube supports for geo filtering.',
     tool: listI18nRegions,
     requiredAuth: auth,
@@ -268,6 +291,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListLiveChatMessages',
+    keywords: ['chat', 'live', 'livestream', 'broadcast', 'comments'],
     description: 'Lists live chat messages for monitoring broadcasts or chat history.',
     tool: listLiveChatMessages,
     requiredAuth: auth,
@@ -275,6 +299,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListPlaylistImages',
+    keywords: ['playlists', 'playlist', 'thumbnail', 'thumbnails', 'image'],
     description: 'Retrieves custom thumbnail images for a playlist.',
     tool: listPlaylistImages,
     requiredAuth: auth,
@@ -282,6 +307,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListPlaylistItems',
+    keywords: ['videos', 'video', 'playlists', 'playlist'],
     description: 'Lists videos in a playlist with pagination.',
     tool: listPlaylistItems,
     requiredAuth: auth,
@@ -289,6 +315,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListSuperChatEvents',
+    keywords: ['superchat', 'live', 'donation', 'revenue', 'chat'],
     description: 'Lists Super Chat/Sticker purchases from the past 30 days.',
     tool: listSuperChatEvents,
     requiredAuth: auth,
@@ -296,6 +323,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListUserPlaylists',
+    keywords: ['playlists', 'playlist', 'mine', 'my'],
     description: 'Lists playlists owned by the authenticated user.',
     tool: listUserPlaylists,
     requiredAuth: auth,
@@ -303,6 +331,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListUserSubscriptions',
+    keywords: ['subscription', 'subscriptions', 'subscribed', 'channels', 'my'],
     description: 'Lists the authenticated user channel subscriptions.',
     tool: listUserSubscriptions,
     requiredAuth: auth,
@@ -310,6 +339,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListVideoAbuseReportReasons',
+    keywords: ['report', 'abuse', 'flag', 'reasons'],
     description: 'Lists valid abuse report reasons for use with reportVideoAbuse.',
     tool: listVideoAbuseReportReasons,
     requiredAuth: auth,
@@ -317,6 +347,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeListVideoCategories',
+    keywords: ['category', 'categories', 'genre'],
     description: 'Lists video categories for a region or by ID.',
     tool: listVideoCategories,
     requiredAuth: auth,
@@ -324,6 +355,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeMarkCommentAsSpam',
+    keywords: ['comments', 'comment', 'spam', 'moderate'],
     description: 'Flags comments as spam (deprecated endpoint, still functional).',
     tool: markCommentAsSpam,
     requiredAuth: auth,
@@ -331,6 +363,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeMultipartUploadVideo',
+    keywords: ['videos', 'video', 'upload', 'uploads', 'publish'],
     description: 'Uploads a video (metadata + bytes in one request) from a file URL.',
     tool: multipartUploadVideo,
     requiredAuth: auth,
@@ -338,6 +371,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubePostComment',
+    keywords: ['comments', 'comment', 'reply'],
     description: 'Posts a new top-level comment on a video.',
     tool: postComment,
     requiredAuth: auth,
@@ -345,6 +379,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeRateVideo',
+    keywords: ['videos', 'video', 'like', 'likes', 'dislike', 'unlike'],
     description: 'Likes, dislikes, or un-rates a video.',
     tool: rateVideo,
     requiredAuth: auth,
@@ -352,6 +387,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeReportVideoAbuse',
+    keywords: ['videos', 'video', 'report', 'flag', 'abuse'],
     description: 'Reports a video for abusive content.',
     tool: reportVideoAbuse,
     requiredAuth: auth,
@@ -359,6 +395,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeSearchYouTube',
+    keywords: ['videos', 'video', 'channels', 'search', 'find', 'query'],
     description: 'Searches YouTube for videos, channels, or playlists.',
     tool: searchYouTube,
     requiredAuth: auth,
@@ -366,6 +403,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeSetCommentModerationStatus',
+    keywords: ['comments', 'comment', 'moderate', 'approve', 'reject'],
     description: 'Holds, publishes, or rejects comments; optionally bans authors.',
     tool: setCommentModerationStatus,
     requiredAuth: auth,
@@ -373,6 +411,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeSubscribeChannel',
+    keywords: ['subscription', 'subscriptions', 'channel', 'follow', 'subscribe'],
     description: 'Subscribes you to a channel by channel ID.',
     tool: subscribeChannel,
     requiredAuth: auth,
@@ -380,6 +419,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUnsubscribeChannel',
+    keywords: ['subscription', 'subscriptions', 'unfollow', 'unsubscribe'],
     description: 'Removes a subscription by subscription ID.',
     tool: unsubscribeChannel,
     requiredAuth: auth,
@@ -387,6 +427,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUpdateCaption',
+    keywords: ['captions', 'caption', 'subtitle', 'subtitles'],
     description: 'Updates caption track metadata (name, language, draft status).',
     tool: updateCaption,
     requiredAuth: auth,
@@ -394,6 +435,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUpdateChannel',
+    keywords: ['channels', 'channel', 'branding', 'settings'],
     description: 'Updates owned channel branding, promotion, and localizations.',
     tool: updateChannel,
     requiredAuth: auth,
@@ -401,6 +443,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUpdateChannelSection',
+    keywords: ['channel', 'sections', 'layout'],
     description: 'Updates a channel section (title, position, featured content).',
     tool: updateChannelSection,
     requiredAuth: auth,
@@ -408,6 +451,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUpdateComment',
+    keywords: ['comments', 'comment', 'edit'],
     description: 'Edits the text of an existing comment.',
     tool: updateComment,
     requiredAuth: auth,
@@ -415,6 +459,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUpdatePlaylist',
+    keywords: ['playlists', 'playlist', 'title', 'privacy'],
     description: 'Updates playlist title, description, and privacy status.',
     tool: updatePlaylist,
     requiredAuth: auth,
@@ -422,6 +467,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUpdatePlaylistItem',
+    keywords: ['playlists', 'playlist', 'videos', 'reorder'],
     description: 'Reorders a playlist item or updates its note and privacy.',
     tool: updatePlaylistItem,
     requiredAuth: auth,
@@ -429,6 +475,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUpdateThumbnail',
+    keywords: ['videos', 'video', 'thumbnail', 'thumbnails', 'image'],
     description: 'Sets a custom video thumbnail from an image URL.',
     tool: updateThumbnail,
     requiredAuth: auth,
@@ -436,6 +483,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUpdateVideo',
+    keywords: ['videos', 'video', 'title', 'privacy', 'metadata'],
     description: 'Updates video title, description, tags, category, and privacy.',
     tool: updateVideo,
     requiredAuth: auth,
@@ -443,6 +491,7 @@ export const youtubeTools = [
   },
   {
     name: 'youtubeUploadVideo',
+    keywords: ['videos', 'video', 'uploads', 'publish', 'upload'],
     description: 'Uploads a video from a file URL via resumable session (best for large files).',
     tool: uploadVideo,
     requiredAuth: auth,

@@ -116,6 +116,7 @@ const auth = 'kubernetesCredentials' as const;
 export const kubernetesTools = [
   {
     name: 'kubernetesListNamespaces',
+    keywords: ['namespace', 'k8s', 'kubectl'],
     description:
       'List Kubernetes namespaces. Use to discover where workloads are deployed before other calls.',
     tool: kubernetesListNamespaces,
@@ -124,6 +125,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetNamespace',
+    keywords: ['namespaces', 'k8s', 'kubectl'],
     description: 'Get details of a namespace including labels, annotations and phase.',
     tool: kubernetesGetNamespace,
     requiredAuth: auth,
@@ -131,6 +133,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesCreateNamespace',
+    keywords: ['namespaces', 'k8s', 'kubectl', 'isolate'],
     description:
       'Create a new namespace, optionally with labels. Use to isolate a new application or environment.',
     tool: kubernetesCreateNamespace,
@@ -139,6 +142,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesDeleteNamespace',
+    keywords: ['namespaces', 'k8s', 'remove'],
     description:
       'Delete a namespace and everything in it. Irreversible — confirm with the user first.',
     tool: kubernetesDeleteNamespace,
@@ -147,6 +151,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListPods',
+    keywords: ['pod', 'k8s', 'kubectl', 'container', 'containers', 'workload'],
     description:
       'List pods in a namespace or across all namespaces. Returns phase, IP, node, restart counts and images. Use to check workload health.',
     tool: kubernetesListPods,
@@ -155,6 +160,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetPod',
+    keywords: ['pods', 'k8s', 'container', 'kubectl'],
     description:
       'Get full details of a pod including spec, container statuses, events-ready conditions and IPs.',
     tool: kubernetesGetPod,
@@ -163,6 +169,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetPodLogs',
+    keywords: ['pod', 'pods', 'log', 'logging', 'k8s', 'kubectl', 'debug', 'crash'],
     description:
       'Fetch container logs for a pod. Use to debug crashes, CrashLoopBackOff and application errors.',
     tool: kubernetesGetPodLogs,
@@ -171,6 +178,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesDeletePod',
+    keywords: ['pods', 'k8s', 'restart', 'kubectl', 'remove'],
     description:
       'Delete a pod to force a restart (the controller recreates it). Use to recover stuck pods or pick up new config.',
     tool: kubernetesDeletePod,
@@ -179,6 +187,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListDeployments',
+    keywords: ['deployment', 'k8s', 'kubectl', 'rollout', 'workload'],
     description:
       'List deployments in a namespace or across all namespaces. Returns desired vs available replica counts for rollout health.',
     tool: kubernetesListDeployments,
@@ -187,6 +196,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetDeployment',
+    keywords: ['deployments', 'k8s', 'rollout', 'kubectl'],
     description:
       'Get full details of a deployment including strategy, selector, pod template and rollout status.',
     tool: kubernetesGetDeployment,
@@ -195,6 +205,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesCreateDeployment',
+    keywords: ['deployments', 'deploy', 'k8s', 'kubectl', 'workload', 'image'],
     description:
       'Create a deployment from a container image with replicas, port and env vars. Use to deploy a new stateless workload.',
     tool: kubernetesCreateDeployment,
@@ -203,6 +214,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesScaleDeployment',
+    keywords: ['deployments', 'scale', 'scaling', 'replicas', 'k8s', 'kubectl'],
     description:
       'Scale a deployment to a replica count. Use to handle traffic spikes or scale down idle workloads.',
     tool: kubernetesScaleDeployment,
@@ -211,6 +223,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesRestartDeployment',
+    keywords: ['deployments', 'rollout', 'restart', 'k8s', 'kubectl', 'redeploy'],
     description:
       'Rolling-restart a deployment (kubectl rollout restart equivalent). Use to pick up new images with the same tag or fresh config.',
     tool: kubernetesRestartDeployment,
@@ -219,6 +232,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesDeleteDeployment',
+    keywords: ['deployments', 'k8s', 'remove'],
     description:
       'Delete a deployment and its pods. Services, config and PVCs are left untouched — confirm with the user first.',
     tool: kubernetesDeleteDeployment,
@@ -227,6 +241,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListStatefulSets',
+    keywords: ['statefulset', 'database', 'k8s', 'kubectl', 'workload'],
     description:
       'List StatefulSets for stateful workloads like databases and queues. Returns desired vs ready replicas.',
     tool: kubernetesListStatefulSets,
@@ -235,6 +250,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListDaemonSets',
+    keywords: ['daemonset', 'node', 'nodes', 'k8s', 'agent'],
     description:
       'List DaemonSets running node-level agents like log collectors and CNI plugins. Returns scheduling status.',
     tool: kubernetesListDaemonSets,
@@ -243,6 +259,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListReplicaSets',
+    keywords: ['replicaset', 'rollout', 'deployments', 'k8s'],
     description:
       'List ReplicaSets backing deployments. Use to inspect rollout history and old revisions during a stuck rollout.',
     tool: kubernetesListReplicaSets,
@@ -251,6 +268,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListServices',
+    keywords: ['service', 'k8s', 'endpoint', 'networking', 'discovery'],
     description:
       'List services in a namespace or across all namespaces. Returns type, cluster IP and ports for service discovery.',
     tool: kubernetesListServices,
@@ -259,6 +277,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetService',
+    keywords: ['services', 'k8s', 'endpoint', 'networking'],
     description:
       'Get full details of a service including selector, ports, endpoints-ready status and load balancer ingress.',
     tool: kubernetesGetService,
@@ -267,6 +286,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesCreateService',
+    keywords: ['services', 'expose', 'k8s', 'loadbalancer', 'networking'],
     description:
       'Create a ClusterIP, NodePort or LoadBalancer service for a set of pods. Use to expose a deployment inside or outside the cluster.',
     tool: kubernetesCreateService,
@@ -275,6 +295,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesDeleteService',
+    keywords: ['services', 'k8s', 'remove'],
     description:
       'Delete a service. Pods keep running but lose the stable endpoint — confirm with the user first.',
     tool: kubernetesDeleteService,
@@ -283,6 +304,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListIngresses',
+    keywords: ['ingress', 'routing', 'http', 'k8s', 'external'],
     description:
       'List ingresses with hosts, paths and backend services. Use to audit external HTTP routing into the cluster.',
     tool: kubernetesListIngresses,
@@ -291,6 +313,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetIngress',
+    keywords: ['ingresses', 'tls', 'routing', 'k8s'],
     description:
       'Get full ingress details including TLS config, rules, paths and load balancer status.',
     tool: kubernetesGetIngress,
@@ -299,6 +322,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListConfigMaps',
+    keywords: ['configmap', 'config', 'configuration', 'k8s'],
     description:
       'List ConfigMaps. Returns names and data keys only (never values) for config auditing.',
     tool: kubernetesListConfigMaps,
@@ -307,6 +331,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetConfigMap',
+    keywords: ['configmaps', 'config', 'configuration', 'k8s'],
     description:
       'Get a ConfigMap including its data. Use to inspect application configuration mounted into pods.',
     tool: kubernetesGetConfigMap,
@@ -315,6 +340,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesCreateConfigMap',
+    keywords: ['configmaps', 'config', 'configuration', 'k8s'],
     description:
       'Create a ConfigMap from key/value pairs. Use to add non-sensitive configuration for pods to consume.',
     tool: kubernetesCreateConfigMap,
@@ -323,6 +349,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListSecrets',
+    keywords: ['secret', 'k8s', 'credentials'],
     description:
       'List secrets returning metadata and data keys only — values are never exposed. Use to audit secret presence and types.',
     tool: kubernetesListSecrets,
@@ -331,6 +358,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListPersistentVolumeClaims',
+    keywords: ['pvc', 'storage', 'volume', 'volumes', 'k8s', 'claim'],
     description:
       'List PersistentVolumeClaims with bound volumes, storage class, capacity and phase. Use to debug Pending pods waiting on storage.',
     tool: kubernetesListPersistentVolumeClaims,
@@ -339,6 +367,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetPersistentVolumeClaim',
+    keywords: ['pvc', 'storage', 'volume', 'k8s'],
     description:
       'Get a PersistentVolumeClaim including access modes, resources, selectors and bound volume details.',
     tool: kubernetesGetPersistentVolumeClaim,
@@ -347,6 +376,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListPersistentVolumes',
+    keywords: ['pv', 'storage', 'volume', 'volumes', 'k8s', 'capacity'],
     description:
       'List cluster PersistentVolumes with capacity, reclaim policy, storage class and claim binding. Use for storage capacity planning.',
     tool: kubernetesListPersistentVolumes,
@@ -355,6 +385,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListNodes',
+    keywords: ['node', 'k8s', 'kubectl', 'cluster', 'capacity'],
     description:
       'List cluster nodes with Ready status, capacity, allocatable resources and versions. Use for capacity and upgrade planning.',
     tool: kubernetesListNodes,
@@ -363,6 +394,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetNode',
+    keywords: ['nodes', 'k8s', 'cluster'],
     description:
       'Get full node details including addresses, taints, images, volumes and system info.',
     tool: kubernetesGetNode,
@@ -371,6 +403,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesCordonNode',
+    keywords: ['nodes', 'k8s', 'kubectl', 'drain', 'maintenance', 'unschedulable'],
     description:
       'Mark a node unschedulable (kubectl cordon equivalent). Use before draining or maintaining a node.',
     tool: kubernetesCordonNode,
@@ -379,6 +412,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesUncordonNode',
+    keywords: ['nodes', 'k8s', 'kubectl', 'schedulable', 'maintenance'],
     description:
       'Mark a node schedulable again (kubectl uncordon equivalent). Use after maintenance completes.',
     tool: kubernetesUncordonNode,
@@ -387,6 +421,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListJobs',
+    keywords: ['job', 'batch', 'k8s', 'task'],
     description:
       'List batch jobs with active/succeeded/failed counts. Use to check one-off task and migration outcomes.',
     tool: kubernetesListJobs,
@@ -395,6 +430,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListCronJobs',
+    keywords: ['cronjob', 'cron', 'schedule', 'scheduled', 'k8s', 'recurring'],
     description:
       'List CronJobs with schedules, suspend state and last schedule time. Use to audit recurring workloads.',
     tool: kubernetesListCronJobs,
@@ -403,6 +439,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesCreateJob',
+    keywords: ['jobs', 'batch', 'migration', 'k8s', 'task'],
     description:
       'Create a one-off batch job from a container image and command. Use for migrations, scripts and manual triggers of cron work.',
     tool: kubernetesCreateJob,
@@ -411,6 +448,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesDeleteJob',
+    keywords: ['jobs', 'k8s', 'remove', 'cleanup'],
     description: 'Delete a batch job and its pods. Use to clean up finished or stuck jobs.',
     tool: kubernetesDeleteJob,
     requiredAuth: auth,
@@ -418,6 +456,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListHorizontalPodAutoscalers',
+    keywords: ['hpa', 'autoscale', 'autoscaling', 'scale', 'scaling', 'k8s'],
     description:
       'List HorizontalPodAutoscalers with current vs desired replicas, targets and scaling status.',
     tool: kubernetesListHorizontalPodAutoscalers,
@@ -426,6 +465,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetHorizontalPodAutoscaler',
+    keywords: ['hpa', 'autoscale', 'autoscaling', 'scale', 'k8s'],
     description:
       'Get an HPA including scale target, metrics (CPU/memory/custom) and recent scaling conditions.',
     tool: kubernetesGetHorizontalPodAutoscaler,
@@ -434,6 +474,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesGetClusterVersion',
+    keywords: ['version', 'k8s', 'upgrade', 'cluster'],
     description:
       'Get the Kubernetes server version, git commit and platform. Use to check upgrade status and API compatibility.',
     tool: kubernetesGetClusterVersion,
@@ -442,6 +483,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListApiGroups',
+    keywords: ['api', 'apis', 'version', 'k8s'],
     description:
       'Discover available API groups and versions (apps/v1, batch/v1, networking.k8s.io/v1...). Use to check feature support before other calls.',
     tool: kubernetesListApiGroups,
@@ -450,6 +492,7 @@ export const kubernetesTools = [
   },
   {
     name: 'kubernetesListEvents',
+    keywords: ['event', 'warning', 'warnings', 'k8s', 'debug'],
     description:
       'List cluster events (warnings, scheduling failures, image pulls). Use first when debugging unhealthy resources.',
     tool: kubernetesListEvents,

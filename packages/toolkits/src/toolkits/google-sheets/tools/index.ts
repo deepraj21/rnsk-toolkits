@@ -24,6 +24,7 @@ export const googleSheetsTools = [
     tool: listSpreadsheets,
     requiredAuth: 'googleSheetsToken' as const,
     scope: 'read' as const,
+    keywords: ['workbook', 'files', 'find'],
   },
   {
     name: 'googleSheetsGetSpreadsheet',
@@ -31,6 +32,7 @@ export const googleSheetsTools = [
     tool: getSpreadsheet,
     requiredAuth: 'googleSheetsToken' as const,
     scope: 'read' as const,
+    keywords: ['workbook', 'info'],
   },
   {
     name: 'googleSheetsGetValues',
@@ -38,6 +40,7 @@ export const googleSheetsTools = [
     tool: getValues,
     requiredAuth: 'googleSheetsToken' as const,
     scope: 'read' as const,
+    keywords: ['read', 'cells', 'range', 'data'],
   },
   {
     name: 'googleSheetsAppendValues',
@@ -46,6 +49,7 @@ export const googleSheetsTools = [
     tool: appendValues,
     requiredAuth: 'googleSheetsToken' as const,
     scope: 'write' as const,
+    keywords: ['add', 'rows', 'insert'],
   },
   {
     name: 'googleSheetsUpdateValues',
@@ -53,6 +57,7 @@ export const googleSheetsTools = [
     tool: updateValues,
     requiredAuth: 'googleSheetsToken' as const,
     scope: 'write' as const,
+    keywords: ['edit', 'write', 'cells'],
   },
   {
     name: 'googleSheetsClearValues',
@@ -61,6 +66,7 @@ export const googleSheetsTools = [
     tool: clearValues,
     requiredAuth: 'googleSheetsToken' as const,
     scope: 'delete' as const,
+    keywords: ['delete', 'remove', 'empty'],
   },
   {
     name: 'googleSheetsCreateSpreadsheet',
@@ -69,5 +75,6 @@ export const googleSheetsTools = [
     tool: createSpreadsheet,
     requiredAuth: 'googleSheetsToken' as const,
     scope: 'write' as const,
+    keywords: ['new', 'workbook'],
   },
 ];

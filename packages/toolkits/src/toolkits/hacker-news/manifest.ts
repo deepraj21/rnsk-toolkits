@@ -16,6 +16,7 @@ export default defineToolkit({
       description: entry.description,
       tool: entry.tool,
       scope: entry.scope,
+      keywords: (entry as { keywords?: string[] }).keywords ?? [],
     }),
   ),
   meta: {

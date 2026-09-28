@@ -50,6 +50,7 @@ export const cloudflareTools = [
     tool: cloudflareCreateDnsRecord,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'write' as const,
+    keywords: ['cname', 'txt'],
   },
   {
     name: 'cloudflareListDnsRecords',
@@ -64,6 +65,7 @@ export const cloudflareTools = [
     tool: cloudflareUpdateDnsRecord,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'cloudflareDeleteDnsRecord',
@@ -71,6 +73,7 @@ export const cloudflareTools = [
     tool: cloudflareDeleteDnsRecord,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'cloudflareListZones',
@@ -78,6 +81,7 @@ export const cloudflareTools = [
     tool: cloudflareListZones,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['domain', 'domains'],
   },
   {
     name: 'cloudflareCreateZone',
@@ -85,6 +89,7 @@ export const cloudflareTools = [
     tool: cloudflareCreateZone,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'write' as const,
+    keywords: ['domain'],
   },
   {
     name: 'cloudflareUpdateZone',
@@ -92,6 +97,7 @@ export const cloudflareTools = [
     tool: cloudflareUpdateZone,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'write' as const,
+    keywords: ['pause', 'domain'],
   },
   {
     name: 'cloudflareDeleteZone',
@@ -99,6 +105,7 @@ export const cloudflareTools = [
     tool: cloudflareDeleteZone,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'domain'],
   },
   {
     name: 'cloudflareListAccounts',
@@ -106,6 +113,7 @@ export const cloudflareTools = [
     tool: cloudflareListAccounts,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['account'],
   },
   {
     name: 'cloudflareListAccountMembers',
@@ -113,6 +121,7 @@ export const cloudflareTools = [
     tool: cloudflareListAccountMembers,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['member', 'user'],
   },
   {
     name: 'cloudflareCreateList',
@@ -120,6 +129,7 @@ export const cloudflareTools = [
     tool: cloudflareCreateList,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'write' as const,
+    keywords: ['allowlist', 'blocklist', 'waf'],
   },
   {
     name: 'cloudflareListWafLists',
@@ -127,6 +137,7 @@ export const cloudflareTools = [
     tool: cloudflareListWafLists,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['allowlist', 'blocklist'],
   },
   {
     name: 'cloudflareUpdateList',
@@ -134,6 +145,7 @@ export const cloudflareTools = [
     tool: cloudflareUpdateList,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'cloudflareDeleteList',
@@ -141,6 +153,7 @@ export const cloudflareTools = [
     tool: cloudflareDeleteList,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'cloudflareListFirewallRules',
@@ -148,6 +161,7 @@ export const cloudflareTools = [
     tool: cloudflareListFirewallRules,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'rule'],
   },
   {
     name: 'cloudflareGetBotManagementSettings',
@@ -155,6 +169,7 @@ export const cloudflareTools = [
     tool: cloudflareGetBotManagementSettings,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['bots', 'protection'],
   },
   {
     name: 'cloudflareListMonitors',
@@ -162,6 +177,7 @@ export const cloudflareTools = [
     tool: cloudflareListMonitors,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['monitor', 'healthcheck'],
   },
   {
     name: 'cloudflareListPools',
@@ -169,6 +185,7 @@ export const cloudflareTools = [
     tool: cloudflareListPools,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['pool', 'origin'],
   },
   {
     name: 'cloudflareListTunnels',
@@ -176,6 +193,7 @@ export const cloudflareTools = [
     tool: cloudflareListTunnels,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'read' as const,
+    keywords: ['tunnel', 'cloudflared'],
   },
   {
     name: 'cloudflareUpdateTunnelConfiguration',
@@ -183,5 +201,6 @@ export const cloudflareTools = [
     tool: cloudflareUpdateTunnelConfiguration,
     requiredAuth: 'cloudflareApiKey' as const,
     scope: 'write' as const,
+    keywords: ['tunnel', 'ingress', 'config'],
   },
 ];

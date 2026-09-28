@@ -311,6 +311,7 @@ export const nasaTools = [
   },
   {
     name: 'nasaSearchNearEarthObjects',
+    keywords: ['neo', 'neos'],
     description: nasaSearchNearEarthObjects.description!,
     requiredAuth: 'nasaApiKey' as const,
     tool: nasaSearchNearEarthObjects,
@@ -318,6 +319,7 @@ export const nasaTools = [
   },
   {
     name: 'nasaGetApod',
+    keywords: ['photo', 'photos'],
     description: nasaGetApod.description!,
     requiredAuth: 'nasaApiKey' as const,
     tool: nasaGetApod,
@@ -325,6 +327,7 @@ export const nasaTools = [
   },
   {
     name: 'nasaGetMarsRoverPhotos',
+    keywords: ['photo'],
     description: nasaGetMarsRoverPhotos.description!,
     requiredAuth: 'nasaApiKey' as const,
     tool: nasaGetMarsRoverPhotos,
@@ -339,6 +342,7 @@ export const nasaTools = [
   },
   {
     name: 'nasaGetEpicNatural',
+    keywords: ['blue', 'marble'],
     description: nasaGetEpicNatural.description!,
     requiredAuth: 'nasaApiKey' as const,
     tool: nasaGetEpicNatural,
@@ -353,6 +357,7 @@ export const nasaTools = [
   },
   {
     name: 'nasaGetEpicEnhanced',
+    keywords: ['blue', 'marble'],
     description: nasaGetEpicEnhanced.description!,
     requiredAuth: 'nasaApiKey' as const,
     tool: nasaGetEpicEnhanced,
@@ -550,6 +555,7 @@ export const nasaTools = [
   },
   {
     name: 'nasaGetEonetCategoryEvents',
+    keywords: ['eruption', 'volcano', 'wildfire', 'storm', 'ash'],
     description: nasaGetEonetCategoryEvents.description!,
     tool: nasaGetEonetCategoryEvents,
     scope: 'read' as const,
@@ -562,6 +568,7 @@ export const nasaTools = [
   },
   {
     name: 'nasaGetEonetEvents',
+    keywords: ['wildfire', 'eruption', 'eruptions', 'earthquake', 'flood'],
     description: nasaGetEonetEvents.description!,
     tool: nasaGetEonetEvents,
     scope: 'read' as const,

@@ -33,6 +33,7 @@ export const grafanaTools = [
     tool: createOtlpV1Logs,
     requiredAuth: 'grafanaCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ingest', 'push'],
   },
   {
     name: 'grafanaGetDistributorHaTracker',
@@ -41,6 +42,7 @@ export const grafanaTools = [
     tool: getDistributorHaTracker,
     requiredAuth: 'grafanaCredentials' as const,
     scope: 'read' as const,
+    keywords: ['leader', 'election'],
   },
   {
     name: 'grafanaGetHealth',
@@ -49,6 +51,7 @@ export const grafanaTools = [
     tool: getHealth,
     requiredAuth: 'grafanaCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'ping', 'uptime'],
   },
   {
     name: 'grafanaGetIndexGatewayRing',
@@ -80,6 +83,7 @@ export const grafanaTools = [
     tool: getStatus,
     requiredAuth: 'grafanaCredentials' as const,
     scope: 'read' as const,
+    keywords: ['license', 'licensing'],
   },
   {
     name: 'grafanaGetStoreGatewayTenants',
@@ -88,6 +92,7 @@ export const grafanaTools = [
     tool: getStoreGatewayTenants,
     requiredAuth: 'grafanaCredentials' as const,
     scope: 'read' as const,
+    keywords: ['tenant'],
   },
   {
     name: 'grafanaPostAcs',
@@ -96,6 +101,7 @@ export const grafanaTools = [
     tool: postAcs,
     requiredAuth: 'grafanaCredentials' as const,
     scope: 'write' as const,
+    keywords: ['saml', 'sso', 'login'],
   },
   {
     name: 'grafanaQueryPublicDashboard',
@@ -104,6 +110,7 @@ export const grafanaTools = [
     tool: queryPublicDashboard,
     requiredAuth: 'grafanaCredentials' as const,
     scope: 'read' as const,
+    keywords: ['chart', 'graph'],
   },
   {
     name: 'grafanaRetrieveJwks',
@@ -112,5 +119,6 @@ export const grafanaTools = [
     tool: retrieveJwks,
     requiredAuth: 'grafanaCredentials' as const,
     scope: 'read' as const,
+    keywords: ['jwt', 'token', 'auth'],
   },
 ];

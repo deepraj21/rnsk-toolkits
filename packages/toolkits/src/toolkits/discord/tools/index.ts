@@ -61,6 +61,7 @@ export const discordTools = [
     tool: discordGetMyUser,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['whoami', 'profile'],
   },
   {
     name: 'discordGetUser',
@@ -68,6 +69,7 @@ export const discordTools = [
     tool: discordGetUser,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['profile'],
   },
   {
     name: 'discordGetOpenIdUserinfo',
@@ -75,6 +77,7 @@ export const discordTools = [
     tool: discordGetOpenIdUserinfo,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['openid', 'oidc'],
   },
   {
     name: 'discordGetMyOAuth2Authorization',
@@ -82,6 +85,7 @@ export const discordTools = [
     tool: discordGetMyOAuth2Authorization,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['auth', 'token'],
   },
   {
     name: 'discordGetPublicKeys',
@@ -89,6 +93,7 @@ export const discordTools = [
     tool: discordGetPublicKeys,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['jwks', 'key', 'jwt'],
   },
   {
     name: 'discordListMyConnections',
@@ -96,6 +101,7 @@ export const discordTools = [
     tool: discordListMyConnections,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['linked', 'account'],
   },
   {
     name: 'discordGetMyGuildMember',
@@ -103,6 +109,7 @@ export const discordTools = [
     tool: discordGetMyGuildMember,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['server', 'role'],
   },
   {
     name: 'discordListMyGuilds',
@@ -110,6 +117,7 @@ export const discordTools = [
     tool: discordListMyGuilds,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['server', 'servers'],
   },
   {
     name: 'discordGetGuildTemplate',
@@ -117,6 +125,7 @@ export const discordTools = [
     tool: discordGetGuildTemplate,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['server', 'blueprint', 'clone'],
   },
   {
     name: 'discordGetGuildWidget',
@@ -124,6 +133,7 @@ export const discordTools = [
     tool: discordGetGuildWidget,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['server', 'online'],
   },
   {
     name: 'discordGetGuildWidgetPng',
@@ -131,6 +141,7 @@ export const discordTools = [
     tool: discordGetGuildWidgetPng,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['server', 'widget', 'image'],
   },
   {
     name: 'discordResolveInvite',
@@ -138,6 +149,7 @@ export const discordTools = [
     tool: discordResolveInvite,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['server', 'join', 'code'],
   },
   {
     name: 'discordEditCommandPermissions',
@@ -145,6 +157,7 @@ export const discordTools = [
     tool: discordEditCommandPermissions,
     requiredAuth: 'discordToken' as const,
     scope: 'write' as const,
+    keywords: ['slash', 'permission', 'server'],
   },
   {
     name: 'discordGetCommandPermissions',
@@ -152,6 +165,7 @@ export const discordTools = [
     tool: discordGetCommandPermissions,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['slash', 'permission', 'server'],
   },
   {
     name: 'discordGetBatchCommandPermissions',
@@ -159,6 +173,7 @@ export const discordTools = [
     tool: discordGetBatchCommandPermissions,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['slash', 'permission', 'server'],
   },
   {
     name: 'discordGetMyEntitlements',
@@ -166,6 +181,7 @@ export const discordTools = [
     tool: discordGetMyEntitlements,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['entitlement', 'subscription', 'premium'],
   },
   {
     name: 'discordGetRoleConnection',
@@ -173,6 +189,7 @@ export const discordTools = [
     tool: discordGetRoleConnection,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['linked', 'role'],
   },
   {
     name: 'discordUpdateRoleConnection',
@@ -180,6 +197,7 @@ export const discordTools = [
     tool: discordUpdateRoleConnection,
     requiredAuth: 'discordToken' as const,
     scope: 'write' as const,
+    keywords: ['linked', 'role'],
   },
   {
     name: 'discordDeleteRoleConnection',
@@ -187,6 +205,7 @@ export const discordTools = [
     tool: discordDeleteRoleConnection,
     requiredAuth: 'discordToken' as const,
     scope: 'delete' as const,
+    keywords: ['role', 'unlink', 'remove'],
   },
   {
     name: 'discordGetSkuSubscription',
@@ -194,6 +213,7 @@ export const discordTools = [
     tool: discordGetSkuSubscription,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['subscription', 'premium'],
   },
   {
     name: 'discordListSkuSubscriptions',
@@ -201,6 +221,7 @@ export const discordTools = [
     tool: discordListSkuSubscriptions,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['subscription', 'premium'],
   },
   {
     name: 'discordGetGateway',
@@ -208,6 +229,7 @@ export const discordTools = [
     tool: discordGetGateway,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['websocket', 'realtime', 'bot'],
   },
   {
     name: 'discordListStickerPacks',
@@ -215,5 +237,6 @@ export const discordTools = [
     tool: discordListStickerPacks,
     requiredAuth: 'discordToken' as const,
     scope: 'read' as const,
+    keywords: ['sticker', 'emoji'],
   },
 ];

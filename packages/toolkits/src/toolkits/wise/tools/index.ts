@@ -29,6 +29,7 @@ export const wiseTools = [
     tool: wiseCreateQuote,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'write' as const,
+    keywords: ['transfer', 'estimate'],
   },
   {
     name: 'wiseGetExchangeRate',
@@ -37,6 +38,7 @@ export const wiseTools = [
     tool: wiseGetExchangeRate,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'read' as const,
+    keywords: ['forex', 'conversion'],
   },
   {
     name: 'wiseGetQuote',
@@ -45,6 +47,7 @@ export const wiseTools = [
     tool: wiseGetQuote,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'read' as const,
+    keywords: ['price', 'transfer'],
   },
   {
     name: 'wiseListActivities',
@@ -53,6 +56,7 @@ export const wiseTools = [
     tool: wiseListActivities,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'read' as const,
+    keywords: ['activity', 'history', 'transactions'],
   },
   {
     name: 'wiseListBalances',
@@ -61,6 +65,7 @@ export const wiseTools = [
     tool: wiseListBalances,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'read' as const,
+    keywords: ['balance', 'money'],
   },
   {
     name: 'wiseListCurrencies',
@@ -69,6 +74,7 @@ export const wiseTools = [
     tool: wiseListCurrencies,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'read' as const,
+    keywords: ['currency'],
   },
   {
     name: 'wiseListProfiles',
@@ -77,6 +83,7 @@ export const wiseTools = [
     tool: wiseListProfiles,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'read' as const,
+    keywords: ['profile', 'account'],
   },
   {
     name: 'wiseListRecipients',
@@ -85,6 +92,7 @@ export const wiseTools = [
     tool: wiseListRecipients,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'read' as const,
+    keywords: ['recipient', 'beneficiary'],
   },
   {
     name: 'wiseListTransfers',
@@ -93,5 +101,6 @@ export const wiseTools = [
     tool: wiseListTransfers,
     requiredAuth: 'wiseApiKey' as const,
     scope: 'read' as const,
+    keywords: ['transfer', 'payment', 'transaction'],
   },
 ];

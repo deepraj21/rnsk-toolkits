@@ -349,10 +349,18 @@ function entry(
   toolRef: any,
   scope: Scope,
   noAuth = false,
-): { name: string; description: string; tool: any; requiredAuth?: typeof auth; scope: Scope } {
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth?: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
   return noAuth
-    ? { name, description, tool: toolRef, scope }
-    : { name, description, tool: toolRef, requiredAuth: auth, scope };
+    ? { name, description, tool: toolRef, scope, keywords }
+    : { name, description, tool: toolRef, requiredAuth: auth, scope, keywords };
 }
 
 export const newRelicTools = [
@@ -362,7 +370,14 @@ export const newRelicTools = [
     executeNrqlQuery,
     'read',
   ),
-  entry('newRelicQueryError', 'Queries error data with a custom NRQL query.', queryError, 'read'),
+  entry(
+    'newRelicQueryError',
+    'Queries error data with a custom NRQL query.',
+    queryError,
+    'read',
+    false,
+    ['errors'],
+  ),
   entry(
     'newRelicQueryExampleReadQuery',
     'Executes any raw GraphQL read query against NerdGraph.',
@@ -374,6 +389,8 @@ export const newRelicTools = [
     'Searches entities by name/type/domain; returns GUIDs (200/page).',
     searchEntities,
     'read',
+    false,
+    ['entity', 'lookup', 'guid'],
   ),
   entry(
     'newRelicFetchRulesCollection',
@@ -777,7 +794,14 @@ export const newRelicTools = [
     'write',
   ),
   entry('newRelicGetSynthMonitor', 'Reads one synthetic monitor by UUID.', getSynthMonitor, 'read'),
-  entry('newRelicListMonitors', 'Lists synthetic monitors (limit/offset).', listMonitors, 'read'),
+  entry(
+    'newRelicListMonitors',
+    'Lists synthetic monitors (limit/offset).',
+    listMonitors,
+    'read',
+    false,
+    ['uptime', 'downtime'],
+  ),
   entry('newRelicPatchMonitor', 'Partially updates a synthetic monitor.', patchMonitor, 'write'),
   entry(
     'newRelicUpdateSynthMonitor',
@@ -803,6 +827,8 @@ export const newRelicTools = [
     'Creates a ping monitor via NerdGraph.',
     createSyntheticsSimpleMonitor,
     'write',
+    false,
+    ['uptime', 'downtime'],
   ),
   entry(
     'newRelicUpdateSyntheticsSimpleMonitor',
@@ -1005,8 +1031,17 @@ export const newRelicTools = [
     'Creates an SLI with optional SLO targets.',
     createServiceLevel,
     'write',
+    false,
+    ['sla', 'availability'],
   ),
-  entry('newRelicUpdateServiceLevel', 'Updates an SLI/objectives.', updateServiceLevel, 'write'),
+  entry(
+    'newRelicUpdateServiceLevel',
+    'Updates an SLI/objectives.',
+    updateServiceLevel,
+    'write',
+    false,
+    ['sla'],
+  ),
   entry('newRelicUpdateWorkload', 'Updates a workload configuration.', updateWorkload, 'write'),
   entry('newRelicDuplicateWorkload', 'Clones a workload.', duplicateWorkload, 'write'),
   entry('newRelicDeleteWorkload', 'Permanently deletes a workload.', deleteWorkload, 'delete'),
@@ -1180,5 +1215,6 @@ export const newRelicTools = [
     sendTraces,
     'write',
     true,
+    ['tracing'],
   ),
 ];

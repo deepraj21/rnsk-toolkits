@@ -39,10 +39,18 @@ function entry(
   toolRef: any,
   scope: Scope,
   noAuth = false,
-): { name: string; description: string; tool: any; requiredAuth?: typeof auth; scope: Scope } {
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth?: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
   return noAuth
-    ? { name, description, tool: toolRef, scope }
-    : { name, description, tool: toolRef, requiredAuth: auth, scope };
+    ? { name, description, tool: toolRef, scope, keywords }
+    : { name, description, tool: toolRef, requiredAuth: auth, scope, keywords };
 }
 
 export const npmTools = [
@@ -52,6 +60,7 @@ export const npmTools = [
     getDownloadCountsPoint,
     'read',
     true,
+    ['downloads', 'stats'],
   ),
   entry(
     'npmGetAllPackagesDownloadPoint',
@@ -59,6 +68,7 @@ export const npmTools = [
     getAllPackagesDownloadPoint,
     'read',
     true,
+    ['downloads', 'stats', 'total'],
   ),
   entry(
     'npmGetDownloadCountsRangePackage',
@@ -66,6 +76,7 @@ export const npmTools = [
     getDownloadCountsRangePackage,
     'read',
     true,
+    ['downloads', 'daily', 'history'],
   ),
   entry(
     'npmGetDownloadRangeAll',
@@ -73,6 +84,7 @@ export const npmTools = [
     getDownloadRangeAll,
     'read',
     true,
+    ['downloads', 'daily'],
   ),
   entry(
     'npmGetVersionDownloads',
@@ -80,6 +92,7 @@ export const npmTools = [
     getVersionDownloads,
     'read',
     true,
+    ['downloads', 'version', 'versions'],
   ),
   entry(
     'npmRegistryGetPackage',
@@ -87,6 +100,7 @@ export const npmTools = [
     getPackageMetadata,
     'read',
     true,
+    ['package', 'info', 'version'],
   ),
   entry(
     'npmRegistrySearchPackages',
@@ -94,6 +108,7 @@ export const npmTools = [
     searchPackages,
     'read',
     true,
+    ['find', 'package', 'discover'],
   ),
   entry(
     'npmRegistryGetRoot',
@@ -101,6 +116,7 @@ export const npmTools = [
     getRegistryRoot,
     'read',
     true,
+    ['stats', 'status'],
   ),
   entry(
     'npmGetRegistryChanges',
@@ -108,12 +124,15 @@ export const npmTools = [
     getRegistryChanges,
     'read',
     true,
+    ['feed', 'sync', 'replication'],
   ),
   entry(
     'npmGetRegistryMeta',
     "Calls registry meta endpoints 'ping' (public) or 'whoami' (authed).",
     getRegistryMeta,
     'read',
+    false,
+    ['ping', 'whoami', 'health'],
   ),
   entry(
     'npmQueryBulkSecurityAdvisories',
@@ -121,11 +140,14 @@ export const npmTools = [
     queryBulkSecurityAdvisories,
     'read',
     true,
+    ['vulnerability', 'vulnerabilities', 'security', 'audit'],
   ),
   entry(
     'npmDeleteUserTokenLegacy',
     'Revokes a user auth token via the legacy endpoint.',
     deleteUserTokenLegacy,
     'delete',
+    false,
+    ['revoke', 'token', 'remove'],
   ),
 ];

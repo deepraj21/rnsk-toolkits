@@ -55,6 +55,7 @@ export const googleMapsTools = [
     tool: autocompletePlaces,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['suggestions', 'search'],
   },
   {
     name: 'googleMapsGetPlaceDetails',
@@ -62,6 +63,7 @@ export const googleMapsTools = [
     tool: getPlaceDetails,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['info', 'place'],
   },
   {
     name: 'googleMapsTextSearchPlaces',
@@ -69,6 +71,7 @@ export const googleMapsTools = [
     tool: textSearchPlaces,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['find'],
   },
   {
     name: 'googleMapsNearbySearchPlaces',
@@ -76,6 +79,7 @@ export const googleMapsTools = [
     tool: nearbySearchPlaces,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['near', 'around'],
   },
   {
     name: 'googleMapsGetPlacePhoto',
@@ -83,6 +87,7 @@ export const googleMapsTools = [
     tool: getPlacePhoto,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['picture', 'image'],
   },
   {
     name: 'googleMapsGeocodeAddressWithQuery',
@@ -90,6 +95,7 @@ export const googleMapsTools = [
     tool: geocodeAddressWithQuery,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['latitude', 'longitude', 'lat', 'lng'],
   },
   {
     name: 'googleMapsGeocodeDestinations',
@@ -97,6 +103,7 @@ export const googleMapsTools = [
     tool: geocodeDestinations,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['destination', 'address'],
   },
   {
     name: 'googleMapsReverseGeocodeLocation',
@@ -104,6 +111,7 @@ export const googleMapsTools = [
     tool: reverseGeocodeLocation,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['address', 'lookup'],
   },
   {
     name: 'googleMapsGeocodePlace',
@@ -111,6 +119,7 @@ export const googleMapsTools = [
     tool: geocodePlace,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['address'],
   },
   {
     name: 'googleMapsGeocodingApi',
@@ -118,6 +127,7 @@ export const googleMapsTools = [
     tool: geocodingApi,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['geocode', 'address'],
   },
   {
     name: 'googleMapsComputeRouteMatrix',
@@ -125,6 +135,7 @@ export const googleMapsTools = [
     tool: computeRouteMatrix,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['eta', 'drive', 'distance'],
   },
   {
     name: 'googleMapsGetRoute',
@@ -132,6 +143,7 @@ export const googleMapsTools = [
     tool: getRoute,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['directions', 'route', 'drive'],
   },
   {
     name: 'googleMapsCreateTilesSession',
@@ -139,6 +151,7 @@ export const googleMapsTools = [
     tool: createTilesSession,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tile', 'streetview'],
   },
   {
     name: 'googleMapsGet2dTile',
@@ -146,6 +159,7 @@ export const googleMapsTools = [
     tool: get2dTile,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tile', 'map'],
   },
   {
     name: 'googleMapsGet3dTilesRoot',
@@ -153,6 +167,7 @@ export const googleMapsTools = [
     tool: get3dTilesRoot,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tile', '3d'],
   },
   {
     name: 'googleMapsGeolocateDevice',
@@ -160,6 +175,7 @@ export const googleMapsTools = [
     tool: geolocateDevice,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['gps', 'locate', 'position'],
   },
   {
     name: 'googleMapsGetTimeZone',
@@ -167,12 +183,14 @@ export const googleMapsTools = [
     tool: getTimeZone,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['timezone', 'local'],
   },
   {
     name: 'googleMapsEmbedGoogleMap',
     description: 'Builds a public Maps Embed URL + iframe (API key only, no call made).',
     tool: embedGoogleMap,
     scope: 'read' as const,
+    keywords: ['iframe', 'widget'],
   },
   {
     name: 'googleMapsLookupAerialVideo',
@@ -180,6 +198,7 @@ export const googleMapsTools = [
     tool: lookupAerialVideo,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['drone', 'flyover'],
   },
   {
     name: 'googleMapsRenderAerialVideo',
@@ -187,5 +206,6 @@ export const googleMapsTools = [
     tool: renderAerialVideo,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['drone', 'cinematic'],
   },
 ];

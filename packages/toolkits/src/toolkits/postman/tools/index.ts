@@ -284,6 +284,7 @@ export const postmanTools = [
     tool: postmanCreateACollection,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['new'],
   },
   {
     name: 'postmanGetAllCollections',
@@ -291,6 +292,7 @@ export const postmanTools = [
     tool: postmanGetAllCollections,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteACollection',
@@ -298,6 +300,7 @@ export const postmanTools = [
     tool: postmanDeleteACollection,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanDuplicateACollection',
@@ -305,6 +308,7 @@ export const postmanTools = [
     tool: postmanDuplicateACollection,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['clone', 'copy'],
   },
   {
     name: 'postmanGetDuplicationTaskStatus',
@@ -312,6 +316,7 @@ export const postmanTools = [
     tool: postmanGetDuplicationTaskStatus,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanForkCollection',
@@ -319,6 +324,7 @@ export const postmanTools = [
     tool: postmanForkCollection,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['clone'],
   },
   {
     name: 'postmanGetCollectionForks',
@@ -326,6 +332,7 @@ export const postmanTools = [
     tool: postmanGetCollectionForks,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['clone'],
   },
   {
     name: 'postmanGetAllForkedCollections',
@@ -333,6 +340,7 @@ export const postmanTools = [
     tool: postmanGetAllForkedCollections,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['clone'],
   },
   {
     name: 'postmanPullSourceChangesIntoFork',
@@ -340,6 +348,7 @@ export const postmanTools = [
     tool: postmanPullSourceChangesIntoFork,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['merge', 'sync'],
   },
   {
     name: 'postmanGetSourceCollectionStatus',
@@ -347,6 +356,7 @@ export const postmanTools = [
     tool: postmanGetSourceCollectionStatus,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['sync', 'diff'],
   },
   {
     name: 'postmanReplaceCollectionDataAsynchronously',
@@ -354,6 +364,7 @@ export const postmanTools = [
     tool: postmanReplaceCollectionDataAsynchronously,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetAsyncCollectionUpdateStatus',
@@ -361,6 +372,7 @@ export const postmanTools = [
     tool: postmanGetAsyncCollectionUpdateStatus,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanTransferFolders',
@@ -368,6 +380,7 @@ export const postmanTools = [
     tool: postmanTransferFolders,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanTransformCollectionToOpenApi',
@@ -375,6 +388,7 @@ export const postmanTools = [
     tool: postmanTransformCollectionToOpenApi,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['swagger', 'export'],
   },
   {
     name: 'postmanUpdateCollectionProperties',
@@ -382,6 +396,7 @@ export const postmanTools = [
     tool: postmanUpdateCollectionProperties,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetCollectionRoles',
@@ -389,6 +404,7 @@ export const postmanTools = [
     tool: postmanGetCollectionRoles,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetCollectionAccessKeys',
@@ -396,6 +412,7 @@ export const postmanTools = [
     tool: postmanGetCollectionAccessKeys,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateAFolder',
@@ -403,6 +420,7 @@ export const postmanTools = [
     tool: postmanCreateAFolder,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['directory'],
   },
   {
     name: 'postmanGetFolderInformation',
@@ -410,6 +428,7 @@ export const postmanTools = [
     tool: postmanGetFolderInformation,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['directory'],
   },
   {
     name: 'postmanUpdateAFolder',
@@ -417,6 +436,7 @@ export const postmanTools = [
     tool: postmanUpdateAFolder,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['directory', 'rename'],
   },
   {
     name: 'postmanDeleteAFolder',
@@ -424,6 +444,7 @@ export const postmanTools = [
     tool: postmanDeleteAFolder,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: ['directory', 'remove'],
   },
   {
     name: 'postmanCreateRequestInCollection',
@@ -431,6 +452,7 @@ export const postmanTools = [
     tool: postmanCreateRequestInCollection,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['endpoint', 'http', 'rest'],
   },
   {
     name: 'postmanGetRequestInformation',
@@ -438,6 +460,7 @@ export const postmanTools = [
     tool: postmanGetRequestInformation,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['endpoint', 'http'],
   },
   {
     name: 'postmanUpdateRequestInCollection',
@@ -445,6 +468,7 @@ export const postmanTools = [
     tool: postmanUpdateRequestInCollection,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['endpoint', 'http'],
   },
   {
     name: 'postmanCreateAResponse',
@@ -452,6 +476,7 @@ export const postmanTools = [
     tool: postmanCreateAResponse,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['example', 'sample'],
   },
   {
     name: 'postmanGetResponseInformation',
@@ -459,6 +484,7 @@ export const postmanTools = [
     tool: postmanGetResponseInformation,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['example'],
   },
   {
     name: 'postmanUpdateAResponse',
@@ -466,6 +492,7 @@ export const postmanTools = [
     tool: postmanUpdateAResponse,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['example'],
   },
   {
     name: 'postmanDeleteAResponse',
@@ -473,6 +500,7 @@ export const postmanTools = [
     tool: postmanDeleteAResponse,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetCollectionPullRequests',
@@ -480,6 +508,7 @@ export const postmanTools = [
     tool: postmanGetCollectionPullRequests,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['pr', 'prs', 'review'],
   },
   {
     name: 'postmanCreateAPullRequest',
@@ -487,6 +516,7 @@ export const postmanTools = [
     tool: postmanCreateAPullRequest,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['pr', 'merge'],
   },
   {
     name: 'postmanUpdateAPullRequest',
@@ -494,6 +524,7 @@ export const postmanTools = [
     tool: postmanUpdateAPullRequest,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['pr'],
   },
   {
     name: 'postmanReviewAPullRequest',
@@ -501,6 +532,7 @@ export const postmanTools = [
     tool: postmanReviewAPullRequest,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['pr', 'approve', 'merge'],
   },
   {
     name: 'postmanCreateACollectionComment',
@@ -508,6 +540,7 @@ export const postmanTools = [
     tool: postmanCreateACollectionComment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['feedback', 'reply'],
   },
   {
     name: 'postmanGetCollectionComments',
@@ -515,6 +548,7 @@ export const postmanTools = [
     tool: postmanGetCollectionComments,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['feedback'],
   },
   {
     name: 'postmanDeleteACollectionsComment',
@@ -522,6 +556,7 @@ export const postmanTools = [
     tool: postmanDeleteACollectionsComment,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetApiComments',
@@ -529,6 +564,7 @@ export const postmanTools = [
     tool: postmanGetApiComments,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['feedback'],
   },
   {
     name: 'postmanUpdateAnApisComment',
@@ -536,6 +572,7 @@ export const postmanTools = [
     tool: postmanUpdateAnApisComment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteAnApisComment',
@@ -543,6 +580,7 @@ export const postmanTools = [
     tool: postmanDeleteAnApisComment,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateAFolderComment',
@@ -550,6 +588,7 @@ export const postmanTools = [
     tool: postmanCreateAFolderComment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['feedback', 'reply'],
   },
   {
     name: 'postmanGetFolderComments',
@@ -557,6 +596,7 @@ export const postmanTools = [
     tool: postmanGetFolderComments,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['feedback'],
   },
   {
     name: 'postmanUpdateAFoldersComment',
@@ -564,6 +604,7 @@ export const postmanTools = [
     tool: postmanUpdateAFoldersComment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteAFoldersComment',
@@ -571,6 +612,7 @@ export const postmanTools = [
     tool: postmanDeleteAFoldersComment,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateARequestComment',
@@ -578,6 +620,7 @@ export const postmanTools = [
     tool: postmanCreateARequestComment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['feedback', 'reply'],
   },
   {
     name: 'postmanGetRequestComments',
@@ -585,6 +628,7 @@ export const postmanTools = [
     tool: postmanGetRequestComments,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['feedback'],
   },
   {
     name: 'postmanUpdateARequestsComment',
@@ -592,6 +636,7 @@ export const postmanTools = [
     tool: postmanUpdateARequestsComment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteARequestsComment',
@@ -599,6 +644,7 @@ export const postmanTools = [
     tool: postmanDeleteARequestsComment,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateAResponseComment',
@@ -606,6 +652,7 @@ export const postmanTools = [
     tool: postmanCreateAResponseComment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['feedback', 'reply'],
   },
   {
     name: 'postmanGetResponseComments',
@@ -613,6 +660,7 @@ export const postmanTools = [
     tool: postmanGetResponseComments,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['feedback'],
   },
   {
     name: 'postmanUpdateAResponsesComment',
@@ -620,6 +668,7 @@ export const postmanTools = [
     tool: postmanUpdateAResponsesComment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteAResponsesComment',
@@ -627,6 +676,7 @@ export const postmanTools = [
     tool: postmanDeleteAResponsesComment,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanResolveACommentThread',
@@ -634,6 +684,7 @@ export const postmanTools = [
     tool: postmanResolveACommentThread,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['close'],
   },
   {
     name: 'postmanCreateAnEnvironment',
@@ -641,6 +692,7 @@ export const postmanTools = [
     tool: postmanCreateAnEnvironment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['env', 'envs', 'new'],
   },
   {
     name: 'postmanGetAllEnvironments',
@@ -648,6 +700,7 @@ export const postmanTools = [
     tool: postmanGetAllEnvironments,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['env', 'envs'],
   },
   {
     name: 'postmanGetAnEnvironment',
@@ -655,6 +708,7 @@ export const postmanTools = [
     tool: postmanGetAnEnvironment,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['env', 'envs'],
   },
   {
     name: 'postmanDeleteAnEnvironment',
@@ -662,6 +716,7 @@ export const postmanTools = [
     tool: postmanDeleteAnEnvironment,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: ['env', 'envs', 'remove'],
   },
   {
     name: 'postmanReplaceAnEnvironmentsData',
@@ -669,6 +724,7 @@ export const postmanTools = [
     tool: postmanReplaceAnEnvironmentsData,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['env', 'envs'],
   },
   {
     name: 'postmanUpdateAnEnvironment',
@@ -676,6 +732,7 @@ export const postmanTools = [
     tool: postmanUpdateAnEnvironment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['env', 'envs'],
   },
   {
     name: 'postmanCreateEnvironmentFork',
@@ -683,6 +740,7 @@ export const postmanTools = [
     tool: postmanCreateEnvironmentFork,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['env', 'clone'],
   },
   {
     name: 'postmanGetEnvironmentForks',
@@ -690,6 +748,7 @@ export const postmanTools = [
     tool: postmanGetEnvironmentForks,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['env', 'clone'],
   },
   {
     name: 'postmanMergeAForkedEnvironment',
@@ -697,6 +756,7 @@ export const postmanTools = [
     tool: postmanMergeAForkedEnvironment,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['env', 'merge'],
   },
   {
     name: 'postmanCreateAWorkspace',
@@ -704,6 +764,7 @@ export const postmanTools = [
     tool: postmanCreateAWorkspace,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetAllWorkspaces',
@@ -711,6 +772,7 @@ export const postmanTools = [
     tool: postmanGetAllWorkspaces,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetWorkspaceDetails',
@@ -718,6 +780,7 @@ export const postmanTools = [
     tool: postmanGetWorkspaceDetails,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanUpdateAWorkspace',
@@ -725,6 +788,7 @@ export const postmanTools = [
     tool: postmanUpdateAWorkspace,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteAWorkspace',
@@ -732,6 +796,7 @@ export const postmanTools = [
     tool: postmanDeleteAWorkspace,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetWorkspaceActivityFeed',
@@ -739,6 +804,7 @@ export const postmanTools = [
     tool: postmanGetWorkspaceActivityFeed,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['audit', 'history', 'changelog'],
   },
   {
     name: 'postmanGetWorkspaceRoles',
@@ -746,6 +812,7 @@ export const postmanTools = [
     tool: postmanGetWorkspaceRoles,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetWorkspaceGlobalVariables',
@@ -753,6 +820,7 @@ export const postmanTools = [
     tool: postmanGetWorkspaceGlobalVariables,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['env'],
   },
   {
     name: 'postmanUpdateWorkspaceGlobalVariables',
@@ -760,6 +828,7 @@ export const postmanTools = [
     tool: postmanUpdateWorkspaceGlobalVariables,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['env'],
   },
   {
     name: 'postmanCreateAnApi',
@@ -767,6 +836,7 @@ export const postmanTools = [
     tool: postmanCreateAnApi,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetAllApis',
@@ -774,6 +844,7 @@ export const postmanTools = [
     tool: postmanGetAllApis,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetApiInformation',
@@ -781,6 +852,7 @@ export const postmanTools = [
     tool: postmanGetApiInformation,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanUpdateAnApi',
@@ -788,6 +860,7 @@ export const postmanTools = [
     tool: postmanUpdateAnApi,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteAnApi',
@@ -795,6 +868,7 @@ export const postmanTools = [
     tool: postmanDeleteAnApi,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetAllApiVersions',
@@ -802,6 +876,7 @@ export const postmanTools = [
     tool: postmanGetAllApiVersions,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['release'],
   },
   {
     name: 'postmanGetApiVersion',
@@ -809,6 +884,7 @@ export const postmanTools = [
     tool: postmanGetApiVersion,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateApiSchema',
@@ -816,6 +892,7 @@ export const postmanTools = [
     tool: postmanCreateApiSchema,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['swagger', 'protobuf', 'spec'],
   },
   {
     name: 'postmanGetApiSchema',
@@ -823,6 +900,7 @@ export const postmanTools = [
     tool: postmanGetApiSchema,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['swagger', 'spec'],
   },
   {
     name: 'postmanGetSchemaFiles',
@@ -830,6 +908,7 @@ export const postmanTools = [
     tool: postmanGetSchemaFiles,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['swagger'],
   },
   {
     name: 'postmanGetSchemaFileContents',
@@ -837,6 +916,7 @@ export const postmanTools = [
     tool: postmanGetSchemaFileContents,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['swagger'],
   },
   {
     name: 'postmanCreateOrUpdateASchemaFile',
@@ -844,6 +924,7 @@ export const postmanTools = [
     tool: postmanCreateOrUpdateASchemaFile,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['swagger'],
   },
   {
     name: 'postmanDeleteASchemaFile',
@@ -851,6 +932,7 @@ export const postmanTools = [
     tool: postmanDeleteASchemaFile,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanSyncCollectionWithSchema',
@@ -858,6 +940,7 @@ export const postmanTools = [
     tool: postmanSyncCollectionWithSchema,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateApiVersionRelations',
@@ -865,6 +948,7 @@ export const postmanTools = [
     tool: postmanCreateApiVersionRelations,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetAllLinkedRelations',
@@ -872,6 +956,7 @@ export const postmanTools = [
     tool: postmanGetAllLinkedRelations,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetUnclassifiedRelations',
@@ -879,6 +964,7 @@ export const postmanTools = [
     tool: postmanGetUnclassifiedRelations,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateASpec',
@@ -886,6 +972,7 @@ export const postmanTools = [
     tool: postmanCreateASpec,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['openapi', 'asyncapi'],
   },
   {
     name: 'postmanGetAllApiSpecifications',
@@ -893,6 +980,7 @@ export const postmanTools = [
     tool: postmanGetAllApiSpecifications,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetApiSpecification',
@@ -900,6 +988,7 @@ export const postmanTools = [
     tool: postmanGetApiSpecification,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteASpec',
@@ -907,6 +996,7 @@ export const postmanTools = [
     tool: postmanDeleteASpec,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanUpdateSpecProperties',
@@ -914,6 +1004,7 @@ export const postmanTools = [
     tool: postmanUpdateSpecProperties,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateSpecFile',
@@ -921,6 +1012,7 @@ export const postmanTools = [
     tool: postmanCreateSpecFile,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetSpecFileContents',
@@ -928,6 +1020,7 @@ export const postmanTools = [
     tool: postmanGetSpecFileContents,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanUpdateSpecFile',
@@ -935,6 +1028,7 @@ export const postmanTools = [
     tool: postmanUpdateSpecFile,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteSpecFile',
@@ -942,6 +1036,7 @@ export const postmanTools = [
     tool: postmanDeleteSpecFile,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetSpecificationFiles',
@@ -949,6 +1044,7 @@ export const postmanTools = [
     tool: postmanGetSpecificationFiles,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanGetSpecDefinition',
@@ -956,6 +1052,7 @@ export const postmanTools = [
     tool: postmanGetSpecDefinition,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['swagger', 'openapi'],
   },
   {
     name: 'postmanGetSpecsGeneratedCollections',
@@ -963,6 +1060,7 @@ export const postmanTools = [
     tool: postmanGetSpecsGeneratedCollections,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanGenerateCollectionFromSpec',
@@ -970,6 +1068,7 @@ export const postmanTools = [
     tool: postmanGenerateCollectionFromSpec,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['import', 'convert'],
   },
   {
     name: 'postmanGenerateSpecFromCollection',
@@ -977,6 +1076,7 @@ export const postmanTools = [
     tool: postmanGenerateSpecFromCollection,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['export', 'convert'],
   },
   {
     name: 'postmanGetGeneratedSpec',
@@ -984,6 +1084,7 @@ export const postmanTools = [
     tool: postmanGetGeneratedSpec,
     ...authed(0),
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'postmanSyncCollectionWithSpec',
@@ -991,6 +1092,7 @@ export const postmanTools = [
     tool: postmanSyncCollectionWithSpec,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanSyncSpecWithCollection',
@@ -998,6 +1100,7 @@ export const postmanTools = [
     tool: postmanSyncSpecWithCollection,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanImportOpenApiSpecification',
@@ -1005,6 +1108,7 @@ export const postmanTools = [
     tool: postmanImportOpenApiSpecification,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['swagger', 'import'],
   },
   {
     name: 'postmanCreateAMockServer',
@@ -1012,6 +1116,7 @@ export const postmanTools = [
     tool: postmanCreateAMockServer,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['fake', 'stub'],
   },
   {
     name: 'postmanGetAllMockServers',
@@ -1019,6 +1124,7 @@ export const postmanTools = [
     tool: postmanGetAllMockServers,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['fake', 'stub'],
   },
   {
     name: 'postmanUpdateAMockServer',
@@ -1026,6 +1132,7 @@ export const postmanTools = [
     tool: postmanUpdateAMockServer,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['fake', 'stub'],
   },
   {
     name: 'postmanPublishAMockServer',
@@ -1033,6 +1140,7 @@ export const postmanTools = [
     tool: postmanPublishAMockServer,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateMockServerResponse',
@@ -1040,6 +1148,7 @@ export const postmanTools = [
     tool: postmanCreateMockServerResponse,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['fake', 'stub'],
   },
   {
     name: 'postmanUpdateAServerResponse',
@@ -1047,6 +1156,7 @@ export const postmanTools = [
     tool: postmanUpdateAServerResponse,
     ...authed(0),
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'postmanDeleteMockServerResponse',
@@ -1054,6 +1164,7 @@ export const postmanTools = [
     tool: postmanDeleteMockServerResponse,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'postmanCreateAMonitor',
@@ -1061,6 +1172,7 @@ export const postmanTools = [
     tool: postmanCreateAMonitor,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['uptime', 'schedule', 'cron'],
   },
   {
     name: 'postmanGetAllMonitors',
@@ -1068,6 +1180,7 @@ export const postmanTools = [
     tool: postmanGetAllMonitors,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['uptime'],
   },
   {
     name: 'postmanGetMonitorInformation',
@@ -1075,6 +1188,7 @@ export const postmanTools = [
     tool: postmanGetMonitorInformation,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['uptime', 'status'],
   },
   {
     name: 'postmanUpdateAMonitor',
@@ -1082,6 +1196,7 @@ export const postmanTools = [
     tool: postmanUpdateAMonitor,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['uptime'],
   },
   {
     name: 'postmanDeleteMonitor',
@@ -1089,6 +1204,7 @@ export const postmanTools = [
     tool: postmanDeleteMonitor,
     ...authed(0),
     scope: 'delete' as const,
+    keywords: ['uptime', 'remove'],
   },
   {
     name: 'postmanRunAMonitor',
@@ -1096,6 +1212,7 @@ export const postmanTools = [
     tool: postmanRunAMonitor,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['trigger', 'now'],
   },
   {
     name: 'postmanGetAllTeamUsers',
@@ -1103,6 +1220,7 @@ export const postmanTools = [
     tool: postmanGetAllTeamUsers,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['member', 'members'],
   },
   {
     name: 'postmanGetATeamUser',
@@ -1110,6 +1228,7 @@ export const postmanTools = [
     tool: postmanGetATeamUser,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['member'],
   },
   {
     name: 'postmanGetAuthenticatedUser',
@@ -1117,6 +1236,7 @@ export const postmanTools = [
     tool: postmanGetAuthenticatedUser,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['profile', 'account'],
   },
   {
     name: 'postmanGetAllGroups',
@@ -1124,6 +1244,7 @@ export const postmanTools = [
     tool: postmanGetAllGroups,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['member', 'members', 'sso'],
   },
   {
     name: 'postmanGetResourceTypes',
@@ -1131,6 +1252,7 @@ export const postmanTools = [
     tool: postmanGetResourceTypes,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['sso', 'scim'],
   },
   {
     name: 'postmanGetServiceProviderConfiguration',
@@ -1138,6 +1260,7 @@ export const postmanTools = [
     tool: postmanGetServiceProviderConfiguration,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['sso', 'scim'],
   },
   {
     name: 'postmanGetBillingAccountDetails',
@@ -1145,6 +1268,7 @@ export const postmanTools = [
     tool: postmanGetBillingAccountDetails,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['cost', 'payment', 'subscription'],
   },
   {
     name: 'postmanListAccountInvoices',
@@ -1152,6 +1276,7 @@ export const postmanTools = [
     tool: postmanListAccountInvoices,
     ...authed(0),
     scope: 'read' as const,
+    keywords: ['cost', 'payment', 'billing'],
   },
   {
     name: 'postmanCreateAWebhook',
@@ -1159,5 +1284,6 @@ export const postmanTools = [
     tool: postmanCreateAWebhook,
     ...authed(0),
     scope: 'write' as const,
+    keywords: ['ci', 'trigger'],
   },
 ];

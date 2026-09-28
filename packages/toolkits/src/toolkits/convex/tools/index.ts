@@ -52,6 +52,7 @@ export const convexTools = [
     tool: convexCreateProject,
     requiredAuth: 'convexToken' as const,
     scope: 'write' as const,
+    keywords: ['new'],
   },
   {
     name: 'convexListProjects',
@@ -59,6 +60,7 @@ export const convexTools = [
     tool: convexListProjects,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['project'],
   },
   {
     name: 'convexGetProjectById',
@@ -80,6 +82,7 @@ export const convexTools = [
     tool: convexDeleteProject,
     requiredAuth: 'convexToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'convexCreateDeployment',
@@ -87,6 +90,7 @@ export const convexTools = [
     tool: convexCreateDeployment,
     requiredAuth: 'convexToken' as const,
     scope: 'write' as const,
+    keywords: ['deploy'],
   },
   {
     name: 'convexListDeployments',
@@ -94,6 +98,7 @@ export const convexTools = [
     tool: convexListDeployments,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['deployment', 'deploy'],
   },
   {
     name: 'convexGetDeployment',
@@ -101,6 +106,7 @@ export const convexTools = [
     tool: convexGetDeployment,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['deployment'],
   },
   {
     name: 'convexUpdateDeployment',
@@ -108,6 +114,7 @@ export const convexTools = [
     tool: convexUpdateDeployment,
     requiredAuth: 'convexToken' as const,
     scope: 'write' as const,
+    keywords: ['deployment', 'edit'],
   },
   {
     name: 'convexDeleteDeployment',
@@ -115,6 +122,7 @@ export const convexTools = [
     tool: convexDeleteDeployment,
     requiredAuth: 'convexToken' as const,
     scope: 'delete' as const,
+    keywords: ['deployment', 'remove'],
   },
   {
     name: 'convexCreateDeployKey',
@@ -122,6 +130,7 @@ export const convexTools = [
     tool: convexCreateDeployKey,
     requiredAuth: 'convexToken' as const,
     scope: 'write' as const,
+    keywords: ['key', 'token'],
   },
   {
     name: 'convexListDeployKeys',
@@ -129,6 +138,7 @@ export const convexTools = [
     tool: convexListDeployKeys,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['key'],
   },
   {
     name: 'convexDeleteCustomDomain',
@@ -136,6 +146,7 @@ export const convexTools = [
     tool: convexDeleteCustomDomain,
     requiredAuth: 'convexToken' as const,
     scope: 'delete' as const,
+    keywords: ['domain', 'remove'],
   },
   {
     name: 'convexGetTokenDetails',
@@ -143,6 +154,7 @@ export const convexTools = [
     tool: convexGetTokenDetails,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['whoami', 'auth'],
   },
   {
     name: 'convexListDeploymentClasses',
@@ -150,6 +162,7 @@ export const convexTools = [
     tool: convexListDeploymentClasses,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['class', 'tier'],
   },
   {
     name: 'convexListDeploymentRegions',
@@ -157,6 +170,7 @@ export const convexTools = [
     tool: convexListDeploymentRegions,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['region'],
   },
   {
     name: 'convexExecuteQueryBatch',
@@ -164,6 +178,7 @@ export const convexTools = [
     tool: convexExecuteQueryBatch,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['queries', 'function'],
   },
   {
     name: 'convexGetQueryTimestamp',
@@ -171,6 +186,7 @@ export const convexTools = [
     tool: convexGetQueryTimestamp,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['timestamp'],
   },
   {
     name: 'convexListLogStreams',
@@ -178,5 +194,6 @@ export const convexTools = [
     tool: convexListLogStreams,
     requiredAuth: 'convexToken' as const,
     scope: 'read' as const,
+    keywords: ['log', 'logs'],
   },
 ];

@@ -65,6 +65,7 @@ export const gitlabTools = [
     tool: gitlabListProjects,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['project', 'repo'],
   },
   {
     name: 'GitlabGetProject',
@@ -72,6 +73,7 @@ export const gitlabTools = [
     tool: gitlabGetProject,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['project', 'repo'],
   },
   {
     name: 'GitlabCreateProject',
@@ -79,6 +81,7 @@ export const gitlabTools = [
     tool: gitlabCreateProject,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['project', 'repo'],
   },
   {
     name: 'GitlabUpdateProject',
@@ -86,6 +89,7 @@ export const gitlabTools = [
     tool: gitlabUpdateProject,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['project'],
   },
   {
     name: 'GitlabDeleteProject',
@@ -93,6 +97,7 @@ export const gitlabTools = [
     tool: gitlabDeleteProject,
     requiredAuth: 'gitlabToken' as const,
     scope: 'delete' as const,
+    keywords: ['project'],
   },
   {
     name: 'GitlabListIssues',
@@ -100,6 +105,7 @@ export const gitlabTools = [
     tool: gitlabListIssues,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['issue', 'ticket'],
   },
   {
     name: 'GitlabGetIssue',
@@ -107,6 +113,7 @@ export const gitlabTools = [
     tool: gitlabGetIssue,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['issue', 'ticket'],
   },
   {
     name: 'GitlabCreateIssue',
@@ -114,6 +121,7 @@ export const gitlabTools = [
     tool: gitlabCreateIssue,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['issue', 'ticket'],
   },
   {
     name: 'GitlabUpdateIssue',
@@ -121,6 +129,7 @@ export const gitlabTools = [
     tool: gitlabUpdateIssue,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['issue'],
   },
   {
     name: 'GitlabListIssueNotes',
@@ -128,6 +137,7 @@ export const gitlabTools = [
     tool: gitlabListIssueNotes,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['comment', 'discussion'],
   },
   {
     name: 'GitlabCreateIssueNote',
@@ -135,6 +145,7 @@ export const gitlabTools = [
     tool: gitlabCreateIssueNote,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['comment', 'reply'],
   },
   {
     name: 'GitlabListMergeRequests',
@@ -142,6 +153,7 @@ export const gitlabTools = [
     tool: gitlabListMergeRequests,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['mr', 'pr', 'pull'],
   },
   {
     name: 'GitlabGetMergeRequest',
@@ -149,6 +161,7 @@ export const gitlabTools = [
     tool: gitlabGetMergeRequest,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['mr', 'pr'],
   },
   {
     name: 'GitlabCreateMergeRequest',
@@ -156,6 +169,7 @@ export const gitlabTools = [
     tool: gitlabCreateMergeRequest,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['mr', 'pr'],
   },
   {
     name: 'GitlabMergeMergeRequest',
@@ -163,6 +177,7 @@ export const gitlabTools = [
     tool: gitlabMergeMergeRequest,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['mr', 'pr', 'approve'],
   },
   {
     name: 'GitlabCreateMergeRequestNote',
@@ -170,6 +185,7 @@ export const gitlabTools = [
     tool: gitlabCreateMergeRequestNote,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['mr', 'comment'],
   },
   {
     name: 'GitlabListPipelines',
@@ -177,6 +193,7 @@ export const gitlabTools = [
     tool: gitlabListPipelines,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['pipeline', 'run'],
   },
   {
     name: 'GitlabGetPipeline',
@@ -184,6 +201,7 @@ export const gitlabTools = [
     tool: gitlabGetPipeline,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['pipeline', 'run'],
   },
   {
     name: 'GitlabCreatePipeline',
@@ -191,6 +209,7 @@ export const gitlabTools = [
     tool: gitlabCreatePipeline,
     requiredAuth: 'gitlabToken' as const,
     scope: 'write' as const,
+    keywords: ['pipeline', 'start'],
   },
   {
     name: 'GitlabListJobs',
@@ -198,6 +217,7 @@ export const gitlabTools = [
     tool: gitlabListJobs,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['job'],
   },
   {
     name: 'GitlabListBranches',
@@ -205,6 +225,7 @@ export const gitlabTools = [
     tool: gitlabListBranches,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['branch'],
   },
   {
     name: 'GitlabListCommits',
@@ -212,6 +233,7 @@ export const gitlabTools = [
     tool: gitlabListCommits,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['commit'],
   },
   {
     name: 'GitlabGetFile',
@@ -219,6 +241,7 @@ export const gitlabTools = [
     tool: gitlabGetFile,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['code', 'source', 'read'],
   },
   {
     name: 'GitlabGetCurrentUser',
@@ -226,6 +249,7 @@ export const gitlabTools = [
     tool: gitlabGetCurrentUser,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['whoami'],
   },
   {
     name: 'GitlabListGroups',
@@ -233,5 +257,6 @@ export const gitlabTools = [
     tool: gitlabListGroups,
     requiredAuth: 'gitlabToken' as const,
     scope: 'read' as const,
+    keywords: ['group', 'team'],
   },
 ];

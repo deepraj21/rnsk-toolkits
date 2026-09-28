@@ -2985,6 +2985,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEc2Instances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compute', 'vm', 'vms', 'server', 'servers'],
   },
   {
     name: 'awsGetEc2Instance',
@@ -2992,6 +2993,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compute', 'vm', 'vms', 'server', 'servers'],
   },
   {
     name: 'awsStartEc2Instance',
@@ -2999,6 +3001,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['boot', 'launch', 'compute', 'vm'],
   },
   {
     name: 'awsStopEc2Instance',
@@ -3006,6 +3009,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['shutdown', 'halt', 'compute', 'vm'],
   },
   {
     name: 'awsGetCloudwatchMetricData',
@@ -3013,6 +3017,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudwatchMetricData as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['metrics', 'monitoring', 'telemetry', 'kpi'],
   },
   {
     name: 'awsListCloudwatchAlarms',
@@ -3020,6 +3025,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudwatchAlarms as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alert', 'alerts', 'monitoring'],
   },
   {
     name: 'awsListCloudwatchLogGroups',
@@ -3027,6 +3033,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudwatchLogGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsFilterCloudwatchLogEvents',
@@ -3034,6 +3041,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsFilterCloudwatchLogEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsCreateEc2Instance',
@@ -3041,6 +3049,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['launch', 'provision', 'compute', 'vm', 'server'],
   },
   {
     name: 'awsTerminateEc2Instance',
@@ -3048,6 +3057,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTerminateEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['delete', 'remove', 'destroy', 'compute', 'vm'],
   },
   {
     name: 'awsRebootEc2Instance',
@@ -3055,6 +3065,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRebootEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['restart', 'compute', 'vm', 'server'],
   },
   {
     name: 'awsDescribeEc2InstanceStatus',
@@ -3063,6 +3074,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2InstanceStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compute', 'vm', 'vms', 'server', 'servers'],
   },
   {
     name: 'awsDescribeEc2InstanceTypes',
@@ -3071,6 +3083,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2InstanceTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compute', 'vm', 'vms', 'server', 'servers'],
   },
   {
     name: 'awsModifyEc2InstanceAttribute',
@@ -3078,6 +3091,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyEc2InstanceAttribute as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compute', 'vm', 'vms', 'server', 'servers'],
   },
   {
     name: 'awsDescribeEc2InstanceAttribute',
@@ -3086,6 +3100,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2InstanceAttribute as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compute', 'vm', 'vms', 'server', 'servers'],
   },
   {
     name: 'awsMonitorEc2Instance',
@@ -3094,6 +3109,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsMonitorEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['monitoring', 'metrics', 'cloudwatch', 'detailed'],
   },
   {
     name: 'awsUnmonitorEc2Instance',
@@ -3102,6 +3118,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUnmonitorEc2Instance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['monitoring', 'metrics', 'cloudwatch', 'detailed'],
   },
   {
     name: 'awsDescribeEc2Images',
@@ -3110,6 +3127,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2Images as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ami', 'amis', 'machine', 'machines', 'backup'],
   },
   {
     name: 'awsCreateEc2Image',
@@ -3117,6 +3135,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2Image as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ami', 'amis', 'machine', 'machines', 'backup'],
   },
   {
     name: 'awsDeregisterEc2Image',
@@ -3124,6 +3143,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeregisterEc2Image as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ami', 'amis', 'machine', 'machines', 'backup'],
   },
   {
     name: 'awsCopyEc2Image',
@@ -3132,6 +3152,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCopyEc2Image as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ami', 'amis', 'machine', 'machines', 'backup'],
   },
   {
     name: 'awsModifyEc2ImageAttribute',
@@ -3139,6 +3160,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyEc2ImageAttribute as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ami', 'amis', 'machine', 'machines', 'backup'],
   },
   {
     name: 'awsDescribeEc2Snapshots',
@@ -3146,6 +3168,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2Snapshots as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['backup', 'backups', 'ebs', 'volume'],
   },
   {
     name: 'awsCreateEc2Snapshot',
@@ -3153,6 +3176,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2Snapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['backup', 'backups', 'ebs', 'volume'],
   },
   {
     name: 'awsDeleteEc2Snapshot',
@@ -3160,6 +3184,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2Snapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['backup', 'backups', 'ebs', 'volume'],
   },
   {
     name: 'awsCopyEc2Snapshot',
@@ -3168,6 +3193,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCopyEc2Snapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['backup', 'backups', 'ebs', 'volume'],
   },
   {
     name: 'awsDescribeEc2Volumes',
@@ -3175,6 +3201,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2Volumes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ebs', 'disk', 'disks', 'storage', 'snapshot'],
   },
   {
     name: 'awsCreateEc2Volume',
@@ -3182,6 +3209,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2Volume as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ebs', 'disk', 'disks', 'storage', 'snapshot'],
   },
   {
     name: 'awsAttachEc2Volume',
@@ -3189,6 +3217,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAttachEc2Volume as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ebs', 'disk', 'disks', 'storage', 'snapshot'],
   },
   {
     name: 'awsDetachEc2Volume',
@@ -3196,6 +3225,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDetachEc2Volume as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ebs', 'disk', 'disks', 'storage', 'snapshot'],
   },
   {
     name: 'awsDeleteEc2Volume',
@@ -3203,6 +3233,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2Volume as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ebs', 'disk', 'disks', 'storage', 'snapshot'],
   },
   {
     name: 'awsModifyEc2Volume',
@@ -3210,6 +3241,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyEc2Volume as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ebs', 'disk', 'disks', 'storage', 'snapshot'],
   },
   {
     name: 'awsDescribeEc2SecurityGroups',
@@ -3218,6 +3250,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2SecurityGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['firewall', 'sg', 'rules', 'vpc'],
   },
   {
     name: 'awsCreateEc2SecurityGroup',
@@ -3225,6 +3258,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2SecurityGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['firewall', 'sg', 'rules', 'vpc'],
   },
   {
     name: 'awsDeleteEc2SecurityGroup',
@@ -3232,6 +3266,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2SecurityGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['firewall', 'sg', 'rules', 'vpc'],
   },
   {
     name: 'awsAuthorizeEc2SecurityGroupIngress',
@@ -3239,6 +3274,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAuthorizeEc2SecurityGroupIngress as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['firewall', 'inbound', 'rules', 'sg'],
   },
   {
     name: 'awsRevokeEc2SecurityGroupIngress',
@@ -3246,6 +3282,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRevokeEc2SecurityGroupIngress as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['firewall', 'inbound', 'rules', 'sg'],
   },
   {
     name: 'awsAuthorizeEc2SecurityGroupEgress',
@@ -3253,6 +3290,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAuthorizeEc2SecurityGroupEgress as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['firewall', 'outbound', 'rules', 'sg'],
   },
   {
     name: 'awsRevokeEc2SecurityGroupEgress',
@@ -3260,6 +3298,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRevokeEc2SecurityGroupEgress as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['firewall', 'outbound', 'rules', 'sg'],
   },
   {
     name: 'awsDescribeEc2KeyPairs',
@@ -3267,6 +3306,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2KeyPairs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ssh', 'login', 'pem', 'keys'],
   },
   {
     name: 'awsCreateEc2KeyPair',
@@ -3274,6 +3314,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2KeyPair as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ssh', 'login', 'pem', 'keys'],
   },
   {
     name: 'awsDeleteEc2KeyPair',
@@ -3281,6 +3322,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2KeyPair as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ssh', 'login', 'pem', 'keys'],
   },
   {
     name: 'awsImportEc2KeyPair',
@@ -3288,6 +3330,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsImportEc2KeyPair as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ssh', 'login', 'pem', 'keys'],
   },
   {
     name: 'awsDescribeEc2Vpcs',
@@ -3295,6 +3338,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2Vpcs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['network', 'networks', 'cidr'],
   },
   {
     name: 'awsCreateEc2Vpc',
@@ -3302,6 +3346,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2Vpc as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['network', 'networks', 'cidr'],
   },
   {
     name: 'awsDeleteEc2Vpc',
@@ -3309,6 +3354,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2Vpc as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['network', 'networks', 'cidr'],
   },
   {
     name: 'awsModifyEc2VpcAttribute',
@@ -3316,6 +3362,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyEc2VpcAttribute as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['network', 'networks', 'cidr'],
   },
   {
     name: 'awsDescribeEc2Subnets',
@@ -3323,6 +3370,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2Subnets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['network', 'vpc', 'subnet', 'availability', 'zone'],
   },
   {
     name: 'awsCreateEc2Subnet',
@@ -3330,6 +3378,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2Subnet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['network', 'vpc', 'availability', 'zone'],
   },
   {
     name: 'awsDeleteEc2Subnet',
@@ -3337,6 +3386,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2Subnet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['network', 'vpc', 'availability', 'zone'],
   },
   {
     name: 'awsDescribeEc2NetworkInterfaces',
@@ -3345,6 +3395,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2NetworkInterfaces as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['eni', 'nic', 'subnet', 'vpc', 'ip'],
   },
   {
     name: 'awsCreateEc2NetworkInterface',
@@ -3352,6 +3403,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2NetworkInterface as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['eni', 'nic', 'subnet', 'vpc', 'ip'],
   },
   {
     name: 'awsDeleteEc2NetworkInterface',
@@ -3359,6 +3411,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2NetworkInterface as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['eni', 'nic', 'subnet', 'vpc', 'ip'],
   },
   {
     name: 'awsAttachEc2NetworkInterface',
@@ -3366,6 +3419,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAttachEc2NetworkInterface as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['eni', 'nic', 'subnet', 'vpc', 'ip'],
   },
   {
     name: 'awsDetachEc2NetworkInterface',
@@ -3373,6 +3427,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDetachEc2NetworkInterface as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['eni', 'nic', 'subnet', 'vpc', 'ip'],
   },
   {
     name: 'awsDescribeEc2InternetGateways',
@@ -3381,6 +3436,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2InternetGateways as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['igw', 'public', 'public ip', 'vpc'],
   },
   {
     name: 'awsCreateEc2InternetGateway',
@@ -3388,6 +3444,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2InternetGateway as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['igw', 'public', 'public ip', 'vpc'],
   },
   {
     name: 'awsDeleteEc2InternetGateway',
@@ -3395,6 +3452,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2InternetGateway as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['igw', 'public', 'public ip', 'vpc'],
   },
   {
     name: 'awsAttachEc2InternetGateway',
@@ -3402,6 +3460,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAttachEc2InternetGateway as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['igw', 'public', 'public ip', 'vpc'],
   },
   {
     name: 'awsDetachEc2InternetGateway',
@@ -3409,6 +3468,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDetachEc2InternetGateway as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['igw', 'public', 'public ip', 'vpc'],
   },
   {
     name: 'awsDescribeEc2RouteTables',
@@ -3416,6 +3476,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2RouteTables as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['routing', 'gateway', 'subnet', 'vpc'],
   },
   {
     name: 'awsCreateEc2RouteTable',
@@ -3423,6 +3484,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2RouteTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['routing', 'gateway', 'subnet', 'vpc'],
   },
   {
     name: 'awsDeleteEc2RouteTable',
@@ -3430,6 +3492,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2RouteTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['routing', 'gateway', 'subnet', 'vpc'],
   },
   {
     name: 'awsCreateEc2Route',
@@ -3437,6 +3500,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2Route as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['routing', 'gateway', 'subnet', 'vpc'],
   },
   {
     name: 'awsDeleteEc2Route',
@@ -3444,6 +3508,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2Route as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['routing', 'gateway', 'subnet', 'vpc'],
   },
   {
     name: 'awsAssociateEc2RouteTable',
@@ -3451,6 +3516,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociateEc2RouteTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['routing', 'gateway', 'subnet', 'vpc'],
   },
   {
     name: 'awsDisassociateEc2RouteTable',
@@ -3458,6 +3524,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisassociateEc2RouteTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['routing', 'gateway', 'subnet', 'vpc'],
   },
   {
     name: 'awsDescribeEc2NatGateways',
@@ -3465,6 +3532,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2NatGateways as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['private', 'subnet', 'egress', 'snat', 'gateway'],
   },
   {
     name: 'awsCreateEc2NatGateway',
@@ -3472,6 +3540,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2NatGateway as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['private', 'subnet', 'egress', 'snat'],
   },
   {
     name: 'awsDeleteEc2NatGateway',
@@ -3479,6 +3548,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2NatGateway as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['private', 'subnet', 'egress', 'snat'],
   },
   {
     name: 'awsDescribeEc2Addresses',
@@ -3487,6 +3557,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2Addresses as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['eip', 'elastic', 'static', 'public', 'ip'],
   },
   {
     name: 'awsAllocateEc2Address',
@@ -3494,6 +3565,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAllocateEc2Address as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['eip', 'elastic', 'static', 'public', 'ip'],
   },
   {
     name: 'awsReleaseEc2Address',
@@ -3501,6 +3573,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsReleaseEc2Address as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['eip', 'elastic', 'static', 'public', 'ip'],
   },
   {
     name: 'awsAssociateEc2Address',
@@ -3508,6 +3581,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociateEc2Address as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['eip', 'elastic', 'static', 'public', 'ip'],
   },
   {
     name: 'awsDisassociateEc2Address',
@@ -3515,6 +3589,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisassociateEc2Address as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['eip', 'elastic', 'static', 'public', 'ip'],
   },
   {
     name: 'awsDescribeEc2PlacementGroups',
@@ -3522,6 +3597,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2PlacementGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateEc2PlacementGroup',
@@ -3529,6 +3605,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2PlacementGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteEc2PlacementGroup',
@@ -3536,6 +3613,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2PlacementGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeEc2Tags',
@@ -3544,6 +3622,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2Tags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['label', 'labels'],
   },
   {
     name: 'awsCreateEc2Tags',
@@ -3551,6 +3630,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2Tags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['label', 'labels'],
   },
   {
     name: 'awsDeleteEc2Tags',
@@ -3558,6 +3638,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2Tags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['label', 'labels'],
   },
   {
     name: 'awsDescribeEc2Regions',
@@ -3566,6 +3647,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2Regions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeEc2AvailabilityZones',
@@ -3574,6 +3656,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2AvailabilityZones as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['az', 'azs', 'datacenter', 'ha'],
   },
   {
     name: 'awsDescribeEc2AccountAttributes',
@@ -3582,6 +3665,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2AccountAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeEc2LaunchTemplates',
@@ -3589,6 +3673,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2LaunchTemplates as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['asg', 'autoscaling', 'config', 'version'],
   },
   {
     name: 'awsCreateEc2LaunchTemplate',
@@ -3596,6 +3681,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEc2LaunchTemplate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg', 'autoscaling', 'config', 'version'],
   },
   {
     name: 'awsDeleteEc2LaunchTemplate',
@@ -3603,6 +3689,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEc2LaunchTemplate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['asg', 'autoscaling', 'config', 'version'],
   },
   {
     name: 'awsDescribeEc2LaunchTemplateVersions',
@@ -3611,6 +3698,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEc2LaunchTemplateVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['asg', 'autoscaling', 'config', 'version'],
   },
   {
     name: 'awsGetCloudwatchMetrics',
@@ -3619,6 +3707,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudwatchMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['monitoring', 'telemetry', 'kpi'],
   },
   {
     name: 'awsGetMetricMetadata',
@@ -3627,6 +3716,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetMetricMetadata as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudwatch', 'metrics', 'monitoring', 'telemetry', 'kpi'],
   },
   {
     name: 'awsPutMetricData',
@@ -3635,6 +3725,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutMetricData as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'metrics', 'monitoring', 'telemetry', 'kpi'],
   },
   {
     name: 'awsGetRecommendedMetricAlarms',
@@ -3643,6 +3734,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRecommendedMetricAlarms as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudwatch', 'alert', 'alerts', 'monitoring'],
   },
   {
     name: 'awsAnalyzeMetric',
@@ -3651,6 +3743,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAnalyzeMetric as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'metrics', 'monitoring', 'telemetry', 'kpi'],
   },
   {
     name: 'awsGetAlarmHistory',
@@ -3659,6 +3752,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAlarmHistory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudwatch', 'alarms', 'alert', 'alerts', 'monitoring'],
   },
   {
     name: 'awsPutMetricAlarm',
@@ -3667,6 +3761,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutMetricAlarm as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'alarms', 'alert', 'alerts', 'monitoring'],
   },
   {
     name: 'awsDeleteCloudwatchAlarms',
@@ -3674,6 +3769,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudwatchAlarms as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['alert', 'alerts', 'monitoring'],
   },
   {
     name: 'awsSetAlarmState',
@@ -3682,6 +3778,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetAlarmState as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'alarms', 'alert', 'alerts', 'monitoring'],
   },
   {
     name: 'awsCreateLogGroup',
@@ -3689,6 +3786,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateLogGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsDeleteLogGroup',
@@ -3696,6 +3794,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLogGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cloudwatch', 'logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsDescribeLogStreams',
@@ -3704,6 +3803,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeLogStreams as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudwatch', 'logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsCreateLogStream',
@@ -3711,6 +3811,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateLogStream as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsGetLogEvents',
@@ -3719,6 +3820,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLogEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudwatch', 'logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsPutLogEvents',
@@ -3727,6 +3829,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutLogEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsPutRetentionPolicy',
@@ -3735,6 +3838,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutRetentionPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'logs', 'expiry'],
   },
   {
     name: 'awsAnalyzeLogGroup',
@@ -3743,6 +3847,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAnalyzeLogGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'logs', 'logging', 'monitoring'],
   },
   {
     name: 'awsExecuteLogInsightsQuery',
@@ -3751,6 +3856,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsExecuteLogInsightsQuery as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'logs', 'analysis'],
   },
   {
     name: 'awsGetLogsInsightQueryResults',
@@ -3759,6 +3865,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLogsInsightQueryResults as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudwatch', 'analysis', 'insights'],
   },
   {
     name: 'awsCancelLogsInsightQuery',
@@ -3767,6 +3874,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCancelLogsInsightQuery as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudwatch', 'analysis', 'insights'],
   },
   {
     name: 'awsListS3Buckets',
@@ -3775,6 +3883,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3Buckets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['storage'],
   },
   {
     name: 'awsCreateS3Bucket',
@@ -3782,6 +3891,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateS3Bucket as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['storage'],
   },
   {
     name: 'awsDeleteS3Bucket',
@@ -3789,6 +3899,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3Bucket as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['storage'],
   },
   {
     name: 'awsCheckS3BucketExists',
@@ -3797,6 +3908,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCheckS3BucketExists as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['storage'],
   },
   {
     name: 'awsListS3Objects',
@@ -3805,6 +3917,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3Objects as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['file', 'files', 'storage', 'bucket'],
   },
   {
     name: 'awsGetS3Object',
@@ -3813,6 +3926,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['file', 'files', 'download', 'storage', 'bucket'],
   },
   {
     name: 'awsUploadS3Object',
@@ -3820,6 +3934,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUploadS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'files', 'storage', 'bucket'],
   },
   {
     name: 'awsDeleteS3Object',
@@ -3827,6 +3942,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['file', 'files', 'storage', 'bucket'],
   },
   {
     name: 'awsCopyS3Object',
@@ -3834,6 +3950,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCopyS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'files', 'storage', 'bucket'],
   },
   {
     name: 'awsHeadS3Object',
@@ -3841,6 +3958,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsHeadS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'metadata', 'storage', 'bucket'],
   },
   {
     name: 'awsListLambdaFunctions',
@@ -3849,6 +3967,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaFunctions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'function'],
   },
   {
     name: 'awsGetLambdaFunction',
@@ -3857,6 +3976,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLambdaFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless'],
   },
   {
     name: 'awsInvokeLambdaFunction',
@@ -3865,6 +3985,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsInvokeLambdaFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'run', 'trigger'],
   },
   {
     name: 'awsCreateLambdaFunction',
@@ -3872,6 +3993,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateLambdaFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'deploy'],
   },
   {
     name: 'awsUpdateLambdaFunctionCode',
@@ -3879,6 +4001,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateLambdaFunctionCode as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'deploy'],
   },
   {
     name: 'awsUpdateLambdaFunctionConfiguration',
@@ -3887,6 +4010,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateLambdaFunctionConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'env'],
   },
   {
     name: 'awsDeleteLambdaFunction',
@@ -3894,6 +4018,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLambdaFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['serverless'],
   },
   {
     name: 'awsListLambdaFunctionVersions',
@@ -3902,6 +4027,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaFunctionVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'version'],
   },
   {
     name: 'awsListDynamodbTables',
@@ -3910,6 +4036,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListDynamodbTables as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['nosql', 'database', 'dynamo'],
   },
   {
     name: 'awsDescribeDynamodbTable',
@@ -3918,6 +4045,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDynamodbTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['tables', 'nosql', 'database', 'dynamo'],
   },
   {
     name: 'awsCreateDynamodbTable',
@@ -3926,6 +4054,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDynamodbTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['tables', 'nosql', 'database', 'dynamo'],
   },
   {
     name: 'awsUpdateDynamodbTable',
@@ -3934,6 +4063,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateDynamodbTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['tables', 'nosql', 'database', 'dynamo'],
   },
   {
     name: 'awsDeleteDynamodbTable',
@@ -3941,6 +4071,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDynamodbTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['tables', 'nosql', 'database', 'dynamo'],
   },
   {
     name: 'awsDynamodbGetItem',
@@ -3949,6 +4080,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDynamodbGetItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['items', 'record', 'records', 'document'],
   },
   {
     name: 'awsDynamodbPutItem',
@@ -3956,6 +4088,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDynamodbPutItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['items', 'record', 'records', 'document'],
   },
   {
     name: 'awsDynamodbUpdateItem',
@@ -3964,6 +4097,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDynamodbUpdateItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['items', 'record', 'records', 'document'],
   },
   {
     name: 'awsDynamodbDeleteItem',
@@ -3971,6 +4105,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDynamodbDeleteItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['items', 'record', 'records', 'document'],
   },
   {
     name: 'awsDynamodbQuery',
@@ -3979,6 +4114,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDynamodbQuery as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['partiql', 'sql', 'search', 'filter'],
   },
   {
     name: 'awsDynamodbScan',
@@ -3987,6 +4123,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDynamodbScan as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['fullexport', 'table', 'filter', 'export'],
   },
   {
     name: 'awsDynamodbBatchGetItem',
@@ -3995,6 +4132,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDynamodbBatchGetItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['items', 'record', 'records', 'document'],
   },
   {
     name: 'awsDynamodbBatchWriteItem',
@@ -4003,6 +4141,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDynamodbBatchWriteItem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['items', 'record', 'records', 'document'],
   },
   {
     name: 'awsCreateSqsQueue',
@@ -4010,6 +4149,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSqsQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['message', 'messages'],
   },
   {
     name: 'awsListSqsQueues',
@@ -4017,6 +4157,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSqsQueues as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['message', 'messages'],
   },
   {
     name: 'awsGetSqsQueueUrl',
@@ -4025,6 +4166,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSqsQueueUrl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['message', 'messages'],
   },
   {
     name: 'awsGetSqsQueueAttributes',
@@ -4033,6 +4175,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSqsQueueAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['message', 'messages'],
   },
   {
     name: 'awsSetSqsQueueAttributes',
@@ -4041,6 +4184,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetSqsQueueAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['message', 'messages'],
   },
   {
     name: 'awsDeleteSqsQueue',
@@ -4048,6 +4192,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSqsQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['message', 'messages'],
   },
   {
     name: 'awsPurgeSqsQueue',
@@ -4056,6 +4201,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPurgeSqsQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['message', 'messages', 'clear'],
   },
   {
     name: 'awsSendSqsMessage',
@@ -4063,6 +4209,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSendSqsMessage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['queue', 'messages'],
   },
   {
     name: 'awsSendSqsMessageBatch',
@@ -4070,6 +4217,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSendSqsMessageBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['queue'],
   },
   {
     name: 'awsReceiveSqsMessages',
@@ -4077,6 +4225,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsReceiveSqsMessages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['queue', 'poll'],
   },
   {
     name: 'awsDeleteSqsMessage',
@@ -4084,6 +4233,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSqsMessage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['queue', 'messages'],
   },
   {
     name: 'awsDeleteSqsMessageBatch',
@@ -4092,6 +4242,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSqsMessageBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['queue'],
   },
   {
     name: 'awsChangeSqsMessageVisibility',
@@ -4100,6 +4251,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsChangeSqsMessageVisibility as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['queue', 'messages', 'timeout'],
   },
   {
     name: 'awsChangeSqsMessageVisibilityBatch',
@@ -4108,6 +4260,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsChangeSqsMessageVisibilityBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['queue', 'timeout'],
   },
   {
     name: 'awsAddSqsPermission',
@@ -4115,6 +4268,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddSqsPermission as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['queue', 'access', 'policy'],
   },
   {
     name: 'awsRemoveSqsPermission',
@@ -4122,6 +4276,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveSqsPermission as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['queue', 'access', 'policy'],
   },
   {
     name: 'awsListSqsQueueTags',
@@ -4130,6 +4285,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSqsQueueTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagSqsQueue',
@@ -4137,6 +4293,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagSqsQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagSqsQueue',
@@ -4144,6 +4301,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagSqsQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateSnsTopic',
@@ -4151,6 +4309,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSnsTopic as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'notifications', 'notify'],
   },
   {
     name: 'awsListSnsTopics',
@@ -4158,6 +4317,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSnsTopics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['notification', 'notifications', 'notify'],
   },
   {
     name: 'awsGetSnsTopicAttributes',
@@ -4166,6 +4326,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSnsTopicAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['notification', 'notifications', 'notify'],
   },
   {
     name: 'awsDeleteSnsTopic',
@@ -4173,6 +4334,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSnsTopic as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['notification', 'notifications', 'notify'],
   },
   {
     name: 'awsSubscribeSnsTopic',
@@ -4180,6 +4342,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSubscribeSnsTopic as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsUnsubscribeSnsTopic',
@@ -4187,6 +4350,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUnsubscribeSnsTopic as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsPublishSnsMessage',
@@ -4194,6 +4358,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPublishSnsMessage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsListSnsSubscriptions',
@@ -4202,6 +4367,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSnsSubscriptions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsListSnsSubscriptionsByTopic',
@@ -4210,6 +4376,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSnsSubscriptionsByTopic as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsGetS3BucketVersioning',
@@ -4218,6 +4385,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketVersioning as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['file', 'versions'],
   },
   {
     name: 'awsPutS3BucketVersioning',
@@ -4226,6 +4394,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketVersioning as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'versions'],
   },
   {
     name: 'awsGetS3BucketPolicy',
@@ -4234,6 +4403,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['access', 'permissions', 'storage'],
   },
   {
     name: 'awsPutS3BucketPolicy',
@@ -4241,6 +4411,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['access', 'permissions', 'storage'],
   },
   {
     name: 'awsDeleteS3BucketPolicy',
@@ -4249,6 +4420,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['access', 'permissions', 'storage'],
   },
   {
     name: 'awsGetS3BucketTagging',
@@ -4256,6 +4428,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketTagging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3BucketTagging',
@@ -4263,6 +4436,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketTagging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3BucketTagging',
@@ -4270,6 +4444,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketTagging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketCors',
@@ -4278,6 +4453,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketCors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3BucketCors',
@@ -4286,6 +4462,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketCors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3BucketCors',
@@ -4294,6 +4471,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketCors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketEncryption',
@@ -4302,6 +4480,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketEncryption as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['sse', 'kms', 'storage'],
   },
   {
     name: 'awsPutS3BucketEncryption',
@@ -4310,6 +4489,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketEncryption as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['sse', 'kms', 'storage'],
   },
   {
     name: 'awsDeleteS3BucketEncryption',
@@ -4318,6 +4498,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketEncryption as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['sse', 'kms', 'storage'],
   },
   {
     name: 'awsGetS3BucketLifecycle',
@@ -4326,6 +4507,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketLifecycle as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['expiration', 'transition', 'storage'],
   },
   {
     name: 'awsPutS3BucketLifecycle',
@@ -4334,6 +4516,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketLifecycle as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['expiration', 'transition', 'storage'],
   },
   {
     name: 'awsDeleteS3BucketLifecycle',
@@ -4342,6 +4525,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketLifecycle as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['expiration', 'transition', 'storage'],
   },
   {
     name: 'awsGetS3BucketWebsite',
@@ -4350,6 +4534,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketWebsite as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['hosting', 'static', 'storage'],
   },
   {
     name: 'awsPutS3BucketWebsite',
@@ -4358,6 +4543,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketWebsite as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['hosting', 'static', 'storage'],
   },
   {
     name: 'awsDeleteS3BucketWebsite',
@@ -4366,6 +4552,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketWebsite as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['hosting', 'static', 'storage'],
   },
   {
     name: 'awsGetS3BucketLogging',
@@ -4374,6 +4561,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketLogging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3BucketLogging',
@@ -4382,6 +4570,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketLogging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketNotification',
@@ -4390,6 +4579,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['trigger', 'event'],
   },
   {
     name: 'awsPutS3BucketNotification',
@@ -4398,6 +4588,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['trigger', 'event'],
   },
   {
     name: 'awsGetS3BucketReplication',
@@ -4406,6 +4597,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketReplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cross-region', 'crr', 'storage'],
   },
   {
     name: 'awsPutS3BucketReplication',
@@ -4414,6 +4606,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketReplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cross-region', 'crr', 'storage'],
   },
   {
     name: 'awsDeleteS3BucketReplication',
@@ -4422,6 +4615,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketReplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cross-region', 'crr', 'storage'],
   },
   {
     name: 'awsListS3ObjectVersions',
@@ -4430,6 +4624,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3ObjectVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['file', 'files', 'storage'],
   },
   {
     name: 'awsDeleteS3Objects',
@@ -4438,6 +4633,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3Objects as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['file', 'files', 'storage', 'bucket'],
   },
   {
     name: 'awsCreateS3MultipartUpload',
@@ -4445,6 +4641,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateS3MultipartUpload as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'files', 'large'],
   },
   {
     name: 'awsUploadS3Part',
@@ -4452,6 +4649,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUploadS3Part as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'files', 'large'],
   },
   {
     name: 'awsCompleteS3MultipartUpload',
@@ -4459,6 +4657,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCompleteS3MultipartUpload as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'files', 'large'],
   },
   {
     name: 'awsAbortS3MultipartUpload',
@@ -4466,6 +4665,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAbortS3MultipartUpload as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'files', 'large'],
   },
   {
     name: 'awsListS3MultipartUploads',
@@ -4474,6 +4674,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3MultipartUploads as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['file', 'files', 'large'],
   },
   {
     name: 'awsListS3Parts',
@@ -4482,6 +4683,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3Parts as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['file', 'files', 'large'],
   },
   {
     name: 'awsGetS3ObjectTagging',
@@ -4489,6 +4691,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3ObjectTagging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3ObjectTagging',
@@ -4496,6 +4699,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3ObjectTagging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3ObjectTagging',
@@ -4503,6 +4707,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3ObjectTagging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3ObjectAcl',
@@ -4511,6 +4716,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3ObjectAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['permissions', 'storage'],
   },
   {
     name: 'awsPutS3ObjectAcl',
@@ -4519,6 +4725,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3ObjectAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['permissions', 'storage'],
   },
   {
     name: 'awsGetS3BucketAcl',
@@ -4527,6 +4734,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['permissions', 'storage'],
   },
   {
     name: 'awsPutS3BucketAcl',
@@ -4535,6 +4743,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['permissions', 'storage'],
   },
   {
     name: 'awsGetS3PublicAccessBlock',
@@ -4543,6 +4752,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3PublicAccessBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['permissions', 'storage'],
   },
   {
     name: 'awsPutS3PublicAccessBlock',
@@ -4551,6 +4761,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3PublicAccessBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['permissions', 'storage'],
   },
   {
     name: 'awsDeleteS3PublicAccessBlock',
@@ -4559,6 +4770,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3PublicAccessBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['permissions', 'storage'],
   },
   {
     name: 'awsGetLambdaFunctionConfiguration',
@@ -4567,6 +4779,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLambdaFunctionConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'settings', 'env'],
   },
   {
     name: 'awsPublishLambdaFunctionVersion',
@@ -4574,6 +4787,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPublishLambdaFunctionVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'deploy'],
   },
   {
     name: 'awsListLambdaFunctionAliases',
@@ -4582,6 +4796,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaFunctionAliases as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless'],
   },
   {
     name: 'awsGetLambdaFunctionAlias',
@@ -4590,6 +4805,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLambdaFunctionAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless'],
   },
   {
     name: 'awsCreateLambdaFunctionAlias',
@@ -4597,6 +4813,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateLambdaFunctionAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'deploy'],
   },
   {
     name: 'awsUpdateLambdaFunctionAlias',
@@ -4604,6 +4821,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateLambdaFunctionAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless'],
   },
   {
     name: 'awsDeleteLambdaFunctionAlias',
@@ -4611,6 +4829,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLambdaFunctionAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['serverless'],
   },
   {
     name: 'awsGetLambdaFunctionPolicy',
@@ -4619,6 +4838,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLambdaFunctionPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'permissions'],
   },
   {
     name: 'awsAddLambdaFunctionPermission',
@@ -4627,6 +4847,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddLambdaFunctionPermission as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'access'],
   },
   {
     name: 'awsRemoveLambdaFunctionPermission',
@@ -4635,6 +4856,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveLambdaFunctionPermission as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['serverless', 'access'],
   },
   {
     name: 'awsListLambdaEventSourceMappings',
@@ -4643,6 +4865,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaEventSourceMappings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'trigger', 'triggers'],
   },
   {
     name: 'awsCreateLambdaEventSourceMapping',
@@ -4651,6 +4874,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateLambdaEventSourceMapping as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'trigger', 'triggers'],
   },
   {
     name: 'awsUpdateLambdaEventSourceMapping',
@@ -4659,6 +4883,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateLambdaEventSourceMapping as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'trigger', 'triggers'],
   },
   {
     name: 'awsDeleteLambdaEventSourceMapping',
@@ -4666,6 +4891,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLambdaEventSourceMapping as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['serverless', 'trigger', 'triggers'],
   },
   {
     name: 'awsListLambdaFunctionEventInvokeConfigs',
@@ -4674,6 +4900,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaFunctionEventInvokeConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'async'],
   },
   {
     name: 'awsGetLambdaFunctionEventInvokeConfig',
@@ -4682,6 +4909,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLambdaFunctionEventInvokeConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'async'],
   },
   {
     name: 'awsPutLambdaFunctionEventInvokeConfig',
@@ -4690,6 +4918,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutLambdaFunctionEventInvokeConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'async'],
   },
   {
     name: 'awsDeleteLambdaFunctionEventInvokeConfig',
@@ -4698,6 +4927,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLambdaFunctionEventInvokeConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['serverless', 'async'],
   },
   {
     name: 'awsListLambdaLayers',
@@ -4705,6 +4935,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaLayers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'dependencies', 'dependency'],
   },
   {
     name: 'awsListLambdaLayerVersions',
@@ -4713,6 +4944,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaLayerVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'dependencies'],
   },
   {
     name: 'awsGetLambdaLayerVersion',
@@ -4721,6 +4953,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLambdaLayerVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'dependencies'],
   },
   {
     name: 'awsListLambdaProvisionedConcurrencyConfigs',
@@ -4729,6 +4962,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaProvisionedConcurrencyConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'scaling'],
   },
   {
     name: 'awsGetLambdaProvisionedConcurrencyConfig',
@@ -4737,6 +4971,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLambdaProvisionedConcurrencyConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'scaling'],
   },
   {
     name: 'awsPutLambdaProvisionedConcurrencyConfig',
@@ -4745,6 +4980,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutLambdaProvisionedConcurrencyConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'scaling'],
   },
   {
     name: 'awsDeleteLambdaProvisionedConcurrencyConfig',
@@ -4753,6 +4989,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLambdaProvisionedConcurrencyConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['serverless', 'scaling'],
   },
   {
     name: 'awsListLambdaFunctionTags',
@@ -4761,6 +4998,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLambdaFunctionTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagLambdaFunction',
@@ -4768,6 +5006,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagLambdaFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagLambdaFunction',
@@ -4775,6 +5014,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagLambdaFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsGetLambdaFunctionUrlConfig',
@@ -4783,6 +5023,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLambdaFunctionUrlConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'http', 'endpoint'],
   },
   {
     name: 'awsCreateLambdaFunctionUrlConfig',
@@ -4790,6 +5031,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateLambdaFunctionUrlConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'http', 'endpoint'],
   },
   {
     name: 'awsUpdateLambdaFunctionUrlConfig',
@@ -4797,6 +5039,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateLambdaFunctionUrlConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'http', 'endpoint'],
   },
   {
     name: 'awsDeleteLambdaFunctionUrlConfig',
@@ -4804,6 +5047,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLambdaFunctionUrlConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['serverless', 'http', 'endpoint'],
   },
   {
     name: 'awsListDynamodbBackups',
@@ -4812,6 +5056,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListDynamodbBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['snapshot', 'restore', 'pitr', 'ondemand', 'recovery'],
   },
   {
     name: 'awsDescribeDynamodbBackup',
@@ -4820,6 +5065,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDynamodbBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['snapshot', 'restore', 'pitr', 'ondemand', 'recovery'],
   },
   {
     name: 'awsCreateDynamodbBackup',
@@ -4828,6 +5074,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDynamodbBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['snapshot', 'restore', 'pitr', 'ondemand', 'recovery'],
   },
   {
     name: 'awsDeleteDynamodbBackup',
@@ -4835,6 +5082,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDynamodbBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['snapshot', 'restore', 'pitr', 'ondemand', 'recovery'],
   },
   {
     name: 'awsRestoreDynamodbTableFromBackup',
@@ -4842,6 +5090,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRestoreDynamodbTableFromBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['snapshot', 'pitr', 'ondemand', 'recovery'],
   },
   {
     name: 'awsDescribeContinuousBackups',
@@ -4850,6 +5099,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeContinuousBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dynamodb', 'pitr', 'restore', 'backup', 'recovery'],
   },
   {
     name: 'awsUpdateContinuousBackups',
@@ -4858,6 +5108,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateContinuousBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dynamodb', 'pitr', 'restore', 'backup', 'recovery'],
   },
   {
     name: 'awsDescribeGlobalTable',
@@ -4866,6 +5117,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeGlobalTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dynamodb', 'replica', 'multiregion'],
   },
   {
     name: 'awsCreateGlobalTable',
@@ -4873,6 +5125,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateGlobalTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dynamodb', 'replica', 'multiregion'],
   },
   {
     name: 'awsUpdateGlobalTable',
@@ -4881,6 +5134,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateGlobalTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dynamodb', 'replica', 'multiregion'],
   },
   {
     name: 'awsDescribeTimeToLive',
@@ -4889,6 +5143,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeTimeToLive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dynamodb', 'ttl', 'expiry', 'expiration', 'table'],
   },
   {
     name: 'awsUpdateTimeToLive',
@@ -4897,6 +5152,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateTimeToLive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dynamodb', 'ttl', 'expiry', 'expiration', 'table'],
   },
   {
     name: 'awsListDynamodbTags',
@@ -4905,6 +5161,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListDynamodbTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['label', 'table'],
   },
   {
     name: 'awsTagDynamodbResource',
@@ -4912,6 +5169,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagDynamodbResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['label', 'table'],
   },
   {
     name: 'awsUntagDynamodbResource',
@@ -4919,6 +5177,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagDynamodbResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['label', 'table'],
   },
   {
     name: 'awsSetSnsTopicAttributes',
@@ -4927,6 +5186,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetSnsTopicAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'notifications', 'notify'],
   },
   {
     name: 'awsGetSnsSubscriptionAttributes',
@@ -4935,6 +5195,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSnsSubscriptionAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsSetSnsSubscriptionAttributes',
@@ -4943,6 +5204,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetSnsSubscriptionAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsConfirmSnsSubscription',
@@ -4951,6 +5213,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsConfirmSnsSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsPublishSnsBatch',
@@ -4959,6 +5222,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPublishSnsBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'notify'],
   },
   {
     name: 'awsCreateSnsPlatformApplication',
@@ -4967,6 +5231,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSnsPlatformApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['push', 'mobile', 'notification'],
   },
   {
     name: 'awsListSnsPlatformApplications',
@@ -4975,6 +5240,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSnsPlatformApplications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['push', 'mobile', 'notification'],
   },
   {
     name: 'awsGetSnsPlatformApplicationAttributes',
@@ -4983,6 +5249,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSnsPlatformApplicationAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['push', 'mobile', 'notification'],
   },
   {
     name: 'awsSetSnsPlatformApplicationAttributes',
@@ -4991,6 +5258,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetSnsPlatformApplicationAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['push', 'mobile', 'notification'],
   },
   {
     name: 'awsDeleteSnsPlatformApplication',
@@ -4998,6 +5266,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSnsPlatformApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['push', 'mobile', 'notification'],
   },
   {
     name: 'awsCreateSnsPlatformEndpoint',
@@ -5006,6 +5275,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSnsPlatformEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['push', 'mobile', 'device'],
   },
   {
     name: 'awsListSnsEndpointsByPlatformApplication',
@@ -5014,6 +5284,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSnsEndpointsByPlatformApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['push', 'mobile', 'device'],
   },
   {
     name: 'awsGetSnsEndpointAttributes',
@@ -5022,6 +5293,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSnsEndpointAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['push', 'mobile', 'device'],
   },
   {
     name: 'awsSetSnsEndpointAttributes',
@@ -5030,6 +5302,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetSnsEndpointAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['push', 'mobile', 'device'],
   },
   {
     name: 'awsDeleteSnsEndpoint',
@@ -5037,6 +5310,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSnsEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['push', 'mobile', 'device'],
   },
   {
     name: 'awsCheckSnsPhoneOptedOut',
@@ -5045,6 +5319,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCheckSnsPhoneOptedOut as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['text', 'notification'],
   },
   {
     name: 'awsListSnsOptedOutPhoneNumbers',
@@ -5053,6 +5328,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSnsOptedOutPhoneNumbers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['text', 'notification'],
   },
   {
     name: 'awsOptInSnsPhoneNumber',
@@ -5060,6 +5336,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsOptInSnsPhoneNumber as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['text', 'notification'],
   },
   {
     name: 'awsGetSnsSmsAttributes',
@@ -5068,6 +5345,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSnsSmsAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['text', 'notification'],
   },
   {
     name: 'awsSetSnsSmsAttributes',
@@ -5076,6 +5354,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetSnsSmsAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['text', 'notification'],
   },
   {
     name: 'awsAddSnsPermission',
@@ -5083,6 +5362,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddSnsPermission as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['notification', 'access'],
   },
   {
     name: 'awsRemoveSnsPermission',
@@ -5090,6 +5370,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveSnsPermission as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['notification', 'access'],
   },
   {
     name: 'awsListSnsTags',
@@ -5098,6 +5379,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSnsTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagSnsResource',
@@ -5105,6 +5387,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagSnsResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagSnsResource',
@@ -5112,6 +5395,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagSnsResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListIamUsers',
@@ -5120,6 +5404,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListIamUsers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['permission', 'account', 'group'],
   },
   {
     name: 'awsGetIamUser',
@@ -5128,6 +5413,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetIamUser as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['users', 'permission', 'account', 'group'],
   },
   {
     name: 'awsListIamRoles',
@@ -5136,6 +5422,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListIamRoles as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['assume', 'permission', 'trust'],
   },
   {
     name: 'awsGetIamRole',
@@ -5144,6 +5431,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetIamRole as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['roles', 'assume', 'permission', 'trust'],
   },
   {
     name: 'awsListIamPolicies',
@@ -5152,6 +5440,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListIamPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['policy', 'permission', 'permissions'],
   },
   {
     name: 'awsGetIamPolicy',
@@ -5160,6 +5449,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetIamPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['policies', 'permission', 'permissions'],
   },
   {
     name: 'awsGetPolicyVersion',
@@ -5168,6 +5458,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetPolicyVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['iam', 'policies', 'permission', 'permissions'],
   },
   {
     name: 'awsListPolicyVersions',
@@ -5176,6 +5467,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListPolicyVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['iam', 'policies', 'permission', 'permissions'],
   },
   {
     name: 'awsListIamGroups',
@@ -5184,6 +5476,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListIamGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['team', 'users', 'membership'],
   },
   {
     name: 'awsGetIamGroup',
@@ -5192,6 +5485,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetIamGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['groups', 'team', 'users', 'membership'],
   },
   {
     name: 'awsListAttachedRolePolicies',
@@ -5200,6 +5494,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAttachedRolePolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['roles', 'iam', 'assume', 'permission', 'trust'],
   },
   {
     name: 'awsGetAccountPasswordPolicy',
@@ -5208,6 +5503,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAccountPasswordPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['iam', 'rotation', 'security', 'complexity'],
   },
   {
     name: 'awsListS3DirectoryBuckets',
@@ -5215,6 +5511,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3DirectoryBuckets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['storage'],
   },
   {
     name: 'awsGetS3BucketLocation',
@@ -5223,6 +5520,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketLocation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['region', 'storage'],
   },
   {
     name: 'awsGetS3BucketPolicyStatus',
@@ -5231,6 +5529,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketPolicyStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['public', 'permissions', 'storage'],
   },
   {
     name: 'awsListS3ObjectsV1',
@@ -5239,6 +5538,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3ObjectsV1 as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['file', 'files', 'storage', 'bucket'],
   },
   {
     name: 'awsGetS3ObjectAttributes',
@@ -5247,6 +5547,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3ObjectAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['file', 'metadata', 'storage'],
   },
   {
     name: 'awsGetS3ObjectTorrent',
@@ -5255,6 +5556,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3ObjectTorrent as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsRenameS3Object',
@@ -5263,6 +5565,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRenameS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'move', 'storage'],
   },
   {
     name: 'awsUploadS3PartCopy',
@@ -5270,6 +5573,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUploadS3PartCopy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['file', 'large', 'storage'],
   },
   {
     name: 'awsGetS3BucketRequestPayment',
@@ -5278,6 +5582,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketRequestPayment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3BucketRequestPayment',
@@ -5286,6 +5591,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketRequestPayment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketOwnershipControls',
@@ -5294,6 +5600,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketOwnershipControls as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3BucketOwnershipControls',
@@ -5302,6 +5609,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketOwnershipControls as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3BucketOwnershipControls',
@@ -5310,6 +5618,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketOwnershipControls as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketAccelerate',
@@ -5318,6 +5627,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketAccelerate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['transfer', 'speed'],
   },
   {
     name: 'awsPutS3BucketAccelerate',
@@ -5326,6 +5636,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketAccelerate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['transfer', 'speed'],
   },
   {
     name: 'awsGetS3BucketIntelligentTiering',
@@ -5334,6 +5645,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketIntelligentTiering as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['storage-class', 'cost'],
   },
   {
     name: 'awsPutS3BucketIntelligentTiering',
@@ -5342,6 +5654,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketIntelligentTiering as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['storage-class', 'cost'],
   },
   {
     name: 'awsDeleteS3BucketIntelligentTiering',
@@ -5350,6 +5663,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketIntelligentTiering as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['storage-class', 'cost'],
   },
   {
     name: 'awsListS3BucketIntelligentTiering',
@@ -5358,6 +5672,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3BucketIntelligentTiering as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['storage-class', 'cost'],
   },
   {
     name: 'awsGetS3BucketInventory',
@@ -5366,6 +5681,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketInventory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3BucketInventory',
@@ -5374,6 +5690,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketInventory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3BucketInventory',
@@ -5382,6 +5699,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketInventory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListS3BucketInventory',
@@ -5390,6 +5708,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3BucketInventory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketMetrics',
@@ -5398,6 +5717,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3BucketMetrics',
@@ -5406,6 +5726,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3BucketMetrics',
@@ -5414,6 +5735,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListS3BucketMetrics',
@@ -5422,6 +5744,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3BucketMetrics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketAnalytics',
@@ -5430,6 +5753,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketAnalytics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutS3BucketAnalytics',
@@ -5438,6 +5762,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketAnalytics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3BucketAnalytics',
@@ -5446,6 +5771,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketAnalytics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListS3BucketAnalytics',
@@ -5454,6 +5780,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListS3BucketAnalytics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketMetadataConfig',
@@ -5462,6 +5789,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketMetadataConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateS3BucketMetadataConfig',
@@ -5470,6 +5798,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateS3BucketMetadataConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3BucketMetadataConfig',
@@ -5478,6 +5807,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketMetadataConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketMetadataTable',
@@ -5486,6 +5816,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketMetadataTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateS3BucketMetadataTable',
@@ -5494,6 +5825,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateS3BucketMetadataTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteS3BucketMetadataTable',
@@ -5502,6 +5834,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteS3BucketMetadataTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsUpdateS3BucketMetadataInventoryTable',
@@ -5510,6 +5843,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateS3BucketMetadataInventoryTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUpdateS3BucketMetadataJournalTable',
@@ -5518,6 +5852,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateS3BucketMetadataJournalTable as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3BucketAbac',
@@ -5526,6 +5861,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3BucketAbac as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsGetS3ObjectLegalHold',
@@ -5534,6 +5870,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3ObjectLegalHold as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compliance', 'governance'],
   },
   {
     name: 'awsPutS3ObjectLegalHold',
@@ -5541,6 +5878,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3ObjectLegalHold as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance', 'governance'],
   },
   {
     name: 'awsGetS3ObjectRetention',
@@ -5549,6 +5887,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3ObjectRetention as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compliance', 'governance'],
   },
   {
     name: 'awsPutS3ObjectRetention',
@@ -5557,6 +5896,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3ObjectRetention as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance', 'governance'],
   },
   {
     name: 'awsGetS3ObjectLockConfig',
@@ -5565,6 +5905,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetS3ObjectLockConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compliance', 'governance'],
   },
   {
     name: 'awsPutS3ObjectLockConfig',
@@ -5573,6 +5914,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3ObjectLockConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance', 'governance'],
   },
   {
     name: 'awsRestoreS3Object',
@@ -5581,6 +5923,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRestoreS3Object as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['glacier', 'archive'],
   },
   {
     name: 'awsSelectS3ObjectContent',
@@ -5589,6 +5932,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSelectS3ObjectContent as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['sql'],
   },
   {
     name: 'awsWriteS3GetObjectResponse',
@@ -5596,6 +5940,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsWriteS3GetObjectResponse as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['object-lambda'],
   },
   {
     name: 'awsCreateS3Session',
@@ -5603,6 +5948,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateS3Session as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateIamUser',
@@ -5610,6 +5956,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateIamUser as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['users', 'permission', 'account', 'group'],
   },
   {
     name: 'awsDeleteIamUser',
@@ -5618,6 +5965,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteIamUser as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['users', 'permission', 'account', 'group'],
   },
   {
     name: 'awsUpdateIamUser',
@@ -5625,6 +5973,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateIamUser as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['users', 'permission', 'account', 'group'],
   },
   {
     name: 'awsCreateIamRole',
@@ -5632,6 +5981,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateIamRole as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['roles', 'assume', 'permission', 'trust'],
   },
   {
     name: 'awsDeleteIamRole',
@@ -5640,6 +5990,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteIamRole as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['roles', 'assume', 'permission', 'trust'],
   },
   {
     name: 'awsUpdateAssumeRolePolicy',
@@ -5647,6 +5998,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAssumeRolePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['roles', 'iam', 'permission', 'trust'],
   },
   {
     name: 'awsAttachRolePolicy',
@@ -5654,6 +6006,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAttachRolePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['roles', 'iam', 'assume', 'permission', 'trust'],
   },
   {
     name: 'awsDetachRolePolicy',
@@ -5661,6 +6014,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDetachRolePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['roles', 'iam', 'assume', 'permission', 'trust'],
   },
   {
     name: 'awsCreateIamPolicy',
@@ -5668,6 +6022,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateIamPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['policies', 'permission', 'permissions'],
   },
   {
     name: 'awsDeleteIamPolicy',
@@ -5675,6 +6030,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteIamPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['policies', 'permission', 'permissions'],
   },
   {
     name: 'awsCreatePolicyVersion',
@@ -5683,6 +6039,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreatePolicyVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', 'policies', 'permission', 'permissions'],
   },
   {
     name: 'awsCreateIamGroup',
@@ -5690,6 +6047,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateIamGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['groups', 'team', 'users', 'membership'],
   },
   {
     name: 'awsDeleteIamGroup',
@@ -5698,6 +6056,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteIamGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['groups', 'team', 'users', 'membership'],
   },
   {
     name: 'awsAddUserToGroup',
@@ -5705,6 +6064,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddUserToGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['users', 'iam', 'permission', 'account'],
   },
   {
     name: 'awsRemoveUserFromGroup',
@@ -5712,6 +6072,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveUserFromGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['users', 'iam', 'permission', 'account'],
   },
   {
     name: 'awsAttachGroupPolicy',
@@ -5719,6 +6080,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAttachGroupPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['groups', 'iam', 'team', 'users', 'membership'],
   },
   {
     name: 'awsDetachGroupPolicy',
@@ -5726,6 +6088,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDetachGroupPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['groups', 'iam', 'team', 'users', 'membership'],
   },
   {
     name: 'awsListAccessKeys',
@@ -5734,6 +6097,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAccessKeys as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['iam', 'key', 'credential', 'credentials', 'secret'],
   },
   {
     name: 'awsCreateAccessKey',
@@ -5741,6 +6105,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAccessKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', 'credential', 'credentials', 'secret'],
   },
   {
     name: 'awsDeleteAccessKey',
@@ -5748,6 +6113,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAccessKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['iam', 'credential', 'credentials', 'secret'],
   },
   {
     name: 'awsUpdateAccessKey',
@@ -5756,6 +6122,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAccessKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', 'credential', 'credentials', 'secret'],
   },
   {
     name: 'awsUpdateAccountPasswordPolicy',
@@ -5764,6 +6131,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAccountPasswordPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', 'rotation', 'security', 'complexity'],
   },
   {
     name: 'awsListMfaDevices',
@@ -5772,6 +6140,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListMfaDevices as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['iam', '2fa', 'otp', 'auth', 'authentication'],
   },
   {
     name: 'awsEnableMfaDevice',
@@ -5779,6 +6148,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsEnableMfaDevice as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', '2fa', 'otp', 'auth', 'authentication'],
   },
   {
     name: 'awsDeactivateMfaDevice',
@@ -5786,6 +6156,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeactivateMfaDevice as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', '2fa', 'otp', 'auth', 'authentication'],
   },
   {
     name: 'awsPutS3BucketAbac',
@@ -5794,6 +6165,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutS3BucketAbac as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsListEcsClusters',
@@ -5802,6 +6174,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cluster', 'container', 'fargate', 'ec2', 'orchestration'],
   },
   {
     name: 'awsDescribeEcsClusters',
@@ -5810,6 +6183,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEcsClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cluster', 'container', 'fargate', 'ec2', 'orchestration'],
   },
   {
     name: 'awsCreateEcsCluster',
@@ -5817,6 +6191,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEcsCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'fargate', 'ec2', 'orchestration'],
   },
   {
     name: 'awsUpdateEcsCluster',
@@ -5824,6 +6199,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEcsCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'fargate', 'ec2', 'orchestration'],
   },
   {
     name: 'awsUpdateEcsClusterSettings',
@@ -5831,6 +6207,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEcsClusterSettings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'fargate', 'ec2', 'orchestration'],
   },
   {
     name: 'awsDeleteEcsCluster',
@@ -5838,6 +6215,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEcsCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['container', 'fargate', 'ec2', 'orchestration'],
   },
   {
     name: 'awsListEcsServices',
@@ -5846,6 +6224,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsServices as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['deploy', 'deployment', 'container', 'scaling', 'service'],
   },
   {
     name: 'awsDescribeEcsServices',
@@ -5854,6 +6233,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEcsServices as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['deploy', 'deployment', 'container', 'scaling', 'service'],
   },
   {
     name: 'awsCreateEcsService',
@@ -5861,6 +6241,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEcsService as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['deploy', 'deployment', 'container', 'scaling'],
   },
   {
     name: 'awsUpdateEcsService',
@@ -5868,6 +6249,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEcsService as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['deploy', 'deployment', 'container', 'scaling'],
   },
   {
     name: 'awsDeleteEcsService',
@@ -5875,6 +6257,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEcsService as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['deploy', 'deployment', 'container', 'scaling'],
   },
   {
     name: 'awsListEcsTasks',
@@ -5883,6 +6266,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsTasks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['container', 'fargate', 'docker', 'run'],
   },
   {
     name: 'awsDescribeEcsTasks',
@@ -5891,6 +6275,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEcsTasks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['container', 'fargate', 'docker', 'run'],
   },
   {
     name: 'awsRunEcsTask',
@@ -5898,6 +6283,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRunEcsTask as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'fargate', 'docker', 'tasks'],
   },
   {
     name: 'awsStopEcsTask',
@@ -5906,6 +6292,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopEcsTask as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['container', 'fargate', 'docker', 'run', 'tasks'],
   },
   {
     name: 'awsStartEcsTask',
@@ -5913,6 +6300,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartEcsTask as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'fargate', 'docker', 'run', 'tasks'],
   },
   {
     name: 'awsListEcsTaskDefinitions',
@@ -5920,6 +6308,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsTaskDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['container', 'image', 'fargate', 'revision'],
   },
   {
     name: 'awsDescribeEcsTaskDefinition',
@@ -5928,6 +6317,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEcsTaskDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['container', 'image', 'fargate', 'revision'],
   },
   {
     name: 'awsRegisterEcsTaskDefinition',
@@ -5935,6 +6325,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRegisterEcsTaskDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'image', 'fargate', 'revision'],
   },
   {
     name: 'awsDeregisterEcsTaskDefinition',
@@ -5942,6 +6333,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeregisterEcsTaskDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['container', 'image', 'fargate', 'revision'],
   },
   {
     name: 'awsListEcsContainerInstances',
@@ -5950,6 +6342,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsContainerInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ec2', 'agent', 'ami'],
   },
   {
     name: 'awsDescribeEcsContainerInstances',
@@ -5958,6 +6351,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEcsContainerInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ec2', 'agent', 'ami'],
   },
   {
     name: 'awsUpdateEcsContainerInstancesState',
@@ -5965,6 +6359,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEcsContainerInstancesState as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ec2', 'agent', 'ami'],
   },
   {
     name: 'awsListEcsCapacityProviders',
@@ -5973,6 +6368,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsCapacityProviders as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['fargate', 'autoscaling', 'asg', 'provider'],
   },
   {
     name: 'awsDescribeEcsCapacityProviders',
@@ -5981,6 +6377,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEcsCapacityProviders as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['fargate', 'autoscaling', 'asg', 'provider'],
   },
   {
     name: 'awsCreateEcsCapacityProvider',
@@ -5988,6 +6385,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEcsCapacityProvider as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['fargate', 'autoscaling', 'asg'],
   },
   {
     name: 'awsUpdateEcsCapacityProvider',
@@ -5995,6 +6393,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEcsCapacityProvider as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['fargate', 'autoscaling', 'asg'],
   },
   {
     name: 'awsDeleteEcsCapacityProvider',
@@ -6002,6 +6401,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEcsCapacityProvider as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['fargate', 'autoscaling', 'asg'],
   },
   {
     name: 'awsPutEcsClusterCapacityProviders',
@@ -6009,6 +6409,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEcsClusterCapacityProviders as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['fargate', 'autoscaling', 'asg', 'provider'],
   },
   {
     name: 'awsListEcsTags',
@@ -6017,6 +6418,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagEcsResource',
@@ -6024,6 +6426,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagEcsResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagEcsResource',
@@ -6031,6 +6434,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagEcsResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListEcsAccountSettings',
@@ -6038,6 +6442,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsAccountSettings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutEcsAccountSetting',
@@ -6045,6 +6450,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEcsAccountSetting as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsPutEcsAccountSettingDefault',
@@ -6052,6 +6458,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEcsAccountSettingDefault as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteEcsAccountSetting',
@@ -6059,6 +6466,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEcsAccountSetting as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListEcsTaskSets',
@@ -6067,6 +6475,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsTaskSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['deployment', 'canary', 'bluegreen', 'external', 'service'],
   },
   {
     name: 'awsDescribeEcsTaskSets',
@@ -6075,6 +6484,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEcsTaskSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['deployment', 'canary', 'bluegreen', 'external', 'service'],
   },
   {
     name: 'awsCreateEcsTaskSet',
@@ -6082,6 +6492,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEcsTaskSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['deployment', 'canary', 'bluegreen', 'external', 'service'],
   },
   {
     name: 'awsUpdateEcsTaskSet',
@@ -6089,6 +6500,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEcsTaskSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['deployment', 'canary', 'bluegreen', 'external', 'service'],
   },
   {
     name: 'awsDeleteEcsTaskSet',
@@ -6096,6 +6508,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEcsTaskSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['deployment', 'canary', 'bluegreen', 'external', 'service'],
   },
   {
     name: 'awsListEcsAttributes',
@@ -6104,6 +6517,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcsAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutEcsAttributes',
@@ -6111,6 +6525,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEcsAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteEcsAttributes',
@@ -6118,6 +6533,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEcsAttributes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListEksClusters',
@@ -6126,6 +6542,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['kubernetes', 'k8s', 'control', 'upgrade'],
   },
   {
     name: 'awsDescribeEksCluster',
@@ -6134,6 +6551,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEksCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['kubernetes', 'k8s', 'control', 'upgrade'],
   },
   {
     name: 'awsCreateEksCluster',
@@ -6141,6 +6559,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEksCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kubernetes', 'k8s', 'control', 'upgrade'],
   },
   {
     name: 'awsUpdateEksClusterVersion',
@@ -6149,6 +6568,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEksClusterVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kubernetes', 'k8s', 'control', 'upgrade'],
   },
   {
     name: 'awsUpdateEksClusterConfig',
@@ -6157,6 +6577,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEksClusterConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kubernetes', 'k8s', 'control', 'upgrade'],
   },
   {
     name: 'awsDeleteEksCluster',
@@ -6164,6 +6585,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEksCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['kubernetes', 'k8s', 'control', 'upgrade'],
   },
   {
     name: 'awsListEksNodegroups',
@@ -6172,6 +6594,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksNodegroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['node', 'nodes', 'kubernetes', 'scaling', 'managed'],
   },
   {
     name: 'awsDescribeEksNodegroup',
@@ -6180,6 +6603,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEksNodegroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['node', 'nodes', 'kubernetes', 'scaling', 'managed'],
   },
   {
     name: 'awsCreateEksNodegroup',
@@ -6187,6 +6611,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEksNodegroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['node', 'nodes', 'kubernetes', 'scaling', 'managed'],
   },
   {
     name: 'awsUpdateEksNodegroupVersion',
@@ -6195,6 +6620,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEksNodegroupVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['node', 'nodes', 'kubernetes', 'scaling', 'managed'],
   },
   {
     name: 'awsUpdateEksNodegroupConfig',
@@ -6202,6 +6628,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEksNodegroupConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['node', 'nodes', 'kubernetes', 'scaling', 'managed'],
   },
   {
     name: 'awsDeleteEksNodegroup',
@@ -6209,6 +6636,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEksNodegroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['node', 'nodes', 'kubernetes', 'scaling', 'managed'],
   },
   {
     name: 'awsListEksFargateProfiles',
@@ -6217,6 +6645,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksFargateProfiles as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'pod', 'profile', 'kubernetes'],
   },
   {
     name: 'awsDescribeEksFargateProfile',
@@ -6225,6 +6654,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEksFargateProfile as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['serverless', 'pod', 'kubernetes'],
   },
   {
     name: 'awsCreateEksFargateProfile',
@@ -6232,6 +6662,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEksFargateProfile as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['serverless', 'pod', 'kubernetes'],
   },
   {
     name: 'awsDeleteEksFargateProfile',
@@ -6239,6 +6670,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEksFargateProfile as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['serverless', 'pod', 'kubernetes'],
   },
   {
     name: 'awsListEksAddons',
@@ -6247,6 +6679,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksAddons as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['plugin', 'extension', 'coredns', 'driver', 'kubernetes'],
   },
   {
     name: 'awsDescribeEksAddon',
@@ -6255,6 +6688,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEksAddon as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['plugin', 'extension', 'coredns', 'driver', 'kubernetes'],
   },
   {
     name: 'awsDescribeEksAddonVersions',
@@ -6263,6 +6697,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEksAddonVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['plugin', 'extension', 'coredns', 'driver', 'kubernetes'],
   },
   {
     name: 'awsCreateEksAddon',
@@ -6270,6 +6705,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEksAddon as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['plugin', 'extension', 'coredns', 'driver', 'kubernetes'],
   },
   {
     name: 'awsUpdateEksAddon',
@@ -6277,6 +6713,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEksAddon as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['plugin', 'extension', 'coredns', 'driver', 'kubernetes'],
   },
   {
     name: 'awsDeleteEksAddon',
@@ -6284,6 +6721,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEksAddon as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['plugin', 'extension', 'coredns', 'driver', 'kubernetes'],
   },
   {
     name: 'awsListEksIdentityProviderConfigs',
@@ -6292,6 +6730,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksIdentityProviderConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsDescribeEksIdentityProviderConfig',
@@ -6300,6 +6739,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEksIdentityProviderConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsAssociateEksIdentityProviderConfig',
@@ -6308,6 +6748,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociateEksIdentityProviderConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsDisassociateEksIdentityProviderConfig',
@@ -6316,6 +6757,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisassociateEksIdentityProviderConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsListEksTags',
@@ -6324,6 +6766,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagEksResource',
@@ -6331,6 +6774,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagEksResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagEksResource',
@@ -6338,6 +6782,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagEksResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListEksAccessEntries',
@@ -6346,6 +6791,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksAccessEntries as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['iam', 'rbac', 'role', 'user', 'kubernetes'],
   },
   {
     name: 'awsDescribeEksAccessEntry',
@@ -6354,6 +6800,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEksAccessEntry as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['iam', 'rbac', 'role', 'user', 'kubernetes'],
   },
   {
     name: 'awsCreateEksAccessEntry',
@@ -6361,6 +6808,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEksAccessEntry as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', 'rbac', 'role', 'user', 'kubernetes'],
   },
   {
     name: 'awsUpdateEksAccessEntry',
@@ -6368,6 +6816,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEksAccessEntry as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', 'rbac', 'role', 'user', 'kubernetes'],
   },
   {
     name: 'awsDeleteEksAccessEntry',
@@ -6375,6 +6824,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEksAccessEntry as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['iam', 'rbac', 'role', 'user', 'kubernetes'],
   },
   {
     name: 'awsAssociateEksAccessPolicy',
@@ -6382,6 +6832,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociateEksAccessPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['iam', 'rbac', 'role', 'user', 'kubernetes'],
   },
   {
     name: 'awsDisassociateEksAccessPolicy',
@@ -6390,6 +6841,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisassociateEksAccessPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['iam', 'rbac', 'role', 'user', 'kubernetes'],
   },
   {
     name: 'awsListEksAssociatedAccessPolicies',
@@ -6398,6 +6850,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksAssociatedAccessPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['iam', 'rbac', 'role', 'user', 'kubernetes'],
   },
   {
     name: 'awsListEksPodIdentityAssociations',
@@ -6406,6 +6859,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEksPodIdentityAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsDescribeEksPodIdentityAssociation',
@@ -6414,6 +6868,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEksPodIdentityAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsCreateEksPodIdentityAssociation',
@@ -6421,6 +6876,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEksPodIdentityAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsUpdateEksPodIdentityAssociation',
@@ -6428,6 +6884,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEksPodIdentityAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsDeleteEksPodIdentityAssociation',
@@ -6435,6 +6892,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEksPodIdentityAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['oidc', 'sso', 'iam', 'rbac'],
   },
   {
     name: 'awsListRepositories',
@@ -6443,6 +6901,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRepositories as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'repo', 'repos', 'docker'],
   },
   {
     name: 'awsDescribeRepositories',
@@ -6451,6 +6910,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeRepositories as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'repo', 'repos', 'docker'],
   },
   {
     name: 'awsCreateRepository',
@@ -6458,6 +6918,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRepository as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'container', 'repo', 'repos', 'docker'],
   },
   {
     name: 'awsUpdateEcrRepository',
@@ -6465,6 +6926,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEcrRepository as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'repo', 'repos', 'docker'],
   },
   {
     name: 'awsDeleteRepository',
@@ -6472,6 +6934,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRepository as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ecr', 'container', 'repo', 'repos', 'docker'],
   },
   {
     name: 'awsListImages',
@@ -6480,6 +6943,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListImages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'docker', 'tag'],
   },
   {
     name: 'awsDescribeImages',
@@ -6488,6 +6952,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeImages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'docker', 'tag'],
   },
   {
     name: 'awsBatchGetImage',
@@ -6496,6 +6961,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetImage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'container', 'docker', 'images', 'tag'],
   },
   {
     name: 'awsPutImage',
@@ -6504,6 +6970,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutImage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'container', 'docker', 'images', 'tag'],
   },
   {
     name: 'awsDeleteImages',
@@ -6512,6 +6979,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteImages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ecr', 'container', 'docker', 'tag'],
   },
   {
     name: 'awsBatchDeleteImage',
@@ -6520,6 +6988,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchDeleteImage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'container', 'docker', 'images', 'tag'],
   },
   {
     name: 'awsPutLifecyclePolicy',
@@ -6528,6 +6997,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutLifecyclePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'cleanup', 'expiry', 'retention'],
   },
   {
     name: 'awsGetLifecyclePolicy',
@@ -6536,6 +7006,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLifecyclePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'cleanup', 'expiry', 'retention'],
   },
   {
     name: 'awsDeleteLifecyclePolicy',
@@ -6544,6 +7015,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLifecyclePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ecr', 'cleanup', 'expiry', 'retention'],
   },
   {
     name: 'awsStartLifecyclePolicyPreview',
@@ -6552,6 +7024,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartLifecyclePolicyPreview as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'cleanup', 'expiry', 'retention'],
   },
   {
     name: 'awsGetLifecyclePolicyPreview',
@@ -6560,6 +7033,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLifecyclePolicyPreview as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'cleanup', 'expiry', 'retention'],
   },
   {
     name: 'awsPutImageTagMutability',
@@ -6568,6 +7042,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutImageTagMutability as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'container', 'docker', 'images'],
   },
   {
     name: 'awsGetImageTagMutability',
@@ -6576,6 +7051,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetImageTagMutability as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'docker', 'images'],
   },
   {
     name: 'awsPutImageScanningConfiguration',
@@ -6584,6 +7060,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutImageScanningConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'container', 'docker', 'images', 'tag'],
   },
   {
     name: 'awsGetImageScanningConfiguration',
@@ -6592,6 +7069,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetImageScanningConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'docker', 'images', 'tag'],
   },
   {
     name: 'awsDescribeImageScanFindings',
@@ -6600,6 +7078,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeImageScanFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'docker', 'images', 'tag'],
   },
   {
     name: 'awsSetRepositoryPolicy',
@@ -6608,6 +7087,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetRepositoryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'container', 'repo', 'repos', 'docker'],
   },
   {
     name: 'awsGetRepositoryPolicy',
@@ -6616,6 +7096,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRepositoryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'repo', 'repos', 'docker'],
   },
   {
     name: 'awsDeleteRepositoryPolicy',
@@ -6624,6 +7105,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRepositoryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ecr', 'container', 'repo', 'repos', 'docker'],
   },
   {
     name: 'awsPutReplicationConfiguration',
@@ -6632,6 +7114,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutReplicationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'mirror', 'copy', 'region'],
   },
   {
     name: 'awsGetReplicationConfiguration',
@@ -6640,6 +7123,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetReplicationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'mirror', 'copy', 'region'],
   },
   {
     name: 'awsPutRegistryPolicy',
@@ -6647,6 +7131,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutRegistryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'permissions', 'access', 'iam'],
   },
   {
     name: 'awsGetRegistryPolicy',
@@ -6654,6 +7139,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRegistryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'permissions', 'access', 'iam'],
   },
   {
     name: 'awsDeleteRegistryPolicy',
@@ -6661,6 +7147,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRegistryPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ecr', 'permissions', 'access', 'iam'],
   },
   {
     name: 'awsPutRegistryScanningConfiguration',
@@ -6669,6 +7156,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutRegistryScanningConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ecr', 'account', 'default', 'docker'],
   },
   {
     name: 'awsGetRegistryScanningConfiguration',
@@ -6677,6 +7165,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRegistryScanningConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'account', 'default', 'docker'],
   },
   {
     name: 'awsDescribeRegistry',
@@ -6685,6 +7174,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeRegistry as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'account', 'default', 'docker'],
   },
   {
     name: 'awsDescribeImageReplicationStatus',
@@ -6693,6 +7183,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeImageReplicationStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ecr', 'container', 'docker', 'images', 'tag'],
   },
   {
     name: 'awsListEcrTags',
@@ -6701,6 +7192,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEcrTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['container', 'docker'],
   },
   {
     name: 'awsTagEcrResource',
@@ -6708,6 +7200,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagEcrResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'docker'],
   },
   {
     name: 'awsUntagEcrResource',
@@ -6715,6 +7208,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagEcrResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['container', 'docker'],
   },
   {
     name: 'awsDescribeRdsInstances',
@@ -6723,6 +7217,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeRdsInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'databases', 'postgres', 'mysql', 'aurora'],
   },
   {
     name: 'awsCreateDbInstance',
@@ -6731,6 +7226,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'postgres', 'mysql', 'rds'],
   },
   {
     name: 'awsModifyDbInstance',
@@ -6739,6 +7235,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'postgres', 'mysql', 'rds'],
   },
   {
     name: 'awsDeleteDbInstance',
@@ -6746,6 +7243,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'rds'],
   },
   {
     name: 'awsStartDbInstance',
@@ -6753,6 +7251,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'rds'],
   },
   {
     name: 'awsStopDbInstance',
@@ -6761,6 +7260,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'rds'],
   },
   {
     name: 'awsRebootDbInstance',
@@ -6768,6 +7268,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRebootDbInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'rds'],
   },
   {
     name: 'awsDescribeDbSnapshots',
@@ -6776,6 +7277,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDbSnapshots as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'backup', 'backups', 'rds'],
   },
   {
     name: 'awsCreateDbSnapshot',
@@ -6784,6 +7286,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDbSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'backup', 'rds'],
   },
   {
     name: 'awsDeleteDbSnapshot',
@@ -6791,6 +7294,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDbSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'backup', 'rds'],
   },
   {
     name: 'awsRestoreDbInstanceFromDbSnapshot',
@@ -6799,6 +7303,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRestoreDbInstanceFromDbSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'backup', 'rds'],
   },
   {
     name: 'awsCopyDbSnapshot',
@@ -6806,6 +7311,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCopyDbSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'backup', 'rds'],
   },
   {
     name: 'awsDescribeDbAutomatedBackups',
@@ -6814,6 +7320,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDbAutomatedBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'snapshot', 'snapshots', 'rds'],
   },
   {
     name: 'awsDescribeDbClusters',
@@ -6822,6 +7329,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDbClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsCreateDbCluster',
@@ -6829,6 +7337,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDbCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsModifyDbCluster',
@@ -6836,6 +7345,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyDbCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsDeleteDbCluster',
@@ -6843,6 +7353,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDbCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsStartDbCluster',
@@ -6850,6 +7361,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartDbCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsStopDbCluster',
@@ -6858,6 +7370,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopDbCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsCreateDbClusterSnapshot',
@@ -6866,6 +7379,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDbClusterSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'backup', 'rds'],
   },
   {
     name: 'awsRestoreDbClusterFromSnapshot',
@@ -6874,6 +7388,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRestoreDbClusterFromSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'backup', 'rds'],
   },
   {
     name: 'awsDescribeDbParameterGroups',
@@ -6882,6 +7397,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDbParameterGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'config', 'rds'],
   },
   {
     name: 'awsCreateDbParameterGroup',
@@ -6889,6 +7405,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDbParameterGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'config', 'rds'],
   },
   {
     name: 'awsModifyDbParameterGroup',
@@ -6897,6 +7414,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyDbParameterGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'config', 'rds'],
   },
   {
     name: 'awsDeleteDbParameterGroup',
@@ -6904,6 +7422,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDbParameterGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'config', 'rds'],
   },
   {
     name: 'awsDescribeDbParameters',
@@ -6912,6 +7431,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDbParameters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'config', 'rds'],
   },
   {
     name: 'awsDescribeDbSubnetGroups',
@@ -6920,6 +7440,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDbSubnetGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'vpc', 'rds'],
   },
   {
     name: 'awsCreateDbSubnetGroup',
@@ -6927,6 +7448,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDbSubnetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'vpc', 'rds'],
   },
   {
     name: 'awsModifyDbSubnetGroup',
@@ -6934,6 +7456,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyDbSubnetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'vpc', 'rds'],
   },
   {
     name: 'awsDeleteDbSubnetGroup',
@@ -6941,6 +7464,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDbSubnetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'vpc', 'rds'],
   },
   {
     name: 'awsCreateGlobalCluster',
@@ -6948,6 +7472,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateGlobalCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsDescribeGlobalClusters',
@@ -6956,6 +7481,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeGlobalClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsModifyGlobalCluster',
@@ -6963,6 +7489,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyGlobalCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsDeleteGlobalCluster',
@@ -6971,6 +7498,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteGlobalCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsRemoveFromGlobalCluster',
@@ -6979,6 +7507,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveFromGlobalCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsFailoverGlobalCluster',
@@ -6987,6 +7516,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsFailoverGlobalCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'rds'],
   },
   {
     name: 'awsRestoreDbClusterToPointInTime',
@@ -6995,6 +7525,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRestoreDbClusterToPointInTime as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['database', 'aurora', 'backup', 'rds'],
   },
   {
     name: 'awsDescribeElasticacheCacheClusters',
@@ -7003,6 +7534,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeElasticacheCacheClusters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['redis', 'valkey', 'memcached'],
   },
   {
     name: 'awsCreateCacheCluster',
@@ -7010,6 +7542,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCacheCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'valkey', 'memcached'],
   },
   {
     name: 'awsModifyCacheCluster',
@@ -7017,6 +7550,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyCacheCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'valkey', 'memcached'],
   },
   {
     name: 'awsDeleteCacheCluster',
@@ -7024,6 +7558,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCacheCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['elasticache', 'redis', 'valkey', 'memcached'],
   },
   {
     name: 'awsRebootCacheCluster',
@@ -7031,6 +7566,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRebootCacheCluster as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'valkey', 'memcached'],
   },
   {
     name: 'awsDescribeReplicationGroups',
@@ -7039,6 +7575,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeReplicationGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['elasticache', 'redis', 'cluster', 'failover', 'valkey'],
   },
   {
     name: 'awsCreateReplicationGroup',
@@ -7047,6 +7584,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateReplicationGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'cluster', 'failover', 'valkey'],
   },
   {
     name: 'awsModifyReplicationGroup',
@@ -7054,6 +7592,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyReplicationGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'cluster', 'failover', 'valkey'],
   },
   {
     name: 'awsDeleteReplicationGroup',
@@ -7061,6 +7600,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteReplicationGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['elasticache', 'redis', 'cluster', 'failover', 'valkey'],
   },
   {
     name: 'awsIncreaseReplicaCount',
@@ -7068,6 +7608,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsIncreaseReplicaCount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'cluster', 'failover', 'valkey'],
   },
   {
     name: 'awsDecreaseReplicaCount',
@@ -7075,6 +7616,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDecreaseReplicaCount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'cluster', 'failover', 'valkey'],
   },
   {
     name: 'awsDescribeCacheParameterGroups',
@@ -7083,6 +7625,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCacheParameterGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['elasticache', 'redis', 'config', 'tuning', 'settings'],
   },
   {
     name: 'awsCreateCacheParameterGroup',
@@ -7090,6 +7633,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCacheParameterGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'config', 'tuning', 'settings'],
   },
   {
     name: 'awsModifyCacheParameterGroup',
@@ -7098,6 +7642,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyCacheParameterGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'redis', 'config', 'tuning', 'settings'],
   },
   {
     name: 'awsDeleteCacheParameterGroup',
@@ -7105,6 +7650,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCacheParameterGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['elasticache', 'redis', 'config', 'tuning', 'settings'],
   },
   {
     name: 'awsDescribeCacheParameters',
@@ -7113,6 +7659,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCacheParameters as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['elasticache', 'redis', 'config', 'tuning', 'settings'],
   },
   {
     name: 'awsDescribeCacheSubnetGroups',
@@ -7121,6 +7668,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCacheSubnetGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['elasticache', 'vpc', 'network', 'redis'],
   },
   {
     name: 'awsCreateCacheSubnetGroup',
@@ -7128,6 +7676,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCacheSubnetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'vpc', 'network', 'redis'],
   },
   {
     name: 'awsModifyCacheSubnetGroup',
@@ -7135,6 +7684,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyCacheSubnetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'vpc', 'network', 'redis'],
   },
   {
     name: 'awsDeleteCacheSubnetGroup',
@@ -7142,6 +7692,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCacheSubnetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['elasticache', 'vpc', 'network', 'redis'],
   },
   {
     name: 'awsDescribeSnapshots',
@@ -7149,6 +7700,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSnapshots as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['elasticache', 'backup', 'restore', 'redis', 'rdb'],
   },
   {
     name: 'awsCreateSnapshot',
@@ -7156,6 +7708,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'backup', 'restore', 'redis', 'rdb'],
   },
   {
     name: 'awsDeleteSnapshot',
@@ -7163,6 +7716,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['elasticache', 'backup', 'restore', 'redis', 'rdb'],
   },
   {
     name: 'awsCopySnapshot',
@@ -7170,6 +7724,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCopySnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'backup', 'restore', 'redis', 'rdb'],
   },
   {
     name: 'awsListTagsForResource',
@@ -7178,6 +7733,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListTagsForResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['elasticache', 'label', 'redis'],
   },
   {
     name: 'awsAddTagsToResource',
@@ -7186,6 +7742,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddTagsToResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['elasticache', 'label', 'redis'],
   },
   {
     name: 'awsRemoveTagsFromResource',
@@ -7194,6 +7751,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveTagsFromResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['elasticache', 'label', 'redis'],
   },
   {
     name: 'awsStartEbsSnapshot',
@@ -7201,6 +7759,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartEbsSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['volume', 'backup'],
   },
   {
     name: 'awsPutEbsSnapshotBlock',
@@ -7208,6 +7767,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEbsSnapshotBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['volume', 'backup', 'direct'],
   },
   {
     name: 'awsGetEbsSnapshotBlock',
@@ -7216,6 +7776,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetEbsSnapshotBlock as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['volume', 'backup', 'direct'],
   },
   {
     name: 'awsListEbsSnapshotBlocks',
@@ -7224,6 +7785,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEbsSnapshotBlocks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['volume', 'backup', 'direct'],
   },
   {
     name: 'awsListEbsChangedBlocks',
@@ -7232,6 +7794,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEbsChangedBlocks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['snapshot', 'volume', 'backup', 'direct'],
   },
   {
     name: 'awsCompleteEbsSnapshot',
@@ -7239,6 +7802,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCompleteEbsSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['volume', 'backup'],
   },
   {
     name: 'awsCreateRoute53HostedZone',
@@ -7246,6 +7810,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRoute53HostedZone as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'domain', 'domains'],
   },
   {
     name: 'awsGetRoute53HostedZone',
@@ -7254,6 +7819,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53HostedZone as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'domain', 'domains'],
   },
   {
     name: 'awsListRoute53HostedZones',
@@ -7262,6 +7828,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53HostedZones as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'domain', 'domains'],
   },
   {
     name: 'awsDeleteRoute53HostedZone',
@@ -7269,6 +7836,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRoute53HostedZone as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'domain', 'domains'],
   },
   {
     name: 'awsUpdateRoute53HostedZoneComment',
@@ -7277,6 +7845,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateRoute53HostedZoneComment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'domain'],
   },
   {
     name: 'awsListRoute53HostedZonesByName',
@@ -7285,6 +7854,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53HostedZonesByName as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'domain', 'domains'],
   },
   {
     name: 'awsListRoute53ResourceRecordSets',
@@ -7293,6 +7863,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53ResourceRecordSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'records', 'domain'],
   },
   {
     name: 'awsChangeRoute53ResourceRecordSets',
@@ -7300,6 +7871,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsChangeRoute53ResourceRecordSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'records', 'domain'],
   },
   {
     name: 'awsGetRoute53Change',
@@ -7308,6 +7880,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53Change as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'propagation'],
   },
   {
     name: 'awsListRoute53TagsForResource',
@@ -7316,6 +7889,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53TagsForResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsChangeRoute53TagsForResource',
@@ -7323,6 +7897,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsChangeRoute53TagsForResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateRoute53HealthCheck',
@@ -7330,6 +7905,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRoute53HealthCheck as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsGetRoute53HealthCheck',
@@ -7338,6 +7914,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53HealthCheck as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsListRoute53HealthChecks',
@@ -7346,6 +7923,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53HealthChecks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsDeleteRoute53HealthCheck',
@@ -7353,6 +7931,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRoute53HealthCheck as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsUpdateRoute53HealthCheck',
@@ -7360,6 +7939,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateRoute53HealthCheck as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsGetRoute53HealthCheckStatus',
@@ -7368,6 +7948,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53HealthCheckStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsGetRoute53HealthCheckLastFailureReason',
@@ -7376,6 +7957,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53HealthCheckLastFailureReason as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsGetRoute53HealthCheckCount',
@@ -7384,6 +7966,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53HealthCheckCount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsCreateRoute53ReusableDelegationSet',
@@ -7391,6 +7974,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRoute53ReusableDelegationSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'nameserver', 'nameservers'],
   },
   {
     name: 'awsGetRoute53ReusableDelegationSet',
@@ -7399,6 +7983,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53ReusableDelegationSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'nameserver', 'nameservers'],
   },
   {
     name: 'awsListRoute53ReusableDelegationSets',
@@ -7407,6 +7992,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53ReusableDelegationSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'nameserver', 'nameservers'],
   },
   {
     name: 'awsDeleteRoute53ReusableDelegationSet',
@@ -7414,6 +8000,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRoute53ReusableDelegationSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'nameserver', 'nameservers'],
   },
   {
     name: 'awsCreateRoute53TrafficPolicy',
@@ -7421,6 +8008,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRoute53TrafficPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsGetRoute53TrafficPolicy',
@@ -7429,6 +8017,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53TrafficPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsListRoute53TrafficPolicies',
@@ -7437,6 +8026,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53TrafficPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsDeleteRoute53TrafficPolicy',
@@ -7444,6 +8034,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRoute53TrafficPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsCreateRoute53TrafficPolicyInstance',
@@ -7451,6 +8042,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRoute53TrafficPolicyInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsGetRoute53TrafficPolicyInstance',
@@ -7459,6 +8051,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53TrafficPolicyInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsListRoute53TrafficPolicyInstances',
@@ -7467,6 +8060,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53TrafficPolicyInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsDeleteRoute53TrafficPolicyInstance',
@@ -7475,6 +8069,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRoute53TrafficPolicyInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsUpdateRoute53TrafficPolicyInstance',
@@ -7482,6 +8077,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateRoute53TrafficPolicyInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsGetRoute53TrafficPolicyInstanceCount',
@@ -7490,6 +8086,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53TrafficPolicyInstanceCount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsCreateRoute53TrafficPolicyVersion',
@@ -7498,6 +8095,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRoute53TrafficPolicyVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsListRoute53TrafficPolicyVersions',
@@ -7506,6 +8104,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53TrafficPolicyVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsGetRoute53AccountLimit',
@@ -7514,6 +8113,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53AccountLimit as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsGetRoute53HostedZoneLimit',
@@ -7522,6 +8122,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53HostedZoneLimit as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsGetRoute53ReusableDelegationSetLimit',
@@ -7530,6 +8131,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53ReusableDelegationSetLimit as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateRoute53QueryLoggingConfig',
@@ -7537,6 +8139,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRoute53QueryLoggingConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'logs'],
   },
   {
     name: 'awsGetRoute53QueryLoggingConfig',
@@ -7545,6 +8148,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53QueryLoggingConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'logs'],
   },
   {
     name: 'awsListRoute53QueryLoggingConfigs',
@@ -7553,6 +8157,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53QueryLoggingConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'logs'],
   },
   {
     name: 'awsDeleteRoute53QueryLoggingConfig',
@@ -7560,6 +8165,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRoute53QueryLoggingConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'logs'],
   },
   {
     name: 'awsGetRoute53CheckerIpRanges',
@@ -7568,6 +8174,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53CheckerIpRanges as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'monitoring'],
   },
   {
     name: 'awsGetRoute53GeoLocation',
@@ -7576,6 +8183,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53GeoLocation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsListRoute53GeoLocations',
@@ -7584,6 +8192,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53GeoLocations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'routing'],
   },
   {
     name: 'awsGetRoute53Dnssec',
@@ -7592,6 +8201,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53Dnssec as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'domain', 'security'],
   },
   {
     name: 'awsAssociateRoute53VpcWithHostedZone',
@@ -7599,6 +8209,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociateRoute53VpcWithHostedZone as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'private'],
   },
   {
     name: 'awsDisassociateRoute53VpcFromHostedZone',
@@ -7606,6 +8217,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisassociateRoute53VpcFromHostedZone as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'private'],
   },
   {
     name: 'awsListRoute53VpcAssociationAuthorizations',
@@ -7614,6 +8226,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53VpcAssociationAuthorizations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'private'],
   },
   {
     name: 'awsTestRoute53DnsAnswer',
@@ -7622,6 +8235,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTestRoute53DnsAnswer as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['domain', 'lookup', 'dig'],
   },
   {
     name: 'awsGetRoute53HostedZoneCount',
@@ -7630,6 +8244,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRoute53HostedZoneCount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'domain'],
   },
   {
     name: 'awsListRoute53HostedZonesByVpc',
@@ -7638,6 +8253,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRoute53HostedZonesByVpc as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'domain'],
   },
   {
     name: 'awsActivateRoute53KeySigningKey',
@@ -7645,6 +8261,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsActivateRoute53KeySigningKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'dnssec'],
   },
   {
     name: 'awsCreateRoute53KeySigningKey',
@@ -7652,6 +8269,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRoute53KeySigningKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'dnssec'],
   },
   {
     name: 'awsDeactivateRoute53KeySigningKey',
@@ -7659,6 +8277,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeactivateRoute53KeySigningKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'dnssec'],
   },
   {
     name: 'awsDeleteRoute53KeySigningKey',
@@ -7667,6 +8286,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRoute53KeySigningKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'dnssec'],
   },
   {
     name: 'awsCreateCloudfrontDistribution',
@@ -7674,6 +8294,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cdn', 'edge', 'cache', 'origin'],
   },
   {
     name: 'awsGetCloudfrontDistribution',
@@ -7682,6 +8303,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cdn', 'edge', 'cache', 'origin'],
   },
   {
     name: 'awsGetCloudfrontDistributionConfig',
@@ -7690,6 +8312,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontDistributionConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cdn', 'edge', 'cache', 'origin'],
   },
   {
     name: 'awsUpdateCloudfrontDistribution',
@@ -7697,6 +8320,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cdn', 'edge', 'cache', 'origin'],
   },
   {
     name: 'awsDeleteCloudfrontDistribution',
@@ -7704,6 +8328,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cdn', 'edge', 'cache', 'origin'],
   },
   {
     name: 'awsListCloudfrontDistributions',
@@ -7712,6 +8337,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontDistributions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cdn', 'edge', 'cache', 'origin'],
   },
   {
     name: 'awsCreateCloudfrontDistributionWithTags',
@@ -7719,6 +8345,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontDistributionWithTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cdn', 'edge', 'cache', 'origin'],
   },
   {
     name: 'awsCopyCloudfrontDistribution',
@@ -7726,6 +8353,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCopyCloudfrontDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cdn', 'edge', 'cache', 'origin'],
   },
   {
     name: 'awsCreateCloudfrontInvalidation',
@@ -7733,6 +8361,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontInvalidation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['purge', 'clear', 'cache', 'paths'],
   },
   {
     name: 'awsGetCloudfrontInvalidation',
@@ -7741,6 +8370,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontInvalidation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['purge', 'clear', 'cache', 'paths'],
   },
   {
     name: 'awsListCloudfrontInvalidations',
@@ -7749,6 +8379,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontInvalidations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['purge', 'clear', 'cache', 'paths', 'invalidation'],
   },
   {
     name: 'awsCreateCloudfrontOriginAccessIdentity',
@@ -7756,6 +8387,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontOriginAccessIdentity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['s3', 'oai', 'oac', 'private'],
   },
   {
     name: 'awsGetCloudfrontOriginAccessIdentity',
@@ -7764,6 +8396,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontOriginAccessIdentity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['s3', 'oai', 'oac', 'private'],
   },
   {
     name: 'awsUpdateCloudfrontOriginAccessIdentity',
@@ -7772,6 +8405,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontOriginAccessIdentity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['s3', 'oai', 'oac', 'private'],
   },
   {
     name: 'awsDeleteCloudfrontOriginAccessIdentity',
@@ -7780,6 +8414,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontOriginAccessIdentity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['s3', 'oai', 'oac', 'private'],
   },
   {
     name: 'awsListCloudfrontOriginAccessIdentities',
@@ -7788,6 +8423,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontOriginAccessIdentities as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['s3', 'oai', 'oac', 'private'],
   },
   {
     name: 'awsCreateCloudfrontCachePolicy',
@@ -7795,6 +8431,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontCachePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ttl', 'compress', 'headers'],
   },
   {
     name: 'awsGetCloudfrontCachePolicy',
@@ -7803,6 +8440,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontCachePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ttl', 'compress', 'headers'],
   },
   {
     name: 'awsUpdateCloudfrontCachePolicy',
@@ -7810,6 +8448,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontCachePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ttl', 'compress', 'headers'],
   },
   {
     name: 'awsDeleteCloudfrontCachePolicy',
@@ -7817,6 +8456,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontCachePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ttl', 'compress', 'headers'],
   },
   {
     name: 'awsListCloudfrontCachePolicies',
@@ -7825,6 +8465,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontCachePolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ttl', 'compress', 'headers'],
   },
   {
     name: 'awsCreateCloudfrontResponseHeadersPolicy',
@@ -7832,6 +8473,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontResponseHeadersPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['security', 'cors', 'hsts'],
   },
   {
     name: 'awsGetCloudfrontResponseHeadersPolicy',
@@ -7840,6 +8482,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontResponseHeadersPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['security', 'cors', 'hsts'],
   },
   {
     name: 'awsUpdateCloudfrontResponseHeadersPolicy',
@@ -7848,6 +8491,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontResponseHeadersPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['security', 'cors', 'hsts'],
   },
   {
     name: 'awsDeleteCloudfrontResponseHeadersPolicy',
@@ -7856,6 +8500,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontResponseHeadersPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['security', 'cors', 'hsts'],
   },
   {
     name: 'awsListCloudfrontResponseHeadersPolicies',
@@ -7864,6 +8509,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontResponseHeadersPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['security', 'cors', 'hsts'],
   },
   {
     name: 'awsCreateCloudfrontFunction',
@@ -7871,6 +8517,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['edge', 'javascript', 'rewrite', 'redirect'],
   },
   {
     name: 'awsGetCloudfrontFunction',
@@ -7879,6 +8526,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['edge', 'javascript', 'rewrite', 'redirect'],
   },
   {
     name: 'awsDescribeCloudfrontFunction',
@@ -7887,6 +8535,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['edge', 'javascript', 'rewrite', 'redirect'],
   },
   {
     name: 'awsUpdateCloudfrontFunction',
@@ -7894,6 +8543,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['edge', 'javascript', 'rewrite', 'redirect'],
   },
   {
     name: 'awsDeleteCloudfrontFunction',
@@ -7901,6 +8551,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['edge', 'javascript', 'rewrite', 'redirect'],
   },
   {
     name: 'awsListCloudfrontFunctions',
@@ -7909,6 +8560,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontFunctions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['edge', 'javascript', 'rewrite', 'redirect'],
   },
   {
     name: 'awsPublishCloudfrontFunction',
@@ -7916,6 +8568,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPublishCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['edge', 'javascript', 'rewrite', 'redirect'],
   },
   {
     name: 'awsTestCloudfrontFunction',
@@ -7924,6 +8577,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTestCloudfrontFunction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['edge', 'javascript', 'rewrite', 'redirect'],
   },
   {
     name: 'awsCreateCloudfrontKeyGroup',
@@ -7931,6 +8585,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontKeyGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsGetCloudfrontKeyGroup',
@@ -7939,6 +8594,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontKeyGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsUpdateCloudfrontKeyGroup',
@@ -7946,6 +8602,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontKeyGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsDeleteCloudfrontKeyGroup',
@@ -7953,6 +8610,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontKeyGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsListCloudfrontKeyGroups',
@@ -7961,6 +8619,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontKeyGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsCreateCloudfrontPublicKey',
@@ -7968,6 +8627,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontPublicKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsGetCloudfrontPublicKey',
@@ -7976,6 +8636,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontPublicKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsUpdateCloudfrontPublicKey',
@@ -7983,6 +8644,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontPublicKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsDeleteCloudfrontPublicKey',
@@ -7990,6 +8652,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontPublicKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsListCloudfrontPublicKeys',
@@ -7998,6 +8661,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontPublicKeys as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['signed', 'url', 'cookies', 'auth'],
   },
   {
     name: 'awsCreateCloudfrontStreamingDistribution',
@@ -8005,6 +8669,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontStreamingDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['rtmp', 'media', 'video'],
   },
   {
     name: 'awsGetCloudfrontStreamingDistribution',
@@ -8013,6 +8678,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontStreamingDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['rtmp', 'media', 'video'],
   },
   {
     name: 'awsGetCloudfrontStreamingDistributionConfig',
@@ -8021,6 +8687,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontStreamingDistributionConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['rtmp', 'media', 'video'],
   },
   {
     name: 'awsUpdateCloudfrontStreamingDistribution',
@@ -8029,6 +8696,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontStreamingDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['rtmp', 'media', 'video'],
   },
   {
     name: 'awsDeleteCloudfrontStreamingDistribution',
@@ -8037,6 +8705,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontStreamingDistribution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['rtmp', 'media', 'video'],
   },
   {
     name: 'awsListCloudfrontStreamingDistributions',
@@ -8045,6 +8714,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontStreamingDistributions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['rtmp', 'media', 'video'],
   },
   {
     name: 'awsCreateCloudfrontStreamingDistributionWithTags',
@@ -8053,6 +8723,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontStreamingDistributionWithTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['rtmp', 'media', 'video'],
   },
   {
     name: 'awsListCloudfrontTags',
@@ -8061,6 +8732,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagCloudfrontResource',
@@ -8068,6 +8740,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagCloudfrontResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagCloudfrontResource',
@@ -8075,6 +8748,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagCloudfrontResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsGetCloudfrontContinuousDeploymentPolicy',
@@ -8083,6 +8757,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontContinuousDeploymentPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['staging', 'canary', 'promotion', 'traffic'],
   },
   {
     name: 'awsCreateCloudfrontContinuousDeploymentPolicy',
@@ -8091,6 +8766,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontContinuousDeploymentPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['staging', 'canary', 'promotion', 'traffic'],
   },
   {
     name: 'awsUpdateCloudfrontContinuousDeploymentPolicy',
@@ -8099,6 +8775,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontContinuousDeploymentPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['staging', 'canary', 'promotion', 'traffic'],
   },
   {
     name: 'awsDeleteCloudfrontContinuousDeploymentPolicy',
@@ -8107,6 +8784,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontContinuousDeploymentPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['staging', 'canary', 'promotion', 'traffic'],
   },
   {
     name: 'awsListCloudfrontContinuousDeploymentPolicies',
@@ -8115,6 +8793,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontContinuousDeploymentPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['staging', 'canary', 'promotion', 'traffic'],
   },
   {
     name: 'awsGetCloudfrontRealtimeLogConfig',
@@ -8123,6 +8802,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontRealtimeLogConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['logging', 'kinesis', 'fields', 'sampling'],
   },
   {
     name: 'awsCreateCloudfrontRealtimeLogConfig',
@@ -8130,6 +8810,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontRealtimeLogConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['logging', 'kinesis', 'fields', 'sampling'],
   },
   {
     name: 'awsUpdateCloudfrontRealtimeLogConfig',
@@ -8137,6 +8818,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudfrontRealtimeLogConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['logging', 'kinesis', 'fields', 'sampling'],
   },
   {
     name: 'awsDeleteCloudfrontRealtimeLogConfig',
@@ -8145,6 +8827,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontRealtimeLogConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['logging', 'kinesis', 'fields', 'sampling'],
   },
   {
     name: 'awsListCloudfrontRealtimeLogConfigs',
@@ -8153,6 +8836,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudfrontRealtimeLogConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['logging', 'kinesis', 'fields', 'sampling'],
   },
   {
     name: 'awsGetCloudfrontMonitoringSubscription',
@@ -8161,6 +8845,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudfrontMonitoringSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alarms', 'cloudwatch', 'metrics'],
   },
   {
     name: 'awsCreateCloudfrontMonitoringSubscription',
@@ -8169,6 +8854,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudfrontMonitoringSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alarms', 'cloudwatch', 'metrics'],
   },
   {
     name: 'awsDeleteCloudfrontMonitoringSubscription',
@@ -8177,6 +8863,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudfrontMonitoringSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['alarms', 'cloudwatch', 'metrics'],
   },
   {
     name: 'awsListRestApis',
@@ -8185,6 +8872,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRestApis as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'http'],
   },
   {
     name: 'awsGetRestApi',
@@ -8193,6 +8881,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['gateway', 'apis', 'http'],
   },
   {
     name: 'awsCreateRestApi',
@@ -8200,6 +8889,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['gateway', 'apis', 'http'],
   },
   {
     name: 'awsUpdateRestApi',
@@ -8208,6 +8898,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['gateway', 'apis', 'http'],
   },
   {
     name: 'awsDeleteRestApi',
@@ -8215,6 +8906,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['gateway', 'apis', 'http'],
   },
   {
     name: 'awsImportRestApi',
@@ -8223,6 +8915,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsImportRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['gateway', 'apis', 'http'],
   },
   {
     name: 'awsPutRestApi',
@@ -8231,6 +8924,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutRestApi as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['gateway', 'apis', 'http'],
   },
   {
     name: 'awsListResources',
@@ -8239,6 +8933,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'rest', 'path', 'endpoint'],
   },
   {
     name: 'awsGetResource',
@@ -8247,6 +8942,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'rest', 'path', 'endpoint'],
   },
   {
     name: 'awsCreateResource',
@@ -8254,6 +8950,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'path', 'endpoint'],
   },
   {
     name: 'awsUpdateResource',
@@ -8262,6 +8959,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'path', 'endpoint'],
   },
   {
     name: 'awsDeleteResource',
@@ -8269,6 +8967,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['api', 'gateway', 'rest', 'path', 'endpoint'],
   },
   {
     name: 'awsPutMethod',
@@ -8277,6 +8976,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutMethod as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'verb', 'http'],
   },
   {
     name: 'awsGetMethod',
@@ -8285,6 +8985,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetMethod as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'rest', 'verb', 'http'],
   },
   {
     name: 'awsDeleteMethod',
@@ -8292,6 +8993,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteMethod as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['api', 'gateway', 'rest', 'verb', 'http'],
   },
   {
     name: 'awsUpdateMethod',
@@ -8299,6 +9001,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateMethod as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'verb', 'http'],
   },
   {
     name: 'awsPutIntegration',
@@ -8306,6 +9009,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutIntegration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'backend', 'lambda'],
   },
   {
     name: 'awsGetIntegration',
@@ -8313,6 +9017,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetIntegration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'rest', 'backend', 'lambda'],
   },
   {
     name: 'awsDeleteIntegration',
@@ -8320,6 +9025,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteIntegration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['api', 'gateway', 'rest', 'backend', 'lambda'],
   },
   {
     name: 'awsUpdateIntegration',
@@ -8327,6 +9033,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateIntegration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'backend', 'lambda'],
   },
   {
     name: 'awsListDeployments',
@@ -8335,6 +9042,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListDeployments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'rest', 'deploy', 'release'],
   },
   {
     name: 'awsGetDeployment',
@@ -8343,6 +9051,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'rest', 'deploy', 'release'],
   },
   {
     name: 'awsCreateDeployment',
@@ -8350,6 +9059,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'deploy', 'release'],
   },
   {
     name: 'awsUpdateDeployment',
@@ -8358,6 +9068,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'deploy', 'release'],
   },
   {
     name: 'awsDeleteDeployment',
@@ -8365,6 +9076,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['api', 'gateway', 'rest', 'deploy', 'release'],
   },
   {
     name: 'awsListStages',
@@ -8373,6 +9085,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListStages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'rest', 'environment', 'prod'],
   },
   {
     name: 'awsGetStage',
@@ -8381,6 +9094,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetStage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['api', 'gateway', 'rest', 'environment', 'prod'],
   },
   {
     name: 'awsCreateStage',
@@ -8388,6 +9102,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateStage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'environment', 'prod'],
   },
   {
     name: 'awsUpdateStage',
@@ -8396,6 +9111,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateStage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['api', 'gateway', 'rest', 'environment', 'prod'],
   },
   {
     name: 'awsDeleteStage',
@@ -8403,6 +9119,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteStage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['api', 'gateway', 'rest', 'environment', 'prod'],
   },
   {
     name: 'awsCreateAutoscalingGroup',
@@ -8410,6 +9127,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAutoscalingGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg', 'ec2', 'capacity', 'scaling'],
   },
   {
     name: 'awsDescribeAutoscalingGroups',
@@ -8418,6 +9136,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['asg', 'ec2', 'capacity', 'scaling'],
   },
   {
     name: 'awsUpdateAutoscalingGroup',
@@ -8425,6 +9144,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAutoscalingGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg', 'ec2', 'capacity', 'scaling'],
   },
   {
     name: 'awsDeleteAutoscalingGroup',
@@ -8432,6 +9152,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAutoscalingGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['asg', 'ec2', 'capacity', 'scaling'],
   },
   {
     name: 'awsAttachInstancesToAutoscalingGroup',
@@ -8439,6 +9160,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAttachInstancesToAutoscalingGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg', 'ec2', 'instance'],
   },
   {
     name: 'awsDetachInstancesFromAutoscalingGroup',
@@ -8446,6 +9168,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDetachInstancesFromAutoscalingGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['asg', 'ec2', 'instance'],
   },
   {
     name: 'awsEnterStandbyAutoscalingGroup',
@@ -8453,6 +9176,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsEnterStandbyAutoscalingGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg', 'lifecycle', 'ec2', 'pause'],
   },
   {
     name: 'awsExitStandbyAutoscalingGroup',
@@ -8460,6 +9184,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsExitStandbyAutoscalingGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg', 'lifecycle', 'ec2', 'pause'],
   },
   {
     name: 'awsSetAutoscalingGroupDesiredCapacity',
@@ -8468,6 +9193,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetAutoscalingGroupDesiredCapacity as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg', 'ec2', 'scaling'],
   },
   {
     name: 'awsSetAutoscalingInstanceHealth',
@@ -8476,6 +9202,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSetAutoscalingInstanceHealth as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg', 'capacity', 'ec2', 'scaling'],
   },
   {
     name: 'awsTerminateAutoscalingInstance',
@@ -8484,6 +9211,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTerminateAutoscalingInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['asg', 'capacity', 'ec2', 'scaling'],
   },
   {
     name: 'awsCreateLaunchConfiguration',
@@ -8491,6 +9219,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateLaunchConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['autoscaling', 'asg', 'ec2', 'template'],
   },
   {
     name: 'awsDescribeLaunchConfigurations',
@@ -8499,6 +9228,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeLaunchConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['autoscaling', 'asg', 'ec2', 'template'],
   },
   {
     name: 'awsDeleteLaunchConfiguration',
@@ -8506,6 +9236,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLaunchConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['autoscaling', 'asg', 'ec2', 'template'],
   },
   {
     name: 'awsPutAutoscalingScalingPolicy',
@@ -8513,6 +9244,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutAutoscalingScalingPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alarms', 'target', 'step', 'cloudwatch'],
   },
   {
     name: 'awsDescribeAutoscalingPolicies',
@@ -8520,6 +9252,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alarms', 'target', 'step', 'cloudwatch'],
   },
   {
     name: 'awsDeleteAutoscalingPolicy',
@@ -8527,6 +9260,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAutoscalingPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['alarms', 'target', 'step', 'cloudwatch'],
   },
   {
     name: 'awsExecuteAutoscalingPolicy',
@@ -8535,6 +9269,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsExecuteAutoscalingPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alarms', 'target', 'step', 'cloudwatch'],
   },
   {
     name: 'awsPutAutoscalingScheduledAction',
@@ -8542,6 +9277,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutAutoscalingScheduledAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['schedule', 'cron', 'recurring', 'capacity'],
   },
   {
     name: 'awsDescribeAutoscalingScheduledActions',
@@ -8550,6 +9286,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingScheduledActions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['schedule', 'cron', 'recurring', 'capacity'],
   },
   {
     name: 'awsDeleteAutoscalingScheduledAction',
@@ -8557,6 +9294,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAutoscalingScheduledAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['schedule', 'cron', 'recurring', 'capacity'],
   },
   {
     name: 'awsPutAutoscalingLifecycleHook',
@@ -8564,6 +9302,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutAutoscalingLifecycleHook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ec2', 'heartbeat', 'launch', 'standby'],
   },
   {
     name: 'awsDescribeAutoscalingLifecycleHooks',
@@ -8571,6 +9310,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingLifecycleHooks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['hook', 'ec2', 'heartbeat', 'launch', 'standby'],
   },
   {
     name: 'awsDeleteAutoscalingLifecycleHook',
@@ -8578,6 +9318,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAutoscalingLifecycleHook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ec2', 'heartbeat', 'launch', 'standby'],
   },
   {
     name: 'awsCompleteAutoscalingLifecycleAction',
@@ -8585,6 +9326,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCompleteAutoscalingLifecycleAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['hook', 'ec2', 'heartbeat', 'launch', 'standby'],
   },
   {
     name: 'awsRecordAutoscalingLifecycleActionHeartbeat',
@@ -8592,6 +9334,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRecordAutoscalingLifecycleActionHeartbeat as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['hook', 'ec2', 'launch', 'standby'],
   },
   {
     name: 'awsCreateOrUpdateAutoscalingTags',
@@ -8600,6 +9343,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateOrUpdateAutoscalingTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeAutoscalingTags',
@@ -8608,6 +9352,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteAutoscalingTags',
@@ -8616,6 +9361,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAutoscalingTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeAutoscalingActivities',
@@ -8624,6 +9370,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingActivities as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeAutoscalingInstances',
@@ -8632,6 +9379,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['asg', 'ec2', 'health'],
   },
   {
     name: 'awsDescribeAutoscalingNotificationConfigurations',
@@ -8640,6 +9388,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingNotificationConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutAutoscalingNotificationConfiguration',
@@ -8648,6 +9397,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutAutoscalingNotificationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteAutoscalingNotificationConfiguration',
@@ -8655,6 +9405,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAutoscalingNotificationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeAutoscalingAccountLimits',
@@ -8663,6 +9414,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingAccountLimits as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeAutoscalingAdjustmentTypes',
@@ -8670,6 +9422,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingAdjustmentTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeAutoscalingMetricCollectionTypes',
@@ -8678,6 +9431,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingMetricCollectionTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsEnableAutoscalingMetricsCollection',
@@ -8685,6 +9439,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsEnableAutoscalingMetricsCollection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDisableAutoscalingMetricsCollection',
@@ -8693,6 +9448,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisableAutoscalingMetricsCollection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeAutoscalingTerminationPolicyTypes',
@@ -8701,6 +9457,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingTerminationPolicyTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alarms', 'target', 'step', 'cloudwatch'],
   },
   {
     name: 'awsDescribeAutoscalingScalingProcessTypes',
@@ -8709,6 +9466,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingScalingProcessTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsSuspendAutoscalingProcesses',
@@ -8716,6 +9474,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSuspendAutoscalingProcesses as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg'],
   },
   {
     name: 'awsResumeAutoscalingProcesses',
@@ -8723,6 +9482,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsResumeAutoscalingProcesses as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['asg'],
   },
   {
     name: 'awsBatchPutAutoscalingScheduledAction',
@@ -8731,6 +9491,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchPutAutoscalingScheduledAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['schedule', 'cron', 'recurring', 'capacity'],
   },
   {
     name: 'awsBatchDeleteAutoscalingScheduledAction',
@@ -8738,6 +9499,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchDeleteAutoscalingScheduledAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['schedule', 'cron', 'recurring', 'capacity'],
   },
   {
     name: 'awsStartAutoscalingInstanceRefresh',
@@ -8745,6 +9507,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartAutoscalingInstanceRefresh as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['rolling', 'deploy', 'replace', 'update'],
   },
   {
     name: 'awsCancelAutoscalingInstanceRefresh',
@@ -8752,6 +9515,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCancelAutoscalingInstanceRefresh as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['rolling', 'deploy', 'replace', 'update'],
   },
   {
     name: 'awsDescribeAutoscalingInstanceRefreshes',
@@ -8760,6 +9524,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingInstanceRefreshes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['asg', 'ec2', 'health'],
   },
   {
     name: 'awsDescribeAutoscalingWarmPool',
@@ -8768,6 +9533,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAutoscalingWarmPool as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['prewarmed', 'capacity', 'standby'],
   },
   {
     name: 'awsPutAutoscalingWarmPool',
@@ -8775,6 +9541,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutAutoscalingWarmPool as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['prewarmed', 'capacity', 'standby'],
   },
   {
     name: 'awsDeleteAutoscalingWarmPool',
@@ -8782,6 +9549,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAutoscalingWarmPool as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['prewarmed', 'capacity', 'standby'],
   },
   {
     name: 'awsPutEventbridgeEvents',
@@ -8789,6 +9557,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEventbridgeEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ingest', 'publish', 'json'],
   },
   {
     name: 'awsPutEventbridgeRule',
@@ -8796,6 +9565,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEventbridgeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['event', 'events', 'schedule', 'cron', 'trigger'],
   },
   {
     name: 'awsListEventbridgeRules',
@@ -8803,6 +9573,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventbridgeRules as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['event', 'events', 'schedule', 'cron', 'trigger'],
   },
   {
     name: 'awsDescribeEventbridgeRule',
@@ -8811,6 +9582,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEventbridgeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['event', 'events', 'schedule', 'cron', 'trigger'],
   },
   {
     name: 'awsDeleteEventbridgeRule',
@@ -8818,6 +9590,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEventbridgeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['event', 'events', 'schedule', 'cron', 'trigger'],
   },
   {
     name: 'awsEnableEventbridgeRule',
@@ -8825,6 +9598,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsEnableEventbridgeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['event', 'events', 'schedule', 'cron', 'trigger'],
   },
   {
     name: 'awsDisableEventbridgeRule',
@@ -8832,6 +9606,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisableEventbridgeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['event', 'events', 'schedule', 'cron', 'trigger'],
   },
   {
     name: 'awsPutEventbridgeTargets',
@@ -8840,6 +9615,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEventbridgeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['destination', 'lambda', 'events', 'input'],
   },
   {
     name: 'awsListEventbridgeTargets',
@@ -8848,6 +9624,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventbridgeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['destination', 'lambda', 'events', 'input'],
   },
   {
     name: 'awsRemoveEventbridgeTargets',
@@ -8856,6 +9633,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveEventbridgeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['destination', 'lambda', 'events', 'input'],
   },
   {
     name: 'awsCreateEventbridgeEventBus',
@@ -8863,6 +9641,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEventbridgeEventBus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['events', 'archive', 'schema'],
   },
   {
     name: 'awsListEventbridgeEventBuses',
@@ -8871,6 +9650,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventbridgeEventBuses as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['bus', 'events', 'archive', 'schema'],
   },
   {
     name: 'awsDescribeEventbridgeEventBus',
@@ -8879,6 +9659,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEventbridgeEventBus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['events', 'archive', 'schema'],
   },
   {
     name: 'awsDeleteEventbridgeEventBus',
@@ -8886,6 +9667,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEventbridgeEventBus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['events', 'archive', 'schema'],
   },
   {
     name: 'awsCreateEventbridgeArchive',
@@ -8893,6 +9675,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEventbridgeArchive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['replay', 'events', 'history', 'retention'],
   },
   {
     name: 'awsListEventbridgeArchives',
@@ -8900,6 +9683,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventbridgeArchives as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['replay', 'events', 'history', 'retention'],
   },
   {
     name: 'awsDescribeEventbridgeArchive',
@@ -8908,6 +9692,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEventbridgeArchive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['replay', 'events', 'history', 'retention'],
   },
   {
     name: 'awsUpdateEventbridgeArchive',
@@ -8915,6 +9700,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEventbridgeArchive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['replay', 'events', 'history', 'retention'],
   },
   {
     name: 'awsDeleteEventbridgeArchive',
@@ -8922,6 +9708,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEventbridgeArchive as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['replay', 'events', 'history', 'retention'],
   },
   {
     name: 'awsStartEventbridgeReplay',
@@ -8929,6 +9716,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartEventbridgeReplay as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['archive', 'rerun', 'events', 'test'],
   },
   {
     name: 'awsListEventbridgeReplays',
@@ -8936,6 +9724,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventbridgeReplays as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['archive', 'rerun', 'events', 'test'],
   },
   {
     name: 'awsDescribeEventbridgeReplay',
@@ -8944,6 +9733,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEventbridgeReplay as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['archive', 'rerun', 'events', 'test'],
   },
   {
     name: 'awsCancelEventbridgeReplay',
@@ -8951,6 +9741,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCancelEventbridgeReplay as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['archive', 'rerun', 'events', 'test'],
   },
   {
     name: 'awsCreateEventbridgeConnection',
@@ -8958,6 +9749,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEventbridgeConnection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['webhook', 'auth', 'api', 'oauth'],
   },
   {
     name: 'awsListEventbridgeConnections',
@@ -8966,6 +9758,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventbridgeConnections as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['webhook', 'auth', 'api', 'oauth'],
   },
   {
     name: 'awsDescribeEventbridgeConnection',
@@ -8974,6 +9767,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEventbridgeConnection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['webhook', 'auth', 'api', 'oauth'],
   },
   {
     name: 'awsUpdateEventbridgeConnection',
@@ -8981,6 +9775,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEventbridgeConnection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['webhook', 'auth', 'api', 'oauth'],
   },
   {
     name: 'awsDeleteEventbridgeConnection',
@@ -8988,6 +9783,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEventbridgeConnection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['webhook', 'auth', 'api', 'oauth'],
   },
   {
     name: 'awsCreateEventbridgeEndpoint',
@@ -8995,6 +9791,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEventbridgeEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['global', 'failover', 'events', 'health'],
   },
   {
     name: 'awsListEventbridgeEndpoints',
@@ -9003,6 +9800,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventbridgeEndpoints as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['global', 'failover', 'events', 'health'],
   },
   {
     name: 'awsDescribeEventbridgeEndpoint',
@@ -9011,6 +9809,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEventbridgeEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['global', 'failover', 'events', 'health'],
   },
   {
     name: 'awsUpdateEventbridgeEndpoint',
@@ -9018,6 +9817,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEventbridgeEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['global', 'failover', 'events', 'health'],
   },
   {
     name: 'awsDeleteEventbridgeEndpoint',
@@ -9025,6 +9825,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEventbridgeEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['global', 'failover', 'events', 'health'],
   },
   {
     name: 'awsListEventbridgeTags',
@@ -9033,6 +9834,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventbridgeTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagEventbridgeResource',
@@ -9040,6 +9842,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagEventbridgeResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagEventbridgeResource',
@@ -9048,6 +9851,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagEventbridgeResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateVpcLatticeService',
@@ -9055,6 +9859,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateVpcLatticeService as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsGetVpcLatticeService',
@@ -9063,6 +9868,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeService as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsUpdateVpcLatticeService',
@@ -9070,6 +9876,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateVpcLatticeService as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsDeleteVpcLatticeService',
@@ -9077,6 +9884,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeService as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsListVpcLatticeServices',
@@ -9084,6 +9892,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeServices as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsCreateVpcLatticeServiceNetwork',
@@ -9091,6 +9900,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateVpcLatticeServiceNetwork as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsGetVpcLatticeServiceNetwork',
@@ -9099,6 +9909,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeServiceNetwork as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsUpdateVpcLatticeServiceNetwork',
@@ -9106,6 +9917,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateVpcLatticeServiceNetwork as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsDeleteVpcLatticeServiceNetwork',
@@ -9113,6 +9925,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeServiceNetwork as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsListVpcLatticeServiceNetworks',
@@ -9121,6 +9934,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeServiceNetworks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['microservice', 'mesh'],
   },
   {
     name: 'awsCreateVpcLatticeListener',
@@ -9128,6 +9942,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateVpcLatticeListener as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetVpcLatticeListener',
@@ -9136,6 +9951,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeListener as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsUpdateVpcLatticeListener',
@@ -9143,6 +9959,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateVpcLatticeListener as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteVpcLatticeListener',
@@ -9150,6 +9967,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeListener as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListVpcLatticeListeners',
@@ -9158,6 +9976,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeListeners as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateVpcLatticeRule',
@@ -9165,6 +9984,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateVpcLatticeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetVpcLatticeRule',
@@ -9173,6 +9993,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsUpdateVpcLatticeRule',
@@ -9180,6 +10001,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateVpcLatticeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteVpcLatticeRule',
@@ -9187,6 +10009,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListVpcLatticeRules',
@@ -9194,6 +10017,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeRules as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateVpcLatticeTargetGroup',
@@ -9201,6 +10025,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateVpcLatticeTargetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetVpcLatticeTargetGroup',
@@ -9209,6 +10034,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeTargetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsUpdateVpcLatticeTargetGroup',
@@ -9216,6 +10042,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateVpcLatticeTargetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteVpcLatticeTargetGroup',
@@ -9223,6 +10050,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeTargetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListVpcLatticeTargetGroups',
@@ -9231,6 +10059,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeTargetGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsRegisterVpcLatticeTargets',
@@ -9239,6 +10068,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRegisterVpcLatticeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['group'],
   },
   {
     name: 'awsDeregisterVpcLatticeTargets',
@@ -9247,6 +10077,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeregisterVpcLatticeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['group'],
   },
   {
     name: 'awsGetVpcLatticeTargets',
@@ -9255,6 +10086,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['group'],
   },
   {
     name: 'awsCreateVpcLatticeServiceNetworkServiceAssociation',
@@ -9262,6 +10094,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateVpcLatticeServiceNetworkServiceAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetVpcLatticeServiceNetworkServiceAssociation',
@@ -9270,6 +10103,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeServiceNetworkServiceAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteVpcLatticeServiceNetworkServiceAssociation',
@@ -9278,6 +10112,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeServiceNetworkServiceAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListVpcLatticeServiceNetworkServiceAssociations',
@@ -9286,6 +10121,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeServiceNetworkServiceAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateVpcLatticeServiceNetworkVpcAssociation',
@@ -9293,6 +10129,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateVpcLatticeServiceNetworkVpcAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetVpcLatticeServiceNetworkVpcAssociation',
@@ -9301,6 +10138,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeServiceNetworkVpcAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsUpdateVpcLatticeServiceNetworkVpcAssociation',
@@ -9308,6 +10146,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateVpcLatticeServiceNetworkVpcAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteVpcLatticeServiceNetworkVpcAssociation',
@@ -9316,6 +10155,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeServiceNetworkVpcAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListVpcLatticeServiceNetworkVpcAssociations',
@@ -9324,6 +10164,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeServiceNetworkVpcAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateVpcLatticeAccessLogSubscription',
@@ -9331,6 +10172,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateVpcLatticeAccessLogSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['logs'],
   },
   {
     name: 'awsGetVpcLatticeAccessLogSubscription',
@@ -9339,6 +10181,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeAccessLogSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['logs'],
   },
   {
     name: 'awsUpdateVpcLatticeAccessLogSubscription',
@@ -9346,6 +10189,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateVpcLatticeAccessLogSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['logs'],
   },
   {
     name: 'awsDeleteVpcLatticeAccessLogSubscription',
@@ -9353,6 +10197,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeAccessLogSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['logs'],
   },
   {
     name: 'awsListVpcLatticeAccessLogSubscriptions',
@@ -9361,6 +10206,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeAccessLogSubscriptions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['logs'],
   },
   {
     name: 'awsPutVpcLatticeAuthPolicy',
@@ -9368,6 +10214,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutVpcLatticeAuthPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetVpcLatticeAuthPolicy',
@@ -9375,6 +10222,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeAuthPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteVpcLatticeAuthPolicy',
@@ -9382,6 +10230,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeAuthPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsPutVpcLatticeResourcePolicy',
@@ -9389,6 +10238,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutVpcLatticeResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsGetVpcLatticeResourcePolicy',
@@ -9396,6 +10246,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetVpcLatticeResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteVpcLatticeResourcePolicy',
@@ -9403,6 +10254,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteVpcLatticeResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListVpcLatticeTags',
@@ -9411,6 +10263,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVpcLatticeTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagVpcLatticeResource',
@@ -9418,6 +10271,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagVpcLatticeResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagVpcLatticeResource',
@@ -9425,6 +10279,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagVpcLatticeResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateCloudformationStack',
@@ -9432,6 +10287,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudformationStack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsUpdateCloudformationStack',
@@ -9439,6 +10295,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudformationStack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsDeleteCloudformationStack',
@@ -9446,6 +10303,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudformationStack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsDescribeCloudformationStacks',
@@ -9454,6 +10312,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationStacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift'],
   },
   {
     name: 'awsListCloudformationStacks',
@@ -9462,6 +10321,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudformationStacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift'],
   },
   {
     name: 'awsDescribeCloudformationStackEvents',
@@ -9470,6 +10330,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationStackEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsDescribeCloudformationStackResource',
@@ -9478,6 +10339,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationStackResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsDescribeCloudformationStackResources',
@@ -9486,6 +10348,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationStackResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsListCloudformationStackResources',
@@ -9494,6 +10357,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudformationStackResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsCreateCloudformationChangeset',
@@ -9501,6 +10365,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudformationChangeset as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['preview', 'diff', 'execute'],
   },
   {
     name: 'awsDescribeCloudformationChangeset',
@@ -9509,6 +10374,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationChangeset as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['preview', 'diff', 'execute'],
   },
   {
     name: 'awsExecuteCloudformationChangeset',
@@ -9516,6 +10382,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsExecuteCloudformationChangeset as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['preview', 'diff'],
   },
   {
     name: 'awsDeleteCloudformationChangeset',
@@ -9523,6 +10390,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudformationChangeset as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['preview', 'diff', 'execute'],
   },
   {
     name: 'awsListCloudformationChangesets',
@@ -9531,6 +10399,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudformationChangesets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['changeset', 'preview', 'diff', 'execute'],
   },
   {
     name: 'awsGetCloudformationTemplate',
@@ -9539,6 +10408,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudformationTemplate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['yaml', 'json', 'validate', 'iac'],
   },
   {
     name: 'awsGetCloudformationTemplateSummary',
@@ -9547,6 +10417,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCloudformationTemplateSummary as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['yaml', 'json', 'validate', 'iac'],
   },
   {
     name: 'awsValidateCloudformationTemplate',
@@ -9555,6 +10426,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsValidateCloudformationTemplate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['yaml', 'json', 'iac'],
   },
   {
     name: 'awsCreateCloudformationStackSet',
@@ -9562,6 +10434,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudformationStackSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['stackset', 'multiaccount', 'organization', 'instances'],
   },
   {
     name: 'awsUpdateCloudformationStackSet',
@@ -9569,6 +10442,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCloudformationStackSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['stackset', 'multiaccount', 'organization', 'instances'],
   },
   {
     name: 'awsDeleteCloudformationStackSet',
@@ -9576,6 +10450,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudformationStackSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['stackset', 'multiaccount', 'organization', 'instances'],
   },
   {
     name: 'awsDescribeCloudformationStackSet',
@@ -9584,6 +10459,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationStackSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['stackset', 'multiaccount', 'organization', 'instances'],
   },
   {
     name: 'awsListCloudformationStackSets',
@@ -9592,6 +10468,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudformationStackSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['stackset', 'multiaccount', 'organization', 'instances'],
   },
   {
     name: 'awsCreateCloudformationStackInstances',
@@ -9599,6 +10476,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCloudformationStackInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsDeleteCloudformationStackInstances',
@@ -9607,6 +10485,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCloudformationStackInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsDescribeCloudformationStackInstance',
@@ -9615,6 +10494,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationStackInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsListCloudformationStackInstances',
@@ -9623,6 +10503,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudformationStackInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['template', 'iac', 'deploy', 'drift', 'stacks'],
   },
   {
     name: 'awsDetectCloudformationStackDrift',
@@ -9631,6 +10512,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDetectCloudformationStackDrift as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['changes', 'remediation', 'iac'],
   },
   {
     name: 'awsDetectCloudformationStackResourceDrift',
@@ -9639,6 +10521,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDetectCloudformationStackResourceDrift as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['changes', 'remediation', 'iac'],
   },
   {
     name: 'awsDescribeCloudformationStackResourceDrifts',
@@ -9647,6 +10530,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationStackResourceDrifts as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['detect', 'changes', 'remediation', 'iac'],
   },
   {
     name: 'awsListCloudformationExports',
@@ -9655,6 +10539,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudformationExports as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['output', 'reference', 'cross-stack', 'iac'],
   },
   {
     name: 'awsListCloudformationImports',
@@ -9663,6 +10548,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCloudformationImports as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['output', 'reference', 'cross-stack', 'iac'],
   },
   {
     name: 'awsDescribeCloudformationAccountLimits',
@@ -9671,6 +10557,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCloudformationAccountLimits as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateCodebuildProject',
@@ -9678,6 +10565,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodebuildProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ci', 'repo', 'source', 'build', 'pipeline'],
   },
   {
     name: 'awsGetCodebuildProject',
@@ -9686,6 +10574,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodebuildProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'repo', 'source', 'build', 'pipeline'],
   },
   {
     name: 'awsListCodebuildProjects',
@@ -9694,6 +10583,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodebuildProjects as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'repo', 'source', 'build', 'pipeline'],
   },
   {
     name: 'awsUpdateCodebuildProject',
@@ -9701,6 +10591,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCodebuildProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ci', 'repo', 'source', 'build', 'pipeline'],
   },
   {
     name: 'awsDeleteCodebuildProject',
@@ -9708,6 +10599,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodebuildProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ci', 'repo', 'source', 'build', 'pipeline'],
   },
   {
     name: 'awsBatchGetCodebuildProjects',
@@ -9716,6 +10608,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodebuildProjects as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ci', 'repo', 'source', 'build', 'pipeline'],
   },
   {
     name: 'awsStartCodebuildBuild',
@@ -9723,6 +10616,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartCodebuildBuild as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ci', 'compile', 'test', 'artifacts', 'builds'],
   },
   {
     name: 'awsStopCodebuildBuild',
@@ -9731,6 +10625,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopCodebuildBuild as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ci', 'compile', 'test', 'artifacts', 'builds'],
   },
   {
     name: 'awsListCodebuildBuilds',
@@ -9738,6 +10633,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodebuildBuilds as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'compile', 'test', 'artifacts'],
   },
   {
     name: 'awsListCodebuildBuildsForProject',
@@ -9746,6 +10642,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodebuildBuildsForProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'repo', 'source', 'build', 'pipeline'],
   },
   {
     name: 'awsBatchGetCodebuildBuilds',
@@ -9754,6 +10651,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodebuildBuilds as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['matrix', 'parallel', 'graph'],
   },
   {
     name: 'awsRetryCodebuildBuild',
@@ -9761,6 +10659,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRetryCodebuildBuild as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ci', 'compile', 'test', 'artifacts', 'builds'],
   },
   {
     name: 'awsStartCodebuildBuildBatch',
@@ -9768,6 +10667,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartCodebuildBuildBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['matrix', 'parallel', 'graph', 'builds'],
   },
   {
     name: 'awsStopCodebuildBuildBatch',
@@ -9776,6 +10676,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopCodebuildBuildBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['matrix', 'parallel', 'graph', 'builds'],
   },
   {
     name: 'awsListCodebuildBuildBatches',
@@ -9784,6 +10685,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodebuildBuildBatches as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['matrix', 'parallel', 'graph', 'builds'],
   },
   {
     name: 'awsListCodebuildBuildBatchesForProject',
@@ -9792,6 +10694,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodebuildBuildBatchesForProject as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['matrix', 'parallel', 'graph', 'builds'],
   },
   {
     name: 'awsBatchGetCodebuildBuildBatches',
@@ -9800,6 +10703,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodebuildBuildBatches as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['matrix', 'parallel', 'graph', 'builds'],
   },
   {
     name: 'awsRetryCodebuildBuildBatch',
@@ -9807,6 +10711,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRetryCodebuildBuildBatch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['matrix', 'parallel', 'graph', 'builds'],
   },
   {
     name: 'awsListCodebuildReports',
@@ -9815,6 +10720,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodebuildReports as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['test', 'coverage', 'results', 'report'],
   },
   {
     name: 'awsListCodebuildReportsForReportGroup',
@@ -9823,6 +10729,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodebuildReportsForReportGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['suite', 'test', 'junit'],
   },
   {
     name: 'awsGetCodebuildReport',
@@ -9831,6 +10738,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodebuildReport as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['test', 'coverage', 'results'],
   },
   {
     name: 'awsBatchGetCodebuildReports',
@@ -9838,6 +10746,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodebuildReports as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['test', 'coverage', 'results', 'report'],
   },
   {
     name: 'awsDeleteCodebuildReport',
@@ -9845,6 +10754,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodebuildReport as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['test', 'coverage', 'results'],
   },
   {
     name: 'awsCreateCodebuildReportGroup',
@@ -9852,6 +10762,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodebuildReportGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['suite', 'test', 'reports', 'junit'],
   },
   {
     name: 'awsGetCodebuildReportGroup',
@@ -9859,6 +10770,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodebuildReportGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['suite', 'test', 'reports', 'junit'],
   },
   {
     name: 'awsUpdateCodebuildReportGroup',
@@ -9866,6 +10778,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCodebuildReportGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['suite', 'test', 'reports', 'junit'],
   },
   {
     name: 'awsDeleteCodebuildReportGroup',
@@ -9873,6 +10786,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodebuildReportGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['suite', 'test', 'reports', 'junit'],
   },
   {
     name: 'awsListCodebuildReportGroups',
@@ -9881,6 +10795,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodebuildReportGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['suite', 'test', 'reports', 'junit'],
   },
   {
     name: 'awsBatchGetCodebuildReportGroups',
@@ -9888,6 +10803,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodebuildReportGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['suite', 'test', 'reports', 'junit'],
   },
   {
     name: 'awsCreateCodedeployApplication',
@@ -9895,6 +10811,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodedeployApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['revision', 'compute', 'lambda'],
   },
   {
     name: 'awsGetCodedeployApplication',
@@ -9903,6 +10820,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodedeployApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['revision', 'compute', 'lambda'],
   },
   {
     name: 'awsListCodedeployApplications',
@@ -9911,6 +10829,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodedeployApplications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['revision', 'compute', 'lambda', 'application'],
   },
   {
     name: 'awsUpdateCodedeployApplication',
@@ -9918,6 +10837,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCodedeployApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['revision', 'compute', 'lambda'],
   },
   {
     name: 'awsDeleteCodedeployApplication',
@@ -9925,6 +10845,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodedeployApplication as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['revision', 'compute', 'lambda'],
   },
   {
     name: 'awsBatchGetCodedeployApplications',
@@ -9933,6 +10854,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodedeployApplications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['revision', 'compute', 'lambda', 'application'],
   },
   {
     name: 'awsCreateCodedeployDeploymentGroup',
@@ -9940,6 +10862,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodedeployDeploymentGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ec2', 'bluegreen', 'strategy', 'traffic'],
   },
   {
     name: 'awsGetCodedeployDeploymentGroup',
@@ -9948,6 +10871,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodedeployDeploymentGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ec2', 'bluegreen', 'strategy', 'traffic'],
   },
   {
     name: 'awsListCodedeployDeploymentGroups',
@@ -9956,6 +10880,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodedeployDeploymentGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ec2', 'bluegreen', 'strategy', 'traffic', 'group'],
   },
   {
     name: 'awsUpdateCodedeployDeploymentGroup',
@@ -9963,6 +10888,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCodedeployDeploymentGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ec2', 'bluegreen', 'strategy', 'traffic'],
   },
   {
     name: 'awsDeleteCodedeployDeploymentGroup',
@@ -9970,6 +10896,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodedeployDeploymentGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ec2', 'bluegreen', 'strategy', 'traffic'],
   },
   {
     name: 'awsBatchGetCodedeployDeploymentGroups',
@@ -9978,6 +10905,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodedeployDeploymentGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ec2', 'bluegreen', 'strategy', 'traffic', 'group'],
   },
   {
     name: 'awsCreateCodedeployDeployment',
@@ -9985,6 +10913,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodedeployDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['release', 'rollback', 'status', 'stop', 'deploy'],
   },
   {
     name: 'awsGetCodedeployDeployment',
@@ -9993,6 +10922,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodedeployDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['release', 'rollback', 'status', 'stop', 'deploy'],
   },
   {
     name: 'awsListCodedeployDeployments',
@@ -10000,6 +10930,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodedeployDeployments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['release', 'rollback', 'status', 'stop', 'deploy'],
   },
   {
     name: 'awsStopCodedeployDeployment',
@@ -10008,6 +10939,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopCodedeployDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['release', 'rollback', 'status', 'deploy'],
   },
   {
     name: 'awsContinueCodedeployDeployment',
@@ -10015,6 +10947,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsContinueCodedeployDeployment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['release', 'rollback', 'status', 'stop', 'deploy'],
   },
   {
     name: 'awsBatchGetCodedeployDeployments',
@@ -10023,6 +10956,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodedeployDeployments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['release', 'rollback', 'status', 'stop', 'deploy'],
   },
   {
     name: 'awsListCodedeployApplicationRevisions',
@@ -10031,6 +10965,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodedeployApplicationRevisions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['revision', 'compute', 'lambda'],
   },
   {
     name: 'awsGetCodedeployApplicationRevision',
@@ -10039,6 +10974,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodedeployApplicationRevision as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compute', 'lambda'],
   },
   {
     name: 'awsRegisterCodedeployApplicationRevision',
@@ -10046,6 +10982,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRegisterCodedeployApplicationRevision as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compute', 'lambda'],
   },
   {
     name: 'awsListCodedeployOnPremisesInstances',
@@ -10054,6 +10991,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodedeployOnPremisesInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['onprem', 'server', 'hybrid', 'agent', 'register'],
   },
   {
     name: 'awsBatchGetCodedeployOnPremisesInstances',
@@ -10062,6 +11000,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetCodedeployOnPremisesInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['onprem', 'server', 'hybrid', 'agent', 'register'],
   },
   {
     name: 'awsAddTagsToCodedeployOnPremisesInstances',
@@ -10070,6 +11009,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddTagsToCodedeployOnPremisesInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['onprem', 'server', 'hybrid', 'agent', 'register'],
   },
   {
     name: 'awsRemoveTagsFromCodedeployOnPremisesInstances',
@@ -10077,6 +11017,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveTagsFromCodedeployOnPremisesInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['onprem', 'server', 'hybrid', 'agent', 'register'],
   },
   {
     name: 'awsListCodedeployTags',
@@ -10085,6 +11026,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodedeployTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagCodedeployResource',
@@ -10092,6 +11034,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagCodedeployResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagCodedeployResource',
@@ -10099,6 +11042,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagCodedeployResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateCodepipelinePipeline',
@@ -10106,6 +11050,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodepipelinePipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ci', 'cd', 'release', 'stages'],
   },
   {
     name: 'awsGetCodepipelinePipeline',
@@ -10114,6 +11059,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodepipelinePipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'cd', 'release', 'stages'],
   },
   {
     name: 'awsListCodepipelinePipelines',
@@ -10122,6 +11068,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodepipelinePipelines as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'cd', 'release', 'stages', 'pipeline'],
   },
   {
     name: 'awsUpdateCodepipelinePipeline',
@@ -10129,6 +11076,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCodepipelinePipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ci', 'cd', 'release', 'stages'],
   },
   {
     name: 'awsDeleteCodepipelinePipeline',
@@ -10136,6 +11084,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodepipelinePipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ci', 'cd', 'release', 'stages'],
   },
   {
     name: 'awsGetCodepipelinePipelineState',
@@ -10144,6 +11093,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodepipelinePipelineState as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'cd', 'release', 'stages'],
   },
   {
     name: 'awsStartCodepipelineExecution',
@@ -10151,6 +11101,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartCodepipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['run', 'status', 'history', 'stop'],
   },
   {
     name: 'awsGetCodepipelineExecution',
@@ -10159,6 +11110,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodepipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'status', 'history', 'stop'],
   },
   {
     name: 'awsListCodepipelineExecutions',
@@ -10166,6 +11118,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodepipelineExecutions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'status', 'history', 'stop', 'execution'],
   },
   {
     name: 'awsStopCodepipelineExecution',
@@ -10174,6 +11127,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopCodepipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['run', 'status', 'history'],
   },
   {
     name: 'awsListCodepipelineActionExecutions',
@@ -10182,6 +11136,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodepipelineActionExecutions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'status', 'history', 'stop', 'execution'],
   },
   {
     name: 'awsListCodepipelineActionTypes',
@@ -10190,6 +11145,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodepipelineActionTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['approval', 'manual', 'stage', 'provider'],
   },
   {
     name: 'awsGetCodepipelineActionType',
@@ -10198,6 +11154,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodepipelineActionType as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['approval', 'manual', 'stage', 'provider'],
   },
   {
     name: 'awsCreateCodepipelineWebhook',
@@ -10205,6 +11162,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodepipelineWebhook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['github', 'trigger', 'source', 'thirdparty'],
   },
   {
     name: 'awsListCodepipelineWebhooks',
@@ -10213,6 +11171,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodepipelineWebhooks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['github', 'trigger', 'source', 'thirdparty'],
   },
   {
     name: 'awsDeleteCodepipelineWebhook',
@@ -10220,6 +11179,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodepipelineWebhook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['github', 'trigger', 'source', 'thirdparty'],
   },
   {
     name: 'awsDeregisterCodepipelineWebhookWithThirdParty',
@@ -10228,6 +11188,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeregisterCodepipelineWebhookWithThirdParty as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['github', 'trigger', 'source', 'thirdparty'],
   },
   {
     name: 'awsRegisterCodepipelineWebhookWithThirdParty',
@@ -10235,6 +11196,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRegisterCodepipelineWebhookWithThirdParty as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['github', 'trigger', 'source', 'thirdparty'],
   },
   {
     name: 'awsPutCodepipelineApprovalResult',
@@ -10243,6 +11205,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutCodepipelineApprovalResult as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['manual', 'approve', 'reject', 'sns'],
   },
   {
     name: 'awsPutCodepipelineJobSuccessResult',
@@ -10250,6 +11213,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutCodepipelineJobSuccessResult as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['worker', 'poll', 'acknowledge'],
   },
   {
     name: 'awsPutCodepipelineJobFailureResult',
@@ -10257,6 +11221,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutCodepipelineJobFailureResult as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['worker', 'poll', 'acknowledge'],
   },
   {
     name: 'awsPutCodepipelineThirdPartyJobSuccessResult',
@@ -10264,6 +11229,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutCodepipelineThirdPartyJobSuccessResult as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['worker', 'poll', 'acknowledge'],
   },
   {
     name: 'awsPutCodepipelineThirdPartyJobFailureResult',
@@ -10271,6 +11237,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutCodepipelineThirdPartyJobFailureResult as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['worker', 'poll', 'acknowledge'],
   },
   {
     name: 'awsListCodepipelineTags',
@@ -10279,6 +11246,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodepipelineTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagCodepipelineResource',
@@ -10286,6 +11254,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagCodepipelineResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagCodepipelineResource',
@@ -10294,6 +11263,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagCodepipelineResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateCodeartifactDomain',
@@ -10301,6 +11271,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodeartifactDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['npm', 'upstream', 'account', 'domains'],
   },
   {
     name: 'awsDescribeCodeartifactDomain',
@@ -10309,6 +11280,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCodeartifactDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'upstream', 'account', 'domains'],
   },
   {
     name: 'awsListCodeartifactDomains',
@@ -10317,6 +11289,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodeartifactDomains as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'upstream', 'account'],
   },
   {
     name: 'awsDeleteCodeartifactDomain',
@@ -10324,6 +11297,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodeartifactDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['npm', 'upstream', 'account', 'domains'],
   },
   {
     name: 'awsCreateCodeartifactRepository',
@@ -10331,6 +11305,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodeartifactRepository as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['npm', 'pypi', 'maven', 'format'],
   },
   {
     name: 'awsDescribeCodeartifactRepository',
@@ -10339,6 +11314,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCodeartifactRepository as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'pypi', 'maven', 'format'],
   },
   {
     name: 'awsListCodeartifactRepositories',
@@ -10347,6 +11323,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodeartifactRepositories as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'pypi', 'maven', 'format', 'repository'],
   },
   {
     name: 'awsUpdateCodeartifactRepository',
@@ -10354,6 +11331,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCodeartifactRepository as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['npm', 'pypi', 'maven', 'format'],
   },
   {
     name: 'awsDeleteCodeartifactRepository',
@@ -10361,6 +11339,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodeartifactRepository as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['npm', 'pypi', 'maven', 'format'],
   },
   {
     name: 'awsListCodeartifactPackages',
@@ -10369,6 +11348,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodeartifactPackages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'pypi', 'version', 'publish'],
   },
   {
     name: 'awsDescribeCodeartifactPackage',
@@ -10377,6 +11357,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCodeartifactPackage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'pypi', 'version', 'publish', 'packages'],
   },
   {
     name: 'awsDeleteCodeartifactPackage',
@@ -10384,6 +11365,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodeartifactPackage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['npm', 'pypi', 'version', 'publish', 'packages'],
   },
   {
     name: 'awsListCodeartifactPackageVersions',
@@ -10392,6 +11374,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodeartifactPackageVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'pypi', 'version', 'publish', 'packages'],
   },
   {
     name: 'awsDescribeCodeartifactPackageVersion',
@@ -10400,6 +11383,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCodeartifactPackageVersion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'pypi', 'publish', 'packages'],
   },
   {
     name: 'awsDeleteCodeartifactPackageVersions',
@@ -10408,6 +11392,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodeartifactPackageVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['npm', 'pypi', 'version', 'publish', 'packages'],
   },
   {
     name: 'awsGetCodeartifactAuthorizationToken',
@@ -10416,6 +11401,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodeartifactAuthorizationToken as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['login', 'auth', 'npm', 'docker'],
   },
   {
     name: 'awsGetCodeartifactRepositoryEndpoint',
@@ -10424,6 +11410,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCodeartifactRepositoryEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['npm', 'pypi', 'maven', 'format'],
   },
   {
     name: 'awsCreateCodeartifactPackageGroup',
@@ -10431,6 +11418,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCodeartifactPackageGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['namespace', 'scope', 'rules'],
   },
   {
     name: 'awsDescribeCodeartifactPackageGroup',
@@ -10439,6 +11427,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCodeartifactPackageGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['namespace', 'scope', 'rules'],
   },
   {
     name: 'awsListCodeartifactPackageGroups',
@@ -10447,6 +11436,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodeartifactPackageGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['namespace', 'scope', 'rules'],
   },
   {
     name: 'awsUpdateCodeartifactPackageGroup',
@@ -10454,6 +11444,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCodeartifactPackageGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['namespace', 'scope', 'rules'],
   },
   {
     name: 'awsDeleteCodeartifactPackageGroup',
@@ -10461,6 +11452,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCodeartifactPackageGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['namespace', 'scope', 'rules'],
   },
   {
     name: 'awsAssociateCodeartifactExternalConnection',
@@ -10468,6 +11460,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociateCodeartifactExternalConnection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['upstream', 'proxy', 'public', 'npm'],
   },
   {
     name: 'awsDisassociateCodeartifactExternalConnection',
@@ -10476,6 +11469,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisassociateCodeartifactExternalConnection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['upstream', 'proxy', 'public', 'npm'],
   },
   {
     name: 'awsListCodeartifactTags',
@@ -10484,6 +11478,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCodeartifactTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagCodeartifactResource',
@@ -10491,6 +11486,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagCodeartifactResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagCodeartifactResource',
@@ -10499,6 +11495,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagCodeartifactResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListTrails',
@@ -10507,6 +11504,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListTrails as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'audit', 'logging', 'governance'],
   },
   {
     name: 'awsGetTrail',
@@ -10515,6 +11513,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetTrail as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'trails', 'audit', 'logging', 'governance'],
   },
   {
     name: 'awsCreateTrail',
@@ -10523,6 +11522,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateTrail as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'trails', 'audit', 'logging', 'governance'],
   },
   {
     name: 'awsUpdateTrail',
@@ -10531,6 +11531,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateTrail as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'trails', 'audit', 'logging', 'governance'],
   },
   {
     name: 'awsDeleteTrail',
@@ -10538,6 +11539,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteTrail as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cloudtrail', 'trails', 'audit', 'logging', 'governance'],
   },
   {
     name: 'awsDescribeTrails',
@@ -10546,6 +11548,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeTrails as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'audit', 'logging', 'governance'],
   },
   {
     name: 'awsGetTrailStatus',
@@ -10554,6 +11557,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetTrailStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'trails', 'audit', 'logging', 'governance'],
   },
   {
     name: 'awsStartLogging',
@@ -10562,6 +11566,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartLogging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'trail', 'trails', 'audit'],
   },
   {
     name: 'awsStopLogging',
@@ -10570,6 +11575,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopLogging as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cloudtrail', 'trail', 'trails', 'audit'],
   },
   {
     name: 'awsLookupEvents',
@@ -10578,6 +11584,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsLookupEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'audit', 'history', 'search', 'trail'],
   },
   {
     name: 'awsCreateEventDataStore',
@@ -10585,6 +11592,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEventDataStore as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'lake', 'audit', 'query'],
   },
   {
     name: 'awsDeleteEventDataStore',
@@ -10593,6 +11601,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEventDataStore as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cloudtrail', 'lake', 'audit', 'query'],
   },
   {
     name: 'awsUpdateEventDataStore',
@@ -10600,6 +11609,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEventDataStore as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'lake', 'audit', 'query'],
   },
   {
     name: 'awsGetEventDataStore',
@@ -10608,6 +11618,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetEventDataStore as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'lake', 'audit', 'query'],
   },
   {
     name: 'awsListEventDataStores',
@@ -10616,6 +11627,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEventDataStores as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'lake', 'audit', 'query', 'store'],
   },
   {
     name: 'awsRestoreEventDataStore',
@@ -10623,6 +11635,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRestoreEventDataStore as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'lake', 'audit', 'query'],
   },
   {
     name: 'awsCreateChannel',
@@ -10631,6 +11644,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'channels', 'events', 'integration'],
   },
   {
     name: 'awsDeleteChannel',
@@ -10638,6 +11652,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cloudtrail', 'channels', 'events', 'integration'],
   },
   {
     name: 'awsUpdateChannel',
@@ -10645,6 +11660,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'channels', 'events', 'integration'],
   },
   {
     name: 'awsGetChannel',
@@ -10653,6 +11669,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'channels', 'events', 'integration'],
   },
   {
     name: 'awsListChannels',
@@ -10661,6 +11678,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListChannels as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'events', 'integration'],
   },
   {
     name: 'awsPutResourcePolicy',
@@ -10669,6 +11687,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'permissions', 'access'],
   },
   {
     name: 'awsGetResourcePolicy',
@@ -10677,6 +11696,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'permissions', 'access'],
   },
   {
     name: 'awsDeleteResourcePolicy',
@@ -10685,6 +11705,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cloudtrail', 'permissions', 'access'],
   },
   {
     name: 'awsAddTags',
@@ -10693,6 +11714,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cloudtrail', 'label', 'trail'],
   },
   {
     name: 'awsRemoveTags',
@@ -10701,6 +11723,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cloudtrail', 'label', 'trail'],
   },
   {
     name: 'awsListTags',
@@ -10709,6 +11732,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cloudtrail', 'label', 'trail'],
   },
   {
     name: 'awsBatchGetTraces',
@@ -10717,6 +11741,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetTraces as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['xray', 'trace', 'observability'],
   },
   {
     name: 'awsGetTraceSummaries',
@@ -10725,6 +11750,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetTraceSummaries as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'tracing', 'observability'],
   },
   {
     name: 'awsGetServiceGraph',
@@ -10733,6 +11759,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetServiceGraph as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'trace', 'tracing', 'observability'],
   },
   {
     name: 'awsPutTraceSegments',
@@ -10740,6 +11767,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutTraceSegments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['xray', 'tracing'],
   },
   {
     name: 'awsGetTraceGraph',
@@ -10748,6 +11776,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetTraceGraph as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'observability'],
   },
   {
     name: 'awsGetGroups',
@@ -10756,6 +11785,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'trace'],
   },
   {
     name: 'awsCreateGroup',
@@ -10764,6 +11794,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['xray', 'trace'],
   },
   {
     name: 'awsUpdateGroup',
@@ -10771,6 +11802,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['xray', 'trace'],
   },
   {
     name: 'awsDeleteGroup',
@@ -10778,6 +11810,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['xray', 'trace'],
   },
   {
     name: 'awsGetGroup',
@@ -10786,6 +11819,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'trace'],
   },
   {
     name: 'awsGetSamplingRules',
@@ -10794,6 +11828,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSamplingRules as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'trace'],
   },
   {
     name: 'awsGetSamplingTargets',
@@ -10802,6 +11837,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSamplingTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'trace'],
   },
   {
     name: 'awsPutTelemetryRecords',
@@ -10810,6 +11846,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutTelemetryRecords as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['xray'],
   },
   {
     name: 'awsGetInsight',
@@ -10818,6 +11855,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetInsight as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'anomaly'],
   },
   {
     name: 'awsGetInsightSummaries',
@@ -10826,6 +11864,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetInsightSummaries as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'anomaly'],
   },
   {
     name: 'awsGetInsightEvents',
@@ -10834,6 +11873,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetInsightEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'anomaly'],
   },
   {
     name: 'awsGetInsightImpactGraph',
@@ -10842,6 +11882,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetInsightImpactGraph as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['xray', 'anomaly'],
   },
   {
     name: 'awsGetCostAndUsage',
@@ -10850,6 +11891,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCostAndUsage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['explorer', 'spend', 'forecast', 'breakdown', 'service'],
   },
   {
     name: 'awsGetCostAndUsageWithResources',
@@ -10858,6 +11900,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCostAndUsageWithResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['explorer', 'spend', 'forecast', 'breakdown', 'service'],
   },
   {
     name: 'awsGetReservationCoverage',
@@ -10866,6 +11909,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetReservationCoverage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ri', 'commitment', 'utilization', 'recommendation'],
   },
   {
     name: 'awsGetReservationPurchaseRecommendation',
@@ -10874,6 +11918,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetReservationPurchaseRecommendation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ri', 'commitment', 'coverage', 'utilization'],
   },
   {
     name: 'awsGetReservationUtilization',
@@ -10882,6 +11927,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetReservationUtilization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ri', 'commitment', 'coverage', 'recommendation'],
   },
   {
     name: 'awsGetRightsizingRecommendation',
@@ -10890,6 +11936,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRightsizingRecommendation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['optimize', 'downsize', 'ec2', 'waste'],
   },
   {
     name: 'awsGetSavingsPlansCoverage',
@@ -10898,6 +11945,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSavingsPlansCoverage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['commitment', 'utilization', 'recommendation', 'savingsplan'],
   },
   {
     name: 'awsGetSavingsPlansPurchaseRecommendation',
@@ -10906,6 +11954,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSavingsPlansPurchaseRecommendation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['commitment', 'coverage', 'utilization', 'savingsplan'],
   },
   {
     name: 'awsGetSavingsPlansUtilization',
@@ -10914,6 +11963,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSavingsPlansUtilization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['commitment', 'coverage', 'recommendation', 'savingsplan'],
   },
   {
     name: 'awsGetSavingsPlansUtilizationDetails',
@@ -10922,6 +11972,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSavingsPlansUtilizationDetails as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['commitment', 'coverage', 'recommendation', 'savingsplan'],
   },
   {
     name: 'awsListCostCategoryDefinitions',
@@ -10930,6 +11981,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCostCategoryDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['grouping', 'rules', 'explorer'],
   },
   {
     name: 'awsGetCostCategories',
@@ -10938,6 +11990,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCostCategories as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['category', 'grouping', 'rules', 'explorer'],
   },
   {
     name: 'awsCreateCostCategoryDefinition',
@@ -10946,6 +11999,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateCostCategoryDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['grouping', 'rules', 'explorer'],
   },
   {
     name: 'awsUpdateCostCategoryDefinition',
@@ -10953,6 +12007,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateCostCategoryDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['grouping', 'rules', 'explorer'],
   },
   {
     name: 'awsDeleteCostCategoryDefinition',
@@ -10960,6 +12015,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteCostCategoryDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['grouping', 'rules', 'explorer'],
   },
   {
     name: 'awsDescribeCostCategoryDefinition',
@@ -10968,6 +12024,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCostCategoryDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['grouping', 'rules', 'explorer'],
   },
   {
     name: 'awsGetDimensionValues',
@@ -10976,6 +12033,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetDimensionValues as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'explorer', 'filter', 'breakdown', 'group'],
   },
   {
     name: 'awsGetTags',
@@ -10984,6 +12042,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'allocation', 'tag', 'explorer'],
   },
   {
     name: 'awsGetAnomalies',
@@ -10992,6 +12051,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAnomalies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'anomaly', 'alert', 'spike', 'monitor'],
   },
   {
     name: 'awsGetAnomalyMonitors',
@@ -11000,6 +12060,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAnomalyMonitors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'alert', 'spike', 'monitor'],
   },
   {
     name: 'awsGetAnomalySubscriptions',
@@ -11008,6 +12069,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAnomalySubscriptions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'alert', 'spike', 'monitor'],
   },
   {
     name: 'awsCreateAnomalyMonitor',
@@ -11015,6 +12077,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAnomalyMonitor as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'alert', 'spike'],
   },
   {
     name: 'awsUpdateAnomalyMonitor',
@@ -11022,6 +12085,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAnomalyMonitor as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'alert', 'spike'],
   },
   {
     name: 'awsDeleteAnomalyMonitor',
@@ -11029,6 +12093,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAnomalyMonitor as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cost', 'alert', 'spike'],
   },
   {
     name: 'awsCreateAnomalySubscription',
@@ -11036,6 +12101,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAnomalySubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'alert', 'spike', 'monitor'],
   },
   {
     name: 'awsUpdateAnomalySubscription',
@@ -11044,6 +12110,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAnomalySubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'alert', 'spike', 'monitor'],
   },
   {
     name: 'awsDeleteAnomalySubscription',
@@ -11051,6 +12118,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAnomalySubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cost', 'alert', 'spike', 'monitor'],
   },
   {
     name: 'awsListBudgets',
@@ -11059,6 +12127,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBudgets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'spend', 'forecast', 'threshold', 'alert'],
   },
   {
     name: 'awsDescribeBudget',
@@ -11067,6 +12136,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'spend', 'forecast', 'threshold', 'alert'],
   },
   {
     name: 'awsCreateBudget',
@@ -11074,6 +12144,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'spend', 'forecast', 'threshold', 'alert'],
   },
   {
     name: 'awsUpdateBudget',
@@ -11081,6 +12152,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'spend', 'forecast', 'threshold', 'alert'],
   },
   {
     name: 'awsDeleteBudget',
@@ -11088,6 +12160,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cost', 'spend', 'forecast', 'threshold', 'alert'],
   },
   {
     name: 'awsDescribeBudgetPerformanceHistory',
@@ -11096,6 +12169,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBudgetPerformanceHistory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'spend', 'forecast', 'threshold', 'alert'],
   },
   {
     name: 'awsCreateBudgetAction',
@@ -11103,6 +12177,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBudgetAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ssm', 'iam', 'approval', 'execute', 'cost'],
   },
   {
     name: 'awsUpdateBudgetAction',
@@ -11110,6 +12185,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateBudgetAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ssm', 'iam', 'approval', 'execute', 'cost'],
   },
   {
     name: 'awsDeleteBudgetAction',
@@ -11117,6 +12193,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBudgetAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ssm', 'iam', 'approval', 'execute', 'cost'],
   },
   {
     name: 'awsDescribeBudgetAction',
@@ -11125,6 +12202,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBudgetAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ssm', 'iam', 'approval', 'execute', 'cost'],
   },
   {
     name: 'awsListBudgetActionsForBudget',
@@ -11133,6 +12211,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBudgetActionsForBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ssm', 'iam', 'approval', 'execute', 'cost'],
   },
   {
     name: 'awsListBudgetActionsForAccount',
@@ -11141,6 +12220,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBudgetActionsForAccount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ssm', 'iam', 'approval', 'execute', 'cost'],
   },
   {
     name: 'awsExecuteBudgetAction',
@@ -11148,6 +12228,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsExecuteBudgetAction as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ssm', 'iam', 'approval', 'cost'],
   },
   {
     name: 'awsCreateBudgetNotification',
@@ -11155,6 +12236,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBudgetNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alert', 'sns', 'email', 'threshold', 'notify'],
   },
   {
     name: 'awsUpdateBudgetNotification',
@@ -11162,6 +12244,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateBudgetNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['alert', 'sns', 'email', 'threshold', 'notify'],
   },
   {
     name: 'awsDeleteBudgetNotification',
@@ -11169,6 +12252,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBudgetNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['alert', 'sns', 'email', 'threshold', 'notify'],
   },
   {
     name: 'awsListBudgetNotificationsForBudget',
@@ -11177,6 +12261,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBudgetNotificationsForBudget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alert', 'sns', 'email', 'threshold', 'notify'],
   },
   {
     name: 'awsListBudgetNotificationsForAccount',
@@ -11185,6 +12270,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBudgetNotificationsForAccount as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alert', 'sns', 'email', 'threshold', 'notify'],
   },
   {
     name: 'awsCreateBudgetSubscriber',
@@ -11192,6 +12278,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBudgetSubscriber as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['sns', 'email', 'notify', 'alert', 'cost'],
   },
   {
     name: 'awsUpdateBudgetSubscriber',
@@ -11199,6 +12286,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateBudgetSubscriber as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['sns', 'email', 'notify', 'alert', 'cost'],
   },
   {
     name: 'awsDeleteBudgetSubscriber',
@@ -11206,6 +12294,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBudgetSubscriber as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['sns', 'email', 'notify', 'alert', 'cost'],
   },
   {
     name: 'awsListSubscribersForNotification',
@@ -11214,6 +12303,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSubscribersForNotification as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['alert', 'sns', 'email', 'threshold', 'notify'],
   },
   {
     name: 'awsListBillingViews',
@@ -11222,6 +12312,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBillingViews as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsGetBillingView',
@@ -11230,6 +12321,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsCreateBillingView',
@@ -11237,6 +12329,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsUpdateBillingView',
@@ -11244,6 +12337,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsDeleteBillingView',
@@ -11251,6 +12345,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsGetBillingViewResourcePolicy',
@@ -11259,6 +12354,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetBillingViewResourcePolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsListSourceViewsForBillingView',
@@ -11267,6 +12363,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSourceViewsForBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsListBillingViewTags',
@@ -11275,6 +12372,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBillingViewTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsTagBillingView',
@@ -11282,6 +12380,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsUntagBillingView',
@@ -11289,6 +12388,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagBillingView as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cost', 'invoice', 'cur', 'analytics', 'spend'],
   },
   {
     name: 'awsDescribeReportDefinitions',
@@ -11297,6 +12397,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeReportDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['cur', 'cost', 'usage', 's3', 'billing'],
   },
   {
     name: 'awsPutReportDefinition',
@@ -11305,6 +12406,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutReportDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cur', 'cost', 'usage', 's3', 'billing'],
   },
   {
     name: 'awsModifyReportDefinition',
@@ -11313,6 +12415,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyReportDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['cur', 'cost', 'usage', 's3', 'billing'],
   },
   {
     name: 'awsDeleteReportDefinition',
@@ -11320,6 +12423,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteReportDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['cur', 'cost', 'usage', 's3', 'billing'],
   },
   {
     name: 'awsListKmsKeys',
@@ -11328,6 +12432,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListKmsKeys as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['rotation', 'alias', 'encryption', 'crypto'],
   },
   {
     name: 'awsDescribeKmsKey',
@@ -11336,6 +12441,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeKmsKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['rotation', 'alias', 'encryption', 'crypto'],
   },
   {
     name: 'awsCreateKmsKey',
@@ -11343,6 +12449,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateKmsKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['rotation', 'alias', 'encryption', 'crypto'],
   },
   {
     name: 'awsScheduleKeyDeletion',
@@ -11350,6 +12457,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsScheduleKeyDeletion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kms', 'destroy', 'pending', 'cancel'],
   },
   {
     name: 'awsCancelKeyDeletion',
@@ -11357,6 +12465,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCancelKeyDeletion as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['kms', 'destroy', 'pending'],
   },
   {
     name: 'awsEnableKmsKey',
@@ -11364,6 +12473,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsEnableKmsKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['rotation', 'alias', 'encryption', 'crypto'],
   },
   {
     name: 'awsDisableKmsKey',
@@ -11371,6 +12481,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisableKmsKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['rotation', 'alias', 'encryption', 'crypto'],
   },
   {
     name: 'awsUpdateKeyDescription',
@@ -11378,6 +12489,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateKeyDescription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kms', 'metadata', 'alias'],
   },
   {
     name: 'awsKmsEncrypt',
@@ -11385,6 +12497,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsKmsEncrypt as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['encryption', 'envelope', 'crypto', 'plaintext'],
   },
   {
     name: 'awsKmsDecrypt',
@@ -11392,6 +12505,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsKmsDecrypt as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['encryption', 'envelope', 'crypto', 'ciphertext'],
   },
   {
     name: 'awsKmsReEncrypt',
@@ -11399,6 +12513,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsKmsReEncrypt as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['encryption', 'envelope', 'crypto', 'plaintext'],
   },
   {
     name: 'awsGenerateDataKey',
@@ -11406,6 +12521,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGenerateDataKey as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kms', 'envelope', 'crypto', 'plaintext', 'encryption'],
   },
   {
     name: 'awsGenerateDataKeyWithoutPlaintext',
@@ -11413,6 +12529,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGenerateDataKeyWithoutPlaintext as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kms', 'envelope', 'crypto', 'encryption'],
   },
   {
     name: 'awsGetKeyPolicy',
@@ -11421,6 +12538,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetKeyPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['kms', 'permissions', 'access', 'iam'],
   },
   {
     name: 'awsPutKeyPolicy',
@@ -11428,6 +12546,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutKeyPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kms', 'permissions', 'access', 'iam'],
   },
   {
     name: 'awsListKeyPolicies',
@@ -11436,6 +12555,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListKeyPolicies as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['kms', 'permissions', 'access', 'iam'],
   },
   {
     name: 'awsCreateGrant',
@@ -11444,6 +12564,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateGrant as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kms', 'delegate', 'permission', 'temporary'],
   },
   {
     name: 'awsListGrants',
@@ -11451,6 +12572,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListGrants as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['kms', 'delegate', 'permission', 'temporary'],
   },
   {
     name: 'awsRevokeGrant',
@@ -11458,6 +12580,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRevokeGrant as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['kms', 'delegate', 'permission', 'temporary'],
   },
   {
     name: 'awsRetireGrant',
@@ -11465,6 +12588,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRetireGrant as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['kms', 'delegate', 'permission', 'temporary'],
   },
   {
     name: 'awsListKmsAliases',
@@ -11472,6 +12596,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListKmsAliases as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['friendly', 'rename', 'arn'],
   },
   {
     name: 'awsCreateKmsAlias',
@@ -11479,6 +12604,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateKmsAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['friendly', 'rename', 'arn', 'aliases'],
   },
   {
     name: 'awsDeleteKmsAlias',
@@ -11486,6 +12612,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteKmsAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['friendly', 'rename', 'arn', 'aliases'],
   },
   {
     name: 'awsUpdateKmsAlias',
@@ -11494,6 +12621,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateKmsAlias as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['friendly', 'rename', 'arn', 'aliases'],
   },
   {
     name: 'awsListKmsResourceTags',
@@ -11501,6 +12629,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListKmsResourceTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['label'],
   },
   {
     name: 'awsTagKmsResource',
@@ -11508,6 +12637,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagKmsResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['label'],
   },
   {
     name: 'awsUntagKmsResource',
@@ -11515,6 +12645,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagKmsResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['label'],
   },
   {
     name: 'awsCreateGuarddutyDetector',
@@ -11523,6 +12654,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateGuarddutyDetector as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['threat', 'security', 'finding', 'malware'],
   },
   {
     name: 'awsListGuarddutyDetectors',
@@ -11531,6 +12663,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListGuarddutyDetectors as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['threat', 'security', 'finding', 'malware'],
   },
   {
     name: 'awsGetGuarddutyDetector',
@@ -11539,6 +12672,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetGuarddutyDetector as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['threat', 'security', 'finding', 'malware'],
   },
   {
     name: 'awsUpdateGuarddutyDetector',
@@ -11546,6 +12680,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateGuarddutyDetector as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['threat', 'security', 'finding', 'malware'],
   },
   {
     name: 'awsDeleteGuarddutyDetector',
@@ -11554,6 +12689,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteGuarddutyDetector as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['threat', 'security', 'finding', 'malware'],
   },
   {
     name: 'awsListGuarddutyFindings',
@@ -11562,6 +12698,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListGuarddutyFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['threat', 'severity', 'suppress', 'archive'],
   },
   {
     name: 'awsGetGuarddutyFindings',
@@ -11570,6 +12707,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetGuarddutyFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['threat', 'severity', 'suppress', 'archive'],
   },
   {
     name: 'awsUpdateGuarddutyFindingsFeedback',
@@ -11578,6 +12716,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateGuarddutyFindingsFeedback as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['threat', 'severity', 'suppress', 'archive'],
   },
   {
     name: 'awsArchiveGuarddutyFindings',
@@ -11585,6 +12724,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsArchiveGuarddutyFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['threat', 'severity', 'suppress'],
   },
   {
     name: 'awsUnarchiveGuarddutyFindings',
@@ -11592,6 +12732,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUnarchiveGuarddutyFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['threat', 'severity', 'suppress', 'archive'],
   },
   {
     name: 'awsCreateGuarddutyIpSet',
@@ -11600,6 +12741,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateGuarddutyIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['allowlist', 'blocklist', 'threat', 'iplist'],
   },
   {
     name: 'awsListGuarddutyIpSets',
@@ -11608,6 +12750,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListGuarddutyIpSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['allowlist', 'blocklist', 'threat', 'iplist'],
   },
   {
     name: 'awsGetGuarddutyIpSet',
@@ -11616,6 +12759,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetGuarddutyIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['allowlist', 'blocklist', 'threat', 'iplist'],
   },
   {
     name: 'awsUpdateGuarddutyIpSet',
@@ -11623,6 +12767,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateGuarddutyIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['allowlist', 'blocklist', 'threat', 'iplist'],
   },
   {
     name: 'awsDeleteGuarddutyIpSet',
@@ -11630,6 +12775,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteGuarddutyIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['allowlist', 'blocklist', 'threat', 'iplist'],
   },
   {
     name: 'awsCreateThreatIntelSet',
@@ -11638,6 +12784,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateThreatIntelSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['guardduty', 'ioc', 'feeds'],
   },
   {
     name: 'awsListThreatIntelSets',
@@ -11646,6 +12793,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListThreatIntelSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['guardduty', 'ioc', 'feeds'],
   },
   {
     name: 'awsGetThreatIntelSet',
@@ -11654,6 +12802,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetThreatIntelSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['guardduty', 'ioc', 'feeds'],
   },
   {
     name: 'awsUpdateThreatIntelSet',
@@ -11661,6 +12810,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateThreatIntelSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['guardduty', 'ioc', 'feeds'],
   },
   {
     name: 'awsDeleteThreatIntelSet',
@@ -11668,6 +12818,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteThreatIntelSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['guardduty', 'ioc', 'feeds'],
   },
   {
     name: 'awsEnableSecurityHub',
@@ -11675,6 +12826,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsEnableSecurityHub as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['securityhub', 'compliance', 'findings'],
   },
   {
     name: 'awsDisableSecurityHub',
@@ -11682,6 +12834,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisableSecurityHub as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['securityhub', 'compliance', 'findings'],
   },
   {
     name: 'awsDescribeHub',
@@ -11690,6 +12843,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHub as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['securityhub', 'security', 'compliance', 'findings'],
   },
   {
     name: 'awsUpdateSecurityHubConfiguration',
@@ -11698,6 +12852,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateSecurityHubConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['securityhub', 'compliance', 'findings'],
   },
   {
     name: 'awsGetSecurityHubFindings',
@@ -11706,6 +12861,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSecurityHubFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['securityhub', 'compliance', 'vulnerability'],
   },
   {
     name: 'awsUpdateSecurityHubFindings',
@@ -11714,6 +12870,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateSecurityHubFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['securityhub', 'compliance', 'vulnerability'],
   },
   {
     name: 'awsBatchImportFindings',
@@ -11722,6 +12879,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchImportFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['security', 'compliance'],
   },
   {
     name: 'awsBatchUpdateFindings',
@@ -11730,6 +12888,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchUpdateFindings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['security', 'compliance'],
   },
   {
     name: 'awsGetSecurityHubInsights',
@@ -11738,6 +12897,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSecurityHubInsights as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['securityhub', 'findings'],
   },
   {
     name: 'awsCreateInsight',
@@ -11745,6 +12905,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateInsight as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['securityhub', 'security', 'findings', 'compliance'],
   },
   {
     name: 'awsUpdateInsight',
@@ -11752,6 +12913,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateInsight as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['securityhub', 'security', 'findings', 'compliance'],
   },
   {
     name: 'awsDeleteInsight',
@@ -11759,6 +12921,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteInsight as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['securityhub', 'security', 'findings', 'compliance'],
   },
   {
     name: 'awsGetInsightResults',
@@ -11767,6 +12930,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetInsightResults as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['securityhub', 'security', 'findings', 'compliance'],
   },
   {
     name: 'awsDescribeStandards',
@@ -11775,6 +12939,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeStandards as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compliance', 'cis', 'pci'],
   },
   {
     name: 'awsGetEnabledStandards',
@@ -11783,6 +12948,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetEnabledStandards as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compliance', 'cis', 'pci'],
   },
   {
     name: 'awsBatchEnableStandards',
@@ -11790,6 +12956,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchEnableStandards as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance', 'cis', 'pci'],
   },
   {
     name: 'awsBatchDisableStandards',
@@ -11797,6 +12964,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchDisableStandards as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance', 'cis', 'pci'],
   },
   {
     name: 'awsDescribeProducts',
@@ -11805,6 +12973,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeProducts as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['security', 'findings', 'integration'],
   },
   {
     name: 'awsListEnabledProductsForImport',
@@ -11813,6 +12982,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEnabledProductsForImport as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['security', 'findings', 'integration'],
   },
   {
     name: 'awsEnableImportFindingsForProduct',
@@ -11821,6 +12991,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsEnableImportFindingsForProduct as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['security', 'integration'],
   },
   {
     name: 'awsDisableImportFindingsForProduct',
@@ -11828,6 +12999,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisableImportFindingsForProduct as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['security', 'integration'],
   },
   {
     name: 'awsCreateMembers',
@@ -11836,6 +13008,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateMembers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['security', 'accounts'],
   },
   {
     name: 'awsListMembers',
@@ -11844,6 +13017,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListMembers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['security', 'accounts'],
   },
   {
     name: 'awsGetMembers',
@@ -11852,6 +13026,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetMembers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['security', 'accounts'],
   },
   {
     name: 'awsDeleteMembers',
@@ -11860,6 +13035,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteMembers as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['security', 'accounts'],
   },
   {
     name: 'awsListWebAcls',
@@ -11868,6 +13044,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListWebAcls as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsGetWebAcl',
@@ -11876,6 +13053,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsCreateWebAcl',
@@ -11883,6 +13061,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsUpdateWebAcl',
@@ -11890,6 +13069,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsDeleteWebAcl',
@@ -11897,6 +13077,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsAssociateWebAcl',
@@ -11905,6 +13086,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociateWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsDisassociateWebAcl',
@@ -11912,6 +13094,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisassociateWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsListResourcesForWebAcl',
@@ -11920,6 +13103,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListResourcesForWebAcl as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsListWafIpSets',
@@ -11927,6 +13111,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListWafIpSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['firewall', 'blocklist'],
   },
   {
     name: 'awsGetWafIpSet',
@@ -11935,6 +13120,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetWafIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['firewall', 'blocklist'],
   },
   {
     name: 'awsCreateWafIpSet',
@@ -11942,6 +13128,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateWafIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['firewall', 'blocklist'],
   },
   {
     name: 'awsUpdateWafIpSet',
@@ -11949,6 +13136,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateWafIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['firewall', 'blocklist'],
   },
   {
     name: 'awsDeleteWafIpSet',
@@ -11956,6 +13144,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteWafIpSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['firewall', 'blocklist'],
   },
   {
     name: 'awsListRegexPatternSets',
@@ -11964,6 +13153,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRegexPatternSets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsGetRegexPatternSet',
@@ -11972,6 +13162,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRegexPatternSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsCreateRegexPatternSet',
@@ -11980,6 +13171,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRegexPatternSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsUpdateRegexPatternSet',
@@ -11987,6 +13179,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateRegexPatternSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsDeleteRegexPatternSet',
@@ -11994,6 +13187,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRegexPatternSet as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsListRuleGroups',
@@ -12001,6 +13195,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRuleGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall', 'rules'],
   },
   {
     name: 'awsGetRuleGroup',
@@ -12009,6 +13204,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetRuleGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall', 'rules'],
   },
   {
     name: 'awsCreateRuleGroup',
@@ -12016,6 +13212,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateRuleGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['waf', 'firewall', 'rules'],
   },
   {
     name: 'awsUpdateRuleGroup',
@@ -12023,6 +13220,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateRuleGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['waf', 'firewall', 'rules'],
   },
   {
     name: 'awsDeleteRuleGroup',
@@ -12030,6 +13228,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRuleGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['waf', 'firewall', 'rules'],
   },
   {
     name: 'awsGetLoggingConfiguration',
@@ -12038,6 +13237,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetLoggingConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsPutLoggingConfiguration',
@@ -12045,6 +13245,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutLoggingConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsDeleteLoggingConfiguration',
@@ -12053,6 +13254,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteLoggingConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsListLoggingConfigurations',
@@ -12061,6 +13263,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListLoggingConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsDescribeManagedRuleGroup',
@@ -12069,6 +13272,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeManagedRuleGroup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall', 'rules'],
   },
   {
     name: 'awsListAvailableManagedRuleGroups',
@@ -12077,6 +13281,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAvailableManagedRuleGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall', 'rules'],
   },
   {
     name: 'awsGetSampledRequests',
@@ -12085,6 +13290,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetSampledRequests as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['waf', 'firewall'],
   },
   {
     name: 'awsDescribeSubscription',
@@ -12093,6 +13299,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['shield', 'ddos', 'advanced'],
   },
   {
     name: 'awsCreateSubscription',
@@ -12101,6 +13308,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['shield', 'ddos', 'advanced'],
   },
   {
     name: 'awsDeleteSubscription',
@@ -12109,6 +13317,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSubscription as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['shield', 'ddos', 'advanced'],
   },
   {
     name: 'awsListProtections',
@@ -12117,6 +13326,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListProtections as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['shield', 'ddos', 'advanced'],
   },
   {
     name: 'awsDescribeProtection',
@@ -12125,6 +13335,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeProtection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['shield', 'ddos', 'advanced'],
   },
   {
     name: 'awsCreateProtection',
@@ -12133,6 +13344,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateProtection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['shield', 'ddos', 'advanced'],
   },
   {
     name: 'awsDeleteProtection',
@@ -12140,6 +13352,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteProtection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['shield', 'ddos', 'advanced'],
   },
   {
     name: 'awsListAttacks',
@@ -12148,6 +13361,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAttacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['shield', 'ddos'],
   },
   {
     name: 'awsDescribeAttack',
@@ -12156,6 +13370,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAttack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['shield', 'ddos'],
   },
   {
     name: 'awsDescribeAttackStatistics',
@@ -12164,6 +13379,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeAttackStatistics as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['shield', 'ddos'],
   },
   {
     name: 'awsDescribeEmergencyContactSettings',
@@ -12172,6 +13388,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEmergencyContactSettings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['shield', 'ddos', 'drt'],
   },
   {
     name: 'awsUpdateEmergencyContactSettings',
@@ -12180,6 +13397,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEmergencyContactSettings as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['shield', 'ddos', 'drt'],
   },
   {
     name: 'awsDescribeDrtAccess',
@@ -12188,6 +13406,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDrtAccess as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['shield', 'ddos'],
   },
   {
     name: 'awsAssociateDrtRole',
@@ -12195,6 +13414,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociateDrtRole as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['shield', 'ddos'],
   },
   {
     name: 'awsDisassociateDrtRole',
@@ -12202,6 +13422,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisassociateDrtRole as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['shield', 'ddos'],
   },
   {
     name: 'awsPutConfigRecorder',
@@ -12210,6 +13431,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutConfigRecorder as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['inventory', 'history', 'recording'],
   },
   {
     name: 'awsDescribeConfigRecorders',
@@ -12218,6 +13440,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConfigRecorders as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['inventory', 'history', 'recording'],
   },
   {
     name: 'awsStartConfigRecorder',
@@ -12226,6 +13449,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartConfigRecorder as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['inventory', 'history', 'recording'],
   },
   {
     name: 'awsStopConfigRecorder',
@@ -12234,6 +13458,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopConfigRecorder as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['inventory', 'history', 'recording'],
   },
   {
     name: 'awsDeleteConfigRecorder',
@@ -12241,6 +13466,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteConfigRecorder as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['inventory', 'history', 'recording'],
   },
   {
     name: 'awsDescribeConfigRecorderStatus',
@@ -12249,6 +13475,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConfigRecorderStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['inventory', 'history', 'recording'],
   },
   {
     name: 'awsPutDeliveryChannel',
@@ -12257,6 +13484,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutDeliveryChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['config', 's3', 'sns', 'snapshot', 'notifications'],
   },
   {
     name: 'awsDescribeDeliveryChannels',
@@ -12265,6 +13493,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDeliveryChannels as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['config', 's3', 'sns', 'snapshot', 'notifications'],
   },
   {
     name: 'awsDeleteDeliveryChannel',
@@ -12272,6 +13501,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDeliveryChannel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['config', 's3', 'sns', 'snapshot', 'notifications'],
   },
   {
     name: 'awsDeliverConfigSnapshot',
@@ -12279,6 +13509,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeliverConfigSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance'],
   },
   {
     name: 'awsDescribeComplianceByConfigRule',
@@ -12287,6 +13518,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeComplianceByConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['audit', 'evaluate', 'trigger', 'rules'],
   },
   {
     name: 'awsDescribeComplianceByResource',
@@ -12295,6 +13527,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeComplianceByResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['config', 'rule', 'audit'],
   },
   {
     name: 'awsGetComplianceSummaryByConfigRule',
@@ -12303,6 +13536,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetComplianceSummaryByConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['audit', 'evaluate', 'trigger', 'rules'],
   },
   {
     name: 'awsGetComplianceSummaryByResourceType',
@@ -12311,6 +13545,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetComplianceSummaryByResourceType as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['config', 'rule', 'audit'],
   },
   {
     name: 'awsGetResourceConfigHistory',
@@ -12319,6 +13554,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetResourceConfigHistory as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['inventory', 'search'],
   },
   {
     name: 'awsBatchGetResourceConfig',
@@ -12327,6 +13563,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsBatchGetResourceConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance'],
   },
   {
     name: 'awsListDiscoveredResources',
@@ -12335,6 +13572,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListDiscoveredResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['config', 'inventory', 'resource', 'search'],
   },
   {
     name: 'awsSelectResourceConfig',
@@ -12343,6 +13581,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSelectResourceConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['inventory', 'search'],
   },
   {
     name: 'awsPutConfigRule',
@@ -12351,6 +13590,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance', 'audit', 'evaluate', 'trigger', 'rules'],
   },
   {
     name: 'awsDescribeConfigRules',
@@ -12359,6 +13599,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConfigRules as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compliance', 'audit', 'evaluate', 'trigger'],
   },
   {
     name: 'awsDeleteConfigRule',
@@ -12366,6 +13607,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['compliance', 'audit', 'evaluate', 'trigger', 'rules'],
   },
   {
     name: 'awsDescribeConfigRuleEvaluationStatus',
@@ -12374,6 +13616,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConfigRuleEvaluationStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compliance', 'audit', 'evaluate', 'trigger', 'rules'],
   },
   {
     name: 'awsStartConfigRulesEvaluation',
@@ -12382,6 +13625,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartConfigRulesEvaluation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance', 'audit', 'evaluate', 'trigger'],
   },
   {
     name: 'awsPutEvaluations',
@@ -12390,6 +13634,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEvaluations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['config', 'rule', 'trigger', 'compliance'],
   },
   {
     name: 'awsPutConfigurationAggregator',
@@ -12398,6 +13643,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutConfigurationAggregator as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['multiaccount', 'aggregate', 'organization', 'config'],
   },
   {
     name: 'awsDescribeConfigurationAggregators',
@@ -12406,6 +13652,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConfigurationAggregators as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['multiaccount', 'aggregate', 'organization', 'config'],
   },
   {
     name: 'awsDeleteConfigurationAggregator',
@@ -12414,6 +13661,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteConfigurationAggregator as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['multiaccount', 'aggregate', 'organization', 'config'],
   },
   {
     name: 'awsDescribeConfigurationAggregatorSourcesStatus',
@@ -12422,6 +13670,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConfigurationAggregatorSourcesStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['multiaccount', 'aggregate', 'organization', 'config'],
   },
   {
     name: 'awsPutConformancePack',
@@ -12429,6 +13678,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutConformancePack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['guardrails', 'compliance', 'rules'],
   },
   {
     name: 'awsDescribeConformancePacks',
@@ -12437,6 +13687,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConformancePacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['pack', 'guardrails', 'compliance', 'rules'],
   },
   {
     name: 'awsDeleteConformancePack',
@@ -12445,6 +13696,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteConformancePack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['guardrails', 'compliance', 'rules'],
   },
   {
     name: 'awsDescribeConformancePackCompliance',
@@ -12453,6 +13705,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConformancePackCompliance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['guardrails', 'rules'],
   },
   {
     name: 'awsDescribeConformancePackStatus',
@@ -12461,6 +13714,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeConformancePackStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['guardrails', 'compliance', 'rules'],
   },
   {
     name: 'awsDescribeOrganizationConfigRules',
@@ -12469,6 +13723,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeOrganizationConfigRules as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['compliance', 'audit', 'evaluate', 'trigger'],
   },
   {
     name: 'awsDescribeOrganizationConformancePacks',
@@ -12477,6 +13732,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeOrganizationConformancePacks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['pack', 'guardrails', 'compliance', 'rules'],
   },
   {
     name: 'awsDescribePendingAggregationRequests',
@@ -12485,6 +13741,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribePendingAggregationRequests as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsPutOrganizationConfigRule',
@@ -12493,6 +13750,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutOrganizationConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['compliance', 'audit', 'evaluate', 'trigger', 'rules'],
   },
   {
     name: 'awsPutOrganizationConformancePack',
@@ -12501,6 +13759,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutOrganizationConformancePack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['guardrails', 'compliance', 'rules'],
   },
   {
     name: 'awsDeleteOrganizationConfigRule',
@@ -12509,6 +13768,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteOrganizationConfigRule as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['compliance', 'audit', 'evaluate', 'trigger', 'rules'],
   },
   {
     name: 'awsDeleteOrganizationConformancePack',
@@ -12517,6 +13777,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteOrganizationConformancePack as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['guardrails', 'compliance', 'rules'],
   },
   {
     name: 'awsPutRemediationConfigurations',
@@ -12525,6 +13786,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutRemediationConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['fix', 'autofix', 'ssm', 'runbook', 'compliance'],
   },
   {
     name: 'awsDescribeRemediationConfigurations',
@@ -12533,6 +13795,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeRemediationConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['fix', 'autofix', 'ssm', 'runbook', 'compliance'],
   },
   {
     name: 'awsDeleteRemediationConfiguration',
@@ -12540,6 +13803,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRemediationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['fix', 'autofix', 'ssm', 'runbook', 'compliance'],
   },
   {
     name: 'awsStartRemediationExecution',
@@ -12548,6 +13812,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartRemediationExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['fix', 'autofix', 'ssm', 'runbook', 'compliance'],
   },
   {
     name: 'awsDescribeRemediationExecutionStatus',
@@ -12556,6 +13821,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeRemediationExecutionStatus as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['fix', 'autofix', 'ssm', 'runbook', 'compliance'],
   },
   {
     name: 'awsPutRetentionConfiguration',
@@ -12564,6 +13830,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutRetentionConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['history', 'expiry', 'days', 'config'],
   },
   {
     name: 'awsDescribeRetentionConfigurations',
@@ -12572,6 +13839,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeRetentionConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['history', 'expiry', 'days', 'config'],
   },
   {
     name: 'awsDeleteRetentionConfiguration',
@@ -12579,6 +13847,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRetentionConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['history', 'expiry', 'days', 'config'],
   },
   {
     name: 'awsListConfigTags',
@@ -12587,6 +13856,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListConfigTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['label'],
   },
   {
     name: 'awsTagConfigResource',
@@ -12594,6 +13864,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagConfigResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['label'],
   },
   {
     name: 'awsUntagConfigResource',
@@ -12601,6 +13872,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagConfigResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['label'],
   },
   {
     name: 'awsDescribeHealthEvents',
@@ -12609,6 +13881,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthEvents as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthEventDetails',
@@ -12617,6 +13890,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthEventDetails as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthEventAggregates',
@@ -12625,6 +13899,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthEventAggregates as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthEventTypes',
@@ -12633,6 +13908,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthEventTypes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthAffectedEntities',
@@ -12641,6 +13917,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthAffectedEntities as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthEntityAggregates',
@@ -12649,6 +13926,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthEntityAggregates as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthEventsForOrganization',
@@ -12657,6 +13935,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthEventsForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthEventDetailsForOrganization',
@@ -12665,6 +13944,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthEventDetailsForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthAffectedAccountsForOrganization',
@@ -12673,6 +13953,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthAffectedAccountsForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDescribeHealthServiceStatusForOrganization',
@@ -12681,6 +13962,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeHealthServiceStatusForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsEnableHealthServiceAccessForOrganization',
@@ -12688,6 +13970,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsEnableHealthServiceAccessForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsDisableHealthServiceAccessForOrganization',
@@ -12695,6 +13978,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDisableHealthServiceAccessForOrganization as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['status', 'outage', 'maintenance', 'incident', 'notification'],
   },
   {
     name: 'awsListAmplifyApps',
@@ -12703,6 +13987,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAmplifyApps as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['frontend', 'hosting', 'deploy', 'web'],
   },
   {
     name: 'awsGetAmplifyApp',
@@ -12711,6 +13996,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAmplifyApp as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['frontend', 'hosting', 'deploy', 'web'],
   },
   {
     name: 'awsCreateAmplifyApp',
@@ -12718,6 +14004,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAmplifyApp as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['frontend', 'hosting', 'deploy', 'web'],
   },
   {
     name: 'awsUpdateAmplifyApp',
@@ -12725,6 +14012,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAmplifyApp as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['frontend', 'hosting', 'deploy', 'web'],
   },
   {
     name: 'awsDeleteAmplifyApp',
@@ -12732,6 +14020,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAmplifyApp as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['frontend', 'hosting', 'deploy', 'web'],
   },
   {
     name: 'awsListAmplifyBranches',
@@ -12740,6 +14029,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAmplifyBranches as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['git', 'preview', 'deploy', 'environment', 'branch'],
   },
   {
     name: 'awsGetAmplifyBranch',
@@ -12748,6 +14038,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAmplifyBranch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['git', 'preview', 'deploy', 'environment', 'branches'],
   },
   {
     name: 'awsCreateAmplifyBranch',
@@ -12755,6 +14046,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAmplifyBranch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['git', 'preview', 'deploy', 'environment', 'branches'],
   },
   {
     name: 'awsUpdateAmplifyBranch',
@@ -12762,6 +14054,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAmplifyBranch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['git', 'preview', 'deploy', 'environment', 'branches'],
   },
   {
     name: 'awsDeleteAmplifyBranch',
@@ -12769,6 +14062,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAmplifyBranch as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['git', 'preview', 'deploy', 'environment', 'branches'],
   },
   {
     name: 'awsListAmplifyJobs',
@@ -12777,6 +14071,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAmplifyJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['build', 'deploy', 'logs', 'pipeline'],
   },
   {
     name: 'awsGetAmplifyJob',
@@ -12785,6 +14080,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAmplifyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['build', 'deploy', 'logs', 'pipeline'],
   },
   {
     name: 'awsStartAmplifyJob',
@@ -12793,6 +14089,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartAmplifyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['build', 'deploy', 'logs', 'pipeline'],
   },
   {
     name: 'awsStopAmplifyJob',
@@ -12801,6 +14098,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopAmplifyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['build', 'deploy', 'logs', 'pipeline'],
   },
   {
     name: 'awsListAmplifyDomainAssociations',
@@ -12809,6 +14107,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAmplifyDomainAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'custom', 'ssl', 'certificate'],
   },
   {
     name: 'awsGetAmplifyDomainAssociation',
@@ -12817,6 +14116,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAmplifyDomainAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['dns', 'custom', 'ssl', 'certificate'],
   },
   {
     name: 'awsCreateAmplifyDomainAssociation',
@@ -12825,6 +14125,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAmplifyDomainAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'custom', 'ssl', 'certificate'],
   },
   {
     name: 'awsUpdateAmplifyDomainAssociation',
@@ -12833,6 +14134,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAmplifyDomainAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['dns', 'custom', 'ssl', 'certificate'],
   },
   {
     name: 'awsDeleteAmplifyDomainAssociation',
@@ -12841,6 +14143,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAmplifyDomainAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['dns', 'custom', 'ssl', 'certificate'],
   },
   {
     name: 'awsListAmplifyBackendEnvironments',
@@ -12849,6 +14152,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAmplifyBackendEnvironments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['environment', 'env', 'studio'],
   },
   {
     name: 'awsCreateAmplifyBackendEnvironment',
@@ -12857,6 +14161,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAmplifyBackendEnvironment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['env', 'studio'],
   },
   {
     name: 'awsDeleteAmplifyBackendEnvironment',
@@ -12865,6 +14170,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAmplifyBackendEnvironment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['env', 'studio'],
   },
   {
     name: 'awsListAmplifyWebhooks',
@@ -12873,6 +14179,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListAmplifyWebhooks as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['github', 'ci', 'trigger', 'notify'],
   },
   {
     name: 'awsGetAmplifyWebhook',
@@ -12881,6 +14188,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetAmplifyWebhook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['github', 'ci', 'trigger', 'notify'],
   },
   {
     name: 'awsCreateAmplifyWebhook',
@@ -12888,6 +14196,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateAmplifyWebhook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['github', 'ci', 'trigger', 'notify'],
   },
   {
     name: 'awsUpdateAmplifyWebhook',
@@ -12895,6 +14204,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateAmplifyWebhook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['github', 'ci', 'trigger', 'notify'],
   },
   {
     name: 'awsDeleteAmplifyWebhook',
@@ -12902,6 +14212,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteAmplifyWebhook as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['github', 'ci', 'trigger', 'notify'],
   },
   {
     name: 'awsListBatchComputeEnvironments',
@@ -12910,6 +14221,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBatchComputeEnvironments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['fargate', 'ec2', 'spot', 'environment'],
   },
   {
     name: 'awsDescribeBatchComputeEnvironments',
@@ -12918,6 +14230,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBatchComputeEnvironments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['fargate', 'ec2', 'spot', 'environment'],
   },
   {
     name: 'awsCreateBatchComputeEnvironment',
@@ -12925,6 +14238,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBatchComputeEnvironment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['fargate', 'ec2', 'spot'],
   },
   {
     name: 'awsUpdateBatchComputeEnvironment',
@@ -12933,6 +14247,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateBatchComputeEnvironment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['fargate', 'ec2', 'spot'],
   },
   {
     name: 'awsDeleteBatchComputeEnvironment',
@@ -12940,6 +14255,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBatchComputeEnvironment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['fargate', 'ec2', 'spot'],
   },
   {
     name: 'awsListBatchJobQueues',
@@ -12948,6 +14264,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBatchJobQueues as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['priority', 'scheduling', 'fifo', 'compute', 'jobs'],
   },
   {
     name: 'awsDescribeBatchJobQueues',
@@ -12956,6 +14273,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBatchJobQueues as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['priority', 'scheduling', 'fifo', 'compute', 'jobs'],
   },
   {
     name: 'awsCreateBatchJobQueue',
@@ -12963,6 +14281,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBatchJobQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['priority', 'scheduling', 'fifo', 'compute', 'jobs'],
   },
   {
     name: 'awsUpdateBatchJobQueue',
@@ -12970,6 +14289,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateBatchJobQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['priority', 'scheduling', 'fifo', 'compute', 'jobs'],
   },
   {
     name: 'awsDeleteBatchJobQueue',
@@ -12977,6 +14297,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBatchJobQueue as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['priority', 'scheduling', 'fifo', 'compute', 'jobs'],
   },
   {
     name: 'awsListBatchJobDefinitions',
@@ -12985,6 +14306,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBatchJobDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['container', 'image', 'revision', 'definition'],
   },
   {
     name: 'awsDescribeBatchJobDefinitions',
@@ -12993,6 +14315,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBatchJobDefinitions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['container', 'image', 'revision', 'definition'],
   },
   {
     name: 'awsRegisterBatchJobDefinition',
@@ -13000,6 +14323,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRegisterBatchJobDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['container', 'image', 'revision'],
   },
   {
     name: 'awsDeregisterBatchJobDefinition',
@@ -13007,6 +14331,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeregisterBatchJobDefinition as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['container', 'image', 'revision'],
   },
   {
     name: 'awsSubmitBatchJob',
@@ -13014,6 +14339,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsSubmitBatchJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['run', 'hpc', 'container', 'jobs'],
   },
   {
     name: 'awsListBatchJobs',
@@ -13022,6 +14348,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBatchJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'submit', 'hpc', 'container'],
   },
   {
     name: 'awsDescribeBatchJobs',
@@ -13030,6 +14357,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBatchJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'submit', 'hpc', 'container'],
   },
   {
     name: 'awsCancelBatchJob',
@@ -13037,6 +14365,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCancelBatchJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['run', 'submit', 'hpc', 'container', 'jobs'],
   },
   {
     name: 'awsTerminateBatchJob',
@@ -13044,6 +14373,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTerminateBatchJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['run', 'submit', 'hpc', 'container', 'jobs'],
   },
   {
     name: 'awsListBatchTags',
@@ -13052,6 +14382,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBatchTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagBatchResource',
@@ -13059,6 +14390,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagBatchResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagBatchResource',
@@ -13066,6 +14398,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagBatchResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsCreateBackupVault',
@@ -13073,6 +14406,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBackupVault as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['recovery', 'kms', 'policy', 'notifications', 'vaults'],
   },
   {
     name: 'awsDescribeBackupVault',
@@ -13081,6 +14415,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBackupVault as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['recovery', 'kms', 'policy', 'notifications', 'vaults'],
   },
   {
     name: 'awsListBackupVaults',
@@ -13088,6 +14423,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBackupVaults as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['recovery', 'kms', 'policy', 'notifications'],
   },
   {
     name: 'awsDeleteBackupVault',
@@ -13095,6 +14431,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBackupVault as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['recovery', 'kms', 'policy', 'notifications', 'vaults'],
   },
   {
     name: 'awsCreateBackupPlan',
@@ -13102,6 +14439,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBackupPlan as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['schedule', 'rule', 'selection', 'lifecycle'],
   },
   {
     name: 'awsGetBackupPlan',
@@ -13110,6 +14448,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetBackupPlan as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['schedule', 'rule', 'selection', 'lifecycle'],
   },
   {
     name: 'awsListBackupPlans',
@@ -13117,6 +14456,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBackupPlans as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['schedule', 'rule', 'selection', 'lifecycle'],
   },
   {
     name: 'awsUpdateBackupPlan',
@@ -13124,6 +14464,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateBackupPlan as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['schedule', 'rule', 'selection', 'lifecycle'],
   },
   {
     name: 'awsDeleteBackupPlan',
@@ -13131,6 +14472,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBackupPlan as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['schedule', 'rule', 'selection', 'lifecycle'],
   },
   {
     name: 'awsGetBackupPlanFromTemplate',
@@ -13139,6 +14481,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetBackupPlanFromTemplate as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['schedule', 'rule', 'selection', 'lifecycle'],
   },
   {
     name: 'awsCreateBackupSelection',
@@ -13146,6 +14489,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateBackupSelection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['resources', 'iam', 'tag', 'scope'],
   },
   {
     name: 'awsGetBackupSelection',
@@ -13154,6 +14498,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetBackupSelection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['resources', 'iam', 'tag', 'scope'],
   },
   {
     name: 'awsListBackupSelections',
@@ -13162,6 +14507,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBackupSelections as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['resources', 'iam', 'tag', 'scope'],
   },
   {
     name: 'awsDeleteBackupSelection',
@@ -13169,6 +14515,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBackupSelection as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['resources', 'iam', 'tag', 'scope'],
   },
   {
     name: 'awsStartBackupJob',
@@ -13176,6 +14523,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartBackupJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsDescribeBackupJob',
@@ -13184,6 +14532,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeBackupJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsListBackupJobs',
@@ -13191,6 +14540,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBackupJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsStopBackupJob',
@@ -13199,6 +14549,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopBackupJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsListRecoveryPointsByBackupVault',
@@ -13207,6 +14558,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRecoveryPointsByBackupVault as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['kms', 'policy', 'notifications', 'vaults'],
   },
   {
     name: 'awsListRecoveryPointsByResource',
@@ -13215,6 +14567,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRecoveryPointsByResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['snapshot', 'pitr', 'restore', 'vault', 'backup'],
   },
   {
     name: 'awsDescribeRecoveryPoint',
@@ -13223,6 +14576,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeRecoveryPoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['snapshot', 'pitr', 'restore', 'vault', 'backup'],
   },
   {
     name: 'awsDeleteRecoveryPoint',
@@ -13230,6 +14584,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteRecoveryPoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['snapshot', 'pitr', 'restore', 'vault', 'backup'],
   },
   {
     name: 'awsStartRestoreJob',
@@ -13237,6 +14592,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartRestoreJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsDescribeRestoreJob',
@@ -13245,6 +14601,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeRestoreJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsListRestoreJobs',
@@ -13252,6 +14609,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListRestoreJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsListProtectedResources',
@@ -13259,6 +14617,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListProtectedResources as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['coverage', 'compliance', 'backup'],
   },
   {
     name: 'awsGetBackupVaultAccessPolicy',
@@ -13267,6 +14626,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetBackupVaultAccessPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['recovery', 'kms', 'notifications', 'vaults'],
   },
   {
     name: 'awsPutBackupVaultAccessPolicy',
@@ -13274,6 +14634,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutBackupVaultAccessPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['recovery', 'kms', 'notifications', 'vaults'],
   },
   {
     name: 'awsDeleteBackupVaultAccessPolicy',
@@ -13282,6 +14643,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBackupVaultAccessPolicy as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['recovery', 'kms', 'notifications', 'vaults'],
   },
   {
     name: 'awsGetBackupVaultNotifications',
@@ -13290,6 +14652,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetBackupVaultNotifications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['recovery', 'kms', 'policy', 'vaults'],
   },
   {
     name: 'awsPutBackupVaultNotifications',
@@ -13298,6 +14661,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutBackupVaultNotifications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['recovery', 'kms', 'policy', 'vaults'],
   },
   {
     name: 'awsDeleteBackupVaultNotifications',
@@ -13306,6 +14670,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteBackupVaultNotifications as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['recovery', 'kms', 'policy', 'vaults'],
   },
   {
     name: 'awsStartCopyJob',
@@ -13313,6 +14678,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartCopyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsDescribeCopyJob',
@@ -13321,6 +14687,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeCopyJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsListCopyJobs',
@@ -13328,6 +14695,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListCopyJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['run', 'history', 'ec2', 'resource'],
   },
   {
     name: 'awsListBackupTags',
@@ -13336,6 +14704,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListBackupTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagBackupResource',
@@ -13343,6 +14712,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagBackupResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagBackupResource',
@@ -13350,6 +14720,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagBackupResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeEfsFileSystems',
@@ -13358,6 +14729,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEfsFileSystems as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['nfs', 'storage', 'shared', 'posix'],
   },
   {
     name: 'awsCreateEfsFileSystem',
@@ -13365,6 +14737,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEfsFileSystem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['nfs', 'storage', 'shared', 'posix'],
   },
   {
     name: 'awsUpdateEfsFileSystem',
@@ -13372,6 +14745,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateEfsFileSystem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['nfs', 'storage', 'shared', 'posix'],
   },
   {
     name: 'awsDeleteEfsFileSystem',
@@ -13379,6 +14753,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEfsFileSystem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['nfs', 'storage', 'shared', 'posix'],
   },
   {
     name: 'awsCreateEfsMountTarget',
@@ -13386,6 +14761,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEfsMountTarget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['nfs', 'subnet', 'eni', 'az'],
   },
   {
     name: 'awsDescribeEfsMountTargets',
@@ -13394,6 +14770,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEfsMountTargets as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['nfs', 'subnet', 'eni', 'az'],
   },
   {
     name: 'awsDeleteEfsMountTarget',
@@ -13401,6 +14778,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEfsMountTarget as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['nfs', 'subnet', 'eni', 'az'],
   },
   {
     name: 'awsDescribeEfsMountTargetSecurityGroups',
@@ -13409,6 +14787,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEfsMountTargetSecurityGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['nfs', 'subnet', 'eni', 'az'],
   },
   {
     name: 'awsModifyEfsMountTargetSecurityGroups',
@@ -13416,6 +14795,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsModifyEfsMountTargetSecurityGroups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['nfs', 'subnet', 'eni', 'az'],
   },
   {
     name: 'awsCreateEfsAccessPoint',
@@ -13424,6 +14804,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEfsAccessPoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['posix', 'user', 'lambda', 'permissions'],
   },
   {
     name: 'awsDescribeEfsAccessPoints',
@@ -13432,6 +14813,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEfsAccessPoints as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['posix', 'user', 'lambda', 'permissions'],
   },
   {
     name: 'awsDeleteEfsAccessPoint',
@@ -13439,6 +14821,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEfsAccessPoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['posix', 'user', 'lambda', 'permissions'],
   },
   {
     name: 'awsPutEfsLifecycleConfiguration',
@@ -13447,6 +14830,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsPutEfsLifecycleConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ia', 'archive', 'transition', 'policy'],
   },
   {
     name: 'awsDescribeEfsLifecycleConfiguration',
@@ -13455,6 +14839,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEfsLifecycleConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ia', 'archive', 'transition', 'policy'],
   },
   {
     name: 'awsDeleteEfsLifecycleConfiguration',
@@ -13463,6 +14848,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEfsLifecycleConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ia', 'archive', 'transition', 'policy'],
   },
   {
     name: 'awsCreateEfsReplicationConfiguration',
@@ -13471,6 +14857,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateEfsReplicationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['destination', 'backup', 'region', 'recovery'],
   },
   {
     name: 'awsDescribeEfsReplicationConfigurations',
@@ -13479,6 +14866,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeEfsReplicationConfigurations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['destination', 'backup', 'region', 'recovery'],
   },
   {
     name: 'awsDeleteEfsReplicationConfiguration',
@@ -13486,6 +14874,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteEfsReplicationConfiguration as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['destination', 'backup', 'region', 'recovery'],
   },
   {
     name: 'awsListEfsTags',
@@ -13494,6 +14883,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListEfsTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagEfsResource',
@@ -13501,6 +14891,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagEfsResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagEfsResource',
@@ -13508,6 +14899,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagEfsResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeFsxFileSystems',
@@ -13516,6 +14908,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeFsxFileSystems as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['lustre', 'ontap', 'windows', 'openzfs'],
   },
   {
     name: 'awsCreateFsxFileSystem',
@@ -13523,6 +14916,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateFsxFileSystem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['lustre', 'ontap', 'windows', 'openzfs'],
   },
   {
     name: 'awsUpdateFsxFileSystem',
@@ -13530,6 +14924,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateFsxFileSystem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['lustre', 'ontap', 'windows', 'openzfs'],
   },
   {
     name: 'awsDeleteFsxFileSystem',
@@ -13537,6 +14932,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteFsxFileSystem as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['lustre', 'ontap', 'windows', 'openzfs'],
   },
   {
     name: 'awsCreateFsxBackup',
@@ -13544,6 +14940,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateFsxBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['restore', 'snapshot', 'recovery'],
   },
   {
     name: 'awsDescribeFsxBackups',
@@ -13552,6 +14949,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeFsxBackups as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['restore', 'snapshot', 'recovery', 'backup'],
   },
   {
     name: 'awsDeleteFsxBackup',
@@ -13559,6 +14957,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteFsxBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['restore', 'snapshot', 'recovery'],
   },
   {
     name: 'awsCopyFsxBackup',
@@ -13566,6 +14965,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCopyFsxBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['restore', 'snapshot', 'recovery'],
   },
   {
     name: 'awsRestoreFsxVolumeFromBackup',
@@ -13573,6 +14973,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRestoreFsxVolumeFromBackup as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['snapshot', 'recovery'],
   },
   {
     name: 'awsCreateFsxDataRepositoryAssociation',
@@ -13581,6 +14982,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateFsxDataRepositoryAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['s3', 'lustre', 'sync', 'dora'],
   },
   {
     name: 'awsDescribeFsxDataRepositoryAssociations',
@@ -13589,6 +14991,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeFsxDataRepositoryAssociations as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['s3', 'lustre', 'sync', 'dora'],
   },
   {
     name: 'awsUpdateFsxDataRepositoryAssociation',
@@ -13596,6 +14999,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateFsxDataRepositoryAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['s3', 'lustre', 'sync', 'dora'],
   },
   {
     name: 'awsDeleteFsxDataRepositoryAssociation',
@@ -13603,6 +15007,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteFsxDataRepositoryAssociation as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['s3', 'lustre', 'sync', 'dora'],
   },
   {
     name: 'awsCreateFsxStorageVirtualMachine',
@@ -13611,6 +15016,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateFsxStorageVirtualMachine as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['svm', 'ontap', 'smb', 'nfs', 'multiprotocol'],
   },
   {
     name: 'awsDescribeFsxStorageVirtualMachines',
@@ -13619,6 +15025,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeFsxStorageVirtualMachines as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['svm', 'ontap', 'smb', 'nfs', 'multiprotocol'],
   },
   {
     name: 'awsUpdateFsxStorageVirtualMachine',
@@ -13626,6 +15033,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateFsxStorageVirtualMachine as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['svm', 'ontap', 'smb', 'nfs', 'multiprotocol'],
   },
   {
     name: 'awsDeleteFsxStorageVirtualMachine',
@@ -13633,6 +15041,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteFsxStorageVirtualMachine as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['svm', 'ontap', 'smb', 'nfs', 'multiprotocol'],
   },
   {
     name: 'awsCreateFsxVolume',
@@ -13640,6 +15049,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateFsxVolume as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ontap', 'qtree', 'lun', 'share'],
   },
   {
     name: 'awsDescribeFsxVolumes',
@@ -13647,6 +15057,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeFsxVolumes as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ontap', 'qtree', 'lun', 'share', 'volume'],
   },
   {
     name: 'awsUpdateFsxVolume',
@@ -13654,6 +15065,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateFsxVolume as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ontap', 'qtree', 'lun', 'share'],
   },
   {
     name: 'awsDeleteFsxVolume',
@@ -13661,6 +15073,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteFsxVolume as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ontap', 'qtree', 'lun', 'share'],
   },
   {
     name: 'awsCreateFsxSnapshot',
@@ -13668,6 +15081,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateFsxSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['restore', 'backup', 'copy', 'pointintime'],
   },
   {
     name: 'awsDescribeFsxSnapshots',
@@ -13676,6 +15090,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeFsxSnapshots as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['restore', 'backup', 'copy', 'pointintime'],
   },
   {
     name: 'awsUpdateFsxSnapshot',
@@ -13683,6 +15098,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateFsxSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['restore', 'backup', 'copy', 'pointintime'],
   },
   {
     name: 'awsDeleteFsxSnapshot',
@@ -13690,6 +15106,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteFsxSnapshot as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['restore', 'backup', 'copy', 'pointintime'],
   },
   {
     name: 'awsListFsxTags',
@@ -13698,6 +15115,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListFsxTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsTagFsxResource',
@@ -13705,6 +15123,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsTagFsxResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsUntagFsxResource',
@@ -13712,6 +15131,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUntagFsxResource as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsDescribeOpensearchDomain',
@@ -13720,6 +15140,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeOpensearchDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['elasticsearch', 'search', 'cluster'],
   },
   {
     name: 'awsListDomainNames',
@@ -13728,6 +15149,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListDomainNames as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['opensearch', 'elasticsearch', 'search', 'cluster'],
   },
   {
     name: 'awsCreateDomain',
@@ -13735,6 +15157,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['opensearch', 'elasticsearch', 'search', 'cluster'],
   },
   {
     name: 'awsDeleteDomain',
@@ -13742,6 +15165,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['opensearch', 'elasticsearch', 'search', 'cluster'],
   },
   {
     name: 'awsUpdateDomainConfig',
@@ -13750,6 +15174,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateDomainConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['opensearch', 'elasticsearch', 'search'],
   },
   {
     name: 'awsDescribeDomainConfig',
@@ -13758,6 +15183,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDomainConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['opensearch', 'elasticsearch', 'search'],
   },
   {
     name: 'awsDescribeDomainChangeProgress',
@@ -13766,6 +15192,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeDomainChangeProgress as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['opensearch', 'elasticsearch', 'search'],
   },
   {
     name: 'awsUpgradeDomain',
@@ -13773,6 +15200,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpgradeDomain as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['opensearch', 'elasticsearch', 'version', 'migration', 'search'],
   },
   {
     name: 'awsDescribePackages',
@@ -13781,6 +15209,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribePackages as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['opensearch', 'plugin', 'plugins', 'elasticsearch'],
   },
   {
     name: 'awsAssociatePackage',
@@ -13789,6 +15218,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAssociatePackage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['opensearch', 'plugin', 'elasticsearch'],
   },
   {
     name: 'awsDissociatePackage',
@@ -13796,6 +15226,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDissociatePackage as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['opensearch', 'plugin', 'elasticsearch'],
   },
   {
     name: 'awsListOpensearchTags',
@@ -13804,6 +15235,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListOpensearchTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsAddOpensearchTags',
@@ -13811,6 +15243,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddOpensearchTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsRemoveOpensearchTags',
@@ -13818,6 +15251,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsRemoveOpensearchTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'awsListVersions',
@@ -13826,6 +15260,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['opensearch', 'elasticsearch', 'upgrade'],
   },
   {
     name: 'awsGetCompatibleVersions',
@@ -13834,6 +15269,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsGetCompatibleVersions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['opensearch', 'elasticsearch', 'upgrade'],
   },
   {
     name: 'awsCreateSagemakerNotebookInstance',
@@ -13841,6 +15277,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerNotebookInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'jupyter'],
   },
   {
     name: 'awsListSagemakerNotebookInstances',
@@ -13849,6 +15286,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerNotebookInstances as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'jupyter'],
   },
   {
     name: 'awsDescribeSagemakerNotebookInstance',
@@ -13857,6 +15295,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerNotebookInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'jupyter'],
   },
   {
     name: 'awsStartSagemakerNotebookInstance',
@@ -13864,6 +15303,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartSagemakerNotebookInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'jupyter'],
   },
   {
     name: 'awsStopSagemakerNotebookInstance',
@@ -13872,6 +15312,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopSagemakerNotebookInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'jupyter'],
   },
   {
     name: 'awsUpdateSagemakerNotebookInstance',
@@ -13879,6 +15320,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateSagemakerNotebookInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'jupyter'],
   },
   {
     name: 'awsDeleteSagemakerNotebookInstance',
@@ -13886,6 +15328,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSagemakerNotebookInstance as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'jupyter'],
   },
   {
     name: 'awsCreateSagemakerTrainingJob',
@@ -13893,6 +15336,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerTrainingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml'],
   },
   {
     name: 'awsListSagemakerTrainingJobs',
@@ -13901,6 +15345,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerTrainingJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml'],
   },
   {
     name: 'awsDescribeSagemakerTrainingJob',
@@ -13909,6 +15354,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerTrainingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml'],
   },
   {
     name: 'awsStopSagemakerTrainingJob',
@@ -13917,6 +15363,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopSagemakerTrainingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml'],
   },
   {
     name: 'awsCreateSagemakerModel',
@@ -13924,6 +15371,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerModel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'inference'],
   },
   {
     name: 'awsListSagemakerModels',
@@ -13931,6 +15379,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerModels as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'inference'],
   },
   {
     name: 'awsDescribeSagemakerModel',
@@ -13939,6 +15388,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerModel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'inference'],
   },
   {
     name: 'awsDeleteSagemakerModel',
@@ -13946,6 +15396,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSagemakerModel as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'inference'],
   },
   {
     name: 'awsCreateSagemakerEndpoint',
@@ -13953,6 +15404,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsListSagemakerEndpoints',
@@ -13960,6 +15412,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerEndpoints as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsDescribeSagemakerEndpoint',
@@ -13968,6 +15421,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsUpdateSagemakerEndpoint',
@@ -13975,6 +15429,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsUpdateSagemakerEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsDeleteSagemakerEndpoint',
@@ -13982,6 +15437,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSagemakerEndpoint as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsCreateSagemakerEndpointConfig',
@@ -13989,6 +15445,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerEndpointConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsListSagemakerEndpointConfigs',
@@ -13997,6 +15454,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerEndpointConfigs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsDescribeSagemakerEndpointConfig',
@@ -14005,6 +15463,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerEndpointConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsDeleteSagemakerEndpointConfig',
@@ -14013,6 +15472,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSagemakerEndpointConfig as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'inference', 'deploy'],
   },
   {
     name: 'awsCreateSagemakerTransformJob',
@@ -14020,6 +15480,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerTransformJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'batch'],
   },
   {
     name: 'awsListSagemakerTransformJobs',
@@ -14028,6 +15489,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerTransformJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'batch'],
   },
   {
     name: 'awsDescribeSagemakerTransformJob',
@@ -14036,6 +15498,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerTransformJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'batch'],
   },
   {
     name: 'awsStopSagemakerTransformJob',
@@ -14044,6 +15507,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopSagemakerTransformJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'batch'],
   },
   {
     name: 'awsCreateSagemakerProcessingJob',
@@ -14051,6 +15515,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerProcessingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'preprocessing'],
   },
   {
     name: 'awsListSagemakerProcessingJobs',
@@ -14059,6 +15524,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerProcessingJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'preprocessing'],
   },
   {
     name: 'awsDescribeSagemakerProcessingJob',
@@ -14067,6 +15533,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerProcessingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'preprocessing'],
   },
   {
     name: 'awsStopSagemakerProcessingJob',
@@ -14075,6 +15542,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopSagemakerProcessingJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'preprocessing'],
   },
   {
     name: 'awsCreateSagemakerHyperparameterTuningJob',
@@ -14082,6 +15550,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerHyperparameterTuningJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'hpo'],
   },
   {
     name: 'awsListSagemakerHyperparameterTuningJobs',
@@ -14090,6 +15559,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerHyperparameterTuningJobs as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'hpo'],
   },
   {
     name: 'awsDescribeSagemakerHyperparameterTuningJob',
@@ -14098,6 +15568,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerHyperparameterTuningJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'hpo'],
   },
   {
     name: 'awsStopSagemakerHyperparameterTuningJob',
@@ -14106,6 +15577,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopSagemakerHyperparameterTuningJob as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'hpo'],
   },
   {
     name: 'awsCreateSagemakerPipeline',
@@ -14113,6 +15585,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerPipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'mlops', 'workflow'],
   },
   {
     name: 'awsListSagemakerPipelines',
@@ -14120,6 +15593,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerPipelines as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'mlops', 'workflow'],
   },
   {
     name: 'awsDescribeSagemakerPipeline',
@@ -14128,6 +15602,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerPipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'mlops', 'workflow'],
   },
   {
     name: 'awsDeleteSagemakerPipeline',
@@ -14135,6 +15610,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSagemakerPipeline as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'mlops', 'workflow'],
   },
   {
     name: 'awsStartSagemakerPipelineExecution',
@@ -14142,6 +15618,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStartSagemakerPipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'mlops', 'run'],
   },
   {
     name: 'awsListSagemakerPipelineExecutions',
@@ -14150,6 +15627,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerPipelineExecutions as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'mlops', 'run'],
   },
   {
     name: 'awsDescribeSagemakerPipelineExecution',
@@ -14158,6 +15636,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerPipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'mlops', 'run'],
   },
   {
     name: 'awsStopSagemakerPipelineExecution',
@@ -14166,6 +15645,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsStopSagemakerPipelineExecution as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'mlops', 'run'],
   },
   {
     name: 'awsCreateSagemakerExperiment',
@@ -14173,6 +15653,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsCreateSagemakerExperiment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: ['ml', 'tracking'],
   },
   {
     name: 'awsListSagemakerExperiments',
@@ -14181,6 +15662,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerExperiments as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'tracking'],
   },
   {
     name: 'awsDescribeSagemakerExperiment',
@@ -14189,6 +15671,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDescribeSagemakerExperiment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: ['ml', 'tracking'],
   },
   {
     name: 'awsDeleteSagemakerExperiment',
@@ -14196,6 +15679,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSagemakerExperiment as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: ['ml', 'tracking'],
   },
   {
     name: 'awsListSagemakerTags',
@@ -14204,6 +15688,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsListSagemakerTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'awsAddSagemakerTags',
@@ -14211,6 +15696,7 @@ export const awsTools: ToolDefinition[] = [
     tool: awsAddSagemakerTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'awsDeleteSagemakerTags',
@@ -14218,5 +15704,6 @@ export const awsTools: ToolDefinition[] = [
     tool: awsDeleteSagemakerTags as Tool,
     requiredAuth: 'awsCredentials' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
 ];

@@ -241,6 +241,7 @@ export const bitbucketTools = [
     tool: bitbucketApprovePullRequest,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['pr', 'lgtm'],
   },
   {
     name: 'bitbucketCreatePullRequest',
@@ -248,6 +249,7 @@ export const bitbucketTools = [
     tool: bitbucketCreatePullRequest,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['pr', 'merge'],
   },
   {
     name: 'bitbucketDeclinePullRequest',
@@ -255,6 +257,7 @@ export const bitbucketTools = [
     tool: bitbucketDeclinePullRequest,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['pr', 'reject'],
   },
   {
     name: 'bitbucketMergePullRequest',
@@ -262,6 +265,7 @@ export const bitbucketTools = [
     tool: bitbucketMergePullRequest,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['pr'],
   },
   {
     name: 'bitbucketRequestPullRequestChanges',
@@ -269,6 +273,7 @@ export const bitbucketTools = [
     tool: bitbucketRequestPullRequestChanges,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['pr', 'review'],
   },
   {
     name: 'bitbucketUpdatePullRequest',
@@ -276,6 +281,7 @@ export const bitbucketTools = [
     tool: bitbucketUpdatePullRequest,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['pr'],
   },
   {
     name: 'bitbucketGetPullRequest',
@@ -283,6 +289,7 @@ export const bitbucketTools = [
     tool: bitbucketGetPullRequest,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'diff'],
   },
   {
     name: 'bitbucketListPullRequests',
@@ -290,6 +297,7 @@ export const bitbucketTools = [
     tool: bitbucketListPullRequests,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'prs', 'review'],
   },
   {
     name: 'bitbucketListPullRequestTasks',
@@ -297,6 +305,7 @@ export const bitbucketTools = [
     tool: bitbucketListPullRequestTasks,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'todo'],
   },
   {
     name: 'bitbucketListPullRequestCommits',
@@ -304,6 +313,7 @@ export const bitbucketTools = [
     tool: bitbucketListPullRequestCommits,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'history'],
   },
   {
     name: 'bitbucketGetPullRequestDiff',
@@ -311,6 +321,7 @@ export const bitbucketTools = [
     tool: bitbucketGetPullRequestDiff,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'changes', 'patch'],
   },
   {
     name: 'bitbucketGetPullRequestDiffstat',
@@ -318,6 +329,7 @@ export const bitbucketTools = [
     tool: bitbucketGetPullRequestDiffstat,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'changes'],
   },
   {
     name: 'bitbucketListPullRequestActivity',
@@ -325,6 +337,7 @@ export const bitbucketTools = [
     tool: bitbucketListPullRequestActivity,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'history'],
   },
   {
     name: 'bitbucketListPullRequestComments',
@@ -332,6 +345,7 @@ export const bitbucketTools = [
     tool: bitbucketListPullRequestComments,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'thread', 'review'],
   },
   {
     name: 'bitbucketGetPullRequestComment',
@@ -339,6 +353,7 @@ export const bitbucketTools = [
     tool: bitbucketGetPullRequestComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'thread'],
   },
   {
     name: 'bitbucketCreatePullRequestComment',
@@ -346,6 +361,7 @@ export const bitbucketTools = [
     tool: bitbucketCreatePullRequestComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['pr', 'thread', 'reply'],
   },
   {
     name: 'bitbucketDeletePullRequestComment',
@@ -353,6 +369,7 @@ export const bitbucketTools = [
     tool: bitbucketDeletePullRequestComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'delete' as const,
+    keywords: ['pr', 'thread', 'remove'],
   },
   {
     name: 'bitbucketResolvePullRequestComment',
@@ -360,6 +377,7 @@ export const bitbucketTools = [
     tool: bitbucketResolvePullRequestComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['pr', 'thread'],
   },
   {
     name: 'bitbucketListPullRequestStatuses',
@@ -367,6 +385,7 @@ export const bitbucketTools = [
     tool: bitbucketListPullRequestStatuses,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'checks', 'ci', 'build'],
   },
   {
     name: 'bitbucketGetWorkspacePullRequestsByUser',
@@ -374,6 +393,7 @@ export const bitbucketTools = [
     tool: bitbucketGetWorkspacePullRequestsByUser,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['pr', 'prs', 'author'],
   },
   {
     name: 'bitbucketCreateIssue',
@@ -381,6 +401,7 @@ export const bitbucketTools = [
     tool: bitbucketCreateIssue,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['ticket', 'tickets', 'bug'],
   },
   {
     name: 'bitbucketUpdateIssue',
@@ -388,6 +409,7 @@ export const bitbucketTools = [
     tool: bitbucketUpdateIssue,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['ticket', 'bug'],
   },
   {
     name: 'bitbucketDeleteIssue',
@@ -395,6 +417,7 @@ export const bitbucketTools = [
     tool: bitbucketDeleteIssue,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'delete' as const,
+    keywords: ['ticket', 'remove'],
   },
   {
     name: 'bitbucketListIssues',
@@ -402,6 +425,7 @@ export const bitbucketTools = [
     tool: bitbucketListIssues,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['ticket', 'tickets', 'bug'],
   },
   {
     name: 'bitbucketCreateIssueComment',
@@ -409,6 +433,7 @@ export const bitbucketTools = [
     tool: bitbucketCreateIssueComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['ticket', 'reply'],
   },
   {
     name: 'bitbucketCheckIssueVote',
@@ -416,6 +441,7 @@ export const bitbucketTools = [
     tool: bitbucketCheckIssueVote,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['ticket', 'upvote'],
   },
   {
     name: 'bitbucketListVersions',
@@ -423,6 +449,7 @@ export const bitbucketTools = [
     tool: bitbucketListVersions,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['milestone', 'release'],
   },
   {
     name: 'bitbucketGetCommit',
@@ -430,6 +457,7 @@ export const bitbucketTools = [
     tool: bitbucketGetCommit,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['sha', 'hash'],
   },
   {
     name: 'bitbucketListCommits',
@@ -437,6 +465,7 @@ export const bitbucketTools = [
     tool: bitbucketListCommits,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['sha', 'history'],
   },
   {
     name: 'bitbucketListCommitsFromRevision',
@@ -444,6 +473,7 @@ export const bitbucketTools = [
     tool: bitbucketListCommitsFromRevision,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['sha', 'history'],
   },
   {
     name: 'bitbucketListCommitsOnMaster',
@@ -451,6 +481,7 @@ export const bitbucketTools = [
     tool: bitbucketListCommitsOnMaster,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['history', 'main'],
   },
   {
     name: 'bitbucketListCommitsFromRevisionPost',
@@ -458,6 +489,7 @@ export const bitbucketTools = [
     tool: bitbucketListCommitsFromRevisionPost,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['sha', 'history'],
   },
   {
     name: 'bitbucketListCommitComments',
@@ -465,6 +497,7 @@ export const bitbucketTools = [
     tool: bitbucketListCommitComments,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetCommitComment',
@@ -472,6 +505,7 @@ export const bitbucketTools = [
     tool: bitbucketGetCommitComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketUpdateCommitComment',
@@ -479,6 +513,7 @@ export const bitbucketTools = [
     tool: bitbucketUpdateCommitComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketDeleteCommitComment',
@@ -486,6 +521,7 @@ export const bitbucketTools = [
     tool: bitbucketDeleteCommitComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetCommitDiff',
@@ -493,6 +529,7 @@ export const bitbucketTools = [
     tool: bitbucketGetCommitDiff,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['patch', 'changes'],
   },
   {
     name: 'bitbucketGetCommitChanges',
@@ -500,6 +537,7 @@ export const bitbucketTools = [
     tool: bitbucketGetCommitChanges,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['patch'],
   },
   {
     name: 'bitbucketGetCommitBuildStatus',
@@ -507,6 +545,7 @@ export const bitbucketTools = [
     tool: bitbucketGetCommitBuildStatus,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListCommitStatuses',
@@ -514,6 +553,7 @@ export const bitbucketTools = [
     tool: bitbucketListCommitStatuses,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetFileHistory',
@@ -521,6 +561,7 @@ export const bitbucketTools = [
     tool: bitbucketGetFileHistory,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetMergeBase',
@@ -528,6 +569,7 @@ export const bitbucketTools = [
     tool: bitbucketGetMergeBase,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetRepositoryPatch',
@@ -535,6 +577,7 @@ export const bitbucketTools = [
     tool: bitbucketGetRepositoryPatch,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['diff'],
   },
   {
     name: 'bitbucketCreateCommitReportAnnotations',
@@ -542,6 +585,7 @@ export const bitbucketTools = [
     tool: bitbucketCreateCommitReportAnnotations,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['vulnerabilities', 'insights'],
   },
   {
     name: 'bitbucketGetCommitReport',
@@ -549,6 +593,7 @@ export const bitbucketTools = [
     tool: bitbucketGetCommitReport,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['insights', 'coverage'],
   },
   {
     name: 'bitbucketListCommitReports',
@@ -556,6 +601,7 @@ export const bitbucketTools = [
     tool: bitbucketListCommitReports,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['insights', 'coverage', 'scan'],
   },
   {
     name: 'bitbucketGetCommitReportAnnotation',
@@ -563,6 +609,7 @@ export const bitbucketTools = [
     tool: bitbucketGetCommitReportAnnotation,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['vulnerabilities', 'insights'],
   },
   {
     name: 'bitbucketDeleteCommitReportAnnotation',
@@ -570,6 +617,7 @@ export const bitbucketTools = [
     tool: bitbucketDeleteCommitReportAnnotation,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'delete' as const,
+    keywords: ['vulnerabilities', 'remove'],
   },
   {
     name: 'bitbucketUpdateCommitReportAnnotation',
@@ -577,6 +625,7 @@ export const bitbucketTools = [
     tool: bitbucketUpdateCommitReportAnnotation,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['vulnerabilities'],
   },
   {
     name: 'bitbucketUpdateCommitInsightReport',
@@ -584,6 +633,7 @@ export const bitbucketTools = [
     tool: bitbucketUpdateCommitInsightReport,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['insights', 'coverage'],
   },
   {
     name: 'bitbucketCreateRepository',
@@ -591,6 +641,7 @@ export const bitbucketTools = [
     tool: bitbucketCreateRepository,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['repo', 'repos', 'git', 'new'],
   },
   {
     name: 'bitbucketDeleteRepository',
@@ -598,6 +649,7 @@ export const bitbucketTools = [
     tool: bitbucketDeleteRepository,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'delete' as const,
+    keywords: ['repo', 'repos', 'remove'],
   },
   {
     name: 'bitbucketGetRepository',
@@ -605,6 +657,7 @@ export const bitbucketTools = [
     tool: bitbucketGetRepository,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['repo', 'repos'],
   },
   {
     name: 'bitbucketListWorkspaceRepositories',
@@ -612,6 +665,7 @@ export const bitbucketTools = [
     tool: bitbucketListWorkspaceRepositories,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['repo', 'repos', 'browse'],
   },
   {
     name: 'bitbucketListRepositories',
@@ -619,6 +673,7 @@ export const bitbucketTools = [
     tool: bitbucketListRepositories,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['repo', 'repos', 'discover'],
   },
   {
     name: 'bitbucketListRepositoryForks',
@@ -626,6 +681,7 @@ export const bitbucketTools = [
     tool: bitbucketListRepositoryForks,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['repo', 'clone'],
   },
   {
     name: 'bitbucketListRepositoryWatchers',
@@ -633,6 +689,7 @@ export const bitbucketTools = [
     tool: bitbucketListRepositoryWatchers,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['subscribe', 'follow', 'star'],
   },
   {
     name: 'bitbucketGetRepositorySrc',
@@ -640,6 +697,7 @@ export const bitbucketTools = [
     tool: bitbucketGetRepositorySrc,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['repo', 'browse', 'files'],
   },
   {
     name: 'bitbucketBrowseRepositoryPath',
@@ -647,6 +705,7 @@ export const bitbucketTools = [
     tool: bitbucketBrowseRepositoryPath,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['browse', 'ls', 'files'],
   },
   {
     name: 'bitbucketListRepositoryPaths',
@@ -654,6 +713,7 @@ export const bitbucketTools = [
     tool: bitbucketListRepositoryPaths,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['browse', 'ls'],
   },
   {
     name: 'bitbucketGetFileFromRepository',
@@ -661,6 +721,7 @@ export const bitbucketTools = [
     tool: bitbucketGetFileFromRepository,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['download', 'cat'],
   },
   {
     name: 'bitbucketListBranches',
@@ -668,6 +729,7 @@ export const bitbucketTools = [
     tool: bitbucketListBranches,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetBranch',
@@ -675,6 +737,7 @@ export const bitbucketTools = [
     tool: bitbucketGetBranch,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketCreateBranch',
@@ -682,6 +745,7 @@ export const bitbucketTools = [
     tool: bitbucketCreateBranch,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListTags',
@@ -689,6 +753,7 @@ export const bitbucketTools = [
     tool: bitbucketListTags,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetTag',
@@ -696,6 +761,7 @@ export const bitbucketTools = [
     tool: bitbucketGetTag,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListRefs',
@@ -703,6 +769,7 @@ export const bitbucketTools = [
     tool: bitbucketListRefs,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetBranchingModel',
@@ -710,6 +777,7 @@ export const bitbucketTools = [
     tool: bitbucketGetBranchingModel,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['gitflow', 'strategy'],
   },
   {
     name: 'bitbucketGetEffectiveBranchingModel',
@@ -717,6 +785,7 @@ export const bitbucketTools = [
     tool: bitbucketGetEffectiveBranchingModel,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['gitflow', 'strategy'],
   },
   {
     name: 'bitbucketListPipelines',
@@ -724,6 +793,7 @@ export const bitbucketTools = [
     tool: bitbucketListPipelines,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'build', 'deploy', 'run'],
   },
   {
     name: 'bitbucketGetPipeline',
@@ -731,6 +801,7 @@ export const bitbucketTools = [
     tool: bitbucketGetPipeline,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['ci', 'build', 'status'],
   },
   {
     name: 'bitbucketListPipelineSteps',
@@ -738,6 +809,7 @@ export const bitbucketTools = [
     tool: bitbucketListPipelineSteps,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['job', 'jobs', 'stage', 'ci'],
   },
   {
     name: 'bitbucketStopPipeline',
@@ -745,6 +817,7 @@ export const bitbucketTools = [
     tool: bitbucketStopPipeline,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['cancel', 'ci'],
   },
   {
     name: 'bitbucketListPipelineSchedules',
@@ -752,6 +825,7 @@ export const bitbucketTools = [
     tool: bitbucketListPipelineSchedules,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListPipelineCaches',
@@ -759,6 +833,7 @@ export const bitbucketTools = [
     tool: bitbucketListPipelineCaches,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListPipelineRunners',
@@ -766,6 +841,7 @@ export const bitbucketTools = [
     tool: bitbucketListPipelineRunners,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListPipelineSshKnownHosts',
@@ -773,6 +849,7 @@ export const bitbucketTools = [
     tool: bitbucketListPipelineSshKnownHosts,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListRepositoryPipelineVariables',
@@ -780,6 +857,7 @@ export const bitbucketTools = [
     tool: bitbucketListRepositoryPipelineVariables,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketCreateTeamPipelineVariable',
@@ -787,6 +865,7 @@ export const bitbucketTools = [
     tool: bitbucketCreateTeamPipelineVariable,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['env', 'secret', 'secrets'],
   },
   {
     name: 'bitbucketUpdateTeamPipelineVariable',
@@ -794,6 +873,7 @@ export const bitbucketTools = [
     tool: bitbucketUpdateTeamPipelineVariable,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['env', 'secret'],
   },
   {
     name: 'bitbucketCreateUserPipelineVariable',
@@ -801,6 +881,7 @@ export const bitbucketTools = [
     tool: bitbucketCreateUserPipelineVariable,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['env', 'secret'],
   },
   {
     name: 'bitbucketUpdateUserPipelineVariable',
@@ -808,6 +889,7 @@ export const bitbucketTools = [
     tool: bitbucketUpdateUserPipelineVariable,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['env', 'secret'],
   },
   {
     name: 'bitbucketDeleteUserPipelineVariable',
@@ -815,6 +897,7 @@ export const bitbucketTools = [
     tool: bitbucketDeleteUserPipelineVariable,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'delete' as const,
+    keywords: ['env', 'remove'],
   },
   {
     name: 'bitbucketListDeployments',
@@ -822,6 +905,7 @@ export const bitbucketTools = [
     tool: bitbucketListDeployments,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['release', 'deploy'],
   },
   {
     name: 'bitbucketListRepositoryEnvironments',
@@ -829,6 +913,7 @@ export const bitbucketTools = [
     tool: bitbucketListRepositoryEnvironments,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['deploy'],
   },
   {
     name: 'bitbucketGetRepositoryEnvironment',
@@ -836,6 +921,7 @@ export const bitbucketTools = [
     tool: bitbucketGetRepositoryEnvironment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['deploy'],
   },
   {
     name: 'bitbucketListDeploymentEnvironmentVariables',
@@ -843,6 +929,7 @@ export const bitbucketTools = [
     tool: bitbucketListDeploymentEnvironmentVariables,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['env', 'secret', 'secrets'],
   },
   {
     name: 'bitbucketGetOpenidConfiguration',
@@ -850,6 +937,7 @@ export const bitbucketTools = [
     tool: bitbucketGetOpenidConfiguration,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetSnippet',
@@ -857,6 +945,7 @@ export const bitbucketTools = [
     tool: bitbucketGetSnippet,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['gist', 'gists', 'paste'],
   },
   {
     name: 'bitbucketListSnippets',
@@ -864,6 +953,7 @@ export const bitbucketTools = [
     tool: bitbucketListSnippets,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['gist', 'gists', 'browse'],
   },
   {
     name: 'bitbucketCreateSnippetComment',
@@ -871,6 +961,7 @@ export const bitbucketTools = [
     tool: bitbucketCreateSnippetComment,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'write' as const,
+    keywords: ['gist', 'reply'],
   },
   {
     name: 'bitbucketGetSnippetWatchStatus',
@@ -878,6 +969,7 @@ export const bitbucketTools = [
     tool: bitbucketGetSnippetWatchStatus,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['subscribe', 'follow'],
   },
   {
     name: 'bitbucketDeleteSnippetWatch',
@@ -885,6 +977,7 @@ export const bitbucketTools = [
     tool: bitbucketDeleteSnippetWatch,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'delete' as const,
+    keywords: ['unsubscribe', 'remove'],
   },
   {
     name: 'bitbucketGetCurrentUser',
@@ -892,6 +985,7 @@ export const bitbucketTools = [
     tool: bitbucketGetCurrentUser,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['profile', 'account'],
   },
   {
     name: 'bitbucketGetUser',
@@ -899,6 +993,7 @@ export const bitbucketTools = [
     tool: bitbucketGetUser,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['profile'],
   },
   {
     name: 'bitbucketGetUserEmails',
@@ -906,6 +1001,7 @@ export const bitbucketTools = [
     tool: bitbucketGetUserEmails,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketGetUserEmailDetails',
@@ -913,6 +1009,7 @@ export const bitbucketTools = [
     tool: bitbucketGetUserEmailDetails,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListUserSshKeys',
@@ -920,6 +1017,7 @@ export const bitbucketTools = [
     tool: bitbucketListUserSshKeys,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'bitbucketListUserRepositoryPermissions',
@@ -927,6 +1025,7 @@ export const bitbucketTools = [
     tool: bitbucketListUserRepositoryPermissions,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['access', 'repo'],
   },
   {
     name: 'bitbucketListUserWorkspacePermissions',
@@ -934,6 +1033,7 @@ export const bitbucketTools = [
     tool: bitbucketListUserWorkspacePermissions,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['access', 'team'],
   },
   {
     name: 'bitbucketListUserWorkspaces',
@@ -941,6 +1041,7 @@ export const bitbucketTools = [
     tool: bitbucketListUserWorkspaces,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['team', 'browse'],
   },
   {
     name: 'bitbucketListWorkspaceMembers',
@@ -948,6 +1049,7 @@ export const bitbucketTools = [
     tool: bitbucketListWorkspaceMembers,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['team'],
   },
   {
     name: 'bitbucketListWorkspaceProjects',
@@ -955,6 +1057,7 @@ export const bitbucketTools = [
     tool: bitbucketListWorkspaceProjects,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['team'],
   },
   {
     name: 'bitbucketGetWorkspace',
@@ -962,6 +1065,7 @@ export const bitbucketTools = [
     tool: bitbucketGetWorkspace,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['team'],
   },
   {
     name: 'bitbucketListWorkspaces',
@@ -969,6 +1073,7 @@ export const bitbucketTools = [
     tool: bitbucketListWorkspaces,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['team', 'browse'],
   },
   {
     name: 'bitbucketListHookEvents',
@@ -976,6 +1081,7 @@ export const bitbucketTools = [
     tool: bitbucketListHookEvents,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['webhook', 'trigger'],
   },
   {
     name: 'bitbucketSearchWorkspaceCode',
@@ -983,6 +1089,7 @@ export const bitbucketTools = [
     tool: bitbucketSearchWorkspaceCode,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['grep', 'find'],
   },
   {
     name: 'bitbucketSearchUserCode',
@@ -990,5 +1097,6 @@ export const bitbucketTools = [
     tool: bitbucketSearchUserCode,
     requiredAuth: 'bitbucketToken' as const,
     scope: 'read' as const,
+    keywords: ['grep', 'find'],
   },
 ];

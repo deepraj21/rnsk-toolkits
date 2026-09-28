@@ -65,6 +65,7 @@ export const googleContactsTools = [
     tool: createContact,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['person', 'add'],
   },
   {
     name: 'googleContactsBatchCreateContacts',
@@ -72,6 +73,7 @@ export const googleContactsTools = [
     tool: batchCreateContacts,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['contact', 'bulk', 'import'],
   },
   {
     name: 'googleContactsUpdateContact',
@@ -79,6 +81,7 @@ export const googleContactsTools = [
     tool: updateContact,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['person', 'edit'],
   },
   {
     name: 'googleContactsBatchUpdateContacts',
@@ -86,6 +89,7 @@ export const googleContactsTools = [
     tool: batchUpdateContacts,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['contact', 'bulk', 'edit'],
   },
   {
     name: 'googleContactsDeleteContact',
@@ -93,6 +97,7 @@ export const googleContactsTools = [
     tool: deleteContact,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['person', 'remove'],
   },
   {
     name: 'googleContactsBatchDeleteContacts',
@@ -100,6 +105,7 @@ export const googleContactsTools = [
     tool: batchDeleteContacts,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['contact', 'bulk', 'remove'],
   },
   {
     name: 'googleContactsGetPerson',
@@ -107,6 +113,7 @@ export const googleContactsTools = [
     tool: getPerson,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['contact'],
   },
   {
     name: 'googleContactsBatchGetPeople',
@@ -114,6 +121,7 @@ export const googleContactsTools = [
     tool: batchGetPeople,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['contact', 'contacts', 'bulk'],
   },
   {
     name: 'googleContactsListConnections',
@@ -121,6 +129,7 @@ export const googleContactsTools = [
     tool: listConnections,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['contact', 'address'],
   },
   {
     name: 'googleContactsSearchContacts',
@@ -128,6 +137,7 @@ export const googleContactsTools = [
     tool: searchContacts,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['contact', 'find', 'lookup'],
   },
   {
     name: 'googleContactsCopyOtherContactToMyContacts',
@@ -135,6 +145,7 @@ export const googleContactsTools = [
     tool: copyOtherContactToMyContacts,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['contact', 'import'],
   },
   {
     name: 'googleContactsCreateContactGroup',
@@ -142,6 +153,7 @@ export const googleContactsTools = [
     tool: createContactGroup,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['label', 'list'],
   },
   {
     name: 'googleContactsGetContactGroup',
@@ -149,6 +161,7 @@ export const googleContactsTools = [
     tool: getContactGroup,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['label', 'group'],
   },
   {
     name: 'googleContactsBatchGetContactGroups',
@@ -156,6 +169,7 @@ export const googleContactsTools = [
     tool: batchGetContactGroups,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['label', 'group'],
   },
   {
     name: 'googleContactsListContactGroups',
@@ -163,6 +177,7 @@ export const googleContactsTools = [
     tool: listContactGroups,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['label', 'group'],
   },
   {
     name: 'googleContactsUpdateContactGroup',
@@ -170,6 +185,7 @@ export const googleContactsTools = [
     tool: updateContactGroup,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['label', 'edit'],
   },
   {
     name: 'googleContactsDeleteContactGroup',
@@ -177,6 +193,7 @@ export const googleContactsTools = [
     tool: deleteContactGroup,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['label', 'remove'],
   },
   {
     name: 'googleContactsModifyContactGroupMembers',
@@ -184,6 +201,7 @@ export const googleContactsTools = [
     tool: modifyContactGroupMembers,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['label', 'member'],
   },
   {
     name: 'googleContactsUpdateContactPhoto',
@@ -191,6 +209,7 @@ export const googleContactsTools = [
     tool: updateContactPhoto,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['picture', 'avatar', 'image'],
   },
   {
     name: 'googleContactsDeleteContactPhoto',
@@ -198,6 +217,7 @@ export const googleContactsTools = [
     tool: deleteContactPhoto,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['picture', 'avatar', 'remove'],
   },
   {
     name: 'googleContactsListDirectoryPeople',
@@ -205,6 +225,7 @@ export const googleContactsTools = [
     tool: listDirectoryPeople,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['employee', 'employees', 'coworker'],
   },
   {
     name: 'googleContactsSearchDirectoryPeople',
@@ -212,6 +233,7 @@ export const googleContactsTools = [
     tool: searchDirectoryPeople,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['employee', 'find', 'lookup'],
   },
   {
     name: 'googleContactsListOtherContacts',
@@ -219,6 +241,7 @@ export const googleContactsTools = [
     tool: listOtherContacts,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['contact'],
   },
   {
     name: 'googleContactsSearchOtherContacts',
@@ -226,5 +249,6 @@ export const googleContactsTools = [
     tool: searchOtherContacts,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['contact', 'find'],
   },
 ];

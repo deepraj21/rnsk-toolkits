@@ -126,6 +126,7 @@ const auth = 'azureCredentials' as const;
 export const azureTools = [
   {
     name: 'azureListSubscriptions',
+    keywords: ['subscription', 'subscriptions', 'billing', 'account'],
     description:
       'List Azure subscriptions visible to the connected service principal. Use to discover subscription IDs before other calls.',
     tool: azureListSubscriptions,
@@ -134,6 +135,7 @@ export const azureTools = [
   },
   {
     name: 'azureListResourceGroups',
+    keywords: ['resource', 'resources', 'group', 'groups'],
     description:
       'List resource groups in an Azure subscription. Use to discover where VMs, storage and apps live.',
     tool: azureListResourceGroups,
@@ -142,6 +144,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetResourceGroup',
+    keywords: ['resource', 'groups'],
     description:
       'Get details of a single Azure resource group including location, tags and provisioning state.',
     tool: azureGetResourceGroup,
@@ -150,6 +153,7 @@ export const azureTools = [
   },
   {
     name: 'azureCreateResourceGroup',
+    keywords: ['resource', 'groups', 'deploy'],
     description:
       'Create a new Azure resource group in a subscription and location. Use before deploying new workloads.',
     tool: azureCreateResourceGroup,
@@ -158,6 +162,7 @@ export const azureTools = [
   },
   {
     name: 'azureDeleteResourceGroup',
+    keywords: ['resource', 'groups', 'remove'],
     description:
       'Delete an Azure resource group and all resources it contains. Irreversible — confirm with the user first.',
     tool: azureDeleteResourceGroup,
@@ -166,6 +171,7 @@ export const azureTools = [
   },
   {
     name: 'azureListResources',
+    keywords: ['resource', 'resources', 'inventory', 'vm'],
     description:
       'List ARM resources in a subscription or resource group, optionally filtered by resource type. Use for inventory across VMs, storage, web apps and more.',
     tool: azureListResources,
@@ -174,6 +180,7 @@ export const azureTools = [
   },
   {
     name: 'azureListVirtualMachines',
+    keywords: ['vm', 'vms', 'virtual', 'machine', 'compute'],
     description:
       'List virtual machines in a subscription or resource group. Returns name, size, OS, provisioning and power state.',
     tool: azureListVirtualMachines,
@@ -182,6 +189,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetVirtualMachine',
+    keywords: ['vm', 'virtual', 'machine', 'compute'],
     description:
       'Get details of a virtual machine, optionally including instanceView for live power and provisioning status.',
     tool: azureGetVirtualMachine,
@@ -190,6 +198,7 @@ export const azureTools = [
   },
   {
     name: 'azureStartVirtualMachine',
+    keywords: ['vm', 'virtual', 'machine', 'power', 'boot'],
     description:
       'Start a stopped Azure virtual machine. Use to bring a dev/test or production VM back online.',
     tool: azureStartVirtualMachine,
@@ -198,6 +207,7 @@ export const azureTools = [
   },
   {
     name: 'azureDeallocateVirtualMachine',
+    keywords: ['vm', 'virtual', 'machine', 'stop', 'shutdown', 'cost'],
     description:
       'Stop and deallocate an Azure virtual machine to stop compute billing. Use to save cost on idle VMs.',
     tool: azureDeallocateVirtualMachine,
@@ -206,6 +216,7 @@ export const azureTools = [
   },
   {
     name: 'azureRestartVirtualMachine',
+    keywords: ['vm', 'virtual', 'machine', 'reboot'],
     description:
       'Restart an Azure virtual machine. Use after config changes or to recover an unresponsive VM.',
     tool: azureRestartVirtualMachine,
@@ -214,6 +225,7 @@ export const azureTools = [
   },
   {
     name: 'azureListVmScaleSets',
+    keywords: ['vm', 'vms', 'scaleset', 'scaling', 'compute'],
     description:
       'List virtual machine scale sets in a subscription or resource group. Returns SKU, capacity, upgrade policy and orchestration mode.',
     tool: azureListVmScaleSets,
@@ -222,6 +234,7 @@ export const azureTools = [
   },
   {
     name: 'azureRunVmCommand',
+    keywords: ['vm', 'virtual', 'machine', 'script', 'ssh', 'command'],
     description:
       'Run a shell or PowerShell script on a VM via the VM agent (RunShellScript for Linux, RunPowerShellScript for Windows). The call is async — a 202 means accepted for processing.',
     tool: azureRunVmCommand,
@@ -230,6 +243,7 @@ export const azureTools = [
   },
   {
     name: 'azureListManagedDisks',
+    keywords: ['disk', 'disks', 'storage', 'volume'],
     description:
       'List managed disks in a subscription or resource group. Returns size, SKU, OS type, attachment state and encryption.',
     tool: azureListManagedDisks,
@@ -238,6 +252,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetManagedDisk',
+    keywords: ['disk', 'storage', 'volume'],
     description:
       'Get details of a managed disk including size, SKU, encryption, network access and attached VM.',
     tool: azureGetManagedDisk,
@@ -246,6 +261,7 @@ export const azureTools = [
   },
   {
     name: 'azureListSnapshots',
+    keywords: ['snapshot', 'snapshots', 'backup', 'disk'],
     description:
       'List managed disk snapshots in a subscription or resource group. Use to find backup/restore points before disk recovery.',
     tool: azureListSnapshots,
@@ -254,6 +270,7 @@ export const azureTools = [
   },
   {
     name: 'azureListStorageAccounts',
+    keywords: ['storage', 'blob', 'account'],
     description:
       'List storage accounts in a subscription or resource group. Returns name, SKU, kind, location and access tier.',
     tool: azureListStorageAccounts,
@@ -262,6 +279,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetStorageAccount',
+    keywords: ['storage', 'blob'],
     description:
       'Get properties of a storage account including endpoints, encryption, network rules and status.',
     tool: azureGetStorageAccount,
@@ -270,6 +288,7 @@ export const azureTools = [
   },
   {
     name: 'azureListStorageAccountKeys',
+    keywords: ['storage', 'key', 'keys', 'secret', 'rotate'],
     description:
       'List access keys for a storage account. Handle as sensitive — use for connection strings and rotation checks.',
     tool: azureListStorageAccountKeys,
@@ -278,6 +297,7 @@ export const azureTools = [
   },
   {
     name: 'azureListBlobContainers',
+    keywords: ['storage', 'blob', 'container', 'containers'],
     description:
       'List blob containers in a storage account. Returns name, public access level and last-modified time.',
     tool: azureListBlobContainers,
@@ -286,6 +306,7 @@ export const azureTools = [
   },
   {
     name: 'azureListFileShares',
+    keywords: ['storage', 'file', 'files', 'share', 'smb'],
     description:
       'List file shares in a storage account. Returns name, quota, provisioned size and access tier.',
     tool: azureListFileShares,
@@ -294,6 +315,7 @@ export const azureTools = [
   },
   {
     name: 'azureRegenerateStorageAccountKey',
+    keywords: ['storage', 'key', 'rotate', 'secret'],
     description:
       'Regenerate (rotate) a storage account access key. Pass keyName key1 or key2 — rotate the standby key first to avoid downtime.',
     tool: azureRegenerateStorageAccountKey,
@@ -302,6 +324,7 @@ export const azureTools = [
   },
   {
     name: 'azureListVirtualNetworks',
+    keywords: ['vnet', 'network', 'networks', 'subnet'],
     description:
       'List virtual networks in a subscription or resource group. Returns address spaces, subnets and peering state.',
     tool: azureListVirtualNetworks,
@@ -310,6 +333,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetVirtualNetwork',
+    keywords: ['vnet', 'network', 'subnet'],
     description:
       'Get a virtual network including address spaces, subnets, DNS servers and peering status.',
     tool: azureGetVirtualNetwork,
@@ -318,6 +342,7 @@ export const azureTools = [
   },
   {
     name: 'azureListPublicIpAddresses',
+    keywords: ['ip', 'network', 'address'],
     description:
       'List public IP addresses in a subscription or resource group. Returns address, allocation method, SKU and association.',
     tool: azureListPublicIpAddresses,
@@ -326,6 +351,7 @@ export const azureTools = [
   },
   {
     name: 'azureListNetworkSecurityGroups',
+    keywords: ['nsg', 'firewall', 'network', 'security', 'ports'],
     description:
       'List network security groups with their security rules. Use to audit open ports and access controls.',
     tool: azureListNetworkSecurityGroups,
@@ -334,6 +360,7 @@ export const azureTools = [
   },
   {
     name: 'azureListLoadBalancers',
+    keywords: ['lb', 'network', 'load', 'balancer'],
     description:
       'List load balancers in a subscription or resource group. Returns SKU, frontend IPs, backend pools and rules.',
     tool: azureListLoadBalancers,
@@ -342,6 +369,7 @@ export const azureTools = [
   },
   {
     name: 'azureListDnsZones',
+    keywords: ['dns', 'domain', 'domains', 'network'],
     description:
       'List Azure DNS zones in a subscription or resource group. Returns name, record count and name servers.',
     tool: azureListDnsZones,
@@ -350,6 +378,7 @@ export const azureTools = [
   },
   {
     name: 'azureListWebApps',
+    keywords: ['webapp', 'webapps', 'app', 'website', 'deploy'],
     description:
       'List App Service web apps in a subscription or resource group. Returns hostname, state, runtime stack and app plan.',
     tool: azureListWebApps,
@@ -358,6 +387,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetWebApp',
+    keywords: ['webapp', 'app', 'website', 'deploy'],
     description:
       'Get configuration of an App Service web app including app settings, bindings and site config.',
     tool: azureGetWebApp,
@@ -366,6 +396,7 @@ export const azureTools = [
   },
   {
     name: 'azureRestartWebApp',
+    keywords: ['webapp', 'app', 'restart', 'reboot', 'deploy'],
     description:
       'Restart an App Service web app. Use after deployments or config changes, or to recover a stuck app.',
     tool: azureRestartWebApp,
@@ -374,6 +405,7 @@ export const azureTools = [
   },
   {
     name: 'azureListAppServicePlans',
+    keywords: ['webapp', 'app', 'plan', 'hosting'],
     description:
       'List App Service plans in a subscription or resource group. Returns SKU, worker count, OS kind and hosting status.',
     tool: azureListAppServicePlans,
@@ -382,6 +414,7 @@ export const azureTools = [
   },
   {
     name: 'azureListFunctionApps',
+    keywords: ['function', 'functions', 'serverless', 'app'],
     description:
       'List Function Apps in a subscription or resource group. Returns hostname, state and runtime info for serverless workloads.',
     tool: azureListFunctionApps,
@@ -390,6 +423,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetWebAppSettings',
+    keywords: ['webapp', 'app', 'settings', 'env', 'secret'],
     description:
       'List app settings (environment variables) of a web app. Handle as sensitive — values may include secrets and connection strings.',
     tool: azureGetWebAppSettings,
@@ -398,6 +432,7 @@ export const azureTools = [
   },
   {
     name: 'azureListSqlServers',
+    keywords: ['sql', 'database', 'databases', 'db'],
     description:
       'List Azure SQL logical servers in a subscription. Returns name, location, version and admin login.',
     tool: azureListSqlServers,
@@ -406,6 +441,7 @@ export const azureTools = [
   },
   {
     name: 'azureListSqlDatabases',
+    keywords: ['sql', 'database', 'db'],
     description:
       'List databases on an Azure SQL logical server. Returns name, SKU, status, collation and max size.',
     tool: azureListSqlDatabases,
@@ -414,6 +450,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetSqlDatabase',
+    keywords: ['sql', 'database', 'db'],
     description:
       'Get details of an Azure SQL database including SKU, status, collation, max size and zone redundancy.',
     tool: azureGetSqlDatabase,
@@ -422,6 +459,7 @@ export const azureTools = [
   },
   {
     name: 'azureListCosmosDbAccounts',
+    keywords: ['cosmos', 'database', 'db', 'nosql'],
     description:
       'List Azure Cosmos DB accounts in a subscription or resource group. Returns API kind, locations, consistency and endpoints.',
     tool: azureListCosmosDbAccounts,
@@ -430,6 +468,7 @@ export const azureTools = [
   },
   {
     name: 'azureListContainerRegistries',
+    keywords: ['acr', 'container', 'containers', 'docker', 'image', 'images'],
     description:
       'List Azure Container Registry (ACR) registries. Returns login server, SKU and admin-user status for image hosting.',
     tool: azureListContainerRegistries,
@@ -438,6 +477,7 @@ export const azureTools = [
   },
   {
     name: 'azureListContainerGroups',
+    keywords: ['container', 'containers', 'docker', 'serverless', 'aci'],
     description:
       'List Azure Container Instances (serverless containers). Returns state, IP, container image and restart policy.',
     tool: azureListContainerGroups,
@@ -446,6 +486,7 @@ export const azureTools = [
   },
   {
     name: 'azureGetKubernetesCluster',
+    keywords: ['aks', 'k8s', 'kubernetes', 'cluster'],
     description:
       'Get an AKS cluster including Kubernetes version, DNS prefix, node pool profiles, network profile and power state.',
     tool: azureGetKubernetesCluster,
@@ -454,6 +495,7 @@ export const azureTools = [
   },
   {
     name: 'azureListAgentPools',
+    keywords: ['aks', 'k8s', 'kubernetes', 'node', 'nodes', 'pool'],
     description:
       'List node pools (agent pools) of an AKS cluster. Returns VM size, count, OS, mode and autoscaling config.',
     tool: azureListAgentPools,
@@ -462,6 +504,7 @@ export const azureTools = [
   },
   {
     name: 'azureListKubernetesClusters',
+    keywords: ['aks', 'k8s', 'kubernetes', 'clusters'],
     description:
       'List Azure Kubernetes Service (AKS) managed clusters. Returns name, location, Kubernetes version and node pools.',
     tool: azureListKubernetesClusters,
@@ -470,6 +513,7 @@ export const azureTools = [
   },
   {
     name: 'azureListKeyVaults',
+    keywords: ['vault', 'secret', 'secrets', 'key', 'keys', 'certificate'],
     description:
       'List Key Vaults in a subscription. Returns name, location, SKU and vault URI for secrets management.',
     tool: azureListKeyVaults,
@@ -478,6 +522,7 @@ export const azureTools = [
   },
   {
     name: 'azureQueryMonitorMetrics',
+    keywords: ['metric', 'metrics', 'monitor', 'observability', 'cpu'],
     description:
       'Query Azure Monitor metrics for any resource (VM CPU, storage latency, app requests). Use to check health and performance.',
     tool: azureQueryMonitorMetrics,
@@ -486,6 +531,7 @@ export const azureTools = [
   },
   {
     name: 'azureListActivityLogs',
+    keywords: ['log', 'logs', 'audit', 'activity'],
     description:
       'List Azure Activity Log events for a subscription. Use to audit who created, updated or deleted resources and when.',
     tool: azureListActivityLogs,
@@ -494,6 +540,7 @@ export const azureTools = [
   },
   {
     name: 'azureListMetricAlerts',
+    keywords: ['alert', 'alerts', 'monitor', 'notification'],
     description:
       'List Azure Monitor metric alert rules in a subscription or resource group. Returns severity, condition, scopes and actions.',
     tool: azureListMetricAlerts,
@@ -502,6 +549,7 @@ export const azureTools = [
   },
   {
     name: 'azureListLogAnalyticsWorkspaces',
+    keywords: ['log', 'logs', 'workspace', 'monitor', 'kusto'],
     description:
       'List Log Analytics workspaces. Returns retention, SKU, provisioning state and customer ID for log queries.',
     tool: azureListLogAnalyticsWorkspaces,
@@ -510,6 +558,7 @@ export const azureTools = [
   },
   {
     name: 'azureListMonitorMetricDefinitions',
+    keywords: ['metric', 'metrics', 'monitor'],
     description:
       'List available metric definitions for a resource. Use to discover valid metricNames before calling azureQueryMonitorMetrics.',
     tool: azureListMonitorMetricDefinitions,
@@ -518,6 +567,7 @@ export const azureTools = [
   },
   {
     name: 'azureListRoleAssignments',
+    keywords: ['rbac', 'role', 'roles', 'permission', 'iam', 'access'],
     description:
       'List RBAC role assignments in a subscription or resource group. Use to audit who has access to what.',
     tool: azureListRoleAssignments,
@@ -526,6 +576,7 @@ export const azureTools = [
   },
   {
     name: 'azureQueryCostManagement',
+    keywords: ['cost', 'costs', 'billing', 'spend', 'budget'],
     description:
       'Query Azure Cost Management for actual cost grouped by service, resource group or location. Use to answer spend and billing questions.',
     tool: azureQueryCostManagement,
@@ -534,6 +585,7 @@ export const azureTools = [
   },
   {
     name: 'azureListAdvisorRecommendations',
+    keywords: ['advisor', 'cost', 'security', 'recommendation', 'savings'],
     description:
       'List Azure Advisor recommendations for cost, security, reliability and performance. Use to find savings and best-practice fixes.',
     tool: azureListAdvisorRecommendations,

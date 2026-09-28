@@ -168,6 +168,7 @@ export const confluenceTools = [
     tool: confluenceAddContentLabel,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['tag'],
   },
   {
     name: 'confluenceCqlSearch',
@@ -176,6 +177,7 @@ export const confluenceTools = [
     tool: confluenceCqlSearch,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['find', 'search', 'cql', 'query'],
   },
   {
     name: 'confluenceCreateBlogpost',
@@ -183,6 +185,7 @@ export const confluenceTools = [
     tool: confluenceCreateBlogpost,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['new', 'post', 'article'],
   },
   {
     name: 'confluenceCreateBlogpostProperty',
@@ -190,6 +193,7 @@ export const confluenceTools = [
     tool: confluenceCreateBlogpostProperty,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['metadata'],
   },
   {
     name: 'confluenceCreateWhiteboardProperty',
@@ -197,6 +201,7 @@ export const confluenceTools = [
     tool: confluenceCreateWhiteboardProperty,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['metadata'],
   },
   {
     name: 'confluenceCreateFooterComment',
@@ -204,6 +209,7 @@ export const confluenceTools = [
     tool: confluenceCreateFooterComment,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['reply', 'discuss'],
   },
   {
     name: 'confluenceCreateInlineComment',
@@ -211,6 +217,7 @@ export const confluenceTools = [
     tool: confluenceCreateInlineComment,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['annotate', 'reply'],
   },
   {
     name: 'confluenceCreatePage',
@@ -218,6 +225,7 @@ export const confluenceTools = [
     tool: confluenceCreatePage,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['new', 'doc', 'wiki'],
   },
   {
     name: 'confluenceCreatePageProperty',
@@ -225,6 +233,7 @@ export const confluenceTools = [
     tool: confluenceCreatePageProperty,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['metadata'],
   },
   {
     name: 'confluenceCreatePrivateSpace',
@@ -232,6 +241,7 @@ export const confluenceTools = [
     tool: confluenceCreatePrivateSpace,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['new', 'personal'],
   },
   {
     name: 'confluenceCreateSpace',
@@ -239,6 +249,7 @@ export const confluenceTools = [
     tool: confluenceCreateSpace,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['new', 'area', 'wiki'],
   },
   {
     name: 'confluenceCreateSpaceProperty',
@@ -246,6 +257,7 @@ export const confluenceTools = [
     tool: confluenceCreateSpaceProperty,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['metadata'],
   },
   {
     name: 'confluenceCreateWhiteboard',
@@ -253,6 +265,7 @@ export const confluenceTools = [
     tool: confluenceCreateWhiteboard,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['new', 'board', 'draw'],
   },
   {
     name: 'confluenceDeleteBlogpost',
@@ -260,6 +273,7 @@ export const confluenceTools = [
     tool: confluenceDeleteBlogpost,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['trash', 'remove'],
   },
   {
     name: 'confluenceDeleteBlogpostProperty',
@@ -267,6 +281,7 @@ export const confluenceTools = [
     tool: confluenceDeleteBlogpostProperty,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'confluenceDeletePageContentProperty',
@@ -274,6 +289,7 @@ export const confluenceTools = [
     tool: confluenceDeletePageContentProperty,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'confluenceDeleteWhiteboardContentProperty',
@@ -281,6 +297,7 @@ export const confluenceTools = [
     tool: confluenceDeleteWhiteboardContentProperty,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'confluenceDeletePage',
@@ -288,6 +305,7 @@ export const confluenceTools = [
     tool: confluenceDeletePage,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['trash', 'remove'],
   },
   {
     name: 'confluenceDeleteSpace',
@@ -295,6 +313,7 @@ export const confluenceTools = [
     tool: confluenceDeleteSpace,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['remove', 'permanent'],
   },
   {
     name: 'confluenceDeleteSpaceProperty',
@@ -302,6 +321,7 @@ export const confluenceTools = [
     tool: confluenceDeleteSpaceProperty,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'confluenceDownloadAttachment',
@@ -309,6 +329,7 @@ export const confluenceTools = [
     tool: confluenceDownloadAttachment,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['save', 'export', 'file'],
   },
   {
     name: 'confluenceFindTextSelections',
@@ -317,6 +338,7 @@ export const confluenceTools = [
     tool: confluenceFindTextSelections,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['find-in-page', 'offsets'],
   },
   {
     name: 'confluenceGetAttachmentLabels',
@@ -324,6 +346,7 @@ export const confluenceTools = [
     tool: confluenceGetAttachmentLabels,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tags'],
   },
   {
     name: 'confluenceGetAttachments',
@@ -331,6 +354,7 @@ export const confluenceTools = [
     tool: confluenceGetAttachments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['files'],
   },
   {
     name: 'confluenceGetAuditLogs',
@@ -338,6 +362,7 @@ export const confluenceTools = [
     tool: confluenceGetAuditLogs,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['audit', 'logs', 'compliance'],
   },
   {
     name: 'confluenceGetBlogpostById',
@@ -345,6 +370,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogpostById,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'confluenceGetBlogpostLabels',
@@ -352,6 +378,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogpostLabels,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tags'],
   },
   {
     name: 'confluenceGetBlogpostLikeCount',
@@ -359,6 +386,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogpostLikeCount,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['likes'],
   },
   {
     name: 'confluenceGetBlogpostOperations',
@@ -366,6 +394,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogpostOperations,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['permissions'],
   },
   {
     name: 'confluenceGetBlogPosts',
@@ -373,6 +402,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogPosts,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['browse', 'articles'],
   },
   {
     name: 'confluenceGetBlogPostsForLabel',
@@ -380,6 +410,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogPostsForLabel,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tag'],
   },
   {
     name: 'confluenceGetBlogpostVersionDetails',
@@ -387,6 +418,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogpostVersionDetails,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['history'],
   },
   {
     name: 'confluenceGetBlogpostVersions',
@@ -394,6 +426,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogpostVersions,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['history'],
   },
   {
     name: 'confluenceGetChildPages',
@@ -401,6 +434,7 @@ export const confluenceTools = [
     tool: confluenceGetChildPages,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['subpages', 'children', 'hierarchy'],
   },
   {
     name: 'confluenceGetBlogPostContentProperties',
@@ -408,6 +442,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogPostContentProperties,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['metadata'],
   },
   {
     name: 'confluenceGetPageContentProperties',
@@ -415,6 +450,7 @@ export const confluenceTools = [
     tool: confluenceGetPageContentProperties,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['metadata'],
   },
   {
     name: 'confluenceGetContentRestrictions',
@@ -422,6 +458,7 @@ export const confluenceTools = [
     tool: confluenceGetContentRestrictions,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['permissions', 'access'],
   },
   {
     name: 'confluenceGetCurrentUser',
@@ -429,6 +466,7 @@ export const confluenceTools = [
     tool: confluenceGetCurrentUser,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['me', 'profile'],
   },
   {
     name: 'confluenceGetBlogPostInlineComments',
@@ -436,6 +474,7 @@ export const confluenceTools = [
     tool: confluenceGetBlogPostInlineComments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['discussion'],
   },
   {
     name: 'confluenceGetLabels',
@@ -443,6 +482,7 @@ export const confluenceTools = [
     tool: confluenceGetLabels,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tags', 'browse'],
   },
   {
     name: 'confluenceGetPageLabels',
@@ -450,6 +490,7 @@ export const confluenceTools = [
     tool: confluenceGetPageLabels,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tags'],
   },
   {
     name: 'confluenceGetSpaceLabels',
@@ -457,6 +498,7 @@ export const confluenceTools = [
     tool: confluenceGetSpaceLabels,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tags'],
   },
   {
     name: 'confluenceGetSpaceContentLabels',
@@ -464,6 +506,7 @@ export const confluenceTools = [
     tool: confluenceGetSpaceContentLabels,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['tags'],
   },
   {
     name: 'confluenceGetPageAncestors',
@@ -471,6 +514,7 @@ export const confluenceTools = [
     tool: confluenceGetPageAncestors,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['parents', 'hierarchy', 'breadcrumb'],
   },
   {
     name: 'confluenceGetPageById',
@@ -478,6 +522,7 @@ export const confluenceTools = [
     tool: confluenceGetPageById,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'confluenceGetPageFooterComments',
@@ -485,6 +530,7 @@ export const confluenceTools = [
     tool: confluenceGetPageFooterComments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['discussion'],
   },
   {
     name: 'confluenceGetPageInlineComments',
@@ -492,6 +538,7 @@ export const confluenceTools = [
     tool: confluenceGetPageInlineComments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['annotations', 'discussion'],
   },
   {
     name: 'confluenceGetPageLikeCount',
@@ -499,6 +546,7 @@ export const confluenceTools = [
     tool: confluenceGetPageLikeCount,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['likes'],
   },
   {
     name: 'confluenceGetPages',
@@ -506,6 +554,7 @@ export const confluenceTools = [
     tool: confluenceGetPages,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['browse'],
   },
   {
     name: 'confluenceGetPageVersions',
@@ -513,6 +562,7 @@ export const confluenceTools = [
     tool: confluenceGetPageVersions,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['history'],
   },
   {
     name: 'confluenceGetSpaceById',
@@ -520,6 +570,7 @@ export const confluenceTools = [
     tool: confluenceGetSpaceById,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'confluenceGetSpaceContents',
@@ -527,6 +578,7 @@ export const confluenceTools = [
     tool: confluenceGetSpaceContents,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['browse'],
   },
   {
     name: 'confluenceGetSpaceProperties',
@@ -534,6 +586,7 @@ export const confluenceTools = [
     tool: confluenceGetSpaceProperties,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['metadata'],
   },
   {
     name: 'confluenceGetSpaces',
@@ -541,6 +594,7 @@ export const confluenceTools = [
     tool: confluenceGetSpaces,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['browse', 'areas'],
   },
   {
     name: 'confluenceGetTasks',
@@ -548,6 +602,7 @@ export const confluenceTools = [
     tool: confluenceGetTasks,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['todos', 'action-items'],
   },
   {
     name: 'confluenceGetAnonymousUser',
@@ -555,6 +610,7 @@ export const confluenceTools = [
     tool: confluenceGetAnonymousUser,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['guest'],
   },
   {
     name: 'confluenceListSpaces',
@@ -562,6 +618,7 @@ export const confluenceTools = [
     tool: confluenceListSpaces,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['browse'],
   },
   {
     name: 'confluenceSearchContent',
@@ -569,6 +626,7 @@ export const confluenceTools = [
     tool: confluenceSearchContent,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['find'],
   },
   {
     name: 'confluenceSearchPages',
@@ -576,6 +634,7 @@ export const confluenceTools = [
     tool: confluenceSearchPages,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['find', 'title'],
   },
   {
     name: 'confluenceSearchSpaces',
@@ -583,6 +642,7 @@ export const confluenceTools = [
     tool: confluenceSearchSpaces,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['find'],
   },
   {
     name: 'confluenceSearchUsers',
@@ -590,6 +650,7 @@ export const confluenceTools = [
     tool: confluenceSearchUsers,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['find', 'lookup'],
   },
   {
     name: 'confluenceUpdateBlogpost',
@@ -597,6 +658,7 @@ export const confluenceTools = [
     tool: confluenceUpdateBlogpost,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'confluenceUpdateBlogpostProperty',
@@ -604,6 +666,7 @@ export const confluenceTools = [
     tool: confluenceUpdateBlogpostProperty,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'confluenceUpdatePageContentProperty',
@@ -611,6 +674,7 @@ export const confluenceTools = [
     tool: confluenceUpdatePageContentProperty,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'confluenceUpdateWhiteboardContentProperty',
@@ -618,6 +682,7 @@ export const confluenceTools = [
     tool: confluenceUpdateWhiteboardContentProperty,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'confluenceUpdatePage',
@@ -625,6 +690,7 @@ export const confluenceTools = [
     tool: confluenceUpdatePage,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'confluenceUpdateSpaceProperty',
@@ -632,6 +698,7 @@ export const confluenceTools = [
     tool: confluenceUpdateSpaceProperty,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['edit'],
   },
   {
     name: 'confluenceUpdateTask',
@@ -639,6 +706,7 @@ export const confluenceTools = [
     tool: confluenceUpdateTask,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['complete', 'check', 'done'],
   },
   {
     name: 'confluenceValidateCredential',
@@ -646,6 +714,7 @@ export const confluenceTools = [
     tool: confluenceValidateCredential,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['test', 'ping'],
   },
   {
     name: 'confluenceWhoAmI',
@@ -653,5 +722,6 @@ export const confluenceTools = [
     tool: confluenceWhoAmI,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['identity', 'sites'],
   },
 ];

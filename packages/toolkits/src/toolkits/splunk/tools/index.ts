@@ -80,6 +80,7 @@ export const splunkTools = [
     tool: splunkCreateSearchJob,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['query'],
   },
   {
     name: 'splunkGetSearchJobStatus',
@@ -88,6 +89,7 @@ export const splunkTools = [
     tool: splunkGetSearchJobStatus,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['sid'],
   },
   {
     name: 'splunkGetSearchJobResults',
@@ -96,6 +98,7 @@ export const splunkTools = [
     tool: splunkGetSearchJobResults,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['sid'],
   },
   {
     name: 'splunkGetSearchJobEvents',
@@ -104,6 +107,7 @@ export const splunkTools = [
     tool: splunkGetSearchJobEvents,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['logs', 'sid'],
   },
   {
     name: 'splunkRunOneShotSearch',
@@ -112,6 +116,7 @@ export const splunkTools = [
     tool: splunkRunOneShotSearch,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['query', 'sync'],
   },
   {
     name: 'splunkExportSearch',
@@ -120,6 +125,7 @@ export const splunkTools = [
     tool: splunkExportSearch,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['download'],
   },
   {
     name: 'splunkListSearchJobs',
@@ -128,6 +134,7 @@ export const splunkTools = [
     tool: splunkListSearchJobs,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['history'],
   },
   {
     name: 'splunkCancelSearchJob',
@@ -136,6 +143,7 @@ export const splunkTools = [
     tool: splunkCancelSearchJob,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['kill'],
   },
   {
     name: 'splunkControlSearchJob',
@@ -144,6 +152,7 @@ export const splunkTools = [
     tool: splunkControlSearchJob,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['resume'],
   },
   {
     name: 'splunkListSavedSearches',
@@ -152,6 +161,7 @@ export const splunkTools = [
     tool: splunkListSavedSearches,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['report', 'alert'],
   },
   {
     name: 'splunkGetSavedSearch',
@@ -160,6 +170,7 @@ export const splunkTools = [
     tool: splunkGetSavedSearch,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['report', 'alert'],
   },
   {
     name: 'splunkCreateSavedSearch',
@@ -168,6 +179,7 @@ export const splunkTools = [
     tool: splunkCreateSavedSearch,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['report', 'alert'],
   },
   {
     name: 'splunkUpdateSavedSearch',
@@ -175,6 +187,7 @@ export const splunkTools = [
     tool: splunkUpdateSavedSearch,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['report', 'alert'],
   },
   {
     name: 'splunkDeleteSavedSearch',
@@ -182,6 +195,7 @@ export const splunkTools = [
     tool: splunkDeleteSavedSearch,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['report', 'alert', 'remove'],
   },
   {
     name: 'splunkDispatchSavedSearch',
@@ -190,6 +204,7 @@ export const splunkTools = [
     tool: splunkDispatchSavedSearch,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['report', 'alert'],
   },
   {
     name: 'splunkListIndexes',
@@ -198,6 +213,7 @@ export const splunkTools = [
     tool: splunkListIndexes,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['index'],
   },
   {
     name: 'splunkGetIndex',
@@ -206,6 +222,7 @@ export const splunkTools = [
     tool: splunkGetIndex,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['index'],
   },
   {
     name: 'splunkCreateIndex',
@@ -214,6 +231,7 @@ export const splunkTools = [
     tool: splunkCreateIndex,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['index'],
   },
   {
     name: 'splunkDeleteIndex',
@@ -221,6 +239,7 @@ export const splunkTools = [
     tool: splunkDeleteIndex,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['index', 'remove'],
   },
   {
     name: 'splunkListDataInputs',
@@ -229,6 +248,7 @@ export const splunkTools = [
     tool: splunkListDataInputs,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['source', 'sources'],
   },
   {
     name: 'splunkListHecTokens',
@@ -237,6 +257,7 @@ export const splunkTools = [
     tool: splunkListHecTokens,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['token', 'ingest'],
   },
   {
     name: 'splunkCreateHecToken',
@@ -245,6 +266,7 @@ export const splunkTools = [
     tool: splunkCreateHecToken,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['token', 'ingest'],
   },
   {
     name: 'splunkSendHecEvent',
@@ -253,6 +275,7 @@ export const splunkTools = [
     tool: splunkSendHecEvent,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['ingest', 'log', 'logs'],
   },
   {
     name: 'splunkListUsers',
@@ -269,6 +292,7 @@ export const splunkTools = [
     tool: splunkListRoles,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['permission'],
   },
   {
     name: 'splunkListFiredAlerts',
@@ -277,6 +301,7 @@ export const splunkTools = [
     tool: splunkListFiredAlerts,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['alert', 'triggered'],
   },
   {
     name: 'splunkGetServerInfo',
@@ -293,6 +318,7 @@ export const splunkTools = [
     tool: splunkListKvStoreCollections,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['lookup', 'table'],
   },
   {
     name: 'splunkQueryKvStoreCollection',
@@ -301,5 +327,6 @@ export const splunkTools = [
     tool: splunkQueryKvStoreCollection,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['lookup'],
   },
 ];

@@ -21,6 +21,7 @@ export const gcpTools = [
     tool: gcpListComputeInstances,
     requiredAuth: 'gcpCredentials' as const,
     scope: 'read' as const,
+    keywords: ['vm', 'vms'],
   },
   {
     name: 'gcpGetComputeInstance',
@@ -28,6 +29,7 @@ export const gcpTools = [
     tool: gcpGetComputeInstance,
     requiredAuth: 'gcpCredentials' as const,
     scope: 'read' as const,
+    keywords: ['vm'],
   },
   {
     name: 'gcpStartComputeInstance',
@@ -35,6 +37,7 @@ export const gcpTools = [
     tool: gcpStartComputeInstance,
     requiredAuth: 'gcpCredentials' as const,
     scope: 'write' as const,
+    keywords: ['vm', 'boot'],
   },
   {
     name: 'gcpStopComputeInstance',
@@ -42,6 +45,7 @@ export const gcpTools = [
     tool: gcpStopComputeInstance,
     requiredAuth: 'gcpCredentials' as const,
     scope: 'write' as const,
+    keywords: ['vm', 'shutdown'],
   },
   {
     name: 'gcpGetMonitoringMetrics',
@@ -49,6 +53,7 @@ export const gcpTools = [
     tool: gcpGetMonitoringMetrics,
     requiredAuth: 'gcpCredentials' as const,
     scope: 'read' as const,
+    keywords: ['metric'],
   },
   {
     name: 'gcpListMonitoringMetricDescriptors',
@@ -56,5 +61,6 @@ export const gcpTools = [
     tool: gcpListMonitoringMetricDescriptors,
     requiredAuth: 'gcpCredentials' as const,
     scope: 'read' as const,
+    keywords: ['metric'],
   },
 ];

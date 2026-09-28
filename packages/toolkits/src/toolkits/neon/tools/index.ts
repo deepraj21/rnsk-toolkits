@@ -255,6 +255,7 @@ export const neonTools = [
     tool: neonAcceptProjectsTransferRequests,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['move', 'ownership'],
   },
   {
     name: 'NeonAccessProjectDetailsById',
@@ -262,6 +263,7 @@ export const neonTools = [
     tool: neonAccessProjectDetailsById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['postgres', 'database', 'settings'],
   },
   {
     name: 'NeonAddNewJwksToProjectEndpoint',
@@ -269,6 +271,7 @@ export const neonTools = [
     tool: neonAddNewJwksToProjectEndpoint,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonAddProjectEmailPermission',
@@ -276,6 +279,7 @@ export const neonTools = [
     tool: neonAddProjectEmailPermission,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonAddRoleToBranch',
@@ -283,6 +287,7 @@ export const neonTools = [
     tool: neonAddRoleToBranch,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['user', 'login', 'credentials'],
   },
   {
     name: 'NeonCountProjectBranches',
@@ -290,6 +295,7 @@ export const neonTools = [
     tool: neonCountProjectBranches,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['postgres'],
   },
   {
     name: 'NeonCreateApiKeyForOrganization',
@@ -297,6 +303,7 @@ export const neonTools = [
     tool: neonCreateApiKeyForOrganization,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['token', 'secret', 'credentials'],
   },
   {
     name: 'NeonCreateAuthKeys',
@@ -304,6 +311,7 @@ export const neonTools = [
     tool: neonCreateAuthKeys,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonCreateAuthUser',
@@ -311,6 +319,7 @@ export const neonTools = [
     tool: neonCreateAuthUser,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['signup', 'login'],
   },
   {
     name: 'NeonCreateBranchDatabase',
@@ -318,6 +327,7 @@ export const neonTools = [
     tool: neonCreateBranchDatabase,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['schema', 'postgres'],
   },
   {
     name: 'NeonCreateBranchesAuth',
@@ -325,6 +335,7 @@ export const neonTools = [
     tool: neonCreateBranchesAuth,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['login', 'sso', 'oauth'],
   },
   {
     name: 'NeonCreateBranchesDataApi',
@@ -332,6 +343,7 @@ export const neonTools = [
     tool: neonCreateBranchesDataApi,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['rest', 'http'],
   },
   {
     name: 'NeonCreateBranchesSnapshot',
@@ -339,6 +351,7 @@ export const neonTools = [
     tool: neonCreateBranchesSnapshot,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['backup', 'checkpoint'],
   },
   {
     name: 'NeonCreateComputeEndpoint',
@@ -346,6 +359,7 @@ export const neonTools = [
     tool: neonCreateComputeEndpoint,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['instance', 'host', 'postgres'],
   },
   {
     name: 'NeonCreateNewApiKey',
@@ -353,6 +367,7 @@ export const neonTools = [
     tool: neonCreateNewApiKey,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['token', 'secret', 'ci'],
   },
   {
     name: 'NeonCreateNewProjectBranch',
@@ -360,6 +375,7 @@ export const neonTools = [
     tool: neonCreateNewProjectBranch,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['clone', 'copy', 'dev', 'staging'],
   },
   {
     name: 'NeonCreateProjectBranchAnonymized',
@@ -367,6 +383,7 @@ export const neonTools = [
     tool: neonCreateProjectBranchAnonymized,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['mask', 'pii', 'gdpr'],
   },
   {
     name: 'NeonCreateProjectsTransferRequests',
@@ -374,6 +391,7 @@ export const neonTools = [
     tool: neonCreateProjectsTransferRequests,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['move', 'ownership'],
   },
   {
     name: 'NeonCreateProjectWithQuotaAndSettings',
@@ -381,6 +399,7 @@ export const neonTools = [
     tool: neonCreateProjectWithQuotaAndSettings,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['postgres', 'database', 'new'],
   },
   {
     name: 'NeonCreateVpcEndpointLabel',
@@ -388,6 +407,7 @@ export const neonTools = [
     tool: neonCreateVpcEndpointLabel,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonCreateVpcEndpointWithLabel',
@@ -395,6 +415,7 @@ export const neonTools = [
     tool: neonCreateVpcEndpointWithLabel,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonDeleteApiKeyById',
@@ -402,6 +423,7 @@ export const neonTools = [
     tool: neonDeleteApiKeyById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['token', 'revoke'],
   },
   {
     name: 'NeonDeleteAuthDomainFromProject',
@@ -409,6 +431,7 @@ export const neonTools = [
     tool: neonDeleteAuthDomainFromProject,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonDeleteAuthDomains',
@@ -416,6 +439,7 @@ export const neonTools = [
     tool: neonDeleteAuthDomains,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonDeleteAuthOauthProvider',
@@ -423,6 +447,7 @@ export const neonTools = [
     tool: neonDeleteAuthOauthProvider,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonDeleteAuthUser',
@@ -430,6 +455,7 @@ export const neonTools = [
     tool: neonDeleteAuthUser,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonDeleteBranchDataApi',
@@ -437,6 +463,7 @@ export const neonTools = [
     tool: neonDeleteBranchDataApi,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['rest'],
   },
   {
     name: 'NeonDeleteDatabaseFromBranch',
@@ -444,6 +471,7 @@ export const neonTools = [
     tool: neonDeleteDatabaseFromBranch,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['postgres', 'remove'],
   },
   {
     name: 'NeonDeleteOrganizationApiKey',
@@ -451,6 +479,7 @@ export const neonTools = [
     tool: neonDeleteOrganizationApiKey,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['token', 'revoke', 'rotate'],
   },
   {
     name: 'NeonDeleteOrganizationMember',
@@ -458,6 +487,7 @@ export const neonTools = [
     tool: neonDeleteOrganizationMember,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'team'],
   },
   {
     name: 'NeonDeleteProjectBranchById',
@@ -465,6 +495,7 @@ export const neonTools = [
     tool: neonDeleteProjectBranchById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['remove'],
   },
   {
     name: 'NeonDeleteProjectBranchRole',
@@ -472,6 +503,7 @@ export const neonTools = [
     tool: neonDeleteProjectBranchRole,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['user', 'revoke'],
   },
   {
     name: 'NeonDeleteProjectById',
@@ -479,6 +511,7 @@ export const neonTools = [
     tool: neonDeleteProjectById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['postgres', 'database', 'remove'],
   },
   {
     name: 'NeonDeleteProjectEndpoint',
@@ -486,6 +519,7 @@ export const neonTools = [
     tool: neonDeleteProjectEndpoint,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['instance', 'remove'],
   },
   {
     name: 'NeonDeleteProjectJwksById',
@@ -493,6 +527,7 @@ export const neonTools = [
     tool: neonDeleteProjectJwksById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonDeleteProjectPermission',
@@ -500,6 +535,7 @@ export const neonTools = [
     tool: neonDeleteProjectPermission,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonDeleteProjectSnapshot',
@@ -507,6 +543,7 @@ export const neonTools = [
     tool: neonDeleteProjectSnapshot,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: ['backup', 'remove'],
   },
   {
     name: 'NeonDeleteVpcEndpointByIds',
@@ -514,6 +551,7 @@ export const neonTools = [
     tool: neonDeleteVpcEndpointByIds,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonDeleteVpcEndpointByProjectId',
@@ -521,6 +559,7 @@ export const neonTools = [
     tool: neonDeleteVpcEndpointByProjectId,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonDisableBranchesAuth',
@@ -528,6 +567,7 @@ export const neonTools = [
     tool: neonDisableBranchesAuth,
     requiredAuth: 'neonApiKey' as const,
     scope: 'delete' as const,
+    keywords: [],
   },
   {
     name: 'NeonFetchDatabaseForBranch',
@@ -535,6 +575,7 @@ export const neonTools = [
     tool: neonFetchDatabaseForBranch,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['postgres', 'inventory'],
   },
   {
     name: 'NeonFetchOrganizationMembersById',
@@ -542,6 +583,7 @@ export const neonTools = [
     tool: neonFetchOrganizationMembersById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['team'],
   },
   {
     name: 'NeonFetchVpcendpointDetailsById',
@@ -549,6 +591,7 @@ export const neonTools = [
     tool: neonFetchVpcendpointDetailsById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonFinalizeBranchRestore',
@@ -556,6 +599,7 @@ export const neonTools = [
     tool: neonFinalizeBranchRestore,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonGetAuth',
@@ -563,6 +607,7 @@ export const neonTools = [
     tool: neonGetAuth,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonGetAuthAllowLocalhost',
@@ -570,6 +615,7 @@ export const neonTools = [
     tool: neonGetAuthAllowLocalhost,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['login'],
   },
   {
     name: 'NeonGetAuthEmailProvider',
@@ -577,6 +623,7 @@ export const neonTools = [
     tool: neonGetAuthEmailProvider,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['smtp'],
   },
   {
     name: 'NeonGetAvailablePreloadLibraries',
@@ -584,6 +631,7 @@ export const neonTools = [
     tool: neonGetAvailablePreloadLibraries,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['extension', 'postgis', 'pgvector'],
   },
   {
     name: 'NeonGetBranchesAnonymizedStatus',
@@ -591,6 +639,7 @@ export const neonTools = [
     tool: neonGetBranchesAnonymizedStatus,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['mask', 'pii'],
   },
   {
     name: 'NeonGetBranchesBackupSchedule',
@@ -598,6 +647,7 @@ export const neonTools = [
     tool: neonGetBranchesBackupSchedule,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['retention', 'pitr'],
   },
   {
     name: 'NeonGetBranchesDataApi',
@@ -605,6 +655,7 @@ export const neonTools = [
     tool: neonGetBranchesDataApi,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['rest', 'url'],
   },
   {
     name: 'NeonGetBranchesForProject',
@@ -612,6 +663,7 @@ export const neonTools = [
     tool: neonGetBranchesForProject,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['postgres'],
   },
   {
     name: 'NeonGetBranchesMaskingRules',
@@ -619,6 +671,7 @@ export const neonTools = [
     tool: neonGetBranchesMaskingRules,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['mask', 'pii'],
   },
   {
     name: 'NeonGetBranchRolesForProject',
@@ -626,6 +679,7 @@ export const neonTools = [
     tool: neonGetBranchRolesForProject,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['user', 'permissions'],
   },
   {
     name: 'NeonGetConsumptionHistoryProjects',
@@ -633,6 +687,7 @@ export const neonTools = [
     tool: neonGetConsumptionHistoryProjects,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['billing', 'cost', 'usage'],
   },
   {
     name: 'NeonGetCurrentUserInformation',
@@ -640,6 +695,7 @@ export const neonTools = [
     tool: neonGetCurrentUserInformation,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['profile', 'account'],
   },
   {
     name: 'NeonGetOrganizationApiKeys',
@@ -647,6 +703,7 @@ export const neonTools = [
     tool: neonGetOrganizationApiKeys,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['token', 'audit'],
   },
   {
     name: 'NeonGetProjectBranches',
@@ -654,6 +711,7 @@ export const neonTools = [
     tool: neonGetProjectBranches,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['postgres'],
   },
   {
     name: 'NeonGetProjectBranchRole',
@@ -661,6 +719,7 @@ export const neonTools = [
     tool: neonGetProjectBranchRole,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['user', 'permissions'],
   },
   {
     name: 'NeonGetProjectBranchSchemaComparison',
@@ -668,6 +727,7 @@ export const neonTools = [
     tool: neonGetProjectBranchSchemaComparison,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['diff', 'migration'],
   },
   {
     name: 'NeonGetProjectConnectionUri',
@@ -675,6 +735,7 @@ export const neonTools = [
     tool: neonGetProjectConnectionUri,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['string', 'url', 'connect', 'credentials'],
   },
   {
     name: 'NeonGetProjectEndpointInformation',
@@ -682,6 +743,7 @@ export const neonTools = [
     tool: neonGetProjectEndpointInformation,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['instance', 'host', 'connect'],
   },
   {
     name: 'NeonGetProjectOperationById',
@@ -689,6 +751,7 @@ export const neonTools = [
     tool: neonGetProjectOperationById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['task', 'job', 'progress', 'status'],
   },
   {
     name: 'NeonGetSchemaForProjectBranch',
@@ -696,6 +759,7 @@ export const neonTools = [
     tool: neonGetSchemaForProjectBranch,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['migration', 'migrate', 'diff'],
   },
   {
     name: 'NeonGetUserOrganizations',
@@ -703,6 +767,7 @@ export const neonTools = [
     tool: neonGetUserOrganizations,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['team'],
   },
   {
     name: 'NeonGetVpcRegionEndpoints',
@@ -710,6 +775,7 @@ export const neonTools = [
     tool: neonGetVpcRegionEndpoints,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonListApiKeys',
@@ -717,6 +783,7 @@ export const neonTools = [
     tool: neonListApiKeys,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['token', 'audit'],
   },
   {
     name: 'NeonListAuthDomains',
@@ -724,6 +791,7 @@ export const neonTools = [
     tool: neonListAuthDomains,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonListAuthOauthProviders',
@@ -731,6 +799,7 @@ export const neonTools = [
     tool: neonListAuthOauthProviders,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonListAuthOauthProviders2',
@@ -738,6 +807,7 @@ export const neonTools = [
     tool: neonListAuthOauthProviders2,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonListProjectsSnapshots',
@@ -745,6 +815,7 @@ export const neonTools = [
     tool: neonListProjectsSnapshots,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['backup', 'restore'],
   },
   {
     name: 'NeonListSharedProjects',
@@ -752,6 +823,7 @@ export const neonTools = [
     tool: neonListSharedProjects,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['collaboration', 'team', 'postgres'],
   },
   {
     name: 'NeonListVpcVpcEndpoints',
@@ -759,6 +831,7 @@ export const neonTools = [
     tool: neonListVpcVpcEndpoints,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonModifyBranchDetailsInProject',
@@ -766,6 +839,7 @@ export const neonTools = [
     tool: neonModifyBranchDetailsInProject,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['rename'],
   },
   {
     name: 'NeonPatchBranchDatabaseInformation',
@@ -773,6 +847,7 @@ export const neonTools = [
     tool: neonPatchBranchDatabaseInformation,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['rename', 'schema'],
   },
   {
     name: 'NeonResetRolePasswordForBranch',
@@ -780,6 +855,7 @@ export const neonTools = [
     tool: neonResetRolePasswordForBranch,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['rotate', 'credentials'],
   },
   {
     name: 'NeonRestartProjectEndpoint',
@@ -787,6 +863,7 @@ export const neonTools = [
     tool: neonRestartProjectEndpoint,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['reboot', 'instance'],
   },
   {
     name: 'NeonRestoreProjectBranch',
@@ -794,6 +871,7 @@ export const neonTools = [
     tool: neonRestoreProjectBranch,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['rollback', 'pitr', 'recover'],
   },
   {
     name: 'NeonRestoreSnapshot',
@@ -801,6 +879,7 @@ export const neonTools = [
     tool: neonRestoreSnapshot,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['rollback', 'recover', 'backup'],
   },
   {
     name: 'NeonRetrieveAccountConsumptionHistory',
@@ -808,6 +887,7 @@ export const neonTools = [
     tool: neonRetrieveAccountConsumptionHistory,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['billing', 'cost', 'usage'],
   },
   {
     name: 'NeonRetrieveAllRegions',
@@ -815,6 +895,7 @@ export const neonTools = [
     tool: neonRetrieveAllRegions,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['location'],
   },
   {
     name: 'NeonRetrieveBranchDatabaseDetails',
@@ -822,6 +903,7 @@ export const neonTools = [
     tool: neonRetrieveBranchDatabaseDetails,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['postgres', 'schema'],
   },
   {
     name: 'NeonRetrieveBranchEndpoints',
@@ -829,6 +911,7 @@ export const neonTools = [
     tool: neonRetrieveBranchEndpoints,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['instance', 'host', 'connect'],
   },
   {
     name: 'NeonRetrieveJwksForProject',
@@ -836,6 +919,7 @@ export const neonTools = [
     tool: neonRetrieveJwksForProject,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonRetrieveOrganizationById',
@@ -843,6 +927,7 @@ export const neonTools = [
     tool: neonRetrieveOrganizationById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['team'],
   },
   {
     name: 'NeonRetrieveOrganizationInvitations',
@@ -850,6 +935,7 @@ export const neonTools = [
     tool: neonRetrieveOrganizationInvitations,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['invite', 'team'],
   },
   {
     name: 'NeonRetrieveOrganizationMemberInfo',
@@ -857,6 +943,7 @@ export const neonTools = [
     tool: neonRetrieveOrganizationMemberInfo,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['team', 'permissions'],
   },
   {
     name: 'NeonRetrieveProjectEndpointDetails',
@@ -864,6 +951,7 @@ export const neonTools = [
     tool: neonRetrieveProjectEndpointDetails,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['instance', 'host', 'connect'],
   },
   {
     name: 'NeonRetrieveProjectOperations',
@@ -871,6 +959,7 @@ export const neonTools = [
     tool: neonRetrieveProjectOperations,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['task', 'history'],
   },
   {
     name: 'NeonRetrieveProjectPermissions',
@@ -878,6 +967,7 @@ export const neonTools = [
     tool: neonRetrieveProjectPermissions,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['access', 'acl'],
   },
   {
     name: 'NeonRetrieveProjectsList',
@@ -885,6 +975,7 @@ export const neonTools = [
     tool: neonRetrieveProjectsList,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: ['postgres', 'database', 'browse'],
   },
   {
     name: 'NeonRetrieveVpcEndpointsForProject',
@@ -892,6 +983,7 @@ export const neonTools = [
     tool: neonRetrieveVpcEndpointsForProject,
     requiredAuth: 'neonApiKey' as const,
     scope: 'read' as const,
+    keywords: [],
   },
   {
     name: 'NeonRevealRolePasswordInBranch',
@@ -899,6 +991,7 @@ export const neonTools = [
     tool: neonRevealRolePasswordInBranch,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['credentials'],
   },
   {
     name: 'NeonSendAuthTestEmail',
@@ -906,6 +999,7 @@ export const neonTools = [
     tool: neonSendAuthTestEmail,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonSendOrganizationInvitations',
@@ -913,6 +1007,7 @@ export const neonTools = [
     tool: neonSendOrganizationInvitations,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['invite', 'team', 'member'],
   },
   {
     name: 'NeonSetBranchAsDefault',
@@ -920,6 +1015,7 @@ export const neonTools = [
     tool: neonSetBranchAsDefault,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['main', 'primary'],
   },
   {
     name: 'NeonStartBranchAnonymization',
@@ -927,6 +1023,7 @@ export const neonTools = [
     tool: neonStartBranchAnonymization,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['mask'],
   },
   {
     name: 'NeonStartEndpointForProject',
@@ -934,6 +1031,7 @@ export const neonTools = [
     tool: neonStartEndpointForProject,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['wake', 'resume', 'instance'],
   },
   {
     name: 'NeonSuspendProjectEndpointById',
@@ -941,6 +1039,7 @@ export const neonTools = [
     tool: neonSuspendProjectEndpointById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['sleep', 'pause'],
   },
   {
     name: 'NeonTransferProjectsBetweenOrganizations',
@@ -948,6 +1047,7 @@ export const neonTools = [
     tool: neonTransferProjectsBetweenOrganizations,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['move', 'ownership'],
   },
   {
     name: 'NeonTransferUserProjectsToOrganization',
@@ -955,6 +1055,7 @@ export const neonTools = [
     tool: neonTransferUserProjectsToOrganization,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['move', 'ownership'],
   },
   {
     name: 'NeonUpdateAuthAllowLocalhost',
@@ -962,6 +1063,7 @@ export const neonTools = [
     tool: neonUpdateAuthAllowLocalhost,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonUpdateAuthEmailProvider',
@@ -969,6 +1071,7 @@ export const neonTools = [
     tool: neonUpdateAuthEmailProvider,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['smtp'],
   },
   {
     name: 'NeonUpdateAuthOauthProviders',
@@ -976,6 +1079,7 @@ export const neonTools = [
     tool: neonUpdateAuthOauthProviders,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: [],
   },
   {
     name: 'NeonUpdateBranchesDataApi',
@@ -983,6 +1087,7 @@ export const neonTools = [
     tool: neonUpdateBranchesDataApi,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['rest'],
   },
   {
     name: 'NeonUpdateBranchesMaskingRules',
@@ -990,6 +1095,7 @@ export const neonTools = [
     tool: neonUpdateBranchesMaskingRules,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['mask'],
   },
   {
     name: 'NeonUpdateOrganizationMemberRole',
@@ -997,6 +1103,7 @@ export const neonTools = [
     tool: neonUpdateOrganizationMemberRole,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['permissions', 'admin'],
   },
   {
     name: 'NeonUpdateProjectComputeEndpointSettings',
@@ -1004,6 +1111,7 @@ export const neonTools = [
     tool: neonUpdateProjectComputeEndpointSettings,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['pooler', 'autoscale', 'scale'],
   },
   {
     name: 'NeonUpdateProjectSettingsById',
@@ -1011,6 +1119,7 @@ export const neonTools = [
     tool: neonUpdateProjectSettingsById,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['quotas', 'limits'],
   },
   {
     name: 'NeonUpdateProjectsSnapshots',
@@ -1018,5 +1127,6 @@ export const neonTools = [
     tool: neonUpdateProjectsSnapshots,
     requiredAuth: 'neonApiKey' as const,
     scope: 'write' as const,
+    keywords: ['rename'],
   },
 ];

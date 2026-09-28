@@ -644,6 +644,7 @@ export const vercelTools = [
   },
   {
     name: 'vercelFilterProjectEnvs',
+    keywords: ['vars', 'secret', 'secrets'],
     description:
       'Tool to retrieve environment variables of a Vercel project by id or name. Use when you need to list and filter environme',
     tool: vercelFilterProjectEnvs,
@@ -740,6 +741,7 @@ export const vercelTools = [
   },
   {
     name: 'vercelGetDeployment',
+    keywords: ['preview'],
     description:
       'Tool to get a deployment by ID or URL. Use when you need to retrieve detailed information about a specific deployment.',
     tool: vercelGetDeployment,
@@ -876,6 +878,7 @@ export const vercelTools = [
   },
   {
     name: 'vercelGetFirewallConfig',
+    keywords: ['waf', 'block', 'blocks'],
     description:
       'Tool to retrieve firewall configuration for a Vercel project. Use when you need to inspect current firewall rules and se',
     tool: vercelGetFirewallConfig,
@@ -924,6 +927,7 @@ export const vercelTools = [
   },
   {
     name: 'vercelGetProjectEnv',
+    keywords: ['vars', 'secret', 'secrets'],
     description:
       'Tool to retrieve the decrypted value of an environment variable from a Vercel project. Use when you need to access the a',
     tool: vercelGetProjectEnv,
@@ -1292,6 +1296,7 @@ export const vercelTools = [
   },
   {
     name: 'vercelRequestPromote',
+    keywords: ['rollback'],
     description:
       'Tool to promote a deployment to production by pointing all production domains for a project to the given deployment. Use',
     tool: vercelRequestPromote,

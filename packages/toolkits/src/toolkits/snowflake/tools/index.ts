@@ -50,10 +50,18 @@ function entry(
   toolRef: any,
   scope: Scope,
   noAuth = false,
-): { name: string; description: string; tool: any; requiredAuth?: typeof auth; scope: Scope } {
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth?: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
   return noAuth
-    ? { name, description, tool: toolRef, scope }
-    : { name, description, tool: toolRef, requiredAuth: auth, scope };
+    ? { name, description, tool: toolRef, scope, keywords }
+    : { name, description, tool: toolRef, requiredAuth: auth, scope, keywords };
 }
 
 export const snowflakeTools = [
@@ -62,54 +70,72 @@ export const snowflakeTools = [
     'Executes SQL synchronously and returns rows (SELECT, DDL, DML, batches).',
     executeSql,
     'write',
+    false,
+    ['query'],
   ),
   entry(
     'snowflakeCheckStatementStatus',
     'Polls an async statement by handle; follows result partitions.',
     checkStatementStatus,
     'read',
+    false,
+    ['poll', 'async'],
   ),
   entry(
     'snowflakeCancelStatementExecution',
     'Cancels a running statement by handle.',
     cancelStatementExecution,
     'delete',
+    false,
+    ['kill', 'abort'],
   ),
   entry(
     'snowflakeValidateCredential',
     'Validates credentials with a lightweight session query.',
     validateCredential,
     'read',
+    false,
+    ['auth', 'ping'],
   ),
   entry(
     'snowflakeShowDatabases',
     'Lists accessible databases with filters and pagination.',
     showDatabases,
     'read',
+    false,
+    ['database'],
   ),
   entry(
     'snowflakeShowSchemas',
     'Lists accessible schemas with scope and filters.',
     showSchemas,
     'read',
+    false,
+    ['schema'],
   ),
   entry(
     'snowflakeShowTables',
     'Lists accessible tables with scope and filters.',
     showTables,
     'read',
+    false,
+    ['table'],
   ),
   entry(
     'snowflakeDropWarehouse',
     'Permanently drops a warehouse (irreversible).',
     dropWarehouse,
     'delete',
+    false,
+    ['delete', 'remove', 'compute'],
   ),
   entry(
     'snowflakeFetchCatalogIntegration',
     'Describes an Iceberg catalog integration.',
     fetchCatalogIntegration,
     'read',
+    false,
+    ['iceberg'],
   ),
   entry(
     'snowflakeGetStatusSummary',
@@ -117,6 +143,7 @@ export const snowflakeTools = [
     getStatusSummary,
     'read',
     true,
+    ['health', 'outage'],
   ),
   entry(
     'snowflakeGetStatusRollup',
@@ -124,6 +151,7 @@ export const snowflakeTools = [
     getStatusRollup,
     'read',
     true,
+    ['health'],
   ),
   entry(
     'snowflakeGetComponentStatus',
@@ -131,6 +159,7 @@ export const snowflakeTools = [
     getComponentStatus,
     'read',
     true,
+    ['health'],
   ),
   entry(
     'snowflakeGetUnresolvedIncidents',
@@ -138,6 +167,7 @@ export const snowflakeTools = [
     getUnresolvedIncidents,
     'read',
     true,
+    ['incident', 'outage'],
   ),
   entry(
     'snowflakeGetActiveScheduledMaintenances',
@@ -145,6 +175,7 @@ export const snowflakeTools = [
     getActiveScheduledMaintenances,
     'read',
     true,
+    ['maintenance', 'downtime'],
   ),
   entry(
     'snowflakeGetUpcomingScheduledMaintenances',
@@ -152,6 +183,7 @@ export const snowflakeTools = [
     getUpcomingScheduledMaintenances,
     'read',
     true,
+    ['maintenance', 'upcoming', 'planned'],
   ),
   entry(
     'snowflakeGetAllScheduledMaintenances',
@@ -159,5 +191,6 @@ export const snowflakeTools = [
     getAllScheduledMaintenances,
     'read',
     true,
+    ['maintenance', 'history'],
   ),
 ];

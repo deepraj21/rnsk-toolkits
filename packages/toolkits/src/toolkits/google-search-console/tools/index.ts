@@ -29,6 +29,7 @@ export const googleSearchConsoleTools = [
     tool: addSite,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'write' as const,
+    keywords: ['property', 'register'],
   },
   {
     name: 'googleSearchConsoleDeleteSite',
@@ -37,6 +38,7 @@ export const googleSearchConsoleTools = [
     tool: deleteSite,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'delete' as const,
+    keywords: ['property', 'remove'],
   },
   {
     name: 'googleSearchConsoleGetSite',
@@ -45,6 +47,7 @@ export const googleSearchConsoleTools = [
     tool: getSite,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'read' as const,
+    keywords: ['property'],
   },
   {
     name: 'googleSearchConsoleGetSitemap',
@@ -53,6 +56,7 @@ export const googleSearchConsoleTools = [
     tool: getSitemap,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'read' as const,
+    keywords: ['sitemaps', 'indexing'],
   },
   {
     name: 'googleSearchConsoleInspectUrl',
@@ -61,6 +65,7 @@ export const googleSearchConsoleTools = [
     tool: inspectUrl,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'read' as const,
+    keywords: ['indexing', 'coverage'],
   },
   {
     name: 'googleSearchConsoleListSitemaps',
@@ -69,6 +74,7 @@ export const googleSearchConsoleTools = [
     tool: listSitemaps,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'read' as const,
+    keywords: ['sitemap', 'xml'],
   },
   {
     name: 'googleSearchConsoleListSites',
@@ -77,6 +83,7 @@ export const googleSearchConsoleTools = [
     tool: listSites,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'read' as const,
+    keywords: ['property', 'properties', 'site'],
   },
   {
     name: 'googleSearchConsoleSearchAnalyticsQuery',
@@ -85,6 +92,7 @@ export const googleSearchConsoleTools = [
     tool: searchAnalyticsQuery,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'read' as const,
+    keywords: ['clicks', 'impressions', 'ctr', 'seo', 'traffic'],
   },
   {
     name: 'googleSearchConsoleSubmitSitemap',
@@ -93,5 +101,6 @@ export const googleSearchConsoleTools = [
     tool: submitSitemap,
     requiredAuth: 'googleSearchConsoleToken' as const,
     scope: 'write' as const,
+    keywords: ['indexing', 'sitemaps'],
   },
 ];

@@ -114,8 +114,16 @@ function entry(
   description: string,
   toolRef: any,
   scope: Scope,
-): { name: string; description: string; tool: any; requiredAuth: typeof auth; scope: Scope } {
-  return { name, description, tool: toolRef, requiredAuth: auth, scope };
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
+  return { name, description, tool: toolRef, requiredAuth: auth, scope, keywords };
 }
 
 export const dynatraceTools = [
@@ -124,18 +132,21 @@ export const dynatraceTools = [
     'List Davis AI problems (open incidents) with severity, status and affected entities. Start here for triage.',
     listProblems,
     'read',
+    ['problem', 'incident', 'incidents', 'alert', 'alerts'],
   ),
   entry(
     'dynatraceGetProblem',
     'Get a single Davis problem with evidence, root cause and comments.',
     getProblem,
     'read',
+    ['problems', 'incident', 'alert'],
   ),
   entry(
     'dynatraceCloseProblem',
     'Manually close an open Davis problem with a closing comment.',
     closeProblem,
     'write',
+    ['problems', 'incident', 'resolve', 'alert'],
   ),
   entry(
     'dynatraceListProblemComments',
@@ -166,30 +177,35 @@ export const dynatraceTools = [
     'List application-security vulnerabilities with risk scores and CVE references.',
     listSecurityProblems,
     'read',
+    ['vulnerability', 'vulnerabilities', 'cve', 'alert', 'threat'],
   ),
   entry(
     'dynatraceGetSecurityProblem',
     'Get a single security problem with vulnerabilities and remediation.',
     getSecurityProblem,
     'read',
+    ['vulnerability', 'cve', 'alert'],
   ),
   entry(
     'dynatraceListMetrics',
     'List metric definitions. Use to discover metric keys before querying.',
     listMetrics,
     'read',
+    ['metric', 'monitor', 'monitoring', 'apm'],
   ),
   entry(
     'dynatraceGetMetric',
     'Get one metric definition with unit, dimensions and aggregations.',
     getMetric,
     'read',
+    ['metrics', 'monitor', 'apm'],
   ),
   entry(
     'dynatraceQueryMetrics',
     'Query metric datapoints with a metric selector expression.',
     queryMetrics,
     'read',
+    ['metrics', 'monitor', 'apm', 'timeseries'],
   ),
   entry(
     'dynatraceIngestMetrics',
@@ -208,6 +224,7 @@ export const dynatraceTools = [
     'List monitored entities (Smartscape) with an entity selector. Use to resolve entity IDs.',
     listEntities,
     'read',
+    ['entity', 'host', 'hosts', 'service'],
   ),
   entry(
     'dynatraceGetEntity',
@@ -240,6 +257,7 @@ export const dynatraceTools = [
     'List events (deployments, config changes, availability) in a timeframe.',
     listEvents,
     'read',
+    ['event', 'deploy', 'deployment', 'alert'],
   ),
   entry('dynatraceGetEvent', 'Get a single event by ID.', getEvent, 'read'),
   entry(
@@ -253,22 +271,31 @@ export const dynatraceTools = [
     'Push a custom event (deployment markers, annotations) to Dynatrace.',
     ingestEvent,
     'write',
+    ['events', 'deploy', 'deployment', 'annotation'],
   ),
-  entry('dynatraceExportLogs', 'Search/export log records with a log query.', exportLogs, 'read'),
+  entry('dynatraceExportLogs', 'Search/export log records with a log query.', exportLogs, 'read', [
+    'log',
+    'monitor',
+  ]),
   entry('dynatraceIngestLogs', 'Ingest log records into Dynatrace.', ingestLogs, 'write'),
   entry(
     'dynatraceQueryGrail',
     'Run a DQL query against Grail buckets (logs, spans, events) with polling to completion.',
     queryGrail,
     'read',
+    ['dql', 'query', 'queries', 'monitor'],
   ),
   entry(
     'dynatraceListSLOs',
     'List service-level objectives with targets and error budgets.',
     listSLOs,
     'read',
+    ['slo', 'reliability', 'error-budget'],
   ),
-  entry('dynatraceGetSLO', 'Get a single SLO with objectives and error budget.', getSLO, 'read'),
+  entry('dynatraceGetSLO', 'Get a single SLO with objectives and error budget.', getSLO, 'read', [
+    'slos',
+    'reliability',
+  ]),
   entry('dynatraceCreateSLO', 'Create a service-level objective.', createSLO, 'write'),
   entry('dynatraceUpdateSLO', 'Update a service-level objective.', updateSLO, 'write'),
   entry('dynatraceDeleteSLO', 'Delete a service-level objective.', deleteSLO, 'delete'),
@@ -283,6 +310,7 @@ export const dynatraceTools = [
     'List Settings 2.0 objects (alerting profiles, auto-tags, ...).',
     listSettingObjects,
     'read',
+    ['alert', 'alerts', 'settings', 'profile'],
   ),
   entry(
     'dynatraceGetSettingObject',
@@ -370,6 +398,7 @@ export const dynatraceTools = [
     'List synthetic monitors (browser, HTTP, clickpath).',
     listSyntheticMonitors,
     'read',
+    ['monitor', 'monitors', 'uptime', 'synthetic'],
   ),
   entry(
     'dynatraceGetSyntheticMonitor',

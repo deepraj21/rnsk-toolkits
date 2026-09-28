@@ -30,6 +30,7 @@ export const googleDocsTools = [
     tool: listDocuments,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'read' as const,
+    keywords: ['files', 'find', 'browse'],
   },
   {
     name: 'googleDocsGetDocument',
@@ -37,6 +38,7 @@ export const googleDocsTools = [
     tool: getDocument,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'read' as const,
+    keywords: ['read'],
   },
   {
     name: 'googleDocsGetDocumentText',
@@ -44,6 +46,7 @@ export const googleDocsTools = [
     tool: getDocumentText,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'read' as const,
+    keywords: ['read', 'export', 'plaintext', 'content'],
   },
   {
     name: 'googleDocsCreateDocument',
@@ -51,6 +54,7 @@ export const googleDocsTools = [
     tool: createDocument,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'write' as const,
+    keywords: ['new', 'write', 'doc'],
   },
   {
     name: 'googleDocsInsertText',
@@ -58,6 +62,7 @@ export const googleDocsTools = [
     tool: insertText,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'write' as const,
+    keywords: ['edit', 'write', 'type'],
   },
   {
     name: 'googleDocsAppendText',
@@ -65,6 +70,7 @@ export const googleDocsTools = [
     tool: appendText,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'write' as const,
+    keywords: ['add', 'write'],
   },
   {
     name: 'googleDocsReplaceText',
@@ -72,6 +78,7 @@ export const googleDocsTools = [
     tool: replaceText,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'write' as const,
+    keywords: ['find-replace', 'edit'],
   },
   {
     name: 'googleDocsDeleteContent',
@@ -79,6 +86,7 @@ export const googleDocsTools = [
     tool: deleteContent,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'delete' as const,
+    keywords: ['remove', 'clear'],
   },
   {
     name: 'googleDocsCopyDocument',
@@ -86,6 +94,7 @@ export const googleDocsTools = [
     tool: copyDocument,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'write' as const,
+    keywords: ['duplicate', 'clone'],
   },
   {
     name: 'googleDocsDeleteDocument',
@@ -93,5 +102,6 @@ export const googleDocsTools = [
     tool: deleteDocument,
     requiredAuth: 'googleDocsToken' as const,
     scope: 'delete' as const,
+    keywords: ['trash', 'remove'],
   },
 ];

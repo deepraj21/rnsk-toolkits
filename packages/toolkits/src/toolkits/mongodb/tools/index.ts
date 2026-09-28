@@ -71,6 +71,7 @@ export const mongodbTools = [
     tool: mongodbListDatabases,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['database'],
   },
   {
     name: 'mongodbPingServer',
@@ -79,6 +80,7 @@ export const mongodbTools = [
     tool: mongodbPingServer,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['health', 'connection'],
   },
   {
     name: 'mongodbListCollections',
@@ -87,6 +89,7 @@ export const mongodbTools = [
     tool: mongodbListCollections,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['table', 'tables', 'collection'],
   },
   {
     name: 'mongodbDatabaseStats',
@@ -95,6 +98,7 @@ export const mongodbTools = [
     tool: mongodbDatabaseStats,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['database', 'size'],
   },
   {
     name: 'mongodbCollectionStats',
@@ -103,6 +107,7 @@ export const mongodbTools = [
     tool: mongodbCollectionStats,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['table', 'collection', 'size'],
   },
   {
     name: 'mongodbCreateCollection',
@@ -111,6 +116,7 @@ export const mongodbTools = [
     tool: mongodbCreateCollection,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['table', 'collection'],
   },
   {
     name: 'mongodbDropCollection',
@@ -119,6 +125,7 @@ export const mongodbTools = [
     tool: mongodbDropCollection,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['table', 'collection', 'delete'],
   },
   {
     name: 'mongodbRenameCollection',
@@ -127,6 +134,7 @@ export const mongodbTools = [
     tool: mongodbRenameCollection,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['table', 'collection'],
   },
   {
     name: 'mongodbFindDocuments',
@@ -135,6 +143,7 @@ export const mongodbTools = [
     tool: mongodbFindDocuments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['query', 'search', 'record', 'records', 'document'],
   },
   {
     name: 'mongodbFindOne',
@@ -143,6 +152,7 @@ export const mongodbTools = [
     tool: mongodbFindOne,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['query', 'record', 'row'],
   },
   {
     name: 'mongodbInsertOne',
@@ -150,6 +160,7 @@ export const mongodbTools = [
     tool: mongodbInsertOne,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['add', 'create', 'record', 'row'],
   },
   {
     name: 'mongodbInsertMany',
@@ -158,6 +169,7 @@ export const mongodbTools = [
     tool: mongodbInsertMany,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['add', 'bulk', 'records', 'import'],
   },
   {
     name: 'mongodbUpdateOne',
@@ -165,6 +177,7 @@ export const mongodbTools = [
     tool: mongodbUpdateOne,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['edit', 'modify', 'record'],
   },
   {
     name: 'mongodbUpdateMany',
@@ -173,6 +186,7 @@ export const mongodbTools = [
     tool: mongodbUpdateMany,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['edit', 'bulk', 'records'],
   },
   {
     name: 'mongodbReplaceOne',
@@ -180,6 +194,7 @@ export const mongodbTools = [
     tool: mongodbReplaceOne,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['overwrite', 'record'],
   },
   {
     name: 'mongodbDeleteOne',
@@ -187,6 +202,7 @@ export const mongodbTools = [
     tool: mongodbDeleteOne,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['remove', 'record', 'row'],
   },
   {
     name: 'mongodbDeleteMany',
@@ -195,6 +211,7 @@ export const mongodbTools = [
     tool: mongodbDeleteMany,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['remove', 'records'],
   },
   {
     name: 'mongodbFindOneAndUpdate',
@@ -203,6 +220,7 @@ export const mongodbTools = [
     tool: mongodbFindOneAndUpdate,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['atomic', 'upsert'],
   },
   {
     name: 'mongodbFindOneAndDelete',
@@ -211,6 +229,7 @@ export const mongodbTools = [
     tool: mongodbFindOneAndDelete,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['atomic'],
   },
   {
     name: 'mongodbBulkWrite',
@@ -218,6 +237,7 @@ export const mongodbTools = [
     tool: mongodbBulkWrite,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['batch', 'import'],
   },
   {
     name: 'mongodbAggregate',
@@ -226,6 +246,7 @@ export const mongodbTools = [
     tool: mongodbAggregate,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['report', 'group'],
   },
   {
     name: 'mongodbCountDocuments',
@@ -234,6 +255,7 @@ export const mongodbTools = [
     tool: mongodbCountDocuments,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['document', 'total'],
   },
   {
     name: 'mongodbEstimatedDocumentCount',
@@ -242,6 +264,7 @@ export const mongodbTools = [
     tool: mongodbEstimatedDocumentCount,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['document', 'approximate'],
   },
   {
     name: 'mongodbDistinct',
@@ -250,6 +273,7 @@ export const mongodbTools = [
     tool: mongodbDistinct,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['unique', 'facet'],
   },
   {
     name: 'mongodbCreateIndex',
@@ -258,6 +282,7 @@ export const mongodbTools = [
     tool: mongodbCreateIndex,
     requiredAuth: auth,
     scope: 'write' as const,
+    keywords: ['index', 'unique'],
   },
   {
     name: 'mongodbListIndexes',
@@ -266,6 +291,7 @@ export const mongodbTools = [
     tool: mongodbListIndexes,
     requiredAuth: auth,
     scope: 'read' as const,
+    keywords: ['index'],
   },
   {
     name: 'mongodbDropIndex',
@@ -274,5 +300,6 @@ export const mongodbTools = [
     tool: mongodbDropIndex,
     requiredAuth: auth,
     scope: 'delete' as const,
+    keywords: ['index', 'remove', 'delete'],
   },
 ];

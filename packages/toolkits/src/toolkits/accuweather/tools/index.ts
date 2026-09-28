@@ -99,8 +99,16 @@ function entry(
   description: string,
   toolRef: any,
   scope: Scope,
-): { name: string; description: string; tool: any; requiredAuth: typeof auth; scope: Scope } {
-  return { name, description, tool: toolRef, requiredAuth: auth, scope };
+  keywords: string[] = [],
+): {
+  name: string;
+  description: string;
+  tool: any;
+  requiredAuth: typeof auth;
+  scope: Scope;
+  keywords: string[];
+} {
+  return { name, description, tool: toolRef, requiredAuth: auth, scope, keywords };
 }
 
 export const accuweatherTools = [
@@ -109,81 +117,105 @@ export const accuweatherTools = [
     'Return location-name suggestions for all locations, cities, or points of interest, optionally restricted to a country.',
     autocompleteLocations,
     'read',
+    ['location', 'locations', 'city', 'cities', 'search', 'weather'],
   ),
   entry(
     'accuweatherGetAdministrativeArea',
     'Return one administrative area by country and administrative-area codes.',
     getAdministrativeArea,
     'read',
+    ['location', 'region', 'state'],
   ),
   entry(
     'accuweatherGetCountry',
     'Return one country by AccuWeather region and country codes.',
     getCountry,
     'read',
+    ['country', 'countries', 'location'],
   ),
   entry(
     'accuweatherGetCurrentConditions',
     'Return current weather observations for a location key, with optional details and photos.',
     getCurrentConditions,
     'read',
+    ['weather', 'temperature', 'temp', 'condition', 'now', 'city'],
   ),
   entry(
     'accuweatherGetDailyForecast',
     'Return a 1, 5, 7, 10, or 15-day forecast for a location key.',
     getDailyForecast,
     'read',
+    ['weather', 'forecast', 'forecasts', 'temperature', 'temp', 'daily'],
   ),
   entry(
     'accuweatherGetDailyIndices',
     'Return lifestyle-index forecasts for all indices, one group, or one index at a location.',
     getDailyIndices,
     'read',
+    ['index', 'indices', 'allergy', 'uv', 'weather'],
   ),
   entry(
     'accuweatherGetHistoricalCurrentConditions',
     'Return the past 6 or 24 hours of current-condition observations for a location key.',
     getHistoricalCurrentConditions,
     'read',
+    ['weather', 'history', 'past', 'temperature'],
   ),
   entry(
     'accuweatherGetHourlyForecast',
     'Return a 1, 12, 24, 72, or 120-hour forecast for a location key.',
     getHourlyForecast,
     'read',
+    ['weather', 'forecast', 'temperature', 'hourly', 'rain'],
   ),
-  entry('accuweatherGetIndex', 'Return metadata for one lifestyle index.', getIndex, 'read'),
+  entry('accuweatherGetIndex', 'Return metadata for one lifestyle index.', getIndex, 'read', [
+    'indices',
+    'uv',
+    'allergy',
+    'weather',
+  ]),
   entry(
     'accuweatherGetIndexGroup',
     'Return the lifestyle indices belonging to one index group.',
     getIndexGroup,
     'read',
+    ['indices', 'group', 'weather'],
   ),
   entry(
     'accuweatherGetLightningForecast',
     'Return forecast lightning probabilities for latitude/longitude coordinates.',
     getLightningForecast,
     'read',
+    ['lightning', 'storm', 'forecast', 'weather'],
   ),
   entry(
     'accuweatherGetLocation',
     'Return full location metadata for an AccuWeather location key.',
     getLocation,
     'read',
+    ['locations', 'city', 'weather', 'key'],
   ),
   entry(
     'accuweatherGetMinuteCastForecast',
     'Return minute-by-minute precipitation conditions for latitude/longitude coordinates.',
     getMinuteCastForecast,
     'read',
+    ['rain', 'precipitation', 'minutecast', 'weather', 'nowcast'],
   ),
   entry(
     'accuweatherGetRadarSatelliteImagery',
     'Return radar and satellite image metadata and URLs at a selected resolution.',
     getRadarSatelliteImagery,
     'read',
+    ['radar', 'satellite', 'map', 'image', 'weather'],
   ),
-  entry('accuweatherGetRegion', 'Return one AccuWeather region by region code.', getRegion, 'read'),
+  entry(
+    'accuweatherGetRegion',
+    'Return one AccuWeather region by region code.',
+    getRegion,
+    'read',
+    ['regions', 'location'],
+  ),
   entry(
     'accuweatherGetTranslationGroup',
     'Return translated strings for one AccuWeather translation group.',
@@ -195,36 +227,42 @@ export const accuweatherTools = [
     'Return the latest observed position of a government-issued tropical storm.',
     getTropicalStormCurrentPosition,
     'read',
+    ['hurricane', 'storm', 'cyclone', 'typhoon', 'weather'],
   ),
   entry(
     'accuweatherListActiveTropicalStorms',
     'Return active government-issued tropical storms globally or filtered by basin and storm ID.',
     listActiveTropicalStorms,
     'read',
+    ['hurricane', 'hurricanes', 'storm', 'storms', 'cyclone', 'weather', 'tracker', 'tracking'],
   ),
   entry(
     'accuweatherListAdministrativeAreas',
     'Return administrative areas globally or within a country, one page at a time.',
     listAdministrativeAreas,
     'read',
+    ['state', 'states', 'province', 'location'],
   ),
   entry(
     'accuweatherListCountries',
     'Return countries globally or within a specific AccuWeather region, one page at a time.',
     listCountries,
     'read',
+    ['country', 'location'],
   ),
   entry(
     'accuweatherListIndexGroups',
     'Return lifestyle-index groups and their identifiers.',
     listIndexGroups,
     'read',
+    ['indices', 'index', 'weather'],
   ),
   entry(
     'accuweatherListIndices',
     'Return all supported lifestyle indices and their identifiers.',
     listIndices,
     'read',
+    ['index', 'uv', 'weather'],
   ),
   entry(
     'accuweatherListMinuteCastColorCodes',
@@ -237,18 +275,21 @@ export const accuweatherTools = [
     'Return cities near an AccuWeather location key.',
     listNeighboringCities,
     'read',
+    ['city', 'cities', 'nearby', 'weather', 'location'],
   ),
   entry(
     'accuweatherListRecentLightningStrikes',
     'Return recent lightning strikes within 1-60 miles of coordinates as GeoJSON.',
     listRecentLightningStrikes,
     'read',
+    ['lightning', 'storm', 'strikes', 'weather'],
   ),
   entry(
     'accuweatherListRegions',
     'Return AccuWeather geographic regions and their codes.',
     listRegions,
     'read',
+    ['region', 'location'],
   ),
   entry(
     'accuweatherListSupportedLanguages',
@@ -261,12 +302,14 @@ export const accuweatherTools = [
     'Return top-ranked cities globally or within one AccuWeather region.',
     listTopCities,
     'read',
+    ['city', 'cities', 'weather', 'ranked'],
   ),
   entry(
     'accuweatherListTopCityConditions',
     'Return current conditions for 50, 100, or 150 globally ranked cities.',
     listTopCityConditions,
     'read',
+    ['city', 'cities', 'weather', 'temperature', 'condition'],
   ),
   entry(
     'accuweatherListTranslationGroups',
@@ -279,36 +322,42 @@ export const accuweatherTools = [
     'Return forecast positions and intensity for a government-issued tropical storm.',
     listTropicalStormForecasts,
     'read',
+    ['hurricane', 'storm', 'forecast', 'weather'],
   ),
   entry(
     'accuweatherListTropicalStormPositions',
     'Return the observed position history of a government-issued tropical storm.',
     listTropicalStormPositions,
     'read',
+    ['hurricane', 'storm', 'track', 'weather'],
   ),
   entry(
     'accuweatherListTropicalStormStatuses',
     'Return tropical storm status categories and wind-speed definitions globally or for one basin.',
     listTropicalStormStatuses,
     'read',
+    ['hurricane', 'storm', 'category', 'weather'],
   ),
   entry(
     'accuweatherListTropicalStormsByYear',
     'Return government-issued tropical storms for a year, optionally filtered by basin and storm ID.',
     listTropicalStormsByYear,
     'read',
+    ['hurricane', 'storm', 'history', 'weather'],
   ),
   entry(
     'accuweatherListWeatherAlarms',
     'Return threshold-based weather alarms for the next 1, 5, 10, or 15 days at a location.',
     listWeatherAlarms,
     'read',
+    ['alarm', 'alert', 'alerts', 'warning', 'weather', 'forecast'],
   ),
   entry(
     'accuweatherListWeatherAlerts',
     'Return active government-issued weather alerts for a location key.',
     listWeatherAlerts,
     'read',
+    ['alert', 'warning', 'warnings', 'alarm', 'weather'],
   ),
   entry(
     'accuweatherResolveLanguageIdentifier',
@@ -321,23 +370,27 @@ export const accuweatherTools = [
     'Search administrative areas by name text with optional country and admin-code filters.',
     searchAdministrativeAreas,
     'read',
+    ['state', 'search', 'location'],
   ),
   entry(
     'accuweatherSearchCityByIpAddress',
     'Resolve an IPv4 or IPv6 address to an AccuWeather city location.',
     searchCityByIpAddress,
     'read',
+    ['city', 'ip', 'location', 'geolocate', 'weather'],
   ),
   entry(
     'accuweatherSearchLocations',
     'Search cities, general locations, postal codes, or points of interest by text.',
     searchLocations,
     'read',
+    ['city', 'cities', 'zip', 'postal', 'search', 'weather', 'location'],
   ),
   entry(
     'accuweatherSearchLocationsByCoordinates',
     'Find the nearest location, city, or point of interest to latitude/longitude coordinates.',
     searchLocationsByCoordinates,
     'read',
+    ['city', 'lat', 'lon', 'gps', 'coordinates', 'weather', 'location'],
   ),
 ];
