@@ -38,6 +38,7 @@ import figma from './toolkits/figma/manifest.js';
 import reddit from './toolkits/reddit/manifest.js';
 import groww from './toolkits/groww/manifest.js';
 import cloudflare from './toolkits/cloudflare/manifest.js';
+import clickup from './toolkits/clickup/manifest.js';
 import slack from './toolkits/slack/manifest.js';
 import discord from './toolkits/discord/manifest.js';
 import confluence from './toolkits/confluence/manifest.js';
@@ -72,6 +73,7 @@ import sentry from './toolkits/sentry/manifest.js';
 import salesforce from './toolkits/salesforce/manifest.js';
 import postman from './toolkits/postman/manifest.js';
 import splunk from './toolkits/splunk/manifest.js';
+import coinbase from './toolkits/coinbase/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -115,6 +117,7 @@ export const toolkits: ToolkitManifest[] = [
   reddit,
   groww,
   cloudflare,
+  clickup,
   slack,
   discord,
   confluence,
@@ -149,6 +152,7 @@ export const toolkits: ToolkitManifest[] = [
   salesforce,
   postman,
   splunk,
+  coinbase,
 ];
 export {
   mathematics,
@@ -191,6 +195,7 @@ export {
   reddit,
   groww,
   cloudflare,
+  clickup,
   slack,
   discord,
   confluence,
@@ -225,6 +230,7 @@ export {
   salesforce,
   postman,
   splunk,
+  coinbase,
 };
 export * from './core/index.js';
 

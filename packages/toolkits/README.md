@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**4810 tools** across **72 toolkits** (run `npm run validate` for live counts).
+**5133 tools** across **74 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -77,6 +77,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | airtable | 21 | bearer token |
 | stack-overflow | 35 | API key |
 | pinterest | 32 | OAuth2 |
+| terraform | 99 | bearer token |
 | neo4j | 21 | basic auth |
 | neon | 110 | API key |
 | kaggle | 35 | basic auth |
@@ -90,6 +91,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | wise | 9 | API key |
 | servicenow | 145 | service account |
 | sentry | 211 | OAuth2 |
+| salesforce | 224 | service account |
 | postman | 126 | API key |
 | splunk | 29 | service account |
 
