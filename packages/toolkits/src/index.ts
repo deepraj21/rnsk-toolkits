@@ -16,6 +16,7 @@ import googleForms from './toolkits/google-forms/manifest.js';
 import aws from './toolkits/aws/manifest.js';
 import azure from './toolkits/azure/manifest.js';
 import gcp from './toolkits/gcp/manifest.js';
+import firebase from './toolkits/firebase/manifest.js';
 import grafana from './toolkits/grafana/manifest.js';
 import newRelic from './toolkits/new-relic/manifest.js';
 import npm from './toolkits/npm/manifest.js';
@@ -53,6 +54,7 @@ import hackerNews from './toolkits/hacker-news/manifest.js';
 import jira from './toolkits/jira/manifest.js';
 import jenkins from './toolkits/jenkins/manifest.js';
 import harness from './toolkits/harness/manifest.js';
+import hubspot from './toolkits/hubspot/manifest.js';
 import dynatrace from './toolkits/dynatrace/manifest.js';
 import airtable from './toolkits/airtable/manifest.js';
 import stackOverflow from './toolkits/stack-overflow/manifest.js';
@@ -106,6 +108,7 @@ export const toolkits: ToolkitManifest[] = [
   aws,
   azure,
   gcp,
+  firebase,
   grafana,
   newRelic,
   npm,
@@ -134,6 +137,7 @@ export const toolkits: ToolkitManifest[] = [
   jira,
   jenkins,
   harness,
+  hubspot,
   dynatrace,
   airtable,
   stackOverflow,
@@ -186,6 +190,7 @@ export {
   aws,
   azure,
   gcp,
+  firebase,
   grafana,
   newRelic,
   npm,
@@ -214,6 +219,7 @@ export {
   jira,
   jenkins,
   harness,
+  hubspot,
   dynatrace,
   airtable,
   stackOverflow,
