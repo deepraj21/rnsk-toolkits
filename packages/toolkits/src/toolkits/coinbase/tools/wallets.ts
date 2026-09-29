@@ -10,7 +10,9 @@ export const coinbaseListWallets = tool({
     coinbaseCredentials: z
       .string()
       .optional()
-      .describe('Injected credentials JSON {apiKey, apiSecret} — required for this private endpoint'),
+      .describe(
+        'Injected credentials JSON {apiKey, apiSecret} — required for this private endpoint',
+      ),
     limit: z
       .number()
       .int()
@@ -18,10 +20,7 @@ export const coinbaseListWallets = tool({
       .max(100)
       .optional()
       .describe('Wallets per page (1-100, default 25)'),
-    order: z
-      .enum(['asc', 'desc'])
-      .optional()
-      .describe('Sort order (default desc)'),
+    order: z.enum(['asc', 'desc']).optional().describe('Sort order (default desc)'),
     startingAfter: z
       .string()
       .optional()

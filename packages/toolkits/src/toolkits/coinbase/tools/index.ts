@@ -1,5 +1,9 @@
 // @ts-nocheck
-import { coinbaseGetAssetDetails, coinbaseGetSupportedNetworks, coinbaseListAssets } from './intx-assets.js';
+import {
+  coinbaseGetAssetDetails,
+  coinbaseGetSupportedNetworks,
+  coinbaseListAssets,
+} from './intx-assets.js';
 import {
   coinbaseGetDailyTradingVolume,
   coinbaseGetInstrumentDetails,

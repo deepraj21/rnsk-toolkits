@@ -15,7 +15,7 @@ const credentialsField = {
 const instrumentField = {
   instrument: z
     .string()
-    .describe("Instrument identifier: name (e.g. BTC-PERP, BTC-USDC), UUID, or instrument ID"),
+    .describe('Instrument identifier: name (e.g. BTC-PERP, BTC-USDC), UUID, or instrument ID'),
 };
 
 export const coinbaseListInstruments = tool({
@@ -136,9 +136,7 @@ export const coinbaseGetDailyTradingVolume = tool({
     'Get per-day trading volumes for International Exchange instruments, with per-instrument breakdowns and exchange-wide totals.',
   inputSchema: z.object({
     ...credentialsField,
-    instruments: z
-      .string()
-      .describe('Comma-separated instrument names (e.g. BTC-PERP,ETH-PERP)'),
+    instruments: z.string().describe('Comma-separated instrument names (e.g. BTC-PERP,ETH-PERP)'),
     timeFrom: z
       .string()
       .optional()

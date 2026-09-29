@@ -21,10 +21,7 @@ export const coinbaseListExchangeProducts = tool({
     'List all Coinbase Exchange trading pairs with limits, status, and configuration. Filter by spot or futures.',
   inputSchema: z.object({
     ...credentialsField,
-    type: z
-      .enum(['spot', 'future'])
-      .optional()
-      .describe('Filter products by type: spot or future'),
+    type: z.enum(['spot', 'future']).optional().describe('Filter products by type: spot or future'),
   }),
   execute: async ({ type }) => {
     try {
@@ -109,8 +106,7 @@ export const coinbaseListProductStats = tool({
 });
 
 export const coinbaseListProductTrades = tool({
-  description:
-    'List recent trades for an Exchange trading pair with pagination by trade ID.',
+  description: 'List recent trades for an Exchange trading pair with pagination by trade ID.',
   inputSchema: z.object({
     ...credentialsField,
     ...productIdField,
@@ -156,10 +152,7 @@ export const coinbaseListProductsCandles = tool({
       .string()
       .optional()
       .describe('Range start as UNIX timestamp in seconds (e.g. 1704067200)'),
-    end: z
-      .string()
-      .optional()
-      .describe('Range end as UNIX timestamp in seconds (defaults to now)'),
+    end: z.string().optional().describe('Range end as UNIX timestamp in seconds (defaults to now)'),
   }),
   execute: async ({ productId, granularity, start, end }) => {
     try {

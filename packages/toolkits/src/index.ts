@@ -26,6 +26,7 @@ import gumroad from './toolkits/gumroad/manifest.js';
 import razorpay from './toolkits/razorpay/manifest.js';
 import prometheus from './toolkits/prometheus/manifest.js';
 import dockerHub from './toolkits/docker-hub/manifest.js';
+import dribbble from './toolkits/dribbble/manifest.js';
 import googleMeet from './toolkits/google-meet/manifest.js';
 import googleSlides from './toolkits/google-slides/manifest.js';
 import googleClassroom from './toolkits/google-classroom/manifest.js';
@@ -74,6 +75,7 @@ import salesforce from './toolkits/salesforce/manifest.js';
 import postman from './toolkits/postman/manifest.js';
 import splunk from './toolkits/splunk/manifest.js';
 import coinbase from './toolkits/coinbase/manifest.js';
+import digitalOcean from './toolkits/digital-ocean/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -114,6 +116,7 @@ export const toolkits: ToolkitManifest[] = [
   razorpay,
   prometheus,
   dockerHub,
+  dribbble,
   reddit,
   groww,
   cloudflare,
@@ -153,6 +156,7 @@ export const toolkits: ToolkitManifest[] = [
   postman,
   splunk,
   coinbase,
+  digitalOcean,
 ];
 export {
   mathematics,
@@ -192,6 +196,7 @@ export {
   razorpay,
   prometheus,
   dockerHub,
+  dribbble,
   reddit,
   groww,
   cloudflare,
@@ -231,6 +236,7 @@ export {
   postman,
   splunk,
   coinbase,
+  digitalOcean,
 };
 export * from './core/index.js';
 

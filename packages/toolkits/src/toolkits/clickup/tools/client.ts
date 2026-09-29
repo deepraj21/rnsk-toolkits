@@ -17,10 +17,7 @@ function buildQuery(query?: Record<string, unknown>): string {
     if (Array.isArray(value)) {
       for (const v of value) {
         if (v === undefined || v === null || v === '') continue;
-        params.append(
-          `${key}[]`,
-          typeof v === 'object' ? JSON.stringify(v) : String(v),
-        );
+        params.append(`${key}[]`, typeof v === 'object' ? JSON.stringify(v) : String(v));
       }
     } else if (typeof value === 'boolean') {
       params.append(key, value ? 'true' : 'false');
@@ -176,7 +173,10 @@ export async function cuUpload(
     const filename = attachment.filename ?? attachment.name;
     const b64 = attachment.content_b64 ?? attachment.content ?? attachment.data;
     const contentType =
-      attachment.content_type ?? attachment.contentType ?? attachment.mimetype ?? 'application/octet-stream';
+      attachment.content_type ??
+      attachment.contentType ??
+      attachment.mimetype ??
+      'application/octet-stream';
     if (!filename || !b64) {
       return { error: 'attachment requires filename (or name) and base64 content (content_b64).' };
     }
@@ -188,8 +188,7 @@ export async function cuUpload(
     }
     const form = new FormData();
     form.append('attachment', new Blob([new Uint8Array(buffer)], { type: contentType }), filename);
-    const url =
-      `${base === 'V3' ? BASE_V3 : BASE_V2}${path}` + buildQuery(query);
+    const url = `${base === 'V3' ? BASE_V3 : BASE_V2}${path}` + buildQuery(query);
     const headers: Record<string, string> = {};
     if (token) headers.Authorization = token;
     const response = await fetch(url, { method: 'POST', headers, body: form });

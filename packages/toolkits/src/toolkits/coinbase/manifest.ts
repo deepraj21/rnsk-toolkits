@@ -19,11 +19,7 @@ export default defineToolkit({
         'Connect Coinbase with an API key triple: API key, base64 API secret, and passphrase (passphrase required for Exchange endpoints such as loans). Only the loans and wallets tools use credentials — all market-data tools are public and work without connecting. Credential JSON is HMAC-signed per request and never logged.',
     },
   },
-  allowedHosts: [
-    'api.exchange.coinbase.com',
-    'api.international.coinbase.com',
-    'api.coinbase.com',
-  ],
+  allowedHosts: ['api.exchange.coinbase.com', 'api.international.coinbase.com', 'api.coinbase.com'],
   tools: coinbaseTools.map((entry) =>
     defineTool({
       name: entry.name,

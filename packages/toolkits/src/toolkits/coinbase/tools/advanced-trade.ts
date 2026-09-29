@@ -51,7 +51,10 @@ export const coinbaseListMarketProducts = tool({
       .optional()
       .describe('Return all products including expired futures contracts'),
     productsSortOrder: z
-      .enum(['PRODUCTS_SORT_ORDER_VOLUME_24H_DESCENDING', 'PRODUCTS_SORT_ORDER_LIST_TIME_DESCENDING'])
+      .enum([
+        'PRODUCTS_SORT_ORDER_VOLUME_24H_DESCENDING',
+        'PRODUCTS_SORT_ORDER_LIST_TIME_DESCENDING',
+      ])
       .optional()
       .describe('Sort order for the product list'),
     contractExpiryType: z
@@ -59,7 +62,12 @@ export const coinbaseListMarketProducts = tool({
       .optional()
       .describe('Filter futures by contract expiry type'),
     expiringContractStatus: z
-      .enum(['STATUS_UNEXPIRED', 'STATUS_EXPIRED', 'STATUS_ALL', 'UNKNOWN_EXPIRING_CONTRACT_STATUS'])
+      .enum([
+        'STATUS_UNEXPIRED',
+        'STATUS_EXPIRED',
+        'STATUS_ALL',
+        'UNKNOWN_EXPIRING_CONTRACT_STATUS',
+      ])
       .optional()
       .describe('Filter expiring futures contracts by status'),
   }),
@@ -129,14 +137,8 @@ export const coinbaseGetPublicMarketTrades = tool({
     ...credentialsField,
     productId: z.string().describe("Trading pair (e.g. 'BTC-USD')"),
     limit: z.number().int().min(1).max(1000).describe('Number of trades to return (1-1000)'),
-    start: z
-      .string()
-      .optional()
-      .describe('UNIX timestamp: only trades at or after this time'),
-    end: z
-      .string()
-      .optional()
-      .describe('UNIX timestamp: only trades before this time'),
+    start: z.string().optional().describe('UNIX timestamp: only trades at or after this time'),
+    end: z.string().optional().describe('UNIX timestamp: only trades before this time'),
   }),
   execute: async ({ productId, limit, start, end }) => {
     try {
@@ -175,10 +177,7 @@ export const coinbaseListProductCandles = tool({
       .string()
       .optional()
       .describe('Range start as UNIX timestamp in seconds (e.g. 1704067200)'),
-    end: z
-      .string()
-      .optional()
-      .describe('Range end as UNIX timestamp in seconds (defaults to now)'),
+    end: z.string().optional().describe('Range end as UNIX timestamp in seconds (defaults to now)'),
   }),
   execute: async ({ productId, granularity, start, end }) => {
     try {

@@ -17,7 +17,9 @@ export const coinbaseGetExchangeCurrency = tool({
     'Get trading configuration, precision, status, and payment details for one Coinbase Exchange currency (e.g. BTC, USD, ETH).',
   inputSchema: z.object({
     ...credentialsField,
-    currencyId: z.string().describe("Currency identifier, case-sensitive (e.g. 'USD', 'BTC', 'ETH')"),
+    currencyId: z
+      .string()
+      .describe("Currency identifier, case-sensitive (e.g. 'USD', 'BTC', 'ETH')"),
   }),
   execute: async ({ currencyId }) => {
     try {
@@ -50,7 +52,9 @@ export const coinbaseListLoanAssets = tool({
     coinbaseCredentials: z
       .string()
       .optional()
-      .describe('Injected credentials JSON {apiKey, apiSecret, passphrase} — required for this private endpoint'),
+      .describe(
+        'Injected credentials JSON {apiKey, apiSecret, passphrase} — required for this private endpoint',
+      ),
   }),
   execute: async ({ coinbaseCredentials }) => {
     try {
@@ -88,7 +92,9 @@ export const coinbaseGetWrappedAssetConversionRate = tool({
   }),
   execute: async ({ wrappedAssetId }) => {
     try {
-      return await exchangeGet(`/wrapped-assets/${encodeURIComponent(wrappedAssetId)}/conversion-rate`);
+      return await exchangeGet(
+        `/wrapped-assets/${encodeURIComponent(wrappedAssetId)}/conversion-rate`,
+      );
     } catch (error) {
       return toCoinbaseError(error, 'Failed to get wrapped asset conversion rate');
     }
