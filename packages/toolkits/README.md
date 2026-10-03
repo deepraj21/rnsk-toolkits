@@ -16,11 +16,13 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**5685 tools** across **80 toolkits** (run `npm run validate` for live counts).
+**6076 tools** across **83 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
 | mathematics | 9 | none |
+| asana | 153 | OAuth2 |
+| cloudinary | 109 | service account |
 | mongodb | 27 | service account |
 | linear | 8 | OAuth2 |
 | gmail | 61 | OAuth2 |
@@ -98,6 +100,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | salesforce | 224 | service account |
 | postman | 126 | API key |
 | splunk | 29 | service account |
+| supabase | 129 | bearer token |
 | coinbase | 28 | service account |
 | digital-ocean | 48 | API key |
 

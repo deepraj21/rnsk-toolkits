@@ -1,5 +1,6 @@
 import mathematics from './toolkits/mathematics/manifest.js';
 import asana from './toolkits/asana/manifest.js';
+import cloudinary from './toolkits/cloudinary/manifest.js';
 import mongodb from './toolkits/mongodb/manifest.js';
 import linear from './toolkits/linear/manifest.js';
 import gmail from './toolkits/gmail/manifest.js';
@@ -85,6 +86,7 @@ import type { ToolkitManifest } from './core/types.js';
 export const toolkits: ToolkitManifest[] = [
   mathematics,
   asana,
+  cloudinary,
   mongodb,
   linear,
   gmail,
@@ -169,6 +171,7 @@ export const toolkits: ToolkitManifest[] = [
 export {
   mathematics,
   asana,
+  cloudinary,
   mongodb,
   linear,
   gmail,
