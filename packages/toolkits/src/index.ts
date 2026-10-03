@@ -1,4 +1,5 @@
 import mathematics from './toolkits/mathematics/manifest.js';
+import asana from './toolkits/asana/manifest.js';
 import mongodb from './toolkits/mongodb/manifest.js';
 import linear from './toolkits/linear/manifest.js';
 import gmail from './toolkits/gmail/manifest.js';
@@ -76,12 +77,14 @@ import sentry from './toolkits/sentry/manifest.js';
 import salesforce from './toolkits/salesforce/manifest.js';
 import postman from './toolkits/postman/manifest.js';
 import splunk from './toolkits/splunk/manifest.js';
+import supabase from './toolkits/supabase/manifest.js';
 import coinbase from './toolkits/coinbase/manifest.js';
 import digitalOcean from './toolkits/digital-ocean/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
   mathematics,
+  asana,
   mongodb,
   linear,
   gmail,
@@ -159,11 +162,13 @@ export const toolkits: ToolkitManifest[] = [
   salesforce,
   postman,
   splunk,
+  supabase,
   coinbase,
   digitalOcean,
 ];
 export {
   mathematics,
+  asana,
   mongodb,
   linear,
   gmail,
@@ -241,6 +246,7 @@ export {
   salesforce,
   postman,
   splunk,
+  supabase,
   coinbase,
   digitalOcean,
 };

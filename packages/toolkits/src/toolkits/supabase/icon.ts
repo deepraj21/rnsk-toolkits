@@ -1,0 +1,6 @@
+const SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" style="fill:none"><path d="M37.412 62.937c-1.635 2.059-4.95.93-4.99-1.698l-.575-38.453h25.855c4.683 0 7.295 5.41 4.383 9.077z" style="fill:url(#a);stroke-width:.57177335"/><path d="M37.412 62.937c-1.635 2.059-4.95.93-4.99-1.698l-.575-38.453h25.855c4.683 0 7.295 5.41 4.383 9.077z" style="fill:url(#b);fill-opacity:.2;stroke-width:.57177335"/><path d="M26.897 1.063c1.635-2.059 4.95-.93 4.99 1.699l.252 38.452H6.607c-4.683 0-7.295-5.409-4.383-9.077z" style="fill:#3ecf8e;stroke-width:.57177335"/><defs><linearGradient id="a" x1="53.974" y1="54.974" x2="94.163" y2="71.829" gradientUnits="userSpaceOnUse" gradientTransform="translate(.986 -.12)scale(.57177)"><stop stop-color="#249361"/><stop offset="1" stop-color="#3ecf8e"/></linearGradient><linearGradient id="b" x1="36.156" y1="30.578" x2="54.484" y2="65.081" gradientUnits="userSpaceOnUse" gradientTransform="translate(.986 -.12)scale(.57177)"><stop/><stop offset="1" stop-opacity="0"/></linearGradient></defs></svg>`;
+
+export const SUPABASE_ICON = {
+  kind: 'svg' as const,
+  dataUri: `data:image/svg+xml;base64,${Buffer.from(SVG).toString('base64')}`,
+};
