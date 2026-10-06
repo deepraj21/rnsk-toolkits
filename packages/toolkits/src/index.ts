@@ -84,6 +84,7 @@ import digitalOcean from './toolkits/digital-ocean/manifest.js';
 import pagerduty from './toolkits/pagerduty/manifest.js';
 import x from './toolkits/x/manifest.js';
 import cronJob from './toolkits/cron-job/manifest.js';
+import ollama from './toolkits/ollama/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -173,6 +174,7 @@ export const toolkits: ToolkitManifest[] = [
   pagerduty,
   x,
   cronJob,
+  ollama,
 ];
 export {
   mathematics,
@@ -261,6 +263,7 @@ export {
   pagerduty,
   x,
   cronJob,
+  ollama,
 };
 export * from './core/index.js';
 
