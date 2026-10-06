@@ -86,6 +86,7 @@ import pagerduty from './toolkits/pagerduty/manifest.js';
 import x from './toolkits/x/manifest.js';
 import cronJob from './toolkits/cron-job/manifest.js';
 import ollama from './toolkits/ollama/manifest.js';
+import intercom from './toolkits/intercom/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -177,6 +178,7 @@ export const toolkits: ToolkitManifest[] = [
   x,
   cronJob,
   ollama,
+  intercom,
 ];
 export {
   mathematics,
@@ -267,6 +269,7 @@ export {
   x,
   cronJob,
   ollama,
+  intercom,
 };
 export * from './core/index.js';
 
