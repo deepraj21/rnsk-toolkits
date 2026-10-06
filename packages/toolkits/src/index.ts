@@ -82,6 +82,7 @@ import supabase from './toolkits/supabase/manifest.js';
 import coinbase from './toolkits/coinbase/manifest.js';
 import digitalOcean from './toolkits/digital-ocean/manifest.js';
 import pagerduty from './toolkits/pagerduty/manifest.js';
+import x from './toolkits/x/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -169,6 +170,7 @@ export const toolkits: ToolkitManifest[] = [
   coinbase,
   digitalOcean,
   pagerduty,
+  x,
 ];
 export {
   mathematics,
@@ -255,6 +257,7 @@ export {
   coinbase,
   digitalOcean,
   pagerduty,
+  x,
 };
 export * from './core/index.js';
 
