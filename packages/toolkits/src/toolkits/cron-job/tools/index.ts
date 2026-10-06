@@ -1,0 +1,133 @@
+// @ts-nocheck
+import {
+  cronJobListJobs,
+  cronJobGetJob,
+  cronJobCreateJob,
+  cronJobUpdateJob,
+  cronJobDeleteJob,
+  cronJobGetHistory,
+  cronJobGetHistoryItem,
+} from './jobs.js';
+import {
+  cronJobListFolders,
+  cronJobGetFolder,
+  cronJobCreateFolder,
+  cronJobUpdateFolder,
+  cronJobDeleteFolder,
+} from './folders.js';
+
+export {
+  cronJobListJobs,
+  cronJobGetJob,
+  cronJobCreateJob,
+  cronJobUpdateJob,
+  cronJobDeleteJob,
+  cronJobGetHistory,
+  cronJobGetHistoryItem,
+  cronJobListFolders,
+  cronJobGetFolder,
+  cronJobCreateFolder,
+  cronJobUpdateFolder,
+  cronJobDeleteFolder,
+};
+
+const AUTH = 'cronJobApiKey' as const;
+
+export const cronJobTools = [
+  {
+    name: 'cronJobListJobs',
+    description: 'List all cron jobs in the account with status and next executions.',
+    tool: cronJobListJobs,
+    requiredAuth: AUTH,
+    scope: 'read' as const,
+    keywords: ['scheduled tasks', 'crons', 'monitors'],
+  },
+  {
+    name: 'cronJobGetJob',
+    description: 'Get detailed settings of a cron job by job ID.',
+    tool: cronJobGetJob,
+    requiredAuth: AUTH,
+    scope: 'read' as const,
+    keywords: ['scheduled task', 'fetch', 'settings'],
+  },
+  {
+    name: 'cronJobCreateJob',
+    description: 'Create a new cron job with URL, schedule, method, auth, and notifications.',
+    tool: cronJobCreateJob,
+    requiredAuth: AUTH,
+    scope: 'write' as const,
+    keywords: ['schedule', 'webhook', 'monitor', 'add'],
+  },
+  {
+    name: 'cronJobUpdateJob',
+    description: 'Update a cron job by ID; only changed fields need to be sent.',
+    tool: cronJobUpdateJob,
+    requiredAuth: AUTH,
+    scope: 'write' as const,
+    keywords: ['schedule', 'edit', 'enable', 'disable'],
+  },
+  {
+    name: 'cronJobDeleteJob',
+    description: 'Delete a cron job by job ID.',
+    tool: cronJobDeleteJob,
+    requiredAuth: AUTH,
+    scope: 'delete' as const,
+    keywords: ['scheduled task', 'remove'],
+  },
+  {
+    name: 'cronJobGetHistory',
+    description: 'Get execution history of a cron job with predicted next runs.',
+    tool: cronJobGetHistory,
+    requiredAuth: AUTH,
+    scope: 'read' as const,
+    keywords: ['runs', 'logs', 'executions'],
+  },
+  {
+    name: 'cronJobGetHistoryItem',
+    description: 'Get one execution detail with response headers and body.',
+    tool: cronJobGetHistoryItem,
+    requiredAuth: AUTH,
+    scope: 'read' as const,
+    keywords: ['run', 'log', 'response'],
+  },
+  {
+    name: 'cronJobListFolders',
+    description: 'List all folders organizing cron jobs.',
+    tool: cronJobListFolders,
+    requiredAuth: AUTH,
+    scope: 'read' as const,
+    keywords: ['directories', 'groups', 'organize'],
+  },
+  {
+    name: 'cronJobGetFolder',
+    description: 'Get details of a folder by folder ID.',
+    tool: cronJobGetFolder,
+    requiredAuth: AUTH,
+    scope: 'read' as const,
+    keywords: ['directory', 'fetch'],
+  },
+  {
+    name: 'cronJobCreateFolder',
+    description: 'Create a new folder for organizing cron jobs.',
+    tool: cronJobCreateFolder,
+    requiredAuth: AUTH,
+    scope: 'write' as const,
+    keywords: ['directory', 'add', 'organize'],
+  },
+  {
+    name: 'cronJobUpdateFolder',
+    description: 'Rename a folder by folder ID.',
+    tool: cronJobUpdateFolder,
+    requiredAuth: AUTH,
+    scope: 'write' as const,
+    keywords: ['directory', 'rename', 'edit'],
+  },
+  {
+    name: 'cronJobDeleteFolder',
+    description: 'Delete a folder; contained jobs move to the root folder.',
+    tool: cronJobDeleteFolder,
+    requiredAuth: AUTH,
+    scope: 'delete' as const,
+    keywords: ['directory', 'remove'],
+  },
+];

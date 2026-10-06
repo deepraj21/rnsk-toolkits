@@ -83,6 +83,7 @@ import coinbase from './toolkits/coinbase/manifest.js';
 import digitalOcean from './toolkits/digital-ocean/manifest.js';
 import pagerduty from './toolkits/pagerduty/manifest.js';
 import x from './toolkits/x/manifest.js';
+import cronJob from './toolkits/cron-job/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -171,6 +172,7 @@ export const toolkits: ToolkitManifest[] = [
   digitalOcean,
   pagerduty,
   x,
+  cronJob,
 ];
 export {
   mathematics,
@@ -258,6 +260,7 @@ export {
   digitalOcean,
   pagerduty,
   x,
+  cronJob,
 };
 export * from './core/index.js';
 
