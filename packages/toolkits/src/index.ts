@@ -3,6 +3,7 @@ import asana from './toolkits/asana/manifest.js';
 import cloudinary from './toolkits/cloudinary/manifest.js';
 import mongodb from './toolkits/mongodb/manifest.js';
 import linear from './toolkits/linear/manifest.js';
+import linkedin from './toolkits/linkedin/manifest.js';
 import gmail from './toolkits/gmail/manifest.js';
 import webSearch from './toolkits/web-search/manifest.js';
 import github from './toolkits/github/manifest.js';
@@ -93,6 +94,7 @@ export const toolkits: ToolkitManifest[] = [
   cloudinary,
   mongodb,
   linear,
+  linkedin,
   gmail,
   webSearch,
   github,
@@ -182,6 +184,7 @@ export {
   cloudinary,
   mongodb,
   linear,
+  linkedin,
   gmail,
   webSearch,
   github,
