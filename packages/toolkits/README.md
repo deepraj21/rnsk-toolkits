@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**6650 tools** across **89 toolkits** (run `npm run validate` for live counts).
+**6708 tools** across **90 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -109,6 +109,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | cron-job | 12 | bearer token |
 | ollama | 8 | service account |
 | intercom | 133 | service account |
+| whatsapp | 58 | service account |
 
 ## Install
 
