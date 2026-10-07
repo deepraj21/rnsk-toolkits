@@ -90,6 +90,7 @@ import intercom from './toolkits/intercom/manifest.js';
 import whatsapp from './toolkits/whatsapp/manifest.js';
 import workday from './toolkits/workday/manifest.js';
 import make from './toolkits/make/manifest.js';
+import jfrog from './toolkits/jfrog/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -185,6 +186,7 @@ export const toolkits: ToolkitManifest[] = [
   whatsapp,
   workday,
   make,
+  jfrog,
 ];
 export {
   mathematics,
@@ -279,6 +281,7 @@ export {
   whatsapp,
   workday,
   make,
+  jfrog,
 };
 export * from './core/index.js';
 
