@@ -96,6 +96,7 @@ import kafka from './toolkits/kafka/manifest.js';
 import rabbitmq from './toolkits/rabbitmq/manifest.js';
 import redis from './toolkits/redis/manifest.js';
 import outlook from './toolkits/outlook/manifest.js';
+import teams from './toolkits/teams/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -197,6 +198,7 @@ export const toolkits: ToolkitManifest[] = [
   rabbitmq,
   redis,
   outlook,
+  teams,
 ];
 export {
   mathematics,
@@ -297,6 +299,7 @@ export {
   rabbitmq,
   redis,
   outlook,
+  teams,
 };
 export * from './core/index.js';
 
