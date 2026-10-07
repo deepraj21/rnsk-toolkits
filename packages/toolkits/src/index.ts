@@ -91,6 +91,7 @@ import whatsapp from './toolkits/whatsapp/manifest.js';
 import workday from './toolkits/workday/manifest.js';
 import make from './toolkits/make/manifest.js';
 import jfrog from './toolkits/jfrog/manifest.js';
+import databricks from './toolkits/databricks/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -187,6 +188,7 @@ export const toolkits: ToolkitManifest[] = [
   workday,
   make,
   jfrog,
+  databricks,
 ];
 export {
   mathematics,
@@ -282,6 +284,7 @@ export {
   workday,
   make,
   jfrog,
+  databricks,
 };
 export * from './core/index.js';
 
