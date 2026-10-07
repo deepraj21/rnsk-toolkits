@@ -87,6 +87,7 @@ import pagerduty from './toolkits/pagerduty/manifest.js';
 import x from './toolkits/x/manifest.js';
 import cronJob from './toolkits/cron-job/manifest.js';
 import ollama from './toolkits/ollama/manifest.js';
+import okta from './toolkits/okta/manifest.js';
 import intercom from './toolkits/intercom/manifest.js';
 import whatsapp from './toolkits/whatsapp/manifest.js';
 import workday from './toolkits/workday/manifest.js';
@@ -198,6 +199,7 @@ export const toolkits: ToolkitManifest[] = [
   x,
   cronJob,
   ollama,
+  okta,
   intercom,
   whatsapp,
   workday,
@@ -308,6 +310,7 @@ export {
   x,
   cronJob,
   ollama,
+  okta,
   intercom,
   whatsapp,
   workday,
