@@ -104,6 +104,7 @@ import zendesk from './toolkits/zendesk/manifest.js';
 import elastic from './toolkits/elastic/manifest.js';
 import mermaid from './toolkits/mermaid/manifest.js';
 import pinecone from './toolkits/pinecone/manifest.js';
+import opsgenie from './toolkits/opsgenie/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -213,6 +214,7 @@ export const toolkits: ToolkitManifest[] = [
   elastic,
   mermaid,
   pinecone,
+  opsgenie,
 ];
 export {
   mathematics,
@@ -321,6 +323,7 @@ export {
   elastic,
   mermaid,
   pinecone,
+  opsgenie,
 };
 export * from './core/index.js';
 

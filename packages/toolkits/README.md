@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**7924 tools** across **106 toolkits** (run `npm run validate` for live counts).
+**8086 tools** across **107 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -126,6 +126,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | elastic | 109 | service account |
 | mermaid | 30 | none |
 | pinecone | 52 | API key |
+| opsgenie | 162 | API key |
 
 ## Install
 
