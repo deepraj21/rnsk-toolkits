@@ -89,6 +89,7 @@ import ollama from './toolkits/ollama/manifest.js';
 import intercom from './toolkits/intercom/manifest.js';
 import whatsapp from './toolkits/whatsapp/manifest.js';
 import workday from './toolkits/workday/manifest.js';
+import make from './toolkits/make/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -183,6 +184,7 @@ export const toolkits: ToolkitManifest[] = [
   intercom,
   whatsapp,
   workday,
+  make,
 ];
 export {
   mathematics,
@@ -276,6 +278,7 @@ export {
   intercom,
   whatsapp,
   workday,
+  make,
 };
 export * from './core/index.js';
 
