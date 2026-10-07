@@ -95,6 +95,7 @@ import databricks from './toolkits/databricks/manifest.js';
 import kafka from './toolkits/kafka/manifest.js';
 import rabbitmq from './toolkits/rabbitmq/manifest.js';
 import redis from './toolkits/redis/manifest.js';
+import outlook from './toolkits/outlook/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -195,6 +196,7 @@ export const toolkits: ToolkitManifest[] = [
   kafka,
   rabbitmq,
   redis,
+  outlook,
 ];
 export {
   mathematics,
@@ -294,6 +296,7 @@ export {
   kafka,
   rabbitmq,
   redis,
+  outlook,
 };
 export * from './core/index.js';
 
