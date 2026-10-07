@@ -98,6 +98,7 @@ import redis from './toolkits/redis/manifest.js';
 import outlook from './toolkits/outlook/manifest.js';
 import teams from './toolkits/teams/manifest.js';
 import onenote from './toolkits/onenote/manifest.js';
+import synk from './toolkits/synk/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -201,6 +202,7 @@ export const toolkits: ToolkitManifest[] = [
   outlook,
   teams,
   onenote,
+  synk,
 ];
 export {
   mathematics,
@@ -303,6 +305,7 @@ export {
   outlook,
   teams,
   onenote,
+  synk,
 };
 export * from './core/index.js';
 
