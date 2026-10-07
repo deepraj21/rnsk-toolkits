@@ -99,6 +99,7 @@ import outlook from './toolkits/outlook/manifest.js';
 import teams from './toolkits/teams/manifest.js';
 import onenote from './toolkits/onenote/manifest.js';
 import synk from './toolkits/synk/manifest.js';
+import argoCd from './toolkits/argo-cd/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -203,6 +204,7 @@ export const toolkits: ToolkitManifest[] = [
   teams,
   onenote,
   synk,
+  argoCd,
 ];
 export {
   mathematics,
@@ -306,6 +308,7 @@ export {
   teams,
   onenote,
   synk,
+  argoCd,
 };
 export * from './core/index.js';
 
