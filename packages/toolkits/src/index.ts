@@ -62,6 +62,7 @@ import dynatrace from './toolkits/dynatrace/manifest.js';
 import airtable from './toolkits/airtable/manifest.js';
 import stackOverflow from './toolkits/stack-overflow/manifest.js';
 import pinterest from './toolkits/pinterest/manifest.js';
+import pulumi from './toolkits/pulumi/manifest.js';
 import terraform from './toolkits/terraform/manifest.js';
 import neo4j from './toolkits/neo4j/manifest.js';
 import neon from './toolkits/neon/manifest.js';
@@ -172,6 +173,7 @@ export const toolkits: ToolkitManifest[] = [
   airtable,
   stackOverflow,
   pinterest,
+  pulumi,
   terraform,
   neo4j,
   neon,
@@ -281,6 +283,7 @@ export {
   airtable,
   stackOverflow,
   pinterest,
+  pulumi,
   terraform,
   neo4j,
   neon,
