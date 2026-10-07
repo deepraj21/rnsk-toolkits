@@ -88,6 +88,7 @@ import cronJob from './toolkits/cron-job/manifest.js';
 import ollama from './toolkits/ollama/manifest.js';
 import intercom from './toolkits/intercom/manifest.js';
 import whatsapp from './toolkits/whatsapp/manifest.js';
+import workday from './toolkits/workday/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -181,6 +182,7 @@ export const toolkits: ToolkitManifest[] = [
   ollama,
   intercom,
   whatsapp,
+  workday,
 ];
 export {
   mathematics,
@@ -273,6 +275,7 @@ export {
   ollama,
   intercom,
   whatsapp,
+  workday,
 };
 export * from './core/index.js';
 
