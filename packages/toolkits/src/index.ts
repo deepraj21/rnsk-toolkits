@@ -94,6 +94,7 @@ import jfrog from './toolkits/jfrog/manifest.js';
 import databricks from './toolkits/databricks/manifest.js';
 import kafka from './toolkits/kafka/manifest.js';
 import rabbitmq from './toolkits/rabbitmq/manifest.js';
+import redis from './toolkits/redis/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -193,6 +194,7 @@ export const toolkits: ToolkitManifest[] = [
   databricks,
   kafka,
   rabbitmq,
+  redis,
 ];
 export {
   mathematics,
@@ -291,6 +293,7 @@ export {
   databricks,
   kafka,
   rabbitmq,
+  redis,
 };
 export * from './core/index.js';
 
