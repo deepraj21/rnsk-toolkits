@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**7609 tools** across **102 toolkits** (run `npm run validate` for live counts).
+**7733 tools** across **103 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -122,6 +122,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | onenote | 35 | OAuth2 |
 | synk | 105 | service account |
 | argo-cd | 82 | service account |
+| zendesk | 124 | service account |
 
 ## Install
 

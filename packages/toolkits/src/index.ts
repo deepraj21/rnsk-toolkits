@@ -100,6 +100,7 @@ import teams from './toolkits/teams/manifest.js';
 import onenote from './toolkits/onenote/manifest.js';
 import synk from './toolkits/synk/manifest.js';
 import argoCd from './toolkits/argo-cd/manifest.js';
+import zendesk from './toolkits/zendesk/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -205,6 +206,7 @@ export const toolkits: ToolkitManifest[] = [
   onenote,
   synk,
   argoCd,
+  zendesk,
 ];
 export {
   mathematics,
@@ -309,6 +311,7 @@ export {
   onenote,
   synk,
   argoCd,
+  zendesk,
 };
 export * from './core/index.js';
 
