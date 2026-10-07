@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**7073 tools** across **95 toolkits** (run `npm run validate` for live counts).
+**7161 tools** across **96 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -115,6 +115,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | jfrog | 77 | service account |
 | databricks | 138 | service account |
 | kafka | 68 | service account |
+| rabbitmq | 88 | service account |
 
 ## Install
 
