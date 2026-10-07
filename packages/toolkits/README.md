@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**7872 tools** across **105 toolkits** (run `npm run validate` for live counts).
+**7924 tools** across **106 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -125,6 +125,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | zendesk | 124 | service account |
 | elastic | 109 | service account |
 | mermaid | 30 | none |
+| pinecone | 52 | API key |
 
 ## Install
 
