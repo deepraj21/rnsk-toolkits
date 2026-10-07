@@ -72,6 +72,7 @@ import devTo from './toolkits/dev-to/manifest.js';
 import nasa from './toolkits/nasa/manifest.js';
 import notebookLm from './toolkits/notebook-lm/manifest.js';
 import vercel from './toolkits/vercel/manifest.js';
+import vault from './toolkits/vault/manifest.js';
 import zoho from './toolkits/zoho/manifest.js';
 import wordpress from './toolkits/wordpress/manifest.js';
 import wise from './toolkits/wise/manifest.js';
@@ -184,6 +185,7 @@ export const toolkits: ToolkitManifest[] = [
   notebookLm,
   nasa,
   vercel,
+  vault,
   zoho,
   wordpress,
   wise,
@@ -295,6 +297,7 @@ export {
   notebookLm,
   nasa,
   vercel,
+  vault,
   zoho,
   wordpress,
   wise,
