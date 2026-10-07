@@ -92,6 +92,7 @@ import workday from './toolkits/workday/manifest.js';
 import make from './toolkits/make/manifest.js';
 import jfrog from './toolkits/jfrog/manifest.js';
 import databricks from './toolkits/databricks/manifest.js';
+import kafka from './toolkits/kafka/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -189,6 +190,7 @@ export const toolkits: ToolkitManifest[] = [
   make,
   jfrog,
   databricks,
+  kafka,
 ];
 export {
   mathematics,
@@ -285,6 +287,7 @@ export {
   make,
   jfrog,
   databricks,
+  kafka,
 };
 export * from './core/index.js';
 
