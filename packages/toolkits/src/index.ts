@@ -102,6 +102,7 @@ import synk from './toolkits/synk/manifest.js';
 import argoCd from './toolkits/argo-cd/manifest.js';
 import zendesk from './toolkits/zendesk/manifest.js';
 import elastic from './toolkits/elastic/manifest.js';
+import mermaid from './toolkits/mermaid/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -209,6 +210,7 @@ export const toolkits: ToolkitManifest[] = [
   argoCd,
   zendesk,
   elastic,
+  mermaid,
 ];
 export {
   mathematics,
@@ -315,6 +317,7 @@ export {
   argoCd,
   zendesk,
   elastic,
+  mermaid,
 };
 export * from './core/index.js';
 

@@ -1,0 +1,6 @@
+const SVG = `<svg viewBox="0 0 491 491" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2"><path d="M490.16 84.61C490.16 37.912 452.248 0 405.55 0H84.61C37.912 0 0 37.912 0 84.61v320.94c0 46.698 37.912 84.61 84.61 84.61h320.94c46.698 0 84.61-37.912 84.61-84.61z" style="fill:#ff3670"/><path d="M407.48 111.18c-71.893-3.077-137.907 41.158-162.4 108.82-24.493-67.662-90.507-111.897-162.4-108.82-2.395 57.049 24.897 111.452 72.06 143.64 24.168 16.599 38.61 44.131 38.53 73.45v50.86H296.9v-50.86c-.084-29.317 14.355-56.85 38.52-73.45 47.176-32.176 74.472-86.587 72.06-143.64" style="fill:#fff;fill-rule:nonzero"/></svg>`;
+
+export const MERMAID_ICON = {
+  kind: 'svg' as const,
+  dataUri: `data:image/svg+xml;base64,${Buffer.from(SVG).toString('base64')}`,
+};
