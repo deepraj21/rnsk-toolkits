@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**8184 tools** across **110 toolkits** (run `npm run validate` for live counts).
+**8218 tools** across **113 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -26,6 +26,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | mongodb | 27 | service account |
 | linear | 8 | OAuth2 |
 | linkedin | 25 | OAuth2 |
+| launchdarkly | 12 | bearer token |
 | gmail | 61 | OAuth2 |
 | web-search (Firecrawl) | 2 | service env |
 | github | 173 | OAuth2 |
@@ -66,6 +67,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | groww | 30 | bearer token |
 | cloudflare | 20 | API key |
 | clickup | 164 | OAuth2 |
+| circle-ci | 16 | service account |
 | slack | 159 | OAuth2 |
 | discord | 23 | OAuth2 |
 | confluence | 70 | OAuth2 |
@@ -98,6 +100,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | zoho | 57 | OAuth2 |
 | wordpress | 10 | OAuth2 |
 | wise | 9 | API key |
+| wiz | 6 | service account |
 | servicenow | 145 | service account |
 | sentry | 211 | OAuth2 |
 | salesforce | 224 | service account |

@@ -4,6 +4,7 @@ import cloudinary from './toolkits/cloudinary/manifest.js';
 import mongodb from './toolkits/mongodb/manifest.js';
 import linear from './toolkits/linear/manifest.js';
 import linkedin from './toolkits/linkedin/manifest.js';
+import launchdarkly from './toolkits/launchdarkly/manifest.js';
 import gmail from './toolkits/gmail/manifest.js';
 import webSearch from './toolkits/web-search/manifest.js';
 import github from './toolkits/github/manifest.js';
@@ -44,6 +45,7 @@ import reddit from './toolkits/reddit/manifest.js';
 import groww from './toolkits/groww/manifest.js';
 import cloudflare from './toolkits/cloudflare/manifest.js';
 import clickup from './toolkits/clickup/manifest.js';
+import circleCi from './toolkits/circle-ci/manifest.js';
 import slack from './toolkits/slack/manifest.js';
 import discord from './toolkits/discord/manifest.js';
 import confluence from './toolkits/confluence/manifest.js';
@@ -76,6 +78,7 @@ import vault from './toolkits/vault/manifest.js';
 import zoho from './toolkits/zoho/manifest.js';
 import wordpress from './toolkits/wordpress/manifest.js';
 import wise from './toolkits/wise/manifest.js';
+import wiz from './toolkits/wiz/manifest.js';
 import servicenow from './toolkits/servicenow/manifest.js';
 import sentry from './toolkits/sentry/manifest.js';
 import salesforce from './toolkits/salesforce/manifest.js';
@@ -117,6 +120,7 @@ export const toolkits: ToolkitManifest[] = [
   mongodb,
   linear,
   linkedin,
+  launchdarkly,
   gmail,
   webSearch,
   github,
@@ -157,6 +161,7 @@ export const toolkits: ToolkitManifest[] = [
   groww,
   cloudflare,
   clickup,
+  circleCi,
   slack,
   discord,
   confluence,
@@ -189,6 +194,7 @@ export const toolkits: ToolkitManifest[] = [
   zoho,
   wordpress,
   wise,
+  wiz,
   servicenow,
   sentry,
   salesforce,
@@ -229,6 +235,7 @@ export {
   mongodb,
   linear,
   linkedin,
+  launchdarkly,
   gmail,
   webSearch,
   github,
@@ -269,6 +276,7 @@ export {
   groww,
   cloudflare,
   clickup,
+  circleCi,
   slack,
   discord,
   confluence,
@@ -301,6 +309,7 @@ export {
   zoho,
   wordpress,
   wise,
+  wiz,
   servicenow,
   sentry,
   salesforce,
