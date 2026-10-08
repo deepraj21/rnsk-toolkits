@@ -48,6 +48,7 @@ import clickup from './toolkits/clickup/manifest.js';
 import circleCi from './toolkits/circle-ci/manifest.js';
 import slack from './toolkits/slack/manifest.js';
 import discord from './toolkits/discord/manifest.js';
+import docusign from './toolkits/docusign/manifest.js';
 import confluence from './toolkits/confluence/manifest.js';
 import convex from './toolkits/convex/manifest.js';
 import datadog from './toolkits/datadog/manifest.js';
@@ -82,6 +83,7 @@ import wiz from './toolkits/wiz/manifest.js';
 import servicenow from './toolkits/servicenow/manifest.js';
 import sentry from './toolkits/sentry/manifest.js';
 import salesforce from './toolkits/salesforce/manifest.js';
+import sap from './toolkits/sap/manifest.js';
 import postman from './toolkits/postman/manifest.js';
 import splunk from './toolkits/splunk/manifest.js';
 import supabase from './toolkits/supabase/manifest.js';
@@ -166,6 +168,7 @@ export const toolkits: ToolkitManifest[] = [
   circleCi,
   slack,
   discord,
+  docusign,
   confluence,
   convex,
   datadog,
@@ -200,6 +203,7 @@ export const toolkits: ToolkitManifest[] = [
   servicenow,
   sentry,
   salesforce,
+  sap,
   postman,
   splunk,
   supabase,
@@ -283,6 +287,7 @@ export {
   circleCi,
   slack,
   discord,
+  docusign,
   confluence,
   convex,
   datadog,
@@ -317,6 +322,7 @@ export {
   servicenow,
   sentry,
   salesforce,
+  sap,
   postman,
   splunk,
   supabase,
