@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**8262 tools** across **117 toolkits** (run `npm run validate` for live counts).
+**8309 tools** across **120 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -60,6 +60,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | snowflake | 16 | service account |
 | gumroad | 7 | OAuth2 |
 | razorpay | 42 | basic auth |
+| paypal | 16 | service account |
 | prometheus | 37 | service account |
 | docker-hub | 20 | service account |
 | dribbble | 12 | OAuth2 |
@@ -106,7 +107,9 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | sentry | 211 | OAuth2 |
 | salesforce | 224 | service account |
 | sap | 11 | service account |
+| shopify | 16 | service account |
 | postman | 126 | API key |
+| power-bi | 15 | service account |
 | splunk | 29 | service account |
 | supabase | 129 | bearer token |
 | coinbase | 28 | service account |

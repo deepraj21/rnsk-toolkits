@@ -29,6 +29,7 @@ import telegram from './toolkits/telegram/manifest.js';
 import snowflake from './toolkits/snowflake/manifest.js';
 import gumroad from './toolkits/gumroad/manifest.js';
 import razorpay from './toolkits/razorpay/manifest.js';
+import paypal from './toolkits/paypal/manifest.js';
 import prometheus from './toolkits/prometheus/manifest.js';
 import dockerHub from './toolkits/docker-hub/manifest.js';
 import dribbble from './toolkits/dribbble/manifest.js';
@@ -84,7 +85,9 @@ import servicenow from './toolkits/servicenow/manifest.js';
 import sentry from './toolkits/sentry/manifest.js';
 import salesforce from './toolkits/salesforce/manifest.js';
 import sap from './toolkits/sap/manifest.js';
+import shopify from './toolkits/shopify/manifest.js';
 import postman from './toolkits/postman/manifest.js';
+import powerBi from './toolkits/power-bi/manifest.js';
 import splunk from './toolkits/splunk/manifest.js';
 import supabase from './toolkits/supabase/manifest.js';
 import coinbase from './toolkits/coinbase/manifest.js';
@@ -158,6 +161,7 @@ export const toolkits: ToolkitManifest[] = [
   snowflake,
   gumroad,
   razorpay,
+  paypal,
   prometheus,
   dockerHub,
   dribbble,
@@ -204,7 +208,9 @@ export const toolkits: ToolkitManifest[] = [
   sentry,
   salesforce,
   sap,
+  shopify,
   postman,
+  powerBi,
   splunk,
   supabase,
   coinbase,
@@ -277,6 +283,7 @@ export {
   snowflake,
   gumroad,
   razorpay,
+  paypal,
   prometheus,
   dockerHub,
   dribbble,
@@ -323,7 +330,9 @@ export {
   sentry,
   salesforce,
   sap,
+  shopify,
   postman,
+  powerBi,
   splunk,
   supabase,
   coinbase,
