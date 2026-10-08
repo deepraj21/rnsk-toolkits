@@ -90,6 +90,7 @@ import digitalOcean from './toolkits/digital-ocean/manifest.js';
 import pagerduty from './toolkits/pagerduty/manifest.js';
 import x from './toolkits/x/manifest.js';
 import cronJob from './toolkits/cron-job/manifest.js';
+import crowdstrike from './toolkits/crowdstrike/manifest.js';
 import ollama from './toolkits/ollama/manifest.js';
 import okta from './toolkits/okta/manifest.js';
 import intercom from './toolkits/intercom/manifest.js';
@@ -103,6 +104,7 @@ import rabbitmq from './toolkits/rabbitmq/manifest.js';
 import redis from './toolkits/redis/manifest.js';
 import outlook from './toolkits/outlook/manifest.js';
 import teams from './toolkits/teams/manifest.js';
+import twilio from './toolkits/twilio/manifest.js';
 import onenote from './toolkits/onenote/manifest.js';
 import synk from './toolkits/synk/manifest.js';
 import argoCd from './toolkits/argo-cd/manifest.js';
@@ -206,6 +208,7 @@ export const toolkits: ToolkitManifest[] = [
   pagerduty,
   x,
   cronJob,
+  crowdstrike,
   ollama,
   okta,
   intercom,
@@ -219,6 +222,7 @@ export const toolkits: ToolkitManifest[] = [
   redis,
   outlook,
   teams,
+  twilio,
   onenote,
   synk,
   argoCd,
@@ -321,6 +325,7 @@ export {
   pagerduty,
   x,
   cronJob,
+  crowdstrike,
   ollama,
   okta,
   intercom,
@@ -334,6 +339,7 @@ export {
   redis,
   outlook,
   teams,
+  twilio,
   onenote,
   synk,
   argoCd,

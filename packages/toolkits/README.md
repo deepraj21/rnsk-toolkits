@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**8218 tools** across **113 toolkits** (run `npm run validate` for live counts).
+**8240 tools** across **115 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -112,6 +112,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | pagerduty | 317 | API key |
 | x | 79 | OAuth2 |
 | cron-job | 12 | bearer token |
+| crowdstrike | 12 | service account |
 | ollama | 8 | service account |
 | okta | 28 | service account |
 | intercom | 133 | service account |
@@ -125,6 +126,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | redis | 85 | service account |
 | outlook | 75 | OAuth2 |
 | teams | 66 | OAuth2 |
+| twilio | 10 | service account |
 | onenote | 35 | OAuth2 |
 | synk | 105 | service account |
 | argo-cd | 82 | service account |
