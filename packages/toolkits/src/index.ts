@@ -108,6 +108,7 @@ import databricks from './toolkits/databricks/manifest.js';
 import kafka from './toolkits/kafka/manifest.js';
 import rabbitmq from './toolkits/rabbitmq/manifest.js';
 import redis from './toolkits/redis/manifest.js';
+import resend from './toolkits/resend/manifest.js';
 import outlook from './toolkits/outlook/manifest.js';
 import teams from './toolkits/teams/manifest.js';
 import twilio from './toolkits/twilio/manifest.js';
@@ -232,6 +233,7 @@ export const toolkits: ToolkitManifest[] = [
   kafka,
   rabbitmq,
   redis,
+  resend,
   outlook,
   teams,
   twilio,
@@ -355,6 +357,7 @@ export {
   kafka,
   rabbitmq,
   redis,
+  resend,
   outlook,
   teams,
   twilio,
