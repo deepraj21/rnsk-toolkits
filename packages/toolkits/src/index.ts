@@ -89,6 +89,7 @@ import shopify from './toolkits/shopify/manifest.js';
 import postman from './toolkits/postman/manifest.js';
 import powerBi from './toolkits/power-bi/manifest.js';
 import splunk from './toolkits/splunk/manifest.js';
+import stripe from './toolkits/stripe/manifest.js';
 import supabase from './toolkits/supabase/manifest.js';
 import coinbase from './toolkits/coinbase/manifest.js';
 import digitalOcean from './toolkits/digital-ocean/manifest.js';
@@ -212,6 +213,7 @@ export const toolkits: ToolkitManifest[] = [
   postman,
   powerBi,
   splunk,
+  stripe,
   supabase,
   coinbase,
   digitalOcean,
@@ -334,6 +336,7 @@ export {
   postman,
   powerBi,
   splunk,
+  stripe,
   supabase,
   coinbase,
   digitalOcean,
