@@ -50,6 +50,7 @@ export default defineToolkit({
     since: '0.0.19',
     homepage: 'https://www.microsoft.com/en-us/microsoft-365/sharepoint',
     docsUrl: 'https://learn.microsoft.com/en-us/sharepoint/',
-    apiDocsUrl: 'https://learn.microsoft.com/en-us/graph/api/resources/sharepoint?view=graph-rest-1.0',
+    apiDocsUrl:
+      'https://learn.microsoft.com/en-us/graph/api/resources/sharepoint?view=graph-rest-1.0',
   },
 });

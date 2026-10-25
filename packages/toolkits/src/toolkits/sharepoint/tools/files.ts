@@ -16,8 +16,12 @@ const siteIdField = z.string().describe('SharePoint site ID — get it from shar
 const driveIdField = z
   .string()
   .optional()
-  .describe('Document library ID for a non-default library (default is the site\'s default library)');
-const itemIdField = z.string().describe('Drive item ID — get it from sharepointListFiles or sharepointGetFile');
+  .describe(
+    "Document library ID for a non-default library (default is the site's default library)",
+  );
+const itemIdField = z
+  .string()
+  .describe('Drive item ID — get it from sharepointListFiles or sharepointGetFile');
 const pathField = z
   .string()
   .describe('Library-relative path, e.g. "Reports/2026/q3.xlsx" ("" means the library root)');
@@ -29,16 +33,25 @@ export const sharepointListFiles = tool({
     sharepointToken: tokenField,
     siteId: siteIdField,
     driveId: driveIdField,
-    folderPath: pathField.optional().describe('Folder path to browse, e.g. "Reports/2026" (default: library root)'),
-    filter: z.string().optional().describe('OData filter on driveItem, e.g. lastModifiedDateTime gt 2026-01-01'),
+    folderPath: pathField
+      .optional()
+      .describe('Folder path to browse, e.g. "Reports/2026" (default: library root)'),
+    filter: z
+      .string()
+      .optional()
+      .describe('OData filter on driveItem, e.g. lastModifiedDateTime gt 2026-01-01'),
     select: z.string().optional().describe('Comma-separated fields to return'),
   }),
   execute: async ({ sharepointToken, siteId, driveId, folderPath, filter, select }) => {
     try {
       const base = driveBase(siteId, driveId);
-      const result = await graphRequest(sharepointToken, `${base}${folderRef(folderPath)}/children`, {
-        query: { $filter: filter, $select: select },
-      });
+      const result = await graphRequest(
+        sharepointToken,
+        `${base}${folderRef(folderPath)}/children`,
+        {
+          query: { $filter: filter, $select: select },
+        },
+      );
       if (!result.ok) return failedResult('Failed to list files', result);
       return result.data;
     } catch (error) {
@@ -55,7 +68,9 @@ export const sharepointGetFile = tool({
     siteId: siteIdField,
     driveId: driveIdField,
     path: pathField.optional(),
-    itemId: itemIdField.optional().describe('Drive item ID (takes precedence over path when both are given)'),
+    itemId: itemIdField
+      .optional()
+      .describe('Drive item ID (takes precedence over path when both are given)'),
     select: z.string().optional().describe('Comma-separated fields to return'),
     expand: z.string().optional().describe('Related resources to expand, e.g. permissions'),
   }),
@@ -125,10 +140,14 @@ export const sharepointCreateFolder = tool({
   execute: async ({ sharepointToken, siteId, driveId, folderPath, name }) => {
     try {
       const base = driveBase(siteId, driveId);
-      const result = await graphRequest(sharepointToken, `${base}${folderRef(folderPath)}/children`, {
-        method: 'POST',
-        body: { name, folder: {} },
-      });
+      const result = await graphRequest(
+        sharepointToken,
+        `${base}${folderRef(folderPath)}/children`,
+        {
+          method: 'POST',
+          body: { name, folder: {} },
+        },
+      );
       if (!result.ok) return failedResult('Failed to create folder', result);
       return result.data;
     } catch (error) {
@@ -166,7 +185,8 @@ export const sharepointUploadFile = tool({
 });
 
 export const sharepointDeleteFile = tool({
-  description: 'Delete a file or folder from a SharePoint document library (moves it to the site recycle bin).',
+  description:
+    'Delete a file or folder from a SharePoint document library (moves it to the site recycle bin).',
   inputSchema: z.object({
     sharepointToken: tokenField,
     siteId: siteIdField,
@@ -225,7 +245,10 @@ export const sharepointCopyFile = tool({
     siteId: siteIdField,
     driveId: driveIdField,
     itemId: itemIdField,
-    destinationFolderId: z.string().optional().describe('Drive item ID of the destination folder (omit to copy in place)'),
+    destinationFolderId: z
+      .string()
+      .optional()
+      .describe('Drive item ID of the destination folder (omit to copy in place)'),
     name: z.string().optional().describe('Name for the copy, e.g. "q3 (copy).xlsx"'),
   }),
   execute: async ({ sharepointToken, siteId, driveId, itemId, destinationFolderId, name }) => {
@@ -239,10 +262,12 @@ export const sharepointCopyFile = tool({
         },
       });
       if (!result.ok) return failedResult('Failed to copy file', result);
-      return result.data ?? {
-        accepted: true,
-        note: 'Copy accepted; large copies finish asynchronously on the server.',
-      };
+      return (
+        result.data ?? {
+          accepted: true,
+          note: 'Copy accepted; large copies finish asynchronously on the server.',
+        }
+      );
     } catch (error) {
       return toSharePointError(error, 'Error copying file');
     }

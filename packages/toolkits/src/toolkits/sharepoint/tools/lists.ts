@@ -63,7 +63,9 @@ export const sharepointCreateList = tool({
     template: z
       .string()
       .optional()
-      .describe('List template GUID, e.g. genericList (default), documentLibrary, tasks, announcements'),
+      .describe(
+        'List template GUID, e.g. genericList (default), documentLibrary, tasks, announcements',
+      ),
     description: z.string().optional().describe('List description'),
     columns: z
       .array(z.record(z.any()))
@@ -148,11 +150,9 @@ export const sharepointListListItems = tool({
   }),
   execute: async ({ sharepointToken, siteId, listId, filter, select, expand }) => {
     try {
-      const result = await graphRequest(
-        sharepointToken,
-        `/sites/${siteId}/lists/${listId}/items`,
-        { query: { $filter: filter, $select: select, $expand: expand } },
-      );
+      const result = await graphRequest(sharepointToken, `/sites/${siteId}/lists/${listId}/items`, {
+        query: { $filter: filter, $select: select, $expand: expand },
+      });
       if (!result.ok) return failedResult('Failed to list list items', result);
       return result.data;
     } catch (error) {
@@ -187,7 +187,8 @@ export const sharepointGetListItem = tool({
 });
 
 export const sharepointCreateListItem = tool({
-  description: 'Add a row to a SharePoint list. Provide column values as a flat fields object keyed by internal column name.',
+  description:
+    'Add a row to a SharePoint list. Provide column values as a flat fields object keyed by internal column name.',
   inputSchema: z.object({
     sharepointToken: tokenField,
     siteId: siteIdField,
@@ -294,9 +295,13 @@ export const sharepointListListColumns = tool({
   }),
   execute: async ({ sharepointToken, siteId, listId, select }) => {
     try {
-      const result = await graphRequest(sharepointToken, `/sites/${siteId}/lists/${listId}/columns`, {
-        query: { $select: select },
-      });
+      const result = await graphRequest(
+        sharepointToken,
+        `/sites/${siteId}/lists/${listId}/columns`,
+        {
+          query: { $select: select },
+        },
+      );
       if (!result.ok) return failedResult('Failed to list columns', result);
       return result.data;
     } catch (error) {

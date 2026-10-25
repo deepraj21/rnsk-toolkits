@@ -8,8 +8,12 @@ const siteIdField = z.string().describe('SharePoint site ID — get it from shar
 const driveIdField = z
   .string()
   .optional()
-  .describe("Document library ID for a non-default library (default is the site's default library)");
-const itemIdField = z.string().describe('Drive item ID — get it from sharepointListFiles or sharepointGetFile');
+  .describe(
+    "Document library ID for a non-default library (default is the site's default library)",
+  );
+const itemIdField = z
+  .string()
+  .describe('Drive item ID — get it from sharepointListFiles or sharepointGetFile');
 
 export const sharepointCreateShareLink = tool({
   description:
@@ -26,13 +30,23 @@ export const sharepointCreateShareLink = tool({
     scope: z
       .enum(['anonymous', 'organization', 'users'])
       .optional()
-      .describe('Who can use the link: organization (tenant members, default), anonymous (anyone), users (specific people)'),
+      .describe(
+        'Who can use the link: organization (tenant members, default), anonymous (anyone), users (specific people)',
+      ),
     expirationDateTime: z
       .string()
       .optional()
       .describe('Link expiry as ISO 8601, e.g. 2026-12-31T00:00:00Z'),
   }),
-  execute: async ({ sharepointToken, siteId, driveId, itemId, type, scope, expirationDateTime }) => {
+  execute: async ({
+    sharepointToken,
+    siteId,
+    driveId,
+    itemId,
+    type,
+    scope,
+    expirationDateTime,
+  }) => {
     try {
       const base = driveBase(siteId, driveId);
       const result = await graphRequest(sharepointToken, `${base}/items/${itemId}/createLink`, {

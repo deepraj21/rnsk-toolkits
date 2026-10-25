@@ -99,6 +99,7 @@ import cronJob from './toolkits/cron-job/manifest.js';
 import crowdstrike from './toolkits/crowdstrike/manifest.js';
 import ollama from './toolkits/ollama/manifest.js';
 import okta from './toolkits/okta/manifest.js';
+import openai from './toolkits/openai/manifest.js';
 import intercom from './toolkits/intercom/manifest.js';
 import whatsapp from './toolkits/whatsapp/manifest.js';
 import workday from './toolkits/workday/manifest.js';
@@ -225,6 +226,7 @@ export const toolkits: ToolkitManifest[] = [
   crowdstrike,
   ollama,
   okta,
+  openai,
   intercom,
   whatsapp,
   workday,
@@ -350,6 +352,7 @@ export {
   crowdstrike,
   ollama,
   okta,
+  openai,
   intercom,
   whatsapp,
   workday,

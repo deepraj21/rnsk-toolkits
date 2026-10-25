@@ -6,14 +6,19 @@ import { graphRequest, failedResult, toSharePointError } from './client.js';
 const tokenField = z.string().optional().describe('Injected by system; do not provide');
 const siteIdField = z
   .string()
-  .describe('SharePoint site ID (contoso.sharepoint.com,site-collection-id,site-id) — get it from searchSites');
+  .describe(
+    'SharePoint site ID (contoso.sharepoint.com,site-collection-id,site-id) — get it from searchSites',
+  );
 
 export const sharepointSearchSites = tool({
   description:
     'Find SharePoint sites in the tenant by keyword. Use "*" as the search term to list every site the connected user can access.',
   inputSchema: z.object({
     sharepointToken: tokenField,
-    search: z.string().optional().describe('Keywords to match site titles/URLs, or "*" for all sites (default)'),
+    search: z
+      .string()
+      .optional()
+      .describe('Keywords to match site titles/URLs, or "*" for all sites (default)'),
     filter: z.string().optional().describe('OData filter, e.g. siteCollection/root ne null'),
     select: z.string().optional().describe('Comma-separated fields to return'),
   }),
@@ -58,12 +63,17 @@ export const sharepointGetSiteByPath = tool({
   inputSchema: z.object({
     sharepointToken: tokenField,
     hostname: z.string().describe('SharePoint hostname, e.g. contoso.sharepoint.com'),
-    serverRelativePath: z.string().describe('Server-relative site path, e.g. /teams/hr (use / for the root site)'),
+    serverRelativePath: z
+      .string()
+      .describe('Server-relative site path, e.g. /teams/hr (use / for the root site)'),
     select: z.string().optional().describe('Comma-separated fields to return'),
   }),
   execute: async ({ sharepointToken, hostname, serverRelativePath, select }) => {
     try {
-      const path = serverRelativePath === '/' ? `/sites/${hostname}` : `/sites/${hostname}:${serverRelativePath}`;
+      const path =
+        serverRelativePath === '/'
+          ? `/sites/${hostname}`
+          : `/sites/${hostname}:${serverRelativePath}`;
       const result = await graphRequest(sharepointToken, path, { query: { $select: select } });
       if (!result.ok) return failedResult('Failed to get site by path', result);
       return result.data;
@@ -93,7 +103,8 @@ export const sharepointGetRootSite = tool({
 });
 
 export const sharepointListSubsites = tool({
-  description: 'List the sub-sites nested under a SharePoint site (site hierarchy / navigation structure).',
+  description:
+    'List the sub-sites nested under a SharePoint site (site hierarchy / navigation structure).',
   inputSchema: z.object({
     sharepointToken: tokenField,
     siteId: siteIdField,
