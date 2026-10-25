@@ -113,6 +113,7 @@ import outlook from './toolkits/outlook/manifest.js';
 import teams from './toolkits/teams/manifest.js';
 import twilio from './toolkits/twilio/manifest.js';
 import onenote from './toolkits/onenote/manifest.js';
+import sharepoint from './toolkits/sharepoint/manifest.js';
 import synk from './toolkits/synk/manifest.js';
 import argoCd from './toolkits/argo-cd/manifest.js';
 import zendesk from './toolkits/zendesk/manifest.js';
@@ -238,6 +239,7 @@ export const toolkits: ToolkitManifest[] = [
   teams,
   twilio,
   onenote,
+  sharepoint,
   synk,
   argoCd,
   zendesk,
@@ -362,6 +364,7 @@ export {
   teams,
   twilio,
   onenote,
+  sharepoint,
   synk,
   argoCd,
   zendesk,
