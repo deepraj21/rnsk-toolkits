@@ -125,6 +125,7 @@ import opsgenie from './toolkits/opsgenie/manifest.js';
 import zoom from './toolkits/zoom/manifest.js';
 import greenhouse from './toolkits/greenhouse/manifest.js';
 import mailchimp from './toolkits/mailchimp/manifest.js';
+import pipedrive from './toolkits/pipedrive/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -255,6 +256,7 @@ export const toolkits: ToolkitManifest[] = [
   zoom,
   greenhouse,
   mailchimp,
+  pipedrive,
 ];
 export {
   mathematics,
@@ -384,6 +386,7 @@ export {
   zoom,
   greenhouse,
   mailchimp,
+  pipedrive,
 };
 export * from './core/index.js';
 
