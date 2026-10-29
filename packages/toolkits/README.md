@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**8343 tools** across **122 toolkits** (run `npm run validate` for live counts).
+**8436 tools** across **125 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -121,6 +121,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | crowdstrike | 12 | service account |
 | ollama | 8 | service account |
 | okta | 28 | service account |
+| openai | 46 | API key |
 | intercom | 133 | service account |
 | whatsapp | 58 | service account |
 | workday | 35 | service account |
@@ -135,6 +136,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | teams | 66 | OAuth2 |
 | twilio | 10 | service account |
 | onenote | 35 | OAuth2 |
+| sharepoint | 33 | OAuth2 |
 | synk | 105 | service account |
 | argo-cd | 82 | service account |
 | zendesk | 124 | service account |
@@ -142,6 +144,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | mermaid | 30 | none |
 | pinecone | 52 | API key |
 | opsgenie | 162 | API key |
+| zoom | 14 | OAuth2 |
 
 ## Install
 
@@ -204,7 +207,7 @@ See [sandbox/README.md](../../sandbox/README.md).
 
 ## Versioning
 
-Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (`"0.0.6"`).
+Pre-1.0 (`0.0.x`): patch releases add toolkits and tools. Pin an exact version in production (`"0.0.18"`).
 
 ## Contributing
 

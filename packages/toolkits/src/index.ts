@@ -122,6 +122,7 @@ import elastic from './toolkits/elastic/manifest.js';
 import mermaid from './toolkits/mermaid/manifest.js';
 import pinecone from './toolkits/pinecone/manifest.js';
 import opsgenie from './toolkits/opsgenie/manifest.js';
+import zoom from './toolkits/zoom/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -249,6 +250,7 @@ export const toolkits: ToolkitManifest[] = [
   mermaid,
   pinecone,
   opsgenie,
+  zoom,
 ];
 export {
   mathematics,
@@ -375,6 +377,7 @@ export {
   mermaid,
   pinecone,
   opsgenie,
+  zoom,
 };
 export * from './core/index.js';
 
