@@ -126,6 +126,7 @@ import zoom from './toolkits/zoom/manifest.js';
 import greenhouse from './toolkits/greenhouse/manifest.js';
 import mailchimp from './toolkits/mailchimp/manifest.js';
 import pipedrive from './toolkits/pipedrive/manifest.js';
+import netlify from './toolkits/netlify/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -257,6 +258,7 @@ export const toolkits: ToolkitManifest[] = [
   greenhouse,
   mailchimp,
   pipedrive,
+  netlify,
 ];
 export {
   mathematics,
@@ -387,6 +389,7 @@ export {
   greenhouse,
   mailchimp,
   pipedrive,
+  netlify,
 };
 export * from './core/index.js';
 
