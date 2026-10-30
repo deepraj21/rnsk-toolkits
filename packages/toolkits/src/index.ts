@@ -127,6 +127,7 @@ import greenhouse from './toolkits/greenhouse/manifest.js';
 import mailchimp from './toolkits/mailchimp/manifest.js';
 import pipedrive from './toolkits/pipedrive/manifest.js';
 import netlify from './toolkits/netlify/manifest.js';
+import clerk from './toolkits/clerk/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -259,6 +260,7 @@ export const toolkits: ToolkitManifest[] = [
   mailchimp,
   pipedrive,
   netlify,
+  clerk,
 ];
 export {
   mathematics,
@@ -390,6 +392,7 @@ export {
   mailchimp,
   pipedrive,
   netlify,
+  clerk,
 };
 export * from './core/index.js';
 

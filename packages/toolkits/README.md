@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**8506 tools** across **129 toolkits** (run `npm run validate` for live counts).
+**8531 tools** across **130 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -149,6 +149,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | mailchimp | 15 | bearer token |
 | pipedrive | 21 | API key |
 | netlify | 23 | bearer token |
+| clerk | 25 | bearer token |
 
 ## Install
 
