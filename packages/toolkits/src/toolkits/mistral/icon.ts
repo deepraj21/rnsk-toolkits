@@ -1,0 +1,6 @@
+const SVG = `<svg viewBox="0 0 129 91" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:#ffd800;fill-rule:nonzero" d="M18.292 0h18.293v18.123H18.292zm73.181 0h18.293v18.123H91.473z"/><path style="fill:#ffaf00;fill-rule:nonzero" d="M18.292 18.121h36.586v18.123H18.292zm54.889 0h36.586v18.123H73.181z"/><path style="fill:#ff8205;fill-rule:nonzero" d="M18.292 36.243h91.476v18.122H18.292z"/><path style="fill:#fa500f;fill-rule:nonzero" d="M18.292 54.37h18.293v18.123H18.292zm36.591 0h18.293v18.123H54.883zm36.59 0h18.293v18.123H91.473z"/><path style="fill:#e10500;fill-rule:nonzero" d="M0 72.504h54.89v18.123H0zm73.181 0h54.89v18.123h-54.89z"/></svg>`;
+
+export const MISTRAL_ICON = {
+  kind: 'svg' as const,
+  dataUri: `data:image/svg+xml;base64,${Buffer.from(SVG).toString('base64')}`,
+};

@@ -131,6 +131,7 @@ import clerk from './toolkits/clerk/manifest.js';
 import anthropic from './toolkits/anthropic/manifest.js';
 import trello from './toolkits/trello/manifest.js';
 import dropbox from './toolkits/dropbox/manifest.js';
+import mistral from './toolkits/mistral/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -267,6 +268,7 @@ export const toolkits: ToolkitManifest[] = [
   anthropic,
   trello,
   dropbox,
+  mistral,
 ];
 export {
   mathematics,
@@ -402,6 +404,7 @@ export {
   anthropic,
   trello,
   dropbox,
+  mistral,
 };
 export * from './core/index.js';
 
