@@ -129,6 +129,7 @@ import pipedrive from './toolkits/pipedrive/manifest.js';
 import netlify from './toolkits/netlify/manifest.js';
 import clerk from './toolkits/clerk/manifest.js';
 import anthropic from './toolkits/anthropic/manifest.js';
+import trello from './toolkits/trello/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -263,6 +264,7 @@ export const toolkits: ToolkitManifest[] = [
   netlify,
   clerk,
   anthropic,
+  trello,
 ];
 export {
   mathematics,
@@ -396,6 +398,7 @@ export {
   netlify,
   clerk,
   anthropic,
+  trello,
 };
 export * from './core/index.js';
 
