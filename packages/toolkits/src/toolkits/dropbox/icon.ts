@@ -1,0 +1,6 @@
+const SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="89.9 347.3 32 32" width="64" height="64" fill="#007ee5"><path d="M99.337 348.42 89.9 354.5l6.533 5.263 9.467-5.837m-16 11 9.437 6.2 6.563-5.505-9.467-5.868m9.467 5.868 6.594 5.505 9.406-6.14-6.503-5.233m6.503-5.203-9.406-6.14-6.594 5.505 9.497 5.837m-9.467 7.047-6.594 5.474-2.843-1.845v2.087l9.437 5.656 9.437-5.656v-2.087l-2.843 1.845"/></svg>`;
+
+export const DROPBOX_ICON = {
+  kind: 'svg' as const,
+  dataUri: `data:image/svg+xml;base64,${Buffer.from(SVG).toString('base64')}`,
+};

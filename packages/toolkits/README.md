@@ -16,7 +16,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 
 ## Toolkits
 
-**8594 tools** across **132 toolkits** (run `npm run validate` for live counts).
+**8624 tools** across **133 toolkits** (run `npm run validate` for live counts).
 
 | Toolkit | Tools | Auth |
 |---------|------:|------|
@@ -152,6 +152,7 @@ Manifest-driven toolkit registry for AI agents — connector definitions you pub
 | clerk | 25 | bearer token |
 | anthropic | 24 | API key |
 | trello | 39 | basic auth |
+| dropbox | 30 | bearer token |
 
 ## Install
 

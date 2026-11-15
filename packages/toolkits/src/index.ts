@@ -130,6 +130,7 @@ import netlify from './toolkits/netlify/manifest.js';
 import clerk from './toolkits/clerk/manifest.js';
 import anthropic from './toolkits/anthropic/manifest.js';
 import trello from './toolkits/trello/manifest.js';
+import dropbox from './toolkits/dropbox/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -265,6 +266,7 @@ export const toolkits: ToolkitManifest[] = [
   clerk,
   anthropic,
   trello,
+  dropbox,
 ];
 export {
   mathematics,
@@ -399,6 +401,7 @@ export {
   clerk,
   anthropic,
   trello,
+  dropbox,
 };
 export * from './core/index.js';
 
