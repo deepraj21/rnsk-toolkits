@@ -132,6 +132,7 @@ import anthropic from './toolkits/anthropic/manifest.js';
 import trello from './toolkits/trello/manifest.js';
 import dropbox from './toolkits/dropbox/manifest.js';
 import mistral from './toolkits/mistral/manifest.js';
+import canva from './toolkits/canva/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -269,6 +270,7 @@ export const toolkits: ToolkitManifest[] = [
   trello,
   dropbox,
   mistral,
+  canva,
 ];
 export {
   mathematics,
@@ -405,6 +407,7 @@ export {
   trello,
   dropbox,
   mistral,
+  canva,
 };
 export * from './core/index.js';
 
