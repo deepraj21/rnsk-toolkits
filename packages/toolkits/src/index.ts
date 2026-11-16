@@ -133,6 +133,7 @@ import trello from './toolkits/trello/manifest.js';
 import dropbox from './toolkits/dropbox/manifest.js';
 import mistral from './toolkits/mistral/manifest.js';
 import canva from './toolkits/canva/manifest.js';
+import spotify from './toolkits/spotify/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -271,6 +272,7 @@ export const toolkits: ToolkitManifest[] = [
   dropbox,
   mistral,
   canva,
+  spotify,
 ];
 export {
   mathematics,
@@ -408,6 +410,7 @@ export {
   dropbox,
   mistral,
   canva,
+  spotify,
 };
 export * from './core/index.js';
 
