@@ -5,7 +5,7 @@ import { spotifyRequest, compact } from './client.js';
 
 export const spotifyCreatePlaylist = tool({
   description:
-    'Creates a new playlist in the current user\'s profile (empty — add items with spotifyAddPlaylistItems afterwards). Requires the playlist-modify-public scope (and playlist-modify-private for private playlists).',
+    "Creates a new playlist in the current user's profile (empty — add items with spotifyAddPlaylistItems afterwards). Requires the playlist-modify-public scope (and playlist-modify-private for private playlists).",
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     name: z.string().min(1).describe('Playlist name, e.g. "Road Trip 2026"'),

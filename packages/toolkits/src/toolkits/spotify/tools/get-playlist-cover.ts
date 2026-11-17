@@ -5,7 +5,7 @@ import { spotifyRequest, spotifyId } from './client.js';
 
 export const spotifyGetPlaylistCover = tool({
   description:
-    "Gets the cover images currently set on a playlist (size variants, largest first). Returns an empty array if the playlist has no custom cover. Accepts a bare playlist ID, URI, or URL.",
+    'Gets the cover images currently set on a playlist (size variants, largest first). Returns an empty array if the playlist has no custom cover. Accepts a bare playlist ID, URI, or URL.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     id: z

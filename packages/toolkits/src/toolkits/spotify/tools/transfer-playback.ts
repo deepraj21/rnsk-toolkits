@@ -5,7 +5,7 @@ import { spotifyRequest } from './client.js';
 
 export const spotifyTransferPlayback = tool({
   description:
-    "Transfers playback to one or more other devices (e.g. from the web player to a speaker). Optionally starts playing immediately after the switch. Requires the user-modify-playback-state scope (Spotify Premium).",
+    'Transfers playback to one or more other devices (e.g. from the web player to a speaker). Optionally starts playing immediately after the switch. Requires the user-modify-playback-state scope (Spotify Premium).',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     deviceIds: z
@@ -15,7 +15,9 @@ export const spotifyTransferPlayback = tool({
     play: z
       .boolean()
       .optional()
-      .describe('true = start playing on the target device immediately (default: keep current state)'),
+      .describe(
+        'true = start playing on the target device immediately (default: keep current state)',
+      ),
   }),
   execute: async ({ spotifyToken, deviceIds, play }) => {
     if (!deviceIds || !deviceIds.length)

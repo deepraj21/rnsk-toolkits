@@ -5,7 +5,7 @@ import { spotifyRequest } from './client.js';
 
 export const spotifyGetSavedItems = tool({
   description:
-    "Gets the user's saved (\"Liked\") library items — tracks, albums, shows, episodes, or audiobooks — as a paging object, most recently saved first. Requires the user-library-read scope (episodes also need user-read-playback-position).",
+    'Gets the user\'s saved ("Liked") library items — tracks, albums, shows, episodes, or audiobooks — as a paging object, most recently saved first. Requires the user-library-read scope (episodes also need user-read-playback-position).',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     type: z

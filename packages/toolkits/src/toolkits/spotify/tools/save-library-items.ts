@@ -5,7 +5,7 @@ import { spotifyRequest, spotifyUri } from './client.js';
 
 export const spotifySaveLibraryItems = tool({
   description:
-    "Saves items to the user's library (\"Like\" tracks, follow albums/shows/episodes/audiobooks). Max 40 URIs per call — batch larger sets across calls. Accepts full URIs, open.spotify.com URLs, or bare IDs (pass `type` to convert bare IDs). Requires the user-library-modify scope.",
+    'Saves items to the user\'s library ("Like" tracks, follow albums/shows/episodes/audiobooks). Max 40 URIs per call — batch larger sets across calls. Accepts full URIs, open.spotify.com URLs, or bare IDs (pass `type` to convert bare IDs). Requires the user-library-modify scope.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     uris: z

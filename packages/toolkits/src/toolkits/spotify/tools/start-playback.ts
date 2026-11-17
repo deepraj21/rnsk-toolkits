@@ -5,7 +5,7 @@ import { spotifyRequest, spotifyUri, compact } from './client.js';
 
 export const spotifyStartPlayback = tool({
   description:
-    "Starts/resumes playback on a device. Pass `contextUri` to play an album/artist/playlist, `uris` to play specific tracks, or neither to resume what was paused. Optional `offset` picks the starting item inside a context, `positionMs` seeks into it. Requires the user-modify-playback-state scope (Spotify Premium for most devices).",
+    'Starts/resumes playback on a device. Pass `contextUri` to play an album/artist/playlist, `uris` to play specific tracks, or neither to resume what was paused. Optional `offset` picks the starting item inside a context, `positionMs` seeks into it. Requires the user-modify-playback-state scope (Spotify Premium for most devices).',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     deviceId: z
@@ -35,8 +35,7 @@ export const spotifyStartPlayback = tool({
       .describe('Position in milliseconds to seek to before playing'),
   }),
   execute: async ({ spotifyToken, deviceId, contextUri, uris, offset, positionMs }) => {
-    if (contextUri && uris)
-      return { error: 'Pass either contextUri or uris, not both.' };
+    if (contextUri && uris) return { error: 'Pass either contextUri or uris, not both.' };
     if (!contextUri && !uris && positionMs === undefined && !offset)
       return {
         error:

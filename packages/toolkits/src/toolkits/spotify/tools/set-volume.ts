@@ -5,7 +5,7 @@ import { spotifyRequest } from './client.js';
 
 export const spotifySetVolume = tool({
   description:
-    "Sets the playback volume on a device, 0-100 percent. Requires the user-modify-playback-state scope.",
+    'Sets the playback volume on a device, 0-100 percent. Requires the user-modify-playback-state scope.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     volumePercent: z

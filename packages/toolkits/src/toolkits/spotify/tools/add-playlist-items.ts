@@ -5,7 +5,7 @@ import { spotifyRequest, spotifyId, spotifyUri } from './client.js';
 
 export const spotifyAddPlaylistItems = tool({
   description:
-    "Adds tracks/episodes to a playlist (appended by default, or inserted at `position`). Max 100 items per call — batch larger sets across calls. Accepts full URIs, open.spotify.com URLs, or bare IDs (treated as tracks unless you pass full URIs). Requires the playlist-modify-public scope.",
+    'Adds tracks/episodes to a playlist (appended by default, or inserted at `position`). Max 100 items per call — batch larger sets across calls. Accepts full URIs, open.spotify.com URLs, or bare IDs (treated as tracks unless you pass full URIs). Requires the playlist-modify-public scope.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     id: z

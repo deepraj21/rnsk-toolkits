@@ -39,7 +39,7 @@ export default defineToolkit({
       scopeSeparator: ' ',
       exchangeStyle: 'basic',
       connectDescription:
-        'Connect Spotify with the authorization code flow. Create an app at https://developer.spotify.com/dashboard, set the redirect URI to this app\'s /api/auth/spotify/callback, and provide the Client ID and Client Secret — Spotify tokens expire after 1 hour and are refreshed by the host.',
+        "Connect Spotify with the authorization code flow. Create an app at https://developer.spotify.com/dashboard, set the redirect URI to this app's /api/auth/spotify/callback, and provide the Client ID and Client Secret — Spotify tokens expire after 1 hour and are refreshed by the host.",
       callbackPath: '/api/auth/spotify/callback',
       stateCookie: 'spotify_oauth_state',
     },

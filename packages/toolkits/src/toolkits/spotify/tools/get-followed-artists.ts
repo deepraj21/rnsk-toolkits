@@ -5,7 +5,7 @@ import { spotifyRequest } from './client.js';
 
 export const spotifyGetFollowedArtists = tool({
   description:
-    "Gets a cursor-paged list of artists the user follows (max 50 per call). Returns a cursor object — pass the returned cursors.next value as `after` to fetch the next page. Requires the user-follow-read scope.",
+    'Gets a cursor-paged list of artists the user follows (max 50 per call). Returns a cursor object — pass the returned cursors.next value as `after` to fetch the next page. Requires the user-follow-read scope.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     limit: z

@@ -5,7 +5,7 @@ import { spotifyRequest, spotifyId } from './client.js';
 
 export const spotifyGetPlaylist = tool({
   description:
-    "Gets full details for a single playlist — name, description, owner, visibility, collaborative flag, followers, images, and the first page of tracks. Accepts a bare playlist ID, a spotify:playlist: URI, or an open.spotify.com URL. Use spotifyGetPlaylistItems to page through all items.",
+    'Gets full details for a single playlist — name, description, owner, visibility, collaborative flag, followers, images, and the first page of tracks. Accepts a bare playlist ID, a spotify:playlist: URI, or an open.spotify.com URL. Use spotifyGetPlaylistItems to page through all items.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     id: z

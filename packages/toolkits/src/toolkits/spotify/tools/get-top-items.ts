@@ -8,9 +8,7 @@ export const spotifyGetTopItems = tool({
     "Gets the user's top artists or top tracks over a time range (their most-played content) as a paging object. Requires the user-top-read scope.",
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
-    type: z
-      .enum(['artists', 'tracks'])
-      .describe('Whether to return top artists or top tracks'),
+    type: z.enum(['artists', 'tracks']).describe('Whether to return top artists or top tracks'),
     timeRange: z
       .enum(['short_term', 'medium_term', 'long_term'])
       .optional()

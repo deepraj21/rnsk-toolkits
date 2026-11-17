@@ -5,7 +5,7 @@ import { spotifyRequest } from './client.js';
 
 export const spotifySeekToPosition = tool({
   description:
-    "Seeks to a position (in milliseconds) within the currently playing track. Seeking past the end advances to the next track. Requires the user-modify-playback-state scope.",
+    'Seeks to a position (in milliseconds) within the currently playing track. Seeking past the end advances to the next track. Requires the user-modify-playback-state scope.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     positionMs: z
@@ -19,7 +19,8 @@ export const spotifySeekToPosition = tool({
       .describe('Target device id from spotifyGetDevices (default: the active device)'),
   }),
   execute: async ({ spotifyToken, positionMs, deviceId }) => {
-    if (positionMs === undefined || positionMs === null) return { error: 'positionMs is required.' };
+    if (positionMs === undefined || positionMs === null)
+      return { error: 'positionMs is required.' };
 
     const result = await spotifyRequest(spotifyToken, '/me/player/seek', {
       method: 'PUT',

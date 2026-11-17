@@ -14,10 +14,7 @@ export const spotifyUpdatePlaylistDetails = tool({
       .describe('Playlist ID, spotify:playlist: URI, or open.spotify.com playlist URL'),
     name: z.string().optional().describe('New playlist name'),
     description: z.string().optional().describe('New playlist description'),
-    public: z
-      .boolean()
-      .optional()
-      .describe('New visibility: true = public, false = private'),
+    public: z.boolean().optional().describe('New visibility: true = public, false = private'),
     collaborative: z
       .boolean()
       .optional()

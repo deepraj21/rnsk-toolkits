@@ -12,7 +12,9 @@ export const spotifyCheckLibraryItems = tool({
       .array(z.string().min(1))
       .min(1)
       .max(40)
-      .describe('Up to 40 item URIs/URLs/IDs to check (spotify:track:…, album, show, episode, audiobook)'),
+      .describe(
+        'Up to 40 item URIs/URLs/IDs to check (spotify:track:…, album, show, episode, audiobook)',
+      ),
     type: z
       .enum(['track', 'album', 'show', 'episode', 'audiobook'])
       .optional()

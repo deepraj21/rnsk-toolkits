@@ -5,7 +5,7 @@ import { spotifyRequest } from './client.js';
 
 export const spotifyGetCurrentlyPlaying = tool({
   description:
-    "Gets what the user is playing right now (track or episode object plus progress) — or an empty object when playback is stopped/paused with nothing loaded. Requires the user-read-currently-playing scope.",
+    'Gets what the user is playing right now (track or episode object plus progress) — or an empty object when playback is stopped/paused with nothing loaded. Requires the user-read-currently-playing scope.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
     market: z

@@ -5,7 +5,7 @@ import { spotifyRequest } from './client.js';
 
 export const spotifyGetCurrentUser = tool({
   description:
-    "Gets the full profile of the user behind the connected Spotify account — display name, country, product (free/premium), followers, and (with the right scopes) email. Use this to confirm whose account is connected. Requires user-read-private; email requires user-read-email.",
+    'Gets the full profile of the user behind the connected Spotify account — display name, country, product (free/premium), followers, and (with the right scopes) email. Use this to confirm whose account is connected. Requires user-read-private; email requires user-read-email.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
   }),

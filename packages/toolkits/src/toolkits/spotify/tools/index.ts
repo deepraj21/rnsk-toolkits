@@ -185,8 +185,7 @@ export const spotifyTools: ToolDefinition[] = [
   },
   {
     name: 'spotifyGetAudiobookChapters',
-    description:
-      "Gets a page of an audiobook's chapters as a paging object (limit/offset).",
+    description: "Gets a page of an audiobook's chapters as a paging object (limit/offset).",
     tool: spotifyGetAudiobookChapters,
     requiredAuth: 'spotifyToken' as const,
     scope: 'read' as const,
@@ -204,7 +203,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyGetCurrentUser',
     description:
-      "Gets the profile of the user behind the connected account — display name, country, product tier, followers (and email with user-read-email). Use to confirm whose account is connected.",
+      'Gets the profile of the user behind the connected account — display name, country, product tier, followers (and email with user-read-email). Use to confirm whose account is connected.',
     tool: spotifyGetCurrentUser,
     requiredAuth: 'spotifyToken' as const,
     scope: 'read' as const,
@@ -222,7 +221,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyGetFollowedArtists',
     description:
-      "Gets a cursor-paged list of artists the user follows (max 50 per call; pass cursors.next as `after` for the next page). Needs user-follow-read.",
+      'Gets a cursor-paged list of artists the user follows (max 50 per call; pass cursors.next as `after` for the next page). Needs user-follow-read.',
     tool: spotifyGetFollowedArtists,
     requiredAuth: 'spotifyToken' as const,
     scope: 'read' as const,
@@ -231,7 +230,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyGetSavedItems',
     description:
-      "Gets the user's saved (\"Liked\") library items — tracks, albums, shows, episodes, or audiobooks — as a paging object, newest first. Needs user-library-read.",
+      'Gets the user\'s saved ("Liked") library items — tracks, albums, shows, episodes, or audiobooks — as a paging object, newest first. Needs user-library-read.',
     tool: spotifyGetSavedItems,
     requiredAuth: 'spotifyToken' as const,
     scope: 'read' as const,
@@ -249,7 +248,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyGetPlaylist',
     description:
-      "Gets full details for one playlist — name, description, owner, visibility, followers, images, and its first page of tracks. Accepts a playlist ID, URI, or URL.",
+      'Gets full details for one playlist — name, description, owner, visibility, followers, images, and its first page of tracks. Accepts a playlist ID, URI, or URL.',
     tool: spotifyGetPlaylist,
     requiredAuth: 'spotifyToken' as const,
     scope: 'read' as const,
@@ -276,7 +275,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyGetPlaylistCover',
     description:
-      "Gets the cover images currently set on a playlist (size variants, largest first); empty array if none. Accepts a playlist ID, URI, or URL.",
+      'Gets the cover images currently set on a playlist (size variants, largest first); empty array if none. Accepts a playlist ID, URI, or URL.',
     tool: spotifyGetPlaylistCover,
     requiredAuth: 'spotifyToken' as const,
     scope: 'read' as const,
@@ -294,7 +293,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyGetCurrentlyPlaying',
     description:
-      "Gets what is playing right now — the track/episode object plus progress (empty object when nothing is playing). Needs user-read-currently-playing.",
+      'Gets what is playing right now — the track/episode object plus progress (empty object when nothing is playing). Needs user-read-currently-playing.',
     tool: spotifyGetCurrentlyPlaying,
     requiredAuth: 'spotifyToken' as const,
     scope: 'read' as const,
@@ -330,7 +329,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifySaveLibraryItems',
     description:
-      "Saves (\"likes\") up to 40 tracks/albums/shows/episodes/audiobooks to the user's library in one call. Needs user-library-modify.",
+      'Saves ("likes") up to 40 tracks/albums/shows/episodes/audiobooks to the user\'s library in one call. Needs user-library-modify.',
     tool: spotifySaveLibraryItems,
     requiredAuth: 'spotifyToken' as const,
     scope: 'write' as const,
@@ -366,7 +365,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyAddPlaylistItems',
     description:
-      "Adds up to 100 tracks/episodes to a playlist — appended by default or inserted at `position`. Needs playlist-modify-public.",
+      'Adds up to 100 tracks/episodes to a playlist — appended by default or inserted at `position`. Needs playlist-modify-public.',
     tool: spotifyAddPlaylistItems,
     requiredAuth: 'spotifyToken' as const,
     scope: 'write' as const,
@@ -384,7 +383,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyRemovePlaylistItems',
     description:
-      "Removes up to 100 specific track/episode occurrences from a playlist, optionally validated against a snapshot ID. Needs playlist-modify-public.",
+      'Removes up to 100 specific track/episode occurrences from a playlist, optionally validated against a snapshot ID. Needs playlist-modify-public.',
     tool: spotifyRemovePlaylistItems,
     requiredAuth: 'spotifyToken' as const,
     scope: 'delete' as const,
@@ -402,7 +401,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyStartPlayback',
     description:
-      "Starts/resumes playback on a device: pass contextUri (album/artist/playlist), uris (specific tracks), or neither to resume. Optional offset picks the start item, positionMs seeks. Needs user-modify-playback-state (Premium).",
+      'Starts/resumes playback on a device: pass contextUri (album/artist/playlist), uris (specific tracks), or neither to resume. Optional offset picks the start item, positionMs seeks. Needs user-modify-playback-state (Premium).',
     tool: spotifyStartPlayback,
     requiredAuth: 'spotifyToken' as const,
     scope: 'write' as const,
@@ -445,7 +444,8 @@ export const spotifyTools: ToolDefinition[] = [
   },
   {
     name: 'spotifySetVolume',
-    description: 'Sets playback volume on a device, 0-100 percent. Needs user-modify-playback-state.',
+    description:
+      'Sets playback volume on a device, 0-100 percent. Needs user-modify-playback-state.',
     tool: spotifySetVolume,
     requiredAuth: 'spotifyToken' as const,
     scope: 'write' as const,
@@ -453,7 +453,8 @@ export const spotifyTools: ToolDefinition[] = [
   },
   {
     name: 'spotifyToggleShuffle',
-    description: 'Turns shuffle on or off for the playback context. Needs user-modify-playback-state.',
+    description:
+      'Turns shuffle on or off for the playback context. Needs user-modify-playback-state.',
     tool: spotifyToggleShuffle,
     requiredAuth: 'spotifyToken' as const,
     scope: 'write' as const,
@@ -471,7 +472,7 @@ export const spotifyTools: ToolDefinition[] = [
   {
     name: 'spotifyTransferPlayback',
     description:
-      "Transfers playback to one or more other devices (e.g. web player → speaker), optionally starting playback immediately. Needs user-modify-playback-state (Premium).",
+      'Transfers playback to one or more other devices (e.g. web player → speaker), optionally starting playback immediately. Needs user-modify-playback-state (Premium).',
     tool: spotifyTransferPlayback,
     requiredAuth: 'spotifyToken' as const,
     scope: 'write' as const,

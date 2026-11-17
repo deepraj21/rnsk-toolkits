@@ -41,13 +41,23 @@ export const spotifyReplacePlaylistItems = tool({
       .optional()
       .describe('Reorder mode: playlist snapshot ID to validate the change against'),
   }),
-  execute: async ({ spotifyToken, id, uris, rangeStart, insertBefore, rangeLength, snapshotId }) => {
+  execute: async ({
+    spotifyToken,
+    id,
+    uris,
+    rangeStart,
+    insertBefore,
+    rangeLength,
+    snapshotId,
+  }) => {
     const playlistId = spotifyId(id);
     if (!playlistId) return { error: 'id is required.' };
 
     const reorderMode = rangeStart !== undefined || insertBefore !== undefined;
     if (uris && reorderMode)
-      return { error: 'Pass either uris (replace) or rangeStart/insertBefore (reorder), not both.' };
+      return {
+        error: 'Pass either uris (replace) or rangeStart/insertBefore (reorder), not both.',
+      };
     if (!uris && !reorderMode)
       return {
         error:
@@ -58,7 +68,12 @@ export const spotifyReplacePlaylistItems = tool({
 
     const body = uris
       ? { uris: uris.map((u) => spotifyUri(u, 'track')) }
-      : compact({ range_start: rangeStart, insert_before: insertBefore, range_length: rangeLength, snapshot_id: snapshotId });
+      : compact({
+          range_start: rangeStart,
+          insert_before: insertBefore,
+          range_length: rangeLength,
+          snapshot_id: snapshotId,
+        });
 
     const result = await spotifyRequest(spotifyToken, `/playlists/${playlistId}/items`, {
       method: 'PUT',

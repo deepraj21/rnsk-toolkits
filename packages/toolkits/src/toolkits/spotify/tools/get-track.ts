@@ -8,10 +8,7 @@ export const spotifyGetTrack = tool({
     'Gets full Spotify catalog information for a single track — name, artists, album, duration, popularity, explicit flag, available markets, and external URLs. Accepts a bare track ID, a spotify:track: URI, or an open.spotify.com URL.',
   inputSchema: z.object({
     spotifyToken: z.string().optional().describe('Spotify access token (injected by system)'),
-    id: z
-      .string()
-      .min(1)
-      .describe('Track ID, spotify:track: URI, or open.spotify.com track URL'),
+    id: z.string().min(1).describe('Track ID, spotify:track: URI, or open.spotify.com track URL'),
     market: z
       .string()
       .optional()
