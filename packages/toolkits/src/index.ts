@@ -136,6 +136,7 @@ import canva from './toolkits/canva/manifest.js';
 import spotify from './toolkits/spotify/manifest.js';
 import typeform from './toolkits/typeform/manifest.js';
 import posthog from './toolkits/posthog/manifest.js';
+import algolia from './toolkits/algolia/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -277,6 +278,7 @@ export const toolkits: ToolkitManifest[] = [
   spotify,
   typeform,
   posthog,
+  algolia,
 ];
 export {
   mathematics,
@@ -417,6 +419,7 @@ export {
   spotify,
   typeform,
   posthog,
+  algolia,
 };
 export * from './core/index.js';
 
