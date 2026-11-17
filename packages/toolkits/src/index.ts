@@ -135,6 +135,7 @@ import mistral from './toolkits/mistral/manifest.js';
 import canva from './toolkits/canva/manifest.js';
 import spotify from './toolkits/spotify/manifest.js';
 import typeform from './toolkits/typeform/manifest.js';
+import posthog from './toolkits/posthog/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -275,6 +276,7 @@ export const toolkits: ToolkitManifest[] = [
   canva,
   spotify,
   typeform,
+  posthog,
 ];
 export {
   mathematics,
@@ -414,6 +416,7 @@ export {
   canva,
   spotify,
   typeform,
+  posthog,
 };
 export * from './core/index.js';
 
