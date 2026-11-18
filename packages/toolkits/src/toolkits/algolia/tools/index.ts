@@ -1,6 +1,13 @@
 // @ts-nocheck
 import type { ToolDefinition } from '../../../core/types.js';
-import { algoliaSearch, algoliaSearchMultiple, algoliaBrowse, algoliaSearchFacetValues, algoliaGetRecord, algoliaGetRecords } from './search.js';
+import {
+  algoliaSearch,
+  algoliaSearchMultiple,
+  algoliaBrowse,
+  algoliaSearchFacetValues,
+  algoliaGetRecord,
+  algoliaGetRecords,
+} from './search.js';
 import {
   algoliaListIndices,
   algoliaSaveRecord,

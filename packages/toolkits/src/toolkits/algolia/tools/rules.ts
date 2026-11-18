@@ -12,7 +12,10 @@ export const algoliaSearchRules = tool({
       .optional()
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index whose rules to search'),
-    query: z.string().optional().describe('Match rules containing this text (objectID, description, patterns)'),
+    query: z
+      .string()
+      .optional()
+      .describe('Match rules containing this text (objectID, description, patterns)'),
     page: z.number().int().min(0).optional().describe('Page number, 0-based'),
     hitsPerPage: z.number().int().min(1).max(1000).optional().describe('Rules per page'),
     anchoring: z
@@ -22,13 +25,26 @@ export const algoliaSearchRules = tool({
     context: z.string().optional().describe('Only rules with this validation context'),
     enabled: z.boolean().optional().describe('Filter to enabled (true) or disabled (false) rules'),
   }),
-  execute: async ({ algoliaCredentials, indexName, query, page, hitsPerPage, anchoring, context, enabled }) => {
+  execute: async ({
+    algoliaCredentials,
+    indexName,
+    query,
+    page,
+    hitsPerPage,
+    anchoring,
+    context,
+    enabled,
+  }) => {
     if (!indexName) return { error: 'indexName is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/rules/search`, {
-      method: 'POST',
-      body: compact({ query, page, hitsPerPage, anchoring, context, enabled }),
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/rules/search`,
+      {
+        method: 'POST',
+        body: compact({ query, page, hitsPerPage, anchoring, context, enabled }),
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -74,11 +90,15 @@ export const algoliaSaveRule = tool({
       .describe(
         'Rule definition — objectID, condition/conditions, consequence; optional enabled, description, tags, validity',
       ),
-    forwardToReplicas: z.boolean().optional().describe('Also save the rule to this index’s replicas (default false)'),
+    forwardToReplicas: z
+      .boolean()
+      .optional()
+      .describe('Also save the rule to this index’s replicas (default false)'),
   }),
   execute: async ({ algoliaCredentials, indexName, rule, forwardToReplicas }) => {
     if (!indexName) return { error: 'indexName is required.' };
-    if (!rule || typeof rule !== 'object' || Array.isArray(rule)) return { error: 'rule is required (a JSON object).' };
+    if (!rule || typeof rule !== 'object' || Array.isArray(rule))
+      return { error: 'rule is required (a JSON object).' };
     if (!rule.objectID) return { error: 'rule.objectID is required.' };
     if (!rule.consequence) return { error: 'rule.consequence is required.' };
     if (!rule.condition && !rule.conditions) {
@@ -112,27 +132,52 @@ export const algoliaSaveRules = tool({
     rules: z
       .array(z.record(z.any()))
       .min(1)
-      .describe('Rule definitions — e.g. [{"objectID":"r1","condition":{"pattern":"sale","anchoring":"contains"},"consequence":{"hide":["old-sale"]}}]'),
+      .describe(
+        'Rule definitions — e.g. [{"objectID":"r1","condition":{"pattern":"sale","anchoring":"contains"},"consequence":{"hide":["old-sale"]}}]',
+      ),
     clearExistingRules: z
       .boolean()
       .optional()
-      .describe('Delete all existing rules first, so the batch becomes the complete set (default false)'),
-    forwardToReplicas: z.boolean().optional().describe('Also save to this index’s replicas (default false)'),
+      .describe(
+        'Delete all existing rules first, so the batch becomes the complete set (default false)',
+      ),
+    forwardToReplicas: z
+      .boolean()
+      .optional()
+      .describe('Also save to this index’s replicas (default false)'),
   }),
-  execute: async ({ algoliaCredentials, indexName, rules, clearExistingRules, forwardToReplicas }) => {
+  execute: async ({
+    algoliaCredentials,
+    indexName,
+    rules,
+    clearExistingRules,
+    forwardToReplicas,
+  }) => {
     if (!indexName) return { error: 'indexName is required.' };
     if (!rules || !rules.length) return { error: 'rules is required (at least one rule).' };
     for (const [i, r] of rules.entries()) {
-      if (!r || typeof r !== 'object' || !r.objectID || !r.consequence || (!r.condition && !r.conditions)) {
-        return { error: `rules[${i}] must include objectID, condition/conditions, and consequence.` };
+      if (
+        !r ||
+        typeof r !== 'object' ||
+        !r.objectID ||
+        !r.consequence ||
+        (!r.condition && !r.conditions)
+      ) {
+        return {
+          error: `rules[${i}] must include objectID, condition/conditions, and consequence.`,
+        };
       }
     }
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/rules/batch`, {
-      method: 'POST',
-      query: { clearExistingRules, forwardToReplicas },
-      body: rules,
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/rules/batch`,
+      {
+        method: 'POST',
+        query: { clearExistingRules, forwardToReplicas },
+        body: rules,
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -149,7 +194,10 @@ export const algoliaDeleteRule = tool({
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index containing the rule'),
     objectID: z.string().min(1).describe('Rule objectID to delete'),
-    forwardToReplicas: z.boolean().optional().describe('Also delete from this index’s replicas (default false)'),
+    forwardToReplicas: z
+      .boolean()
+      .optional()
+      .describe('Also delete from this index’s replicas (default false)'),
   }),
   execute: async ({ algoliaCredentials, indexName, objectID, forwardToReplicas }) => {
     if (!indexName) return { error: 'indexName is required.' };
@@ -178,15 +226,22 @@ export const algoliaClearRules = tool({
       .optional()
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index whose rules to delete'),
-    forwardToReplicas: z.boolean().optional().describe('Also clear rules on this index’s replicas (default false)'),
+    forwardToReplicas: z
+      .boolean()
+      .optional()
+      .describe('Also clear rules on this index’s replicas (default false)'),
   }),
   execute: async ({ algoliaCredentials, indexName, forwardToReplicas }) => {
     if (!indexName) return { error: 'indexName is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/rules/clear`, {
-      method: 'POST',
-      query: { forwardToReplicas },
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/rules/clear`,
+      {
+        method: 'POST',
+        query: { forwardToReplicas },
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};

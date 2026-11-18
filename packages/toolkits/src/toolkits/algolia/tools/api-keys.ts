@@ -163,12 +163,24 @@ export const algoliaUpdateApiKey = tool({
       maxQueriesPerIPPerHour === undefined &&
       maxHitsPerQuery === undefined
     ) {
-      return { error: 'Provide at least one field to update (acl, description, indexes, referers, queryParameters, validity, maxQueriesPerIPPerHour, maxHitsPerQuery).' };
+      return {
+        error:
+          'Provide at least one field to update (acl, description, indexes, referers, queryParameters, validity, maxQueriesPerIPPerHour, maxHitsPerQuery).',
+      };
     }
 
     const result = await algoliaRequest(algoliaCredentials, `/1/keys/${encodeURIComponent(key)}`, {
       method: 'PUT',
-      body: compact({ acl, description, indexes, referers, queryParameters, validity, maxQueriesPerIPPerHour, maxHitsPerQuery }),
+      body: compact({
+        acl,
+        description,
+        indexes,
+        referers,
+        queryParameters,
+        validity,
+        maxQueriesPerIPPerHour,
+        maxHitsPerQuery,
+      }),
     });
     if (result.error) return result;
 
@@ -211,9 +223,13 @@ export const algoliaRestoreApiKey = tool({
   execute: async ({ algoliaCredentials, key }) => {
     if (!key) return { error: 'key is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/keys/${encodeURIComponent(key)}/restore`, {
-      method: 'POST',
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/keys/${encodeURIComponent(key)}/restore`,
+      {
+        method: 'POST',
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};

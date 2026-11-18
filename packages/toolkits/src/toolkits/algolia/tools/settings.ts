@@ -12,18 +12,18 @@ export const algoliaGetSettings = tool({
       .optional()
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index whose settings to read'),
-    getVersion: z
-      .number()
-      .int()
-      .optional()
-      .describe('Settings version to return (default 1)'),
+    getVersion: z.number().int().optional().describe('Settings version to return (default 1)'),
   }),
   execute: async ({ algoliaCredentials, indexName, getVersion }) => {
     if (!indexName) return { error: 'indexName is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/settings`, {
-      query: { getVersion },
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/settings`,
+      {
+        query: { getVersion },
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -55,11 +55,15 @@ export const algoliaSetSettings = tool({
       return { error: 'settings is required (a JSON object of settings to apply).' };
     }
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/settings`, {
-      method: 'PUT',
-      query: { forwardToReplicas },
-      body: compact(settings),
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/settings`,
+      {
+        method: 'PUT',
+        query: { forwardToReplicas },
+        body: compact(settings),
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};

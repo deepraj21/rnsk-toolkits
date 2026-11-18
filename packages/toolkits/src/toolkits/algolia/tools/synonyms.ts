@@ -73,8 +73,13 @@ export const algoliaSaveSynonym = tool({
     indexName: z.string().min(1).describe('Index the synonym belongs to'),
     synonym: z
       .record(z.any())
-      .describe('Synonym definition — objectID, type, and the terms (word/input/synonyms/corrections/replacements)'),
-    forwardToReplicas: z.boolean().optional().describe('Also save to this index’s replicas (default false)'),
+      .describe(
+        'Synonym definition — objectID, type, and the terms (word/input/synonyms/corrections/replacements)',
+      ),
+    forwardToReplicas: z
+      .boolean()
+      .optional()
+      .describe('Also save to this index’s replicas (default false)'),
   }),
   execute: async ({ algoliaCredentials, indexName, synonym, forwardToReplicas }) => {
     if (!indexName) return { error: 'indexName is required.' };
@@ -82,7 +87,8 @@ export const algoliaSaveSynonym = tool({
       return { error: 'synonym is required (a JSON object).' };
     }
     if (!synonym.objectID) return { error: 'synonym.objectID is required.' };
-    if (!synonym.type) return { error: 'synonym.type is required (synonym, oneWay, or altCorrection).' };
+    if (!synonym.type)
+      return { error: 'synonym.type is required (synonym, oneWay, or altCorrection).' };
 
     const result = await algoliaRequest(
       algoliaCredentials,
@@ -117,12 +123,24 @@ export const algoliaSaveSynonyms = tool({
     replaceExistingSynonyms: z
       .boolean()
       .optional()
-      .describe('Delete all existing synonyms first, so the batch becomes the complete set (default false)'),
-    forwardToReplicas: z.boolean().optional().describe('Also save to this index’s replicas (default false)'),
+      .describe(
+        'Delete all existing synonyms first, so the batch becomes the complete set (default false)',
+      ),
+    forwardToReplicas: z
+      .boolean()
+      .optional()
+      .describe('Also save to this index’s replicas (default false)'),
   }),
-  execute: async ({ algoliaCredentials, indexName, synonyms, replaceExistingSynonyms, forwardToReplicas }) => {
+  execute: async ({
+    algoliaCredentials,
+    indexName,
+    synonyms,
+    replaceExistingSynonyms,
+    forwardToReplicas,
+  }) => {
     if (!indexName) return { error: 'indexName is required.' };
-    if (!synonyms || !synonyms.length) return { error: 'synonyms is required (at least one entry).' };
+    if (!synonyms || !synonyms.length)
+      return { error: 'synonyms is required (at least one entry).' };
     for (const [i, s] of synonyms.entries()) {
       if (!s || typeof s !== 'object' || !s.objectID || !s.type) {
         return { error: `synonyms[${i}] must include objectID and type.` };
@@ -154,7 +172,10 @@ export const algoliaDeleteSynonym = tool({
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index containing the synonym'),
     objectID: z.string().min(1).describe('Synonym objectID to delete'),
-    forwardToReplicas: z.boolean().optional().describe('Also delete from this index’s replicas (default false)'),
+    forwardToReplicas: z
+      .boolean()
+      .optional()
+      .describe('Also delete from this index’s replicas (default false)'),
   }),
   execute: async ({ algoliaCredentials, indexName, objectID, forwardToReplicas }) => {
     if (!indexName) return { error: 'indexName is required.' };
@@ -183,7 +204,10 @@ export const algoliaClearSynonyms = tool({
       .optional()
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index whose synonyms to delete'),
-    forwardToReplicas: z.boolean().optional().describe('Also clear synonyms on this index’s replicas (default false)'),
+    forwardToReplicas: z
+      .boolean()
+      .optional()
+      .describe('Also clear synonyms on this index’s replicas (default false)'),
   }),
   execute: async ({ algoliaCredentials, indexName, forwardToReplicas }) => {
     if (!indexName) return { error: 'indexName is required.' };

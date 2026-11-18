@@ -16,7 +16,8 @@ export const algoliaGetTask = tool({
   }),
   execute: async ({ algoliaCredentials, indexName, taskID }) => {
     if (!indexName) return { error: 'indexName is required.' };
-    if (taskID === undefined || taskID === null || Number.isNaN(taskID)) return { error: 'taskID is required.' };
+    if (taskID === undefined || taskID === null || Number.isNaN(taskID))
+      return { error: 'taskID is required.' };
 
     const result = await algoliaRequest(
       algoliaCredentials,
@@ -39,7 +40,8 @@ export const algoliaGetAppTask = tool({
     taskID: z.coerce.number().int().describe('Application task ID returned by the write operation'),
   }),
   execute: async ({ algoliaCredentials, taskID }) => {
-    if (taskID === undefined || taskID === null || Number.isNaN(taskID)) return { error: 'taskID is required.' };
+    if (taskID === undefined || taskID === null || Number.isNaN(taskID))
+      return { error: 'taskID is required.' };
 
     const result = await algoliaRequest(algoliaCredentials, `/1/task/${taskID}`);
     if (result.error) return result;
@@ -57,7 +59,13 @@ export const algoliaGetLogs = tool({
       .optional()
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().optional().describe('Only entries for this index (omit for all indices)'),
-    length: z.number().int().min(1).max(1000).optional().describe('Max entries to return (most recent first)'),
+    length: z
+      .number()
+      .int()
+      .min(1)
+      .max(1000)
+      .optional()
+      .describe('Max entries to return (most recent first)'),
     offset: z.number().int().min(0).optional().describe('Entries to skip for pagination'),
     type: z
       .string()

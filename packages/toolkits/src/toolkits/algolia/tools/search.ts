@@ -13,8 +13,19 @@ export const algoliaSearch = tool({
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index to search, e.g. "products_dev"'),
     query: z.string().optional().describe('Search query text; empty string matches all records'),
-    page: z.number().int().min(0).optional().describe('Page number, 0-based (combine with hitsPerPage)'),
-    hitsPerPage: z.number().int().min(1).max(1000).optional().describe('Results per page (default 20)'),
+    page: z
+      .number()
+      .int()
+      .min(0)
+      .optional()
+      .describe('Page number, 0-based (combine with hitsPerPage)'),
+    hitsPerPage: z
+      .number()
+      .int()
+      .min(1)
+      .max(1000)
+      .optional()
+      .describe('Results per page (default 20)'),
     filters: z
       .string()
       .optional()
@@ -22,8 +33,13 @@ export const algoliaSearch = tool({
     facetFilters: z
       .array(z.any())
       .optional()
-      .describe('Facet filters — array of strings, or nested arrays for OR groups, e.g. ["brand:Apple", ["color:red","color:blue"]]'),
-    facets: z.array(z.string()).optional().describe('Facet attributes to compute counts for, e.g. ["brand","category"]'),
+      .describe(
+        'Facet filters — array of strings, or nested arrays for OR groups, e.g. ["brand:Apple", ["color:red","color:blue"]]',
+      ),
+    facets: z
+      .array(z.string())
+      .optional()
+      .describe('Facet attributes to compute counts for, e.g. ["brand","category"]'),
     attributesToRetrieve: z
       .array(z.string())
       .optional()
@@ -33,8 +49,15 @@ export const algoliaSearch = tool({
       .optional()
       .describe('Wrap matches in these attributes with _highlightResult markers'),
     tagFilters: z.any().optional().describe('Tag filter expression (string or array of tags)'),
-    numericFilters: z.array(z.string()).optional().describe('Numeric filters, e.g. ["price<100","stock>0"]'),
-    distinct: z.number().int().optional().describe('Deduplicate hits by this attribute value (1 = on)'),
+    numericFilters: z
+      .array(z.string())
+      .optional()
+      .describe('Numeric filters, e.g. ["price<100","stock>0"]'),
+    distinct: z
+      .number()
+      .int()
+      .optional()
+      .describe('Deduplicate hits by this attribute value (1 = on)'),
     typoTolerance: z
       .boolean()
       .optional()
@@ -43,12 +66,20 @@ export const algoliaSearch = tool({
       .array(z.string())
       .optional()
       .describe('Limit response to these fields, e.g. ["hits","nbHits","processingTimeMS"]'),
-    userToken: z.string().optional().describe('End-user identifier for analytics/personalization attribution'),
-    clickAnalytics: z.boolean().optional().describe('Track clicks for analytics (requires userToken for stable reporting)'),
+    userToken: z
+      .string()
+      .optional()
+      .describe('End-user identifier for analytics/personalization attribution'),
+    clickAnalytics: z
+      .boolean()
+      .optional()
+      .describe('Track clicks for analytics (requires userToken for stable reporting)'),
     extra: z
       .record(z.any())
       .optional()
-      .describe('Any additional Algolia search parameters merged into the body (advancedSyntax, ranking, aroundLatLng, ...)'),
+      .describe(
+        'Any additional Algolia search parameters merged into the body (advancedSyntax, ranking, aroundLatLng, ...)',
+      ),
   }),
   execute: async ({
     algoliaCredentials,
@@ -72,27 +103,31 @@ export const algoliaSearch = tool({
   }) => {
     if (!indexName) return { error: 'indexName is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/query`, {
-      method: 'POST',
-      body: compact({
-        query,
-        page,
-        hitsPerPage,
-        filters,
-        facetFilters,
-        facets,
-        attributesToRetrieve,
-        attributesToHighlight,
-        tagFilters,
-        numericFilters,
-        distinct,
-        typoTolerance,
-        responseFields,
-        userToken,
-        clickAnalytics,
-        ...(extra || {}),
-      }),
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/query`,
+      {
+        method: 'POST',
+        body: compact({
+          query,
+          page,
+          hitsPerPage,
+          filters,
+          facetFilters,
+          facets,
+          attributesToRetrieve,
+          attributesToHighlight,
+          tagFilters,
+          numericFilters,
+          distinct,
+          typoTolerance,
+          responseFields,
+          userToken,
+          clickAnalytics,
+          ...(extra || {}),
+        }),
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -116,10 +151,13 @@ export const algoliaSearchMultiple = tool({
     strategy: z
       .enum(['none', 'stopIfEnoughMatches'])
       .optional()
-      .describe('none (default) runs every request; stopIfEnoughMatches stops once enough results exist'),
+      .describe(
+        'none (default) runs every request; stopIfEnoughMatches stops once enough results exist',
+      ),
   }),
   execute: async ({ algoliaCredentials, requests, strategy }) => {
-    if (!requests || !requests.length) return { error: 'requests is required (at least one search request).' };
+    if (!requests || !requests.length)
+      return { error: 'requests is required (at least one search request).' };
     for (const [i, r] of requests.entries()) {
       if (!r || typeof r !== 'object' || !r.indexName) {
         return { error: `requests[${i}] must include indexName.` };
@@ -145,24 +183,61 @@ export const algoliaBrowse = tool({
       .optional()
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index to browse'),
-    query: z.string().optional().describe('Optional query to narrow the browse (empty matches all)'),
-    hitsPerPage: z.number().int().min(1).max(1000).optional().describe('Records per call (default 1000 max)'),
+    query: z
+      .string()
+      .optional()
+      .describe('Optional query to narrow the browse (empty matches all)'),
+    hitsPerPage: z
+      .number()
+      .int()
+      .min(1)
+      .max(1000)
+      .optional()
+      .describe('Records per call (default 1000 max)'),
     filters: z.string().optional().describe('Algolia filter expression to restrict the browse'),
-    facetFilters: z.array(z.any()).optional().describe('Facet filters (string entries or OR-groups)'),
+    facetFilters: z
+      .array(z.any())
+      .optional()
+      .describe('Facet filters (string entries or OR-groups)'),
     attributesToRetrieve: z.array(z.string()).optional().describe('Only return these attributes'),
     cursor: z
       .string()
       .optional()
       .describe('Cursor returned by the previous browse call — omit on the first call'),
-    extra: z.record(z.any()).optional().describe('Additional browse/search parameters merged into the body'),
+    extra: z
+      .record(z.any())
+      .optional()
+      .describe('Additional browse/search parameters merged into the body'),
   }),
-  execute: async ({ algoliaCredentials, indexName, query, hitsPerPage, filters, facetFilters, attributesToRetrieve, cursor, extra }) => {
+  execute: async ({
+    algoliaCredentials,
+    indexName,
+    query,
+    hitsPerPage,
+    filters,
+    facetFilters,
+    attributesToRetrieve,
+    cursor,
+    extra,
+  }) => {
     if (!indexName) return { error: 'indexName is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/browse`, {
-      method: 'POST',
-      body: compact({ query, hitsPerPage, filters, facetFilters, attributesToRetrieve, cursor, ...(extra || {}) }),
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/browse`,
+      {
+        method: 'POST',
+        body: compact({
+          query,
+          hitsPerPage,
+          filters,
+          facetFilters,
+          attributesToRetrieve,
+          cursor,
+          ...(extra || {}),
+        }),
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -180,13 +255,28 @@ export const algoliaSearchFacetValues = tool({
     indexName: z.string().min(1).describe('Index to query'),
     facetName: z.string().min(1).describe('Facet attribute to search values of, e.g. "brand"'),
     facetQuery: z.string().optional().describe('Text to match against facet values, e.g. "app"'),
-    maxFacetHits: z.number().int().min(1).max(1000).optional().describe('Max values returned (default 10)'),
+    maxFacetHits: z
+      .number()
+      .int()
+      .min(1)
+      .max(1000)
+      .optional()
+      .describe('Max values returned (default 10)'),
     params: z
       .string()
       .optional()
-      .describe('Raw search parameter string to scope the facet search, e.g. "filters=inStock:true"'),
+      .describe(
+        'Raw search parameter string to scope the facet search, e.g. "filters=inStock:true"',
+      ),
   }),
-  execute: async ({ algoliaCredentials, indexName, facetName, facetQuery, maxFacetHits, params }) => {
+  execute: async ({
+    algoliaCredentials,
+    indexName,
+    facetName,
+    facetQuery,
+    maxFacetHits,
+    params,
+  }) => {
     if (!indexName) return { error: 'indexName is required.' };
     if (!facetName) return { error: 'facetName is required.' };
 
@@ -247,7 +337,8 @@ export const algoliaGetRecords = tool({
       ),
   }),
   execute: async ({ algoliaCredentials, requests }) => {
-    if (!requests || !requests.length) return { error: 'requests is required (at least one record lookup).' };
+    if (!requests || !requests.length)
+      return { error: 'requests is required (at least one record lookup).' };
     for (const [i, r] of requests.entries()) {
       if (!r || typeof r !== 'object' || !r.indexName || !r.objectID) {
         return { error: `requests[${i}] must include indexName and objectID.` };

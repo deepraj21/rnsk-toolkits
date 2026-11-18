@@ -137,6 +137,7 @@ import spotify from './toolkits/spotify/manifest.js';
 import typeform from './toolkits/typeform/manifest.js';
 import posthog from './toolkits/posthog/manifest.js';
 import algolia from './toolkits/algolia/manifest.js';
+import deepseek from './toolkits/deepseek/manifest.js';
 import type { ToolkitManifest } from './core/types.js';
 
 export const toolkits: ToolkitManifest[] = [
@@ -279,6 +280,7 @@ export const toolkits: ToolkitManifest[] = [
   typeform,
   posthog,
   algolia,
+  deepseek,
 ];
 export {
   mathematics,
@@ -420,6 +422,7 @@ export {
   typeform,
   posthog,
   algolia,
+  deepseek,
 };
 export * from './core/index.js';
 

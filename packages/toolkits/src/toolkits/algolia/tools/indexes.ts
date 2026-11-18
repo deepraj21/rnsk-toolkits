@@ -11,8 +11,19 @@ export const algoliaListIndices = tool({
       .string()
       .optional()
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
-    hitsPerPage: z.number().int().min(1).max(1000).optional().describe('Indices per page (default 100)'),
-    page: z.number().int().min(0).optional().describe('Page number, 0-based (omit for an unpaginated list)'),
+    hitsPerPage: z
+      .number()
+      .int()
+      .min(1)
+      .max(1000)
+      .optional()
+      .describe('Indices per page (default 100)'),
+    page: z
+      .number()
+      .int()
+      .min(0)
+      .optional()
+      .describe('Page number, 0-based (omit for an unpaginated list)'),
   }),
   execute: async ({ algoliaCredentials, hitsPerPage, page }) => {
     const result = await algoliaRequest(algoliaCredentials, '/1/indexes', {
@@ -43,10 +54,14 @@ export const algoliaSaveRecord = tool({
       return { error: 'record is required (a JSON object).' };
     }
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}`, {
-      method: 'POST',
-      body: record,
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}`,
+      {
+        method: 'POST',
+        body: record,
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -95,7 +110,9 @@ export const algoliaPartialUpdateRecord = tool({
     objectID: z.string().min(1).describe('Record objectID to update'),
     attributes: z
       .record(z.any())
-      .describe('Attributes to merge, e.g. {"price":24.99,"inStock":false} (null clears an attribute)'),
+      .describe(
+        'Attributes to merge, e.g. {"price":24.99,"inStock":false} (null clears an attribute)',
+      ),
     createIfNotExists: z
       .boolean()
       .optional()
@@ -167,17 +184,22 @@ export const algoliaBatchRecords = tool({
   }),
   execute: async ({ algoliaCredentials, indexName, requests }) => {
     if (!indexName) return { error: 'indexName is required.' };
-    if (!requests || !requests.length) return { error: 'requests is required (at least one action).' };
+    if (!requests || !requests.length)
+      return { error: 'requests is required (at least one action).' };
     for (const [i, r] of requests.entries()) {
       if (!r || typeof r !== 'object' || !r.action || !r.body) {
         return { error: `requests[${i}] must include action and body.` };
       }
     }
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/batch`, {
-      method: 'POST',
-      body: { requests },
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/batch`,
+      {
+        method: 'POST',
+        body: { requests },
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -200,7 +222,8 @@ export const algoliaBatchMultipleIndexes = tool({
       ),
   }),
   execute: async ({ algoliaCredentials, requests }) => {
-    if (!requests || !requests.length) return { error: 'requests is required (at least one action).' };
+    if (!requests || !requests.length)
+      return { error: 'requests is required (at least one action).' };
     for (const [i, r] of requests.entries()) {
       if (!r || typeof r !== 'object' || !r.indexName || !r.action || !r.body) {
         return { error: `requests[${i}] must include indexName, action, and body.` };
@@ -227,20 +250,42 @@ export const algoliaDeleteRecordsByQuery = tool({
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Index to delete records from'),
     filters: z.string().optional().describe('Algolia filter expression, e.g. "inStock:false"'),
-    facetFilters: z.array(z.any()).optional().describe('Facet filters (string entries or OR-groups)'),
+    facetFilters: z
+      .array(z.any())
+      .optional()
+      .describe('Facet filters (string entries or OR-groups)'),
     numericFilters: z.array(z.string()).optional().describe('Numeric filters, e.g. ["price<1"]'),
     tagFilters: z.any().optional().describe('Tag filter expression (string or array)'),
   }),
-  execute: async ({ algoliaCredentials, indexName, filters, facetFilters, numericFilters, tagFilters }) => {
+  execute: async ({
+    algoliaCredentials,
+    indexName,
+    filters,
+    facetFilters,
+    numericFilters,
+    tagFilters,
+  }) => {
     if (!indexName) return { error: 'indexName is required.' };
-    if (!filters && !(facetFilters && facetFilters.length) && !(numericFilters && numericFilters.length) && !tagFilters) {
-      return { error: 'At least one filter is required (filters, facetFilters, numericFilters, or tagFilters).' };
+    if (
+      !filters &&
+      !(facetFilters && facetFilters.length) &&
+      !(numericFilters && numericFilters.length) &&
+      !tagFilters
+    ) {
+      return {
+        error:
+          'At least one filter is required (filters, facetFilters, numericFilters, or tagFilters).',
+      };
     }
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/deleteByQuery`, {
-      method: 'POST',
-      body: compact({ filters, facetFilters, numericFilters, tagFilters }),
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/deleteByQuery`,
+      {
+        method: 'POST',
+        body: compact({ filters, facetFilters, numericFilters, tagFilters }),
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -260,9 +305,13 @@ export const algoliaClearIndex = tool({
   execute: async ({ algoliaCredentials, indexName }) => {
     if (!indexName) return { error: 'indexName is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/clear`, {
-      method: 'POST',
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/clear`,
+      {
+        method: 'POST',
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -282,9 +331,13 @@ export const algoliaDeleteIndex = tool({
   execute: async ({ algoliaCredentials, indexName }) => {
     if (!indexName) return { error: 'indexName is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}`, {
-      method: 'DELETE',
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}`,
+      {
+        method: 'DELETE',
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};
@@ -300,7 +353,9 @@ export const algoliaCopyOrMoveIndex = tool({
       .optional()
       .describe('Algolia credentials JSON with applicationId and apiKey (injected by system)'),
     indexName: z.string().min(1).describe('Source index'),
-    operation: z.enum(['copy', 'move']).describe('copy = duplicate, move = rename (source is removed)'),
+    operation: z
+      .enum(['copy', 'move'])
+      .describe('copy = duplicate, move = rename (source is removed)'),
     destination: z.string().min(1).describe('Target index name'),
     scope: z
       .array(z.enum(['settings', 'synonyms', 'rules']))
@@ -312,10 +367,14 @@ export const algoliaCopyOrMoveIndex = tool({
     if (!operation) return { error: 'operation is required (copy or move).' };
     if (!destination) return { error: 'destination is required.' };
 
-    const result = await algoliaRequest(algoliaCredentials, `/1/indexes/${encodeURIComponent(indexName)}/operation`, {
-      method: 'POST',
-      body: compact({ operation, destination, scope }),
-    });
+    const result = await algoliaRequest(
+      algoliaCredentials,
+      `/1/indexes/${encodeURIComponent(indexName)}/operation`,
+      {
+        method: 'POST',
+        body: compact({ operation, destination, scope }),
+      },
+    );
     if (result.error) return result;
 
     return result.data ?? {};

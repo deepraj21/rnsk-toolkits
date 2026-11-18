@@ -50,7 +50,11 @@ export function compact(body) {
  * `query` values may be arrays (primitives joined with commas, objects
  * JSON-encoded), booleans, numbers, or strings; empty values are dropped.
  */
-export async function algoliaRequest(algoliaCredentials, path, { method = 'GET', query, body, headers = {} } = {}) {
+export async function algoliaRequest(
+  algoliaCredentials,
+  path,
+  { method = 'GET', query, body, headers = {} } = {},
+) {
   const raw = String(algoliaCredentials ?? '').trim();
   if (!raw) {
     return { error: 'Algolia credentials are required. Connect Algolia first.' };
@@ -136,7 +140,11 @@ export async function algoliaRequest(algoliaCredentials, path, { method = 'GET',
     }
 
     if (!response.ok) {
-      return { error: extractError(data, response.status), statusCode: response.status, details: data };
+      return {
+        error: extractError(data, response.status),
+        statusCode: response.status,
+        details: data,
+      };
     }
 
     return { ok: true, status: response.status, data };
